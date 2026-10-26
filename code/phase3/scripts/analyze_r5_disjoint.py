@@ -182,6 +182,7 @@ def main() -> int:
     print("METHOD ORDERING, all cells vs overlap-free cells")
     print("=" * 100)
     flips = 0
+    examined = 0
     for resdir, _cfgdir, cohorts, methods in MATRICES:
         for base in BASES:
             for cohort in cohorts:
@@ -189,6 +190,7 @@ def main() -> int:
                         for m in methods if (resdir, base, cohort, m) in rows]
                 if len(have) < 2:
                     continue
+                examined += 1
                 o_full = [m for m, _ in sorted(have, key=lambda x: x[1][0])]
                 o_clean = [m for m, _ in sorted(have, key=lambda x: x[1][1])]
                 same = o_full == o_clean
@@ -197,8 +199,9 @@ def main() -> int:
                     print(f"{base} {cohort}: ORDER CHANGES")
                     print(f"   all cells: {' < '.join(o_full)}")
                     print(f"   disjoint : {' < '.join(o_clean)}")
-    print(f"\nordering changes in {flips} of the "
-          f"{sum(1 for _ in rows) // max(1, len(MATRICES[0][3]))} rows examined")
+    # The denominator used to be len(rows) // 7 (cells over the methods of the
+    # first matrix), which printed 20 for the 24 base-by-cohort rows examined.
+    print(f"\nordering changes in {flips} of the {examined} rows examined")
 
     print("\nworst-task argmax changes:")
     n_arg = sum(1 for v in rows.values() if v[2] != v[3])

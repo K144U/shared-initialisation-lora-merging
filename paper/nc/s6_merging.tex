@@ -123,8 +123,8 @@ point is one method on one base; filled markers are the shared cohort, open
 markers the independent one. Horizontal: norm of the merged update relative to
 the mean task update. Vertical: share of its squared norm in the bottom quarter
 of $\bar H$'s spectrum, the ill-conditioned directions. ``The same solvers with
-a ridge'' are adapter-only RegMean at $\lambda = 0.13$ and our encoder at its
-selected $\lambda$.}
+a ridge'' are adapter-only RegMean at $\lambda = 0.13$ and our encoder at
+$\lambda = 0.05$.}
 \label{fig:mechanism}
 \end{figure}
 
@@ -132,12 +132,12 @@ For the other methods the mechanism can be checked without any forward pass,
 because every merge is arithmetic on the adapter factors
 (Figure~\ref{fig:mechanism}). On the shared arm, every averaging and
 sparsifying merge has a norm $0.98$ to $2.16$ times that of the mean task
-update. The share of its energy in the bottom quartile of $\bar H$'s spectrum
-rounds to $0.000$. The two unregularised solvers built from the adapter
+update, and less than $0.001$ of its energy lies in the bottom quartile of
+$\bar H$'s spectrum. The two unregularised solvers built from the adapter
 factors have norms $35$ to $57$ times the mean update and put $73$ to $80\%$
 of their energy there. Among these methods they are the only ones that enter
 the ill-conditioned directions, and a ridge brings them back down beside the
-heuristics. On the independent arm every method puts $0.19$ to $0.32$ of its
+heuristics. On the independent arm every method puts $0.20$ to $0.32$ of its
 energy in the bottom quarter, close to what a direction unrelated to the
 spectrum gives. WUDI is the exception to this picture
 (\S\ref{subsec:wudi}): it is amplified on the shared arm without
@@ -200,8 +200,8 @@ of one standard deviation across cohorts. Points on the diagonal are unaffected
 by the initialisation. Every published method shown lies on or near it;
 adapter-only RegMean at its shipped setting ($\alpha = 0.9$) lies far below it.
 Arrows go from that setting to the same solver with a ridge of
-$\lambda = 0.01$ on the same base, which recovers most of the loss on three
-bases and not on Mistral. WUDI is in Table~\ref{tab:wudi}.}
+$\lambda = 0.01$ on the same base, which recovers most of the GSM8K loss on
+three bases and not on Mistral. WUDI is in Table~\ref{tab:wudi}.}
 \label{fig:exposure}
 \end{figure}
 
@@ -246,9 +246,10 @@ blockwise Fisher solved by conjugate gradient, and diagonal Fisher merging were
 run on all three cohorts of both arms on all four bases. Our diagonal Fisher
 weights each coordinate by its squared update, a data-free proxy, so its matrix
 comes from the task updates; being diagonal, it cannot see overlap between
-subspaces. The three immunity predictions hold. RegMean shows no effect on any base in either unit and is the most
-accurate merge in our experiments on every base; its accuracy on the two arms
-agrees within $1.3$ points in all eight base-by-benchmark cells. MaTS shows no
+subspaces. The three immunity predictions hold. RegMean shows no effect on any base in either unit, and averaged over
+the two benchmarks it is the most accurate merge in our experiments on three
+of the four bases; its accuracy on the two arms agrees within $1.3$ points in
+all eight base-by-benchmark cells. MaTS shows no
 NLL effect, and in accuracy one cell (Mistral, GSM8K) favours the shared arm.
 Diagonal Fisher shows one small effect, $1.08$ times on Llama. A practitioner
 who has the data RegMean was designed for is unaffected by the collapse.
@@ -425,10 +426,10 @@ they stand, and we registered generalised cross-validation (GCV) and the
 L-curve. Neither repaired the collapse on more than one base of four, and
 neither passed any of its three other registered criteria (no worse than
 $\lambda = 0.01$, near the best of the sweep, no harm on separated cohorts);
-GCV raised the independent cohort's excess on Llama from $0.07$ to $0.19$. GCV
-chose $\lambda$ near $10^{-4}$ on shared cohorts and left the worst-task
-excess at $1.13$, $8.66$, $0.22$ and $0.45$, against $0.11$, $0.05$, $0.01$
-and $0.02$ at the best $\lambda$ of the sweep. On Llama, Qwen and Yi that is
+GCV raised the independent cohort's excess on Llama from $0.07$ to $0.19$. On
+the first shared cohort of each base, GCV chose $\lambda$ near $10^{-4}$ and
+left the worst-task excess at $1.13$, $8.66$, $0.22$ and $0.45$, against
+$0.11$, $0.05$, $0.01$ and $0.02$ at the best $\lambda$ of the sweep. On Llama, Qwen and Yi that is
 worse than the minimal ridge. The L-curve found no interior corner: on every
 base and arm its median choice was $1.3\times10^{-8}$, at the lower edge of a
 grid that starts at $10^{-8}$. A data-free way to set the ridge
