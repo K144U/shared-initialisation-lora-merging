@@ -111,3 +111,59 @@ random draws, so the re-run need not reproduce the lost values exactly.
    until every cell exists.
 4. The per-cell files and both summaries are copied down and **committed**
    this time.
+
+## Result of the re-run (2026-10-27), and an unregistered follow-up
+
+All 88 cells landed (PBS 12863 to 12867, no failures). Both tests land in the
+published branch, **CONFIRMED**, under their original rules and analyzers.
+
+- Shared arm: P1 and P2 hold on 4 of 4. lambda = 0 ratios 4.30, 66.0, 9.42,
+  2.46 (published 4.42, 76.2, 10.8, 2.82); P2 gates 0.019, 0.465, 0.049,
+  0.149 (published 0.024, 4.26, 0.128, 0.166); seed1 sits 0.11, 0.92, 1.14,
+  0.41 sd from its arm's mean (published 0.23, 0.53, 0.75, 0.66), all under
+  the registered 2.
+- Downstream: GSM8K P1 4/4, P2 4/4; HumanEval P1 3/4 (published 4/4; Yi
+  misses by 0.001), P2 2/4 (published 3/4; Mistral misses by 0.005). Mistral
+  shared lambda = 0 is 0.000 on both benchmarks again, recovering to 0.460 and
+  0.232 (published 0.462, 0.244).
+
+**The re-run does not reproduce the lost lambda = 0 values on the shared
+arm.** From the published ratios and the (reused, unchanged) seed1 and
+independent cells, the lost seed2 + seed3 sums at lambda = 0 were 0.636,
+25.38, 0.648 and 0.789 (Llama, Mistral, Qwen, Yi); the re-run gives 0.611,
+20.67, 0.540 and 0.657. Lower on all four, by 4% to 19%; on Mistral the lost
+cohorts were about 16 and 9.4 nats, against 10.58 and 10.09 now. This is far
+outside the float32 scatter measured on seed1 (Mistral range 0.08 nats).
+
+What was checked: the re-run's nll_tau equals, bit for bit, the nll_tau that
+June and September cells computed in-cell from the original adapters, on all
+four bases and both cohorts (`eval_seed_rdridge_regmean`, `eval_ridge_seed`,
+`eval_regmean_real`). The adapters and evaluation data are therefore the
+same, and the difference is in the merge. The float32 encoder at lambda = 0
+on shared cohorts depends on the random stream of its randomised SVD
+(`notes/check_solve_precision_result_2026-10-24.md`); even the 2026-10-24
+repeat of an August Yi seed1 cell matched in worst-task excess (0.2489 vs
+0.2490) but not in average excess (0.1585 vs 0.1643), so the stream differs
+between runs. The scatter has been measured on seed1 only.
+
+**Follow-up, unregistered, written before its cells.** The seed1 sweep of the
+precision note, repeated on seed2 and seed3: for each base and cohort, the
+re-run cell `eval_ridge_shared/<base>__rds_l0__<cohort>` with `rng_seed` 1
+and 2 added, float32, production truncation, everything else unchanged; 16
+cells named `<base>__rd_l0_rerun_s<k>__<cohort>` in `eval_precision_f64/`,
+same nll_tau cache. Reading fixed now:
+
+1. Per base and cohort, the three draws (re-run default, s1, s2) and their
+   range are reported, with whether every draw is above that base's
+   independent mean.
+2. Per base, the nine seed2 + seed3 sums formed from the draws are compared
+   with the lost sum above. If the lost sum lies inside their range, the
+   manuscript says the lost value is within the float32 scatter of the
+   re-run. If it lies outside, the manuscript says the re-run did not
+   reproduce it, gives both, and says the cause cannot be established because
+   the lost files are gone.
+3. Whether every combination keeps the shared-over-independent ratio at or
+   above 2 is reported. It does not change the verdict, which comes from the
+   registered cells.
+4. The manuscript gives the shared-arm ratios from the registered re-run
+   cells, not from any mixture of draws.
