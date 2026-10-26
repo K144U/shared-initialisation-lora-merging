@@ -167,3 +167,34 @@ same nll_tau cache. Reading fixed now:
    registered cells.
 4. The manuscript gives the shared-arm ratios from the registered re-run
    cells, not from any mixture of draws.
+
+## Follow-up result (2026-10-27, PBS 12939 to 12942)
+
+`python code/phase3/scripts/summarize_precision_sweep.py --sweep23`; nll_tau
+and rng_seed asserted per cell. Worst-task excess at lambda = 0, float32,
+production truncation (default = the registered re-run cell):
+
+| base | seed2 default / s1 / s2 (range) | seed3 default / s1 / s2 (range) | indep mean | lost sum | sums over draws | ratio over draws |
+|---|---|---|---|---|---|---|
+| Llama | 0.2890 / 0.2944 / 0.3218 (0.033) | 0.3217 / 0.3803 / 0.4003 (0.079) | 0.0712 | 0.636 | 0.611 to 0.722 | 4.30 to 4.83 |
+| Mistral | 10.579 / 9.467 / 10.476 (1.112) | 10.095 / 10.997 / 10.113 (0.903) | 0.1537 | 25.38 | 19.56 to 21.58 | 63.6 to 68.0 |
+| Qwen | 0.2763 / 0.2583 / 0.2464 (0.030) | 0.2635 / 0.2868 / 0.4139 (0.150) | 0.0261 | 0.648 | 0.510 to 0.690 | 9.04 to 11.35 |
+| Yi | 0.2082 / 0.2000 / 0.2528 (0.053) | 0.4489 / 0.4574 / 0.2267 (0.231) | 0.1227 | 0.789 | 0.427 to 0.710 | 1.84 to 2.61 |
+
+Reading, as fixed before the cells:
+
+1. Every draw on every base and cohort is above that base's independent
+   mean. The scatter is larger than the seed1 sweep showed: ranges of 0.03 to
+   0.23 nats on Llama, Qwen and Yi, and 0.9 to 1.1 nats on Mistral, whose
+   excess is about 10 nats.
+2. On Llama and Qwen the lost sum lies inside the range of the draws, so the
+   manuscript says the lost values are within the float32 scatter of the
+   re-run. On Mistral and Yi it lies outside, so the manuscript says the
+   re-run did not reproduce them, gives both, and says the cause cannot be
+   established because the lost files are gone.
+3. Not every combination keeps the ratio at or above 2: on Yi the draws give
+   1.84 to 2.61. The registered verdict is unchanged (the registered cells
+   give 2.46), and the manuscript reports that on Yi the factor of two in P2
+   depends on the random stream.
+4. The manuscript's ratios are those of the registered re-run cells: 4.3,
+   66, 9.4 and 2.5.
