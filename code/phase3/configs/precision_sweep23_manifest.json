@@ -1,0 +1,98 @@
+[
+ {
+  "name": "llama31_8b__rd_l0_rerun_s1__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/llama31_8b__rd_l0_rerun_s1__seed2.yaml",
+  "done": "results/phase3/eval_precision_f64/llama31_8b__rd_l0_rerun_s1__seed2.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "llama31_8b__rd_l0_rerun_s2__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/llama31_8b__rd_l0_rerun_s2__seed2.yaml",
+  "done": "results/phase3/eval_precision_f64/llama31_8b__rd_l0_rerun_s2__seed2.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "llama31_8b__rd_l0_rerun_s1__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/llama31_8b__rd_l0_rerun_s1__seed3.yaml",
+  "done": "results/phase3/eval_precision_f64/llama31_8b__rd_l0_rerun_s1__seed3.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "llama31_8b__rd_l0_rerun_s2__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/llama31_8b__rd_l0_rerun_s2__seed3.yaml",
+  "done": "results/phase3/eval_precision_f64/llama31_8b__rd_l0_rerun_s2__seed3.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "mistral_7b__rd_l0_rerun_s1__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/mistral_7b__rd_l0_rerun_s1__seed2.yaml",
+  "done": "results/phase3/eval_precision_f64/mistral_7b__rd_l0_rerun_s1__seed2.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "mistral_7b__rd_l0_rerun_s2__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/mistral_7b__rd_l0_rerun_s2__seed2.yaml",
+  "done": "results/phase3/eval_precision_f64/mistral_7b__rd_l0_rerun_s2__seed2.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "mistral_7b__rd_l0_rerun_s1__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/mistral_7b__rd_l0_rerun_s1__seed3.yaml",
+  "done": "results/phase3/eval_precision_f64/mistral_7b__rd_l0_rerun_s1__seed3.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "mistral_7b__rd_l0_rerun_s2__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/mistral_7b__rd_l0_rerun_s2__seed3.yaml",
+  "done": "results/phase3/eval_precision_f64/mistral_7b__rd_l0_rerun_s2__seed3.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "qwen25_7b__rd_l0_rerun_s1__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/qwen25_7b__rd_l0_rerun_s1__seed2.yaml",
+  "done": "results/phase3/eval_precision_f64/qwen25_7b__rd_l0_rerun_s1__seed2.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "qwen25_7b__rd_l0_rerun_s2__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/qwen25_7b__rd_l0_rerun_s2__seed2.yaml",
+  "done": "results/phase3/eval_precision_f64/qwen25_7b__rd_l0_rerun_s2__seed2.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "qwen25_7b__rd_l0_rerun_s1__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/qwen25_7b__rd_l0_rerun_s1__seed3.yaml",
+  "done": "results/phase3/eval_precision_f64/qwen25_7b__rd_l0_rerun_s1__seed3.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "qwen25_7b__rd_l0_rerun_s2__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/qwen25_7b__rd_l0_rerun_s2__seed3.yaml",
+  "done": "results/phase3/eval_precision_f64/qwen25_7b__rd_l0_rerun_s2__seed3.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "yi15_9b__rd_l0_rerun_s1__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/yi15_9b__rd_l0_rerun_s1__seed2.yaml",
+  "done": "results/phase3/eval_precision_f64/yi15_9b__rd_l0_rerun_s1__seed2.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "yi15_9b__rd_l0_rerun_s2__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/yi15_9b__rd_l0_rerun_s2__seed2.yaml",
+  "done": "results/phase3/eval_precision_f64/yi15_9b__rd_l0_rerun_s2__seed2.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "yi15_9b__rd_l0_rerun_s1__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/yi15_9b__rd_l0_rerun_s1__seed3.yaml",
+  "done": "results/phase3/eval_precision_f64/yi15_9b__rd_l0_rerun_s1__seed3.json",
+  "min_free_gb": 40.0
+ },
+ {
+  "name": "yi15_9b__rd_l0_rerun_s2__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_precision_f64/yi15_9b__rd_l0_rerun_s2__seed3.yaml",
+  "done": "results/phase3/eval_precision_f64/yi15_9b__rd_l0_rerun_s2__seed3.json",
+  "min_free_gb": 40.0
+ }
+]
