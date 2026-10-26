@@ -39,10 +39,14 @@ def main() -> int:
             hit = r.get("nll_tau_from_cache") is True
             moved = any(abs(r["nll_merged"][t] - r["nll_tau"]["base"][t]) > 1e-6
                         for t in r["nll_merged"])
-            diag = r.get("merge_diagnostics") or {}
-            print(f"    nll_tau from cache: {hit}; merged differs from base: {moved}; "
-                  f"merge diagnostics: {len(diag)} entries")
-            bad += [] if hit and moved and diag else [cell["name"] + " nll"]
+            # rd_encoder is not in the harness's DIAG_MODULES, so merge_diagnostics
+            # is None on every encoder cell; its own summary line is in the log.
+            log = ROOT / "logs" / "orch" / f"{cell['name']}.log"
+            enc = [ln.strip() for ln in log.read_text().splitlines()
+                   if ln.startswith("[rd_encoder]")] if log.exists() else []
+            print(f"    nll_tau from cache: {hit}; merged differs from base: {moved}")
+            print(f"    {enc[-1] if enc else 'no [rd_encoder] line in ' + str(log)}")
+            bad += [] if hit and moved and enc else [cell["name"] + " nll"]
         else:
             pe = r["per_example"]
             empty = sum(not (e.get("gen_raw") or e.get("gen_text")) for e in pe)
