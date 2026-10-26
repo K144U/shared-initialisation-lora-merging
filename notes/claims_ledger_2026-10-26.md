@@ -88,11 +88,13 @@ merge poorly.
 | MaTS 0.93 to 0.99, Mistral GSM8K; Fisher 0.96 to 1.08; TSV-M 0.81 to 1.19 | R/campaign_2026-09/third_solver_summary.json |
 | adapter-only RegMean 4.1, 65.6, 5.8, 1.8 | R/campaign_2026-09/regmean_agram_summary.json `described_gram_AtA` |
 | shipped-alpha accuracy 0.168 ... 0.724; ridge +31, +43, +54; Mistral 0.029 / 0.002 | regmean_real_summary.json `downstream` |
-| encoder 2.8 to 76, three cohorts per arm | **backing gap**, see below |
-| encoder Mistral 0.000, recovering to 0.46 / 0.24 | **backing gap**, see below |
+| encoder 2.5 to 66, three cohorts per arm | R/shared_arm_summary.json (re-run 2026-10-27, a8cdc02): 4.30, 66.04, 9.42, 2.46 |
+| encoder Mistral 0.000, recovering to 0.46 / 0.23 | R/downstream_conditioning_summary.json (re-run, a8cdc02): 0.000, 0.460, 0.232 |
 | encoder untruncated 25 to 117 | R/eval_ridge_untrunc *(local, untracked)*: 116.9, 73.5, 35.2, 25.5 |
 | selected lambda equal on 3 of 4 (encoder) | R/eval_ridge_cond *(local, untracked)* |
 | float64 check: 0.1%, 15 of 16, 0.9%, 1.09%, truncation 98.8 to 99.9%, 30 to 38%, 12 to 20% | R/campaign_2026-10/solve_precision.json |
+| draws: 36 above independent; spans 0.08 / 0.15 / 0.23 / 1.1; Yi seed3 0.23 vs 0.10; Yi ratio 1.8 to 2.6 | summarize_precision_sweep.py (and --sweep23), R/eval_precision_f64, R/eval_ridge_shared (c72df0f) |
+| App. B re-run: ratios vs lost; accuracies within 0.024 except shared lambda = 0 up to 0.106; identical merge 0.022; HumanEval misses 0.001, 0.005 | notes/rerun_lost_cells_2026-10-26.md; downstream_conditioning_summary.json vs JAIR tab:downstream-cond |
 | rebuild 0.245 / 0.249 / 0.121; draws 0.22 to 0.28, 0.26 to 0.84; other bases' draws | notes/check_solve_precision_result_2026-10-24.md; Appendix C tables (make_app_campaign.py asserts against R/eval_precision_f64) |
 | alpha equivalence 5.8e-4 to 6.8e-4, 0.5%, kappa 1.2e3 to 1.4e3, 6.6e3 to 9.1e3, 1.5e2 | R/regmean_published_default.json (alpha_equiv_ridge_median / 0.9) |
 | vision, all 17 values | R/campaign_2026-10/vision_summary.json |
@@ -112,6 +114,12 @@ merge poorly.
 | ordering unchanged in 23 of 24 rows | R/r5_disjoint_summary.json `cells` (recounted 2026-10-26) |
 
 ## Backing gaps
+
+**Update 2026-10-27: gaps 1 and 2 are closed.** All 88 cells were re-run under the
+original registrations (note b9d0e41, generator d77cd8c, results a8cdc02); both tests
+are CONFIRMED again. The values moved (see notes/rerun_lost_cells_2026-10-26.md and
+Appendix B), and the manuscript now gives the re-run values. The text below records
+the state on 2026-10-26.
 
 Two sets of per-cell files were lost when the cluster tree that held them was
 emptied on 2026-10-10. Their numbers survive only in

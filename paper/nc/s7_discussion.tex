@@ -112,7 +112,9 @@ $\kappa(\bar H)$ depends on the projector model of curvature, while the
 principal cosines, which carry the audit, do not. The theory is a
 leading-order expansion verified numerically, not a bound. The float32 values
 we report for the unregularised encoder on shared cohorts are single draws,
-which move by $0.02$ to $0.08$ nats between draws (\S\ref{sec:merging}). The
+which move by up to $0.23$ nats between draws, and by up to $1.1$ nats on
+Mistral; on Yi this is enough to move the ratio between the arms across the
+registered factor of two (\S\ref{sec:merging}). The
 selected ridge $\lambda^\star$ was chosen on the evaluation sets it is scored
 on, so the gains we report for a tuned ridge are optimistic; the fixed
 $\lambda = 0.01$ is not affected. The tests on translation and IFEval, and

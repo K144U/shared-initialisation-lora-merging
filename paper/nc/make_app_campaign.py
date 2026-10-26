@@ -23,6 +23,8 @@ Inputs (all relative to the repository root):
   results/phase3/campaign_2026-10/solve_precision.json            (C.6)
   results/phase3/eval_ridge_cond/<base>__rd_l0__{seed1,indep1}.json and
   results/phase3/eval_precision_f64/*.json                        (C.7)
+  results/phase3/eval_ridge_shared/<base>__rds_l0__{seed2,seed3}.json and
+  results/phase3/eval_ridge_cohorts/<base>__rdc_l0__{indep2,indep3}.json (C.7 c)
 
 Set RDMERGE_ROOT to read from (and write into) another checkout; this is only
 for testing.
@@ -661,6 +663,41 @@ def c7() -> str:
              f"float32, exact truncation & {exact[0]:.3f} & {exact[1]:.3f} & {exact[2]:.3f} \\\\",
              f"float64, exact truncation (registered) & {f64:.3f} & -- & -- \\\\",
              "\\bottomrule", "\\end{tabular}"]
+
+    # (c) seed2 and seed3: the registered re-run cell (eval_ridge_shared) and
+    # rng_seed 1 and 2, against the mean of the three independent cohorts.
+    rs, rco = RES / "eval_ridge_shared", RES / "eval_ridge_cohorts"
+    body += ["\\par\\bigskip",
+             "\\textbf{(c)} the other two shared cohorts, float32 encoder, production truncation"
+             "\\par\\smallskip",
+             "\\begin{tabular}{llcccccc}", "\\toprule",
+             "base & cohort & re-run & \\texttt{rng\\_seed} 1 & \\texttt{rng\\_seed} 2 & range"
+             " & indep.\\ mean & gap \\\\", "\\midrule"]
+    ratios = {}
+    for b in BASES:
+        s1 = load(rc / f"{b}__rd_l0__seed1.json")["worst_task_excess"]
+        im = (load(rc / f"{b}__rd_l0__indep1.json")["worst_task_excess"]
+              + sum(load(rco / f"{b}__rdc_l0__{c}.json")["worst_task_excess"]
+                    for c in ("indep2", "indep3"))) / 3
+        w = {}
+        for coh in ("seed2", "seed3"):
+            reg = load(rs / f"{b}__rds_l0__{coh}.json")
+            draws = [reg] + [load(pf / f"{b}__rd_l0_rerun_s{k}__{coh}.json") for k in (1, 2)]
+            for k, d in enumerate(draws):
+                assert d["nll_tau"] == reg["nll_tau"], (b, coh, k)
+                assert d["method_kwargs"].get("rng_seed") == (None if k == 0 else k), (b, coh, k)
+                assert d["method_kwargs"].get("ridge_lambda") == 0.0 and d["method_kwargs"].get("bits") == 32
+                assert "truncation" not in d["method_kwargs"] and "solve_dtype" not in d["method_kwargs"]
+            w[coh] = [d["worst_task_excess"] for d in draws]
+            assert all(x > im for x in w[coh]), (b, coh)
+            body.append(" & ".join([BASE_NAME[b] if coh == "seed2" else "", coh]
+                                   + [f"{x:.3f}" for x in w[coh]]
+                                   + [f"{max(w[coh]) - min(w[coh]):.3f}", f"{im:.3f}",
+                                      f"{min(w[coh]) - im:.3f}"]) + " \\\\")
+        r = [(s1 + x + y) / 3 / im for x in w["seed2"] for y in w["seed3"]]
+        ratios[b] = (min(r), max(r))
+    body += ["\\bottomrule", "\\end{tabular}"]
+    spans = [f"{ratios[k][0]:.2f} to {ratios[k][1]:.2f} on {BASE_NAME[k]}" for k in BASES]
     cap = ("Realisations of our encoder at $\\lambda = 0$; worst-task excess. Apart from the "
            "published cells and the registered float64 rebuild, these runs were added after "
            "the precision check and were not registered. \\textbf{(a)} The seed-1 shared cohort of each base under three "
@@ -671,7 +708,13 @@ def c7() -> str:
            "rule flagged. The default stream with production truncation has two cells, the "
            "published one and a rerun on the same setup. The float64 merge with exact "
            "truncation is the registered rebuild and does not depend on the stream. The "
-           f"independent cohort is at {indep[b]:.3f}.")
+           f"independent cohort is at {indep[b]:.3f}. \\textbf{{(c)}} The other two shared "
+           "cohorts of each base, re-run in October 2026 (Appendix~\\ref{app:prereg}): the "
+           "registered re-run cell and the same merge seeded by \\texttt{rng\\_seed} $1$ and $2$. "
+           "\\emph{Indep.\\ mean}: the mean over the three independent cohorts. Over the nine "
+           "combinations of seed-2 and seed-3 draws, the ratio of the shared arm's three-cohort "
+           "mean to the independent mean spans "
+           + ", ".join(spans[:-1]) + " and " + spans[-1] + ".")
     return table("tab:appC-sweep", cap, body)
 
 
@@ -706,8 +749,9 @@ LEADS = {
            "reference rows: the base model and each task's own adapter on all four benchmarks."),
     "C6": ("Table~\\ref{tab:appC-precision} gives the precision check of "
            "\\S\\ref{subsec:results} for every base, arm and solver. Table~\\ref{tab:appC-sweep} "
-           "gives the float32 draws of the unregularised encoder on every base, and for the one "
-           "cohort the rule flagged, the float64 rebuild and the draws with exact truncation."),
+           "gives the float32 draws of the unregularised encoder on all three shared cohorts of "
+           "every base, and for the one cohort the rule flagged, the float64 rebuild and the "
+           "draws with exact truncation."),
 }
 
 

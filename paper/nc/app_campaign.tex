@@ -217,7 +217,7 @@ IFEval, strict & base model & 0.703 & 0.467 & 0.717 & 0.487 \\
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:appC-precision} gives the precision check of \S\ref{subsec:results} for every base, arm and solver. Table~\ref{tab:appC-sweep} gives the float32 draws of the unregularised encoder on every base, and for the one cohort the rule flagged, the float64 rebuild and the draws with exact truncation.
+Table~\ref{tab:appC-precision} gives the precision check of \S\ref{subsec:results} for every base, arm and solver. Table~\ref{tab:appC-sweep} gives the float32 draws of the unregularised encoder on all three shared cohorts of every base, and for the one cohort the rule flagged, the float64 rebuild and the draws with exact truncation.
 
 \begin{table}[pos=tbp]
 \centering
@@ -249,7 +249,7 @@ Yi-1.5-9B & encoder & $1.1\times10^{-2}{}^{\dagger}$ & $4.8\times10^{-1}$ & $2.4
 \begin{table}[pos=tbp]
 \centering
 \small
-\caption{Realisations of our encoder at $\lambda = 0$; worst-task excess. Apart from the published cells and the registered float64 rebuild, these runs were added after the precision check and were not registered. \textbf{(a)} The seed-1 shared cohort of each base under three random streams with the production truncation: the published cell and the same merge with the generator seeded by \texttt{rng\_seed} $1$ and $2$. \emph{Independent}: the first independent cohort's float32 cell. \emph{Gap}: the smallest shared draw minus the independent value. \textbf{(b)} The cohort the rule flagged. The default stream with production truncation has two cells, the published one and a rerun on the same setup. The float64 merge with exact truncation is the registered rebuild and does not depend on the stream. The independent cohort is at 0.121.}
+\caption{Realisations of our encoder at $\lambda = 0$; worst-task excess. Apart from the published cells and the registered float64 rebuild, these runs were added after the precision check and were not registered. \textbf{(a)} The seed-1 shared cohort of each base under three random streams with the production truncation: the published cell and the same merge with the generator seeded by \texttt{rng\_seed} $1$ and $2$. \emph{Independent}: the first independent cohort's float32 cell. \emph{Gap}: the smallest shared draw minus the independent value. \textbf{(b)} The cohort the rule flagged. The default stream with production truncation has two cells, the published one and a rerun on the same setup. The float64 merge with exact truncation is the registered rebuild and does not depend on the stream. The independent cohort is at 0.121. \textbf{(c)} The other two shared cohorts of each base, re-run in October 2026 (Appendix~\ref{app:prereg}): the registered re-run cell and the same merge seeded by \texttt{rng\_seed} $1$ and $2$. \emph{Indep.\ mean}: the mean over the three independent cohorts. Over the nine combinations of seed-2 and seed-3 draws, the ratio of the shared arm's three-cohort mean to the independent mean spans 4.30 to 4.83 on Llama-3.1-8B, 63.63 to 67.99 on Mistral-7B, 9.04 to 11.35 on Qwen2.5-7B and 1.84 to 2.61 on Yi-1.5-9B.}
 \label{tab:appC-sweep}
 \textbf{(a)} float32 encoder, production truncation\par\smallskip
 \begin{tabular}{lcccccc}
@@ -271,6 +271,22 @@ realisation & default stream & \texttt{rng\_seed} 1 & \texttt{rng\_seed} 2 \\
 float32, production truncation & 0.249 / 0.249 & 0.216 & 0.279 \\
 float32, exact truncation & 0.837 & 0.389 & 0.260 \\
 float64, exact truncation (registered) & 0.245 & -- & -- \\
+\bottomrule
+\end{tabular}
+\par\bigskip
+\textbf{(c)} the other two shared cohorts, float32 encoder, production truncation\par\smallskip
+\begin{tabular}{llcccccc}
+\toprule
+base & cohort & re-run & \texttt{rng\_seed} 1 & \texttt{rng\_seed} 2 & range & indep.\ mean & gap \\
+\midrule
+Llama-3.1-8B & seed2 & 0.289 & 0.294 & 0.322 & 0.033 & 0.071 & 0.218 \\
+ & seed3 & 0.322 & 0.380 & 0.400 & 0.079 & 0.071 & 0.251 \\
+Mistral-7B & seed2 & 10.579 & 9.467 & 10.476 & 1.112 & 0.154 & 9.314 \\
+ & seed3 & 10.095 & 10.997 & 10.113 & 0.903 & 0.154 & 9.941 \\
+Qwen2.5-7B & seed2 & 0.276 & 0.258 & 0.246 & 0.030 & 0.026 & 0.220 \\
+ & seed3 & 0.263 & 0.287 & 0.414 & 0.150 & 0.026 & 0.237 \\
+Yi-1.5-9B & seed2 & 0.208 & 0.200 & 0.253 & 0.053 & 0.123 & 0.077 \\
+ & seed3 & 0.449 & 0.457 & 0.227 & 0.231 & 0.123 & 0.104 \\
 \bottomrule
 \end{tabular}
 \end{table}

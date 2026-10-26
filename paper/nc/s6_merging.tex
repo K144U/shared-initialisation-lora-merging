@@ -185,7 +185,7 @@ WUDI, closed form & task updates & exposed & $5.3$ to $65.1$
 \addlinespace
 RegMean, adapter-only & adapter factors & exposed & $1.8$ to $65.6$
   & GSM8K $0.00$ to $0.17$ vs.\ $0.29$ to $0.72$ \\
-our encoder & adapter factors & exposed & $2.8$ to $76$
+our encoder & adapter factors & exposed & $2.5$ to $66$
   & Mistral $0.000$ on both \\
 \bottomrule
 \end{tabularx}
@@ -286,10 +286,12 @@ The second solver of this kind is the closed-form encoder of our earlier
 preprint~\citep{pathak2026rd}, which we call \emph{our encoder}. It computes
 the exact interpolator $\tauH = \bar D\,\bar H^{+}$ of \S\ref{sec:background}
 directly, with an optional ridge on the range of $\bar H$, so it inverts the
-collapsed operator itself. Without a ridge it is $2.8$ to $76$ times worse on
+collapsed operator itself. Without a ridge it is $2.5$ to $66$ times worse on
 the shared arm (three cohorts per arm, every base past the gate). On Mistral
 its merged model scores $0.000$ on both benchmarks, and a tuned ridge brings
-this up to $0.46$ on GSM8K and $0.24$ on HumanEval. The effect survives with
+this up to $0.46$ on GSM8K and $0.23$ on HumanEval. We re-ran these cells in
+October 2026 because their files had been lost, and
+Appendix~\ref{app:prereg} compares the two runs. The effect survives with
 rank truncation disabled, where the ratio grows to $25$ to $117$. Truncating
 to rank $r$ discards most of the ill-conditioned subspace and so hides part of
 the damage. For both solvers, the amount of ridge needed does not track the
@@ -318,12 +320,19 @@ $0.26$ to $0.84$ when the truncation to rank $r$ is exact. All of them lie
 above the independent cohort, whose float32 merge agrees with float64 to
 $2\times10^{-6}$ in the median over modules. On a shared cohort of each other
 base, three draws under the same seeds span $0.31$ to $0.33$ nats on Llama,
-$9.78$ to $9.86$ on Mistral and $0.19$ to $0.22$ on Qwen. On every base each
-draw lies above the independent cohort, and the spread is smaller than the gap
-to it, most narrowly on Yi ($0.063$ against $0.095$). The float32 values we
-report for the unregularised encoder on shared cohorts are single draws of
-this kind. Their direction does not depend on the draw, but their size moves
-by $0.02$ to $0.08$ nats, which we measured on one shared cohort per base.
+$9.78$ to $9.86$ on Mistral and $0.19$ to $0.22$ on Qwen. We then drew the
+two other shared cohorts of every base three times each. The draws of one
+cohort span up to $0.08$ nats on Llama, $0.15$ on Qwen and $0.23$ on Yi, and
+up to $1.1$ on Mistral, whose excess is about $10$ nats
+(Table~\ref{tab:appC-sweep}). All $36$ draws lie above the independent arm.
+On one cohort, Yi's third, the spread is larger than the distance from its
+lowest draw to the independent mean ($0.23$ against $0.10$); on the others it
+is smaller. The float32 values we report for the unregularised encoder on
+shared cohorts are single draws of this kind. Their direction has not
+depended on the draw, but their size does. On Yi the ratio of the shared to
+the independent arm at $\lambda = 0$ ranges from $1.8$ to $2.6$ over the
+draws, so the registered factor of two holds on the registered cells but not
+on every draw.
 Adapter-only RegMean agrees with float64 to within $1\%$ on every module.
 
 Every merge in this paper is cut to rank $r$ by a randomised SVD that computes
