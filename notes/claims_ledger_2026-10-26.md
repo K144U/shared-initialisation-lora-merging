@@ -113,8 +113,8 @@ merge poorly.
 
 ## Backing gaps
 
-Two sets of per-cell files were lost when the sanjay.g tree was emptied on
-2026-10-10 (see the memory note of that date). Their numbers survive only in
+Two sets of per-cell files were lost when the cluster tree that held them was
+emptied on 2026-10-10. Their numbers survive only in
 the committed text of the JAIR version, which is in the public history.
 
 1. **Encoder at lambda = 0, shared seeds 2 and 3** (`eval_ridge_shared`,
