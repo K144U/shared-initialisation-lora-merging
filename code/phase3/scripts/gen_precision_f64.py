@@ -11,6 +11,9 @@ plus two unregistered controls.
   production and with exact truncation at rng_seed 1 and 2.
   --sweep: the seed sweep on the other three bases (same note), float32
   with production truncation at rng_seed 1 and 2.
+  --sweep23: the same sweep on shared cohorts seed2 and seed3 of all four
+  bases, from the re-run cells in eval_ridge_shared
+  (notes/rerun_lost_cells_2026-10-26.md, follow-up).
 
 Template: the published cell eval_ridge_cond/<base>__rd_l0__seed1.json.
 """
@@ -37,6 +40,25 @@ SEED_ARMS = {
 
 SWEEP_BASES = ("llama31_8b", "mistral_7b", "qwen25_7b")
 SWEEP_ARMS = {f"rd_l0_rerun_s{k}": {"rng_seed": k} for k in (1, 2)}
+SWEEP23_BASES = ("llama31_8b", "mistral_7b", "qwen25_7b", "yi15_9b")
+SWEEP23_COHORTS = ("seed2", "seed3")
+
+
+def sweep23(m) -> None:
+    for base in SWEEP23_BASES:
+        for cohort in SWEEP23_COHORTS:
+            t = template(RES / "eval_ridge_shared" / f"{base}__rds_l0__{cohort}.json")
+            assert t["method"] == "rd_encoder" and float(t["method_kwargs"]["ridge_lambda"]) == 0.0
+            for tag, extra in SWEEP_ARMS.items():
+                name = f"{base}__{tag}__{cohort}"
+                cfg = {k: v for k, v in t.items() if k != "output_path"}
+                cfg.update(method_kwargs={**t["method_kwargs"], **extra},
+                           nll_tau_cache=str(CACHE / f"{base}__{cohort}.json"),
+                           output_path=str(RES / OUT_DIR / f"{name}.json"))
+                for k in INVARIANT:
+                    assert cfg.get(k) == t.get(k), (name, k)
+                m.add(name, cfg, OUT_DIR, "run_eval_cell.py", min_free=40.0)
+    m.write("precision_sweep23_manifest.json", expect=16)
 
 
 def main() -> int:
@@ -44,6 +66,9 @@ def main() -> int:
     sweep = "--sweep" in sys.argv[1:]
     arms = SWEEP_ARMS if sweep else SEED_ARMS if seeds else ARMS
     m = Manifest()
+    if "--sweep23" in sys.argv[1:]:
+        sweep23(m)
+        return 0
     for base in SWEEP_BASES if sweep else (BASE,):
         t = template(RES / "eval_ridge_cond" / f"{base}__rd_l0__{COHORT}.json")
         assert t["method"] == "rd_encoder" and float(t["method_kwargs"]["ridge_lambda"]) == 0.0
