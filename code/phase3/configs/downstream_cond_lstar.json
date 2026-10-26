@@ -1,0 +1,10 @@
+{
+  "llama31_8b|seed1": "0p05",
+  "llama31_8b|indep1": "0",
+  "mistral_7b|seed1": "0p13",
+  "mistral_7b|indep1": "0p13",
+  "qwen25_7b|seed1": "0p13",
+  "qwen25_7b|indep1": "0p13",
+  "yi15_9b|seed1": "0p30",
+  "yi15_9b|indep1": "0p30"
+}

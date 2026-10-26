@@ -1,0 +1,338 @@
+[
+ {
+  "name": "llama31_8b__rds_l0__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0p01__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0p01__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0p01__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0p03__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0p03__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0p03__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0p05__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0p05__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0p05__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0p13__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0p13__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0p13__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0p30__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0p30__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0p30__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l1p00__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l1p00__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l1p00__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0p01__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0p01__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0p01__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0p03__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0p03__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0p03__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0p05__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0p05__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0p05__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0p13__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0p13__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0p13__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l0p30__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0p30__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0p30__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__rds_l1p00__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l1p00__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l1p00__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0p01__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0p01__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0p01__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0p03__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0p03__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0p03__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0p05__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0p05__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0p05__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0p13__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0p13__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0p13__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0p30__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0p30__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0p30__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l1p00__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l1p00__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l1p00__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0p01__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0p01__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0p01__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0p03__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0p03__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0p03__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0p05__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0p05__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0p05__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0p13__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0p13__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0p13__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l0p30__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l0p30__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l0p30__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "mistral_7b__rds_l1p00__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/mistral_7b__rds_l1p00__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/mistral_7b__rds_l1p00__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0p01__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0p01__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0p01__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0p03__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0p03__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0p03__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0p05__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0p05__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0p05__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0p13__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0p13__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0p13__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0p30__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0p30__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0p30__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l1p00__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l1p00__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l1p00__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0p01__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0p01__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0p01__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0p03__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0p03__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0p03__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0p05__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0p05__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0p05__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0p13__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0p13__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0p13__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l0p30__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l0p30__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l0p30__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "qwen25_7b__rds_l1p00__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/qwen25_7b__rds_l1p00__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/qwen25_7b__rds_l1p00__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0p01__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0p01__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0p01__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0p03__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0p03__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0p03__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0p05__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0p05__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0p05__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0p13__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0p13__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0p13__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0p30__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0p30__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0p30__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l1p00__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l1p00__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l1p00__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0p01__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0p01__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0p01__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0p03__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0p03__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0p03__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0p05__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0p05__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0p05__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0p13__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0p13__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0p13__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l0p30__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l0p30__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l0p30__seed3.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "yi15_9b__rds_l1p00__seed3",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/yi15_9b__rds_l1p00__seed3.yaml",
+  "done": "results/phase3/eval_ridge_shared/yi15_9b__rds_l1p00__seed3.json",
+  "min_free_gb": 30.0
+ }
+]

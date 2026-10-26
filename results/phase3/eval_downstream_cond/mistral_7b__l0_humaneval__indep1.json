@@ -1,0 +1,1292 @@
+{
+  "meta": {
+    "git_sha": "unknown",
+    "hostname": "jiit-gpu01",
+    "cuda_visible_devices": "5",
+    "pbs_jobid": "12867.jiit-master",
+    "wallclock_iso": "2026-10-26T19:31:29+0100",
+    "wallclock_unix": 1793039489.4909008,
+    "config_hash": "2cd53b9d876b8bd0",
+    "config": {
+      "base_model": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/models/Mistral-7B-Instruct-v0.3",
+      "method": "rd_encoder",
+      "method_kwargs": {
+        "bits": 32,
+        "seed": 20260611,
+        "realize": "rank_r",
+        "ridge_lambda": 0.0
+      },
+      "max_seq_length": 1024,
+      "seed": 20260518,
+      "min_free_gb": 25,
+      "adapter_specs": [
+        {
+          "name": "gsm8k",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/gsm8k/indep1",
+          "task_cfg": {
+            "name": "gsm8k",
+            "dataset": "openai/gsm8k",
+            "config": "main",
+            "split_train": "train",
+            "split_eval": "test",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "question",
+            "answer_field": "answer"
+          }
+        },
+        {
+          "name": "alpaca",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/alpaca/indep1",
+          "task_cfg": {
+            "name": "alpaca",
+            "dataset": "yahma/alpaca-cleaned",
+            "config": null,
+            "split_train": "train",
+            "split_eval": "train",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "instruction",
+            "answer_field": "output"
+          }
+        },
+        {
+          "name": "magicoder",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/magicoder/indep1",
+          "task_cfg": {
+            "name": "magicoder",
+            "dataset": "ise-uiuc/Magicoder-OSS-Instruct-75K",
+            "config": null,
+            "split_train": "train",
+            "split_eval": "train",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "problem",
+            "answer_field": "solution"
+          }
+        },
+        {
+          "name": "translation",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/flores/indep1",
+          "task_cfg": {
+            "name": "translation",
+            "dataset": "wmt/wmt19",
+            "config": "de-en",
+            "split_train": "train",
+            "split_eval": "validation",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "src_lang": "en",
+            "tgt_lang": "de",
+            "streaming": true
+          }
+        }
+      ],
+      "loader": "plain",
+      "metric": "humaneval_pass1",
+      "metric_task_spec": "humaneval",
+      "metric_kwargs": {
+        "max_new_tokens": 512
+      },
+      "n_eval_metric": 164,
+      "metric_task_cfg": {
+        "name": "humaneval",
+        "dataset": "openai/openai_humaneval",
+        "config": null,
+        "split_train": "test",
+        "split_eval": "test",
+        "n_train": 0,
+        "n_eval": 164,
+        "prompt_field": "prompt",
+        "answer_field": "canonical_solution"
+      },
+      "output_path": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/results/phase3/eval_downstream_cond/mistral_7b__l0_humaneval__indep1.json"
+    }
+  },
+  "method": "rd_encoder",
+  "method_kwargs": {
+    "bits": 32,
+    "c": 5.0,
+    "seed": 20260611,
+    "realize": "rank_r",
+    "ridge_lambda": 0.0,
+    "_merge_cache_key": null
+  },
+  "weights": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+  ],
+  "base_model": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/models/Mistral-7B-Instruct-v0.3",
+  "adapter_dirs": [
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/gsm8k/indep1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/alpaca/indep1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/magicoder/indep1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/flores/indep1"
+  ],
+  "metric": "humaneval_pass1",
+  "metric_kwargs": {
+    "max_new_tokens": 512
+  },
+  "metric_task": "humaneval",
+  "metric_score": 0.04878048780487805,
+  "n_eval_metric": 164,
+  "per_example": [
+    {
+      "task_id": "HumanEval/13",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpxnkaxhh5.py\", line 10\n    if a == b:\n              ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if a == b:\n        return a\n    elif a > b:\n        return greatest_common_divisor(b, a % b)\n    else:\n        return greatest_common_divisor(a, b % a)",
+      "gen_raw": "   if a == b:\n        return a\n    elif a > b:\n        return greatest_common_divisor(b, a % b)\n    else:\n        return greatest_common_divisor(a, b % a)\n\n# Test\nprint(greatest_common_divisor(3, 5))\nprint(greatest_common_divisor(25, 15))"
+    },
+    {
+      "task_id": "HumanEval/74",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp2jph5zqg.py\", line 44, in <module>\n    check(total_match)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp2jph5zqg.py\", line 29, ",
+      "completion_preview": "def total_match(lst1, lst2):\n    if len(lst1) == len(lst2):\n        return lst1\n    elif len(lst1) < len(lst2):\n        return lst1\n    else:\n        return lst2",
+      "gen_raw": "def total_match(lst1, lst2):\n    if len(lst1) == len(lst2):\n        return lst1\n    elif len(lst1) < len(lst2):\n        return lst1\n    else:\n        return lst2"
+    },
+    {
+      "task_id": "HumanEval/113",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpegwddue7.py\", line 14\n    return [f\"the number of odd elements {lst[i].count('1')}n the str{i}ng {lst[i]} of the 1nput.\" for i in range(len(lst))]\n           ",
+      "completion_preview": "   return [f\"the number of odd elements {lst[i].count('1')}n the str{i}ng {lst[i]} of the 1nput.\" for i in range(len(lst))]",
+      "gen_raw": "   return [f\"the number of odd elements {lst[i].count('1')}n the str{i}ng {lst[i]} of the 1nput.\" for i in range(len(lst))]"
+    },
+    {
+      "task_id": "HumanEval/53",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def add(x: int, y: int):\n    \"\"\"Add two numbers x and y\n    >>> add(2, 3)\n    5\n    >>> add(5, 7)\n    12\n    \"\"\"\n    return x + y",
+      "gen_raw": "def add(x: int, y: int):\n    \"\"\"Add two numbers x and y\n    >>> add(2, 3)\n    5\n    >>> add(5, 7)\n    12\n    \"\"\"\n    return x + y"
+    },
+    {
+      "task_id": "HumanEval/123",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmplzs0vr1g.py\", line 50, in <module>\n    check(get_odd_collatz)\n  File \"/var/tmp/pbs.12867.jiit-master/tmplzs0vr1g.py\", line ",
+      "completion_preview": "def get_odd_collatz(n):\n    \"\"\"\n    Given a positive integer n, return a sorted list that has the odd numbers in collatz sequence.\n\n    The Collatz conjecture is a conjecture in mathematics that concerns a sequence defined\n    as follows: start with any positive integer n. Then each term is obtained from the \n    previous term as follows: if the previous term is even, the next term is one half of \n    the previous term. If the previous term is odd, the next term is 3 times the previous\n    term plus 1. The conjecture is that no matter what value of n, the sequence will always reach 1.\n\n    Note: \n        1. Collatz(1) is [1].\n        2. returned list sorted in increasing order.\n\n    For example:\n    get_odd_collatz(5) returns [1, 5] # The collatz sequence for 5 is [5, 16, 8, 4, 2, 1], so the odd numbers are only 1, and 5.\n    \"\"\"\n    return sorted(Collatz(n))",
+      "gen_raw": "def get_odd_collatz(n):\n    \"\"\"\n    Given a positive integer n, return a sorted list that has the odd numbers in collatz sequence.\n\n    The Collatz conjecture is a conjecture in mathematics that concerns a sequence defined\n    as follows: start with any positive integer n. Then each term is obtained from the \n    previous term as follows: if the previous term is even, the next term is one half of \n    the previous term. If the previous term is odd, the next term is 3 times the previous\n    term plus 1. The conjecture is that no matter what value of n, the sequence will always reach 1.\n\n    Note: \n        1. Collatz(1) is [1].\n        2. returned list sorted in increasing order.\n\n    For example:\n    get_odd_collatz(5) returns [1, 5] # The collatz sequence for 5 is [5, 16, 8, 4, 2, 1], so the odd numbers are only 1, and 5.\n    \"\"\"\n    return sorted(Collatz(n))"
+    },
+    {
+      "task_id": "HumanEval/66",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp8yaop3y4.py\", line 15\n    return sum(ord(c) for c in s if c.isupper())\n                                                ^\nIndentationError: unindent does not m",
+      "completion_preview": "   return sum(ord(c) for c in s if c.isupper())",
+      "gen_raw": "   return sum(ord(c) for c in s if c.isupper())"
+    },
+    {
+      "task_id": "HumanEval/43",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp_1_p23co.py\", line 56, in <module>\n    check(pairs_sum_to_zero)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp_1_p23co.py\", lin",
+      "completion_preview": "def pairs_sum_to_zero(l):\n    \"\"\"\n    pairs_sum_to_zero takes a list of integers as an input.\n    it returns True if there are two distinct elements in the list that\n    sum to zero, and False otherwise.\n    >>> pairs_sum_to_zero([1, 3, 5, 0])\n    False\n    >>> pairs_sum_to_zero([1, 3, -2, 1])\n    False\n    >>> pairs_sum_to_zero([1, 2, 3, 7])\n    False\n    >>> pairs_sum_to_zero([2, 4, -5, 3, 5, 7])\n    True\n    >>> pairs_sum_to_zero([1])\n    False\n    \"\"\"\n    return any(x + y == 0 for x, y in zip(l, l[1:]))",
+      "gen_raw": "def pairs_sum_to_zero(l):\n    \"\"\"\n    pairs_sum_to_zero takes a list of integers as an input.\n    it returns True if there are two distinct elements in the list that\n    sum to zero, and False otherwise.\n    >>> pairs_sum_to_zero([1, 3, 5, 0])\n    False\n    >>> pairs_sum_to_zero([1, 3, -2, 1])\n    False\n    >>> pairs_sum_to_zero([1, 2, 3, 7])\n    False\n    >>> pairs_sum_to_zero([2, 4, -5, 3, 5, 7])\n    True\n    >>> pairs_sum_to_zero([1])\n    False\n    \"\"\"\n    return any(x + y == 0 for x, y in zip(l, l[1:]))"
+    },
+    {
+      "task_id": "HumanEval/131",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpbycw4upz.py\", line 10\n    if n == 0:\n              ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if n == 0:\n        return 0\n    else:\n        return n % 10",
+      "gen_raw": "   if n == 0:\n        return 0\n    else:\n        return n % 10\n"
+    },
+    {
+      "task_id": "HumanEval/62",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmphdi6a4t2.py\", line 37, in <module>\n    check(derivative)\n  File \"/var/tmp/pbs.12867.jiit-master/tmphdi6a4t2.py\", line 29, i",
+      "completion_preview": "def derivative(xs: list):\n    \"\"\" xs represent coefficients of a polynomial.\n    xs[0] + xs[1] * x + xs[2] * x^2 + ....\n     Return derivative of this polynomial in the same form.\n    >>> derivative([3, 1, 2, 4, 5])\n    [1, 4, 12, 20]\n    >>> derivative([1, 2, 3])\n    [2, 6]\n    \"\"\"\n    return [xs[i + 1] for i in range(len(xs) - 1)]",
+      "gen_raw": "def derivative(xs: list):\n    \"\"\" xs represent coefficients of a polynomial.\n    xs[0] + xs[1] * x + xs[2] * x^2 + ....\n     Return derivative of this polynomial in the same form.\n    >>> derivative([3, 1, 2, 4, 5])\n    [1, 4, 12, 20]\n    >>> derivative([1, 2, 3])\n    [2, 6]\n    \"\"\"\n    return [xs[i + 1] for i in range(len(xs) - 1)]"
+    },
+    {
+      "task_id": "HumanEval/83",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp9o_yux7x.py\", line 7\n    return 10**n - 9*10**(n-1)\n                              ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return 10**n - 9*10**(n-1)\n\n######\n\nThe function starts_one_ends takes a positive integer n as input and returns the count of the numbers of n-digit positive integers that start or end with 1.",
+      "gen_raw": "   return 10**n - 9*10**(n-1)\n\n######\n\nThe function starts_one_ends takes a positive integer n as input and returns the count of the numbers of n-digit positive integers that start or end with 1."
+    },
+    {
+      "task_id": "HumanEval/45",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpxkc91is5.py\", line 8\n    return a * h / 2\n                    ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return a * h / 2",
+      "gen_raw": "   return a * h / 2"
+    },
+    {
+      "task_id": "HumanEval/81",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp5263s7jp.py\", line 69, in <module>\n    check(numerical_letter_grade)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp5263s7jp.py\"",
+      "completion_preview": "def numerical_letter_grade(grades):\n    \"\"\"It is the last week of the semester and the teacher has to give the grades\n    to students. The teacher has been making her own algorithm for grading.\n    The only problem is, she has lost the code she used for grading.\n    She has given you a list of GPAs for some students and you have to write \n    a function that can output a list of letter grades using the following table:\n             GPA       |    Letter grade\n              4.0                A+\n            > 3.7                A \n            > 3.3                A- \n            > 3.0                B+\n            > 2.7                B \n            > 2.3                B-\n            > 2.0                C+\n            > 1.7                C\n            > 1.3                C-\n            > 1.0                D+ \n            > 0.7                D \n            > 0.0                D-\n              0.0                E\n    \n\n    Example:\n    grade_equation([4.0, 3, 1.7, 2, 3.5]) ==> ['A+', 'B', 'C-', 'C', 'A-']\n    \"\"\"\n    # Your code here",
+      "gen_raw": "def numerical_letter_grade(grades):\n    \"\"\"It is the last week of the semester and the teacher has to give the grades\n    to students. The teacher has been making her own algorithm for grading.\n    The only problem is, she has lost the code she used for grading.\n    She has given you a list of GPAs for some students and you have to write \n    a function that can output a list of letter grades using the following table:\n             GPA       |    Letter grade\n              4.0                A+\n            > 3.7                A \n            > 3.3                A- \n            > 3.0                B+\n            > 2.7                B \n            > 2.3                B-\n            > 2.0                C+\n            > 1.7                C\n            > 1.3                C-\n            > 1.0                D+ \n            > 0.7                D \n            > 0.0                D-\n              0.0                E\n    \n\n    Example:\n    grade_equation([4.0, 3, 1.7, 2, 3.5]) ==> ['A+', 'B', 'C-', 'C', 'A-']\n    \"\"\"\n    # Your code here"
+    },
+    {
+      "task_id": "HumanEval/37",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpzeus1rlz.py\", line 12\n    l' = [l[i] for i in range(len(l)) if i % 2 == 0]\n                                                    ^\nIndentationError: unindent do",
+      "completion_preview": "   l' = [l[i] for i in range(len(l)) if i % 2 == 0]\n    l' = [l[i] for i in range(len(l)) if i % 2 == 1]\n    return l'",
+      "gen_raw": "   l' = [l[i] for i in range(len(l)) if i % 2 == 0]\n    l' = [l[i] for i in range(len(l)) if i % 2 == 1]\n    return l'\n\n\n# Test\nprint(sort_even([1, 2, 3]))\nprint(sort_even([5, 6, 3, 4]))"
+    },
+    {
+      "task_id": "HumanEval/136",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmps1_47oys.py\", line 14\n    if lst == []:\n                 ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if lst == []:\n        return None, None\n    elif all(x < 0 for x in lst):\n        return max(lst), None\n    elif all(x > 0 for x in lst):\n        return None, min(lst)\n    else:\n        return max(lst), min(lst)",
+      "gen_raw": "   if lst == []:\n        return None, None\n    elif all(x < 0 for x in lst):\n        return max(lst), None\n    elif all(x > 0 for x in lst):\n        return None, min(lst)\n    else:\n        return max(lst), min(lst)"
+    },
+    {
+      "task_id": "HumanEval/137",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmppndljl2z.py\", line 43, in <module>\n    check(compare_one)\n  File \"/var/tmp/pbs.12867.jiit-master/tmppndljl2z.py\", line 29, ",
+      "completion_preview": "def compare_one(a, b):\n    if isinstance(a, float) and isinstance(b, float):\n        return max(a, b)\n    elif isinstance(a, str) and isinstance(b, str):\n        return max(a, b)\n    elif isinstance(a, float) and isinstance(b, str):\n        return max(a, b)\n    elif isinstance(a, str) and isinstance(b, float):\n        return max(a, b)\n    else:\n        return None",
+      "gen_raw": "def compare_one(a, b):\n    if isinstance(a, float) and isinstance(b, float):\n        return max(a, b)\n    elif isinstance(a, str) and isinstance(b, str):\n        return max(a, b)\n    elif isinstance(a, float) and isinstance(b, str):\n        return max(a, b)\n    elif isinstance(a, str) and isinstance(b, float):\n        return max(a, b)\n    else:\n        return None"
+    },
+    {
+      "task_id": "HumanEval/152",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp5ks3rxzy.py\", line 47, in <module>\n    check(compare)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp5ks3rxzy.py\", line 37, in c",
+      "completion_preview": "def compare(game, guess):\n    \"\"\"I think we all remember that feeling when the result of some long-awaited\n    event is finally known. The feelings and thoughts you have at that moment are\n    definitely worth noting down and comparing.\n    Your task is to determine if a person correctly guessed the results of a number of matches.\n    You are given two arrays of scores and guesses of equal length, where each index shows a match. \n    Return an array of the same length denoting how far off each guess was. If they have guessed correctly,\n    the value is 0, and if not, the value is the absolute difference between the guess and the score.\n    \n    \n    example:\n\n    compare([1,2,3,4,5,1],[1,2,3,4,2,-2]) -> [0,0,0,0,3,3]\n    compare([0,5,0,0,0,4],[4,1,1,0,0,-2]) -> [4,4,1,0,0,6]\n    \"\"\"\n    return [abs(g - g) for g, g in zip(guess, game)]",
+      "gen_raw": "def compare(game, guess):\n    \"\"\"I think we all remember that feeling when the result of some long-awaited\n    event is finally known. The feelings and thoughts you have at that moment are\n    definitely worth noting down and comparing.\n    Your task is to determine if a person correctly guessed the results of a number of matches.\n    You are given two arrays of scores and guesses of equal length, where each index shows a match. \n    Return an array of the same length denoting how far off each guess was. If they have guessed correctly,\n    the value is 0, and if not, the value is the absolute difference between the guess and the score.\n    \n    \n    example:\n\n    compare([1,2,3,4,5,1],[1,2,3,4,2,-2]) -> [0,0,0,0,3,3]\n    compare([0,5,0,0,0,4],[4,1,1,0,0,-2]) -> [4,4,1,0,0,6]\n    \"\"\"\n    return [abs(g - g) for g, g in zip(guess, game)]"
+    },
+    {
+      "task_id": "HumanEval/159",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpgeruy5b8.py\", line 81, in <module>\n    check(eat)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpgeruy5b8.py\", line 69, in check",
+      "completion_preview": "def eat(number, need, remaining):\n    \"\"\"\n    You're a hungry rabbit, and you already have eaten a certain number of carrots,\n    but now you need to eat more carrots to complete the day's meals.\n    you should return an array of [ total number of eaten carrots after your meals,\n                                    the number of carrots left after your meals ]\n    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.\n    \n    Example:\n    * eat(5, 6, 10) -> [11, 4]\n    * eat(4, 8, 9) -> [12, 1]\n    * eat(1, 10, 10) -> [11, 0]\n    * eat(2, 11, 5) -> [7, 0]\n    \n    Variables:\n    @number : integer\n        the number of carrots that you have eaten.\n    @need : integer\n        the number of carrots that you need to eat.\n    @remaining : integer\n        the number of remaining carrots thet exist in stock\n    \n    Constrain:\n    * 0 <= number <= 1000\n    * 0 <= need <= 1000\n    * 0 <= remaining <= 1000\n\n    Have fun :)\n    \"\"\"\n    if remaining < need:\n        return [number + remaining, 0]\n    else:\n        return [number + remaining, remaining - need]",
+      "gen_raw": "def eat(number, need, remaining):\n    \"\"\"\n    You're a hungry rabbit, and you already have eaten a certain number of carrots,\n    but now you need to eat more carrots to complete the day's meals.\n    you should return an array of [ total number of eaten carrots after your meals,\n                                    the number of carrots left after your meals ]\n    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.\n    \n    Example:\n    * eat(5, 6, 10) -> [11, 4]\n    * eat(4, 8, 9) -> [12, 1]\n    * eat(1, 10, 10) -> [11, 0]\n    * eat(2, 11, 5) -> [7, 0]\n    \n    Variables:\n    @number : integer\n        the number of carrots that you have eaten.\n    @need : integer\n        the number of carrots that you need to eat.\n    @remaining : integer\n        the number of remaining carrots thet exist in stock\n    \n    Constrain:\n    * 0 <= number <= 1000\n    * 0 <= need <= 1000\n    * 0 <= remaining <= 1000\n\n    Have fun :)\n    \"\"\"\n    if remaining < need:\n        return [number + remaining, 0]\n    else:\n        return [number + remaining, remaining - need]"
+    },
+    {
+      "task_id": "HumanEval/59",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpbnixqlx_.py\", line 10\n    if n % 2 == 0:\n                  ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if n % 2 == 0:\n        return 2\n    else:\n        return largest_prime_factor(n - 1)",
+      "gen_raw": "   if n % 2 == 0:\n        return 2\n    else:\n        return largest_prime_factor(n - 1)\n\n# Test\nprint(largest_prime_factor(13195))\nprint(largest_prime_factor(2048))"
+    },
+    {
+      "task_id": "HumanEval/139",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp5n56aylr.py\", line 29\n    return n * (n - 1) * (n - 2) * (n - 3) * (n - 4) * (n - 5) * (n - 6) * (n - 7) * (n - 8) * (n - 9) * (n - 10) * (n - 11) * (n - 12) ",
+      "completion_preview": "def special_factorial(n):\n    \"\"\"The Brazilian factorial is defined as:\n    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!\n    where n > 0\n\n    For example:\n    >>> special_factorial(4)\n    288\n\n    The function will receive an integer as input and should return the special\n    factorial of this integer.\n    \"\"\"\n    if n < 0:\n        return \"The input must be a positive integer.\"\n    else:\n        return n * (n - 1) * (n - 2) * (n - 3) * (n - 4) * (n - 5) * (n - 6) * (n - 7) * (n - 8) * (n - 9) * (n - 10) * (n - 11) * (n - 12) * (n - 13) * (n - 14) * (n - 15) * (n - 16) * (n - 17) * (n - 18) * (n - 19) * (n - 20) * (n - 21) * (n - 22) * (n - 23) * (n - 24) * (n - 25) * (n - 26) * (n - 27) * (n - 28) * (n - 29) * (n - 30) * (n - 31) * (n - 32) * (n - 33) * (n - 34) * (n - 35) * (n - 36) * (n - 37) * (n - 38) * (n - 39) * (n - 40) * (n - 41) * (n - 42) * (n - 43) * (n - 44) * (n - 45) * (n - 46) * (n - 47) * (n - 48",
+      "gen_raw": "def special_factorial(n):\n    \"\"\"The Brazilian factorial is defined as:\n    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!\n    where n > 0\n\n    For example:\n    >>> special_factorial(4)\n    288\n\n    The function will receive an integer as input and should return the special\n    factorial of this integer.\n    \"\"\"\n    if n < 0:\n        return \"The input must be a positive integer.\"\n    else:\n        return n * (n - 1) * (n - 2) * (n - 3) * (n - 4) * (n - 5) * (n - 6) * (n - 7) * (n - 8) * (n - 9) * (n - 10) * (n - 11) * (n - 12) * (n - 13) * (n - 14) * (n - 15) * (n - 16) * (n - 17) * (n - 18) * (n - 19) * (n - 20) * (n - 21) * (n - 22) * (n - 23) * (n - 24) * (n - 25) * (n - 26) * (n - 27) * (n - 28) * (n - 29) * (n - 30) * (n - 31) * (n - 32) * (n - 33) * (n - 34) * (n - 35) * (n - 36) * (n - 37) * (n - 38) * (n - 39) * (n - 40) * (n - 41) * (n - 42) * (n - 43) * (n - 44) * (n - 45) * (n - 46) * (n - 47) * (n - 48"
+    },
+    {
+      "task_id": "HumanEval/21",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpe_quijln.py\", line 10\n    return [(num - min(numbers)) / (max(numbers) - min(numbers)) for num in numbers]\n                                                   ",
+      "completion_preview": "   return [(num - min(numbers)) / (max(numbers) - min(numbers)) for num in numbers]",
+      "gen_raw": "   return [(num - min(numbers)) / (max(numbers) - min(numbers)) for num in numbers]"
+    },
+    {
+      "task_id": "HumanEval/111",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp0xmv21re.py\", line 15\n    def histogram(test):\n                        ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   def histogram(test):\n        \"\"\"Given a string representing a space separated lowercase letters, return a dictionary\n        of the letter with the most repetition and containing the corresponding count.\n        If several letters have the same occurrence, return all of them.\n        \n        Example:\n        histogram('a b c') == {'a': 1, 'b': 1, 'c': 1}\n        histogram('a b b a') == {'a': 2, 'b': 2}\n        histogram('a b c a b') == {'a': 2, 'b': 2}\n        histogram('b b b b a') == {'b': 4}\n        histogram('') == {}\n\n        \"\"\"\n        if test == '':\n            return {}\n        else:\n            return {test.split()[0]: 1}",
+      "gen_raw": "   def histogram(test):\n        \"\"\"Given a string representing a space separated lowercase letters, return a dictionary\n        of the letter with the most repetition and containing the corresponding count.\n        If several letters have the same occurrence, return all of them.\n        \n        Example:\n        histogram('a b c') == {'a': 1, 'b': 1, 'c': 1}\n        histogram('a b b a') == {'a': 2, 'b': 2}\n        histogram('a b c a b') == {'a': 2, 'b': 2}\n        histogram('b b b b a') == {'b': 4}\n        histogram('') == {}\n\n        \"\"\"\n        if test == '':\n            return {}\n        else:\n            return {test.split()[0]: 1}\n"
+    },
+    {
+      "task_id": "HumanEval/110",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp9we_k_ft.py\", line 48, in <module>\n    check(exchange)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp9we_k_ft.py\", line 36, in ",
+      "completion_preview": "def exchange(lst1, lst2):\n    \"\"\"In this problem, you will implement a function that takes two lists of numbers,\n    and determines whether it is possible to perform an exchange of elements\n    between them to make lst1 a list of only even numbers.\n    There is no limit on the number of exchanged elements between lst1 and lst2.\n    If it is possible to exchange elements between the lst1 and lst2 to make\n    all the elements of lst1 to be even, return \"YES\".\n    Otherwise, return \"NO\".\n    For example:\n    exchange([1, 2, 3, 4], [1, 2, 3, 4]) => \"YES\"\n    exchange([1, 2, 3, 4], [1, 5, 3, 4]) => \"NO\"\n    It is assumed that the input lists will be non-empty.\n    \"\"\"\n    if all(x % 2 == 0 for x in lst1) and all(x % 2 == 0 for x in lst2):\n        return \"YES\"\n    else:\n        return \"NO\"",
+      "gen_raw": "def exchange(lst1, lst2):\n    \"\"\"In this problem, you will implement a function that takes two lists of numbers,\n    and determines whether it is possible to perform an exchange of elements\n    between them to make lst1 a list of only even numbers.\n    There is no limit on the number of exchanged elements between lst1 and lst2.\n    If it is possible to exchange elements between the lst1 and lst2 to make\n    all the elements of lst1 to be even, return \"YES\".\n    Otherwise, return \"NO\".\n    For example:\n    exchange([1, 2, 3, 4], [1, 2, 3, 4]) => \"YES\"\n    exchange([1, 2, 3, 4], [1, 5, 3, 4]) => \"NO\"\n    It is assumed that the input lists will be non-empty.\n    \"\"\"\n    if all(x % 2 == 0 for x in lst1) and all(x % 2 == 0 for x in lst2):\n        return \"YES\"\n    else:\n        return \"NO\""
+    },
+    {
+      "task_id": "HumanEval/116",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp7abbufm6.py\", line 13\n    arr.sort(key=lambda x: (x.bit_count(), x))\n                                              ^\nIndentationError: unindent does not match",
+      "completion_preview": "   arr.sort(key=lambda x: (x.bit_count(), x))\n    return arr",
+      "gen_raw": "   arr.sort(key=lambda x: (x.bit_count(), x))\n    return arr"
+    },
+    {
+      "task_id": "HumanEval/10",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp2889dxdf.py\", line 56, in <module>\n    check(make_palindrome)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp2889dxdf.py\", line ",
+      "completion_preview": "def make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n    >>> make_palindrome('')\n    ''\n    >>> make_palindrome('cat')\n    'catac'\n    >>> make_palindrome('cata')\n    'catac'\n    \"\"\"\n    if string == '':\n        return ''\n    else:\n        for i in range(len(string)):\n            if string[i:] == string[i:][::-1]:\n                return string[i:] + string[:i][::-1]\n        return string",
+      "gen_raw": "def make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n    >>> make_palindrome('')\n    ''\n    >>> make_palindrome('cat')\n    'catac'\n    >>> make_palindrome('cata')\n    'catac'\n    \"\"\"\n    if string == '':\n        return ''\n    else:\n        for i in range(len(string)):\n            if string[i:] == string[i:][::-1]:\n                return string[i:] + string[:i][::-1]\n        return string\n"
+    },
+    {
+      "task_id": "HumanEval/8",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpymouyw5p.py\", line 12\n    return (sum(numbers), 1 if not numbers else 1 if not numbers else 1)\n                                                               ",
+      "completion_preview": "   return (sum(numbers), 1 if not numbers else 1 if not numbers else 1)",
+      "gen_raw": "   return (sum(numbers), 1 if not numbers else 1 if not numbers else 1)\n"
+    },
+    {
+      "task_id": "HumanEval/20",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp8fw7yjoj.py\", line 12\n    if len(numbers) < 2:\n                        ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if len(numbers) < 2:\n        raise ValueError(\"The list must contain at least two numbers.\")\n    else:\n        numbers.sort()\n        return numbers[0], numbers[-1]",
+      "gen_raw": "   if len(numbers) < 2:\n        raise ValueError(\"The list must contain at least two numbers.\")\n    else:\n        numbers.sort()\n        return numbers[0], numbers[-1]"
+    },
+    {
+      "task_id": "HumanEval/88",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp2tgcy9ey.py\", line 17\n    return sorted(array, reverse=array[0] + array[-1] % 2 == 0)\n                                                               ^\nIndenta",
+      "completion_preview": "   return sorted(array, reverse=array[0] + array[-1] % 2 == 0)",
+      "gen_raw": "   return sorted(array, reverse=array[0] + array[-1] % 2 == 0)"
+    },
+    {
+      "task_id": "HumanEval/33",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpvjgtluhf.py\", line 12\n    l' = [l[i] for i in range(len(l)) if i % 3 != 0]\n                                                    ^\nIndentationError: unindent do",
+      "completion_preview": "   l' = [l[i] for i in range(len(l)) if i % 3 != 0]\n    l' += [sorted(l[i:i+3]) for i in range(len(l)) if i % 3 == 0]\n    return l'",
+      "gen_raw": "   l' = [l[i] for i in range(len(l)) if i % 3 != 0]\n    l' += [sorted(l[i:i+3]) for i in range(len(l)) if i % 3 == 0]\n    return l'"
+    },
+    {
+      "task_id": "HumanEval/93",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpqe21p73f.py\", line 45, in <module>\n    check(encode)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpqe21p73f.py\", line 35, in ch",
+      "completion_preview": "def encode(message):\n    \"\"\"\n    Write a function that takes a message, and encodes in such a \n    way that it swaps case of all letters, replaces all vowels in \n    the message with the letter that appears 2 places ahead of that \n    vowel in the english alphabet. \n    Assume only letters. \n    \n    Examples:\n    >>> encode('test')\n    'TGST'\n    >>> encode('This is a message')\n    'tHKS KS C MGSSCGG'\n    \"\"\"\n    return message.swapcase().replace('aeiouy', 'cdefghjklmnopqrstuvwxyz')",
+      "gen_raw": "def encode(message):\n    \"\"\"\n    Write a function that takes a message, and encodes in such a \n    way that it swaps case of all letters, replaces all vowels in \n    the message with the letter that appears 2 places ahead of that \n    vowel in the english alphabet. \n    Assume only letters. \n    \n    Examples:\n    >>> encode('test')\n    'TGST'\n    >>> encode('This is a message')\n    'tHKS KS C MGSSCGG'\n    \"\"\"\n    return message.swapcase().replace('aeiouy', 'cdefghjklmnopqrstuvwxyz')"
+    },
+    {
+      "task_id": "HumanEval/158",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp6fio27o4.py\", line 43, in <module>\n    check(find_max)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp6fio27o4.py\", line 29, in ",
+      "completion_preview": "def find_max(words):\n    \"\"\"Write a function that accepts a list of strings.\n    The list contains different words. Return the word with maximum number\n    of unique characters. If multiple strings have maximum number of unique\n    characters, return the one which comes first in lexicographical order.\n\n    find_max([\"name\", \"of\", \"string\"]) == \"string\"\n    find_max([\"name\", \"enam\", \"game\"]) == \"enam\"\n    find_max([\"aaaaaaa\", \"bb\" ,\"cc\"]) == \"\"aaaaaaa\"\n    \"\"\"\n    max_char = max(words, key=lambda x: len(set(x)))\n    return max_char",
+      "gen_raw": "def find_max(words):\n    \"\"\"Write a function that accepts a list of strings.\n    The list contains different words. Return the word with maximum number\n    of unique characters. If multiple strings have maximum number of unique\n    characters, return the one which comes first in lexicographical order.\n\n    find_max([\"name\", \"of\", \"string\"]) == \"string\"\n    find_max([\"name\", \"enam\", \"game\"]) == \"enam\"\n    find_max([\"aaaaaaa\", \"bb\" ,\"cc\"]) == \"\"aaaaaaa\"\n    \"\"\"\n    max_char = max(words, key=lambda x: len(set(x)))\n    return max_char\n"
+    },
+    {
+      "task_id": "HumanEval/0",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp8vv5_o4b.py\", line 12\n    for i in range(len(numbers)):\n                                 ^\nIndentationError: unindent does not match any outer indentation lev",
+      "completion_preview": "   for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) < threshold:\n                return True\n    return False",
+      "gen_raw": "   for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) < threshold:\n                return True\n    return False"
+    },
+    {
+      "task_id": "HumanEval/142",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpf7hxlgi5.py\", line 46, in <module>\n    check(sum_squares)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpf7hxlgi5.py\", line 30, ",
+      "completion_preview": "def sum_squares(lst):\n    \"\"\"\"\n    This function will take a list of integers. For all entries in the list, the function shall square the integer entry if its index is a multiple of 3 and will cube the integer entry if its index is a multiple of 4 and not a multiple of 3. The function will not change the entries in the list whose indexes are not a multiple of 3 or 4. The function shall then return the sum of all entries.\n    \n    Examples:\n    For lst = [1,2,3] the output should be 6\n    For lst = []  the output should be 0\n    For lst = [-1,-5,2,-1,-5]  the output should be -126\n    \"\"\"\n    return sum(lst[i]**(i%3+1) for i in range(len(lst)))",
+      "gen_raw": "def sum_squares(lst):\n    \"\"\"\"\n    This function will take a list of integers. For all entries in the list, the function shall square the integer entry if its index is a multiple of 3 and will cube the integer entry if its index is a multiple of 4 and not a multiple of 3. The function will not change the entries in the list whose indexes are not a multiple of 3 or 4. The function shall then return the sum of all entries.\n    \n    Examples:\n    For lst = [1,2,3] the output should be 6\n    For lst = []  the output should be 0\n    For lst = [-1,-5,2,-1,-5]  the output should be -126\n    \"\"\"\n    return sum(lst[i]**(i%3+1) for i in range(len(lst)))"
+    },
+    {
+      "task_id": "HumanEval/50",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpehdx0wy8.py\", line 38, in <module>\n    check(decode_shift)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpehdx0wy8.py\", line 34,",
+      "completion_preview": "def encode_shift(s: str):\n    \"\"\"\n    returns encoded string by shifting every character by 5 in the alphabet.\n    \"\"\"\n    return \"\".join([chr(((ord(ch) + 5 - ord(\"a\")) % 26) + ord(\"a\")) for ch in s])",
+      "gen_raw": "def encode_shift(s: str):\n    \"\"\"\n    returns encoded string by shifting every character by 5 in the alphabet.\n    \"\"\"\n    return \"\".join([chr(((ord(ch) + 5 - ord(\"a\")) % 26) + ord(\"a\")) for ch in s])\n\n\ndef decode_shift(s: str):\n    \"\"\"\n    takes as input string encoded with encode_shift function. Returns decoded string.\n    \"\"\""
+    },
+    {
+      "task_id": "HumanEval/98",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpmmn6mktu.py\", line 11\n    return s.count('AEIOUaeiou')\n                                ^\nIndentationError: unindent does not match any outer indentation level",
+      "completion_preview": "   return s.count('AEIOUaeiou')",
+      "gen_raw": "   return s.count('AEIOUaeiou')"
+    },
+    {
+      "task_id": "HumanEval/11",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpyhyf8g4e.py\", line 10\n    return a ^ b\n                ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return a ^ b",
+      "gen_raw": "   return a ^ b"
+    },
+    {
+      "task_id": "HumanEval/78",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpogwi54pl.py\", line 54, in <module>\n    check(hex_key)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpogwi54pl.py\", line 41, in c",
+      "completion_preview": "def hex_key(num):\n    \"\"\"You have been tasked to write a function that receives a hexadecimal number as a string and counts the number of hexadecimal digits that are primes (prime number, or a prime, is a natural number greater than 1 that is not a product of two smaller natural numbers). Hexadecimal digits are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F. Prime numbers are 2, 3, 5, 7, 11, 13, 17,... So you have to determine a number of the following digits: 2, 3, 5, 7, B (=decimal 11), D (=decimal 13). Note: you may assume the input is always correct or empty string, and symbols A,B,C,D,E,F are always uppercase. Examples: For num = \"AB\" the output should be 1. For num = \"1077E\" the output should be 2. For num = \"ABED1A33\" the output should be 4. For num = \"123456789ABCDEF0\" the output should be 6. For num = \"2020\" the output should be 2. \"\"\"\n    num = num.upper()\n    num = num.replace(\"A\", \"11\")\n    num = num.replace(\"B\", \"13\")\n    num = num.replace(\"C\", \"15\")\n    num = num.replace(\"D\", \"17\")\n    num = num.replace(\"E\", \"19\")\n    num = num.replace(\"F\", \"21\")\n    num = num.replace(\"0\", \"23\")\n    num = num.replace(\"1\", \"25\")\n    num = num.replace(\"2\", \"27\")\n    num = num.replace(\"3\", \"29\")\n    num = num.replace(\"4\", \"31\")\n    num = num.replace(\"5\", \"33\")\n    num = num.replace(\"6\", \"35\")\n    num = num",
+      "gen_raw": "def hex_key(num):\n    \"\"\"You have been tasked to write a function that receives a hexadecimal number as a string and counts the number of hexadecimal digits that are primes (prime number, or a prime, is a natural number greater than 1 that is not a product of two smaller natural numbers). Hexadecimal digits are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F. Prime numbers are 2, 3, 5, 7, 11, 13, 17,... So you have to determine a number of the following digits: 2, 3, 5, 7, B (=decimal 11), D (=decimal 13). Note: you may assume the input is always correct or empty string, and symbols A,B,C,D,E,F are always uppercase. Examples: For num = \"AB\" the output should be 1. For num = \"1077E\" the output should be 2. For num = \"ABED1A33\" the output should be 4. For num = \"123456789ABCDEF0\" the output should be 6. For num = \"2020\" the output should be 2. \"\"\"\n    num = num.upper()\n    num = num.replace(\"A\", \"11\")\n    num = num.replace(\"B\", \"13\")\n    num = num.replace(\"C\", \"15\")\n    num = num.replace(\"D\", \"17\")\n    num = num.replace(\"E\", \"19\")\n    num = num.replace(\"F\", \"21\")\n    num = num.replace(\"0\", \"23\")\n    num = num.replace(\"1\", \"25\")\n    num = num.replace(\"2\", \"27\")\n    num = num.replace(\"3\", \"29\")\n    num = num.replace(\"4\", \"31\")\n    num = num.replace(\"5\", \"33\")\n    num = num.replace(\"6\", \"35\")\n    num = num"
+    },
+    {
+      "task_id": "HumanEval/127",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpep1u_wzs.py\", line 63, in <module>\n    check(intersection)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpep1u_wzs.py\", line 50,",
+      "completion_preview": "def intersection(interval1, interval2):\n    \"\"\"You are given two intervals,\n    where each interval is a pair of integers. For example, interval = (start, end) = (1, 2).\n    The given intervals are closed which means that the interval (start, end)\n    includes both start and end.\n    For each given interval, it is assumed that its start is less or equal its end.\n    Your task is to determine whether the length of intersection of these two \n    intervals is a prime number.\n    Example, the intersection of the intervals (1, 3), (2, 4) is (2, 3)\n    which its length is 1, which not a prime number.\n    If the length of the intersection is a prime number, return \"YES\",\n    otherwise, return \"NO\".\n    If the two intervals don't intersect, return \"NO\".\n\n\n    [input/output] samples:\n    intersection((1, 2), (2, 3)) ==> \"NO\"\n    intersection((-1, 1), (0, 4)) ==> \"NO\"\n    intersection((-3, -1), (-5, 5)) ==> \"YES\"\n    \"\"\"\n    if interval1[0] > interval1[1] or interval2[0] > interval2[1]:\n        return \"NO\"\n    else:\n        return \"YES\"",
+      "gen_raw": "def intersection(interval1, interval2):\n    \"\"\"You are given two intervals,\n    where each interval is a pair of integers. For example, interval = (start, end) = (1, 2).\n    The given intervals are closed which means that the interval (start, end)\n    includes both start and end.\n    For each given interval, it is assumed that its start is less or equal its end.\n    Your task is to determine whether the length of intersection of these two \n    intervals is a prime number.\n    Example, the intersection of the intervals (1, 3), (2, 4) is (2, 3)\n    which its length is 1, which not a prime number.\n    If the length of the intersection is a prime number, return \"YES\",\n    otherwise, return \"NO\".\n    If the two intervals don't intersect, return \"NO\".\n\n\n    [input/output] samples:\n    intersection((1, 2), (2, 3)) ==> \"NO\"\n    intersection((-1, 1), (0, 4)) ==> \"NO\"\n    intersection((-3, -1), (-5, 5)) ==> \"YES\"\n    \"\"\"\n    if interval1[0] > interval1[1] or interval2[0] > interval2[1]:\n        return \"NO\"\n    else:\n        return \"YES\""
+    },
+    {
+      "task_id": "HumanEval/72",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def will_it_fly(q, w):\n    return q[::-1] == q and sum(q) <= w",
+      "gen_raw": "def will_it_fly(q, w):\n    return q[::-1] == q and sum(q) <= w\n"
+    },
+    {
+      "task_id": "HumanEval/22",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmphh_apjlf.py\", line 11\n    return [x for x in values if isinstance(x, int)]\n                                                    ^\nIndentationError: unindent do",
+      "completion_preview": "   return [x for x in values if isinstance(x, int)]",
+      "gen_raw": "   return [x for x in values if isinstance(x, int)]"
+    },
+    {
+      "task_id": "HumanEval/76",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpp86u0xb1.py\", line 14\n    return n**int(x) == x\n                         ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return n**int(x) == x",
+      "gen_raw": "   return n**int(x) == x"
+    },
+    {
+      "task_id": "HumanEval/129",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpm6_p5gz3.py\", line 85, in <module>\n    check(minPath)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpm6_p5gz3.py\", line 69, in c",
+      "completion_preview": "def minPath(grid, k):\n    \"\"\"\n    Given a grid with N rows and N columns (N >= 2) and a positive integer k, \n    each cell of the grid contains a value. Every integer in the range [1, N * N]\n    inclusive appears exactly once on the cells of the grid.\n\n    You have to find the minimum path of length k in the grid. You can start\n    from any cell, and in each step you can move to any of the neighbor cells,\n    in other words, you can go to cells which share an edge with you current\n    cell.\n    Please note that a path of length k means visiting exactly k cells (not\n    necessarily distinct).\n    You CANNOT go off the grid.\n    A path A (of length k) is considered less than a path B (of length k) if\n    after making the ordered lists of the values on the cells that A and B go\n    through (let's call them lst_A and lst_B), lst_A is lexicographically less\n    than lst_B, in other words, there exist an integer index i (1 <= i <= k)\n    such that lst_A[i] < lst_B[i] and for any j (1 <= j < i) we have\n    lst_A[j] = lst_B[j].\n    It is guaranteed that the answer is unique.\n    Return an ordered list of the values on the cells that the minimum path go through.\n\n    Examples:\n\n        Input: grid = [ [1,2,3], [4,5,6], [7,8,9]], k = 3\n        Output: [1, 2, 1]\n\n        Input: grid = [ [5,9,3], [4,1,6], [7,8,2]], k = 1\n        Output: [1]\n    \"\"\"\n    # TODO: Implement the function\n    pass",
+      "gen_raw": "def minPath(grid, k):\n    \"\"\"\n    Given a grid with N rows and N columns (N >= 2) and a positive integer k, \n    each cell of the grid contains a value. Every integer in the range [1, N * N]\n    inclusive appears exactly once on the cells of the grid.\n\n    You have to find the minimum path of length k in the grid. You can start\n    from any cell, and in each step you can move to any of the neighbor cells,\n    in other words, you can go to cells which share an edge with you current\n    cell.\n    Please note that a path of length k means visiting exactly k cells (not\n    necessarily distinct).\n    You CANNOT go off the grid.\n    A path A (of length k) is considered less than a path B (of length k) if\n    after making the ordered lists of the values on the cells that A and B go\n    through (let's call them lst_A and lst_B), lst_A is lexicographically less\n    than lst_B, in other words, there exist an integer index i (1 <= i <= k)\n    such that lst_A[i] < lst_B[i] and for any j (1 <= j < i) we have\n    lst_A[j] = lst_B[j].\n    It is guaranteed that the answer is unique.\n    Return an ordered list of the values on the cells that the minimum path go through.\n\n    Examples:\n\n        Input: grid = [ [1,2,3], [4,5,6], [7,8,9]], k = 3\n        Output: [1, 2, 1]\n\n        Input: grid = [ [5,9,3], [4,1,6], [7,8,2]], k = 1\n        Output: [1]\n    \"\"\"\n    # TODO: Implement the function\n    pass"
+    },
+    {
+      "task_id": "HumanEval/46",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpku3equ9i.py\", line 48, in <module>\n    check(fib4)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpku3equ9i.py\", line 41, in chec",
+      "completion_preview": "def fib4(n: int):\n    \"\"\"The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:\n    fib4(0) -> 0\n    fib4(1) -> 0\n    fib4(2) -> 2\n    fib4(3) -> 0\n    fib4(n) -> fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4).\n    Please write a function to efficiently compute the n-th element of the fib4 number sequence.  Do not use recursion.\n    >>> fib4(5)\n    4\n    >>> fib4(6)\n    8\n    >>> fib4(7)\n    14\n    \"\"\"\n    return fib4(n - 1) + fib4(n - 2) + fib4(n - 3) + fib4(n - 4)",
+      "gen_raw": "def fib4(n: int):\n    \"\"\"The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:\n    fib4(0) -> 0\n    fib4(1) -> 0\n    fib4(2) -> 2\n    fib4(3) -> 0\n    fib4(n) -> fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4).\n    Please write a function to efficiently compute the n-th element of the fib4 number sequence.  Do not use recursion.\n    >>> fib4(5)\n    4\n    >>> fib4(6)\n    8\n    >>> fib4(7)\n    14\n    \"\"\"\n    return fib4(n - 1) + fib4(n - 2) + fib4(n - 3) + fib4(n - 4)"
+    },
+    {
+      "task_id": "HumanEval/60",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def sum_to_n(n: int):\n    \"\"\"sum_to_n is a function that sums numbers from 1 to n.\n    >>> sum_to_n(30)\n    465\n    >>> sum_to_n(100)\n    5050\n    >>> sum_to_n(5)\n    15\n    >>> sum_to_n(10)\n    55\n    >>> sum_to_n(1)\n    1\n    \"\"\"\n    return sum(range(1, n + 1))",
+      "gen_raw": "def sum_to_n(n: int):\n    \"\"\"sum_to_n is a function that sums numbers from 1 to n.\n    >>> sum_to_n(30)\n    465\n    >>> sum_to_n(100)\n    5050\n    >>> sum_to_n(5)\n    15\n    >>> sum_to_n(10)\n    55\n    >>> sum_to_n(1)\n    1\n    \"\"\"\n    return sum(range(1, n + 1))"
+    },
+    {
+      "task_id": "HumanEval/160",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp244_d8c3.py\", line 75, in <module>\n    check(do_algebra)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp244_d8c3.py\", line 66, i",
+      "completion_preview": "def do_algebra(operator, operand):\n    \"\"\"\n    Given two lists operator, and operand. The first list has basic algebra operations, and \n    the second list is a list of integers. Use the two given lists to build the algebric \n    expression and return the evaluation of this expression.\n\n    The basic algebra operations:\n    Addition ( + ) \n    Subtraction ( - ) \n    Multiplication ( * ) \n    Floor division ( // ) \n    Exponentiation ( ** ) \n\n    Example:\n    operator['+', '*', '-']\n    array = [2, 3, 4, 5]\n    result = 2 + 3 * 4 - 5\n    => result = 9\n\n    Note:\n        The length of operator list is equal to the length of operand list minus one.\n        Operand is a list of of non-negative integers.\n        Operator list has at least one operator, and operand list has at least two operands.\n\n    \"\"\"\n    if len(operator) != len(operand) - 1:\n        return \"Error: The length of operator list is not equal to the length of operand list minus one.\"\n    if not all(x >= 0 for x in operand):\n        return \"Error: Operand is not a list of non-negative integers.\"\n    if not all(x in operator for x in operand):\n        return \"Error: Operator list has at least one operator, and operand list has at least two operands.\"\n    result = 0\n    for i in range(len(operand)):\n        result = operator[i % len(operator)](result, operand[i])\n    return result",
+      "gen_raw": "def do_algebra(operator, operand):\n    \"\"\"\n    Given two lists operator, and operand. The first list has basic algebra operations, and \n    the second list is a list of integers. Use the two given lists to build the algebric \n    expression and return the evaluation of this expression.\n\n    The basic algebra operations:\n    Addition ( + ) \n    Subtraction ( - ) \n    Multiplication ( * ) \n    Floor division ( // ) \n    Exponentiation ( ** ) \n\n    Example:\n    operator['+', '*', '-']\n    array = [2, 3, 4, 5]\n    result = 2 + 3 * 4 - 5\n    => result = 9\n\n    Note:\n        The length of operator list is equal to the length of operand list minus one.\n        Operand is a list of of non-negative integers.\n        Operator list has at least one operator, and operand list has at least two operands.\n\n    \"\"\"\n    if len(operator) != len(operand) - 1:\n        return \"Error: The length of operator list is not equal to the length of operand list minus one.\"\n    if not all(x >= 0 for x in operand):\n        return \"Error: Operand is not a list of non-negative integers.\"\n    if not all(x in operator for x in operand):\n        return \"Error: Operator list has at least one operator, and operand list has at least two operands.\"\n    result = 0\n    for i in range(len(operand)):\n        result = operator[i % len(operator)](result, operand[i])\n    return result"
+    },
+    {
+      "task_id": "HumanEval/94",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpcjhe0rkx.py\", line 15\n    lst = [0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3]\n                                                              ^\nIndentati",
+      "completion_preview": "   lst = [0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3]\n    lst = [1,0,1,8,2,4597,2,1,3,40,1,2,1,2,4,2,5,1]\n    lst = [1,3,1,32,5107,34,83278,109,163,23,2323,32,30,1,9,3]\n    lst = [0,724,32,71,99,32,6,0,5,91,83,0,5,6]\n    lst = [0,81,12,3,1,21]\n    lst = [0,8,1,2,1,7]\n    lst = [0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3]\n    lst = [1,0,1,8,2,4597,2,1,3,40,1,2,1,2,4,2,5,1]\n    lst = [1,3,1,32,5107,34,83278,109,163,23,2323,32,30,1,9,3]\n    lst = [0,724,32,71,99,32,6,0,5,91,83,0,5,6]\n    lst = [0,81,12,3,1,21]\n    lst = [0,8,1,2,1,7]\n    lst = [0,3,2,1,3,5,7,4,5,5,5,2,1",
+      "gen_raw": "   lst = [0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3]\n    lst = [1,0,1,8,2,4597,2,1,3,40,1,2,1,2,4,2,5,1]\n    lst = [1,3,1,32,5107,34,83278,109,163,23,2323,32,30,1,9,3]\n    lst = [0,724,32,71,99,32,6,0,5,91,83,0,5,6]\n    lst = [0,81,12,3,1,21]\n    lst = [0,8,1,2,1,7]\n    lst = [0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3]\n    lst = [1,0,1,8,2,4597,2,1,3,40,1,2,1,2,4,2,5,1]\n    lst = [1,3,1,32,5107,34,83278,109,163,23,2323,32,30,1,9,3]\n    lst = [0,724,32,71,99,32,6,0,5,91,83,0,5,6]\n    lst = [0,81,12,3,1,21]\n    lst = [0,8,1,2,1,7]\n    lst = [0,3,2,1,3,5,7,4,5,5,5,2,1"
+    },
+    {
+      "task_id": "HumanEval/70",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpai_7p5ql.py\", line 13\n    return sorted(lst, key=lambda x: x % 2)\n                                           ^\nIndentationError: unindent does not match any o",
+      "completion_preview": "   return sorted(lst, key=lambda x: x % 2)",
+      "gen_raw": "   return sorted(lst, key=lambda x: x % 2)"
+    },
+    {
+      "task_id": "HumanEval/34",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpsq6nmlr2.py\", line 8\n    return sorted(set(l))\n                         ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return sorted(set(l))",
+      "gen_raw": "   return sorted(set(l))\n\n\n# Test\nprint(unique([5, 3, 5, 2, 3, 3, 9, 0, 123]))"
+    },
+    {
+      "task_id": "HumanEval/104",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpd5y8jl7o.py\", line 14\n    return sorted([x for x in x if not any(x % 2 == 0 for x in x)])\n                                                                   ^",
+      "completion_preview": "   return sorted([x for x in x if not any(x % 2 == 0 for x in x)])",
+      "gen_raw": "   return sorted([x for x in x if not any(x % 2 == 0 for x in x)])"
+    },
+    {
+      "task_id": "HumanEval/32",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpjy6i9vh4.py\", line 65, in <module>\n    check(find_zero)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpjy6i9vh4.py\", line 61, in",
+      "completion_preview": "def find_zero(xs: list):\n    \"\"\" xs are coefficients of a polynomial.\n    find_zero find x such that poly(x) = 0.\n    find_zero returns only only zero point, even if there are many.\n    Moreover, find_zero only takes list xs having even number of coefficients\n    and largest non zero coefficient as it guarantees\n    a solution.\n    >>> round(find_zero([1, 2]), 2) # f(x) = 1 + 2x\n    -0.5\n    >>> round(find_zero([-6, 11, -6, 1]), 2) # (x - 1) * (x - 2) * (x - 3) = -6 + 11x - 6x^2 + x^3\n    1.0\n    \"\"\"\n    if len(xs) % 2 == 1:\n        raise ValueError(\"xs must have even number of coefficients\")\n    if max(xs) == 0:\n        raise ValueError(\"xs must have largest non zero coefficient\")\n    return poly(xs, 0)",
+      "gen_raw": "def find_zero(xs: list):\n    \"\"\" xs are coefficients of a polynomial.\n    find_zero find x such that poly(x) = 0.\n    find_zero returns only only zero point, even if there are many.\n    Moreover, find_zero only takes list xs having even number of coefficients\n    and largest non zero coefficient as it guarantees\n    a solution.\n    >>> round(find_zero([1, 2]), 2) # f(x) = 1 + 2x\n    -0.5\n    >>> round(find_zero([-6, 11, -6, 1]), 2) # (x - 1) * (x - 2) * (x - 3) = -6 + 11x - 6x^2 + x^3\n    1.0\n    \"\"\"\n    if len(xs) % 2 == 1:\n        raise ValueError(\"xs must have even number of coefficients\")\n    if max(xs) == 0:\n        raise ValueError(\"xs must have largest non zero coefficient\")\n    return poly(xs, 0)\n"
+    },
+    {
+      "task_id": "HumanEval/124",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmptvtl86_k.py\", line 107, in <module>\n    check(valid_date)\n  File \"/var/tmp/pbs.12867.jiit-master/tmptvtl86_k.py\", line 74, ",
+      "completion_preview": "def valid_date(date):\n    \"\"\"You have to write a function which validates a given date string and\n    returns True if the date is valid otherwise False.\n    The date is valid if all of the following rules are satisfied:\n    1. The date string is not empty.\n    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.\n    3. The months should not be less than 1 or higher than 12.\n    4. The date should be in the format: mm-dd-yyyy\n\n    for example:\n    valid_date('03-11-2000') => True\n\n    valid_date('15-01-2012') => False\n\n    valid_date('04-0-2040') => False\n\n    valid_date('06-04-2020') => True\n\n    valid_date('06/04/2020') => False\n    \"\"\"\n    if date == '':\n        return False\n    if date[0] == '0':\n        return False\n    if date[1] == '0':\n        return False\n    if date[2] == '0':\n        return False\n    if date[3] == '0':\n        return False\n    if date[4] == '0':\n        return False\n    if date[5] == '0':\n        return False\n    if date[6] == '0':\n        return False\n    if date[7] == '0':\n        return False\n    if date[8] == '0':\n        return False\n    if date[9] == '0':\n        return False\n    if date[10] == '0':\n        return False\n    if date[11] == '0':\n        return False\n    if date[12] == '0':\n        return False",
+      "gen_raw": "def valid_date(date):\n    \"\"\"You have to write a function which validates a given date string and\n    returns True if the date is valid otherwise False.\n    The date is valid if all of the following rules are satisfied:\n    1. The date string is not empty.\n    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.\n    3. The months should not be less than 1 or higher than 12.\n    4. The date should be in the format: mm-dd-yyyy\n\n    for example:\n    valid_date('03-11-2000') => True\n\n    valid_date('15-01-2012') => False\n\n    valid_date('04-0-2040') => False\n\n    valid_date('06-04-2020') => True\n\n    valid_date('06/04/2020') => False\n    \"\"\"\n    if date == '':\n        return False\n    if date[0] == '0':\n        return False\n    if date[1] == '0':\n        return False\n    if date[2] == '0':\n        return False\n    if date[3] == '0':\n        return False\n    if date[4] == '0':\n        return False\n    if date[5] == '0':\n        return False\n    if date[6] == '0':\n        return False\n    if date[7] == '0':\n        return False\n    if date[8] == '0':\n        return False\n    if date[9] == '0':\n        return False\n    if date[10] == '0':\n        return False\n    if date[11] == '0':\n        return False\n    if date[12] == '0':\n        return False\n   "
+    },
+    {
+      "task_id": "HumanEval/2",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpdi47u2tz.py\", line 12\n    return number - int(number)\n                               ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return number - int(number)",
+      "gen_raw": "   return number - int(number)"
+    },
+    {
+      "task_id": "HumanEval/77",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpc158drsb.py\", line 47, in <module>\n    check(iscube)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpc158drsb.py\", line 36, in ch",
+      "completion_preview": "def iscube(a):\n    '''\n    Write a function that takes an integer a and returns True \n    if this integer is a cube of some integer number.\n    Note: you may assume the input is always valid.\n    Examples:\n    iscube(1) ==> True\n    iscube(2) ==> False\n    iscube(-1) ==> True\n    iscube(64) ==> True\n    iscube(0) ==> True\n    iscube(180) ==> False\n    '''\n    return a**3 == a",
+      "gen_raw": "def iscube(a):\n    '''\n    Write a function that takes an integer a and returns True \n    if this integer is a cube of some integer number.\n    Note: you may assume the input is always valid.\n    Examples:\n    iscube(1) ==> True\n    iscube(2) ==> False\n    iscube(-1) ==> True\n    iscube(64) ==> True\n    iscube(0) ==> True\n    iscube(180) ==> False\n    '''\n    return a**3 == a"
+    },
+    {
+      "task_id": "HumanEval/97",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpfwjm4gg2.py\", line 41, in <module>\n    check(multiply)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpfwjm4gg2.py\", line 27, in ",
+      "completion_preview": "def multiply(a, b):\n    \"\"\"Complete the function that takes two integers and returns \n    the product of their unit digits.\n    Assume the input is always valid.\n    Examples:\n    multiply(148, 412) should return 16.\n    multiply(19, 28) should return 72.\n    multiply(2020, 1851) should return 0.\n    multiply(14,-15) should return 20.\n    \"\"\"\n    return a % 10 * b % 10",
+      "gen_raw": "def multiply(a, b):\n    \"\"\"Complete the function that takes two integers and returns \n    the product of their unit digits.\n    Assume the input is always valid.\n    Examples:\n    multiply(148, 412) should return 16.\n    multiply(19, 28) should return 72.\n    multiply(2020, 1851) should return 0.\n    multiply(14,-15) should return 20.\n    \"\"\"\n    return a % 10 * b % 10"
+    },
+    {
+      "task_id": "HumanEval/87",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpx2clzin1.py\", line 78, in <module>\n    check(get_row)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpx2clzin1.py\", line 47, in c",
+      "completion_preview": "def get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n    # your code here",
+      "gen_raw": "def get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n    # your code here"
+    },
+    {
+      "task_id": "HumanEval/163",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpdl7mlb9r.py\", line 12\n    return [x for x in range(a, b) if x % 2 == 0]\n                                                 ^\nIndentationError: unindent does not",
+      "completion_preview": "   return [x for x in range(a, b) if x % 2 == 0]",
+      "gen_raw": "   return [x for x in range(a, b) if x % 2 == 0]"
+    },
+    {
+      "task_id": "HumanEval/122",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpkb2nm3le.py\", line 16\n    return sum(arr[:k])\n                       ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return sum(arr[:k])",
+      "gen_raw": "   return sum(arr[:k])"
+    },
+    {
+      "task_id": "HumanEval/39",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpsxtp016h.py\", line 71, in <module>\n    check(prime_fib)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpsxtp016h.py\", line 58, in",
+      "completion_preview": "def prime_fib(n: int):\n    \"\"\"\n    prime_fib returns n-th number that is a Fibonacci number and it's also prime.\n    >>> prime_fib(1)\n    2\n    >>> prime_fib(2)\n    3\n    >>> prime_fib(3)\n    5\n    >>> prime_fib(4)\n    13\n    >>> prime_fib(5)\n    89\n    \"\"\"\n    def is_prime(n: int):\n        if n < 2:\n            return True\n        for i in range(2, n):\n            if n % i == 0:\n                return False\n        return True\n\n    def fibonacci(n: int):\n        if n == 1:\n            return 1\n        elif n == 2:\n            return 1\n        else:\n            return fibonacci(n - 1) + fibonacci(n - 2)\n\n    if is_prime(fibonacci(n)) and fibonacci(n) == n:\n        return fibonacci(n)\n    else:\n        return \"No such number\"",
+      "gen_raw": "def prime_fib(n: int):\n    \"\"\"\n    prime_fib returns n-th number that is a Fibonacci number and it's also prime.\n    >>> prime_fib(1)\n    2\n    >>> prime_fib(2)\n    3\n    >>> prime_fib(3)\n    5\n    >>> prime_fib(4)\n    13\n    >>> prime_fib(5)\n    89\n    \"\"\"\n    def is_prime(n: int):\n        if n < 2:\n            return True\n        for i in range(2, n):\n            if n % i == 0:\n                return False\n        return True\n\n    def fibonacci(n: int):\n        if n == 1:\n            return 1\n        elif n == 2:\n            return 1\n        else:\n            return fibonacci(n - 1) + fibonacci(n - 2)\n\n    if is_prime(fibonacci(n)) and fibonacci(n) == n:\n        return fibonacci(n)\n    else:\n        return \"No such number\""
+    },
+    {
+      "task_id": "HumanEval/145",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmptzf4e2kw.py\", line 13\n    nums.sort(key=lambda x: sum(int(digit) for digit in str(x)))\n                                                                ^\nInden",
+      "completion_preview": "   nums.sort(key=lambda x: sum(int(digit) for digit in str(x)))\n    return nums",
+      "gen_raw": "   nums.sort(key=lambda x: sum(int(digit) for digit in str(x)))\n    return nums"
+    },
+    {
+      "task_id": "HumanEval/119",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpmjsuthb5.py\", line 17\n    return 'Yes' if all parentheses in the first string are balanced and all parentheses in the second string are balanced, and return '",
+      "completion_preview": "   return 'Yes' if all parentheses in the first string are balanced and all parentheses in the second string are balanced, and return 'No' otherwise.",
+      "gen_raw": "   return 'Yes' if all parentheses in the first string are balanced and all parentheses in the second string are balanced, and return 'No' otherwise."
+    },
+    {
+      "task_id": "HumanEval/80",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpeqjk3z11.py\", line 14\n    if len(s) < 3:\n                  ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if len(s) < 3:\n        return False\n    if len(s) >= 3:\n        for i in range(len(s) - 2):\n            if s[i:i + 3] == s[i + 1:i + 4]:\n                return False\n        return True\n    return False",
+      "gen_raw": "   if len(s) < 3:\n        return False\n    if len(s) >= 3:\n        for i in range(len(s) - 2):\n            if s[i:i + 3] == s[i + 1:i + 4]:\n                return False\n        return True\n    return False"
+    },
+    {
+      "task_id": "HumanEval/55",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpc6nki97w.py\", line 12\n    if n == 1:\n              ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if n == 1:\n        return 1\n    elif n == 2:\n        return 1\n    else:\n        return fib(n - 1) + fib(n - 2)",
+      "gen_raw": "   if n == 1:\n        return 1\n    elif n == 2:\n        return 1\n    else:\n        return fib(n - 1) + fib(n - 2)"
+    },
+    {
+      "task_id": "HumanEval/35",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp4cfvyun9.py\", line 10\n    return max(l)\n                 ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return max(l)",
+      "gen_raw": "   return max(l)"
+    },
+    {
+      "task_id": "HumanEval/133",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpjahiryb4.py\", line 53, in <module>\n    check(sum_squares)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpjahiryb4.py\", line 37, ",
+      "completion_preview": "def sum_squares(lst):\n    \"\"\"You are given a list of numbers.\n    You need to return the sum of squared numbers in the given list,\n    round each element in the list to the upper int(Ceiling) first.\n    Examples:\n    For lst = [1,2,3] the output should be 14\n    For lst = [1,4,9] the output should be 98\n    For lst = [1,3,5,7] the output should be 84\n    For lst = [1.4,4.2,0] the output should be 29\n    For lst = [-2.4,1,1] the output should be 6\n    \n\n    \"\"\"\n    return sum([int(round(x, 0))**2 for x in lst])",
+      "gen_raw": "def sum_squares(lst):\n    \"\"\"You are given a list of numbers.\n    You need to return the sum of squared numbers in the given list,\n    round each element in the list to the upper int(Ceiling) first.\n    Examples:\n    For lst = [1,2,3] the output should be 14\n    For lst = [1,4,9] the output should be 98\n    For lst = [1,3,5,7] the output should be 84\n    For lst = [1.4,4.2,0] the output should be 29\n    For lst = [-2.4,1,1] the output should be 6\n    \n\n    \"\"\"\n    return sum([int(round(x, 0))**2 for x in lst])"
+    },
+    {
+      "task_id": "HumanEval/151",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpgz5nabm7.py\", line 14\n    if not lst:\n               ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if not lst:\n        return 0\n    else:\n        return sum(x**2 for x in lst if x % 2 == 1)",
+      "gen_raw": "   if not lst:\n        return 0\n    else:\n        return sum(x**2 for x in lst if x % 2 == 1)"
+    },
+    {
+      "task_id": "HumanEval/153",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmplj9ozljw.py\", line 56, in <module>\n    check(Strongest_Extension)\n  File \"/var/tmp/pbs.12867.jiit-master/tmplj9ozljw.py\", l",
+      "completion_preview": "def Strongest_Extension(class_name, extensions):\n    \"\"\"You will be given the name of a class (a string) and a list of extensions.\n    The extensions are to be used to load additional classes to the class. The\n    strength of the extension is as follows: Let CAP be the number of the uppercase\n    letters in the extension's name, and let SM be the number of lowercase letters \n    in the extension's name, the strength is given by the fraction CAP - SM. \n    You should find the strongest extension and return a string in this \n    format: ClassName.StrongestExtensionName.\n    If there are two or more extensions with the same strength, you should\n    choose the one that comes first in the list.\n    For example, if you are given \"Slices\" as the class and a list of the\n    extensions: ['SErviNGSliCes', 'Cheese', 'StuFfed'] then you should\n    return 'Slices.SErviNGSliCes' since 'SErviNGSliCes' is the strongest extension \n    (its strength is -1).\n    Example:\n    for Strongest_Extension('my_class', ['AA', 'Be', 'CC']) == 'my_class.AA'\n    \"\"\"\n    extensions = sorted(extensions, key=lambda x: x.upper().count('A') - x.upper().count('a'))\n    return class_name + '.' + extensions[0]",
+      "gen_raw": "def Strongest_Extension(class_name, extensions):\n    \"\"\"You will be given the name of a class (a string) and a list of extensions.\n    The extensions are to be used to load additional classes to the class. The\n    strength of the extension is as follows: Let CAP be the number of the uppercase\n    letters in the extension's name, and let SM be the number of lowercase letters \n    in the extension's name, the strength is given by the fraction CAP - SM. \n    You should find the strongest extension and return a string in this \n    format: ClassName.StrongestExtensionName.\n    If there are two or more extensions with the same strength, you should\n    choose the one that comes first in the list.\n    For example, if you are given \"Slices\" as the class and a list of the\n    extensions: ['SErviNGSliCes', 'Cheese', 'StuFfed'] then you should\n    return 'Slices.SErviNGSliCes' since 'SErviNGSliCes' is the strongest extension \n    (its strength is -1).\n    Example:\n    for Strongest_Extension('my_class', ['AA', 'Be', 'CC']) == 'my_class.AA'\n    \"\"\"\n    extensions = sorted(extensions, key=lambda x: x.upper().count('A') - x.upper().count('a'))\n    return class_name + '.' + extensions[0]"
+    },
+    {
+      "task_id": "HumanEval/115",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpjo5uchzh.py\", line 91, in <module>\n    check(max_fill)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpjo5uchzh.py\", line 80, in ",
+      "completion_preview": "def max_fill(grid, capacity):\n    import math\n    \"\"\"\n    You are given a rectangular grid of wells. Each row represents a single well,\n    and each 1 in a row represents a single unit of water.\n    Each well has a corresponding bucket that can be used to extract water from it,\n    and all buckets have the same capacity.\n    Your task is to use the buckets to empty the wells.\n    Output the number of times you need to lower the buckets.\n\n    Example 1:\n        Input:\n            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]\n            bucket_capacity : 1\n        Output: 6\n\n    Example 2:\n        Input:\n            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]\n            bucket_capacity : 2\n        Output: 5\n\n    Example 3:\n        Input:\n            grid : [[0,0,0], [0,0,0]]\n            bucket_capacity : 5\n        Output: 0\n\n    Constraints:\n        * all wells have the same length\n        * 1 <= grid.length <= 10^2\n        * 1 <= grid[:,1].length <= 10^2\n        * grid[i][j] -> 0 | 1\n        * 1 <= capacity <= 10\n    \"\"\"\n    # Your code here\n    pass",
+      "gen_raw": "def max_fill(grid, capacity):\n    import math\n    \"\"\"\n    You are given a rectangular grid of wells. Each row represents a single well,\n    and each 1 in a row represents a single unit of water.\n    Each well has a corresponding bucket that can be used to extract water from it,\n    and all buckets have the same capacity.\n    Your task is to use the buckets to empty the wells.\n    Output the number of times you need to lower the buckets.\n\n    Example 1:\n        Input:\n            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]\n            bucket_capacity : 1\n        Output: 6\n\n    Example 2:\n        Input:\n            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]\n            bucket_capacity : 2\n        Output: 5\n\n    Example 3:\n        Input:\n            grid : [[0,0,0], [0,0,0]]\n            bucket_capacity : 5\n        Output: 0\n\n    Constraints:\n        * all wells have the same length\n        * 1 <= grid.length <= 10^2\n        * 1 <= grid[:,1].length <= 10^2\n        * grid[i][j] -> 0 | 1\n        * 1 <= capacity <= 10\n    \"\"\"\n    # Your code here\n    pass"
+    },
+    {
+      "task_id": "HumanEval/30",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpec5c_7ug.py\", line 10\n    return [x for x in l if x > 0]\n                                  ^\nIndentationError: unindent does not match any outer indentation l",
+      "completion_preview": "   return [x for x in l if x > 0]",
+      "gen_raw": "   return [x for x in l if x > 0]"
+    },
+    {
+      "task_id": "HumanEval/150",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpo0skcg6b.py\", line 11\n    if n == 2:\n              ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if n == 2:\n        return y\n    else:\n        return x",
+      "gen_raw": "   if n == 2:\n        return y\n    else:\n        return x"
+    },
+    {
+      "task_id": "HumanEval/31",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def is_prime(n):\n    \"\"\"Return true if a given number is prime, and false otherwise.\n    >>> is_prime(6)\n    False\n    >>> is_prime(101)\n    True\n    >>> is_prime(11)\n    True\n    >>> is_prime(13441)\n    True\n    >>> is_prime(61)\n    True\n    >>> is_prime(4)\n    False\n    >>> is_prime(1)\n    False\n    \"\"\"\n    if n < 2:\n        return False\n    for i in range(2, n):\n        if n % i == 0:\n            return False\n    return True",
+      "gen_raw": "def is_prime(n):\n    \"\"\"Return true if a given number is prime, and false otherwise.\n    >>> is_prime(6)\n    False\n    >>> is_prime(101)\n    True\n    >>> is_prime(11)\n    True\n    >>> is_prime(13441)\n    True\n    >>> is_prime(61)\n    True\n    >>> is_prime(4)\n    False\n    >>> is_prime(1)\n    False\n    \"\"\"\n    if n < 2:\n        return False\n    for i in range(2, n):\n        if n % i == 0:\n            return False\n    return True"
+    },
+    {
+      "task_id": "HumanEval/91",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpvds2npd7.py\", line 14\n    return S.count(\"I\")\n                       ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return S.count(\"I\")",
+      "gen_raw": "   return S.count(\"I\")"
+    },
+    {
+      "task_id": "HumanEval/58",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp58qyplma.py\", line 11\n    return sorted(set(l1) & set(l2))\n                                    ^\nIndentationError: unindent does not match any outer indentati",
+      "completion_preview": "   return sorted(set(l1) & set(l2))",
+      "gen_raw": "   return sorted(set(l1) & set(l2))"
+    },
+    {
+      "task_id": "HumanEval/9",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpc4qea6ou.py\", line 10\n    rolling_max = [numbers[0]]\n                              ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   rolling_max = [numbers[0]]\n    for number in numbers[1:]:\n        rolling_max.append(max(rolling_max))\n    return rolling_max",
+      "gen_raw": "   rolling_max = [numbers[0]]\n    for number in numbers[1:]:\n        rolling_max.append(max(rolling_max))\n    return rolling_max\n"
+    },
+    {
+      "task_id": "HumanEval/161",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp9vgz5x_5.py\", line 13\n    if s[i] in string.ascii_letters:\n                                    ^\nIndentationError: unindent does not match any outer indentati",
+      "completion_preview": "   if s[i] in string.ascii_letters:\n        s[i] = s[i].swapcase()\n    return s",
+      "gen_raw": "   if s[i] in string.ascii_letters:\n        s[i] = s[i].swapcase()\n    return s"
+    },
+    {
+      "task_id": "HumanEval/117",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp39u1vw0k.py\", line 15\n    if s == \"\":\n               ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if s == \"\":\n        return []\n    else:\n        return [word for word in s.split() if len(word) == n]",
+      "gen_raw": "   if s == \"\":\n        return []\n    else:\n        return [word for word in s.split() if len(word) == n]"
+    },
+    {
+      "task_id": "HumanEval/155",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpzr67y43t.py\", line 9\n    return (num // 2, num // 2 + num % 2)\n                                         ^\nIndentationError: unindent does not match any outer ",
+      "completion_preview": "   return (num // 2, num // 2 + num % 2)",
+      "gen_raw": "   return (num // 2, num // 2 + num % 2)"
+    },
+    {
+      "task_id": "HumanEval/107",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpss9nqjfg.py\", line 74, in <module>\n    check(even_odd_palindrome)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpss9nqjfg.py\", l",
+      "completion_preview": "   # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.",
+      "gen_raw": "   # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n    # 1 <= n <= 10^3\n    # returned tuple has the number of even and odd integer palindromes respectively.\n"
+    },
+    {
+      "task_id": "HumanEval/54",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpi2v8ti4_.py\", line 19\n    return s0 == s1\n                   ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return s0 == s1",
+      "gen_raw": "   return s0 == s1"
+    },
+    {
+      "task_id": "HumanEval/3",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpq03ogj3c.py\", line 13\n    for operation in operations:\n                                ^\nIndentationError: unindent does not match any outer indentation level",
+      "completion_preview": "   for operation in operations:\n        if operation < 0:\n            return True\n    return False",
+      "gen_raw": "   for operation in operations:\n        if operation < 0:\n            return True\n    return False"
+    },
+    {
+      "task_id": "HumanEval/82",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpo8o0z47q.py\", line 46, in <module>\n    check(prime_length)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpo8o0z47q.py\", line 25,",
+      "completion_preview": "def prime_length(string):\n    \"\"\"Write a function that takes a string and returns True if the string\n    length is a prime number or False otherwise\n    Examples\n    prime_length('Hello') == True\n    prime_length('abcdcba') == True\n    prime_length('kittens') == True\n    prime_length('orange') == False\n    \"\"\"\n    return len(string) % 2 == 0 and len(string) % 3 == 0",
+      "gen_raw": "def prime_length(string):\n    \"\"\"Write a function that takes a string and returns True if the string\n    length is a prime number or False otherwise\n    Examples\n    prime_length('Hello') == True\n    prime_length('abcdcba') == True\n    prime_length('kittens') == True\n    prime_length('orange') == False\n    \"\"\"\n    return len(string) % 2 == 0 and len(string) % 3 == 0\n"
+    },
+    {
+      "task_id": "HumanEval/6",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp9bbfgqnt.py\", line 12\n    return [len(paren_string.split('(')[i]) for i in range(paren_string.count('('))]\n                                                   ",
+      "completion_preview": "   return [len(paren_string.split('(')[i]) for i in range(paren_string.count('('))]",
+      "gen_raw": "   return [len(paren_string.split('(')[i]) for i in range(paren_string.count('('))]"
+    },
+    {
+      "task_id": "HumanEval/49",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def modp(n: int, p: int):\n    \"\"\"Return 2^n modulo p (be aware of numerics).\n    >>> modp(3, 5)\n    3\n    >>> modp(1101, 101)\n    2\n    >>> modp(0, 101)\n    1\n    >>> modp(3, 11)\n    8\n    >>> modp(100, 101)\n    1\n    \"\"\"\n    return 2**n % p",
+      "gen_raw": "def modp(n: int, p: int):\n    \"\"\"Return 2^n modulo p (be aware of numerics).\n    >>> modp(3, 5)\n    3\n    >>> modp(1101, 101)\n    2\n    >>> modp(0, 101)\n    1\n    >>> modp(3, 11)\n    8\n    >>> modp(100, 101)\n    1\n    \"\"\"\n    return 2**n % p"
+    },
+    {
+      "task_id": "HumanEval/84",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmps9q121fz.py\", line 16\n    return bin(N)[2:]\n                     ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return bin(N)[2:]",
+      "gen_raw": "   return bin(N)[2:]"
+    },
+    {
+      "task_id": "HumanEval/105",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpww4crbvh.py\", line 24\n    if arr:\n           ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if arr:\n        arr.sort()\n        arr.reverse()\n        return [str(i) for i in arr]\n    else:\n        return []",
+      "gen_raw": "   if arr:\n        arr.sort()\n        arr.reverse()\n        return [str(i) for i in arr]\n    else:\n        return []"
+    },
+    {
+      "task_id": "HumanEval/109",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpden0y8nx.py\", line 72, in <module>\n    check(move_one_ball)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpden0y8nx.py\", line 64",
+      "completion_preview": "def move_one_ball(arr):\n    \"\"\"We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The\n    numbers in the array will be randomly ordered. Your task is to determine if\n    it is possible to get an array sorted in non-decreasing order by performing \n    the following operation on the given array:\n        You are allowed to perform right shift operation any number of times.\n    \n    One right shift operation means shifting all elements of the array by one\n    position in the right direction. The last element of the array will be moved to\n    the starting position in the array i.e. 0th index.\n\n    If it is possible to obtain the sorted array by performing the above operation\n    then return True else return False.\n    If the given array is empty then return True.\n\n    Note: The given list is guaranteed to have unique elements.\n\n    For Example:\n    \n    move_one_ball([3, 4, 5, 1, 2])==>True\n    Explanation: By performin 2 right shift operations, non-decreasing order can\n                 be achieved for the given array.\n    move_one_ball([3, 5, 4, 1, 2])==>False\n    Explanation:It is not possible to get non-decreasing order for the given\n                array by performing any number of right shift operations.\n                \n    \"\"\"\n    if len(arr) == 0:\n        return True\n    else:\n        return False",
+      "gen_raw": "def move_one_ball(arr):\n    \"\"\"We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The\n    numbers in the array will be randomly ordered. Your task is to determine if\n    it is possible to get an array sorted in non-decreasing order by performing \n    the following operation on the given array:\n        You are allowed to perform right shift operation any number of times.\n    \n    One right shift operation means shifting all elements of the array by one\n    position in the right direction. The last element of the array will be moved to\n    the starting position in the array i.e. 0th index.\n\n    If it is possible to obtain the sorted array by performing the above operation\n    then return True else return False.\n    If the given array is empty then return True.\n\n    Note: The given list is guaranteed to have unique elements.\n\n    For Example:\n    \n    move_one_ball([3, 4, 5, 1, 2])==>True\n    Explanation: By performin 2 right shift operations, non-decreasing order can\n                 be achieved for the given array.\n    move_one_ball([3, 5, 4, 1, 2])==>False\n    Explanation:It is not possible to get non-decreasing order for the given\n                array by performing any number of right shift operations.\n                \n    \"\"\"\n    if len(arr) == 0:\n        return True\n    else:\n        return False\n"
+    },
+    {
+      "task_id": "HumanEval/17",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpb2duxyck.py\", line 17\n    music_string = music_string.replace('o', '4')\n                                                 ^\nIndentationError: unindent does not",
+      "completion_preview": "   music_string = music_string.replace('o', '4')\n    music_string = music_string.replace('o|', '2')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('o|', '2')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')",
+      "gen_raw": "   music_string = music_string.replace('o', '4')\n    music_string = music_string.replace('o|', '2')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('o|', '2')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n    music_string = music_string.replace('.|', '1')\n"
+    },
+    {
+      "task_id": "HumanEval/143",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp_wateq11.py\", line 63, in <module>\n    check(words_in_sentence)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp_wateq11.py\", lin",
+      "completion_preview": "def words_in_sentence(sentence):\n    \"\"\"\n    You are given a string representing a sentence,\n    the sentence contains some words separated by a space,\n    and you have to return a string that contains the words from the original sentence,\n    whose lengths are prime numbers,\n    the order of the words in the new string should be the same as the original one.\n\n    Example 1:\n        Input: sentence = \"This is a test\"\n        Output: \"is\"\n\n    Example 2:\n        Input: sentence = \"lets go for swimming\"\n        Output: \"go for\"\n\n    Constraints:\n        * 1 <= len(sentence) <= 100\n        * sentence contains only letters\n    \"\"\"\n    words = sentence.split()\n    for word in words:\n        if len(word) == 2:\n            return word\n    return \"\"",
+      "gen_raw": "def words_in_sentence(sentence):\n    \"\"\"\n    You are given a string representing a sentence,\n    the sentence contains some words separated by a space,\n    and you have to return a string that contains the words from the original sentence,\n    whose lengths are prime numbers,\n    the order of the words in the new string should be the same as the original one.\n\n    Example 1:\n        Input: sentence = \"This is a test\"\n        Output: \"is\"\n\n    Example 2:\n        Input: sentence = \"lets go for swimming\"\n        Output: \"go for\"\n\n    Constraints:\n        * 1 <= len(sentence) <= 100\n        * sentence contains only letters\n    \"\"\"\n    words = sentence.split()\n    for word in words:\n        if len(word) == 2:\n            return word\n    return \"\""
+    },
+    {
+      "task_id": "HumanEval/41",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpda0f6cu4.py\", line 15\n    return 0\n            ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return 0",
+      "gen_raw": "   return 0"
+    },
+    {
+      "task_id": "HumanEval/7",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp452wrsnn.py\", line 11\n    return [s for s in strings if substring in s]\n                                                 ^\nIndentationError: unindent does not",
+      "completion_preview": "   return [s for s in strings if substring in s]",
+      "gen_raw": "   return [s for s in strings if substring in s]"
+    },
+    {
+      "task_id": "HumanEval/141",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmps6f_l2vy.py\", line 76, in <module>\n    check(file_name_check)\n  File \"/var/tmp/pbs.12867.jiit-master/tmps6f_l2vy.py\", line ",
+      "completion_preview": "def file_name_check(file_name):\n    \"\"\"Create a function which takes a string representing a file's name, and returns\n    'Yes' if the the file's name is valid, and returns 'No' otherwise.\n    A file's name is considered to be valid if and only if all the following conditions \n    are met:\n    - There should not be more than three digits ('0'-'9') in the file's name.\n    - The file's name contains exactly one dot '.'\n    - The substring before the dot should not be empty, and it starts with a letter from \n    the latin alphapet ('a'-'z' and 'A'-'Z').\n    - The substring after the dot should be one of these: ['txt', 'exe', 'dll']\n    Examples:\n    file_name_check(\"example.txt\") # => 'Yes'\n    file_name_check(\"1example.dll\") # => 'No' (the name should start with a latin alphapet letter)\n    \"\"\"\n    if len(file_name) > 3:\n        return 'No'\n    if file_name.count('.') != 1:\n        return 'No'\n    if file_name[0] not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ':\n        return 'No'\n    if file_name[file_name.index('.'):] not in ['txt', 'exe', 'dll']:\n        return 'No'\n    return 'Yes'",
+      "gen_raw": "def file_name_check(file_name):\n    \"\"\"Create a function which takes a string representing a file's name, and returns\n    'Yes' if the the file's name is valid, and returns 'No' otherwise.\n    A file's name is considered to be valid if and only if all the following conditions \n    are met:\n    - There should not be more than three digits ('0'-'9') in the file's name.\n    - The file's name contains exactly one dot '.'\n    - The substring before the dot should not be empty, and it starts with a letter from \n    the latin alphapet ('a'-'z' and 'A'-'Z').\n    - The substring after the dot should be one of these: ['txt', 'exe', 'dll']\n    Examples:\n    file_name_check(\"example.txt\") # => 'Yes'\n    file_name_check(\"1example.dll\") # => 'No' (the name should start with a latin alphapet letter)\n    \"\"\"\n    if len(file_name) > 3:\n        return 'No'\n    if file_name.count('.') != 1:\n        return 'No'\n    if file_name[0] not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ':\n        return 'No'\n    if file_name[file_name.index('.'):] not in ['txt', 'exe', 'dll']:\n        return 'No'\n    return 'Yes'"
+    },
+    {
+      "task_id": "HumanEval/44",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp7v30jdv0.py\", line 47, in <module>\n    check(change_base)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp7v30jdv0.py\", line 36, ",
+      "completion_preview": "def change_base(x: int, base: int):\n    \"\"\"Change numerical base of input number x to base.\n    return string representation after the conversion.\n    base numbers are less than 10.\n    >>> change_base(8, 3)\n    '22'\n    >>> change_base(8, 2)\n    '1000'\n    >>> change_base(7, 2)\n    '111'\n    \"\"\"\n    if base < 10:\n        return str(x)\n    else:\n        return str(x)",
+      "gen_raw": "def change_base(x: int, base: int):\n    \"\"\"Change numerical base of input number x to base.\n    return string representation after the conversion.\n    base numbers are less than 10.\n    >>> change_base(8, 3)\n    '22'\n    >>> change_base(8, 2)\n    '1000'\n    >>> change_base(7, 2)\n    '111'\n    \"\"\"\n    if base < 10:\n        return str(x)\n    else:\n        return str(x)\n"
+    },
+    {
+      "task_id": "HumanEval/25",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpwk_bk4hu.py\", line 15\n    pass\n        ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   pass",
+      "gen_raw": "   pass"
+    },
+    {
+      "task_id": "HumanEval/63",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def fibfib(n: int):\n    \"\"\"The FibFib number sequence is a sequence similar to the Fibbonacci sequence that's defined as follows:\n    fibfib(0) == 0\n    fibfib(1) == 0\n    fibfib(2) == 1\n    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).\n    Please write a function to efficiently compute the n-th element of the fibfib number sequence.\n    >>> fibfib(1)\n    0\n    >>> fibfib(5)\n    4\n    >>> fibfib(8)\n    24\n    \"\"\"\n    if n == 0 or n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    else:\n        return fibfib(n - 1) + fibfib(n - 2) + fibfib(n - 3)",
+      "gen_raw": "def fibfib(n: int):\n    \"\"\"The FibFib number sequence is a sequence similar to the Fibbonacci sequence that's defined as follows:\n    fibfib(0) == 0\n    fibfib(1) == 0\n    fibfib(2) == 1\n    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).\n    Please write a function to efficiently compute the n-th element of the fibfib number sequence.\n    >>> fibfib(1)\n    0\n    >>> fibfib(5)\n    4\n    >>> fibfib(8)\n    24\n    \"\"\"\n    if n == 0 or n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    else:\n        return fibfib(n - 1) + fibfib(n - 2) + fibfib(n - 3)"
+    },
+    {
+      "task_id": "HumanEval/135",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpmbloq26o.py\", line 12\n    >>> can_arrange([1,2,4,3,5])\n    ^^\nSyntaxError: invalid syntax\n",
+      "completion_preview": ">>> can_arrange([1,2,4,3,5])\n3\n>>> can_arrange([1,2,3])\n-1",
+      "gen_raw": "\n>>> can_arrange([1,2,4,3,5])\n3\n>>> can_arrange([1,2,3])\n-1\n"
+    },
+    {
+      "task_id": "HumanEval/126",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp8bj3im1w.py\", line 18\n    if len(lst) == 1:\n                     ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if len(lst) == 1:\n        return True\n    elif len(lst) == 2:\n        return lst[0] == lst[1]\n    else:\n        return lst[0] < lst[1] and lst[1] < lst[2] and lst[2] < lst[3] and lst[3] < lst[4] and lst[4] < lst[5] and lst[5] < lst[6] and lst[6] < lst[7] and lst[7] < lst[8] and lst[8] < lst[9] and lst[9] < lst[10] and lst[10] < lst[11] and lst[11] < lst[12] and lst[12] < lst[13] and lst[13] < lst[14] and lst[14] < lst[15] and lst[15] < lst[16] and lst[16] < lst[17] and lst[17] < lst[18] and lst[18] < lst[19] and lst[19] < lst[20] and lst[20] < lst[21] and lst[21] < lst[22] and lst[22] < lst[23] and lst[23] < lst[24] and lst[24] < lst[25] and lst[25] < lst[26] and lst[26] < lst[27] and lst[27] < lst[28] and lst[28] < lst[29] and lst[29] < lst[30] and lst[30] < lst[31] and lst[31] < lst[32] and lst[32] < lst[33] and lst[33] < lst[34] and lst[34] < lst",
+      "gen_raw": "   if len(lst) == 1:\n        return True\n    elif len(lst) == 2:\n        return lst[0] == lst[1]\n    else:\n        return lst[0] < lst[1] and lst[1] < lst[2] and lst[2] < lst[3] and lst[3] < lst[4] and lst[4] < lst[5] and lst[5] < lst[6] and lst[6] < lst[7] and lst[7] < lst[8] and lst[8] < lst[9] and lst[9] < lst[10] and lst[10] < lst[11] and lst[11] < lst[12] and lst[12] < lst[13] and lst[13] < lst[14] and lst[14] < lst[15] and lst[15] < lst[16] and lst[16] < lst[17] and lst[17] < lst[18] and lst[18] < lst[19] and lst[19] < lst[20] and lst[20] < lst[21] and lst[21] < lst[22] and lst[22] < lst[23] and lst[23] < lst[24] and lst[24] < lst[25] and lst[25] < lst[26] and lst[26] < lst[27] and lst[27] < lst[28] and lst[28] < lst[29] and lst[29] < lst[30] and lst[30] < lst[31] and lst[31] < lst[32] and lst[32] < lst[33] and lst[33] < lst[34] and lst[34] < lst"
+    },
+    {
+      "task_id": "HumanEval/73",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpk9b0am38.py\", line 13\n    arr = arr\n             ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   arr = arr\n    if len(arr) % 2 == 1:\n        arr = arr[::-1]\n    if len(arr) % 2 == 0:\n        arr = arr[::-1]\n    if len(arr) % 2 == 0:\n        arr = arr[::-1]\n    if len(arr) % 2 == 1:\n        arr = arr[::-1]\n    return len(arr) - len(arr[::-1])",
+      "gen_raw": "   arr = arr\n    if len(arr) % 2 == 1:\n        arr = arr[::-1]\n    if len(arr) % 2 == 0:\n        arr = arr[::-1]\n    if len(arr) % 2 == 0:\n        arr = arr[::-1]\n    if len(arr) % 2 == 1:\n        arr = arr[::-1]\n    return len(arr) - len(arr[::-1])"
+    },
+    {
+      "task_id": "HumanEval/101",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpmqffmdma.py\", line 11\n    return s.split(',')\n                       ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return s.split(',')",
+      "gen_raw": "   return s.split(',')\n"
+    },
+    {
+      "task_id": "HumanEval/156",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp7xd86ivq.py\", line 13\n    if number < 1 or number > 1000:\n                                   ^\nIndentationError: unindent does not match any outer indentation",
+      "completion_preview": "   if number < 1 or number > 1000:\n        raise ValueError(\"Number must be between 1 and 1000\")\n    if number < 10:\n        return \"i\" * number\n    elif number < 100:\n        return \"x\" + \"i\" * (number - 10)\n    elif number < 1000:\n        return \"c\" + \"l\" + \"i\" * (number - 100)\n    else:\n        return \"m\" + \"d\" + \"c\" + \"l\" + \"i\" * (number - 1000)",
+      "gen_raw": "   if number < 1 or number > 1000:\n        raise ValueError(\"Number must be between 1 and 1000\")\n    if number < 10:\n        return \"i\" * number\n    elif number < 100:\n        return \"x\" + \"i\" * (number - 10)\n    elif number < 1000:\n        return \"c\" + \"l\" + \"i\" * (number - 100)\n    else:\n        return \"m\" + \"d\" + \"c\" + \"l\" + \"i\" * (number - 1000)"
+    },
+    {
+      "task_id": "HumanEval/134",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpgv1mbh92.py\", line 52, in <module>\n    check(check_if_last_char_is_a_letter)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpgv1m",
+      "completion_preview": "def check_if_last_char_is_a_letter(txt):\n    '''\n    Create a function that returns True if the last character\n    of a given string is an alphabetical character and is not\n    a part of a word, and False otherwise.\n    Note: \"word\" is a group of characters separated by space.\n\n    Examples:\n    check_if_last_char_is_a_letter(\"apple pie\") \u279e False\n    check_if_last_char_is_a_letter(\"apple pi e\") \u279e True\n    check_if_last_char_is_a_letter(\"apple pi e \") \u279e False\n    check_if_last_char_is_a_letter(\"\") \u279e False \n    '''\n    if txt[-1].isalpha() and not txt[-1].isspace():\n        return True\n    else:\n        return False",
+      "gen_raw": "def check_if_last_char_is_a_letter(txt):\n    '''\n    Create a function that returns True if the last character\n    of a given string is an alphabetical character and is not\n    a part of a word, and False otherwise.\n    Note: \"word\" is a group of characters separated by space.\n\n    Examples:\n    check_if_last_char_is_a_letter(\"apple pie\") \u279e False\n    check_if_last_char_is_a_letter(\"apple pi e\") \u279e True\n    check_if_last_char_is_a_letter(\"apple pi e \") \u279e False\n    check_if_last_char_is_a_letter(\"\") \u279e False \n    '''\n    if txt[-1].isalpha() and not txt[-1].isspace():\n        return True\n    else:\n        return False"
+    },
+    {
+      "task_id": "HumanEval/12",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpt923m4t7.py\", line 14\n    if not strings:\n                   ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if not strings:\n        return None\n    elif len(strings) == 1:\n        return strings[0]\n    else:\n        return max(strings)",
+      "gen_raw": "   if not strings:\n        return None\n    elif len(strings) == 1:\n        return strings[0]\n    else:\n        return max(strings)"
+    },
+    {
+      "task_id": "HumanEval/112",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpj4w1myyq.py\", line 40, in <module>\n    check(reverse_delete)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpj4w1myyq.py\", line 2",
+      "completion_preview": "def reverse_delete(s,c):\n    \"\"\"Task\n    We are given two strings s and c, you have to deleted all the characters in s that are equal to any character in c\n    then check if the result string is palindrome.\n    A string is called palindrome if it reads the same backward as forward.\n    You should return a tuple containing the result string and True/False for the check.\n    Example\n    For s = \"abcde\", c = \"ae\", the result should be ('bcd',False)\n    For s = \"abcdef\", c = \"b\"  the result should be ('acdef',False)\n    For s = \"abcdedcba\", c = \"ab\", the result should be ('cdedc',True)\n    \"\"\"\n    s = s.replace(c, '')\n    return s, s == s[::-1]",
+      "gen_raw": "def reverse_delete(s,c):\n    \"\"\"Task\n    We are given two strings s and c, you have to deleted all the characters in s that are equal to any character in c\n    then check if the result string is palindrome.\n    A string is called palindrome if it reads the same backward as forward.\n    You should return a tuple containing the result string and True/False for the check.\n    Example\n    For s = \"abcde\", c = \"ae\", the result should be ('bcd',False)\n    For s = \"abcdef\", c = \"b\"  the result should be ('acdef',False)\n    For s = \"abcdedcba\", c = \"ab\", the result should be ('cdedc',True)\n    \"\"\"\n    s = s.replace(c, '')\n    return s, s == s[::-1]"
+    },
+    {
+      "task_id": "HumanEval/18",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpgexoamm1.py\", line 12\n    return string.count(substring)\n                                  ^\nIndentationError: unindent does not match any outer indentation l",
+      "completion_preview": "   return string.count(substring)",
+      "gen_raw": "   return string.count(substring)"
+    },
+    {
+      "task_id": "HumanEval/24",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpdf0j03vs.py\", line 8\n    return n // 2\n                 ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return n // 2",
+      "gen_raw": "   return n // 2"
+    },
+    {
+      "task_id": "HumanEval/29",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmptz3ot744.py\", line 11\n    return [s for s in strings if s.startswith(prefix)]\n                                                       ^\nIndentationError: unind",
+      "completion_preview": "   return [s for s in strings if s.startswith(prefix)]",
+      "gen_raw": "   return [s for s in strings if s.startswith(prefix)]"
+    },
+    {
+      "task_id": "HumanEval/36",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpapmsjpwp.py\", line 12, in <module>\n    from fizz_buzz import fizz_buzz\nModuleNotFoundError: No module named 'fizz_buzz'\n",
+      "completion_preview": "from fizz_buzz import fizz_buzz\n\ndef test_fizz_buzz():\n    assert fizz_buzz(50) == 0\n    assert fizz_buzz(78) == 2\n    assert fizz_buzz(79) == 3",
+      "gen_raw": "\nfrom fizz_buzz import fizz_buzz\n\ndef test_fizz_buzz():\n    assert fizz_buzz(50) == 0\n    assert fizz_buzz(78) == 2\n    assert fizz_buzz(79) == 3\n\nif __name__ == '__main__':\n    test_fizz_buzz()\n"
+    },
+    {
+      "task_id": "HumanEval/48",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpt3pgqhyg.py\", line 15\n    return text == text[::-1]\n                             ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return text == text[::-1]",
+      "gen_raw": "   return text == text[::-1]"
+    },
+    {
+      "task_id": "HumanEval/27",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpjt00lw3u.py\", line 8\n    return string.swapcase()\n                            ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return string.swapcase()",
+      "gen_raw": "   return string.swapcase()"
+    },
+    {
+      "task_id": "HumanEval/102",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp5flc1w2k.py\", line 11\n    if x % 2 == 0:\n                  ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if x % 2 == 0:\n        return x\n    else:\n        return -1",
+      "gen_raw": "   if x % 2 == 0:\n        return x\n    else:\n        return -1"
+    },
+    {
+      "task_id": "HumanEval/121",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpny0vdyjr.py\", line 11\n    return sum(lst[i] for i in range(len(lst)) if lst[i] % 2 == 1 and i % 2 == 0)\n                                                      ",
+      "completion_preview": "   return sum(lst[i] for i in range(len(lst)) if lst[i] % 2 == 1 and i % 2 == 0)",
+      "gen_raw": "   return sum(lst[i] for i in range(len(lst)) if lst[i] % 2 == 1 and i % 2 == 0)"
+    },
+    {
+      "task_id": "HumanEval/19",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpb3v61wde.py\", line 11\n    return ' '.join(sorted(numbers.split()))\n                                            ^\nIndentationError: unindent does not match any",
+      "completion_preview": "   return ' '.join(sorted(numbers.split()))",
+      "gen_raw": "   return ' '.join(sorted(numbers.split()))"
+    },
+    {
+      "task_id": "HumanEval/16",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpxpn017mm.py\", line 10\n    return len(set(string))\n                           ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return len(set(string))",
+      "gen_raw": "   return len(set(string))"
+    },
+    {
+      "task_id": "HumanEval/118",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmppgl76_w7.py\", line 17\n    if word[0].isalpha() and word[-1].isalpha():\n                                                ^\nIndentationError: unindent does not m",
+      "completion_preview": "   if word[0].isalpha() and word[-1].isalpha():\n        return \"\"\n    else:\n        for i in range(len(word)):\n            if word[i].isalpha() and word[i+1].isalpha():\n                return word[i]\n        return \"\"",
+      "gen_raw": "   if word[0].isalpha() and word[-1].isalpha():\n        return \"\"\n    else:\n        for i in range(len(word)):\n            if word[i].isalpha() and word[i+1].isalpha():\n                return word[i]\n        return \"\""
+    },
+    {
+      "task_id": "HumanEval/61",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpm5fag7on.py\", line 52, in <module>\n    check(correct_bracketing)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpm5fag7on.py\", li",
+      "completion_preview": "def correct_bracketing(brackets: str):\n    \"\"\" brackets is a string of \"(\" and \")\".\n    return True if every opening bracket has a corresponding closing bracket.\n\n    >>> correct_bracketing(\"(\")\n    False\n    >>> correct_bracketing(\"()\")\n    True\n    >>> correct_bracketing(\"(()())\")\n    True\n    >>> correct_bracketing(\")(()\")\n    False\n    \"\"\"\n    return brackets.count(\"(\") == brackets.count(\")\")",
+      "gen_raw": "def correct_bracketing(brackets: str):\n    \"\"\" brackets is a string of \"(\" and \")\".\n    return True if every opening bracket has a corresponding closing bracket.\n\n    >>> correct_bracketing(\"(\")\n    False\n    >>> correct_bracketing(\"()\")\n    True\n    >>> correct_bracketing(\"(()())\")\n    True\n    >>> correct_bracketing(\")(()\")\n    False\n    \"\"\"\n    return brackets.count(\"(\") == brackets.count(\")\")"
+    },
+    {
+      "task_id": "HumanEval/130",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpkuzb1lgk.py\", line 19\n    if n % 2 == 0:\n                  ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if n % 2 == 0:\n        return [1] + [1 + n / 2] * (n // 2)\n    else:\n        return [1] + [1 + n / 2] * (n // 2) + [1 + n / 2] * (n // 2) + [1 + n / 2] * (n // 2) + [1 + n / 2] * (n // 2)",
+      "gen_raw": "   if n % 2 == 0:\n        return [1] + [1 + n / 2] * (n // 2)\n    else:\n        return [1] + [1 + n / 2] * (n // 2) + [1 + n / 2] * (n // 2) + [1 + n / 2] * (n // 2) + [1 + n / 2] * (n // 2)\n"
+    },
+    {
+      "task_id": "HumanEval/26",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpigaqfvxc.py\", line 10\n    return [x for x in numbers if numbers.count(x) == 1]\n                                                        ^\nIndentationError: uni",
+      "completion_preview": "   return [x for x in numbers if numbers.count(x) == 1]",
+      "gen_raw": "   return [x for x in numbers if numbers.count(x) == 1]"
+    },
+    {
+      "task_id": "HumanEval/106",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp2hfskqus.py\", line 30, in <module>\n    check(f)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp2hfskqus.py\", line 24, in check\n ",
+      "completion_preview": "def f(n):\n    \"\"\" Implement the function f that takes n as a parameter,\n    and returns a list of size n, such that the value of the element at index i is the factorial of i if i is even\n    or the sum of numbers from 1 to i otherwise.\n    i starts from 1.\n    the factorial of i is the multiplication of the numbers from 1 to i (1 * 2 * ... * i).\n    Example:\n    f(5) == [1, 2, 6, 24, 15]\n    \"\"\"\n    return [1 if i % 2 == 0 else sum(range(1, i + 1)) for i in range(1, n + 1)]",
+      "gen_raw": "def f(n):\n    \"\"\" Implement the function f that takes n as a parameter,\n    and returns a list of size n, such that the value of the element at index i is the factorial of i if i is even\n    or the sum of numbers from 1 to i otherwise.\n    i starts from 1.\n    the factorial of i is the multiplication of the numbers from 1 to i (1 * 2 * ... * i).\n    Example:\n    f(5) == [1, 2, 6, 24, 15]\n    \"\"\"\n    return [1 if i % 2 == 0 else sum(range(1, i + 1)) for i in range(1, n + 1)]"
+    },
+    {
+      "task_id": "HumanEval/148",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpaivdrdt5.py\", line 50\n    def check(candidate):\nIndentationError: expected an indented block after 'if' statement on line 48\n",
+      "completion_preview": "def bf(planet1, planet2):\n    '''\n    There are eight planets in our solar system: the closerst to the Sun \n    is Mercury, the next one is Venus, then Earth, Mars, Jupiter, Saturn, \n    Uranus, Neptune.\n    Write a function that takes two planet names as strings planet1 and planet2. \n    The function should return a tuple containing all planets whose orbits are \n    located between the orbit of planet1 and the orbit of planet2, sorted by \n    the proximity to the sun. \n    The function should return an empty tuple if planet1 or planet2\n    are not correct planet names. \n    Examples\n    bf(\"Jupiter\", \"Neptune\") ==> (\"Saturn\", \"Uranus\")\n    bf(\"Earth\", \"Mercury\") ==> (\"Venus\")\n    bf(\"Mercury\", \"Uranus\") ==> (\"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\")\n    '''\n    if planet1 not in [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]:\n        return ()\n    if planet2 not in [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]:\n        return ()\n    if planet1 == planet2:\n        return ()\n    if planet1 == \"Mercury\":\n        return (\"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\")\n    if planet1 == \"Venus\":\n        return (\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\")\n    if planet1 == \"Earth\":\n        return (\"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\")\n    if planet1 == \"Mars\":\n        return (\"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\")\n    if planet1 == \"Jupiter\":",
+      "gen_raw": "def bf(planet1, planet2):\n    '''\n    There are eight planets in our solar system: the closerst to the Sun \n    is Mercury, the next one is Venus, then Earth, Mars, Jupiter, Saturn, \n    Uranus, Neptune.\n    Write a function that takes two planet names as strings planet1 and planet2. \n    The function should return a tuple containing all planets whose orbits are \n    located between the orbit of planet1 and the orbit of planet2, sorted by \n    the proximity to the sun. \n    The function should return an empty tuple if planet1 or planet2\n    are not correct planet names. \n    Examples\n    bf(\"Jupiter\", \"Neptune\") ==> (\"Saturn\", \"Uranus\")\n    bf(\"Earth\", \"Mercury\") ==> (\"Venus\")\n    bf(\"Mercury\", \"Uranus\") ==> (\"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\")\n    '''\n    if planet1 not in [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]:\n        return ()\n    if planet2 not in [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]:\n        return ()\n    if planet1 == planet2:\n        return ()\n    if planet1 == \"Mercury\":\n        return (\"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\")\n    if planet1 == \"Venus\":\n        return (\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\")\n    if planet1 == \"Earth\":\n        return (\"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\")\n    if planet1 == \"Mars\":\n        return (\"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\")\n    if planet1 == \"Jupiter\":"
+    },
+    {
+      "task_id": "HumanEval/100",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmptaw1iyr4.py\", line 16\n    return [n] + [n + 2 if n % 2 == 0 else n + 1] + [n + 4 if n % 2 == 0 else n + 3]\n                                                   ",
+      "completion_preview": "   return [n] + [n + 2 if n % 2 == 0 else n + 1] + [n + 4 if n % 2 == 0 else n + 3]",
+      "gen_raw": "   return [n] + [n + 2 if n % 2 == 0 else n + 1] + [n + 4 if n % 2 == 0 else n + 3]"
+    },
+    {
+      "task_id": "HumanEval/92",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp5ar1bm3g.py\", line 58, in <module>\n    check(any_int)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp5ar1bm3g.py\", line 43, in c",
+      "completion_preview": "def any_int(x, y, z):\n    '''\n    Create a function that takes 3 numbers.\n    Returns true if one of the numbers is equal to the sum of the other two, and all numbers are integers.\n    Returns false in any other cases.\n    \n    Examples\n    any_int(5, 2, 7) \u279e True\n    \n    any_int(3, 2, 2) \u279e False\n\n    any_int(3, -2, 1) \u279e True\n    \n    any_int(3.6, -2.2, 2) \u279e False\n  \n\n    \n    '''\n    return x + y == z and x.is_integer() and y.is_integer() and z.is_integer()",
+      "gen_raw": "def any_int(x, y, z):\n    '''\n    Create a function that takes 3 numbers.\n    Returns true if one of the numbers is equal to the sum of the other two, and all numbers are integers.\n    Returns false in any other cases.\n    \n    Examples\n    any_int(5, 2, 7) \u279e True\n    \n    any_int(3, 2, 2) \u279e False\n\n    any_int(3, -2, 1) \u279e True\n    \n    any_int(3.6, -2.2, 2) \u279e False\n  \n\n    \n    '''\n    return x + y == z and x.is_integer() and y.is_integer() and z.is_integer()"
+    },
+    {
+      "task_id": "HumanEval/57",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpecf6j_7v.py\", line 12\n    return all(x <= y for x, y in zip(l, l[1:])) or all(x >= y for x, y in zip(l, l[1:]))\n                                              ",
+      "completion_preview": "   return all(x <= y for x, y in zip(l, l[1:])) or all(x >= y for x, y in zip(l, l[1:]))",
+      "gen_raw": "   return all(x <= y for x, y in zip(l, l[1:])) or all(x >= y for x, y in zip(l, l[1:]))"
+    },
+    {
+      "task_id": "HumanEval/146",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmprb6vtt7z.py\", line 36, in <module>\n    check(specialFilter)\n  File \"/var/tmp/pbs.12867.jiit-master/tmprb6vtt7z.py\", line 24",
+      "completion_preview": "def specialFilter(nums):\n    \"\"\"Write a function that takes an array of numbers as input and returns \n    the number of elements in the array that are greater than 10 and both \n    first and last digits of a number are odd (1, 3, 5, 7, 9).\n    For example:\n    specialFilter([15, -73, 14, -15]) => 1\n    specialFilter([33, -2, -3, 45, 21, 109]) => 2\n    \"\"\"\n    return sum(1 for num in nums if num > 10 and num % 10 == 1 and num % 100 == 1)",
+      "gen_raw": "def specialFilter(nums):\n    \"\"\"Write a function that takes an array of numbers as input and returns \n    the number of elements in the array that are greater than 10 and both \n    first and last digits of a number are odd (1, 3, 5, 7, 9).\n    For example:\n    specialFilter([15, -73, 14, -15]) => 1\n    specialFilter([33, -2, -3, 45, 21, 109]) => 2\n    \"\"\"\n    return sum(1 for num in nums if num > 10 and num % 10 == 1 and num % 100 == 1)\n"
+    },
+    {
+      "task_id": "HumanEval/67",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpesnlzn0j.py\", line 51\n    s =\n       ^\nSyntaxError: invalid syntax\n",
+      "completion_preview": "def fruit_distribution(s,n):\n    \"\"\"\n    In this task, you will be given a string that represents a number of apples and oranges \n    that are distributed in a basket of fruit this basket contains \n    apples, oranges, and mango fruits. Given the string that represents the total number of \n    the oranges and apples and an integer that represent the total number of the fruits \n    in the basket return the number of the mango fruits in the basket.\n    for examble:\n    fruit_distribution(\"5 apples and 6 oranges\", 19) ->19 - 5 - 6 = 8\n    fruit_distribution(\"0 apples and 1 oranges\",3) -> 3 - 0 - 1 = 2\n    fruit_distribution(\"2 apples and 3 oranges\", 100) -> 100 - 2 - 3 = 95\n    fruit_distribution(\"100 apples and 1 oranges\",120) -> 120 - 100 - 1 = 19\n    \"\"\"\n    s = s.split(\" and \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s =",
+      "gen_raw": "def fruit_distribution(s,n):\n    \"\"\"\n    In this task, you will be given a string that represents a number of apples and oranges \n    that are distributed in a basket of fruit this basket contains \n    apples, oranges, and mango fruits. Given the string that represents the total number of \n    the oranges and apples and an integer that represent the total number of the fruits \n    in the basket return the number of the mango fruits in the basket.\n    for examble:\n    fruit_distribution(\"5 apples and 6 oranges\", 19) ->19 - 5 - 6 = 8\n    fruit_distribution(\"0 apples and 1 oranges\",3) -> 3 - 0 - 1 = 2\n    fruit_distribution(\"2 apples and 3 oranges\", 100) -> 100 - 2 - 3 = 95\n    fruit_distribution(\"100 apples and 1 oranges\",120) -> 120 - 100 - 1 = 19\n    \"\"\"\n    s = s.split(\" and \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s = s[0].split(\" \")\n    s ="
+    },
+    {
+      "task_id": "HumanEval/40",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp08hu_mp8.py\", line 57, in <module>\n    check(triples_sum_to_zero)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp08hu_mp8.py\", l",
+      "completion_preview": "def triples_sum_to_zero(l: list):\n    \"\"\"\n    triples_sum_to_zero takes a list of integers as an input.\n    it returns True if there are three distinct elements in the list that\n    sum to zero, and False otherwise.\n\n    >>> triples_sum_to_zero([1, 3, 5, 0])\n    False\n    >>> triples_sum_to_zero([1, 3, -2, 1])\n    True\n    >>> triples_sum_to_zero([1, 2, 3, 7])\n    False\n    >>> triples_sum_to_zero([2, 4, -5, 3, 9, 7])\n    True\n    >>> triples_sum_to_zero([1])\n    False\n    \"\"\"\n    return any(sum(l[i:i+3]) == 0 for i in range(len(l) - 2))",
+      "gen_raw": "def triples_sum_to_zero(l: list):\n    \"\"\"\n    triples_sum_to_zero takes a list of integers as an input.\n    it returns True if there are three distinct elements in the list that\n    sum to zero, and False otherwise.\n\n    >>> triples_sum_to_zero([1, 3, 5, 0])\n    False\n    >>> triples_sum_to_zero([1, 3, -2, 1])\n    True\n    >>> triples_sum_to_zero([1, 2, 3, 7])\n    False\n    >>> triples_sum_to_zero([2, 4, -5, 3, 9, 7])\n    True\n    >>> triples_sum_to_zero([1])\n    False\n    \"\"\"\n    return any(sum(l[i:i+3]) == 0 for i in range(len(l) - 2))"
+    },
+    {
+      "task_id": "HumanEval/42",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpikn00d0n.py\", line 10\n    return [x + 1 for x in l]\n                             ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return [x + 1 for x in l]",
+      "gen_raw": "   return [x + 1 for x in l]"
+    },
+    {
+      "task_id": "HumanEval/144",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpgh249nop.py\", line 50, in <module>\n    check(simplify)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpgh249nop.py\", line 31, in ",
+      "completion_preview": "def simplify(x, n):\n    \"\"\"Your task is to implement a function that will simplify the expression\n    x * n. The function returns True if x * n evaluates to a whole number and False\n    otherwise. Both x and n, are string representation of a fraction, and have the following format,\n    <numerator>/<denominator> where both numerator and denominator are positive whole numbers.\n\n    You can assume that x, and n are valid fractions, and do not have zero as denominator.\n\n    simplify(\"1/5\", \"5/1\") = True\n    simplify(\"1/6\", \"2/1\") = False\n    simplify(\"7/10\", \"10/2\") = False\n    \"\"\"\n    return x * n == int(x * n)",
+      "gen_raw": "def simplify(x, n):\n    \"\"\"Your task is to implement a function that will simplify the expression\n    x * n. The function returns True if x * n evaluates to a whole number and False\n    otherwise. Both x and n, are string representation of a fraction, and have the following format,\n    <numerator>/<denominator> where both numerator and denominator are positive whole numbers.\n\n    You can assume that x, and n are valid fractions, and do not have zero as denominator.\n\n    simplify(\"1/5\", \"5/1\") = True\n    simplify(\"1/6\", \"2/1\") = False\n    simplify(\"7/10\", \"10/2\") = False\n    \"\"\"\n    return x * n == int(x * n)"
+    },
+    {
+      "task_id": "HumanEval/95",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpms47c87u.py\", line 14\n    if dict:\n            ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if dict:\n        if all(isinstance(k, str) for k in dict.keys()):\n            return True\n        elif all(isinstance(k, str) for k in dict.keys()):\n            return True\n        else:\n            return False\n    else:\n        return False",
+      "gen_raw": "   if dict:\n        if all(isinstance(k, str) for k in dict.keys()):\n            return True\n        elif all(isinstance(k, str) for k in dict.keys()):\n            return True\n        else:\n            return False\n    else:\n        return False"
+    },
+    {
+      "task_id": "HumanEval/64",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpm6uk0105.py\", line 18\n    vowels = \"aeiouy\"\n                     ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   vowels = \"aeiouy\"\n    return sum(1 for c in s if c in vowels)",
+      "gen_raw": "   vowels = \"aeiouy\"\n    return sum(1 for c in s if c in vowels)"
+    },
+    {
+      "task_id": "HumanEval/65",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpp1er9nq_.py\", line 37\n    assert\n          ^\nSyntaxError: invalid syntax\n",
+      "completion_preview": "from __future__ import print_function\n\ndef test_circular_shift():\n    assert circular_shift(12, 1) == \"21\"\n    assert circular_shift(12, 2) == \"12\"\n    assert circular_shift(12, 3) == \"12\"\n    assert circular_shift(12, 4) == \"12\"\n    assert circular_shift(12, 5) == \"12\"\n    assert circular_shift(12, 6) == \"12\"\n    assert circular_shift(12, 7) == \"12\"\n    assert circular_shift(12, 8) == \"12\"\n    assert circular_shift(12, 9) == \"12\"\n    assert circular_shift(12, 10) == \"12\"\n    assert circular_shift(12, 11) == \"12\"\n    assert circular_shift(12, 12) == \"12\"\n    assert circular_shift(12, 13) == \"12\"\n    assert circular_shift(12, 14) == \"12\"\n    assert circular_shift(12, 15) == \"12\"\n    assert circular_shift(12, 16) == \"12\"\n    assert circular_shift(12, 17) == \"12\"\n    assert circular_shift(12, 18) == \"12\"\n    assert circular_shift(12, 19) == \"12\"\n    assert circular_shift(12, 20) == \"12\"\n    assert circular_shift(12, 21) == \"12\"\n    assert circular_shift(12, 22) == \"12\"\n    assert circular_shift(12, 23) == \"12\"\n    assert",
+      "gen_raw": "\nfrom __future__ import print_function\n\ndef test_circular_shift():\n    assert circular_shift(12, 1) == \"21\"\n    assert circular_shift(12, 2) == \"12\"\n    assert circular_shift(12, 3) == \"12\"\n    assert circular_shift(12, 4) == \"12\"\n    assert circular_shift(12, 5) == \"12\"\n    assert circular_shift(12, 6) == \"12\"\n    assert circular_shift(12, 7) == \"12\"\n    assert circular_shift(12, 8) == \"12\"\n    assert circular_shift(12, 9) == \"12\"\n    assert circular_shift(12, 10) == \"12\"\n    assert circular_shift(12, 11) == \"12\"\n    assert circular_shift(12, 12) == \"12\"\n    assert circular_shift(12, 13) == \"12\"\n    assert circular_shift(12, 14) == \"12\"\n    assert circular_shift(12, 15) == \"12\"\n    assert circular_shift(12, 16) == \"12\"\n    assert circular_shift(12, 17) == \"12\"\n    assert circular_shift(12, 18) == \"12\"\n    assert circular_shift(12, 19) == \"12\"\n    assert circular_shift(12, 20) == \"12\"\n    assert circular_shift(12, 21) == \"12\"\n    assert circular_shift(12, 22) == \"12\"\n    assert circular_shift(12, 23) == \"12\"\n    assert"
+    },
+    {
+      "task_id": "HumanEval/4",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpdytq9b0i.py\", line 13\n    return sum(abs(x - sum(numbers) / len(numbers)) for x in numbers) / len(numbers)\n                                                   ",
+      "completion_preview": "   return sum(abs(x - sum(numbers) / len(numbers)) for x in numbers) / len(numbers)",
+      "gen_raw": "   return sum(abs(x - sum(numbers) / len(numbers)) for x in numbers) / len(numbers)"
+    },
+    {
+      "task_id": "HumanEval/138",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmprbmrquxe.py\", line 9\n    if n % 2 == 0:\n                  ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if n % 2 == 0:\n        return True\n    else:\n        return False",
+      "gen_raw": "   if n % 2 == 0:\n        return True\n    else:\n        return False"
+    },
+    {
+      "task_id": "HumanEval/96",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def count_up_to(n):\n    \"\"\"Implement a function that takes an non-negative integer and returns an array of the first n\n    integers that are prime numbers and less than n.\n    for example:\n    count_up_to(5) => [2,3]\n    count_up_to(11) => [2,3,5,7]\n    count_up_to(0) => []\n    count_up_to(20) => [2,3,5,7,11,13,17,19]\n    count_up_to(1) => []\n    count_up_to(18) => [2,3,5,7,11,13,17]\n    \"\"\"\n    return [x for x in range(2, n) if x > 1 and all(x % y for y in range(2, x))]",
+      "gen_raw": "def count_up_to(n):\n    \"\"\"Implement a function that takes an non-negative integer and returns an array of the first n\n    integers that are prime numbers and less than n.\n    for example:\n    count_up_to(5) => [2,3]\n    count_up_to(11) => [2,3,5,7]\n    count_up_to(0) => []\n    count_up_to(20) => [2,3,5,7,11,13,17,19]\n    count_up_to(1) => []\n    count_up_to(18) => [2,3,5,7,11,13,17]\n    \"\"\"\n    return [x for x in range(2, n) if x > 1 and all(x % y for y in range(2, x))]"
+    },
+    {
+      "task_id": "HumanEval/5",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp6x25kxos.py\", line 11\n    return [numbers[i] for i in range(len(numbers)) if i % 2 == 0] + [numbers[i] for i in range(len(numbers)) if i % 2 == 1]\n           ",
+      "completion_preview": "   return [numbers[i] for i in range(len(numbers)) if i % 2 == 0] + [numbers[i] for i in range(len(numbers)) if i % 2 == 1]",
+      "gen_raw": "   return [numbers[i] for i in range(len(numbers)) if i % 2 == 0] + [numbers[i] for i in range(len(numbers)) if i % 2 == 1]\n\n\nif __name__ == '__main__':\n    print(intersperse([1, 2, 3], 4))"
+    },
+    {
+      "task_id": "HumanEval/162",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpqsp6nxo6.py\", line 9\n    if text == '':\n                  ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if text == '':\n        return None\n    else:\n        return hashlib.md5(text.encode('utf-8')).hexdigest()",
+      "gen_raw": "   if text == '':\n        return None\n    else:\n        return hashlib.md5(text.encode('utf-8')).hexdigest()"
+    },
+    {
+      "task_id": "HumanEval/1",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpl_awjxa9.py\", line 36, in <module>\n    check(separate_paren_groups)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpl_awjxa9.py\",",
+      "completion_preview": "   # Your code here\n    pass",
+      "gen_raw": "   # Your code here\n    pass"
+    },
+    {
+      "task_id": "HumanEval/103",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp3dbqei2t.py\", line 13\n    if n > m:\n             ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if n > m:\n        return -1\n    else:\n        return bin(round(sum(range(n, m+1))/len(range(n, m+1))))",
+      "gen_raw": "   if n > m:\n        return -1\n    else:\n        return bin(round(sum(range(n, m+1))/len(range(n, m+1))))\n"
+    },
+    {
+      "task_id": "HumanEval/51",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def remove_vowels(text):\n    \"\"\"\n    remove_vowels is a function that takes string and returns string without vowels.\n    >>> remove_vowels('')\n    ''\n    >>> remove_vowels(\"abcdef\\nghijklm\")\n    'bcdf\\nghjklm'\n    >>> remove_vowels('abcdef')\n    'bcdf'\n    >>> remove_vowels('aaaaa')\n    ''\n    >>> remove_vowels('aaBAA')\n    'B'\n    >>> remove_vowels('zbcd')\n    'zbcd'\n    \"\"\"\n    return text.translate(str.maketrans('', '', 'aeiouAEIOU'))",
+      "gen_raw": "def remove_vowels(text):\n    \"\"\"\n    remove_vowels is a function that takes string and returns string without vowels.\n    >>> remove_vowels('')\n    ''\n    >>> remove_vowels(\"abcdef\\nghijklm\")\n    'bcdf\\nghjklm'\n    >>> remove_vowels('abcdef')\n    'bcdf'\n    >>> remove_vowels('aaaaa')\n    ''\n    >>> remove_vowels('aaBAA')\n    'B'\n    >>> remove_vowels('zbcd')\n    'zbcd'\n    \"\"\"\n    return text.translate(str.maketrans('', '', 'aeiouAEIOU'))"
+    },
+    {
+      "task_id": "HumanEval/69",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpkpqkigmk.py\", line 63, in <module>\n    check(search)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpkpqkigmk.py\", line 34, in ch",
+      "completion_preview": "def search(lst):\n    '''\n    You are given a non-empty list of positive integers. Return the greatest integer that is greater than \n    zero, and has a frequency greater than or equal to the value of the integer itself. \n    The frequency of an integer is the number of times it appears in the list.\n    If no such a value exist, return -1.\n    Examples:\n        search([4, 1, 2, 2, 3, 1]) == 2\n        search([1, 2, 2, 3, 3, 3, 4, 4, 4]) == 3\n        search([5, 5, 4, 4, 4]) == -1\n    '''\n    lst.sort()\n    for i in lst:\n        if lst.count(i) >= i:\n            return i\n    return -1",
+      "gen_raw": "def search(lst):\n    '''\n    You are given a non-empty list of positive integers. Return the greatest integer that is greater than \n    zero, and has a frequency greater than or equal to the value of the integer itself. \n    The frequency of an integer is the number of times it appears in the list.\n    If no such a value exist, return -1.\n    Examples:\n        search([4, 1, 2, 2, 3, 1]) == 2\n        search([1, 2, 2, 3, 3, 3, 4, 4, 4]) == 3\n        search([5, 5, 4, 4, 4]) == -1\n    '''\n    lst.sort()\n    for i in lst:\n        if lst.count(i) >= i:\n            return i\n    return -1"
+    },
+    {
+      "task_id": "HumanEval/128",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpqefz1z5_.py\", line 14\n    if arr:\n           ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if arr:\n        return sum(abs(x) * prod(x) for x in arr)\n    else:\n        return None",
+      "gen_raw": "   if arr:\n        return sum(abs(x) * prod(x) for x in arr)\n    else:\n        return None"
+    },
+    {
+      "task_id": "HumanEval/125",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpdvk6qpy2.py\", line 12\n    if txt.count(' ') == 0:\n                           ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if txt.count(' ') == 0:\n        return txt.count(',')\n    else:\n        return txt.split()",
+      "gen_raw": "   if txt.count(' ') == 0:\n        return txt.count(',')\n    else:\n        return txt.split()\n"
+    },
+    {
+      "task_id": "HumanEval/99",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpfm0ut7i4.py\", line 60, in <module>\n    check(closest_integer)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpfm0ut7i4.py\", line ",
+      "completion_preview": "def closest_integer(value):\n    '''\n    Create a function that takes a value (string) representing a number\n    and returns the closest integer to it. If the number is equidistant\n    from two integers, round it away from zero.\n\n    Examples\n    >>> closest_integer(\"10\")\n    10\n    >>> closest_integer(\"15.3\")\n    15\n\n    Note:\n    Rounding away from zero means that if the given number is equidistant\n    from two integers, the one you should return is the one that is the\n    farthest from zero. For example closest_integer(\"14.5\") should\n    return 15 and closest_integer(\"-14.5\") should return -15.\n    '''\n    value = float(value)\n    if value == int(value):\n        return int(value)\n    else:\n        if value > 0:\n            return int(value)\n        else:\n            return int(value)",
+      "gen_raw": "def closest_integer(value):\n    '''\n    Create a function that takes a value (string) representing a number\n    and returns the closest integer to it. If the number is equidistant\n    from two integers, round it away from zero.\n\n    Examples\n    >>> closest_integer(\"10\")\n    10\n    >>> closest_integer(\"15.3\")\n    15\n\n    Note:\n    Rounding away from zero means that if the given number is equidistant\n    from two integers, the one you should return is the one that is the\n    farthest from zero. For example closest_integer(\"14.5\") should\n    return 15 and closest_integer(\"-14.5\") should return -15.\n    '''\n    value = float(value)\n    if value == int(value):\n        return int(value)\n    else:\n        if value > 0:\n            return int(value)\n        else:\n            return int(value)\n"
+    },
+    {
+      "task_id": "HumanEval/23",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmprw8lokgj.py\", line 10\n    return len(string)\n                      ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return len(string)",
+      "gen_raw": "   return len(string)"
+    },
+    {
+      "task_id": "HumanEval/71",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp9cpgqxcn.py\", line 13\n    if a + b > c and b + c > a and a + c > b:\n                                             ^\nIndentationError: unindent does not match a",
+      "completion_preview": "   if a + b > c and b + c > a and a + c > b:\n        return round(0.5 * a * b, 2)\n    else:\n        return -1",
+      "gen_raw": "   if a + b > c and b + c > a and a + c > b:\n        return round(0.5 * a * b, 2)\n    else:\n        return -1"
+    },
+    {
+      "task_id": "HumanEval/28",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp4lte52st.py\", line 11\n    return ''.join(strings)\n                           ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   return ''.join(strings)",
+      "gen_raw": "   return ''.join(strings)"
+    },
+    {
+      "task_id": "HumanEval/140",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpjfufvblh.py\", line 13\n    return text.replace(\" \", \"_\").replace(\"  \", \"-\")\n                                                    ^\nIndentationError: unindent do",
+      "completion_preview": "   return text.replace(\" \", \"_\").replace(\"  \", \"-\")",
+      "gen_raw": "   return text.replace(\" \", \"_\").replace(\"  \", \"-\")"
+    },
+    {
+      "task_id": "HumanEval/132",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpbf1keo80.py\", line 52, in <module>\n    check(is_nested)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpbf1keo80.py\", line 33, in",
+      "completion_preview": "def is_nested(string):\n    '''\n    Create a function that takes a string as input which contains only square brackets.\n    The function should return True if and only if there is a valid subsequence of brackets \n    where at least one bracket in the subsequence is nested.\n\n    is_nested('[[]]') \u279e True\n    is_nested('[]]]]]]][[[[[]') \u279e False\n    is_nested('[][]') \u279e False\n    is_nested('[]') \u279e False\n    is_nested('[[][]]') \u279e True\n    is_nested('[[]][[') \u279e True\n    '''\n    return any(is_nested(sub) for sub in string.split(']'))",
+      "gen_raw": "def is_nested(string):\n    '''\n    Create a function that takes a string as input which contains only square brackets.\n    The function should return True if and only if there is a valid subsequence of brackets \n    where at least one bracket in the subsequence is nested.\n\n    is_nested('[[]]') \u279e True\n    is_nested('[]]]]]]][[[[[]') \u279e False\n    is_nested('[][]') \u279e False\n    is_nested('[]') \u279e False\n    is_nested('[[][]]') \u279e True\n    is_nested('[[]][[') \u279e True\n    '''\n    return any(is_nested(sub) for sub in string.split(']'))"
+    },
+    {
+      "task_id": "HumanEval/108",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp0gs0qtjm.py\", line 41, in <module>\n    check(count_nums)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp0gs0qtjm.py\", line 28, i",
+      "completion_preview": "def count_nums(arr):\n    \"\"\"\n    Write a function count_nums which takes an array of integers and returns\n    the number of elements which has a sum of digits > 0.\n    If a number is negative, then its first signed digit will be negative:\n    e.g. -123 has signed digits -1, 2, and 3.\n    >>> count_nums([]) == 0\n    >>> count_nums([-1, 11, -11]) == 1\n    >>> count_nums([1, 1, 2]) == 3\n    \"\"\"\n    return sum(1 for num in arr if sum(abs(digit) for digit in str(num)) > 0)",
+      "gen_raw": "def count_nums(arr):\n    \"\"\"\n    Write a function count_nums which takes an array of integers and returns\n    the number of elements which has a sum of digits > 0.\n    If a number is negative, then its first signed digit will be negative:\n    e.g. -123 has signed digits -1, 2, and 3.\n    >>> count_nums([]) == 0\n    >>> count_nums([-1, 11, -11]) == 1\n    >>> count_nums([1, 1, 2]) == 3\n    \"\"\"\n    return sum(1 for num in arr if sum(abs(digit) for digit in str(num)) > 0)\n"
+    },
+    {
+      "task_id": "HumanEval/56",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp11cyb577.py\", line 52, in <module>\n    check(correct_bracketing)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp11cyb577.py\", li",
+      "completion_preview": "def correct_bracketing(brackets: str):\n    \"\"\" brackets is a string of \"<\" and \">\".\n    return True if every opening bracket has a corresponding closing bracket.\n\n    >>> correct_bracketing(\"<\")\n    False\n    >>> correct_bracketing(\"<>\")\n    True\n    >>> correct_bracketing(\"<<><>>\")\n    True\n    >>> correct_bracketing(\"><<>\")\n    False\n    \"\"\"\n    return brackets.count(\"<\") == brackets.count(\">\")",
+      "gen_raw": "def correct_bracketing(brackets: str):\n    \"\"\" brackets is a string of \"<\" and \">\".\n    return True if every opening bracket has a corresponding closing bracket.\n\n    >>> correct_bracketing(\"<\")\n    False\n    >>> correct_bracketing(\"<>\")\n    True\n    >>> correct_bracketing(\"<<><>>\")\n    True\n    >>> correct_bracketing(\"><<>\")\n    False\n    \"\"\"\n    return brackets.count(\"<\") == brackets.count(\">\")"
+    },
+    {
+      "task_id": "HumanEval/38",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpq7q60uil.py\", line 45, in <module>\n    check(decode_cyclic)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpq7q60uil.py\", line 41",
+      "completion_preview": "def encode_cyclic(s: str):\n    \"\"\"\n    returns encoded string by cycling groups of three characters.\n    \"\"\"\n    # split string to groups. Each of length 3.\n    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]\n    # cycle elements in each group. Unless group has fewer elements than 3.\n    groups = [(group[1:] + group[0]) if len(group) == 3 else group for group in groups]\n    return \"\".join(groups)",
+      "gen_raw": "def encode_cyclic(s: str):\n    \"\"\"\n    returns encoded string by cycling groups of three characters.\n    \"\"\"\n    # split string to groups. Each of length 3.\n    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]\n    # cycle elements in each group. Unless group has fewer elements than 3.\n    groups = [(group[1:] + group[0]) if len(group) == 3 else group for group in groups]\n    return \"\".join(groups)\n\n\ndef decode_cyclic(s: str):\n    \"\"\"\n    takes as input string encoded with encode_cyclic function. Returns decoded string.\n    \"\"\""
+    },
+    {
+      "task_id": "HumanEval/157",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp1q6pwz0q.py\", line 12\n    if a**2 + b**2 == c**2:\n                           ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   if a**2 + b**2 == c**2:\n        return True\n    else:\n        return False",
+      "gen_raw": "   if a**2 + b**2 == c**2:\n        return True\n    else:\n        return False"
+    },
+    {
+      "task_id": "HumanEval/68",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpx1py2jcp.py\", line 94, in <module>\n    check(pluck)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpx1py2jcp.py\", line 80, in che",
+      "completion_preview": "def pluck(arr):\n    \"\"\"\n    \"Given an array representing a branch of a tree that has non-negative integer nodes\n    your task is to pluck one of the nodes and return it.\n    The plucked node should be the node with the smallest even value.\n    If multiple nodes with the same smallest even value are found return the node that has smallest index.\n\n    The plucked node should be returned in a list, [ smalest_value, its index ],\n    If there are no even values or the given array is empty, return [].\n\n    Example 1:\n        Input: [4,2,3]\n        Output: [2, 1]\n        Explanation: 2 has the smallest even value, and 2 has the smallest index.\n\n    Example 2:\n        Input: [1,2,3]\n        Output: [2, 1]\n        Explanation: 2 has the smallest even value, and 2 has the smallest index. \n\n    Example 3:\n        Input: []\n        Output: []\n    \n    Example 4:\n        Input: [5, 0, 3, 0, 4, 2]\n        Output: [0, 1]\n        Explanation: 0 is the smallest value, but  there are two zeros,\n                     so we will choose the first zero, which has the smallest index.\n\n    Constraints:\n        * 1 <= nodes.length <= 10000\n        * 0 <= node.value\n    \"\"\"\n    if not arr:\n        return []\n    else:\n        arr.sort()\n        return [arr[0], arr.index(arr[0])]",
+      "gen_raw": "def pluck(arr):\n    \"\"\"\n    \"Given an array representing a branch of a tree that has non-negative integer nodes\n    your task is to pluck one of the nodes and return it.\n    The plucked node should be the node with the smallest even value.\n    If multiple nodes with the same smallest even value are found return the node that has smallest index.\n\n    The plucked node should be returned in a list, [ smalest_value, its index ],\n    If there are no even values or the given array is empty, return [].\n\n    Example 1:\n        Input: [4,2,3]\n        Output: [2, 1]\n        Explanation: 2 has the smallest even value, and 2 has the smallest index.\n\n    Example 2:\n        Input: [1,2,3]\n        Output: [2, 1]\n        Explanation: 2 has the smallest even value, and 2 has the smallest index. \n\n    Example 3:\n        Input: []\n        Output: []\n    \n    Example 4:\n        Input: [5, 0, 3, 0, 4, 2]\n        Output: [0, 1]\n        Explanation: 0 is the smallest value, but  there are two zeros,\n                     so we will choose the first zero, which has the smallest index.\n\n    Constraints:\n        * 1 <= nodes.length <= 10000\n        * 0 <= node.value\n    \"\"\"\n    if not arr:\n        return []\n    else:\n        arr.sort()\n        return [arr[0], arr.index(arr[0])]"
+    },
+    {
+      "task_id": "HumanEval/52",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpxnucjn26.py\", line 10\n    return all(x < t for x in l)\n                                ^\nIndentationError: unindent does not match any outer indentation level",
+      "completion_preview": "   return all(x < t for x in l)",
+      "gen_raw": "   return all(x < t for x in l)\n\n\n# Test\nprint(below_threshold([1, 2, 4, 10], 100))\nprint(below_threshold([1, 20, 4, 10], 5))"
+    },
+    {
+      "task_id": "HumanEval/79",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp9swqhg81.py\", line 14\n    return \"db\" + str(decimal) + \"db\"\n                                     ^\nIndentationError: unindent does not match any outer indenta",
+      "completion_preview": "   return \"db\" + str(decimal) + \"db\"",
+      "gen_raw": "   return \"db\" + str(decimal) + \"db\""
+    },
+    {
+      "task_id": "HumanEval/89",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp_rlx9mjo.py\", line 43, in <module>\n    check(encrypt)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp_rlx9mjo.py\", line 29, in c",
+      "completion_preview": "def encrypt(s):\n    \"\"\"Create a function encrypt that takes a string as an argument and\n    returns a string encrypted with the alphabet being rotated.\n    The alphabet should be rotated in a manner such that the letters \n    shift down by two multiplied to two places.\n    For example:\n    encrypt('hi') returns 'lm'\n    encrypt('asdfghjkl') returns 'ewhjklnop'\n    encrypt('gf') returns 'kj'\n    encrypt('et') returns 'ix'\n    \"\"\"\n    return s[2:] + s[:2]",
+      "gen_raw": "def encrypt(s):\n    \"\"\"Create a function encrypt that takes a string as an argument and\n    returns a string encrypted with the alphabet being rotated.\n    The alphabet should be rotated in a manner such that the letters \n    shift down by two multiplied to two places.\n    For example:\n    encrypt('hi') returns 'lm'\n    encrypt('asdfghjkl') returns 'ewhjklnop'\n    encrypt('gf') returns 'kj'\n    encrypt('et') returns 'ix'\n    \"\"\"\n    return s[2:] + s[:2]"
+    },
+    {
+      "task_id": "HumanEval/15",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpitwx4vph.py\", line 10\n    return ' '.join(str(i) for i in range(n + 1))\n                                                 ^\nIndentationError: unindent does not",
+      "completion_preview": "   return ' '.join(str(i) for i in range(n + 1))",
+      "gen_raw": "   return ' '.join(str(i) for i in range(n + 1))"
+    },
+    {
+      "task_id": "HumanEval/85",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpqwnouwe4.py\", line 9\n    return sum(lst[i] for i in range(len(lst)) if i % 2 == 1 and lst[i] % 2 == 0)\n                                                       ",
+      "completion_preview": "   return sum(lst[i] for i in range(len(lst)) if i % 2 == 1 and lst[i] % 2 == 0)",
+      "gen_raw": "   return sum(lst[i] for i in range(len(lst)) if i % 2 == 1 and lst[i] % 2 == 0)"
+    },
+    {
+      "task_id": "HumanEval/120",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp97v8p3r2.py\", line 27\n    arr.sort()\n              ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   arr.sort()\n    return arr[:k]",
+      "gen_raw": "   arr.sort()\n    return arr[:k]"
+    },
+    {
+      "task_id": "HumanEval/75",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp3too9et5.py\", line 38, in <module>\n    check(is_multiply_prime)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp3too9et5.py\", lin",
+      "completion_preview": "def is_multiply_prime(a):\n    \"\"\"Write a function that returns true if the given number is the multiplication of 3 prime numbers\n    and false otherwise.\n    Knowing that (a) is less then 100. \n    Example:\n    is_multiply_prime(30) == True\n    30 = 2 * 3 * 5\n    \"\"\"\n    if a < 100:\n        return a == 2 * 3 * 5\n    else:\n        return False",
+      "gen_raw": "def is_multiply_prime(a):\n    \"\"\"Write a function that returns true if the given number is the multiplication of 3 prime numbers\n    and false otherwise.\n    Knowing that (a) is less then 100. \n    Example:\n    is_multiply_prime(30) == True\n    30 = 2 * 3 * 5\n    \"\"\"\n    if a < 100:\n        return a == 2 * 3 * 5\n    else:\n        return False\n"
+    },
+    {
+      "task_id": "HumanEval/149",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp14cqjk_j.py\", line 49, in <module>\n    check(sorted_list_sum)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp14cqjk_j.py\", line ",
+      "completion_preview": "def sorted_list_sum(lst):\n    \"\"\"Write a function that accepts a list of strings as a parameter,\n    deletes the strings that have odd lengths from it,\n    and returns the resulted list with a sorted order,\n    The list is always a list of strings and never an array of numbers,\n    and it may contain duplicates.\n    The order of the list should be ascending by length of each word, and you\n    should return the list sorted by that rule.\n    If two words have the same length, sort the list alphabetically.\n    The function should return a list of strings in sorted order.\n    You may assume that all words will have the same length.\n    For example:\n    assert list_sort([\"aa\", \"a\", \"aaa\"]) => [\"aa\"]\n    assert list_sort([\"ab\", \"a\", \"aaa\", \"cd\"]) => [\"ab\", \"cd\"]\n    \"\"\"\n    return sorted(lst, key=len)",
+      "gen_raw": "def sorted_list_sum(lst):\n    \"\"\"Write a function that accepts a list of strings as a parameter,\n    deletes the strings that have odd lengths from it,\n    and returns the resulted list with a sorted order,\n    The list is always a list of strings and never an array of numbers,\n    and it may contain duplicates.\n    The order of the list should be ascending by length of each word, and you\n    should return the list sorted by that rule.\n    If two words have the same length, sort the list alphabetically.\n    The function should return a list of strings in sorted order.\n    You may assume that all words will have the same length.\n    For example:\n    assert list_sort([\"aa\", \"a\", \"aaa\"]) => [\"aa\"]\n    assert list_sort([\"ab\", \"a\", \"aaa\", \"cd\"]) => [\"ab\", \"cd\"]\n    \"\"\"\n    return sorted(lst, key=len)"
+    },
+    {
+      "task_id": "HumanEval/47",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpl5bhhrhd.py\", line 10\n    l.sort()\n            ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   l.sort()\n    return l[len(l)//2]",
+      "gen_raw": "   l.sort()\n    return l[len(l)//2]"
+    },
+    {
+      "task_id": "HumanEval/154",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmp3oode0yh.py\", line 12\n    return a.find(b) != -1 or a.find(b[::-1]) != -1 or a.find(b[::-2]) != -1 or a.find(b[::-3]) != -1\n                                  ",
+      "completion_preview": "   return a.find(b) != -1 or a.find(b[::-1]) != -1 or a.find(b[::-2]) != -1 or a.find(b[::-3]) != -1\n\n#####\n\ndef cycpattern_check(a , b):\n    \"\"\"You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word\n    cycpattern_check(\"abcd\",\"abd\") => False\n    cycpattern_check(\"hello\",\"ell\") => True\n    cycpattern_check(\"whassup\",\"psus\") => False\n    cycpattern_check(\"abab\",\"baa\") => True\n    cycpattern_check(\"efef\",\"eeff\") => False\n    cycpattern_check(\"himenss\",\"simen\") => True\n\n    \"\"\"\n    return a.find(b) != -1 or a.find(b[::-1]) != -1 or a.find(b[::-2]) != -1 or a.find(b[::-3]) != -1\n\n#####",
+      "gen_raw": "   return a.find(b) != -1 or a.find(b[::-1]) != -1 or a.find(b[::-2]) != -1 or a.find(b[::-3]) != -1\n\n#####\n\ndef cycpattern_check(a , b):\n    \"\"\"You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word\n    cycpattern_check(\"abcd\",\"abd\") => False\n    cycpattern_check(\"hello\",\"ell\") => True\n    cycpattern_check(\"whassup\",\"psus\") => False\n    cycpattern_check(\"abab\",\"baa\") => True\n    cycpattern_check(\"efef\",\"eeff\") => False\n    cycpattern_check(\"himenss\",\"simen\") => True\n\n    \"\"\"\n    return a.find(b) != -1 or a.find(b[::-1]) != -1 or a.find(b[::-2]) != -1 or a.find(b[::-3]) != -1\n\n#####"
+    },
+    {
+      "task_id": "HumanEval/86",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpqemmkt3t.py\", line 28\n    replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', ",
+      "completion_preview": "def anti_shuffle(s):\n    \"\"\"\n    Write a function that takes a string and returns an ordered version of it.\n    Ordered version of string, is a string where all words (separated by space)\n    are replaced by a new word where all the characters arranged in\n    ascending order based on ascii value.\n    Note: You should keep the order of words and blank spaces in the sentence.\n\n    For example:\n    anti_shuffle('Hi') returns 'Hi'\n    anti_shuffle('hello') returns 'ehllo'\n    anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'\n    \"\"\"\n    return s.replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ',",
+      "gen_raw": "def anti_shuffle(s):\n    \"\"\"\n    Write a function that takes a string and returns an ordered version of it.\n    Ordered version of string, is a string where all words (separated by space)\n    are replaced by a new word where all the characters arranged in\n    ascending order based on ascii value.\n    Note: You should keep the order of words and blank spaces in the sentence.\n\n    For example:\n    anti_shuffle('Hi') returns 'Hi'\n    anti_shuffle('hello') returns 'ehllo'\n    anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'\n    \"\"\"\n    return s.replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ',"
+    },
+    {
+      "task_id": "HumanEval/90",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmp_42yhws4.py\", line 45, in <module>\n    check(next_smallest)\n  File \"/var/tmp/pbs.12867.jiit-master/tmp_42yhws4.py\", line 35",
+      "completion_preview": "def next_smallest(lst):\n    \"\"\"\n    You are given a list of integers.\n    Write a function next_smallest() that returns the 2nd smallest element of the list.\n    Return None if there is no such element.\n    \n    next_smallest([1, 2, 3, 4, 5]) == 2\n    next_smallest([5, 1, 4, 3, 2]) == 2\n    next_smallest([]) == None\n    next_smallest([1, 1]) == None\n    \"\"\"\n    if len(lst) < 2:\n        return None\n    else:\n        return sorted(lst)[1]",
+      "gen_raw": "def next_smallest(lst):\n    \"\"\"\n    You are given a list of integers.\n    Write a function next_smallest() that returns the 2nd smallest element of the list.\n    Return None if there is no such element.\n    \n    next_smallest([1, 2, 3, 4, 5]) == 2\n    next_smallest([5, 1, 4, 3, 2]) == 2\n    next_smallest([]) == None\n    next_smallest([1, 1]) == None\n    \"\"\"\n    if len(lst) < 2:\n        return None\n    else:\n        return sorted(lst)[1]"
+    },
+    {
+      "task_id": "HumanEval/14",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpa5izo5al.py\", line 9\n    return [string[i:] for i in range(len(string))]\n                                                   ^\nIndentationError: unindent does ",
+      "completion_preview": "   return [string[i:] for i in range(len(string))]",
+      "gen_raw": "   return [string[i:] for i in range(len(string))]"
+    },
+    {
+      "task_id": "HumanEval/147",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12867.jiit-master/tmpjct6te9e.py\", line 41, in <module>\n    check(get_max_triples)\n  File \"/var/tmp/pbs.12867.jiit-master/tmpjct6te9e.py\", line ",
+      "completion_preview": "def get_max_triples(n):\n    \"\"\"\n    You are given a positive integer n. You have to create an integer array a of length n.\n        For each i (1 \u2264 i \u2264 n), the value of a[i] = i * i - i + 1.\n        Return the number of triples (a[i], a[j], a[k]) of a where i < j < k, \n    and a[i] + a[j] + a[k] is a multiple of 3.\n\n    Example :\n        Input: n = 5\n        Output: 1\n        Explanation: \n        a = [1, 3, 7, 13, 21]\n        The only valid triple is (1, 7, 13).\n    \"\"\"\n    a = [i * i - i + 1 for i in range(1, n + 1)]\n    return len([(i, j, k) for i, j, k in zip(a, a[1:], a[2:]) if i < j < k and (i + j + k) % 3 == 0])",
+      "gen_raw": "def get_max_triples(n):\n    \"\"\"\n    You are given a positive integer n. You have to create an integer array a of length n.\n        For each i (1 \u2264 i \u2264 n), the value of a[i] = i * i - i + 1.\n        Return the number of triples (a[i], a[j], a[k]) of a where i < j < k, \n    and a[i] + a[j] + a[k] is a multiple of 3.\n\n    Example :\n        Input: n = 5\n        Output: 1\n        Explanation: \n        a = [1, 3, 7, 13, 21]\n        The only valid triple is (1, 7, 13).\n    \"\"\"\n    a = [i * i - i + 1 for i in range(1, n + 1)]\n    return len([(i, j, k) for i, j, k in zip(a, a[1:], a[2:]) if i < j < k and (i + j + k) % 3 == 0])"
+    },
+    {
+      "task_id": "HumanEval/114",
+      "score": 0,
+      "err": "  File \"/var/tmp/pbs.12867.jiit-master/tmpuwkbndnw.py\", line 10\n    nums = [2, 3, 4, 1, 2, 4]\n                             ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "completion_preview": "   nums = [2, 3, 4, 1, 2, 4]\n    nums = [-1, -2, -3]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8",
+      "gen_raw": "   nums = [2, 3, 4, 1, 2, 4]\n    nums = [-1, -2, -3]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n    nums = [1, 2, 3, 4, 5, 6, 7, 8"
+    }
+  ],
+  "merge_diagnostics": null,
+  "env": {
+    "hf_home": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/cache/hf_home",
+    "cuda_visible_devices": "5",
+    "pbs_jobid": "12867.jiit-master",
+    "hostname": "jiit-gpu01"
+  }
+}

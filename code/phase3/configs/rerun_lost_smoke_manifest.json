@@ -1,0 +1,14 @@
+[
+ {
+  "name": "llama31_8b__rds_l0__seed2",
+  "cmd": "python code/phase3/eval/run_eval_cell.py --config code/phase3/configs/eval_ridge_shared/llama31_8b__rds_l0__seed2.yaml",
+  "done": "results/phase3/eval_ridge_shared/llama31_8b__rds_l0__seed2.json",
+  "min_free_gb": 30.0
+ },
+ {
+  "name": "llama31_8b__l0_humaneval__indep1",
+  "cmd": "python code/phase3/eval/run_downstream_cell.py --config code/phase3/configs/eval_downstream_cond/llama31_8b__l0_humaneval__indep1.yaml",
+  "done": "results/phase3/eval_downstream_cond/llama31_8b__l0_humaneval__indep1.json",
+  "min_free_gb": 30.0
+ }
+]
