@@ -89,16 +89,13 @@ every explanation we tested. The solver failures on public cohorts are in the
 same position.
 
 \paragraph{Relation to our earlier preprint.} Our earlier
-preprint~\citep{pathak2026rd} reported that our closed-form encoder had the
-lowest worst-task loss of ten methods on all four bases. That advantage came
-from the shared initialisation of its cohorts. In the registered comparison on
-independent cohorts, the encoder beats the best baseline on one base, ties on
-one and loses on two. It beats the best baseline on none once the inference
-path is matched and the untrained translation adapter is set aside. The
-preprint also reported that worst-task NLL tracks the downstream ranking of
-methods. With five or six methods that correlation cannot be measured
-reliably, and on HumanEval its sign is wrong. This is why every accuracy claim
-in this paper is measured in accuracy.
+preprint~\citep{pathak2026rd} reported that our encoder had the lowest
+worst-task loss of ten methods, and that worst-task NLL tracks the downstream
+ranking of methods; we withdraw both. The encoder's advantage came from the
+shared initialisation of its cohorts (on independent cohorts it beats the best
+baseline on one base of four), and the correlation cannot be measured reliably
+with five or six methods, which is why every accuracy claim here is measured in
+accuracy.
 
 \paragraph{Limitations.} The controlled experiments use four base models of 7
 to 9 billion parameters and four tasks. One adapter did not train properly.

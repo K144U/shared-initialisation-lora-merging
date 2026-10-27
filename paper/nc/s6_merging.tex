@@ -289,9 +289,7 @@ directly, with an optional ridge on the range of $\bar H$, so it inverts the
 collapsed operator itself. Without a ridge it is $2.5$ to $66$ times worse on
 the shared arm (three cohorts per arm, every base past the gate). On Mistral
 its merged model scores $0.000$ on both benchmarks, and a tuned ridge brings
-this up to $0.46$ on GSM8K and $0.23$ on HumanEval. We re-ran these cells in
-October 2026 because their files had been lost, and
-Appendix~\ref{app:prereg} compares the two runs. The effect survives with
+this up to $0.46$ on GSM8K and $0.23$ on HumanEval. The effect survives with
 rank truncation disabled, where the ratio grows to $25$ to $117$. Truncating
 to rank $r$ discards most of the ill-conditioned subspace and so hides part of
 the damage. For both solvers, the amount of ridge needed does not track the
