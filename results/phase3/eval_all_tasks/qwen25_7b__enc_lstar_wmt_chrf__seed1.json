@@ -1,0 +1,3137 @@
+{
+  "meta": {
+    "git_sha": "unknown",
+    "hostname": "jiit-gpu01",
+    "cuda_visible_devices": "3",
+    "pbs_jobid": "12073.jiit-master",
+    "wallclock_iso": "2026-10-22T21:15:00+0200",
+    "wallclock_unix": 1792696500.3766723,
+    "config_hash": "05ec2308a3ec5f7e",
+    "config": {
+      "base_model": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/models/Qwen2.5-7B-Instruct",
+      "method": "rd_encoder",
+      "method_kwargs": {
+        "bits": 32,
+        "seed": 20260611,
+        "realize": "rank_r",
+        "ridge_lambda": 0.13
+      },
+      "max_seq_length": 1024,
+      "seed": 20260518,
+      "min_free_gb": 25,
+      "adapter_specs": [
+        {
+          "name": "gsm8k",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/qwen25_7b/gsm8k/seed1",
+          "task_cfg": {
+            "name": "gsm8k",
+            "dataset": "openai/gsm8k",
+            "config": "main",
+            "split_train": "train",
+            "split_eval": "test",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "question",
+            "answer_field": "answer"
+          }
+        },
+        {
+          "name": "alpaca",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/qwen25_7b/alpaca/seed1",
+          "task_cfg": {
+            "name": "alpaca",
+            "dataset": "yahma/alpaca-cleaned",
+            "config": null,
+            "split_train": "train",
+            "split_eval": "train",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "instruction",
+            "answer_field": "output"
+          }
+        },
+        {
+          "name": "magicoder",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/qwen25_7b/magicoder/seed1",
+          "task_cfg": {
+            "name": "magicoder",
+            "dataset": "ise-uiuc/Magicoder-OSS-Instruct-75K",
+            "config": null,
+            "split_train": "train",
+            "split_eval": "train",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "problem",
+            "answer_field": "solution"
+          }
+        },
+        {
+          "name": "translation",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/qwen25_7b/flores/seed1",
+          "task_cfg": {
+            "name": "translation",
+            "dataset": "wmt/wmt19",
+            "config": "de-en",
+            "split_train": "train",
+            "split_eval": "validation",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "src_lang": "en",
+            "tgt_lang": "de",
+            "streaming": true
+          }
+        }
+      ],
+      "loader": "plain",
+      "metric": "wmt_chrf",
+      "n_eval_metric": 500,
+      "metric_task_spec": "translation",
+      "metric_kwargs": {
+        "n": 500,
+        "seed": 0,
+        "max_new_tokens": 256
+      },
+      "output_path": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/results/phase3/eval_all_tasks/qwen25_7b__enc_lstar_wmt_chrf__seed1.json"
+    }
+  },
+  "method": "rd_encoder",
+  "method_kwargs": {
+    "bits": 32,
+    "c": 5.0,
+    "seed": 20260611,
+    "realize": "rank_r",
+    "ridge_lambda": 0.13,
+    "_merge_cache_key": null
+  },
+  "weights": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+  ],
+  "base_model": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/models/Qwen2.5-7B-Instruct",
+  "adapter_dirs": [
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/qwen25_7b/gsm8k/seed1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/qwen25_7b/alpaca/seed1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/qwen25_7b/magicoder/seed1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/qwen25_7b/flores/seed1"
+  ],
+  "metric": "wmt_chrf",
+  "metric_kwargs": {
+    "n": 500,
+    "seed": 0,
+    "max_new_tokens": 256
+  },
+  "metric_task": "translation",
+  "metric_score": 56.4835285536706,
+  "n_eval_metric": 500,
+  "per_example": [
+    {
+      "index": 2943,
+      "hyp": "Es gibt daher auch keinen Grund, seinen guten Namen mit diesem absto\u00dfenden Verbrechen in Verbindung zu bringen, wie es leider in einigen F\u00e4llen der Fall war.",
+      "ref": "Daher besteht auch kein Grund, seinen guten Namen mit diesen widerw\u00e4rtigen Verbrechen in Verbindung zu bringen, wie es leider in einigen F\u00e4llen geschah.",
+      "chrf": 75.47758393471456
+    },
+    {
+      "index": 247,
+      "hyp": "Wenn Bardina Degei Abendessen kocht, benutzt sie keinen Herd.",
+      "ref": "Wenn Bardina Degei das Abendessen kocht, benutzt sie keinen Herd.",
+      "chrf": 90.62320445300254
+    },
+    {
+      "index": 1850,
+      "hyp": "Er gab zu, dass er Angst hatte.",
+      "ref": "Er gab freiwillig zu, dass er Angst hatte.",
+      "chrf": 65.15441317938199
+    },
+    {
+      "index": 824,
+      "hyp": "Sie befanden sich in getrennten R\u00e4umen im B\u00fcro von ESPN in Los Angeles, bis Garcia, der unbesiegte Weltmeister im Leichtgewicht der WBC, den Weltmeister der WBO im Superfliegengewicht Lomachenko begr\u00fc\u00dfte.",
+      "ref": "Sie waren in separaten R\u00e4umen in ESPN-B\u00fcros in Los Angeles, bis Garcia, der ungeschlagene World Boxing Council Leichtgewicht-Champion, den Flur hinunter ging, um Lomachenko, den World Boxing Organisation Super-Federgewicht-Champion zu begr\u00fc\u00dfen.",
+      "chrf": 41.2561620499521
+    },
+    {
+      "index": 2011,
+      "hyp": "Wer viel mit dem Zug unterwegs ist, wei\u00df, dass neben Versp\u00e4tungen und dem Verfehlen des Zuges die Kontrollen eines der gr\u00f6\u00dften \u00c4rgernisse sind.",
+      "ref": "Wer oft Bahn f\u00e4hrt, wei\u00df, dass neben Versp\u00e4tungen und verpassten Z\u00fcgen die Fahrkartenkontrollen zu den gr\u00f6\u00dften \u00c4rgernissen geh\u00f6ren.",
+      "chrf": 50.740679457354844
+    },
+    {
+      "index": 712,
+      "hyp": "Und sie hatten keine Angst vor Kontakten?",
+      "ref": "Und Sie hatten keine Ber\u00fchrungs\u00e4ngste?",
+      "chrf": 43.87494215864162
+    },
+    {
+      "index": 1869,
+      "hyp": "In der Riodoce-Raum, wo die Mitarbeiter f\u00fcr Sicherheitsausbildung zusammenkommen, wurde pl\u00f6tzlich das Verbot von Handys verh\u00e4ngt; vor einigen Tagen wurde bekannt, dass das von Regierungen ausschlie\u00dflich gekauften Spionagesofortprogramm, das Journalisten und Aktivisten in Mexiko \u00fcberwacht hat, verwendet worden ist.",
+      "ref": "In dem Raum, in dem sich die Mitarbeiter von Riodoce zum Sicherheitstraining trafen, waren pl\u00f6tzlich keine Handys erlaubt. Tage zuvor wurde bekannt, dass Spyware, die ausschlie\u00dflich an Regierungen verkauft wird, zur \u00dcberwachung von Journalisten und Aktivisten in Mexiko verwendet wurde.",
+      "chrf": 57.0862920484835
+    },
+    {
+      "index": 561,
+      "hyp": "Da es Urlaub war, befand sich nur wenige Personen im Geb\u00e4ude der Minnehaha Academy.",
+      "ref": "Zur Ferienzeit hielten sich nur wenige Menschen in dem Geb\u00e4ude der Minnehaha Academy auf.",
+      "chrf": 53.47077073777131
+    },
+    {
+      "index": 594,
+      "hyp": "Brooks sagte, dass es in der Stadt geredet wurde, Hester habe mit Malcoms Frau, Dorothy, geschlafen und dass das Kind, das sie trug, nicht von ihrem Mann sei.",
+      "ref": "Brooks sagte, das Ger\u00fccht in der Stadt sei gewesen, dass Hester mit Malcoms Frau Dorothy geschlafen habe und dass das Baby, das sie trug, nicht von ihrem Mann stammte.",
+      "chrf": 65.42397840402533
+    },
+    {
+      "index": 1551,
+      "hyp": "Vor kurzem hat das Kreistag abgesehen von den Ferien 41 neue Stellen im Verwaltungsbereich genehmigt.",
+      "ref": "Erst kurz vor der Sommerpause hat der Kreistag 41 neue Stellen in der Verwaltung durchgewinkt.",
+      "chrf": 43.93574200103135
+    },
+    {
+      "index": 1290,
+      "hyp": "Die Patienten werden ab September Zugang zu einer \"transformativen\" HIV-Pr\u00e4ventionsbehandlung haben, nachdem ein Gerichtsstreit \u00fcber die Finanzierung des Medikaments auf dem NHS entschieden wurde.",
+      "ref": "Patienten werden ab September nach einem Kampf vor dem High Court gegen die Finanzierung des Medikaments im NHS Zugang zu einer \"transformativen\" HIV-Pr\u00e4ventionsbehandlung erhalten.",
+      "chrf": 71.08436543323539
+    },
+    {
+      "index": 2200,
+      "hyp": "Ab sofort d\u00fcrfen nur Eier geliefert werden, die nachweislich negativ auf Fipronil getestet wurden.",
+      "ref": "Ab sofort d\u00fcrften nur noch Eier an Aldi geliefert werden, die nachweislich negativ auf fipronilhaltiges Anti-L\u00e4usemittel getestet worden seien.",
+      "chrf": 57.791173423737675
+    },
+    {
+      "index": 680,
+      "hyp": "Max Menge ist als ehrenamtlicher Mitarbeiter t\u00e4tig.",
+      "ref": "Max Menge arbeitet als Freiwilliger",
+      "chrf": 43.51335186410782
+    },
+    {
+      "index": 1161,
+      "hyp": "Gem\u00e4\u00df den jetzigen Pl\u00e4nen wird die Fluggesellschaft im ersten Halbjahr 2018 einen neuen Vertrag abschlie\u00dfen.",
+      "ref": "Gem\u00e4ss aktueller Planung werde die Airline im ersten Halbjahr 2018 einen neuen Vertrag abschliessen.",
+      "chrf": 60.077204145809525
+    },
+    {
+      "index": 1994,
+      "hyp": "Die Versuchsbetriebe laufen derzeit auf zwei Linien.",
+      "ref": "Derzeit l\u00e4uft ein Testbetrieb auf zwei Strecken.",
+      "chrf": 38.37739972580001
+    },
+    {
+      "index": 2523,
+      "hyp": "Einer der Gewinner weigert sich, an der Zeremonie teilzunehmen - aus Protest.",
+      "ref": "Einer der Preistr\u00e4ger will nicht kommen - aus Protest.",
+      "chrf": 48.46245567507277
+    },
+    {
+      "index": 2718,
+      "hyp": "Der Milit\u00e4rdienstleiter des Wei\u00dfen Hauses hatte die Anwesenheit der Hubschrauber im Fragmentarischen Befehl, oder FRAGO, nur wenige Stunden vor dem Landeanflug auf dem S\u00fcdgel\u00e4nde f\u00fcr den \"au\u00dfergew\u00f6hnlichen\" Termin angefordert, laut den Aufzeichnungen der Marine-Hubschrauberschwadron Eins (HMX-1), die f\u00fcr die Betriebsf\u00fchrung der Hubschrauber verantwortlich ist.",
+      "ref": "Das Milit\u00e4rb\u00fcro des Wei\u00dfen Hauses verlangte die Anwesenheit des Hubschraubers in einer fragmentarischen Ordnung oder FRAGO, kaum 36 Stunden bevor der Hubschrauber auf dem South Lawn landete, nach den Aufzeichnungen des Marine Helicopter Squadron One (HMX-1), der Einheit, die f\u00fcr den Betrieb des Hubschraubers verantwortlich ist.",
+      "chrf": 59.80095286878371
+    },
+    {
+      "index": 695,
+      "hyp": "Und war es so?",
+      "ref": "Und war es so?",
+      "chrf": 100.0
+    },
+    {
+      "index": 605,
+      "hyp": "Es ist schwer zu sehen und noch schwerer, den Blick abzuwenden, aber Greene meinte, das sei der Punkt.",
+      "ref": "Es ist schwer zuzuschauen, und noch schwieriger wegzuschauen, aber Greene sagte, dass das der Punkt ist.",
+      "chrf": 51.22119924369362
+    },
+    {
+      "index": 1943,
+      "hyp": "Obwohl die Umkehrfarbierung h\u00e4ufig ist, ist der Fund \u00fcberraschend, da das Gewicht von Borealopelta viel gr\u00f6\u00dfer ist als das von heute lebenden Tieren mit Umkehrfarbierung.",
+      "ref": "Obwohl die Konterschattierung \u00fcblich ist, sind die Ergebnisse \u00fcberraschend, da die Gr\u00f6\u00dfe von Borealopelta bei weitem die der heute lebenden Tiere \u00fcbersteigt.",
+      "chrf": 47.871011898577024
+    },
+    {
+      "index": 1482,
+      "hyp": "Die Sender CNN berichteten, dass das Komitee bereits erste Verh\u00f6re anordnete, die mit einem Treffen zwischen dem \u00e4ltesten Sohn von Donald Trump und einer russischen Anw\u00e4ltin zusammenh\u00e4ngen.",
+      "ref": "Der Sender CNN berichtete, es gebe bereits erste Vorladungen des Gremiums im Zusammenhang mit einem Treffen zwischen Trumps \u00e4ltestem Sohn und einer russischen Anw\u00e4ltin.",
+      "chrf": 64.73754357706686
+    },
+    {
+      "index": 818,
+      "hyp": "Die gesamte Strecke des Planetenweges betr\u00e4gt etwa vier Kilometer.",
+      "ref": "Die gesamte Distanz des Planetenweges betr\u00e4gt gut vier Kilometer.",
+      "chrf": 72.8637739878909
+    },
+    {
+      "index": 1610,
+      "hyp": "Nach 173 Kilometern und fast 4500 Metern in der H\u00f6he hatte die Gruppe den Pf\u00e4lzerwald von seiner besten Seite kennengelernt \u2013 sportlich und kulturell.",
+      "ref": "Nach 173 Kilometern und fast 4500 H\u00f6henmetern hatte die Gruppe den Pf\u00e4lzer Wald von seiner besten Seite - sportlich und kulturell - kennengelernt.",
+      "chrf": 82.59557467900243
+    },
+    {
+      "index": 611,
+      "hyp": "\"Es macht mich sauer, dass ich nicht die bin, die ich sein sollte\", sagte Marbaugh.",
+      "ref": "\"Ich f\u00fchle mich schmutzig, weil ich nicht so bin\", sagte Marbaugh.",
+      "chrf": 45.800689842713126
+    },
+    {
+      "index": 20,
+      "hyp": "Die Stadt hat sich in alle Richtungen ausgedehnt und verschmolzen.",
+      "ref": "Die Stadt hat sich in alle Richtungen ausgedehnt und ist zusammengewachsen.",
+      "chrf": 71.55824377524054
+    },
+    {
+      "index": 557,
+      "hyp": "Eine Person starb, als die Schule zusammenbrach, w\u00e4hrend der Explosion.",
+      "ref": "Ein Mensch starb, als ein Teil eines Schulgeb\u00e4udes bei der Explosion einst\u00fcrzte.",
+      "chrf": 36.66184050072226
+    },
+    {
+      "index": 1730,
+      "hyp": "Das Ministerium hofft, dass die Planungsverfahren dieses Jahr bereits abgeschlossen sind und die Baurechte bis 2021 g\u00fcltig bleiben.",
+      "ref": "Noch in diesem Jahr hofft das Ministerium auf ein Planfeststellungsverfahren, bis 2021 soll das Baurecht stehen.",
+      "chrf": 47.97527670044483
+    },
+    {
+      "index": 2240,
+      "hyp": "Die Mitarbeiter m\u00f6chten sich als akzeptiert und gesch\u00e4tzt f\u00fchlen und glauben, dass sie ihre Zeit an einer positiven Firma investieren.",
+      "ref": "Die Mitarbeiter wollen das Gef\u00fchl haben, dass Sie akzeptiert und gesch\u00e4tzt werden und dass Sie Ihre Zeit einem Unternehmen mit einer positiven Mission geben.",
+      "chrf": 50.80843456656443
+    },
+    {
+      "index": 2323,
+      "hyp": "Die Stadt Bad Honnef hat mit dem Umbau der 301-j\u00e4hrigen Lady Chapel in Rh\u00f6ndorf ihren Kampagnen zur Einf\u00fchrung eines neuen Umbrellas (Donnerstag's Rundschau) einen Ansto\u00df gegeben.",
+      "ref": "Mit der Verh\u00fcllung der 301 Jahre alten Marienkapelle in Rh\u00f6ndorf hat die Stadt Bad Honnef am Freitag ihre Kampagne zur Einf\u00fchrung einer neuen Dachmarke (Rundschau von Donnerstag) gestartet.",
+      "chrf": 47.61824522896184
+    },
+    {
+      "index": 1896,
+      "hyp": "\"Sie sterben in Mexiko, weil man Sie zum Schweigen bringen will, \" sagte Ramirez.",
+      "ref": "\"In Mexiko stirbst du, weil sie m\u00f6chten, dass du den Mund h\u00e4ltst\", sagte Ramirez.",
+      "chrf": 33.419903364893486
+    },
+    {
+      "index": 2095,
+      "hyp": "Wenn die Bauarbeiten beginnen, ist das Thema dann f\u00fcr mich abgeschlossen.",
+      "ref": "Mit Beginn der Bauarbeiten wird damit Schluss sein.",
+      "chrf": 34.94735696192992
+    },
+    {
+      "index": 615,
+      "hyp": "\"Verschwinde von meinem Grundst\u00fcck, du Neger!\"",
+      "ref": "\"Ich sagte, n --- er, verschwinde von meinem Eigentum!\"",
+      "chrf": 43.856716791838686
+    },
+    {
+      "index": 1082,
+      "hyp": "\"Es ist ein Skandal, dass die CDU in Niedersachsen mit diesem schmutzigen Spiel mitmacht und versucht, politische Punkte davon abzuholen. \"",
+      "ref": "\"Es ist ein Skandal, dass die CDU in Niedersachsen dieses schmutzige Intrigenspiel mitmacht und versucht, daraus politisches Kapital zu schlagen\".",
+      "chrf": 67.12228664229639
+    },
+    {
+      "index": 1528,
+      "hyp": "Dadurch w\u00e4chst es immer weiter in den Ozean hinein und bricht regelm\u00e4\u00dfig ab.",
+      "ref": "Es w\u00e4chst somit immer weiter ins Meer und bricht regelm\u00e4\u00dfig ab.",
+      "chrf": 64.82869694477633
+    },
+    {
+      "index": 2695,
+      "hyp": "Pietzschmann w\u00fcrde selbst noch einmal nach Empfingen kommen und sich die Lage vornehmen, versprach er.",
+      "ref": "Pietzschmann werde selbst nochmals nach Empfingen kommen und sich ein Bild von der Lage machen, versprach sie.",
+      "chrf": 68.20522563241134
+    },
+    {
+      "index": 1211,
+      "hyp": "Am Mittwochmorgen wurden in der Region Schwarzwald-Baar zahlreiche Wohnungen in Rottweil, Konstanz, Esslingen und Stuttgart durchsucht, so meldete das Staatsanwaltsamt Konstanz am Freitag.",
+      "ref": "Am Mittwochmorgen wurden im Schwarzwald-Baar-Kreis, in Rottweil, Konstanz, Esslingen und Stuttgart zahlreiche Objekte durchsucht, wie die Staatsanwaltschaft Konstanz am Freitag mitteilte.",
+      "chrf": 71.62229573674915
+    },
+    {
+      "index": 2098,
+      "hyp": "Haupts\u00e4chlich Eier, aber auch immer mit gro\u00dfem Vergn\u00fcgen die k\u00f6stlichen Kuchen unserer Landfrauen.",
+      "ref": "Haupts\u00e4chlich unsere Eier, aber auch die k\u00f6stlichen Kuchen der Landfrauen immer wieder sehr gerne.",
+      "chrf": 66.41538068414759
+    },
+    {
+      "index": 97,
+      "hyp": "Jetzt zielt das Wei\u00dfe Haus von Donald Trump auf die Statue der Freiheit.",
+      "ref": "Jetzt nimmt sich das Wei\u00dfe Haus von Trump die Freiheitsstatue vor",
+      "chrf": 50.49751595043471
+    },
+    {
+      "index": 2450,
+      "hyp": "Letztj\u00e4hrig wurde er wegen Schnittwunden an den Handgelenken ins Krankenhaus gebracht, die die Gef\u00e4ngnisbeh\u00f6rden auf einen Sturz in seiner Zelle zur\u00fcckf\u00fchrten.",
+      "ref": "Im vergangenen Jahr wurde er wegen der Behandlung von Schnitten an seinen Handgelenken ins Krankenhaus gebracht, die er den Gef\u00e4ngnisbeh\u00f6rden zufolge nach einem Fall in seiner Zelle erlitt.",
+      "chrf": 57.000908582137434
+    },
+    {
+      "index": 974,
+      "hyp": "Jetzt schaue ich zur\u00fcck und denke: \"M\u00e4dchen, du bist stolz auf dich! \"",
+      "ref": "Nun schau ich zur\u00fcck und denke mir: 'M\u00e4dchen, sei stolz auf dich!'.\"",
+      "chrf": 62.64070611599571
+    },
+    {
+      "index": 2272,
+      "hyp": "Die UCLA wird ihre Trainingspl\u00e4tze nach dem Camp schlie\u00dfen m\u00fcssen, was nicht einfach sein wird, da die Trainingspl\u00e4tze von einem Parkplatz aus gut zu sehen sind und sich direkt neben dem Luskin Center befinden, einem Luxushotel, das bereits mit Fu\u00dfballen bombardiert wurde, die \u00fcber eine Schutzwand hinter dem Tor hinweggeflogen sind.",
+      "ref": "Die UCLA wird ihre Praktiken beenden, sobald das Camp beendet ist, was angesichts der klaren Sichtlinien seiner Felder von einem angrenzenden Parkplatz und dem angrenzenden Luskin Center, einem Hotel der gehobenen Klasse, das bereits mit Fu\u00dfb\u00e4llen beworfen wurde, die ein Schutznetz hinter einem Torpfosten r\u00e4umten, keine leichte Aufgabe sein wird.",
+      "chrf": 41.71750760975929
+    },
+    {
+      "index": 1910,
+      "hyp": "\"Mexiko geht in den Abgrund, und deshalb bin ich Journalist geworden, \" sagte er.",
+      "ref": "\"Mexiko geht zur H\u00f6lle, und deshalb wurde ich Reporter\", sagte er.",
+      "chrf": 47.478048986761536
+    },
+    {
+      "index": 1908,
+      "hyp": "F\u00fcr diejenigen, die bleiben und weiter arbeiten, ist es ein t\u00e4glicher Tanz mit hohen Risikoschritten.",
+      "ref": "F\u00fcr diejenigen, die zur\u00fcckbleiben und die Arbeit fortsetzen, ist es ein t\u00e4glicher Tanz mit risikoreichen Entscheidungen.",
+      "chrf": 56.893248933082404
+    },
+    {
+      "index": 1053,
+      "hyp": "Vorher hatte die \u00fcberraschende R\u00fccktrittserkl\u00e4rung einer Vertreterin der Gr\u00fcnen von ihrer Landesparlamentsfraktion in Niedersachsen den Regierungschef Stephan Weil (SPD) in eine schwere Krise gest\u00fcrzt.",
+      "ref": "Zuvor hatte der \u00fcberraschende Austritt einer Gr\u00fcnen-Abgeordneten aus ihrer Landtagsfraktion in Niedersachsen die Regierung von Ministerpr\u00e4sident Stephan Weil (SPD) in eine schwere Krise gest\u00fcrzt.",
+      "chrf": 64.9771624837679
+    },
+    {
+      "index": 2260,
+      "hyp": "Einige haben ihre Jersey-Tops abgezogen und zeigen die von der ersten Trainingswoche verschwitzten R\u00fccken.",
+      "ref": "Einige haben ihre Trikotoberteile ausgezogen und zeigen den R\u00fccken voller Schwei\u00df vom ersten Tag des Trainingslagers.",
+      "chrf": 51.063439618787875
+    },
+    {
+      "index": 209,
+      "hyp": "Die Spieler werden dieses Parcours in seiner besten Form sehen, es ist in fantastischem Zustand.",
+      "ref": "\"Die Spieler werden diesen Kurs von seiner besten Seite sehen, er ist in einem tollen Zustand.",
+      "chrf": 57.60404196204445
+    },
+    {
+      "index": 310,
+      "hyp": "\"Er war tot... Ich habe ihn gek\u00fcsst.\"",
+      "ref": "\"Ich sah, dass er tot war ... Ich habe ihn gek\u00fcsst.\"",
+      "chrf": 59.45406847077464
+    },
+    {
+      "index": 2748,
+      "hyp": "Nach einem 2015 von der RAND Corporation ver\u00f6ffentlichten Studie umfasst die Reimbursement-Rate des DoD weder den Personalkostenanteil noch den Kostenanteil f\u00fcr Benzin, Wartung und Vertragsleistungen.",
+      "ref": "Laut einer RAND-Studie aus dem Jahr 2015 enthalten die Erstattungss\u00e4tze f\u00fcr DoD nicht die Personalkosten, sondern ber\u00fccksichtigen die Kosten f\u00fcr Treibstoff, Wartung und Vertragsabschluss.",
+      "chrf": 39.629126172046384
+    },
+    {
+      "index": 1035,
+      "hyp": "Im Jahr 2016 trat er in den Ruhestand und legte auch sein Titel als \"Prinzgatte\" nieder.",
+      "ref": "2016 ging er in den Ruhestand und legt dabei auch den Titel \"Prinzgemahl\" ab.",
+      "chrf": 54.811445813567175
+    },
+    {
+      "index": 423,
+      "hyp": "Im letzten Monat hatte Musk diese mehr als 500.000 Vorbestellungen h\u00e4ufig genutzt, um das neue Auto zu bewerben, dessen Vertrieb erst jetzt beginnt.",
+      "ref": "Musk hatte in den vergangenen Monaten h\u00e4ufig mit den mehr als 500.000 Vorbestellungen f\u00fcr das neue Auto geworben, dessen Auslieferung gerade beginnt.",
+      "chrf": 55.07570117255249
+    },
+    {
+      "index": 713,
+      "hyp": "Menge: Ich bin kein Mann f\u00fcr so etwas.",
+      "ref": "Menge: Daf\u00fcr bin ich nicht der Typ.",
+      "chrf": 24.745432580033384
+    },
+    {
+      "index": 2285,
+      "hyp": "Die Frage ist auch in Europa ein gro\u00dfes politisches Thema geworden: Die franz\u00f6sischen W\u00e4hler wurden vor der Pr\u00e4sidentschaftswahl im Mai mit falschen Nachrichten \u00fcberschwemmt, und Deutschland hat einen Plan unterst\u00fctzt, nach dem sozialen Netzwerken Geld zu verh\u00e4ngen, wenn sie nicht schnell genug sch\u00e4dliche Beitr\u00e4ge entfernen, bevor die Wahl im September stattfindet.",
+      "ref": "Das Problem ist auch in Europa zu einem gro\u00dfen politischen Thema geworden, wobei die franz\u00f6sischen W\u00e4hler im Vorfeld der Pr\u00e4sidentschaftswahlen im Mai mit falschen Geschichten \u00fcberflutet wurden, und Deutschland unterst\u00fctzt einen Plan, nach dem soziale Medien-Netzwerke bestraft werden sollen, wenn es ihnen nicht gelingt, hasserf\u00fcllte Postings wie vor den Wahlen dort im September schnell zu beseitigen.",
+      "chrf": 57.38260475957
+    },
+    {
+      "index": 469,
+      "hyp": "Walter Martini betont: \"Es ist ein einzigartiges l\u00e4ndliches Juwel. \"",
+      "ref": "Walter Martini betont: \"Es ist ein einzigartiges d\u00f6rfliches Kleinod\".",
+      "chrf": 75.55148146737297
+    },
+    {
+      "index": 2222,
+      "hyp": "\"Die \u00f6ffentliche Meinung hat die Regulierer \u00fcbernommen\", sagte Patrick Quinlan, der Gr\u00fcnder und Gesch\u00e4ftsf\u00fchrer von Convercent.",
+      "ref": "\"Das Gericht der \u00f6ffentlichen Meinung hat die Regulatoren erfasst\", sagte Patrick Quinlan, der Gr\u00fcnder und Gesch\u00e4ftsf\u00fchrer von Convercent.",
+      "chrf": 75.87991866007533
+    },
+    {
+      "index": 461,
+      "hyp": "Die Gesundheitsforscher und Umweltsch\u00fctzer freuten sich \u00fcber Pruitts \u00fcberraschendes Umdenken.",
+      "ref": "Vertreter des \u00f6ffentlichen Gesundheitswesens und der Umweltsch\u00fctzer jubelten \u00fcber Pruitts \u00fcberraschenden Kurswechsel.",
+      "chrf": 50.37966111228398
+    },
+    {
+      "index": 722,
+      "hyp": "Angriff auf ein NATO-Kabul-Fahrzeug: Soldat get\u00f6tet durch Selbstmordexplosion",
+      "ref": "Konvoi-Angriff von Kabul: Nato-Soldat bei Selbstmordanschlag get\u00f6tet",
+      "chrf": 41.9782946085701
+    },
+    {
+      "index": 911,
+      "hyp": "Wie die anderen beiden Br\u00fccken ist sie auch schon alt geworden.",
+      "ref": "Wie die beiden anderen Br\u00fccken auch, ist sie mittlerweile in die Jahre gekommen.",
+      "chrf": 40.779703571401996
+    },
+    {
+      "index": 2625,
+      "hyp": "Seitdem beobachten die Mitarbeiter des Willy-Brandt-Hauses die Ereignisse in den von der SPD regierten Landeshauptst\u00e4dten mit wachsendem Entsetzen.",
+      "ref": "Seither beobachten die Mitarbeiter aus dem Willy-Brandt-Haus mit wachsendem Entsetzen die Ereignisse in den SPD-regierten Landeshauptst\u00e4dten.",
+      "chrf": 80.85021058544373
+    },
+    {
+      "index": 1177,
+      "hyp": "Auch auf den Kurzstreckenfl\u00fcgen verteilt die Schweizer Linie Schokolade von Chocolate Frey sowohl in der Gesch\u00e4fts- als auch in der Wirtschaftklasse.",
+      "ref": "Auch auf der Kurzstrecke verteilt Swiss Schoggi von Chocolat Frey, sowohl in der Business als auch in der Economy Class.",
+      "chrf": 52.86777786276493
+    },
+    {
+      "index": 2832,
+      "hyp": "Spaziergang zum 100-j\u00e4hrigen Jubil\u00e4um des Turnvereins",
+      "ref": "Wanderung zum TV-Jubil\u00e4um",
+      "chrf": 37.23826529494002
+    },
+    {
+      "index": 878,
+      "hyp": "\"Es ist absurd, sie einfach so zu verabschieden, nur weil wir uns unter die Top 6 einreihen k\u00f6nnen\", sagt Funkel, dessen Bilanz gegen Aue mit nur einer Niederlage in neun Spielen sehr positiv ist.",
+      "ref": "\"Dass wir sie wegfegen, nur weil wir den Anspruch haben, unter die ersten Sechs zu kommen, ist Bl\u00f6dsinn\", sagt Funkel, dessen Bilanz bei nur einer Niederlage gegen Aue aus neun Spielen durchaus positiv ist.",
+      "chrf": 54.62259675347606
+    },
+    {
+      "index": 617,
+      "hyp": "Es gibt einen Rhythmus.",
+      "ref": "Es gibt eine Pause.",
+      "chrf": 55.79196159619308
+    },
+    {
+      "index": 2618,
+      "hyp": "Es war eine Pr\u00fcfung der neuen Motoren.",
+      "ref": "Das Ganze war ein Ausdauertest f\u00fcr neue Motoren.",
+      "chrf": 35.01469583950785
+    },
+    {
+      "index": 81,
+      "hyp": "\"Unsere gr\u00f6\u00dfte Wertsch\u00f6pfung ist die Landwirtschaft und die Menschen, die darin t\u00e4tig sind und sich Gedanken dar\u00fcber machen, wie sie ihre Betriebe weiterentwickeln k\u00f6nnen\", betonte der B\u00fcrgermeister.",
+      "ref": "\"Der gr\u00f6\u00dfte Schatz den wir haben, sind die Leute, die in der Landwirtschaft arbeiten und sich Gedanken darum machen, wie sie ihren Betrieb weiter bringen\", betonte der B\u00fcrgermeister.",
+      "chrf": 59.71254389497063
+    },
+    {
+      "index": 1458,
+      "hyp": "Die B\u00f6den wurden herausgerissen, Teile der Decken abmontiert und alte Badewannen aus den Zimmern entfernt.",
+      "ref": "Die B\u00f6den wurden herausgerissen, Decken zum Teil abgebaut, alte Badewannen aus den Zimmern entfernt.",
+      "chrf": 77.42279539724332
+    },
+    {
+      "index": 2738,
+      "hyp": "Die Flugstunde f\u00fcr den Made in America-Flug z\u00e4hlte zu den Flugstunden des Flugpersonals im Monat, so ein Beamter.",
+      "ref": "Der Flug f\u00fcr das \"Made in America\" -Ereignis z\u00e4hlte bei dem Trainingsbedarf der Flugbesatzung f\u00fcr den Monat, sagte ein Beamter.",
+      "chrf": 39.461255817984394
+    },
+    {
+      "index": 2315,
+      "hyp": "Die Darrells sind Rhodess Lieblingsfamilie aus dem Geschlecht der Scotneys: \"Die Herren schienen recht listig zu sein und immer in Schulden zu geraten, weil sie sich Dinge leisten konnten, die sie sich nicht leisten durften.",
+      "ref": "Die Darrells sind Rhodes'Lieblingsfamilie von Scotney: \"Die Herren schienen ziemliche Gauner zu sein, immer wieder Schulden machen und Geld f\u00fcr Dinge ausgeben, die sie sich nicht leisten konnten.",
+      "chrf": 64.67709459856681
+    },
+    {
+      "index": 588,
+      "hyp": "Ein Coroner legt einen Leichentuch \u00fcber eines der Opfer des Lynchmordes in Moore's Ford am 27. Juli 1946.",
+      "ref": "Ein Gerichtsmediziner legt ein Betttuch \u00fcber die Leiche eines der Opfer des Moore-Ford-Lynchens am 27. Juli 1946.",
+      "chrf": 55.41336345073466
+    },
+    {
+      "index": 1151,
+      "hyp": "Offensichtlich sehr entt\u00e4uscht von der Tatsache, dass einer der gr\u00f6\u00dften Fu\u00dfballspieler der Welt verl\u00e4sst, versuchte die spanische Liga, den Transfer von Neymar zu verhindern, indem sie behauptete, dass PSG gegen die FFP verst\u00f6\u00dft.",
+      "ref": "Die spanische Liga war eindeutig irritiert, einen der besten Fu\u00dfballspieler gehen zu sehen, und sie versuchte, Neymars Wegzug zu verhindern, indem sie behauptete, dass PSG die FFP verletzen w\u00fcrde.",
+      "chrf": 56.07623464342285
+    },
+    {
+      "index": 240,
+      "hyp": "Die immer wieder auftrittende Verkehrslage stellt f\u00fcr die Bauarbeiter der Firma Stumpp ein gro\u00dfes Problem dar.",
+      "ref": "Der Verkehr, der immer wieder die Bauarbeiten behindert, stellt f\u00fcr den Bautrupp der Firma Stumpp ein gro\u00dfes Problem dar.",
+      "chrf": 67.88137014341899
+    },
+    {
+      "index": 1099,
+      "hyp": "Alle Informationen und die Risikobewertung sind den Verbrauchern zug\u00e4nglich.",
+      "ref": "Alle Informationen und die Risikobewertung sind f\u00fcr die Verbraucher abrufbar.",
+      "chrf": 74.42168423936971
+    },
+    {
+      "index": 1429,
+      "hyp": "Mit Pferden, Babys und einer Armee von Lastwagen sind sie nach ihrer Ausweisung im Mai zur\u00fcckgekehrt, ohne sich von dem Graben zu beeindrucken, den die Gemeinde um ihre Grundst\u00fccke gegraben hat, um ihre Eindringlinge abzuwehren.",
+      "ref": "Sie haben Pferde, Babys und eine Armee von Transportern mitgebracht, nachdem sie erst im Mai herausgeworfen wurden, ohne jedoch von einem vom Rat ausgegrabenen Graben abgeschreckt worden zu sein, um ihre Einf\u00e4lle zu verhindern.",
+      "chrf": 37.89782355194343
+    },
+    {
+      "index": 1945,
+      "hyp": "Aber die meisten der heutigen Tiere mit Gegenlichtung - den Hirschen, Zebren oder Armadillo - sind viel kleiner und schw\u00e4cher als Beute, was darauf hindeutet, dass dieser Nodosaurus wirklich hart ums \u00dcberleben gek\u00e4mpft hat.",
+      "ref": "Aber die meisten zeitgen\u00f6ssischen Tiere, die die Konterschattierung einsetzen - denken Sie an Rehe, Zebras oder G\u00fcrteltiere - sind viel kleiner und verletzlicher als Beute, was signalisiert, dass dieser Nodosaurier einem echten Kampf ums \u00dcberleben ausgesetzt war.",
+      "chrf": 46.079428895816804
+    },
+    {
+      "index": 38,
+      "hyp": "Seit 2006 befindet sich die Isar-Amper-Klinik, eine der gr\u00f6\u00dften Psychiatrieabteilungen Deutschlands, in diesem Geb\u00e4ude.",
+      "ref": "Dort befindet sich seit 2006 das Isar-Amper-Klinikum M\u00fcnchen-Ost, eine der gr\u00f6\u00dften Psychiatrien Deutschlands.",
+      "chrf": 67.49184347371825
+    },
+    {
+      "index": 1780,
+      "hyp": "In seinen ersten Jahren als K\u00fcnstler hat er sich mit Illustrationen f\u00fcr Geburtstagskarten und so weiter abgequ\u00e4lt \u2013 was ihn frustriert hat.",
+      "ref": "In den ersten Jahren als K\u00fcnstler schlug er sich unter anderem als Zeichner f\u00fcr Gl\u00fcckwunschkarten durch - was ihn frustrierte.",
+      "chrf": 49.71307651031011
+    },
+    {
+      "index": 2920,
+      "hyp": "Aber auch in seiner Verteidigung muss man sagen, dass solche Methoden der Erziehung in dieser fragw\u00fcrdigen Zeit zwischen den 1960er und 1970er Jahren weit verbreitet waren sowohl unter den Eltern als auch unter den Lehrern.",
+      "ref": "Zu seiner Ehrenrettung muss allerdings gesagt werden, dass solche Erziehungsmethoden in der fraglichen Zeit, den 1960er und 1970er Jahren, weit verbreitet waren, bei Eltern wie bei Lehrern.",
+      "chrf": 59.03988425263098
+    },
+    {
+      "index": 366,
+      "hyp": "Laut Phelim Kine, dem stellvertretenden Asienleiter der Menschenrechtsorganisation Human Rights Watch, sind die Versprechen von Jokowi, die Berichterstattung zu lockern und damit Transparenz und Entwicklung zu f\u00f6rdern, nicht eingehalten worden.",
+      "ref": "Laut Phelim Kine, dem stellvertretenden Asien-Direktor von Human Rights Watch, wurden die Versprechungen von Jokowis Wahlkampf, die Beschr\u00e4nkungen der Berichterstattung aufzuheben, um Transparenz und Entwicklung zu f\u00f6rdern, nicht realisiert.",
+      "chrf": 66.51836120114383
+    },
+    {
+      "index": 591,
+      "hyp": "Obwohl die Verd\u00e4chtigen seit Jahrzehnten frei herumlaufen, sagen die B\u00fcrgerrechtsaktivisten, dass es immer zwei Motive f\u00fcr die Lynchmorde gegeben hat: Politik und Sex.",
+      "ref": "Obwohl die Verd\u00e4chtigen seit Jahrzehnten auf freiem Fu\u00df bleiben, sagen B\u00fcrgerrechtler, dass die doppelte Motivation f\u00fcr die Lynch-Aktionen in der ganzen Stadt immer bekannt war: Politik und Sex.",
+      "chrf": 54.27390943735661
+    },
+    {
+      "index": 1497,
+      "hyp": "Rechtswissenschaftler sagten am Donnerstagabend auf US-amerikanischen Fernsehkan\u00e4len, dass die Konferenz zeigt, dass Mueller nicht vor Angst zur\u00fcckweichen wird und bereit ist, schnell zu handeln, wenn dies erforderlich w\u00e4re.",
+      "ref": "Rechtsexperten sagten am Donnerstagabend im US-Fernsehen, dass die Einsetzung zeige, dass Mueller sich in seiner Arbeit nicht einsch\u00fcchtern lasse und dass er, wenn es n\u00f6tig sein sollte, schnell handeln wolle.",
+      "chrf": 46.42554816131877
+    },
+    {
+      "index": 2235,
+      "hyp": "Im Februar erh\u00f6hte sich die Finanzierung von Convercent auf 10 Mio. Dollar durch Investoren wie Sapphire Ventures und Tola Capital, so dass das Unternehmen insgesamt 47 Mio. Dollar erhoben hat.",
+      "ref": "Convercent erhielt $ 10 Millionen bei der Finanzierung im Februar von Firmen wie Sapphire Ventures und Tola Capital, womit das gesamte Kapital auf $ 47 Millionen angehoben wurde.",
+      "chrf": 52.408660660089225
+    },
+    {
+      "index": 714,
+      "hyp": "Es ist ein Bereich, der viel gibt.",
+      "ref": "Es ist ein Bereich, der einem viel gibt.",
+      "chrf": 77.55604312542076
+    },
+    {
+      "index": 1669,
+      "hyp": "\"Sie hat Conrad Roy get\u00f6tet\", sagte der Staatsanwalt dem Gericht.",
+      "ref": "\"Ihre Aktionen haben Conrad Roy umgebracht\", sagte die Staatsanw\u00e4ltin dem Gericht.",
+      "chrf": 46.369697951954265
+    },
+    {
+      "index": 1067,
+      "hyp": "\"Alle Aspekte werden im Hinblick auf eine gesunde rechtliche Grundlage in ausreichendem Vorauszeitraum diskutiert werden. \"",
+      "ref": "\"Man wird in Ruhe alle Fragen er\u00f6rtern, wenn sie rechtlich vern\u00fcnftig gepr\u00fcft sind.\"",
+      "chrf": 26.228909839811422
+    },
+    {
+      "index": 430,
+      "hyp": "Letztes Jahr hat Tesla 84.000 Fahrzeuge geliefert.",
+      "ref": "Im vergangenen Jahr lieferte Tesla 84.000 Fahrzeuge aus.",
+      "chrf": 54.82513676624543
+    },
+    {
+      "index": 796,
+      "hyp": "Die erste \"astrale Stra\u00dfe\" des Landes wird im Harz entstehen.",
+      "ref": "Im Harz soll der bundesweit erste \"Sternenpfad\" entstehen.",
+      "chrf": 38.27408216077951
+    },
+    {
+      "index": 1296,
+      "hyp": "Versuche haben gezeigt, dass PrEP die HIV-Infektion bei Risikopersonen um ein beachtliches Ma\u00df reduziert.",
+      "ref": "Studien haben gezeigt, dass PrEP die HIV-\u00dcbertragung bei Infektionsgef\u00e4hrdeten signifikant reduziert.",
+      "chrf": 50.85184328547182
+    },
+    {
+      "index": 585,
+      "hyp": "F\u00fcr ihn dient die Wiederholung der Aktion als dramatische Aufruf zum Handeln und als j\u00e4hrliche Erinnerung an die Monroe Community daran, dass eine Ungerechtigkeit nie korrigiert wurde.",
+      "ref": "F\u00fcr ihn dient die Nachstellung als ein dramatischer Aufruf zum Handeln und stellt eine j\u00e4hrliche Erinnerung an die Monroe-Gemeinschaft dar, dass ein Unrecht nie korrigiert wurde.",
+      "chrf": 64.75170877704225
+    },
+    {
+      "index": 657,
+      "hyp": "Er sagte, dass er bereits mit der Planung f\u00fcr das n\u00e4chste Jahr begonnen hat.",
+      "ref": "Er sagte, er habe schon angefangen, die Auff\u00fchrung im n\u00e4chsten Jahr zu planen.",
+      "chrf": 30.40016325539988
+    },
+    {
+      "index": 2313,
+      "hyp": "Andere Geschichten sind tief verwurzelt in der Geschichte des Schlosses - wie zum Beispiel die von dem Jesuitenpriester, den die Familie Darrell w\u00e4hrend der englischen Reformation sieben Jahre versteckt hielt.",
+      "ref": "Andere Geschichten sind fest in der Geschichte des Schlosses verwurzelt - wie 'The Priest', die die Geschichte des Jesuitenpaters erz\u00e4hlt, den die Familie Darrell sieben Jahre lang w\u00e4hrend der englischen Reformation versteckte.",
+      "chrf": 68.0322902965814
+    },
+    {
+      "index": 737,
+      "hyp": "EPA widerruft Entscheidung zur Verz\u00f6gerung der Regelung f\u00fcr Schichtnebel nach Klagen",
+      "ref": "EPA kehrt Entscheidung zur Verz\u00f6gerung der Smog-Regel nach Klagen um",
+      "chrf": 68.90026683381515
+    },
+    {
+      "index": 438,
+      "hyp": "EPA-Chef Pruitt gibt sich zur\u00fcck, die Obama-Regelungen zur Reduzierung der Emissionen zu verschieben",
+      "ref": "EPA-Chef Pruitt zieht sich wegen des Hinausz\u00f6gerns der Regeln der Obama-Era zur Verringerung der Emissionen zur\u00fcck",
+      "chrf": 49.88382617741864
+    },
+    {
+      "index": 2449,
+      "hyp": "Dies ist die zweite Gelegenheit, dass Pistorius aus dem Gef\u00e4ngnis entlassen wird, um sich in einem Krankenhaus zu behandeln.",
+      "ref": "Pistorius hat zum zweiten Mal das Gef\u00e4ngnis f\u00fcr einen Krankenhausbesuch verlassen.",
+      "chrf": 46.490310783904285
+    },
+    {
+      "index": 545,
+      "hyp": "Auch viele Einheimische hatten den Zentrumskern f\u00fcr Eink\u00e4ufe vergessen.",
+      "ref": "Aber auch viele Einheimische h\u00e4tten die Innenstadt beim Einkaufen aus dem Blick verloren.",
+      "chrf": 40.50328176061417
+    },
+    {
+      "index": 2617,
+      "hyp": "Die Form eines Dreamliners konnte auf Radarbildern zu erkennen sein.",
+      "ref": "Auf den Radarschirmen war die Form eines Dreamliners zu sein.",
+      "chrf": 53.49742092869093
+    },
+    {
+      "index": 2510,
+      "hyp": "Die eigentliche Umstellung dauerte nur drei bis vier Stunden im H\u00e4nger.",
+      "ref": "Die Umr\u00fcstung selbst k\u00f6nnte in der Werkstatt nur drei bis vier Stunden dauern.",
+      "chrf": 43.035303809020434
+    },
+    {
+      "index": 2534,
+      "hyp": "Roland Wacker, der st\u00e4dtische Baumeister von Haslach, wird im n\u00e4chsten Jahr in den Ruhestand gehen.",
+      "ref": "Roland Wacker, Haslachs Stadtbaumeister, geht im kommenden Jahr in Rente.",
+      "chrf": 50.71675037369891
+    },
+    {
+      "index": 1856,
+      "hyp": "Sie vertrauten auf seine Routine.",
+      "ref": "Sie vertrauten auf seine Routine.",
+      "chrf": 100.0
+    },
+    {
+      "index": 2935,
+      "hyp": "Wenn sie nicht einmal ihren Eltern und Geschwistern vertrauen, dann werden sie sich sicherlich auch nicht an einen Chorleiter wenden, der ja nach Art eines Kollegen der T\u00e4ter war.",
+      "ref": "Wenn sie sich nicht einmal Eltern und Geschwistern anvertrauten, dann ganz bestimmt nicht einem Chorleiter, der doch beruflich gewisserma\u00dfen ein Kollege der T\u00e4ter gewesen w\u00e4re.",
+      "chrf": 54.364933528200375
+    },
+    {
+      "index": 1271,
+      "hyp": "Die M\u00e4rkte prognostizieren eine erste Steigerung im dritten Quartal des n\u00e4chsten Jahres und eine weitere in 2020.",
+      "ref": "Die M\u00e4rkte prognostizieren derzeit den ersten Anstieg im dritten Quartal des n\u00e4chsten Jahres und einen weiteren im Jahr 2020.",
+      "chrf": 70.23221262849432
+    },
+    {
+      "index": 1893,
+      "hyp": "Valdez hatte wiederholt erkl\u00e4rt, dass die Journalisten in Mexiko von Organisierten Kriminellen, Korrupten und einer apathischen Gesellschaft umgeben seien.",
+      "ref": "Valdez hatte wiederholt gesagt, dass Journalisten in Mexiko von organisiertem Verbrechen, daran beteiligten Regierungsbeamten und einer gleichg\u00fcltigen Gesellschaft \"umgeben\" seien.",
+      "chrf": 56.33722697195967
+    },
+    {
+      "index": 2430,
+      "hyp": "Sie erinnerte mich daran, dass die Einigkeit gegen einen gemeinsamen Feind eine m\u00e4chtige Wirkung hat.",
+      "ref": "Sie erinnerte mich daran, dass die Einheit gegen einen gemeinsamen Feind eine m\u00e4chtige Wirkung haben kann.",
+      "chrf": 88.12630014082553
+    },
+    {
+      "index": 1255,
+      "hyp": "Daher k\u00f6nnte ein Blutspende von einem einzigen Spender drei Menschen retten.",
+      "ref": "So k\u00f6nnten schon mal drei Personen von einer Blutspende profitieren.",
+      "chrf": 40.794504975309046
+    },
+    {
+      "index": 1465,
+      "hyp": "\"Wir wollen daraus einen Edelstein machen.\"",
+      "ref": "\"Wir wollen ein Schmuckst\u00fcck draus machen.\"",
+      "chrf": 45.64427350031066
+    },
+    {
+      "index": 1413,
+      "hyp": "Wie hat sich das entwickelt?",
+      "ref": "Wie hat das geklappt?",
+      "chrf": 30.780540328749854
+    },
+    {
+      "index": 190,
+      "hyp": "Aber das passiert genau so, nur digital.",
+      "ref": "Aber genau das passiert gerade digital.",
+      "chrf": 62.077318447182016
+    },
+    {
+      "index": 1030,
+      "hyp": "Die K\u00f6nigin ist mit dem Entschluss ihres Mannes zufrieden, so die Mitteilung weiter.",
+      "ref": "Die K\u00f6nigin sei mit der Entscheidung ihres Mannes einverstanden, hie\u00df es weiter in der Mitteilung.",
+      "chrf": 46.802686361364096
+    },
+    {
+      "index": 773,
+      "hyp": "Als der Mann aus Langenfeld auf die Stra\u00dfe fuhr, schien er nicht auf das herannahende Verkehrsmittel zu achten.",
+      "ref": "Als der Langenfelder auf die Stra\u00dfe fuhr, achtete er aber offenbar nicht auf den Gegenverkehr.",
+      "chrf": 52.9726420706955
+    },
+    {
+      "index": 2317,
+      "hyp": "Nach dem Abschluss seines Auftrags im Schloss ist Rhodes auf der Suche nach weiteren einzigartigen Schreibereignissen.",
+      "ref": "Nach dem Ende seines Einsatzes im Schloss ist Rhodes auf der Suche nach anderen einzigartigen Schreib-Erfahrungen",
+      "chrf": 65.80222288428274
+    },
+    {
+      "index": 87,
+      "hyp": "\"Die gro\u00dfe Vorteilhaftigkeit ist die Langlebigkeit der Hecken, \" erkl\u00e4rte Schwendemann.",
+      "ref": "\"Der gro\u00dfe Vorteil ist die Langlebigkeit der Z\u00e4une\", erkl\u00e4rte Schwendemann.",
+      "chrf": 74.1031641115616
+    },
+    {
+      "index": 621,
+      "hyp": "Er ist alarmiert und verwirrt.",
+      "ref": "Er ist alarmiert und verwirrt.",
+      "chrf": 100.0
+    },
+    {
+      "index": 801,
+      "hyp": "Die Mitglieder m\u00f6chten Plakate entlang der geplanten Route aufstellen und Informationen \u00fcber Sterne und Sternbilder darauf eintragen.",
+      "ref": "Die Mitglieder wollen entlang der geplanten Route Tafeln aufstellen und darauf \u00fcber Sterne und Sternbilder informieren.",
+      "chrf": 70.55413593599889
+    },
+    {
+      "index": 1417,
+      "hyp": "Die Most-wanted-Criminals erhalten Post von Europol",
+      "ref": "Meistgesuchte Verbrecher bekommen Post von Europol",
+      "chrf": 37.7996980761218
+    },
+    {
+      "index": 1773,
+      "hyp": "Mit dem Motto \"Wahrer Liebesdienst ist... \" soll die Verst\u00e4ndigung f\u00fcr die Isar als Wildfluss gef\u00f6rdert werden.",
+      "ref": "Mit dem Motto \"Wahre Liebe ist ...\" soll das Verst\u00e4ndnis f\u00fcr die Isar als sch\u00fctzenswerten Wildfluss sch\u00e4rfen.",
+      "chrf": 58.73807805690845
+    },
+    {
+      "index": 2226,
+      "hyp": "Es war oft ein erschreckendes und unangenehmes Erlebnis, sagte James Vitrano, der Generalanwalt von Ruby Tuesday, der sagte, dass es keine gute M\u00f6glichkeit gab, Beschwerden der Mitarbeiter zu verfolgen.",
+      "ref": "Es war oft eine Einsch\u00fcchterung und unbequeme Erfahrung, sagte James Vitrano, Ruby Tuesdays General Counsel, der sagte, es gab keine gute M\u00f6glichkeit, die Beschwerden von Mitarbeitern zu verfolgen.",
+      "chrf": 60.63716325275633
+    },
+    {
+      "index": 1621,
+      "hyp": "Der ehemalige Trainer von Bayer Leverkusen und Werder Bremen ist nun Berater f\u00fcr virtuelle Fu\u00dfballspieler.",
+      "ref": "Der Ex-Trainer von Bayer Leverkusen und Werder Bremen ber\u00e4t inzwischen eine Agentur f\u00fcr virtuelle Fu\u00dfballspieler.",
+      "chrf": 70.65698848499402
+    },
+    {
+      "index": 1388,
+      "hyp": "Andere haben es versucht und gescheitert.",
+      "ref": "Andere haben es versucht und sind gescheitert.",
+      "chrf": 88.3927256383907
+    },
+    {
+      "index": 1103,
+      "hyp": "Diesmal sind die Unternehmen nicht schuld.",
+      "ref": "Dieses Mal sind nicht die Betriebe schuld.",
+      "chrf": 40.320037629079884
+    },
+    {
+      "index": 898,
+      "hyp": "Diese Art der Biologienotwendigkeit ist sehr ungenau.",
+      "ref": "Das biologische Alter auf diese Weise zu beurteilen, ist sehr unsicher.",
+      "chrf": 27.891068533965623
+    },
+    {
+      "index": 1784,
+      "hyp": "Der K\u00fcnstler hat sich stets von St\u00e4dten inspirieren lassen.",
+      "ref": "Immer wieder liess sich der K\u00fcnstler von St\u00e4dten inspirieren.",
+      "chrf": 57.83149793297614
+    },
+    {
+      "index": 2784,
+      "hyp": "Tats\u00e4chlich m\u00fcsste Donald Trump selbst durch einen Verordnungserlass die Sanktionen in Kraft setzen.",
+      "ref": "Tats\u00e4chlich m\u00fcsste Donald Trump selbst die Sanktionen noch per Executive Order zum Leben erwecken.",
+      "chrf": 57.741122960310896
+    },
+    {
+      "index": 2779,
+      "hyp": "Die Reaktion von Moskau war ebenfalls so heftig, wie erwartet, und selbst Br\u00fcssel wurde von der US-Bewegung aufgebracht.",
+      "ref": "Auch die Reaktion aus Moskau war so scharf wie erwartet, und selbst Br\u00fcssel sch\u00e4umte gegen den US-Vorsto\u00df.",
+      "chrf": 51.87705708803612
+    },
+    {
+      "index": 2646,
+      "hyp": "Dann, als sie wieder neue Hoffnung sch\u00f6pften, fand der G-20-Gipfel in Hamburg statt.",
+      "ref": "Dann, als sie gerade neuen Mut gesch\u00f6pft hatten, kam der G-20-Gipfel von Hamburg.",
+      "chrf": 53.670503891271295
+    },
+    {
+      "index": 1983,
+      "hyp": "Es war ein Zusammensto\u00df zwischen einem Lastwagen f\u00fcr Auto-Transport und einem Personenkraftwagen.",
+      "ref": "Dabei war es zu einer Kollision zwischen einem Autotransporter und einem Pkw gekommen.",
+      "chrf": 43.293344615805545
+    },
+    {
+      "index": 1693,
+      "hyp": "\"Der Trainer hat es nicht gesagt \", erkl\u00e4rte der Gewinner des Konf\u00f6derationenpokals sp\u00e4ter nach seinem ersten Einsatz als Kapit\u00e4n von Bayern.",
+      "ref": "\"Der Trainer hat es nicht angek\u00fcndigt\", erz\u00e4hlte der Confed-Cup-Sieger hinterher, nach seinem ersten Einsatz als Bayern-Kapit\u00e4n.",
+      "chrf": 55.370847336577036
+    },
+    {
+      "index": 1214,
+      "hyp": "Zwei Personen wurden bei gleichzeitigen Durchsuchungen in Italien festgenommen.",
+      "ref": "Bei zeitgleichen Razzien in Italien wurden zwei Personen festgenommen.",
+      "chrf": 65.38206534886622
+    },
+    {
+      "index": 872,
+      "hyp": "\"Wir werden aber auch am Sonntag mit vier Punkten stehen und uns auf die Pokalmeisterschaft konzentrieren k\u00f6nnen, dann k\u00f6nnen wir von einem guten Start der Saison sprechen.\"",
+      "ref": "\"Falls wir aber am Sonntag mit vier Punkten dastehen und uns auf den Pokal konzentrieren k\u00f6nnen, werden wir sicherlich von einem ordentlichen Saisonauftakt sprechen k\u00f6nnen.\"",
+      "chrf": 60.92995350832039
+    },
+    {
+      "index": 2587,
+      "hyp": "Und das Bakterium braucht Tryptophan, eines der Proteingewebe, um die Zellen zu aktivieren.",
+      "ref": "Und das Bakterium ben\u00f6tigt Tryptophan - einen der Bausteine von Proteinen - um das Erscheinungsbild der Zellen auszul\u00f6sen.",
+      "chrf": 40.28717628607479
+    },
+    {
+      "index": 538,
+      "hyp": "Christian K\u00f6nig berichtet, dass Werbung auf der Radio, ein Online-Video und gedruckte Taschen, die sich auf den Kampagnenwochenenden beziehen, vorbereitet werden.",
+      "ref": "In Vorbereitung seien Werbespots im Radio, ein Internet-Video und bedruckte Beutel, die auf das Aktions-Wochenende hinweisen, so Christian K\u00f6nig.",
+      "chrf": 45.07583570851986
+    },
+    {
+      "index": 380,
+      "hyp": "Denn auch wenn Gerechtigkeit nie vollzogen wird, so werden doch die T\u00e4ter nicht vergessen.",
+      "ref": "Sie wissen, dass ihnen vielleicht niemals Gerechtigkeit zukommen wird, aber zumindest lassen sie die Verantwortlichen ihre Verbrechen nicht vergessen.",
+      "chrf": 31.03191400596573
+    },
+    {
+      "index": 2669,
+      "hyp": "Ich m\u00f6chte wissen, ob es noch etwas anderes gegeben hat oder ob weitere Verpflichtungen gegen\u00fcber der nieders\u00e4chsischen CDU getroffen wurden.",
+      "ref": "Ich will wissen, ob da mehr gewesen ist oder es weitergehende Zusagen der CDU Niedersachsen gegeben hat.",
+      "chrf": 41.97627873682156
+    },
+    {
+      "index": 2503,
+      "hyp": "Daimler hat die Betroffenen aufgefordert, sich an sie zu wenden.",
+      "ref": "Daimler hat mitgeteilt, jeden Betroffenen anzuschreiben.",
+      "chrf": 45.30612857228773
+    },
+    {
+      "index": 72,
+      "hyp": "Nur lokale Produkte werden den Urlauber zur Verf\u00fcgung gestellt.",
+      "ref": "Auf den Tisch der Ferieng\u00e4ste kommt ausschlie\u00dflich Regionales.",
+      "chrf": 14.652711602397137
+    },
+    {
+      "index": 614,
+      "hyp": "Das St\u00fcck beginnt mit Malcolm, der Hester schreit und anst\u00f6\u00dft, weil er festgestellt hat, dass er seine Frau Dorothy betrogen hat.",
+      "ref": "Das St\u00fcck beginnt mit Malcom, der Hester anschreit und ihn bedr\u00e4ngt, w\u00fctend, dass er mit seiner Frau Dorothy geschlafen hat.",
+      "chrf": 58.93043826224677
+    },
+    {
+      "index": 17,
+      "hyp": "Der Kurf\u00fcrst Maximilian IV. Joseph f\u00f6rderte den Plan weiter und gr\u00fcndete das \"Topographische Amt\" - und damit die Bayerische Vermessungs- und Kartografische Beh\u00f6rde.",
+      "ref": "Kurf\u00fcrst Max IV. Joseph trieb das Projekt weiter voran, gr\u00fcndete das \"Topographische Bureau\" - und damit die Bayerische Vermessungsverwaltung.",
+      "chrf": 63.552776972014925
+    },
+    {
+      "index": 134,
+      "hyp": "Scottish Athletics denken, dass es mit dem zu tun hat, was sie getan haben.",
+      "ref": "Die schottischen Athleten denken, dass es etwas mit dem zu tun hat, was sie getan haben.",
+      "chrf": 69.5485797185235
+    },
+    {
+      "index": 2069,
+      "hyp": "\"Und ich verstehe, dass man mit dieser Arbeit und der Humanisierung der Schwarzen eine gewisse Schw\u00e4che haben muss. \"",
+      "ref": "\"Aber ich habe verstanden, dass es bei dieser Arbeit und bei der Vermenschlichung von schwarzen Leuten eine gewisse Verletzlichkeit geben muss.\"",
+      "chrf": 42.09094912100979
+    },
+    {
+      "index": 1048,
+      "hyp": "Das waren zwei Fehler! \"",
+      "ref": "Das waren gleich zwei Fehler!\"",
+      "chrf": 66.48341103651549
+    },
+    {
+      "index": 888,
+      "hyp": "In 432 F\u00e4llen wurde die Person als \"vermutlich unter 18\" bezeichnet.",
+      "ref": "In 432 F\u00e4llen war die Schlussfolgerung, dass die Person \"m\u00f6glicherweise unter 18 Jahre alt ist\".",
+      "chrf": 35.54755283456132
+    },
+    {
+      "index": 1212,
+      "hyp": "Dabei wurden 15 Angeklagte, die zwischen 25 und 77 Jahre alt waren, festgenommen und bereits Haftbefehle gegen sie erlassen.",
+      "ref": "Dabei wurden 15 Beschuldigte im Alter zwischen 25 Jahren und 77 Jahren festgenommen und bereits Haftbefehle gegen diese erlassen.",
+      "chrf": 67.87134837931393
+    },
+    {
+      "index": 1007,
+      "hyp": "Die Zeremonie fand am Donnerstag in der Kathedrale unter strengsten Sicherheitsvorkehrungen statt.",
+      "ref": "Die Zeremonie fand am Donnerstag in der Domstadt unter hohen Sicherheitsvorkehrungen statt.",
+      "chrf": 79.48578590234679
+    },
+    {
+      "index": 2545,
+      "hyp": "Aber die B\u00fcrgerfreundlichkeit ist f\u00fcr die Stadt und auch f\u00fcr ihn wichtig, so Wacker, der von einer guten Arbeitsatmosph\u00e4re und einem fr\u00f6hlichen Gem\u00fct zwischen Beh\u00f6rden und B\u00fcrgern berichtet.",
+      "ref": "Aber B\u00fcrgern\u00e4he sei der Stadt und ihm selbst wichtig, sagt Wacker, der von einem guten Betriebsklima sowie guter Stimmung zwischen Beh\u00f6rde und B\u00fcrgern berichtet.",
+      "chrf": 53.16227559339956
+    },
+    {
+      "index": 1113,
+      "hyp": "Ist die regelm\u00e4\u00dfig aufkommende Alarmierung bei Lebensmittelkrankheiten wirklich notwendig?",
+      "ref": "Ist der regelm\u00e4\u00dfige Alarmismus bei Lebensmittelskandalen wirklich notwendig?",
+      "chrf": 65.9747039080409
+    },
+    {
+      "index": 2454,
+      "hyp": "Die Staatsanwaltschaft hat angek\u00fcndigt, sie werden erneut gegen die sechsj\u00e4hrige Haftstrafe von Pistorius, die sie zu milde h\u00e4lt, einstweilen noch einmal in den Appell gegen ihn einwenden.",
+      "ref": "Die Staatsanw\u00e4lte haben ihre Absicht angek\u00fcndigt, diesmal gegen die sechsj\u00e4hrige Haftstrafe von Pistorius Appell einzulegen, von der sie sagen, sie sei zu nachsichtig.",
+      "chrf": 56.681424219319034
+    },
+    {
+      "index": 1705,
+      "hyp": "Vidal, um seine Fitness zu verbergen (nicht besonders gut), Renato Sanches, um die Leistungen der Asienreise zu best\u00e4tigen (teilweise), und Sebastian Rudy und Niklas S\u00fcle, um keine negativen Eindr\u00fccke bei ihren ersten Auftritten in der Bayern-Uniform zu hinterlassen.",
+      "ref": "Vidal damit, seine fehlende Fitness zu \u00fcberspielen (klappte kaum); Renato Sanches damit, auf Teufel komm raus an die Leistungen der Asien-Reise anzukn\u00fcpfen (klappte auch nur bedingt); und Sebastian Rudy und Niklas S\u00fcle damit, in ihren ersten Auftritt im Bayern-Trikot nicht negativ aufzufallen.",
+      "chrf": 47.126119583832576
+    },
+    {
+      "index": 2656,
+      "hyp": "Man lie\u00df ihn fr\u00fcher machen, weil man von Weil erwartete, dass er eine Stabilisierung der Partei bewirken w\u00fcrde.",
+      "ref": "Sie lie\u00dfen ihn gew\u00e4hren, da sie sich von Weil eine Stabilisierung der Partei versprachen.",
+      "chrf": 52.1602777697313
+    },
+    {
+      "index": 267,
+      "hyp": "\"Vorher trugen wir nur Bl\u00e4tter auf der Haut.\"",
+      "ref": "\"Fr\u00fcher hatten wir nur Bl\u00e4tter an unseren K\u00f6rpern.\"",
+      "chrf": 41.233085758922975
+    },
+    {
+      "index": 910,
+      "hyp": "Es wurde 1900 errichtet.",
+      "ref": "Gebaut wurde sie im Jahr 1900.",
+      "chrf": 23.67441026483809
+    },
+    {
+      "index": 1918,
+      "hyp": "Sie zeigten keinerlei Anzeichen von Angst.",
+      "ref": "Wenn sie \u00fcberhaupt Angst hatten, zeigten sie es nicht.",
+      "chrf": 25.598629066431705
+    },
+    {
+      "index": 2253,
+      "hyp": "Nachdem sie die R\u00fcckmeldungen der Mitarbeiter, die sich \u00fcber die Geschwindigkeit der Entscheidungsfindung und die Qualit\u00e4t der Kommunikation beschwerten, ber\u00fccksichtigte, konnte sie mehrere Teams innerhalb der Firma neu organisieren und eine Kommunikationsausbildung einrichten, um die Probleme zu l\u00f6sen.",
+      "ref": "Und nach dem Sammeln von Feedback von frustrierten Mitarbeitern war sie durch die Schnelligkeit der Entscheidungsfindung und die Qualit\u00e4t der Kommunikation, imstande, mehrere Teams innerhalb des Unternehmens neu zu organisieren und eine Kommunikations-Schulung hinzuzuf\u00fcgen, um die Probleme anzugehen.",
+      "chrf": 60.12917112294607
+    },
+    {
+      "index": 138,
+      "hyp": "Von den schottischen Sportlern sind mehrere Medaillenbewerter, darunter Laura Muir und Andrew Butchart, der gegen Sir Mo Farah im 5.000-Meter-Lauf antreten wird, sowie Eilidh Doyle, die von der Mannschaft zum Kapit\u00e4n gew\u00e4hlt wurde.",
+      "ref": "Mehrere der schottischen Athleten sind Medaillen-Anw\u00e4rter, darunter Laura Muir und Andrew Butchart - die gegen Sir Mo Farah auf der 5.000 m Strecke antreten werden, w\u00e4hrend Eilidh Doyle von der Mannschaft zum Teamkapit\u00e4n gew\u00e4hlt wurde.",
+      "chrf": 66.67518154952738
+    },
+    {
+      "index": 845,
+      "hyp": "Aber Lomachenko hielt sich zur\u00fcck, als es um die Lobeshymnen f\u00fcr Garcia ging, und sagte, er habe den Drei-Divisionen-Champion von Riverside f\u00fcr \"sehr langsam\" gehalten, entschuldigte sich bei Mikey und sagte: \"Du wolltest den Knockout.\"",
+      "ref": "Aber Lomachenko hielt bei dem gro\u00dfz\u00fcgigem Lob f\u00fcr Garcia an und sagte, dass er denke, der Dreikampf-Champion aus Riverside sehen\"sehr langsam aus, tut mir leid Mikey ... du wolltest ja das Ko-Aus\".",
+      "chrf": 44.81830350757357
+    },
+    {
+      "index": 1117,
+      "hyp": "Grunds\u00e4tzlich muss klar sein, dass die ungesetzliche Verwendung des Insektizids Fipronil im Tierzuchtbetrieb f\u00fcr Lebensmittel nicht akzeptabel ist und sofort aufh\u00f6ren muss.",
+      "ref": "Grunds\u00e4tzlich muss klar sein: Der rechtswidrige Einsatz des Insektizids Fipronil bei der Haltung lebensmittelliefernder Tiere ist nicht hinnehmbar und muss unverz\u00fcglich beendet werden.",
+      "chrf": 46.315838722116496
+    },
+    {
+      "index": 402,
+      "hyp": "Nach zahlreichen Einw\u00e4nden vorher wurde die Vorschlag, den Finale in einem neutralen Ort abzuhalten, nicht einmal zum Abstimmung gebracht.",
+      "ref": "Gar nicht erst zur Abstimmung war nach vielen Einspr\u00fcchen schon davor der Vorschlag gekommen, das Finale an einem neutralen Ort auszutragen.",
+      "chrf": 44.80316398017567
+    },
+    {
+      "index": 217,
+      "hyp": "Es ist ein wunderbarer Golfplatz.",
+      "ref": "Es ist ein wunderbarer Ort zum Golfspielen.",
+      "chrf": 57.706474660112924
+    },
+    {
+      "index": 1616,
+      "hyp": "Mit diesem Vorhaben hoffen wir, ganz neue Zielgruppen, junge Menschen, f\u00fcr den VfB zu begeistern, erkl\u00e4rt der Vorstandsvorsitzende Jochen R\u00f6ttgermann.",
+      "ref": "\"Wir hoffen, dadurch ganz neue junge Zielgruppen f\u00fcr den VfB zu begeistern\", sagt Vorstand Jochen R\u00f6ttgermann.",
+      "chrf": 63.113636346812804
+    },
+    {
+      "index": 2104,
+      "hyp": "Aber das ist nicht unbedingt g\u00fcnstig f\u00fcr den neuen Projektplan.",
+      "ref": "Die d\u00fcrfte bei dem neuen Projekt aber wohl nicht gerade niedrig sein.\"",
+      "chrf": 32.447995251949905
+    },
+    {
+      "index": 1038,
+      "hyp": "Er will jedoch nicht in seiner franz\u00f6sischen Heimat bestattet werden, sondern in D\u00e4nemark.",
+      "ref": "Er habe aber nicht die Absicht, in seiner franz\u00f6sischen Heimat beigesetzt zu werden, sondern in D\u00e4nemark.",
+      "chrf": 63.66379915667785
+    },
+    {
+      "index": 1725,
+      "hyp": "Die Beziehung zwischen Staat und lokaler Industrie war bei der damaligen Wirtschaftsministerin Rhineland-Pfalz, Evaline Lemke (B\u00fcndnis 90/Die Gr\u00fcnen), oft unvereinbar.",
+      "ref": "Es gestaltete sich oft unvers\u00f6hnlich, das Verh\u00e4ltnis zwischen dem Land und der regionalen Wirtschaft, als Eveline Lemke (Gr\u00fcne) noch Wirtschaftsministerin von Rheinland-Pfalz war.",
+      "chrf": 42.897046914438796
+    },
+    {
+      "index": 387,
+      "hyp": "Wir schliefen und wurden von dem Feueralarm und den Schreien der Menschen geweckt.",
+      "ref": "\"Wir haben geschlafen und wir sind beim Feueralarm und beim Schreien der Leute aufgestanden.",
+      "chrf": 43.765872503886484
+    },
+    {
+      "index": 853,
+      "hyp": "Vier Verletzte nach Zerschlagung eines Reifens",
+      "ref": "Vier Verletzte nach Reifenplatzer",
+      "chrf": 63.285042191918684
+    },
+    {
+      "index": 1838,
+      "hyp": "Er glaubt, dass zwei Fehler dazu beigetragen haben, dass der Mord stattfand.",
+      "ref": "Er glaubt, dass zwei Missverst\u00e4ndnisse zu dem Mord beigetragen haben.",
+      "chrf": 56.0038095524741
+    },
+    {
+      "index": 1789,
+      "hyp": "Der Hauptdarsteller des Films \"Crazy Island\" ist eine Giraffe - Mordillos Lieblingstier in seinen Zeichnungen - die von einer Milliarde als Feindin bejubelt wird.",
+      "ref": "Die Hauptperson im Film \"Crazy Island\" ist eine Giraffe - Mordillos beliebtestes Tier in seinen Zeichnungen -, die einen Tausendf\u00fcssler als Gegenspieler hat.",
+      "chrf": 54.43228684140436
+    },
+    {
+      "index": 2467,
+      "hyp": "Anschlie\u00dfend tanzten die Klassen 3 und 4 ein Huhn-Tanz, der von Yvonne Frank geplant wurde.",
+      "ref": "Danach zeigten die Klassen drei und vier in der Einstudierung von Yvonne Frank einen H\u00fchnertanz.",
+      "chrf": 40.989881759809926
+    },
+    {
+      "index": 1343,
+      "hyp": "\"Ein wenig Ingenieurkunst ist in die Herstellung dieses Stahlverst\u00e4rkten, Veneer-venierten MDF-T\u00fcren eingeflossen\", erkl\u00e4rt Erfan.",
+      "ref": "\"Ein bisschen Ingenieurkunst ging da hinein\", erkl\u00e4rt Erfan von der stahlverst\u00e4rkten, furnierten MDF-T\u00fcr.",
+      "chrf": 60.92083521682204
+    },
+    {
+      "index": 1762,
+      "hyp": "Im Januar wurde Audi von der deutschen Polizei in die Untersuchung um den Fall Volkswagen mit hineingezogen, nachdem die Beh\u00f6rden behaupteten, dass Audi ein System installiert habe, um die Emissionsregelungen in Europa zu umgehen. Die Ermittlungen, die urspr\u00fcnglich auf die USA beschr\u00e4nkt waren, wurden erweitert.",
+      "ref": "Anfang dieses Jahres wurde Audi in deutsche kriminelle Ermittlungen bei Volkswagen einbezogen, nachdem die Beh\u00f6rden Audi beschuldigten, ein System installiert zu haben, um die Emissionsvorschriften in Europa zu umgehen, und eine Anfrage, die sich auf die Vereinigten Staaten konzentrierte, wurde erweitert.",
+      "chrf": 56.5430055617196
+    },
+    {
+      "index": 1245,
+      "hyp": "Die Europ\u00e4ische Menschenrechtskammer (EMRK) h\u00e4lt diese Versprechen f\u00fcr ausreichend.",
+      "ref": "Selbst der Europ\u00e4ische Gerichtshof f\u00fcr Menschenrechte (EGMR) halte diese Zusagen f\u00fcr ausreichend.",
+      "chrf": 50.521648542265055
+    },
+    {
+      "index": 360,
+      "hyp": "Die wenigen Arbeitspl\u00e4tze gehen in der Regel den besser ausgebildeten und reicheren Migranten zu.",
+      "ref": "Die wenigen Arbeitspl\u00e4tze, die es in der Region gibt, gehen in der Regel an die besser ausgebildeten und wohlhabenderen Migranten.",
+      "chrf": 62.75355441772056
+    },
+    {
+      "index": 767,
+      "hyp": "Mit zwei Abstimmungsf\u00e4llen sind sie also an dem urspr\u00fcnglichen Programm festgehalten, das Stefan Haller wie folgt zusammenfasste: \"Wenn wir den Entschlie\u00dfungsantrag so verabschieden, dann machen wir einen gro\u00dfen Schritt in Richtung Schlie\u00dfen eines gro\u00dfen L\u00fcckens in unserer Infrastruktur. \"",
+      "ref": "So bleibt es bei zwei Gegenstimmen beim urspr\u00fcnglichen Programm, das Stefan Haller so zusammenfasst: \"Wenn wir den Beschluss so fassen, machen wir einen Riesenschritt dahin, eine Riesenl\u00fccke in unserer Infrastruktur zu schlie\u00dfen\".",
+      "chrf": 56.66823223584066
+    },
+    {
+      "index": 1585,
+      "hyp": "Die italienischen Beh\u00f6rden hatten die Jugendrettungs-Boote seit Oktober im Auge.",
+      "ref": "Die italienischen Beh\u00f6rden hatten das Boot von 'Jugend Rettet', die Iuventa, seit Oktober \u00fcberwacht.",
+      "chrf": 55.51893905540268
+    },
+    {
+      "index": 2495,
+      "hyp": "Euro 4-Dieselmotoren oder schlechter sind ausgeschlossen.",
+      "ref": "Euro-4-Diesel oder schlechter sind davon ausgenommen.",
+      "chrf": 59.09941466781006
+    },
+    {
+      "index": 916,
+      "hyp": "Der Br\u00fccke am Osttor der Stadt Lauterbach wurde nun \u2013 ab Mittwochmorgen \u2013 auf der Nordseite ein 1,30 Meter breiter und sieben Tonnen schwerer sogenannter Br\u00fcckenparapet angebracht.",
+      "ref": "Die Br\u00fccke am Ortseingang von Lauterbach hat nun am Mittwochmorgen auf der Nordseite eine 1,30 Meter breite und sieben Tonnen schwere so genannte Br\u00fcckenkappe erhalten.",
+      "chrf": 63.36172242138078
+    },
+    {
+      "index": 2560,
+      "hyp": "Auch Wacker hofft, dass sein Nachfolger lange bleiben wird: \"Wir suchen jemanden, der wirklich mit dem Posten identifiziert und bleiben m\u00f6chte\", so Wacker.",
+      "ref": "Auch, dass sein Nachfolger lange bleibt, w\u00fcnscht sich Wacker: \"Wir suchen jemanden, der sich mit der Stelle wirklich identifiziert und bleiben m\u00f6chte\".",
+      "chrf": 73.24923466747869
+    },
+    {
+      "index": 2016,
+      "hyp": "Nur auf den Verbindungen ICE 915 zwischen Dortmund und Stuttgart sowie ICE 912 zwischen Stuttgart und Essen.",
+      "ref": "Und das auch nur auf den Verbindungen ICE 915 Dortmund-Stuttgart und ICE 912 Stuttgart-Essen.",
+      "chrf": 66.66222591172382
+    },
+    {
+      "index": 1922,
+      "hyp": "Zun\u00e4chst sieht man eine Statue, auch wenn sie erschreckend ist.",
+      "ref": "Auf den ersten Blick sieht es aus wie eine Statue, wenn auch eine erschreckende.",
+      "chrf": 43.95177201624147
+    },
+    {
+      "index": 2005,
+      "hyp": "Wenn der Zugbegleiter bei der Kontrolle an Sitz Y vorbeikommt, wei\u00df er, dass dort ein Passagier mit einem bereits validierten Online-Ticket sitzt.",
+      "ref": "Kommt der Zugbegleiter bei der Fahrkartenkontrolle an Platz Y wei\u00df er, dass dort ein Passagier mit bereits entwertetem Online-Ticket sitzt.",
+      "chrf": 69.0171871020859
+    },
+    {
+      "index": 98,
+      "hyp": "Die Regime\u00e4nderung wird sicherlich durch die Zerst\u00f6rung der Statuen gekennzeichnet.",
+      "ref": "Das sicherste Zeichen eines Regime-Wechsels ist es, wenn sie beginnen, die Statuen zu attackieren.",
+      "chrf": 27.16382898422521
+    },
+    {
+      "index": 1925,
+      "hyp": "Der Bericht im Journal Current Biology nennt es \"das am besten erhalten gebliebene Panzerdinosaurierfossil jemals gefunden worden ist und eines der besten Dinosaurierfossilien der Welt. \"",
+      "ref": "Der Bericht in der Zeitschrift \"Current Biology\" bezeichnete ihn als \"den besterhaltenen gepanzerten Dinosaurier, der jemals gefunden wurde, und eines der besten Dinosaurier-Exemplare der Welt\".",
+      "chrf": 55.28926932456491
+    },
+    {
+      "index": 976,
+      "hyp": "Und vielleicht werden einige mich als unzufrieden bezeichnen, aber ich mag es nicht, mich vor der ganzen Welt zu rechtfertigen.",
+      "ref": "Und vielleicht bezeichnen mich einige als undankbar, aber ich mag es nicht, mich vor der ganzen \u00d6ffentlichkeit rechtfertigen zu m\u00fcssen.\"",
+      "chrf": 63.83488493388604
+    },
+    {
+      "index": 1738,
+      "hyp": "Die Liste der Aufgaben, die von den Staaten \u00fcbernommen werden m\u00fcssen, ist jedoch noch sehr lang.",
+      "ref": "Die Hausaufgaben-Liste f\u00fcr das Land bleibt aber lang.",
+      "chrf": 28.716503078044518
+    },
+    {
+      "index": 3,
+      "hyp": "Die Bewohner von Gr\u00fcnfl\u00e4chen nutzen die Erde der fr\u00fcheren Landwirte.",
+      "ref": "Kleing\u00e4rtner bewirtschaften den einstigen Grund von Bauern.",
+      "chrf": 20.801244076528523
+    },
+    {
+      "index": 1263,
+      "hyp": "Die Bank von England hat gewarnt, dass die Wirtschaftswachstum \"langsam\" bleiben wird, w\u00e4hrend sie die Zinss\u00e4tze bei der gegenw\u00e4rtigen Stabilit\u00e4t belassen hat, obwohl die Einkommensverh\u00e4ltnisse der Familien weiterhin unter Druck stehen.",
+      "ref": "Die Bank of England hat gewarnt, dass das Wirtschaftswachstum \"tr\u00e4ge\" bleiben wird, als sie die Zinss\u00e4tze auf Familieneinkommen mitten in einem sich verst\u00e4rkenden Druck beibehielt.",
+      "chrf": 56.388115553235586
+    },
+    {
+      "index": 287,
+      "hyp": "Der indonesische Pr\u00e4sident Joko Widodo, der auch als Jokowi bekannt ist, versprach w\u00e4hrend seiner Wahlkampagne im Jahr 2014, die Ungleichheiten und Menschenrechtsverletzungen in Papua zu bek\u00e4mpfen.",
+      "ref": "Der indonesische Staatspr\u00e4sident Joko Widodo, im Volksmund als Jokowi bekannt, versprach w\u00e4hrend seines Wahlkampfes 2014 die Ungleichheiten und die Rechtsverletzungen in Papua anzugehen.",
+      "chrf": 70.68907927656313
+    },
+    {
+      "index": 2271,
+      "hyp": "Ich denke, wenn wir am Samstag sind und mehr Zeit haben, wird es wirklich gro\u00dfartig.",
+      "ref": "Ich denke, sobald wir bis zum Samstag kommen und wir mehr Zeit haben, wird es wirklich gro\u00dfartig.\"",
+      "chrf": 65.70308935134538
+    },
+    {
+      "index": 1955,
+      "hyp": "Obwohl der K\u00f6nig aller Tyrannosaurier, Tyrannosaurus rex, Millionen Jahre nach Borealopelta lebte, k\u00f6nnte das gepanzerte Dinosaurier von einigen seiner furchterregenden Vorfahren verfolgt worden sein.",
+      "ref": "Obwohl der K\u00f6nig von ihnen, der Tyrannosaurus Rex, Millionen Jahre nach Borealopelta lebte, wurde der gepanzerte Dinosaurier von einigen seiner furchterregenden Vorfahren gejagt.",
+      "chrf": 79.07883030549466
+    },
+    {
+      "index": 788,
+      "hyp": "Allerdings glaubt der 58-J\u00e4hrige, dass sie sich im ersten offiziellen Wettbewerbsspiel des Jahres verbessern k\u00f6nnen.",
+      "ref": "Der 58-J\u00e4hrige glaubt aber an eine Leistungssteigerung im ersten offiziellen Pflichtspiel der Saison.",
+      "chrf": 46.43240787734722
+    },
+    {
+      "index": 130,
+      "hyp": "Ein Rekordzahl von schottischen Sportlern wird f\u00fcr die Olympischen Spiele 2017 in London ausgew\u00e4hlt, die am Freitag beginnen.",
+      "ref": "Eine Rekordzahl von schottischen Athleten wurde f\u00fcr London 2017 ausgew\u00e4hlt, das am Freitag startet.",
+      "chrf": 55.62625474851816
+    },
+    {
+      "index": 1513,
+      "hyp": "Daraus entstand Spekulationen dar\u00fcber, ob Trump Mue\u043b\u043b\u0435\u0440 entlassen wolle.",
+      "ref": "Das l\u00f6ste Spekulationen dar\u00fcber aus, ob Trump Mueller entlassen wolle.",
+      "chrf": 69.60134736546304
+    },
+    {
+      "index": 961,
+      "hyp": "Einige Menschen lieben Grilled Cheese und werden es f\u00fcr den Rest ihres Lebens essen.",
+      "ref": "\"Einige Menschen lieben gegrillten K\u00e4se und werden ihn bis ans Ende ihres Lebens essen.",
+      "chrf": 61.788124729578044
+    },
+    {
+      "index": 1126,
+      "hyp": "Die PSG k\u00f6nnen sicherlich das Geld f\u00fcr den Vertrag mit Neymar aufbringen und ihn zu einer Galerie von anderen Sternen hinzuf\u00fcgen, da die Mannschaft durch die Energie- und Wohlstandsfamilie von Katar finanziert wird.",
+      "ref": "PSG kann mit Sicherheit das Geld locker machen, damit Neymar unterschreibt und ihn in eine Galaxie anderer Stars bringen, angesichts der Finanzierung des Teams durch die durch die Energie reiche Herrscherfamilie von Katar.",
+      "chrf": 41.89872767171731
+    },
+    {
+      "index": 1932,
+      "hyp": "Die n\u00e4chsten sechs Jahre verbrachten sie damit, die Bestie aus dem 2,500-Pfund (1,100 kg) schweren Erdklumpen zu befreien.",
+      "ref": "Sie verbrachten die n\u00e4chsten sechs Jahre daran, das wilde Tier innerhalb des 2.500 Pfund (1.100 kg) schweren Erdklumpens aufzudecken.",
+      "chrf": 55.43485847630527
+    },
+    {
+      "index": 2842,
+      "hyp": "Die 13-j\u00e4hrige weigerte sich, ihre Bitte zu erf\u00fcllen, und ging mit ihren Freundinnen weiter.",
+      "ref": "Die 13-J\u00e4hrige lehnte die Bitte aber ab und ging mit ihren Freunden weiter.",
+      "chrf": 58.69895662149583
+    },
+    {
+      "index": 2146,
+      "hyp": "\"Die DNA kann so viele verschiedene Geschichten erz\u00e4hlen, also ist das hier nur eine von 30 Geschichten.\"",
+      "ref": "\"DNA-Daten k\u00f6nnen so viele verschiedene Geschichten erz\u00e4hlen, daher sind das 30 dieser Geschichten.\"",
+      "chrf": 63.921227942711745
+    },
+    {
+      "index": 1000,
+      "hyp": "Wir m\u00fcssen in den n\u00e4chsten Monaten alles tun, um diese Situation zu normalisieren.",
+      "ref": "\"Wir m\u00fcssen in den n\u00e4chsten Monaten alles tun, um diese Situation zu normalisieren.",
+      "chrf": 98.82796593214297
+    },
+    {
+      "index": 2647,
+      "hyp": "Und dann kam der n\u00e4chste Tritt in die Nieren.",
+      "ref": "Und mit ihm kam der n\u00e4chste Tiefschlag.",
+      "chrf": 44.54795746551465
+    },
+    {
+      "index": 186,
+      "hyp": "Ich kann auch nicht mit ansehen, wie man die Meinung von mehreren Menschen, die sich auf ein Thema einlassen, sofort als eine Art kollektive Anstrengung abtut und sie nicht als eine gro\u00dfe Gruppe aus Sorgfaltsvollem betrachtet.",
+      "ref": "\"Ich sch\u00e4tze diese Idee auch nicht, wenn eine Anzahl von Leuten zum selben Thema Stellung nimmt, dann werden sie von manchen eher als ein so genannter kollektiver Einsatz missachtet und nicht als eine gro\u00dfe Gruppe von betroffenen B\u00fcrgern anerkannt\".",
+      "chrf": 39.16887100999651
+    },
+    {
+      "index": 207,
+      "hyp": "Der Nordirlandseher, der im Vorjahr auf dem Archerfield Links nach dem dritten Rundenspiel vor Paul Eales stand und dann verlor, ist eng mit dem neuen Golfplatz verbunden und fungiert als Turnierbotschafter f\u00fcr den Gr\u00fcnder und CEO des Clubs, Jerry Sarvadi.",
+      "ref": "Der Nordire, der im vergangenen Jahr nebenan im Archerfield Links bis zur Endrunde f\u00fchrte, bevor er gegen Paul Eales verlor, ist mit dem neuen Austragungsort verbunden und fungiert als Turnierbotschafter im Namen des Vereinsgr\u00fcnders und CEOs Jerry Sarvadi.",
+      "chrf": 55.244765826179574
+    },
+    {
+      "index": 2199,
+      "hyp": "Es handelt sich hierbei um eine rein vorbeugende Ma\u00dfnahme und es k\u00f6nnen keine gesundheitlichen Sch\u00e4den davon ausgegangen werden, so lautete die Erkl\u00e4rung.",
+      "ref": "Es handele sich um eine reine Vorsichtsma\u00dfnahme, es k\u00f6nne weiter von keiner gesundheitlichen Beeintr\u00e4chtigung ausgegangen werden, hie\u00df es in der Mitteilung.",
+      "chrf": 49.798867311648024
+    },
+    {
+      "index": 358,
+      "hyp": "Zehn Noten kosteten nur 10.000 indonesische Rupien (75 Cent).",
+      "ref": "Zehn St\u00fccke Nota kosteten nur 10.000 indonesische Rupien (75 Cents).",
+      "chrf": 77.24569060981284
+    },
+    {
+      "index": 2652,
+      "hyp": "Dank des Skandals um die Emissionen der Volkswagen und seiner Rolle im Aufsichtsrat war der Ministerpr\u00e4sident von Niedersachsen bereits seit l\u00e4ngerer Zeit unter Kritik gestanden.",
+      "ref": "Wegen der VW-Abgasaff\u00e4re und seiner Rolle im Aufsichtsrat stand der nieders\u00e4chsische Ministerpr\u00e4sident bereits seit l\u00e4ngerem in der Kritik.",
+      "chrf": 60.830308454337676
+    },
+    {
+      "index": 684,
+      "hyp": "Und ich habe auch an der ganzt\u00e4gigen Schule in ihren Erg\u00e4nzungsbetrieben gearbeitet.",
+      "ref": "Und ich habe auch schon im offenen Ganztag an der Schule gearbeitet.",
+      "chrf": 51.46999433444559
+    },
+    {
+      "index": 2980,
+      "hyp": "Was hat Georg Ratzinger in seinen Gespr\u00e4chen mit Ihnen f\u00fcr das Buch \"Mein Bruder, der Papst\" \u00fcber seine Zeit in Regensburg gesagt?",
+      "ref": "Welches Bild von seiner Regensburger Zeit hat Georg Ratzinger denn in den Gespr\u00e4chen mit Ihnen f\u00fcr das Buch \"Mein Bruder der Papst\" wiedergegeben?",
+      "chrf": 63.55172472332779
+    },
+    {
+      "index": 876,
+      "hyp": "\"Aber sie wissen nicht 100 %ig, wo sie sich derzeit befinden, \" sagt der Zentraleverteidiger der Fortuna.",
+      "ref": "\"Aber sie wissen nicht so 100-prozentig wo sie derzeit stehen\", sagt der Innenverteidiger der Fortuna.",
+      "chrf": 60.184079829016724
+    },
+    {
+      "index": 1247,
+      "hyp": "Die Sprecherin der Partei Die Linke f\u00fcr innere Angelegenheiten, Ulla Elpke, kritisierte diese Entscheidung: \"Aufgrund der M\u00e4ngel im italienischen Asylrecht drohen Familien mit Kindern Bedingungen der Aufnahme, die gegen Menschenrechte versto\u00dfen und das Wohlbefinden des Kindes gef\u00e4hrden.\"",
+      "ref": "Die innenpolitische Sprecherin der Linksfraktion im Bundestag, Ulla Jelpke, kritisierte diese Entscheidung: \"Familien mit Kindern drohen wegen der M\u00e4ngel im italienischen Asylsystem menschenrechtswidrige Aufnahmebedingungen und eine Gef\u00e4hrdung des Kindeswohls\".",
+      "chrf": 61.767858158703206
+    },
+    {
+      "index": 1036,
+      "hyp": "Da Henrik nicht die Titel und Funktionen bekommen hat, die er sich gew\u00fcnscht hat, sieht er sich nach den Gesetzen der d\u00e4nischen Monarchie nicht als gleichwertig zu seiner Frau, auch nicht nach ihrem Tod, erkl\u00e4rt Lene Balleby, die Sprecherin des d\u00e4nischen K\u00f6nigshauses.",
+      "ref": "Da Henrik in D\u00e4nemark nicht den Titel und die Funktion bekommen habe, die er wollte, sehe er sich gegen\u00fcber seiner Frau nicht als gleichwertig an - auch nicht nach dem Tod, erkl\u00e4rte Lene Balleby, die Chefsprecherin des d\u00e4nischen K\u00f6nigshauses.",
+      "chrf": 67.1596698159265
+    },
+    {
+      "index": 2997,
+      "hyp": "Man w\u00fcrde nun die Decence fordern, endlich Ruhe zu geben einem 93-j\u00e4hrigen Mann, der gro\u00dfes Verdienst erworben hat und ohne den wahrscheinlich au\u00dfer Bayern und vielleicht sogar au\u00dfer Deutschland niemand von den Regensburger Domspatzl kennt.",
+      "ref": "Jetzt w\u00fcrde der Anstand gebieten, einen 93-j\u00e4hrigen Mann, der sich gro\u00dfe Verdienste erworben hat und ohne den au\u00dferhalb Bayerns und vielleicht noch Deutschlands wohl niemand die Regensburger Domspatzen kennen w\u00fcrde, endlich in Frieden zu lassen.",
+      "chrf": 56.635041586859266
+    },
+    {
+      "index": 405,
+      "hyp": "In den USA werden laut Umfrage mehr als ein Viertel der Reisenden mit verbotenen Gegenst\u00e4nden an Bord von Flugzeugen festgenommen.",
+      "ref": "Mehr als 1 von 5 US-Reisenden bringt verbotene Gegenst\u00e4nde ins Flugzeug, findet eine Umfrage heraus",
+      "chrf": 47.89184628693755
+    },
+    {
+      "index": 595,
+      "hyp": "Am 25. Juli 1946 zahlte Loy Harrison, ein bedeutender wei\u00dfer Landbesitzer, laut FBI 600 Dollar zur Freilassung von Malcolm aus dem Gef\u00e4ngnis.",
+      "ref": "Am 25. Juli 1946 zahlte Loy Harrison, ein prominenter wei\u00dfer Landbesitzer, 600 Dollar, um Malcom aus dem Gef\u00e4ngnis zu befreien, so das FBI.",
+      "chrf": 67.86861907116285
+    },
+    {
+      "index": 2044,
+      "hyp": "\"Sie war mir nicht entkommen\", sagte Ferrell sp\u00e4ter.",
+      "ref": "Ich konnte sie nicht mitnehmen\", sagte Ferrell sp\u00e4ter.",
+      "chrf": 59.61477073899027
+    },
+    {
+      "index": 1356,
+      "hyp": "Der ehemalige Carlton Football Club-Manager und Entwickler Colin De Lutis lebt in einem Toorak-Haus, nur drei T\u00fcren von seinem j\u00fcngeren Bruder Paul entfernt, der ihn wegen der Aufteilung ihrer Immobilien und Gesch\u00e4ftsverm\u00f6gen vor den Obersten Gerichtshof gezogen hat.",
+      "ref": "Der ehemalige Direktor des 'Carlton-Football-Club' und Entwickler Colin De Lutis lebt in einer Villa in Toorak, nur drei T\u00fcren von seinem j\u00fcngerem Bruder Paul entfernt. Dieser hat ihn zum Obersten Gerichtshof gebracht, um kl\u00e4ren zu lassen, wie ihr Eigentum und ihr Gesch\u00e4ftsverm\u00f6gen aufgeteilt werden soll.",
+      "chrf": 59.3660076190204
+    },
+    {
+      "index": 2209,
+      "hyp": "Durch die Entwicklung und Verleihung von Software, die speziell dazu dient, die Mitarbeiterbindung zu messen, erm\u00f6glichen sie Unternehmen, schnelle Umfragen durchzuf\u00fchren, bestimmte Teams und Demografiegruppen zu zielgenauern, den Mitarbeitern Anonymit\u00e4t und Beschwerdekan\u00e4le anzubieten und in einigen F\u00e4llen auch Whistle-Blower, die sich an die Gesch\u00e4ftsf\u00fchrung wenden wollen, direkt an das Vorstandsmitglied zu gehen.",
+      "ref": "Durch die Erstellung und Lizenzierung von Software, die den spezifischen Zweck der Messung des Mitarbeiter-Engagement hat, erm\u00f6glicht sie es Unternehmen, Umfragen durchzuf\u00fchren, Spezielle Gruppen und demographische Gruppen anzusprechen, Mitarbeitern Anonymit\u00e4t und Beschwerde-Hotlines zu bieten, und in einigen F\u00e4llen Whistleblowern erlauben, die C-Suite F\u00fchrungskr\u00e4fte zu umgehen und sich direkt an den Verwaltungsrat zu wenden.",
+      "chrf": 54.64059725824912
+    },
+    {
+      "index": 1547,
+      "hyp": "Die Erw\u00e4rmung der Atmosph\u00e4re hat dazu beigetragen.",
+      "ref": "Zum R\u00fcckgang habe der Temperaturanstieg beigetragen.",
+      "chrf": 31.642346438076892
+    },
+    {
+      "index": 1597,
+      "hyp": "Neun Radsportler aus Weilermer, die als \"Berlin-Posten\" bekannt sind, und zwei Gastfahrer trafen sich in Wachenheim im Norden des Pf\u00e4lzerwaldes, um vier Tage Trials und Attraktionen zu genie\u00dfen.",
+      "ref": "Neun Weilermer Biker, der \"Berliner Au\u00dfenposten\" und zwei Gastfahrer trafen sich in Wachenheim in der Nordpfalz, um vier Tage lang Trials und Sehensw\u00fcrdigkeiten zu genie\u00dfen.",
+      "chrf": 59.88217819618168
+    },
+    {
+      "index": 1423,
+      "hyp": "21 Postkarten f\u00fcr gef\u00e4hrliche Verbrecher aus 21 EU-L\u00e4ndern wurden zusammengestellt.",
+      "ref": "Man habe 21 Postkarten f\u00fcr gesuchte Verbrecher aus 21 EU-L\u00e4ndern zusammengestellt.",
+      "chrf": 77.78882487094526
+    },
+    {
+      "index": 2270,
+      "hyp": "Und sie haben es gerade durchgedr\u00fcckt; sie sind hartn\u00e4ckig, sie sind tolle Kinder.",
+      "ref": "\"Und sie haben es einfach durchgedr\u00fcckt, sie placken sich weiter, sie sind tolle Leute.",
+      "chrf": 50.57812350487838
+    },
+    {
+      "index": 831,
+      "hyp": "Ich habe mich bei Broner auf 140 Pfund bewegt, aber ich bin nicht so gro\u00df.",
+      "ref": "\"Ich bin f\u00fcr Broner [auf 140 Pfund] aufgestiegen, aber ich bin nicht so gro\u00df.",
+      "chrf": 58.12770802330568
+    },
+    {
+      "index": 2336,
+      "hyp": "Milit\u00e4rdurchbruch in der T\u00fcrkei \u2013 Erdogan f\u00fcrchtet die Armee",
+      "ref": "Milit\u00e4rreformen in der T\u00fcrkei - Erdogans Angst vor der Armee",
+      "chrf": 43.56158564156783
+    },
+    {
+      "index": 1635,
+      "hyp": "\"Ein guter Spieler ist ein gesunder Spieler.\"",
+      "ref": "\"Der fitte Spieler ist ein guter Spieler.\"",
+      "chrf": 72.95573431009204
+    },
+    {
+      "index": 1950,
+      "hyp": "In jener Zeit war Alberta so warm wie heute s\u00fcdfloridische Gebiete und Fl\u00fcsse und Ozeane reichten vermutlich viel weiter nach innen als heute.",
+      "ref": "Zu dieser Zeit war Alberta so warm wie S\u00fcdflorida heute, und Fl\u00fcsse und Ozeane wahrscheinlich viel weiter landeinw\u00e4rts verbreitet als sie es heute sind.",
+      "chrf": 56.457671089953685
+    },
+    {
+      "index": 2982,
+      "hyp": "Michael Hesemann: Nun, der Roman handelt von der Lebensgeschichte seines Bruders Josef, also von dem heutigen Papst Benedikt XVI., und die Domspatzen spielen nur eine Nebenrolle.",
+      "ref": "Michael Hesemann: Nun, in dem Buch geht es doch um das Leben seines Bruders Joseph, also Papst Benedikts XVI., erz\u00e4hlt aus seiner Perspektive, da spielten die Domspatzen nur eine Nebenrolle.",
+      "chrf": 58.13750005035979
+    },
+    {
+      "index": 1980,
+      "hyp": "Wie ein Journalist der AZ berichtet, gab es auch im entgegenkommenden Verkehrsstreifen erhebliche St\u00f6rungen \u2013 aufgrund zahlreicher Neugieriger.",
+      "ref": "Wie ein AZ-Reporter berichtet, kam es auch auf der Gegenfahrbahn zu massiven Behinderungen - durch zahlreiche Gaffer.",
+      "chrf": 36.829571663406384
+    },
+    {
+      "index": 2859,
+      "hyp": "Wir haben mit den Arbeitnehmern dar\u00fcber gesprochen, dass wir wie alle Unternehmen, die in einer extrem wettbewerbsf\u00e4higen und unsicheren Wirtschaft betrieben werden, unsere Betriebe kontinuierlich \u00fcberpr\u00fcfen m\u00fcssen, um wettbewerbsf\u00e4hig zu bleiben, und das gilt f\u00fcr alle unsere Gesch\u00e4ftsbereiche und Standorte.",
+      "ref": "Wir diskutierten mit den Mitarbeitern, dass wir wie alle Unternehmen, die in einem \u00e4u\u00dferst wettbewerbsintensiven und unsicheren Wirtschaftsklima t\u00e4tig sind, unsere Gesch\u00e4fte laufend \u00fcberpr\u00fcfen - und das gilt f\u00fcr alle unsere Gesch\u00e4ftsbereiche und Standorte - um wettbewerbsf\u00e4hig zu bleiben.",
+      "chrf": 67.63468940832304
+    },
+    {
+      "index": 2930,
+      "hyp": "Michael Hesemann: Das ist ganz klar nicht der Fall.",
+      "ref": "Michael Hesemann: Ganz deutlich nein.",
+      "chrf": 51.0296625395417
+    },
+    {
+      "index": 2874,
+      "hyp": "PSG hat deutlich gemacht, dass sie unter keinen Umst\u00e4nden zulassen werden, dass der Italiener abkommandiert wird, und Barcelona k\u00f6nnte durch die Interessen von PSG einen seiner wertvollsten Spieler verlieren, Neymar.",
+      "ref": "PSG machte deutlich, dass sie es dem Internationalen aus Italien nicht erlauben w\u00fcrden, unter irgendwelchen Umst\u00e4nden abzureisen, und Barcelona konnte die Folgen dieses Interesses sp\u00fcren, indem sie eines ihrer Preisangebote f\u00fcr Neymar verlor.",
+      "chrf": 40.78646858190282
+    },
+    {
+      "index": 2358,
+      "hyp": "Nach der Wahl im Jahr 2002 hat Erdogan die Macht des Milit\u00e4rs St\u00fcck f\u00fcr St\u00fcck zur\u00fcckgedr\u00e4ngt, nicht zuletzt durch die Anwendung der Reformrichtlinien der Europ\u00e4ischen Union.",
+      "ref": "Nach seinem Wahlsieg 2002 dr\u00e4ngte Erdogan die Macht der Milit\u00e4rs Schritt f\u00fcr Schritt zur\u00fcck, nicht zuletzt unter Berufung auf die Reformvorgaben der Europ\u00e4ischen Union.",
+      "chrf": 53.93061362390726
+    },
+    {
+      "index": 193,
+      "hyp": "Eines der ersten Entscheidungen in diesem Zusammenhang wurde vor wenigen Tagen in Virginia gef\u00e4llt.",
+      "ref": "Einer der ersten Meilensteine in dieser Frage fiel letzte Woche in Virginia.",
+      "chrf": 40.20712226018067
+    },
+    {
+      "index": 1706,
+      "hyp": "Das hat sich aber ausgezeichnet gehalten.",
+      "ref": "Das immerhin klappte ganz gut.",
+      "chrf": 16.227553661670452
+    },
+    {
+      "index": 2207,
+      "hyp": "Deshalb rief sie au\u00dfenstehende Experten ein.",
+      "ref": "Sie hat Leute von au\u00dfen um Hilfe gerufen.",
+      "chrf": 19.43904852278613
+    },
+    {
+      "index": 1625,
+      "hyp": "Was genau ist damit gemeint?",
+      "ref": "Worum geht es genau?",
+      "chrf": 28.39889669556473
+    },
+    {
+      "index": 592,
+      "hyp": "Im April 1946 erlaubte ein Urteil des Obersten Gerichtshofs den Schwarzen in Georgien zum ersten Mal im Sommer die Teilnahme an der Prim\u00e4rwahl.",
+      "ref": "Im April 1946 erm\u00f6glichte eine Entscheidung des Obersten Gerichtshofs den schwarzen B\u00fcrgern in Georgia es zum ersten Mal, am Vorwahlkampf im Sommer ihre Stimme abzugeben.",
+      "chrf": 51.92102802476474
+    },
+    {
+      "index": 1411,
+      "hyp": "Trump las den Artikel und begann, seine Mitarbeiter nach Walsh zu fragen.",
+      "ref": "Trump las den Artikel und fing an, Mitarbeiter \u00fcber Walsh zu befragen.\"",
+      "chrf": 66.05356888086516
+    },
+    {
+      "index": 2388,
+      "hyp": "Als du glaubtest, dass 2017 nicht noch wunderlicher werden kann, erscheint ein neuer Bericht \u00fcber die technologischen Entwicklungen im Bereich der Sexbots.",
+      "ref": "Gerade als Sie dachten, dass es 2017 nicht noch verr\u00fcckter werden kann, kommt ein neuer Bericht \u00fcber die technologischen Entwicklungen im Bereich der Sex-Roboter.",
+      "chrf": 68.7658555292106
+    },
+    {
+      "index": 500,
+      "hyp": "Die Serenade findet nur bei trockenem Wetter statt.",
+      "ref": "Die Serenade findet nur bei trockenem Wetter statt.",
+      "chrf": 100.0
+    },
+    {
+      "index": 1644,
+      "hyp": "Doch der e-Sport sei \"nicht mehr weit von etablierten Sportarten wie Handball, Basketball oder Eishockey entfernt\", schreiben die Deloitte-Consultants.",
+      "ref": "Jedoch sei der E-Sport \"nicht mehr weit von den anderen etablierten Sportarten wie Handball, Basketball oder Eishockey entfernt\", schreiben die Deloitte-Berater.",
+      "chrf": 78.81232776025972
+    },
+    {
+      "index": 2924,
+      "hyp": "Gegen\u00fcber dem, was dieser Bericht tats\u00e4chlich behandelt, n\u00e4mlich der schrecklichen sexuellen Missbrauch und den extremen Gewalttaten in der Kindertagesbetreuung, sind diese Dinge nat\u00fcrlich nur Nebens\u00e4chlichkeiten.",
+      "ref": "Verglichen mit dem, worum es eigentlich in diesem Bericht geht, n\u00e4mlich dem entsetzlichen sexuellen Missbrauch und den Gewaltexzessen auf der Vorschule, sind das freilich Bagatellen.",
+      "chrf": 48.11034456534955
+    },
+    {
+      "index": 1011,
+      "hyp": "Der 33-j\u00e4hrige Hauptmann und der 47-j\u00e4hrige Oberstleutnant aus Nordhessen sind vor einer Woche, am Mittwoch, im westafrikanischen Land Mali ums Leben gekommen.",
+      "ref": "Der 33-j\u00e4hrige Major und der 47-j\u00e4hrige Stabshauptmann aus Nordhessen waren am Mittwoch vor einer Woche im westafrikanischen Mali ums Leben gekommen.",
+      "chrf": 73.6335971627443
+    },
+    {
+      "index": 1683,
+      "hyp": "Im Moment vor seinem Selbstmord schrieb sie: \"Du musst es tun, Conrad \" und \"Alles, was du tun musst, ist, den Generator anzuschalten, dann wirst du frei und gl\u00fccklich sein. \"",
+      "ref": "In den Augenblicken vor seinem Selbstmord schrieb sie: \"Du musst es tun, Conrad\" und \"Alles, was du tun musst, ist den Generator einzuschalten und du wirst frei und gl\u00fccklich sein.\"",
+      "chrf": 79.26344910090124
+    },
+    {
+      "index": 2887,
+      "hyp": "Interview: \"Domspatzen entlastet den Bruder des Papstes Georg Ratzinger\"",
+      "ref": "Interview: \"Domspatzen-Bericht entlastet Papst-Bruder Georg Ratzinger\"",
+      "chrf": 70.0181864576679
+    },
+    {
+      "index": 1401,
+      "hyp": "Vielleicht wissen diese Kampagnenmitarbeiter etwas, was wir nicht wissen - dass Trumps Tweets noch viel sch\u00e4rfer w\u00e4ren gewesen, wenn sie nicht eingegriffen h\u00e4tten.",
+      "ref": "Vielleicht wissen diese Kampagnenbeamten etwas, was wir anderen nicht wissen - dass Trumps Tweets ohne ihre Interventionen noch mehr Z\u00fcndstoff enthalten h\u00e4tten.",
+      "chrf": 58.51214527313312
+    },
+    {
+      "index": 378,
+      "hyp": "\"Sie brauchen kein Geld, sie wollen nur Gerechtigkeit\", sagt er.",
+      "ref": "\"Sie brauchen kein Geld, sie wollen nur Gerechtigkeit\", sagt er.",
+      "chrf": 100.0
+    },
+    {
+      "index": 377,
+      "hyp": "Gobai erkl\u00e4rt, dass die Bewohner von Paniai, wie auch andere Papuas, ihre Stimme f\u00fcr Jokowi als eine \"Schuld\" sehen, die er zur\u00fcckzahlen muss.",
+      "ref": "Gobai sagt, dass die Paniai-Leute, wie andere Papua, ihre Stimme f\u00fcr Jokowi als eine \"Schuld\" betrachten, die er zur\u00fcckzahlen muss.",
+      "chrf": 71.83003167203992
+    },
+    {
+      "index": 1012,
+      "hyp": "Die S\u00e4rge wurden nach Deutschland zur\u00fcckgebracht und am Donnerstag in die Kathedrale von Fritzlar gebracht, begleitet von einem Wachposten der Bundeswehr.",
+      "ref": "Ihre S\u00e4rge wurden nach Deutschland \u00fcberf\u00fchrt und am Donnerstag begleitet von einer Totenwache der Bundeswehr in den Fritzlarer Dom Sankt Peter gebracht.",
+      "chrf": 63.083025985546826
+    },
+    {
+      "index": 2250,
+      "hyp": "Sind Sie daran interessiert?",
+      "ref": "K\u00fcmmern Sie sich darum?",
+      "chrf": 17.11169383915454
+    },
+    {
+      "index": 2772,
+      "hyp": "Der noch unbesiegte Chilene Hans Podlipnik-Castillo traf gestern im Kitzb\u00fcheler ATP-Turnier noch mit dem Belarussen Andrei Vasilevski auf der Bahn.",
+      "ref": "Der bislang unbesiegte Chilene Hans Podlipnik-Castillo war gestern mit dem Wei\u00dfrussen Andrei Vasilevski noch beim ATP-Turnier in Kitzb\u00fchel am Ball.",
+      "chrf": 67.55786763551767
+    },
+    {
+      "index": 2825,
+      "hyp": "\"Die Rolle der Frauen kann nicht zu hoch eingesch\u00e4tzt werden \", sagte er in einem Statement am Mittwoch.",
+      "ref": "\"Die Rolle der Frauen kann nicht \u00fcbersch\u00e4tzt werden\", sagte er am Mittwoch in einem Statement.",
+      "chrf": 82.64337707136539
+    },
+    {
+      "index": 2650,
+      "hyp": "Seitdem k\u00e4mpft er um sein politisches \u00dcberleben.",
+      "ref": "Seitdem k\u00e4mpft Scholz um sein politisches \u00dcberleben.",
+      "chrf": 81.7780693325534
+    },
+    {
+      "index": 473,
+      "hyp": "Wie der Beschreibung des oberen Amtsbezirks von Freudenstadt aus dem Jahr 1858 ersichtlich ist, war das \"Gebirge\", neben dem unteren Dorf und dem oberen Dorf, das heute noch in der Gestalt von Tumlingen erkennbar ist, der dritte, gro\u00dfe Siedlungszentrum des Dorfes.",
+      "ref": "Wie aus der Beschreibung des Oberamtes Freudenstadt von 1858 hervorgeht, war neben dem Unterdorf und dem Oberdorf, die heute im Ortsbild von Tumlingen gerade noch zu erkennen sind, der \"Berg\" der dritte, der herrschaftliche Siedlungskern des Dorfes.",
+      "chrf": 50.75254111502233
+    },
+    {
+      "index": 2039,
+      "hyp": "Was mit Ferrell und Ferguson in den folgenden fast drei Jahren geschah, wird in einem neuen Dokumentarfilm, \"Whose Streets? \", am 11. August im Kino gezeigt.",
+      "ref": "Was in den folgenden drei Jahren mit Ferrell und Ferguson passierte, ist das Thema eines neuen Dokumentarfilms, \"Whose Streets?\", in den Kinos ab dem 11.",
+      "chrf": 61.958122684151895
+    },
+    {
+      "index": 660,
+      "hyp": "\"Diejenigen, die ihre Geschichte nicht studieren und nicht kennen, werden sie wiederholen m\u00fcssen. \"",
+      "ref": "Wer seine eigene Geschichte nicht studiert, wer seine eigene Geschichte nicht kennt, ist dazu verurteilt, sie zu wiederholen.\"",
+      "chrf": 44.244847705237845
+    },
+    {
+      "index": 301,
+      "hyp": "Einige Demonstranten begannen, Steine gegen Polizei- und Milit\u00e4rbunker zu werfen.",
+      "ref": "Einige Demonstranten begannen Steine auf Polizei- und Milit\u00e4rposten zu schleudern.",
+      "chrf": 65.1838124272182
+    },
+    {
+      "index": 162,
+      "hyp": "Er war nat\u00fcrlich emp\u00f6rt \u00fcber die Kritik.",
+      "ref": "Er schimpfte bei der Kritik, sicher.",
+      "chrf": 26.21050615196628
+    },
+    {
+      "index": 2771,
+      "hyp": "Wenn der Franzose, der derzeit noch im Challenge-Turnier in der italienischen Biella aktiv ist, nicht zum Bundesligaspiel kommt, wird Zdenek Kolar (Tschech) zum ersten Mal in dieser Saison f\u00fcr die Mannschaft aufgerufen, derzeit in Liberec in der Tschechischen Republik an einem Turnier teilnimmt.",
+      "ref": "Schafft es der momentan noch beim Challenger-Turnier im italienischen Biella aktive Franzose nicht zur Bundesliga-Partie, kommt der beim Turnier im tschechischen Liberec spielende Zdenek Kolar (Tschechien) zu seinem ersten Einsatz in dieser Saison.",
+      "chrf": 59.47354469036951
+    },
+    {
+      "index": 1021,
+      "hyp": "Die Ministerin von der Leyen hat die UN-Mission in Mali nicht in Frage gestellt: Die Mission war gef\u00e4hrlich.",
+      "ref": "Zweifel an der UN-Mission in Mali zeigte Ministerin von der Leyen nicht: Der Einsatz sei gef\u00e4hrlich.",
+      "chrf": 58.629337731426155
+    },
+    {
+      "index": 2911,
+      "hyp": "Wie bewertest du diesen Abschlussbericht als Biographie?",
+      "ref": "Wie werten Sie als sein Biograph diesen Abschlussbericht?",
+      "chrf": 65.41751254926885
+    },
+    {
+      "index": 2078,
+      "hyp": "\"Sie strahlt Energie durch den Bildschirm aus. \"",
+      "ref": "Du kannst ihre Energie durch den Bildschirm sp\u00fcren.\"",
+      "chrf": 58.79896092000245
+    },
+    {
+      "index": 1058,
+      "hyp": "Dann w\u00e4ren die CDU und die FDP zusammen mit 69 Sitzen im nieders\u00e4chsischen Landtag und die Gr\u00fcnen mit 68 Sitzen.",
+      "ref": "Damit h\u00e4tten CDU und FDP zusammen 69 Sitze im nieders\u00e4chsischen Landtag, SPD und Gr\u00fcne 68 Sitze.",
+      "chrf": 62.07583205156425
+    },
+    {
+      "index": 1978,
+      "hyp": "Die A8 war in Richtung M\u00fcnchen komplett gesperrt.",
+      "ref": "Die A8 wurde Richtung M\u00fcnchen vollst\u00e4ndig gesperrt.",
+      "chrf": 55.91661915981243
+    },
+    {
+      "index": 16,
+      "hyp": "Selbst wenn die franz\u00f6sischen Truppen schlie\u00dflich mit dem Vertrag von Luneville vom 9. Februar 1801 zur\u00fccktraten: es waren die Nachbarn, die den Gedanken hatten, eine umfassende Karte von Bayern zu erstellen.",
+      "ref": "Auch wenn die franz\u00f6sischen Truppen mit dem Frieden von Lun\u00e9ville vom 9. Februar 1801 schlie\u00dflich abzogen: Es waren die heutigen Nachbarn, die die Idee einer fl\u00e4chendeckenden Bayern-Karte kreierten.",
+      "chrf": 56.820527741842774
+    },
+    {
+      "index": 223,
+      "hyp": "Sie wollen gut arbeiten, aber Sie f\u00fchlen sich unter Druck gesetzt.",
+      "ref": "\"Du willst es gut machen, aber du sp\u00fcrst auch diesen zus\u00e4tzlichen Druck.",
+      "chrf": 24.87569980823689
+    },
+    {
+      "index": 1944,
+      "hyp": "Es deutet darauf hin, dass der Dinosaurier von gen\u00fcgend Raubdinosauriern verfolgt wurde, sodass die Evolution sich f\u00fcr die Versteckkunst als \u00dcberlebensstrategie entschied, anstatt Konfrontationen zu suchen.",
+      "ref": "Es deutet darauf hin, dass der Dinosaurier von gen\u00fcgend Druck durch Fleisch fressende Dinosaurier gejagt wurde, dass die Evolution die Verschleierung der Konfrontation als Mittel des \u00dcberlebens beg\u00fcnstigte.",
+      "chrf": 60.06330609473807
+    },
+    {
+      "index": 1805,
+      "hyp": "Die kleine Stadt Geisa in den Th\u00fcringer Riesengebirgen feiert heute ihr 1200-j\u00e4hriges Jubil\u00e4um.",
+      "ref": "Das St\u00e4dtchen Geisa in der th\u00fcringischen Rh\u00f6n feiert heuer sein 1200-j\u00e4hriges Bestehen.",
+      "chrf": 45.41382738482605
+    },
+    {
+      "index": 2256,
+      "hyp": "Und wenn Sie Menschen verlieren, dann verlieren Sie auch Kunden.",
+      "ref": "\"Und wenn Sie Menschen verlieren, verlieren Sie auch Kunden.",
+      "chrf": 91.6904619097706
+    },
+    {
+      "index": 2026,
+      "hyp": "Er postete ein Bild von Browns totem K\u00f6rper auf der Stra\u00dfe, wo er vier Stunden liegen blieb.",
+      "ref": "Er postete ein Bild von Browns leblosem K\u00f6rper, der auf der Stra\u00dfe ausgestreckt war und dort vier Stunden bleiben w\u00fcrde.",
+      "chrf": 55.7586054511653
+    },
+    {
+      "index": 2061,
+      "hyp": "Wie Folayan in einem j\u00fcngeren Interview erkl\u00e4rte: \"Wir h\u00f6rten, dass Menschen aus Ferguson nicht geh\u00f6rt werden, und wollten das anders machen. \"",
+      "ref": "Wie Folayan k\u00fcrzlich in einem Interview erkl\u00e4rte: \"Wir hatten geh\u00f6rt, dass Menschen, die in Ferguson geboren und aufgewachsen sind, ihre Stimmen nicht zentriert haben und wir wollten es anders machen.\"",
+      "chrf": 50.62797064479031
+    },
+    {
+      "index": 1880,
+      "hyp": "In den letzten Monaten wurden mehrere Gouverneure des PRI in hochprofiellen F\u00e4llen beschuldigt, Korruption begangen zu haben.",
+      "ref": "Vor kurzem wurden mehrere PRI-Gouverneure wegen hochkar\u00e4tiger F\u00e4lle von Korruption beschuldigt.",
+      "chrf": 52.95487305733476
+    },
+    {
+      "index": 515,
+      "hyp": "\"Die zust\u00e4ndige Beh\u00f6rde in Viersen hat die entsprechende Korrespondenz in der letzten Woche erhalten\", so ein Sprecher.",
+      "ref": "\"Die entsprechenden Schreiben sind seit vergangener Woche beim Kreis Viersen eingegangen\", erkl\u00e4rte ein Sprecher.",
+      "chrf": 41.279179163713856
+    },
+    {
+      "index": 1448,
+      "hyp": "Im Herbst 2014, als sich die Zahl der Fl\u00fcchtlinge im Landkreis dramatisch erh\u00f6hte, wurde das Hotelgeb\u00e4ude dem Landkreisverwaltungszentrum zur Nutzung als Wohnraum angeboten, was zu heftigen Diskussionen f\u00fchrte.",
+      "ref": "Im Herbst 2014 wurde angesichts dramatisch steigender Zahlen von Fl\u00fcchtlingen, die in den Landkreis kamen, das Hotelgeb\u00e4ude dem Landratsamt als Sammelunterkunft angeboten, was f\u00fcr kontroverse Diskussionen sorgte.",
+      "chrf": 51.400507133554285
+    },
+    {
+      "index": 1090,
+      "hyp": "Der Minister f\u00fcr Ern\u00e4hrung und Landwirtschaft Christian Schmidt (CSU) gibt in einem Interview mit RedaktionsNetzwerk Deutschland (RND) Antworten auf unsere Fragen.",
+      "ref": "Landwirtschaftsminister Christian Schmidt (CSU) steht im Interview mit dem RedaktionsNetzwerk Deutschland (RND) Rede und Antwort.",
+      "chrf": 70.97056423447215
+    },
+    {
+      "index": 1397,
+      "hyp": "\"Es war produktiv, ihm zu zeigen, dass er von Medienorganen, die \u00fcberzeugbar sind, fair behandelt wird, wenn er sich dar\u00fcber beschwert, dass er ungerecht behandelt wird \", sagte Sam Nunberg, ein ehemaliger Berater der Kampagne, im Februar f\u00fcr Politico.",
+      "ref": "\"Wenn Kandidat Trump wegen einer unfairen Berichterstattung ver\u00e4rgert war, war es produktiv, ihm zu zeigen, dass er eine faire Berichterstattung von Stellen erhielt, die zu \u00fcberzeugen waren\", sagte der ehemalige Wahlkampfberater Sam Nunberg im Februar gegen\u00fcber Politico.",
+      "chrf": 43.93370550370263
+    },
+    {
+      "index": 2346,
+      "hyp": "Seit dem gescheiterten Coup hat der Staatspr\u00e4sident Erdogan 169 von den 326 Gener\u00e4len und Admiralen entlassen.",
+      "ref": "Seit dem gescheiterten Coup hat Staatschef Erdogan 169 der 326 Gener\u00e4le und Admir\u00e4le gefeuert.",
+      "chrf": 64.28623604637284
+    },
+    {
+      "index": 1277,
+      "hyp": "Die Entscheidung f\u00fcr keine Ver\u00e4nderung folgt den j\u00fcngst gemeldeten entt\u00e4uschenden Wachstumszahlen, die die erwarteten Anstiege bremsen, und der Wirtschaftswachstum erreichte im zweiten Quartal mit 0,3 % einen Anstieg von 0,2 % im ersten Quartal.",
+      "ref": "Die Entscheidung zu keiner \u00c4nderung kommt, nachdem die j\u00fcngsten entt\u00e4uschenden Wachstumszahlen die steigenden Erwartungen auf eine Zinserh\u00f6hung ged\u00e4mpft haben und das BIP im zweiten Quartal von 0,2 % in den vorhergehenden drei Monaten auf 0,3 % gestiegen ist.",
+      "chrf": 46.51608008689953
+    },
+    {
+      "index": 580,
+      "hyp": "Seit 2005 kehren die Aktivisten f\u00fcr die Menschenrechte an den Moore's Ford Bridge zur\u00fcck, um die Nacht zu recreieren, in der 1946 zwei Schwarze, Roger und Dorothy Malcom sowie George und Mae Murray Dorsey, von der Klu Klux Klan get\u00f6tet wurden.",
+      "ref": "Seit 2005 kommen B\u00fcrgerrechtler zur Moore's Ford Bridge zur\u00fcck, um die Nacht nachzuahmen, in der zwei schwarze Paare - Roger und Dorothy Malcom sowie George und Mae Murray Dorsey - vom Ku Klux Klan im Jahr 1946 gelyncht wurden.",
+      "chrf": 63.9788775124444
+    },
+    {
+      "index": 180,
+      "hyp": "Die Post sprach mit einigen der wirklich von Hogan blockierten Personen.",
+      "ref": "Die Post sprach mit einigen der wirklichen Leute, die von Hogan blockiert wurden.",
+      "chrf": 73.55240821095155
+    },
+    {
+      "index": 2248,
+      "hyp": "\"Um 4.000 Vorschl\u00e4ge zu erhalten, m\u00fcssen Sie bereit sein, 4.000 Gespr\u00e4che zu f\u00fchren \", so Russell Raath, Pr\u00e4sident der Beratungsabteilung der Unternehmensverwaltungsfirma Kotter International, die bereits erlebt hat, dass Unternehmen zu viel auf die Datenerhebung setzen.",
+      "ref": "\"Wenn Sie nach 4.000 Anregungen fragen, m\u00fcssen Sie bereit sein, 4.000 Gespr\u00e4che zu haben\", sagte Russell Raath, President of Consulting bei der Business Management Firma Kotter International, der Unternehmen gesehen hat, die sich zu sehr auf das Sammeln von Daten verlassen haben.",
+      "chrf": 51.58235008125709
+    },
+    {
+      "index": 1283,
+      "hyp": "Die Bank sch\u00e4tzt, dass es vier Jahre dauern wird, bis die Preise und die Wirtschaft vollst\u00e4ndig mit einbezogen sind.",
+      "ref": "Die Bank sch\u00e4tzt, dass es wahrscheinlich vier Jahre dauern wird, bis dies die Preise und die Wirtschaft vollst\u00e4ndig erreichen wird.",
+      "chrf": 72.70192526403054
+    },
+    {
+      "index": 688,
+      "hyp": "Sie sind jetzt 26 Jahre alt und haben also einen sp\u00e4ten Ruf als Freiwilliger.",
+      "ref": "Sie sind jetzt 26 Jahre, also ein sp\u00e4tberufener Freiwilliger.",
+      "chrf": 67.20520003292147
+    },
+    {
+      "index": 1194,
+      "hyp": "Wie immer ist die beste Stelle der Franchise die Abweichung.",
+      "ref": "Wie immer sind die Exkurse der beste Teil der Franchise.",
+      "chrf": 46.028691268406
+    },
+    {
+      "index": 1578,
+      "hyp": "Italienische Regierung fordert NGO-Fl\u00fcchtlingsretter auf, sich zur\u00fcckzuhalten",
+      "ref": "Italien versch\u00e4rft den Ton zu NGO-Migranten-Rettungsbooten",
+      "chrf": 26.376232585261743
+    },
+    {
+      "index": 59,
+      "hyp": "Die Empfehlung verweist auch auf einen Bericht des Staatsanwalts der Bundesstaat Missouri, der zeigt, dass die Verh\u00e4ltnisse f\u00fcr Schwarze im Vergleich zu Wei\u00dfen noch schlechter sind: Die Verkehrspolizei h\u00e4lt sie 75 % h\u00e4ufiger an.",
+      "ref": "Der Rat weist auch auf einen k\u00fcrzlich erschienenen Bericht des B\u00fcros des Generalstaatsanwaltes von Missouri hin, in dem gezeigt wird, dass schwarze Autofahrer im Staat 75 Prozent h\u00e4ufiger als Wei\u00dfe angehalten werden.",
+      "chrf": 43.336817009890204
+    },
+    {
+      "index": 2063,
+      "hyp": "Seine Beteiligung brachte Ferrell n\u00e4her an das Projekt heran, wie auch die anderen sechs Einheimischen, die von der \"Whose Streets? \"-Gruppe in den Jahren nach Browns Ermordung verfolgt wurden.",
+      "ref": "Sein Engagement brachte Ferrell das Projekt n\u00e4her, zusammen mit sechs anderen Einheimischen folgte das Team von \"Whose Streets?\" in den Jahren nach Browns Erschie\u00dfung.",
+      "chrf": 56.88219268364215
+    },
+    {
+      "index": 2715,
+      "hyp": "Der gr\u00fcn-wei\u00dfe Sikorsky VH-3D, bekannt als Marine One, wenn der Pr\u00e4sident an Bord ist, war das Zentrum des 17. Juli im Wei\u00dfen Haus, wo amerikanische Bauprogramme vorgestellt wurden.",
+      "ref": "Der gr\u00fcn-wei\u00dfe Sikorsky VH-3D, bekannt als Marine One, wenn der Pr\u00e4sident an Bord ist, war das Herzst\u00fcck der Veranstaltung am 17. Juli im Wei\u00dfen Haus mit amerikanischen Bauprogrammen.",
+      "chrf": 76.55784132954948
+    },
+    {
+      "index": 1718,
+      "hyp": "Alaba motiviert die \u00f6sterreichische Nationalmannschaft der Frauen",
+      "ref": "Alaba motiviert \u00d6FB-Damen",
+      "chrf": 44.65382789386683
+    },
+    {
+      "index": 1553,
+      "hyp": "Nun haben sich weitere 17 Auszubildende ihren ersten Arbeitstag abgeholt.",
+      "ref": "Jetzt haben noch einmal 17 Auszubildende ihren ersten Arbeitstag hinter sich.",
+      "chrf": 63.070697873849845
+    },
+    {
+      "index": 1599,
+      "hyp": "Die Unterkunft im Tal von Wachenheim erwies sich als guter Ausgangspunkt f\u00fcr die Touristen.",
+      "ref": "Die Unterkunft im Wachenheimer Tal erwies sich als guter Ausgangspunkt f\u00fcr die Touren.",
+      "chrf": 85.58496808071318
+    },
+    {
+      "index": 727,
+      "hyp": "Am Montag wurde bei der irakischen Botschaft in Kabul ein Selbstmordattent\u00e4ter get\u00f6tet.",
+      "ref": "Am Montag t\u00f6tete ein Selbstmordattent\u00e4ter zwei Menschen in der N\u00e4he der irakischen Botschaft in Kabul.",
+      "chrf": 67.99597396627318
+    },
+    {
+      "index": 1374,
+      "hyp": "Colin sagt, dass er dort Westco gegr\u00fcndet hat, als er noch in der \"letzten Klasse der Sekundarstufe war, als Paul ein kleines Kind von etwa zehn Jahren war\".",
+      "ref": "Colin sagt, dass er Westco dort begann, als er \"in meinen letzten Jahren der High School war, als Paul noch ein kleines Kind war (ungef\u00e4hr 10 Jahre alt).\"",
+      "chrf": 48.63199145237693
+    },
+    {
+      "index": 650,
+      "hyp": "\"Das haben Sie aus einem bestimmten Grund getan. \"",
+      "ref": "Du hast das aus einem Grund getan.\"",
+      "chrf": 56.3628539301649
+    },
+    {
+      "index": 2394,
+      "hyp": "\"Man lacht \u00fcber sie, aber die Unternehmen schicken tats\u00e4chlich sehr viel und wir werden sie noch viel h\u00e4ufiger sehen\", sagte Herr Sharkey beim Er\u00f6ffnung der neuen Berichterstattung.",
+      "ref": "\"Die Leute machen sich \u00fcber sie lustig, aber die Unternehmen liefern jede Menge davon aus, und wir werden sie noch viel h\u00e4ufiger zu sehen bekommen\", sagte Herr Sharkey bei der Ver\u00f6ffentlichung seines neuen Berichts.",
+      "chrf": 55.47795097826253
+    },
+    {
+      "index": 2563,
+      "hyp": "Die Gemeindeplanungs- und Bauaufsichtsbeh\u00f6rde ist f\u00fcr die Bauplanung und den Bau, die Stadtplanung, die Erwerbungsangelegenheiten, die Verwaltung der kommunalen Immobilien, das kommunale Depot mit Bauhof und Stadtpflanzgarten sowie das untere Baurechtssenat, einschlie\u00dflich der Schutzgebiete von historischen St\u00e4tten, zust\u00e4ndig.",
+      "ref": "Dem Stadtbauamt unterstehen Hoch- und Tiefbau, Bauleitplanung, Grunderwerbsangelegenheiten, Verwaltung der st\u00e4dtischen Liegenschaften, St\u00e4dtischer Betriebshof mit Bauhof und Stadtg\u00e4rtnerei sowie Untere Baurechtsbeh\u00f6rde einschlie\u00dflich Denkmalschutz.",
+      "chrf": 48.900418951419006
+    },
+    {
+      "index": 522,
+      "hyp": "Neu Re m\u00f6chte etwa 20 Mio. Euro investieren.",
+      "ref": "Die NEW Re will rund 20 Millionen Euro investieren.",
+      "chrf": 42.32134192103397
+    },
+    {
+      "index": 2110,
+      "hyp": "Denn schlie\u00dflich sind die dort angebotenen Waren frisch, werden gr\u00f6\u00dftenteils direkt vom Produzenten angeboten und sind au\u00dferdem noch g\u00fcnstig.",
+      "ref": "Denn immerhin ist die dort angebotene Ware frisch, wird gr\u00f6\u00dftenteils direkt vom Erzeuger angeboten und ist obendrein preiswert.",
+      "chrf": 52.878718625703144
+    },
+    {
+      "index": 812,
+      "hyp": "Die Lage im Zentrum des Nationalparks Harz ist laut Informationen der Bundesanstalt f\u00fcr Naturschutz einer von sechs dunkelsten Regionen Deutschlands.",
+      "ref": "Der Standort mitten im Nationalpark Harz z\u00e4hlt nach Angaben des Bundesamtes f\u00fcr Naturschutz zu den sechs dunkelsten Regionen in Deutschland.",
+      "chrf": 55.73238717692453
+    },
+    {
+      "index": 184,
+      "hyp": "Die Anw\u00e4ltin Lakshmi Sarma Ramani aus Bowie, Maryland, war nicht hasserf\u00fcllt, aber sie fragte \u00fcber Hassdelikte.",
+      "ref": "Rechtsanw\u00e4ltin Lakshmi Sarma Ramani von Bowie, Md., war nicht hasserf\u00fcllt, aber sie fragte nach Hassverbrechen.",
+      "chrf": 66.4563026801206
+    },
+    {
+      "index": 1475,
+      "hyp": "Die Au\u00dfenanlagen werden ebenfalls umgestaltet - das ist bereits zu sehen.",
+      "ref": "Auch die Au\u00dfenanlagen werden auf Vordermann gebracht, das ist bereits deutlich sichtbar.",
+      "chrf": 43.908118197468006
+    },
+    {
+      "index": 856,
+      "hyp": "Der Wagen rutschte direkt in die B\u00f6schung und kippte um, wo er auf der Grasbretter liegen blieb.",
+      "ref": "Der Pkw schleuderte nach rechts in die B\u00f6schung, wo er sich \u00fcberschlug und dann auf dem Dach im Gr\u00fcnstreifen liegen blieb.",
+      "chrf": 36.641201839780884
+    },
+    {
+      "index": 665,
+      "hyp": "Die aufgestapelten \u00d6lf\u00e4sser erinnern an Castorfs Leitmotiv \u2013 Gold, Macht und Gier \u2013 das durch seine Produktion des Ringes geht.",
+      "ref": "Gestapelte \u00d6lf\u00e4sser erinnern an Castorfs Leitmotiv - Geld, Macht und Gier - das sich durch seine \"Ring\"-Inszenierung zieht.",
+      "chrf": 63.153858720069756
+    },
+    {
+      "index": 927,
+      "hyp": "F\u00fcr die Bauarbeiten am Br\u00fcckengel\u00e4nde an der Ostseite der Stadt Lauterbach ist die Stra\u00dfe im Bereich des Br\u00fcckenbaus, wo sich die Hotels \"Tannenhof\" und \"Sieben Linden\" befinden, vollst\u00e4ndig gesperrt.",
+      "ref": "F\u00fcr die Bauarbeiten an der Br\u00fccke am Lauterbacher Ortseingang ist die Stra\u00dfe im Bereich der Br\u00fccke auf H\u00f6he der Hotels \"Tannenhof\" und \"Sieben Linden\" voll gesperrt.",
+      "chrf": 68.74287739068737
+    },
+    {
+      "index": 1632,
+      "hyp": "F\u00fcr den Professor der Deutschen Sport Universit\u00e4t K\u00f6ln ist e-Sport ein Sport, weil es sich um eine Wettbewerbsart handelt und viele biologische und physische Reaktionen aufweist, die man auch bei klassischem Sport findet - zum Beispiel erh\u00f6htes Herzfrequenz, Stressreaktionen, hormonelle Ver\u00e4nderungen.",
+      "ref": "F\u00fcr den Professor an der Deutschen Sporthochschule in K\u00f6ln ist E-Sport ein Sport, weil er kompetitiv ist und viele biologische und k\u00f6rperliche Reaktionen zeige, die man auch im klassischen Sport finde - beispielsweise erh\u00f6hte Herzfrequenzen, Stressreaktionen, hormonelle Ver\u00e4nderungen.",
+      "chrf": 70.24786633455015
+    },
+    {
+      "index": 2957,
+      "hyp": "Das gilt auch f\u00fcr Georg Ratzinger, dessen Berichterstattung mit der Feststellung endet, dass \"viele Opfer die allgemeine Menschlichkeit von R. gesch\u00e4tzt haben und daher in vielen F\u00e4llen trotz der Gewalt sogar positive Erinnerungen an ihn haben.\"",
+      "ref": "Und das gilt eben auch f\u00fcr Georg Ratzinger, bei dem der Bericht zu dem Schluss kommt, dass \"viele Opfer die allgemeine Menschlichkeit von R. sch\u00e4tzten und deshalb in zahlreichen F\u00e4llen trotz Gewalt sogar positive Erinnerungen mit ihm verbinden\".",
+      "chrf": 65.12957572572917
+    },
+    {
+      "index": 452,
+      "hyp": "Dennoch sagte die EPA, dass Pruitt m\u00f6glicherweise wieder einmal seine \"Verz\u00f6gerungsrechte und alle anderen rechtlich zur Verf\u00fcgung stehenden Rechte \" nutzen k\u00f6nne, um sicherzustellen, dass die Vorschriften \"auf solidem politischem Fundament und auf der besten verf\u00fcgbaren Information beruhen. \"",
+      "ref": "Dennoch besagte die Stellungnahme der EPA, dass Pruitt irgendwann seine \"Befugnis zur Versp\u00e4tung und alle anderen rechtlich zur Verf\u00fcgung stehenden Vollmachten\" nutzen wird, um sicherzustellen, dass die Vorschriften \"auf einer soliden Politik und den besten verf\u00fcgbaren Informationen basieren\".",
+      "chrf": 63.47109668342886
+    },
+    {
+      "index": 2334,
+      "hyp": "Schlie\u00dflich ist es eine Konkurrenz zwischen den Gemeinden.",
+      "ref": "Schlie\u00dflich stehe sie im Wettbewerb mit anderen Kommunen.",
+      "chrf": 33.12920255912114
+    },
+    {
+      "index": 548,
+      "hyp": "Die Vorsitzende des Industrie- und Handelskammertags in M\u00fchlhausen, Brigit Streich, meldete, dass f\u00fcnf Th\u00fcringer St\u00e4dte an dem dritten \"Heimats-Tags\" teilnehmen.",
+      "ref": "Birgit Streich, Leiterin des IHK-Centers in M\u00fchlhausen teilte mit, dass sich am bundesweit dritte \"Heimat-Shoppen\"-Tag, erstmals f\u00fcnf Th\u00fcringer St\u00e4dte beteiligen.",
+      "chrf": 46.07448207433668
+    },
+    {
+      "index": 962,
+      "hyp": "\"Und ich will alles ausprobieren. \" So hat Kristen Stewart im totalen Offenen \u00fcber ihre Bisexualit\u00e4t gesprochen.",
+      "ref": "Aber ich m\u00f6chte alles ausprobieren\", so Kristen Stewart ganz offen \u00fcber ihre Bisexualit\u00e4t.",
+      "chrf": 63.57506668638509
+    },
+    {
+      "index": 748,
+      "hyp": "Vor der Debatte gibt es eine wichtige Information: Der Vertrag f\u00fcr den noch ben\u00f6tigten Grundst\u00fccksabschnitt wurde unterzeichnet, berichtet B\u00fcrgermeister Bernhard Tjaden.",
+      "ref": "Vor der Diskussion gibt es eine wichtige Information: Der Kaufvertrag f\u00fcr den noch fehlenden Grundst\u00fccksteil sei unterschrieben, berichtet B\u00fcrgermeister Bernhard Tjaden.",
+      "chrf": 69.72755488263365
+    },
+    {
+      "index": 2446,
+      "hyp": "Dies hat nicht nur den Effekt, dass ein neutraler Austausch verlangsamt wird, sondern auch den, dass der Server unter Druck gesetzt wird, in eine Situation, die keinerlei Pers\u00f6nlichkeit erfordert, eine Pers\u00f6nlichkeit einzubringen.",
+      "ref": "Dies f\u00fchrt nicht nur zu einer Verlangsamung dessen, was eigentlich ein neutraler Austausch sein sollte, sondern \u00fcbt auch Druck auf den Server aus, um Pers\u00f6nlichkeit in eine Situation einzubringen, in der keine erforderlich ist.",
+      "chrf": 54.279712190070114
+    },
+    {
+      "index": 2314,
+      "hyp": "Oder The Smuggler, in dem der 18. Jahrhundert lebende Contrabandist Arthur Darrell als Hauptfigur auftreten soll, der sich selbst angeblich durch die F\u00fcllung seines Sarges mit Steinen einen eigenen Beerdigungsprozess vorgemacht haben soll (eine Entdeckung, die Jahre sp\u00e4ter gemacht wurde, als sein Sarg ausgegraben wurde).",
+      "ref": "Oder 'The Smuggler', in dem der Schmuggler Arthur Darrell aus dem 18. Jahrhundert dargestellt wird, der seine eigene Beerdigung inszenierte, indem er einen Sarg mit Steinen f\u00fcllte (eine Entdeckung, die erst Jahre sp\u00e4ter gemacht wurde, als sein Sarg ausgegraben wurde).",
+      "chrf": 62.444746626006065
+    },
+    {
+      "index": 2578,
+      "hyp": "Rindfleisch, Milchprodukte und Schokolade k\u00f6nnten bei der Erkrankung helfen.",
+      "ref": "Rotes Fleisch, Milchprodukte und Schokolade k\u00f6nnten helfen, IBD (Entz\u00fcndliche Darmerkrankung) zu lindern",
+      "chrf": 58.506174032517876
+    },
+    {
+      "index": 633,
+      "hyp": "Es gibt Schreie, Sch\u00fcsse und dann Stille.",
+      "ref": "Es gibt Schreie, Sch\u00fcsse und dann Stille.",
+      "chrf": 100.0
+    },
+    {
+      "index": 340,
+      "hyp": "Die Polizei berichtete, dass die Dorfbewohner Steine auf die Beamten geworfen h\u00e4tten, die daraufhin Warnsch\u00fcsse abgefeuert h\u00e4tten.",
+      "ref": "Die Polizei sagte, dass die Dorfbewohner Steine auf Offiziere warfen, die darauf reagierten, indem sie Warnsch\u00fcsse abfeuerten.",
+      "chrf": 61.641038728297715
+    },
+    {
+      "index": 1964,
+      "hyp": "Die fossilen \u00dcberreste dieses Exemplars sind so gut erhalten, dass noch Reste von Haut \u00fcber den hervorstehenden Panzerplatten am Sch\u00e4del des Dinosauriers liegen.",
+      "ref": "Die versteinerten \u00dcberreste dieses speziellen Exemplars sind so gut erhalten, dass die Hautreste immer noch holprige Panzerplatten entlang des Dinosauriers bedecken",
+      "chrf": 57.5776606309976
+    },
+    {
+      "index": 2750,
+      "hyp": "\"Dieses Jahr m\u00f6chte ich die Aufmerksamkeit auf Produkte aus den USA lenken, \" sagte Spicer.",
+      "ref": "\"Die Idee ist, diese Woche Dinge zu pr\u00e4sentieren, die in Amerika hergestellt werden\", sagte Spicer.",
+      "chrf": 26.594414214538986
+    },
+    {
+      "index": 1114,
+      "hyp": "Die Verbraucher haben das Recht auf sicher und genehmigtes Lebensmittel.",
+      "ref": "Die Verbraucherinnen und Verbraucher haben das Recht, ausschlie\u00dflich sichere und verkehrsf\u00e4hige Lebensmittel zu bekommen.",
+      "chrf": 43.00492295953337
+    },
+    {
+      "index": 2869,
+      "hyp": "Als Manchester City im Jahr 2014 Blaise Matuidi verpflichten wollte, warnte Nasser Al-Khelaifi alle Vereine, die eines der besten Spieler von Paris Saint-Germain in den Besitz bringen wollten.",
+      "ref": "Als Manchester City 2014 Interesse an der Unterzeichnung von Blaise Matuidi bekundete, hatte Nasser Al-Khelaifi eine strenge Warnung f\u00fcr jeden Verein, der einen der besten Spieler von PSG unterzeichnen lassen wollte.",
+      "chrf": 48.275487983442574
+    },
+    {
+      "index": 1072,
+      "hyp": "Die Gr\u00fcnen forderten die abgefallene Abgeordnete auf, ihr Mandat im Parlament aufzugeben.",
+      "ref": "Die Gr\u00fcnen forderten die abtr\u00fcnnige Abgeordnete zur R\u00fcckgabe ihres Landtagsmandats auf.",
+      "chrf": 50.747566353452534
+    },
+    {
+      "index": 717,
+      "hyp": "Pearson k\u00fcrzt weitere 3.000 Jobs und reduziert den Dividendenzuschlag um 50% um die Unternehmenskraft zu st\u00e4rken",
+      "ref": "Pearson k\u00fcrzt weitere 3.000 Arbeitspl\u00e4tze und k\u00fcrzt die Dividende, um das Gesch\u00e4ft wiederzubeleben",
+      "chrf": 44.37583375617828
+    },
+    {
+      "index": 1391,
+      "hyp": "Politico berichtet, dass der neue Chef des Wei\u00dfen Hauses die Fluss von Informationen an den Pr\u00e4sidenten Trump einschr\u00e4nken m\u00f6chte, einschlie\u00dflich der Nachrichtenmedien, um ihn auf ein normales Niveau zu bringen.",
+      "ref": "Politico berichtet, dass der neue Stabschef des Wei\u00dfen Hauses plant, den Informationsfluss auf Pr\u00e4sident Trump einzuschr\u00e4nken - einschlie\u00dflich der Berichte der Nachrichtenmedien - in der Hoffnung, den Chef auf einem gleichm\u00e4\u00dfigerem Kurs zu halten.",
+      "chrf": 57.82082167338598
+    },
+    {
+      "index": 305,
+      "hyp": "\"Als ich mich umdrehte, wurde ich pl\u00f6tzlich in den linken Unterarm geschossen, \" erz\u00e4hlte er in der Freitreppe seines hellen Holzhauses.",
+      "ref": "\"Als ich mich umdrehte, wurde ich pl\u00f6tzlich in mein linkes Handgelenk geschossen\", sagte er TIME auf der Veranda seines bunt bemalten Holzhauses.",
+      "chrf": 58.18331122124587
+    },
+    {
+      "index": 2197,
+      "hyp": "Aldi verkauft derzeit keine Eier mehr.",
+      "ref": "Aldi verkauft vorerst keine Eier mehr",
+      "chrf": 71.84652143625723
+    },
+    {
+      "index": 434,
+      "hyp": "Wer heute eine \"Model 3\" bestellt, muss sich auf die Lieferung im zweiten Halbjahr 2018 vorbereiten - wenn Tesla seine noch nie praktisch getesteten neuen Produktionslinien ohne gr\u00f6\u00dfere Unterbrechungen und bei maximaler Kapazit\u00e4t in Betrieb nehmen kann.",
+      "ref": "Wer heute ein \"Model 3\" bestellt, darf fr\u00fchestens in der zweiten Jahresh\u00e4lfte 2018 mit der Auslieferung rechnen - wenn Tesla es schafft, seine nagelneuen, noch nie in der Praxis getesteten Produktionsstra\u00dfen ohne gr\u00f6\u00dfere Unterbrechungen mit maximaler Auslastung zu fahren.",
+      "chrf": 52.62455224923291
+    },
+    {
+      "index": 1120,
+      "hyp": "Wie die Finanzregeln des Fu\u00dfballes auf den Transfer von Neymar nach Paris Einfluss nehmen",
+      "ref": "Wie sich die Finanzregeln des Fu\u00dfballs auf Neymars Umzug nach Paris auswirken",
+      "chrf": 56.86383267309175
+    },
+    {
+      "index": 263,
+      "hyp": "Es sind sehr wenige Indonesier hierher gereist, und schon gar keine Journalisten, und auch keine Ausl\u00e4nder.",
+      "ref": "Nur sehr wenige Indonesier haben ihre Reise hierher gemacht, geschweige denn Journalisten und praktisch keine Ausl\u00e4nder.",
+      "chrf": 55.155547934896944
+    },
+    {
+      "index": 2901,
+      "hyp": "\"Georg Ratzinger muss verteidigt werden \", sagt Hesemann, der in seiner Einsch\u00e4tzung das Ergebnis des Endberichts \"hat nichts mit ihm zu tun \".",
+      "ref": "\"Ich muss Georg Ratzinger in Schutz nehmen\", sagt Hesemann, \"denn all das hatte nichts mit ihm zu tun\", wertet er die Ergebnisse des Abschlussberichtes.",
+      "chrf": 52.06680887584033
+    },
+    {
+      "index": 1231,
+      "hyp": "Die Daten werden von etwa 600 Ausl\u00e4nderbeh\u00f6rden in Deutschland verwaltet.",
+      "ref": "Die Daten werden demnach von etwa 600 Ausl\u00e4nderbeh\u00f6rden in Deutschland verwaltet.",
+      "chrf": 87.85588928363669
+    },
+    {
+      "index": 1902,
+      "hyp": "Andere \u00fcberleben, wie es El Manana von Nuevo Laredo getan hat, nachdem sein Chefredakteur im Jahr 2004 ermordet wurde.",
+      "ref": "Andere machen weiter, wie es El Manana von Nuevo Laredo nach der Ermordung ihres Direktors im Jahr 2004 tat.",
+      "chrf": 54.227154278558885
+    },
+    {
+      "index": 1266,
+      "hyp": "Aber es deutet darauf hin, dass die Zinss\u00e4tze in den n\u00e4chsten Jahren erh\u00f6ht werden m\u00fcssen, um die durch den Brexit verursachte Inflation zu bremsen, und es wird erw\u00e4hnt, dass die Kreditkosten m\u00f6glicherweise h\u00f6her sein werden als erwartet auf dem Finanzmarkt.",
+      "ref": "Aber sie signalisierte, dass in den n\u00e4chsten Jahren Zinserh\u00f6hungen notwendig werden w\u00fcrden, um die vom Brexit angeheizte Inflation zu z\u00fcgeln und sie sagte, dass die Kreditkosten m\u00f6glicherweise mehr als erwartet an den Finanzm\u00e4rkten steigen m\u00fcssten.",
+      "chrf": 53.181660785446795
+    },
+    {
+      "index": 2362,
+      "hyp": "Nach den Verfolgungen gibt es Zweifel an der Bereitschaft der t\u00fcrkischen Armee zum Einsatz.",
+      "ref": "Ohnehin gibt es in der Allianz nach den S\u00e4uberungen Zweifel an der Einsatzbereitschaft der t\u00fcrkischen Armee.",
+      "chrf": 59.192517645020715
+    },
+    {
+      "index": 972,
+      "hyp": "Als ich elf Jahre alt war, sagten mir die anderen Kinder, dass ich wie ein Junge aussehe.",
+      "ref": "Als ich elf war sagten mir die Kinder, ich w\u00fcrde wie ein Bub aussehen.",
+      "chrf": 55.441978475876574
+    },
+    {
+      "index": 900,
+      "hyp": "Die Forensische Untersuchungsstelle G\u00f6teborg verteidigte jedoch die Genauigkeit der Tests: \"Im Allgemeinen kann man sagen, dass das Risiko, ein Kind f\u00fcr einen Erwachsenen zu halten, gering ist.",
+      "ref": "G\u00f6ransson von der Forensic Medicine Agency verteidigte jedoch die Genauigkeit der Tests: \"Im Allgemeinen k\u00f6nnen Sie sagen, dass das Risiko, ein Kind als Erwachsenen unrichtig zu beurteilen, gering ist.",
+      "chrf": 65.3450633475132
+    },
+    {
+      "index": 1311,
+      "hyp": "Da die PrEP-Pr\u00e4parate nun erworben wurden, sind wir auf dem Weg, \u00fcber 10.000 Menschen vor HIV zu sch\u00fctzen.",
+      "ref": "Jetzt, da die PrEP-Testmedizin beschafft wurde, sind wir auf dem besten Weg, mehr als 10.000 HIV-infizierte Menschen zu sch\u00fctzen.\"",
+      "chrf": 41.84962334382038
+    },
+    {
+      "index": 2109,
+      "hyp": "Doch da es hier nicht einmal einen regelm\u00e4\u00dfigen Wochenmarkt gibt, ist es umso wichtiger, dass wir zumindest den abgedeckten Markt behalten d\u00fcrfen.",
+      "ref": "Da es hier aber noch nicht einmal einen ordentlichen Wochenmarkt gibt, ist es umso wichtiger, dass uns wenigstens die Markthalle erhalten bleibt.",
+      "chrf": 58.402542307447
+    },
+    {
+      "index": 1404,
+      "hyp": "Aber niemand hat es bisher geschafft, Trumps Provokationen zu verhindern.",
+      "ref": "Aber niemand hat es konsequent verhindern k\u00f6nnen, dass Trump Kontroversen hervorruft.",
+      "chrf": 41.33170142184649
+    },
+    {
+      "index": 392,
+      "hyp": "Nach der Feuerung im Jahr 2015 kam es zu einer Untersuchung durch die Verwaltung des Torch, bei der festgestellt wurde, dass die meisten Sch\u00e4den an der Fassadenbekleidung lagen, also an der \u00e4u\u00dferen Verkleidung, die zur Dekoration oder zum Isolierungszweck verwendet wird.",
+      "ref": "Eine Untersuchung durch das Management des Torch-Geb\u00e4udes nach dessen Brand im Jahr 2015 ergab, dass der gr\u00f6\u00dfte Teil der Sch\u00e4den von der Verkleidung, der Au\u00dfenverkleidung zur Dekoration oder Isolierung, kam.",
+      "chrf": 51.6649437309746
+    },
+    {
+      "index": 1641,
+      "hyp": "Im Jahr 2016 hat es etwa 50 Millionen Euro in Deutschland eingenommen, viele davon durch Werbung, Sponsoring und gro\u00dfe Turniere.",
+      "ref": "2016 seien damit in Deutschland 50 Millionen Euro umgesetzt worden, haupts\u00e4chlich \u00fcber Werbung, Sponsoring und gro\u00dfe Turniere.",
+      "chrf": 60.81640374775101
+    },
+    {
+      "index": 2996,
+      "hyp": "Der Bericht, den wir eben geh\u00f6rt haben, entschuldigt ihn.",
+      "ref": "Denn der Bericht, der gerade ver\u00f6ffentlicht wurde, entlastet ihn.",
+      "chrf": 33.714457871005045
+    },
+    {
+      "index": 1451,
+      "hyp": "Der Lordmayor von Freudenstadt, Julian Osswald, verteidigte jedoch die Lage des Hotels und sprach bereits damals von ernsthaften Interessenten f\u00fcr die Errichtung.",
+      "ref": "Doch vor allem Freudenstadts Oberb\u00fcrgermeister Julian Osswald verteidigte den Hotelstandort und sprach schon damals von ernstzunehmenden Interessenten an dem Haus.",
+      "chrf": 52.420003368588716
+    },
+    {
+      "index": 1258,
+      "hyp": "Offensichtlich hat der Umzug in das Theater ein paar Jahre fr\u00fcher zu einem h\u00f6heren Teilnehmerzahlen gef\u00fchrt.",
+      "ref": "Offensichtlich habe der Wechsel ins Theaterhaus vor wenigen Jahren zu h\u00f6heren Teilnehmerzahlen gef\u00fchrt.",
+      "chrf": 60.50454287187188
+    },
+    {
+      "index": 1441,
+      "hyp": "Um unsere Beweise zu st\u00e4rken, ist es sehr wichtig, dass so viele wie m\u00f6glich der Bev\u00f6lkerung die M\u00f6glichkeit geben, soziale oder kriminelle Verhaltensweisen an die Polizei durch einen Anruf an die Nummer 101 zu melden.",
+      "ref": "Um unsere Beweissammlung zu unterst\u00fctzen, ist es sehr wichtig, dass m\u00f6glichst viele Anwohner ein anti-soziales oder kriminelles Verhalten bei der Polizei melden, indem sie 101 anrufen.",
+      "chrf": 53.65285718630426
+    },
+    {
+      "index": 151,
+      "hyp": "Ich bin nat\u00fcrlich sehr stolz auf alle Schotten, die in die Mannschaft berufen wurden.",
+      "ref": "\"Offensichtlich bin ich sehr stolz auf all die Schotten, die zum Team geh\u00f6ren.",
+      "chrf": 52.37923445896529
+    },
+    {
+      "index": 2633,
+      "hyp": "Der Nationalvorsitzende der Gr\u00fcnen, Michael Kellner, forderte die abgefallene Gr\u00fcne Abgeordnete Elke Twesten auf, ihr Mandat niederzulegen.",
+      "ref": "Der Gr\u00fcnen-Bundesgesch\u00e4ftsf\u00fchrer Michael Kellner hat die abtr\u00fcnnige nieders\u00e4chsische Gr\u00fcnen-Abgeordnete Elke Twesten aufgefordert, ihr Mandat zur\u00fcckzugeben.",
+      "chrf": 50.76473029675568
+    },
+    {
+      "index": 2152,
+      "hyp": "\"Es macht mich immer noch aufgeregt, wenn ich dar\u00fcber rede.\"",
+      "ref": "\"Ich bekomme immer noch G\u00e4nsehaut, wenn ich dar\u00fcber rede.\"",
+      "chrf": 59.334522669165345
+    },
+    {
+      "index": 692,
+      "hyp": "Ich erkannte, dass es f\u00fcr mich nicht richtig ist und dass ich etwas anderes tun m\u00f6chte, mit Menschen arbeiten.",
+      "ref": "Ich hab f\u00fcr mich erkannt, dass es f\u00fcr mich das Falsche ist und ich etwas anderes machen will, mit Menschen arbeiten.",
+      "chrf": 61.40997916109859
+    },
+    {
+      "index": 526,
+      "hyp": "Dort wurde eine Frau t\u00f6dlich verletzt.",
+      "ref": "Eine Frau wurde dabei t\u00f6dlich verletzt.",
+      "chrf": 65.7946934382748
+    },
+    {
+      "index": 2776,
+      "hyp": "Wie Amerika OMV schaden kann",
+      "ref": "Wie Amerika der OMV schaden kann",
+      "chrf": 78.87820798033032
+    },
+    {
+      "index": 2663,
+      "hyp": "Die Abgeordnete Twesten wurde nicht als Direktkandidatin in den Parlament, sondern auf der Liste des nieders\u00e4chsischen Gr\u00fcnen Parteis gew\u00e4hlt, erkl\u00e4rte der Abgeordnete von Niedersachsen.",
+      "ref": "Frau Twesten ist nicht wegen ihrer Person als Direktkandidatin, sondern \u00fcber die Landesliste der nieders\u00e4chsischen Gr\u00fcnen ins Parlament gew\u00e4hlt worden, so der nieders\u00e4chsische Abgeordnete weiter.",
+      "chrf": 54.82420121816387
+    },
+    {
+      "index": 2124,
+      "hyp": "Im Zentrum des Raums der New Yorker Galerie Fridman h\u00e4ngen mehrere Gesichter - wei\u00df, schwarz und braun - von der Decke herab, jeder tr\u00e4gt eine fast unmerkliche \u00c4hnlichkeit zu den anderen.",
+      "ref": "In der Mitte des Raumes der Fridman Gallery in New York sind viele Gesichter zu sehen - wei\u00dfe, schwarze und braune, die sich fast unmerklich gleichen - die an Kabeln von der Decke h\u00e4ngen.",
+      "chrf": 49.27836839769505
+    },
+    {
+      "index": 311,
+      "hyp": "Der Polizeichefinspektor von Papua, Yotje Mende, sagte den Journalisten, dass seine Beamten nur \"sicherstellten\", dass die Polizeistation nicht in Brand gesteckt wird.",
+      "ref": "Der Chefinspektor der Papua-Polizei, Yotje Mende, sagte Reportern, dass seine Offiziere ihre Station nur \"sichern\" wollten, weil sie angegriffen werde.",
+      "chrf": 48.39187904261837
+    },
+    {
+      "index": 411,
+      "hyp": "Mehr als 3 % der Befragten gestanden, dass sie bewusst Waffen oder gef\u00e4hrliche Gegenst\u00e4nde an die Sicherheitskontrolle gebracht haben, w\u00e4hrend 2,2 % der Frauen und 3,7 % der M\u00e4nner auch bewusst gef\u00e4hrliche Drogen an Bord des Flugzeugs mitgebracht haben.",
+      "ref": "Mehr als 3 Prozent gaben zu, wissentlich Gegenst\u00e4nde mit Klingen durch die Sicherheitskontrolle getragen zu haben, w\u00e4hrend 2,2 Prozent der weiblichen Befragten und 3,7 Prozent der m\u00e4nnlichen Befragten auch best\u00e4tigten, dass sie absichtlich verbotene Drogen in das Flugzeug gebracht h\u00e4tten.",
+      "chrf": 47.480508604153194
+    },
+    {
+      "index": 1691,
+      "hyp": "In seinem Umkleideraum war etwas anders, das bemerkte Joshua Kimmich sofort, auch wenn der zus\u00e4tzliche Gegenstand sehr, sehr klein war.",
+      "ref": "Irgendwas war da anders auf seinem Platz in der Kabine, das sah Joshua Kimmich sofort, auch wenn das zus\u00e4tzliche Kleidungsst\u00fcck sehr, sehr klein war.",
+      "chrf": 55.7528864076805
+    },
+    {
+      "index": 1276,
+      "hyp": "Der Pfund fiel um 0,5 % auf 1,31 US-Dollar und sank um 0,4 % auf 1,11 Euro.",
+      "ref": "Das Pfund fiel um 0,5 % auf 1,31 US-Dollar und fiel um 0,4 % auf 1,11 Euro.",
+      "chrf": 84.20888533757277
+    },
+    {
+      "index": 364,
+      "hyp": "Dar\u00fcber hinaus bleiben die Berichterstattungsbeschr\u00e4nkungen f\u00fcr internationale Medien eng.",
+      "ref": "Dar\u00fcber hinaus bleiben Beschr\u00e4nkungen der Berichterstattung internationale Medien angespannt.",
+      "chrf": 75.29962169749442
+    },
+    {
+      "index": 506,
+      "hyp": "Sie sagen, es sei ungesetzlich gewesen.",
+      "ref": "Sie sei rechtswidrig erfolgt.",
+      "chrf": 18.53744710851536
+    },
+    {
+      "index": 2079,
+      "hyp": "In der Zwischenzeit sind die Nachrichtensender aus Ferguson verschwunden, aber die rassistischen Spannungen zwischen Polizei und Bev\u00f6lkerung sind nicht abgeklungen.",
+      "ref": "Inzwischen sind die Nachrichtenkameras in Ferguson l\u00e4ngst verschwunden, aber die rassischen Verbindungen zwischen der Gemeinde und der Polizei bestehen weiterhin.",
+      "chrf": 57.03825130195613
+    },
+    {
+      "index": 1659,
+      "hyp": "Nur Eier, die nicht Fipronil enthalten, d\u00fcrfen auf den Regalen aufgestapelt werden.",
+      "ref": "In die Regale sollen nur noch Eier genommen werden, die nachweislich kein Fipronil enthalten.",
+      "chrf": 41.31271591100425
+    },
+    {
+      "index": 1527,
+      "hyp": "Die Eisb\u00e4nke, die auf dem Meer schwimmen und von gro\u00dfen Gletschern gef\u00fcttert werden, hei\u00dfen Eisb\u00e4nke.",
+      "ref": "Schelfeis schwimmt auf dem Meer und wird von gro\u00dfen Gletschern gespeist.",
+      "chrf": 55.163377170107395
+    },
+    {
+      "index": 750,
+      "hyp": "Deshalb gibt es eine Diskussion \u00fcber einen gemeinsamen Raum.",
+      "ref": "Daf\u00fcr gibt es eine Diskussion bez\u00fcglich eines Gemeinschaftsraums.",
+      "chrf": 47.70107327717705
+    },
+    {
+      "index": 1726,
+      "hyp": "Dies ist nach mehr als einem Jahr der Amtszeit des neuen Wirtschaftsministers Volker Wissing (FDP) offensichtlich.",
+      "ref": "Das zeigt sich nach mehr als einem Jahr, in dem der neue Wirtschaftsminister Volker Wissing (FDP) im Amt ist.",
+      "chrf": 65.37728932398687
+    },
+    {
+      "index": 2764,
+      "hyp": "Von besonderer Bedeutung sind die Importe aus dem Norden, die der Suchsdorfer SV Stabilit\u00e4t und Klassigkeit verleihen.",
+      "ref": "F\u00fcr Klasse und Stabilit\u00e4t beim Suchsdorfer SV sorgen vor allem die Importe aus dem hohen Norden.",
+      "chrf": 52.23036906299019
+    },
+    {
+      "index": 2112,
+      "hyp": "Schamlos \u2013 es gibt kaum noch Fachgesch\u00e4fte und die wenigen, die es noch gibt, werden auch bald verschwinden.",
+      "ref": "Schade, Spezialgesch\u00e4fte gibt es fast nicht mehr und das, was davon noch \u00fcbrig ist, wird dann wohl auch noch verschwinden.\"",
+      "chrf": 34.51184542684737
+    },
+    {
+      "index": 2668,
+      "hyp": "Er forderte eine Aufkl\u00e4rung der Umst\u00e4nde an.",
+      "ref": "Er forderte, die Hintergr\u00fcnde aufzukl\u00e4ren.",
+      "chrf": 37.901345114967405
+    },
+    {
+      "index": 306,
+      "hyp": "Kayame wei\u00df noch immer nicht, wer geschossen hat, aber er behauptet, dass der Schuss von den Reihen der versammelten Soldaten kam.",
+      "ref": "Kayame wei\u00df immer noch nicht, wer gefeuert hat, aber sagt, dass die Kugel aus den Reihen der hier versammelten Soldaten kam.",
+      "chrf": 64.82368802223665
+    },
+    {
+      "index": 2330,
+      "hyp": "Und damit man merkt, dass es manchmal besser ist, als es auf den ersten Blick erscheint.",
+      "ref": "Und um deutlich zu machen, dass manches besser ist, als es scheint.",
+      "chrf": 49.21006435463553
+    },
+    {
+      "index": 1010,
+      "hyp": "\"Wir beugen uns vor diesem gr\u00f6\u00dften Opfer, das sie im Namen der Bundesrepublik Deutschland gebracht haben \", erkl\u00e4rte sie.",
+      "ref": "\"Wir verneigen uns vor diesem h\u00f6chsten Opfer, das sie im Namen der Bundesrepublik Deutschland erbracht haben\", erkl\u00e4rte sie.",
+      "chrf": 81.86720299948475
+    },
+    {
+      "index": 2493,
+      "hyp": "Bei der Dieselmesse boten BMW, Daimler, Opel und die VW-Gruppe Software-Updates f\u00fcr insgesamt etwa 5,3 Millionen Fahrzeuge an.",
+      "ref": "Beim Diesel-Gipfel haben BMW, Daimler, Opel und der VW-Konzern Software-Updates f\u00fcr insgesamt rund 5,3 Millionen Autos angeboten.",
+      "chrf": 62.06744615602692
+    },
+    {
+      "index": 1831,
+      "hyp": "Er hinterlie\u00df eine Frau und zwei erwachsene Kinder.",
+      "ref": "Er hinterlie\u00df eine Frau und zwei erwachsene Kinder.",
+      "chrf": 100.0
+    },
+    {
+      "index": 1184,
+      "hyp": "Als kulturelles Artefakt ist es sowohl eine Parodie als auch eine Darstellung unserer Facebook-zeit, in der die Erinnerung st\u00e4ndig aktiviert wird.",
+      "ref": "Als kulturelles Artefakt ist es gleicherma\u00dfen eine Parodie und eine Verk\u00f6rperung unserer Facebook-f\u00e4higen \u00c4ra permanenter Erinnerungen.",
+      "chrf": 54.852921801872434
+    },
+    {
+      "index": 2602,
+      "hyp": "Potentiell kann eine hohe Konzentration von Tryptophan in der Gegenwart von L. reuteri die Ausbreitung dieser Population f\u00f6rdern.",
+      "ref": "Potentiell k\u00f6nnen hohe Tryptophanwerte in Gegenwart von L. reuteri zu einer Ausweitung dieser Population f\u00fchren.\"",
+      "chrf": 63.983198640052784
+    },
+    {
+      "index": 2634,
+      "hyp": "Die \u00dcbergangsregelung zur CDU ist eine klare Verf\u00e4lschung des W\u00e4hlerwillens.",
+      "ref": "Der \u00dcbertritt zur CDU bedeutet eine klare Verf\u00e4lschung des W\u00e4hlerwillens.",
+      "chrf": 68.73676066863783
+    },
+    {
+      "index": 749,
+      "hyp": "Es ist zwar noch ein Weilchen herum, bis die Fl\u00e4che, die bisher der Pfarrgemeinde geh\u00f6rt hat, in den Besitz des Gemeindeverm\u00f6gens \u00fcbergeht, aber es gibt nun keine mehr Planungsbarrieren f\u00fcr das Projekt, das von einem privaten Investor realisiert werden muss.",
+      "ref": "Zwar werde es noch dauern, bis die bislang der Kirchengemeinde geh\u00f6rende Fl\u00e4che im Gemeindebesitz ist, doch gibt es jetzt kein Planungshindernis f\u00fcr das von einem privaten Investor zu stemmende Projekt mehr.",
+      "chrf": 51.001095300305046
+    },
+    {
+      "index": 1216,
+      "hyp": "Beide wurden also vermutlich in die Bundesrepublik Deutschland ausgeliefert.",
+      "ref": "Die beiden werden deshalb vermutlich nach Deutschland ausgeliefert.",
+      "chrf": 60.18597067066425
+    },
+    {
+      "index": 2988,
+      "hyp": "Ich h\u00f6re regelm\u00e4\u00dfig, wie viele ehemalige Domspatzen heute noch regelm\u00e4\u00dfig mit ihm Kontakt aufnehmen, ihn besuchen, ihm vorlesen \u2013 er ist fast blind \u2013 und ihn wie einen Familienmitglied behandeln.",
+      "ref": "Ich bekomme regelm\u00e4\u00dfig mit, wie viele ehemalige Domspatzen noch heute, 23 Jahre nach seiner Emeritierung, regelm\u00e4\u00dfig Kontakt zu ihm halten, ihn besuchen, ihm vorlesen - er ist fast blind - und ihn wie ein Mitglied ihrer Familie behandeln.",
+      "chrf": 62.89188648911188
+    },
+    {
+      "index": 2791,
+      "hyp": "Unter F\u00fchrung von vier m\u00e4chtigen Vaterunser-Verk\u00e4ufern agieren sie wie eine \"Fortune 500 Firma\", nur mit mehr Regierungskorruption und Gewaltt\u00e4tigkeiten.",
+      "ref": "Angef\u00fchrt von vier m\u00e4chtigen Paten, operieren sie \"wie ein Fortune-500-Unternehmen\" nur mit mehr staatlichen Bestechungen und gewaltt\u00e4tigen Aktionen.",
+      "chrf": 44.821460538224166
+    },
+    {
+      "index": 622,
+      "hyp": "Habe ich zu hart zugeschlagen?",
+      "ref": "War ich zu hart?",
+      "chrf": 50.969394839428574
+    },
+    {
+      "index": 2932,
+      "hyp": "Die Eltern wurden nie informiert.",
+      "ref": "Nicht einmal die Eltern waren eingeweiht.",
+      "chrf": 29.262140007107156
+    },
+    {
+      "index": 2558,
+      "hyp": "Er ist Meister der Konstruktion: \"Am Ende geht hier alles an meinen Tisch\".",
+      "ref": "Er ist Bauherr, \"am Ende l\u00e4uft alles hier \u00fcber meinen Tisch\".",
+      "chrf": 41.89153052904217
+    },
+    {
+      "index": 1302,
+      "hyp": "Das Programm kostet 10 Millionen Pfund und die NHS England hat vor kurzem einen Vertrag mit einem internationalen Wettbewerb abgeschlossen, um die Medikamente zu beschaffen.",
+      "ref": "Das Programm wird \u00a3 10 Millionen und NHS England unterzeichnete einen Vertrag zur Lieferung der Medikamente in dieser Woche nach einer internationalen wettbewerbsf\u00e4higen Beschaffung.",
+      "chrf": 51.36700814657984
+    },
+    {
+      "index": 1358,
+      "hyp": "Zusammen mit ihrer Mutter Anna besitzen die Br\u00fcder 38 Immobilien mit einem Wert von \u00fcber 500 Millionen Dollar, die sie seit dem Kauf eines Gesch\u00e4fts in der Smith Street in Collingwood im Jahr 1973 erworben haben.",
+      "ref": "Zusammen mit ihrer Mutter Anna besitzen die Br\u00fcder 38 Immobilien im Wert von mehr als einer halben Milliarde Dollar, angesammelt, seitdem die Familie 1973 ein Gesch\u00e4ft in der Smith Street, Collingwood, kaufte.",
+      "chrf": 62.98046593212979
+    },
+    {
+      "index": 1798,
+      "hyp": "Das betrifft die Lebensdauer der Lavendelbl\u00fcte.",
+      "ref": "Dies hat Auswirkungen auf die Lebensdauer von Lavendel.",
+      "chrf": 41.69534288166542
+    },
+    {
+      "index": 2065,
+      "hyp": "\"Das war f\u00fcr mich das Wichtigste, wie diese Menschen dargestellt werden, denn so werde ich dargestellt. \"",
+      "ref": "\"Das war die Hauptsache f\u00fcr mich, wie diese Leute dargestellt werden, denn so werde ich dargestellt werden.\"",
+      "chrf": 66.52881690170756
+    },
+    {
+      "index": 1307,
+      "hyp": "Wenn die PrEP korrekt an diejenigen verteilt wird, die sie ben\u00f6tigen und gef\u00e4hrdet sind, bietet sie die M\u00f6glichkeit, die Epidemie des HIV in England zu ver\u00e4ndern.",
+      "ref": "PrEP, wenn es gezielt auf bed\u00fcrftige und gef\u00e4hrdete Menschen ausgerichtet ist, bietet die M\u00f6glichkeit, die englische HIV-Epidemie zu ver\u00e4ndern.",
+      "chrf": 46.5764302230607
+    },
+    {
+      "index": 433,
+      "hyp": "Gem\u00e4\u00df Musk kommen t\u00e4glich weitere 1800 Reservierungen an.",
+      "ref": "Laut Musk kommen derzeit pro Tag 1800 Reservierungen dazu.",
+      "chrf": 52.592296385097356
+    },
+    {
+      "index": 1272,
+      "hyp": "Aber die Bank betonte, dass die Zuw\u00e4chse \"langsam\" und \"begrenzt\" sein w\u00fcrden.",
+      "ref": "Die Bank betonte jedoch, dass Erh\u00f6hungen \"schrittweise\" und \"begrenzt\" erfolgen w\u00fcrden.",
+      "chrf": 46.985092630747154
+    },
+    {
+      "index": 2486,
+      "hyp": "Die griechischen Beh\u00f6rden haben die Kontrolle \u00fcber die Freikampung versch\u00e4rft und verh\u00e4ngen bereits erhebliche Geldstrafen f\u00fcr jeden, der sich in einem nicht daf\u00fcr vorgesehenen Ort ausruht.",
+      "ref": "Die griechischen Beh\u00f6rden haben die Kontrolle \u00fcber das kostenlose Campen versch\u00e4rft und legen jedem, der gefunden wird, an einem Ort zu bleiben, der nicht f\u00fcr diesen Zweck gedacht ist, erhebliche Geldstrafen auf.",
+      "chrf": 55.245473170529145
+    },
+    {
+      "index": 2976,
+      "hyp": "Das ist alles furchtbar und ich bin froh, dass es endlich untersucht wird.",
+      "ref": "Das ist alles ganz schrecklich und ich bin froh, dass es endlich aufgearbeitet wird.",
+      "chrf": 60.92595571475723
+    },
+    {
+      "index": 666,
+      "hyp": "Die drei Rheinm\u00e4gde, die von Stephanie Houtzeel, Wiebke Lehmkuhl und Alexandra Steiner gesungen werden, arbeiten wunderbar zusammen, wie es schon bei \"Rheingold\" der Fall war.",
+      "ref": "Die drei Rheint\u00f6chter - gesungen von Stephanie Houtzeel, Wiebke Lehmkuhl und Alexandra Steiner - harmonieren wie schon im \"Rheingold\" wunderbar.",
+      "chrf": 69.79681699967706
+    },
+    {
+      "index": 338,
+      "hyp": "Der Mann, der 24-j\u00e4hrige Ravianus Douw, der beim Angeln in einem nahegelegenen Fluss ertrunken ist, starb auf dem Weg ins Krankenhaus.",
+      "ref": "Der Mann, der 24-j\u00e4hrige Ravianus Douw, der ertrunken war, als er in einem nahe gelegenen Fluss fischte, starb auf dem Weg ins Krankenhaus.",
+      "chrf": 81.11629619370471
+    },
+    {
+      "index": 176,
+      "hyp": "Er hat auch sehr geschickt die Nutzung von Facebook als Hauptmittel zur Verbindung mit seinen B\u00fcrgern gezeigt, indem er z. B. seine kahlen Kopfhaut nach Chemo-Behandlungen auf seiner Seite pr\u00e4sentiert hat.",
+      "ref": "Er war auch sehr geschickt darin, Facebook als prim\u00e4res Mittel zu nutzen, um sich mit seinen W\u00e4hlern zu verbinden und spielend seinen haarlosen Kopf nach Chemotherapie auf seiner Seite zu deb\u00fctieren.",
+      "chrf": 47.39316032535721
+    },
+    {
+      "index": 1771,
+      "hyp": "Es zeigt einen Berg aus M\u00fcll.",
+      "ref": "Es zeigt einen M\u00fcllberg.",
+      "chrf": 62.9977007549503
+    },
+    {
+      "index": 1636,
+      "hyp": "Frob\u00f6se sieht jedoch auch Probleme: \"Das Doping wird immer wichtiger. \"",
+      "ref": "Frob\u00f6se sieht aber auch Probleme: \"Doping wird immer mehr ein Thema\".",
+      "chrf": 62.94678113493147
+    },
+    {
+      "index": 863,
+      "hyp": "Die Linie der drei Verteidiger im Ostergebirge soll noch weiter optimiert werden.",
+      "ref": "Im Erzgebirge soll die Dreierkette auch weiter optimiert werden.",
+      "chrf": 59.71481803270753
+    },
+    {
+      "index": 1649,
+      "hyp": "In einer norwegischen Schule wurde E-Sport in den Unterricht integriert, so Frob\u00f6se.",
+      "ref": "In einer norwegischen Schule sei E-Sport als Unterrichtsfach eingef\u00fchrt worden, sagt Frob\u00f6se.",
+      "chrf": 56.741132446488194
+    },
+    {
+      "index": 2461,
+      "hyp": "Die Schulleiterin Angelika Sitte begr\u00fc\u00dfte am Dienstagabend die Eltern und die Vertreter der \u00d6ffentlichkeit im Gemeindezentrum von Epfenhofen im Biesental.",
+      "ref": "Schulleiterin Angelika Sitte begr\u00fc\u00dfte am Dienstagabend die Eltern und Vertreter der \u00d6ffentlichkeit im B\u00fcrgerhaus Biesental in Epfenhofen.",
+      "chrf": 82.63413604486331
+    },
+    {
+      "index": 2052,
+      "hyp": "Sie haben Taschen vorbereitet und dabei geholfen, sie den Protestierenden zu verteilen.",
+      "ref": "Sie bereiteten Taschen vor und halfen, sie an Demonstranten weiterzugeben.",
+      "chrf": 44.484839755544165
+    },
+    {
+      "index": 1018,
+      "hyp": "Der Verteidigungsminister von der Leyen nannte die get\u00f6teten Soldaten als \"ausgezeichnete\" und mit Erfahrung in Missionen versehene K\u00e4mpfer.",
+      "ref": "Verteidigungsministerin von der Leyen bezeichnete die umgekommenen Soldaten als \"hoch dekoriert\" und einsatzerfahren.",
+      "chrf": 54.7076011958901
+    },
+    {
+      "index": 2320,
+      "hyp": "\"Es war traurig, zu gehen\", sagt er.",
+      "ref": "\"Ich war traurig, wieder zu gehen,\" sagt er.",
+      "chrf": 53.61474423547935
+    },
+    {
+      "index": 1376,
+      "hyp": "\"Luigi sagte mir oft, dass er nie gewollt h\u00e4tte, dass die Br\u00fcder vor Gericht stehen\", schrieb sie.",
+      "ref": "\"Luigi sagte oft zu mir, dass er nie wollte, dass die Br\u00fcder vor Gericht landen\", schrieb sie.",
+      "chrf": 74.66190894347969
+    },
+    {
+      "index": 1077,
+      "hyp": "Die SPD-Kandidatin f\u00fcr die Amtszeit als Bundeskanzlerin, Martin Schulz, verurteilte die \u00dcbergabe der Nieders\u00e4chsischen Gr\u00fcnen-Abgeordneten Elke Twesten an die CDU als Verrat.",
+      "ref": "SPD-Kanzlerkandidat Martin Schulz verurteilt den \u00dcbertritt der nieders\u00e4chsischen Gr\u00fcnen-Abgeordneten Elke Twesten zur CDU als Verrat.",
+      "chrf": 71.46217331490955
+    },
+    {
+      "index": 1398,
+      "hyp": "Tara Palmeri von Politico berichtete damals, dass \"nach Angaben von sechs ehemaligen Kampagnenmitarbeitern die Schl\u00fcssel zur Kontrolle des Trumpschen Twitterverhaltens darin bestehen, dass seine pers\u00f6nliche Medienkonsumation st\u00e4ndig mit Lob und Bewunderung gef\u00fcllt ist\".",
+      "ref": "Politicos Tara Palmeri schrieb zu der Zeit, dass \"der Schl\u00fcssel, Trumps Twitter-Gewohnheit unter Kontrolle zu halten, laut sechs ehemaliger Wahlkampf-Beamten darin besteht, daf\u00fcr zu sorgen, dass sein pers\u00f6nlicher Medienkonsum einen stetigen Lobpreis beinhaltet.\"",
+      "chrf": 49.59849913672602
+    },
+    {
+      "index": 2440,
+      "hyp": "Viele der Klich\u00e9s einer Stadt entt\u00e4uschen: Die Aussicht von Hochh\u00e4usern wird langweilig, die Umrisslinien der Stadt verlieren ihren Reiz und die Realit\u00e4t der Stadt entspricht nicht dem Traum.",
+      "ref": "So viele Klischees einer Stadt entt\u00e4uschen: Die Ansichten von hohen Geb\u00e4uden werden alt, die Skylines werden zu vertraut, um viel Aufregung zu bieten, und die Realit\u00e4t der Stadt wird dem Traum nicht gerecht.",
+      "chrf": 44.92247324958942
+    },
+    {
+      "index": 2398,
+      "hyp": "Die modernen Sexpuppen sind zu Robotern mit einer Siliconhaut geworden.",
+      "ref": "Moderne Sexpuppen haben sich zu Robotern mit einer Silikonhaut entwickelt.",
+      "chrf": 58.01438705274287
+    },
+    {
+      "index": 623,
+      "hyp": "\"Nein, \" sagte Greene lachend.",
+      "ref": "\"Nein\", sagte Greene, immer noch kichernd.",
+      "chrf": 40.41200228144919
+    },
+    {
+      "index": 1097,
+      "hyp": "Die \u00dcberwachung der Lebensmittel ist die Aufgabe der L\u00e4nder.",
+      "ref": "Die Lebensmittel\u00fcberwachung ist Aufgabe der Bundesl\u00e4nder.",
+      "chrf": 61.020759476731236
+    },
+    {
+      "index": 1344,
+      "hyp": "\"Es ist so ausgeglichen, dass es sich leicht bewegen l\u00e4sst, wenn man die T\u00fcr hochdr\u00fcckt.\"",
+      "ref": "\"Es ist gegengewichtig, so dass es, wenn Sie die T\u00fcr hochschieben, sehr leicht gleitet.\"",
+      "chrf": 39.43802027407084
+    },
+    {
+      "index": 1102,
+      "hyp": "Unverunreinigte Eier k\u00f6nnen jedoch verkauft und verzehrt werden.",
+      "ref": "Unbelastete Eier k\u00f6nnen jedoch verkauft und verzehrt werden.",
+      "chrf": 82.43037390973336
+    },
+    {
+      "index": 273,
+      "hyp": "Diese Reicht\u00fcmer sind jedoch f\u00fcr die Papuas ein Quell der Misere und sichern der indonesischen m\u00e4chtigen Armee eine \u00fcberw\u00e4ltigende Pr\u00e4senz.",
+      "ref": "Diese Reicht\u00fcmer sind jedoch eine Quelle des Elends f\u00fcr die Papua, die sicherstellen, dass Indonesiens m\u00e4chtiges Milit\u00e4r eine erstickende Pr\u00e4senz bewahrt.",
+      "chrf": 51.04127298250024
+    },
+    {
+      "index": 2990,
+      "hyp": "Viele Domspatzen sind heute dankbar f\u00fcr die Bereicherung ihrer Lebenswelt und die N\u00e4he zum Musikleben, die er ihnen verschafft hat.",
+      "ref": "Die meisten Domspatzen sind ihm heute dankbar daf\u00fcr, dass er ihr Leben bereichert und ihnen die Welt der Musik nahegebracht hat.",
+      "chrf": 46.815183373664034
+    },
+    {
+      "index": 1704,
+      "hyp": "Er hatte ein Gesp\u00fcr f\u00fcr das Grobe, w\u00e4hrend viele andere sich selbst besch\u00e4ftigten.",
+      "ref": "Er hatte den Blick f\u00fcrs Ganze, w\u00e4hrend viele andere mit sich selbst besch\u00e4ftigt waren.",
+      "chrf": 62.65873455833712
+    },
+    {
+      "index": 198,
+      "hyp": "Die Anzahl der Zeitungen verdoppelte sich zwischen 1776 und 1800, und anonyme Briefschreiber h\u00e4mmerten auf seine F\u00fchrung ein.",
+      "ref": "Die Anzahl der Zeitungen vervielfachte sich zwischen 1776 und 1800, und anonyme Briefschreiber schlugen auf seine F\u00fchrung ein.",
+      "chrf": 82.87215750392218
+    },
+    {
+      "index": 258,
+      "hyp": "Ein bestehendes Bewegung, die sich gegen die niederl\u00e4ndische Herrschaft f\u00fcr die Unabh\u00e4ngigkeit einsetzt, wandte sich schnell gegen die Regierung von Jakarta, die die Region streng unter Kontrolle hat und die Ausreise von Journalisten und Menschenrechtsbeobachtern verhindert.",
+      "ref": "Eine bestehende Bewegung, die f\u00fcr die Unabh\u00e4ngigkeit gegen die holl\u00e4ndische Herrschaft aufr\u00fchrte, wandte sich schnell gegen die Regierung von Jakarta, die die Kontrolle \u00fcber die Region unterh\u00e4lt und ausl\u00e4ndische Journalisten oder Rechtsbeobachter davon ausschlie\u00dft.",
+      "chrf": 67.54612947333865
+    },
+    {
+      "index": 195,
+      "hyp": "In Kentucky hat der Gouverneur Matt Bevin (REP) von der ACLU wegen seines Einsatzes von Facebook und Twitter aufgesucht worden.",
+      "ref": "Und in Kentucky erhielt Gouverneur Matt Bevin (R) auch einen Besuch von der ACLU wegen seiner Verwendung von Facebook und Twitter.",
+      "chrf": 62.529371662347565
+    },
+    {
+      "index": 1712,
+      "hyp": "Wie wenig sich die Bayern an neue Anreisende gew\u00f6hnt haben, zeigte sich nach dem Spiel.",
+      "ref": "Wie ungewohnt diese Bayern-Welt noch f\u00fcr die Neuzug\u00e4nge ist, sah man im Anschluss an die Partie.",
+      "chrf": 22.471338636940494
+    },
+    {
+      "index": 210,
+      "hyp": "Jerry hat dieses Haus wunderbar eingerichtet.",
+      "ref": "Jerry hat einen tollen Job gemacht, als er diesen Ort festlegte.",
+      "chrf": 26.04519998890314
+    },
+    {
+      "index": 1960,
+      "hyp": "Die Tiere waren etwa 18 Fu\u00df (5 Meter) lang und wiegten bis zu 3.000 Pfund (1.300 kg).",
+      "ref": "Die Kreaturen waren im Durchschnitt etwa 18 Fu\u00df (5 Meter) lang und haben bis zu 3.000 Pfund (1.300 kg) gewogen.",
+      "chrf": 59.48838760468982
+    },
+    {
+      "index": 102,
+      "hyp": "Eine Horde von Bootsfahrer- und Liberty-Verbreitern h\u00e4tte ihn auf der Stelle umgebracht, wenn er es getan h\u00e4tte.",
+      "ref": "Eine Horde von Bootsbesitzern und Liberty-Imitatoren h\u00e4tten ihn gelyncht, wenn er es getan h\u00e4tte.",
+      "chrf": 61.112063135122085
+    },
+    {
+      "index": 2973,
+      "hyp": "Michael Hesemann: Historiker sprechen hier von dem \"Anachronismus-Fall\", das hei\u00dft, der Gefahr, die Vergangenheit nach heutigen moralischen Ma\u00dfst\u00e4ben zu beurteilen.",
+      "ref": "Michael Hesemann: Wir Historiker reden da vom \"Fallstrick des Anachronismus\", also der Gefahr, Vergangenes nach heutigen moralischen Ma\u00dfst\u00e4ben zu bewerten.",
+      "chrf": 64.97857097663176
+    },
+    {
+      "index": 568,
+      "hyp": "Mr Trump sagte Mr Turnbull, dass ein Deal, wonach die USA Fl\u00fcchtlinge aufnehmen, die nach Australien wollen, \"verr\u00fcckt\", \"schlecht\" und \"dumm\" sei, und behauptete, dass er nachdem er vorgeschlagen hatte, die Einreise von Fl\u00fcchtlingen in die USA zu verbieten, wie ein \"Dope\" dastehen w\u00fcrde, wenn der Deal unter der Obamaregierung geschlossen worden w\u00e4re.",
+      "ref": "Mr. Trump sagte Mr. Turnbull, dass ein Handel f\u00fcr die USA Fl\u00fcchtlinge, die nach Australien auswanderten, zu \u00fcbernehmen \"l\u00e4cherlich\", \"mies\" und \"dumm\" sei und dass das Bestehen auf dem Handel, der von der Regierung Obama vermittelt wurde, ihn wie ein \"Depp\" aussehen lassen w\u00fcrde, nachdem er ein Verbot der Umsiedlung von Fl\u00fcchtlingen in die USA vorgeschlagen hatte.",
+      "chrf": 54.24729875398568
+    },
+    {
+      "index": 436,
+      "hyp": "Bei erheblichen Verz\u00f6gerungen k\u00f6nnte die nicht bindende Natur der Reservierungen jedoch f\u00fcr Tesla ein Problem darstellen.",
+      "ref": "Kommt es aber zu gr\u00f6\u00dferen Verz\u00f6gerungen, dann k\u00f6nnte die Unverbindlichkeit der Reservierungen zum Problem f\u00fcr Tesla werden.",
+      "chrf": 51.33230779927085
+    },
+    {
+      "index": 2785,
+      "hyp": "Er hat hier zw\u00f6lf Waffen zur Auswahl.",
+      "ref": "Zw\u00f6lf Waffen stehen ihm dabei zur Wahl.",
+      "chrf": 36.665600125132535
+    },
+    {
+      "index": 1543,
+      "hyp": "Aber diese Entwicklung wird Jahrzehnte dauern.",
+      "ref": "Aber diese Entwicklung werde Jahrzehnte dauern.",
+      "chrf": 84.95559242377566
+    },
+    {
+      "index": 2941,
+      "hyp": "In Bezug auf sexuelle Missbrauchshandlungen ist Georg Ratzinger also von jeder Mitverantwortung freigesprochen worden.",
+      "ref": "Was sexuellen Missbrauch betrifft, ist Georg Ratzinger also von jeder Mitwisserschaft freizusprechen.",
+      "chrf": 55.89466350963554
+    },
+    {
+      "index": 2605,
+      "hyp": "Der \u00a340-Millionenspieler aus Chelsea begann das 2:1-Siegspiel in Dublin, dem letzten Freundschaftsspiel vor der UEFA-Supercup gegen Real Madrid am Dienstag, und zeigte sich im Mittelfeld sehr beeindruckend, w\u00e4hrend Paul Pogba und Andreas Pereira ungest\u00f6rt nach vorn drangen.",
+      "ref": "Die 40 Millionen Pfund Unterschrift von Chelsea begann mit einem 2:1 Sieg in Dublin, dem letzten Vorsaison-Spiel, bevor der UEFA-Super-Cup gegen Real Madrid am Dienstag beginnt, und beeindruckte in der Halter-Rolle, als Leute wie Paul Pogba und Andreas Pereira nach Belieben vormarschierten.",
+      "chrf": 52.514537827491466
+    },
+    {
+      "index": 2640,
+      "hyp": "Die Misere begann mit der \u00fcberraschend \u00fcberzeugenden Niederlage im Wahlkampf f\u00fcr die Saarland-Verwaltung in M\u00e4rz.",
+      "ref": "Die Misere begann mit der unerwartet deutlichen Niederlage bei der Saarland-Wahl im M\u00e4rz.",
+      "chrf": 57.46916619373894
+    },
+    {
+      "index": 153,
+      "hyp": "Und sie sind auch als etablierte Sportler hier, die auf Podien landen wollen.",
+      "ref": "Und sie sind hier als etablierte Athleten, Athleten, die auf Podien steigen wollen.",
+      "chrf": 55.879557017230816
+    },
+    {
+      "index": 396,
+      "hyp": "In Hanoi wurde die (f\u00fcr dieses Sportart) revolution\u00e4re Vorschlag, ab sofort die Davis-Cup-Singel \u00fcber nur noch drei Satz zu spielen, mit gerade mal knapp zwei Drittel der notwendigen Mehrheit f\u00fcr sich gewinnen.",
+      "ref": "Bei der Sitzung in Ho-Chi-Minh-Stadt wurde der f\u00fcr diesen Sport revolution\u00e4re Vorschlag, Davis-Cup-Einzel nur noch auf zwei Gewinns\u00e4tze zu spielen, hauchd\u00fcnn nicht von der erforderlichen Zwei-Drittel-Mehrheit unterst\u00fctzt.",
+      "chrf": 43.22278592443985
+    },
+    {
+      "index": 2773,
+      "hyp": "Er sollte auch in Kiel sein, wie Botic Van de Zandschulp, Niels Lootsma (beide Niederlande) und der Belgier Julien Cagnina.",
+      "ref": "Er sollte in Kiel aber ebenso dabei sein wie Botic Van de Zandschulp, Niels Lootsma (beide Niederlande) und der Belgier Julien Cagnina.",
+      "chrf": 81.5055769101127
+    },
+    {
+      "index": 2983,
+      "hyp": "Ich will jedoch nicht verheimlichen, dass er dort eine strenge Regierung gef\u00fchrt hat.",
+      "ref": "Trotzdem verschweige ich ja keineswegs, dass er dort ein strenges Regiment f\u00fchrte.",
+      "chrf": 40.82950437937716
+    },
+    {
+      "index": 1399,
+      "hyp": "Okay.",
+      "ref": "Okay.",
+      "chrf": 100.0
+    },
+    {
+      "index": 2527,
+      "hyp": "Wie \u00fcblich wird der US-Pr\u00e4sident Donald Trump eine Empfangsfeier veranstalten und an der Verleihung der Auszeichnungen teilnehmen, zusammen mit seiner Frau Melania.",
+      "ref": "Traditionell wird US-Pr\u00e4sident Donald Trump einen Empfang veranstalten und zusammen mit seiner Frau Melania an der Verleihung teilnehmen.",
+      "chrf": 73.8368869256281
+    },
+    {
+      "index": 2719,
+      "hyp": "\"Sie sollten sich nur dar\u00fcber im Klaren sein, da es sich um eine sehr seltene, hochsichtliche Veranstaltung handelt\", schrieb der Kommandeur von HMX-1 am Tag vor dem Ereignis seinem Vorgesetzten, dem Marine-Deputy Commandant f\u00fcr Luftwaffengesch\u00e4fte, in einem E-Mail.",
+      "ref": "\"Ich wollte nur, dass Sie sich dessen bewusst sind, weil es ein so ungew\u00f6hnliches Ereignis mit hoher Sichtbarkeit ist\", schrieb der Kommandeur der HMX-1 am Vorabend der Veranstaltung seinem Vorgesetzten, dem stellvertretenden Marinekommandeur f\u00fcr Luftfahrt.",
+      "chrf": 47.64834063015716
+    },
+    {
+      "index": 297,
+      "hyp": "Ein Kind, der 16-j\u00e4hrige Julianus Yeimo, wurde so brutal verpr\u00fcgelt, dass er in Koma fiel.",
+      "ref": "Ein Kind, der 16-j\u00e4hrige Yulianus Yeimo, wurde so schwer geschlagen, dass er ins Koma fiel.",
+      "chrf": 67.51404165247908
+    },
+    {
+      "index": 820,
+      "hyp": "Also sind Fu\u00dfg\u00e4nger schneller als Licht im Raum.",
+      "ref": "Fu\u00dfg\u00e4nger sind also schneller als das Licht im Weltall.",
+      "chrf": 58.65676675042237
+    },
+    {
+      "index": 2986,
+      "hyp": "Was f\u00fcr einen Eindruck haben Sie von Georg Ratzinger, dem Menschen, w\u00e4hrend dieser Gespr\u00e4che f\u00fcr Ihr Buch gewonnen?",
+      "ref": "Als was f\u00fcr einen Menschen haben Sie denn Georg Ratzinger bei den Gespr\u00e4chen zu ihrem Buch erlebt?",
+      "chrf": 53.02222862931838
+    },
+    {
+      "index": 2813,
+      "hyp": "\"Die Kinder sollen helfen, das Essen vorzubereiten.\"",
+      "ref": "\"Die Kinder sollen helfen, das Essen zuzubereiten\".",
+      "chrf": 84.86102673632217
+    },
+    {
+      "index": 2189,
+      "hyp": "Alle Ma\u00dfnahmen wurden umgesetzt.",
+      "ref": "Alle Ma\u00dfnahmen sind umgesetzt worden.",
+      "chrf": 63.14761313710879
+    },
+    {
+      "index": 124,
+      "hyp": "Ihre Statue spricht ihnen die Worte der Hoffnung und des Willkommens zu, die sie h\u00f6ren m\u00fcssen.",
+      "ref": "Ihre Statue spricht zu ihnen die Worte der Hoffnung und des Willkommens, die sie h\u00f6ren m\u00fcssen.",
+      "chrf": 91.38096217043586
+    },
+    {
+      "index": 2552,
+      "hyp": "\"Die Arbeit hier ist lustig. \"",
+      "ref": "Die Arbeit hier macht Spa\u00df.\"",
+      "chrf": 50.84855122896366
+    },
+    {
+      "index": 489,
+      "hyp": "Am Neujahrstag 1834 wurde die Kirchturm durch einen Sturm getroffen und ein Teil davon st\u00fcrzte ab.",
+      "ref": "In der Neujahrsnacht 1834 spaltete ein Sturm den Kirchturm und die H\u00e4lfte st\u00fcrzte ein.",
+      "chrf": 41.51020464206093
+    },
+    {
+      "index": 213,
+      "hyp": "Der Engl\u00e4nder Eales freut sich darauf, zum ersten Mal einen Titel zu verteidigen, obwohl er in seiner 32-j\u00e4hrigen Karriere sowohl auf der Europ\u00e4ischen Tour als auch auf der Challenge Tour gewonnen hat.",
+      "ref": "Der Engl\u00e4nder Eales freut sich darauf, zum ersten Mal eine Meisterschaft zu verteidigen, obwohl er in seiner 32-j\u00e4hrigen Karriere sowohl bei der European Tour als auch bei der European Challenge Tour gewonnen hat.",
+      "chrf": 79.81558625633423
+    },
+    {
+      "index": 1741,
+      "hyp": "Die IHK fordert eine st\u00e4rkere Nutzung von externen Dienstleistungsstellen.",
+      "ref": "Die IHK fordert, mehr Auftr\u00e4ge an externe B\u00fcros zu vergeben.",
+      "chrf": 38.324887372791984
+    },
+    {
+      "index": 1070,
+      "hyp": "\"Mir geht es sehr gut.\"",
+      "ref": "Ich f\u00fchle mich sehr gut\".",
+      "chrf": 28.228218658050004
+    },
+    {
+      "index": 616,
+      "hyp": "Rascona erwidert.",
+      "ref": "Rascona erwidert das Feuer.",
+      "chrf": 63.29778382617829
+    },
+    {
+      "index": 2531,
+      "hyp": "Das Kennedy Center, benannt nach dem ehemaligen Pr\u00e4sidenten John F. Kennedy, ist das gr\u00f6\u00dfte Kulturzentrum der US-amerikanischen Hauptstadt.",
+      "ref": "Das nach dem fr\u00fcheren Pr\u00e4sidenten John F. Kennedy benannte Kennedy-Zentrum ist die gr\u00f6\u00dfte Kultureinrichtung in der US-Hauptstadt.",
+      "chrf": 60.72592468222873
+    },
+    {
+      "index": 2060,
+      "hyp": "Dieses Skepsis war durch zahlreiche Beispiele gepr\u00e4gt, bei denen Menschen - oft Wei\u00dfe - in eine Gemeinschaft kamen, um von deren Leid und St\u00e4rke zu profitieren.",
+      "ref": "Diese Skepsis wurde durch unz\u00e4hlige F\u00e4lle von Menschen gen\u00e4hrt, oft von Wei\u00dfen - in einer Gemeinschaft, die von ihrem Schmerz und ihrer Widerstandsf\u00e4higkeit profitierte.",
+      "chrf": 39.23819338732405
+    },
+    {
+      "index": 641,
+      "hyp": "Nach dem letzten Ton der Melodie fordert Greene die Zuschauer auf, sich n\u00e4her zu stellen und die Leichen zu betrachten.",
+      "ref": "Wenn die letzten Noten des Songs ausklingen, l\u00e4dt Greene die Menge ein, n\u00e4her zu kommen und die Leichname zu inspizieren.",
+      "chrf": 37.02451778468053
+    },
+    {
+      "index": 128,
+      "hyp": "Eilidh Doyle erinnert sich an eine Zeit, in der nur zwei Schottinnen die Mannschaft der GB-Mannschaft geschafft haben.",
+      "ref": "Eilidh Doyle erinnert sich an eine Zeit, als nur zwei Schotten zum Team von Gro\u00dfbritannien geh\u00f6rten",
+      "chrf": 55.52906692180346
+    },
+    {
+      "index": 2962,
+      "hyp": "Michael Hesemann: Nein, denn schon im Jahr 1989 schrieb er eine Anfrage an den Leiter der Domspatzen-Oberschule, die sogar im Bericht reproduziert wurde.",
+      "ref": "Michael Hesemann: Nein, denn schon 1989 schrieb er einen Brief an den Direktor des Domspatzengymnasiums, den der Bericht sogar reproduziert.",
+      "chrf": 61.60866490218042
+    },
+    {
+      "index": 1535,
+      "hyp": "Doch die Verluste der Eisdecke f\u00fchren dazu, dass die Gletscher direkt in das Meer m\u00fcnden und sich viel schneller als bisher bewegen k\u00f6nnen.",
+      "ref": "Allerdings f\u00fchrt der Verlust des Schelfeises dazu, dass die Gletscher direkt ins Meer m\u00fcnden und viel schneller abflie\u00dfen k\u00f6nnen als vorher.",
+      "chrf": 58.51276403352477
+    },
+    {
+      "index": 1568,
+      "hyp": "Dann ist es h\u00f6chste Zeit, dass wir handeln, damit nicht noch mehr Stellen leer bleiben.",
+      "ref": "H\u00f6chste Zeit zum Handeln also, damit nicht noch mehr Stellen unbesetzt bleiben.",
+      "chrf": 62.10347435010595
+    },
+    {
+      "index": 2933,
+      "hyp": "\"Mit meinen Eltern habe ich nie dar\u00fcber gesprochen \", sagte einer der Betroffenen, der als Vertreter der anderen sprach, \"es war immer sehr peinlich f\u00fcr mich \".",
+      "ref": "\"Ich habe mich nie getraut, mit meinem Vater oder meiner Mutter dar\u00fcber zu sprechen\", sagte ein Betroffener stellvertretend f\u00fcr die anderen aus, \"Es war mir ja alles sehr peinlich\".",
+      "chrf": 47.57256043702435
+    },
+    {
+      "index": 2594,
+      "hyp": "M\u00e4use, die in einem sterilen Umfeld aufgewachsen sind und daher keinen Darmmicrobiom haben und diese Art von Immunzellen nicht entwickeln, wurden mit L. reuteri versorgt, und die Immunzellen entstanden.",
+      "ref": "M\u00e4use wurden in einer sterilen Umgebung aufgezogen, so dass ihnen ein Darmmikrobiom fehlte und sie diese Art von Immunzellen nicht entwickelten, und sie erhielten den L. reuteri und die Immunzellen entstanden.",
+      "chrf": 60.03961497791447
+    },
+    {
+      "index": 409,
+      "hyp": "Von den Befragten, die sich bewusst versucht haben, mit etwas zu reisen, das von der TSA verboten ist, waren 19,7 % Millennial-Generation, w\u00e4hrend es bei Generation X nur unter 15 % waren.",
+      "ref": "Von den Befragten, die zugaben, dass sie wissentlich versucht haben, mit etwas zu fliegen, das von der TSA verboten wurde, waren 19,7 Prozent Millennials, verglichen mit weniger als 15 Prozent, die Mitglieder der Generation X waren.",
+      "chrf": 52.15250836181262
+    },
+    {
+      "index": 2557,
+      "hyp": "Immerhin tr\u00e4gt der Gemeindebaurat eine gro\u00dfe Verantwortung.",
+      "ref": "Ohnehin tr\u00e4gt der Stadtbaumeister hohe Verantwortung.",
+      "chrf": 53.555573919834096
+    },
+    {
+      "index": 77,
+      "hyp": "Im Jahr 2003 \u00fcbernahm er die Familiengr\u00fcndung und betreibt diese ohne chemische Pflanzenschutzmittel und D\u00fcngemittel, obwohl es sich nicht um eine organische Landwirtschaft handelt.",
+      "ref": "2003 habe er den elterlichen Betrieb \u00fcbernommen und bewirtschafte diesen ohne chemischen Pflanzenschutz und D\u00fcnger, auch wenn er keinen Biobetrieb f\u00fchre.",
+      "chrf": 43.26611355715714
+    },
+    {
+      "index": 1081,
+      "hyp": "Die Politikerin \"mit ihrer verletzten Eitelkeit und ihrer Frustration hat ihre pers\u00f6nlichen Interessen vor das Wohl des Staates gestellt\", kritisierte SPD-Generalsekret\u00e4r Hubertus Heil.",
+      "ref": "Die Politikerin stelle \"in ihrer verletzten Eitelkeit und in ihrem Frust ihre pers\u00f6nlichen Interessen vor das Wohl des Landes\", kritisierte SPD-Generalsekret\u00e4r Hubertus Heil.",
+      "chrf": 82.30936012659143
+    },
+    {
+      "index": 103,
+      "hyp": "Aber er hat es an seiner Bedeutung angegriffen, insbesondere an der Bedeutung, die ihm nach dem Hinzuf\u00fcgen des ber\u00fchmten Gedichtes von Emma Lazarus 17 Jahre nach der Fertigstellung des Denkmals verliehen wurde.",
+      "ref": "Aber er griff deren Bedeutung an, und insbesondere die Bedeutung, die ihr zugeschrieben wurde, als das ber\u00fchmte Gedicht von Emma Lazarus 1903, 17 Jahre nach der Fertigstellung des Denkmals, seiner Basis hinzugef\u00fcgt wurde.",
+      "chrf": 62.37094301533298
+    },
+    {
+      "index": 2066,
+      "hyp": "Die Ziele waren nicht, Ferrells Erfahrungen zu betonen, sondern sie zu zeigen, dass es sich um eine Gemeinschaft handelt und nicht um einen Messiasf\u00fchrer, wie Folayan sagte, und sie erwies sich als die offene Teilnehmerin des Films.",
+      "ref": "Das Ziel war es nicht, sich auf Ferrells Erfahrung zu konzentrieren - um zu zeigen, dass es sich bei der Bewegung \"nicht um einen Messias-F\u00fchrer, sondern um eine Gemeinschaft handelt, die zusammenkommt\", sagte Folayan - sie erwies sich als die offenste Teilnehmerin des Films.",
+      "chrf": 63.77126329763365
+    },
+    {
+      "index": 2464,
+      "hyp": "Der Bauer Arnold fand ein merkw\u00fcrdiges Ei und lie\u00df es von seinen H\u00fchnern bebr\u00fcten.",
+      "ref": "Bauer Arnold fand ein merkw\u00fcrdiges Ei, und lie\u00df es von seinen H\u00fchnern ausbr\u00fcten.",
+      "chrf": 85.85218600826394
+    },
+    {
+      "index": 1907,
+      "hyp": "Manchmal werden sie aber auch verfolgt, wie das z.B. der Fotograf Ruben Espinosa war, der im Jahr 2015 in einem Apartment in Mexiko-Stadt mit vier Frauen get\u00f6tet wurde, nachdem er Veracruz verlassen hatte.",
+      "ref": "Und manchmal werden sie gejagt, wie es offenbar dem Fotografen Ruben Espinosa, der 2015 zusammen mit vier Frauen in einer Wohnung in Mexiko-Stadt drei Monate nach der Flucht aus Veracruz ermordet wurde.",
+      "chrf": 51.706285495699355
+    },
+    {
+      "index": 2423,
+      "hyp": "Trump's gro\u00dfes Leistungsergebnis?",
+      "ref": "Trumps gro\u00dfe Leistung?",
+      "chrf": 57.300032636887586
+    },
+    {
+      "index": 990,
+      "hyp": "\"Mit nur 15 Gouverneuren und der Kontrolle der wenigen Landesparlamente aller Zeiten ist die Ank\u00fcndigung des Gouverneurs Justice nur der neueste Versuch einer Partei, die von oben bis unten ohne F\u00fchrung ist und keine positive, einheitliche Botschaft finden kann\", sagte Ronna McDaniel, Vorsitzende der Republikanischen Nationalkommission, in einem Statement an die CBS News.",
+      "ref": "\"Mit nur 15 Gouvernements und der Kontrolle der wenigsten gesetzgebenden K\u00f6rperschaften in der Geschichte ist die Ank\u00fcndigung von Gouverneur Justice nur die letzte Ablehnung einer Partei, die von oben bis unten ohne F\u00fchrung ist und nicht imstande ist, eine positive, einigende Botschaft zu finden\", sagte die RNC-Vorsitzende Ronna McDaniel in einer Erkl\u00e4rung den CBS News.",
+      "chrf": 62.3520916371621
+    },
+    {
+      "index": 1183,
+      "hyp": "Die Geschichte ist also in dieser Version gleichzeitig nachsichtig mit den Charakteren und ihren gl\u00fccklichen '80er-Jahre, mit der '90er-Jahre und dem Grunge-Ph\u00e4nomen (um die Zeit, als David Wain und Michael Showalter f\u00fcr MTV die Sketchkom\u00f6die \"The State\" produzierten), und sie ist auch nachsichtig mit sich selbst - also mit 2001, bevor die Stars wie Elizabeth Banks, Amy Poehler und Paul Rudd ihre Karrieren aufbauten.",
+      "ref": "Diese Wiederholung der Geschichte ist gleichzeitig nostalgisch wegen der glorreichen Tage der Charaktere der 80-er Jahre, f\u00fcr die 90-er-Jahre-Grunge-\u00c4ra (als die Vordenker David Wain und Michael Showalter die Sketch-Kom\u00f6die \"The State\" f\u00fcr MTV drehten), und f\u00fcr sich selbst - das hei\u00dft, f\u00fcr 2001, bevor ihre Stars, wie Elizabeth Banks, Amy Poehler und Paul Rudd zu gr\u00f6\u00dferen Dingen gingen.",
+      "chrf": 55.548309043721034
+    },
+    {
+      "index": 869,
+      "hyp": "Nat\u00fcrlich ist Hoffmann auch nach Aue gereist, um den Spielverlauf zu beeinflussen.",
+      "ref": "Nat\u00fcrlich f\u00e4hrt auch Hoffmann nach Aue, um das Spiel zu gewinnen.",
+      "chrf": 45.942006450656045
+    },
+    {
+      "index": 1305,
+      "hyp": "Es ist ein weiterer Meilenstein auf dem Weg von mehr als drei Jahrzehnten Fortschritt bei der Bek\u00e4mpfung eines der gr\u00f6\u00dften Gesundheitsprobleme der Menschheit.",
+      "ref": "Es ist ein weiterer Meilenstein in dem mehr als drei Jahrzehnte anhaltenden Fortschritt bei der Bew\u00e4ltigung einer der gr\u00f6\u00dften gesundheitlichen Herausforderungen der Menschheit.\"",
+      "chrf": 63.65881775687456
+    },
+    {
+      "index": 2045,
+      "hyp": "\"Dieses Ereignis heute ist das Ergebnis von... \"",
+      "ref": "\"Das, was heute passiert ist, ist ein H\u00f6hepunkt dessen ... was in der Vergangenheit geschah.",
+      "chrf": 17.21545648533872
+    },
+    {
+      "index": 2107,
+      "hyp": "Wir haben genug davon in unserer Stadt.",
+      "ref": "Davon gibt es schon genug in unserer Stadt.",
+      "chrf": 54.95500369225401
+    },
+    {
+      "index": 2308,
+      "hyp": "\"Lasst es einfach, Leute!\"",
+      "ref": "Jungs, lasst alles seinen Gang gehen!\"",
+      "chrf": 17.073953266020116
+    },
+    {
+      "index": 1655,
+      "hyp": "\"Sie k\u00f6nnen also nicht behaupten, dass nur im Fu\u00dfball alles so bleibt wie immer. \"",
+      "ref": "\"Da kann man nicht daran festhalten, dass nur beim Fu\u00dfball alles so bleibt, wie es immer war.\"",
+      "chrf": 51.5484895946403
+    },
+    {
+      "index": 2908,
+      "hyp": "F\u00fcr Herrn Hesemann stellt der 440-seitige Bericht \u00fcber die \"Incidente des Gewaltmissbrauchs gegen die Waisen des Regensburger Domspatzen\" ein widerspr\u00fcchliches Bild von dem Dom-Musikmeister Georg Ratzinger dar.",
+      "ref": "Herr Hesemann, der 440-Seiten-Bericht \u00fcber die \"Vorf\u00e4lle von Gewaltaus\u00fcbung an Schutzbefohlenen bei den Regensburger Domspatzen\" gibt ein widerspr\u00fcchliches Bild von Domkapellmeister Georg Ratzinger.",
+      "chrf": 58.30082361265625
+    },
+    {
+      "index": 2457,
+      "hyp": "Es gibt keine Todesstrafe in S\u00fcdafrika.",
+      "ref": "Es gibt keine Todesstrafe in S\u00fcdafrika.",
+      "chrf": 100.0
+    },
+    {
+      "index": 126,
+      "hyp": "Ihre Fackel soll nicht dazu dienen, den Weg zu beleuchten, sondern die Hassgef\u00fchle anzufachen, die ihre einzige Quelle der Macht sind.",
+      "ref": "Ihre Fackel soll nicht den Weg erleuchten, sondern den Hass, der ihre einzige Quelle der Macht ist, entz\u00fcnden.",
+      "chrf": 66.99817232229076
+    },
+    {
+      "index": 2559,
+      "hyp": "F\u00fcr die Unterst\u00fctzung und Koordination kann er sich auf alte Kollegen verlassen: Markus Neumaier (Bauwesen) ist schon zehn Jahre dabei, Manfred Sch\u00f6ner (Bauingenieurwesen) sogar schon f\u00fcnfzehn Jahre.",
+      "ref": "Bei Betreuung und Koordination kann er auf langj\u00e4hrige Mitarbeiter z\u00e4hlen: Markus Neumaier (Hochbau) ist seit zehn Jahren dabei, Manfred Sch\u00f6ner (Tiefbau) bereits seit 15 Jahren.",
+      "chrf": 51.331451868470644
+    },
+    {
+      "index": 724,
+      "hyp": "F\u00fcnf Soldaten und ein Dolmetscher wurden verletzt, meldete die NATO.",
+      "ref": "F\u00fcnf Soldaten und ein Dolmetscher seien verletzt worden, teilte eine Erkl\u00e4rung der Nato mit.",
+      "chrf": 52.181735190574074
+    },
+    {
+      "index": 211,
+      "hyp": "Er ist ein begeisterter Anh\u00e4nger dieses Spiels und stolz auf seine Leistung hier.",
+      "ref": "Er ist ein eifriger Verfechter dieses Spiels und ist stolz auf seine Leistung hier.",
+      "chrf": 69.7827556097152
+    },
+    {
+      "index": 1447,
+      "hyp": "Denn als das Hotel Birkenhof am 13. April 2014 von der ehemaligen Betreiberfirma Ambiente Betriebsgesellschaft mbH geschlossen wurde, wurden etwa 30.000 \u00dcbernachtungen pro Jahr verloren, und damit auch die Einnahmen aus den Besuchsteilen.",
+      "ref": "Denn mit der Schlie\u00dfung des Hotels Birkenhof durch die damalige Ambiente Betriebsgesellschaft mbH zum 13. April 2014 gingen seinerzeit rund 30 000 \u00dcbernachtungen pro Jahr verloren und auch Einnahmen durch die Kurtaxe.",
+      "chrf": 57.79669659174176
+    },
+    {
+      "index": 2948,
+      "hyp": "Aber das ist wiederum eine Missverwendung des Berichts.",
+      "ref": "Doch genau das ist wiederum ein Missbrauch des Berichtes.",
+      "chrf": 54.56766507351828
+    },
+    {
+      "index": 1531,
+      "hyp": "Eine ganze Eisbucht brach dort zusammen, berichtet die Wissenschaftlerin Daniela Jansen vom Alfred-Wegener-Institut.",
+      "ref": "Ein komplettes Schelfeis sei dort zerfallen, schreibt AWI-Forscherin Daniela Jansen.",
+      "chrf": 36.35521265043473
+    },
+    {
+      "index": 2322,
+      "hyp": "Kampagne gestartet: Die Lady-Chapel in Rh\u00f6ndorf wird eingemauert",
+      "ref": "Kampagne gestartet: \u00dcber 300 Jahre alte Marienkapelle in Rh\u00f6ndorf verh\u00fcllt",
+      "chrf": 44.538111961007274
+    },
+    {
+      "index": 1268,
+      "hyp": "Es wird den Term-Funding-Schirm beenden, der die Banken ab Februar mit g\u00fcnstigen Krediten versorgt, obwohl es nun erwartet wird, dass unter diesem Schirm 15 Milliarden Pfund mehr ausgegeben werden - auf 115 Milliarden Pfund.",
+      "ref": "Sie wird Zeit f\u00fcr den Finanzierungsplan fordern, um ab dem kommenden Februar billigere Finanzmittel f\u00fcr Banken bereitzustellen, obwohl gesagt wurde, dass jetzt erwartet wird, dass sie 15 Milliarden Pfund mehr im Rahmen dieses Systems zur Verf\u00fcgung stellen wird - mit 115 Milliarden Pfund Sterling.",
+      "chrf": 38.44887585762932
+    },
+    {
+      "index": 1802,
+      "hyp": "Eric Chaisse sagte: \"Stattdessen haben wir sehr kurze, mit wenigen kleinen Bl\u00fcten versehene St\u00e4ngel.\"",
+      "ref": "Eric Chaisse sagte: \"Anstatt sehr lange Pflanzenohren mit einer gro\u00dfen Anzahl von Blumen zu haben, haben wir kleinere, unterentwickelte und entweder fehlende oder geschw\u00e4chte.",
+      "chrf": 28.940039180166956
+    },
+    {
+      "index": 65,
+      "hyp": "Reiseverboten werden normalerweise von dem Au\u00dfenministerium f\u00fcr andere L\u00e4nder ausgesprochen, aber in letzter Zeit haben sich auch die Aktionsgruppen an diesem Ma\u00dfnahmen erinnert, um bestimmte Gesetze und Trends in den USA zu bek\u00e4mpfen.",
+      "ref": "Reisewarnungen werden in der Regel vom Au\u00dfenministerium f\u00fcr andere L\u00e4nder ausgestellt, aber in letzter Zeit haben Interessengruppen die Ma\u00dfnahme als Reaktion auf bestimmte Gesetze und Trends innerhalb der USA eingesetzt.",
+      "chrf": 61.14794165157402
+    },
+    {
+      "index": 1895,
+      "hyp": "Der Wachposten f\u00fcr Medienfreiheit, Articulo 19, zufolge waren die Polizei und \u00f6ffentliche Beamte in mehr als der H\u00e4lfte aller F\u00e4lle der Angriff auf Journalisten verantwortlich.",
+      "ref": "Die Medien-W\u00e4chtergruppe \"Articulo 19\" hat im vergangenen Jahr mehr als die H\u00e4lfte der Angriffe auf Journalisten der Polizei und Beamten zugeordnet.",
+      "chrf": 48.59207402375978
+    },
+    {
+      "index": 1022,
+      "hyp": "Aber es war auch von gro\u00dfer Bedeutung f\u00fcr ein Land, das nur durch zwei L\u00e4nder von uns getrennt ist, sagte sie.",
+      "ref": "Aber er sei auch von hoher Bedeutung \"f\u00fcr ein Land, von dem wir nur durch zwei Staaten getrennt sind\", sagte sie.",
+      "chrf": 56.19961955510197
+    },
+    {
+      "index": 2345,
+      "hyp": "Der Chef des Stabes Hulusi Akar bleibt in seinem Amt, die Kommandeure der Armee, der Luftwaffe und der Marine wurden jedoch entlassen.",
+      "ref": "Generalstabschef Hulusi Akar bleibt zwar im Amt, aber die Kommandeure des Heeres, der Luftstreitkr\u00e4fte und der Marine wurden abgesetzt.",
+      "chrf": 53.4038063800503
+    },
+    {
+      "index": 2228,
+      "hyp": "\"Mit dieser Methode kann ich mich n\u00e4her an die umfassende, dreidimensionale Perspektive auf das Arbeitsleben heranbringen \", so Vitrano, die die Risikomanagementgruppe von Ruby Tuesday leitet.",
+      "ref": "\"Ich kann n\u00e4her an diese ganzheitliche, 360-Grad-Sicht in die Erfahrung mit Besch\u00e4ftigung herankommen\", sagte Vitrano, der die Risiko Management Group von Ruby Tuesday leitet.",
+      "chrf": 44.148498253494125
+    },
+    {
+      "index": 1851,
+      "hyp": "\"Wir wollen weiterleben\", sagte er zu der Zeit, als ihm die CPJ-Preis verliehen wurde.",
+      "ref": "\"Ich m\u00f6chte weiterleben\", sagte er zur Zeit der CPJ-Auszeichnung.",
+      "chrf": 46.64963090850057
+    },
+    {
+      "index": 922,
+      "hyp": "Die Verlegung von Kabeln durch die Struktur in Lauterbach erforderte besondere Geschicklichkeit.",
+      "ref": "Besonderes Fingerspitzengef\u00fchl hat das Verlegen von Leitungen durch das Bauwerk in Lauterbach erfordert.",
+      "chrf": 43.57491298712425
+    },
+    {
+      "index": 992,
+      "hyp": "Der Globale Leiter der Leichtathletik, Sebastian Coe, lobte am Donnerstag die von Russland ge\u00e4u\u00dferte ehrliche Entschuldigung \u00fcber ein Doping-Skandal und wiederholte, dass es noch nicht der Zeitpunkt sei, die Sache mit der Wiederbeleibung Russlands in der Sportart zu besprechen.",
+      "ref": "Der weltweite Chef der Leichtathletik, Sebastian Coe, lobte am Donnerstag, was er als offenkundige Entschuldigung aus Russland zu einem Doping-Skandal beschrieb, aber er wiederholte, es sei nicht der Moment f\u00fcr das Land, wieder in den Sport aufgenommen zu werden.",
+      "chrf": 53.888733647552655
+    },
+    {
+      "index": 659,
+      "hyp": "Wenn man nicht daraus lernen will, kann es wieder passieren.",
+      "ref": "\"Es ist so, wenn wir nichts daraus lernen, dann kann es wieder passieren.",
+      "chrf": 60.39021742853604
+    },
+    {
+      "index": 752,
+      "hyp": "F\u00fcr einen besonderen Preis w\u00fcrde es ein Wohnraum von etwa 55 m2 und eine Terrasse mit mindestens 70 m2 auf dem Erdgeschoss bieten.",
+      "ref": "Im Erdgeschoss w\u00fcrde er eine Wohnfl\u00e4che - rund 55 Quadratmeter - und eine angrenzende Terrasse mit immerhin 70 Quadratmetern Fl\u00e4che f\u00fcr einen Sonderpreis zur Verf\u00fcgung stellen.",
+      "chrf": 35.04268738924357
+    },
+    {
+      "index": 2927,
+      "hyp": "Die Wahrheit ist aber: Der Bericht entlastet Georg Ratzinger in jeder Hinsicht!",
+      "ref": "Die Wahrheit aber ist: Der Bericht entlastet Georg Ratzinger in jeder Hinsicht!",
+      "chrf": 90.4098094070109
+    },
+    {
+      "index": 502,
+      "hyp": "Die Freunde und F\u00f6rderer von Tumlingen f\u00fchlen sich besonders verpflichtet, ihre Heimat zu pflegen, wie der S\u00e4uselorganisator Walter Martini betont hat.",
+      "ref": "Die Freunde und F\u00f6rderer Tumlingens f\u00fchlen sich der Heimatpflege besonders verpflichtet, wie Serenade-Organisator Walter Martini bekr\u00e4ftigt.",
+      "chrf": 69.74430162746889
+    },
+    {
+      "index": 1760,
+      "hyp": "Letzten Monat wurde der ehemalige Leiter der Thermodynamik bei der Entwicklung von Audi-Fahrzeugmotoren in Deutschland verhaftet.",
+      "ref": "Im vergangenen Monat wurde der ehemalige Leiter der Thermodynamik in der Motorenentwicklung von Audi in Deutschland verhaftet.",
+      "chrf": 77.74633474246917
+    },
+    {
+      "index": 2363,
+      "hyp": "Die Verwaltungsinstitutionen und die operativen F\u00e4higkeiten seien \"verd\u00fcnnt\", so diplomatische Quellen der NATO.",
+      "ref": "Die F\u00fchrungsstrukturen und operationellen F\u00e4higkeiten seien \"geschw\u00e4cht\", sagen Nato-Diplomaten.",
+      "chrf": 46.24016778038747
+    },
+    {
+      "index": 2161,
+      "hyp": "Die Chicagoer Polizei hat am 27. Juli eine Community Alert ver\u00f6ffentlicht, in der die Entdeckung des Leichnams erw\u00e4hnt wird.",
+      "ref": "Ein von der Polizeibeh\u00f6rde von Chicago ver\u00f6ffentlichtes gemeinschaftliches Warnsystem besagt, dass die Leiche am 27. Juli entdeckt wurde.",
+      "chrf": 40.24992628174347
+    },
+    {
+      "index": 266,
+      "hyp": "\"Wir sind nicht daran gew\u00f6hnt, in diesen Kleidern zu sein, \" sagt Degei, w\u00e4hrend sie auf ihren lebhaft gef\u00e4rbten, handgewebten Turban, den dunklen Hemd und die leuchtende R\u00f6cke hinweist.",
+      "ref": "\"Wir waren nicht daran gew\u00f6hnt, diese Kleidung zu tragen\", sagt Degei und deutet auf ihren lebhaften, handgewebten Turban, ihr dunkles Hemd und ihren hellen Rock hin.",
+      "chrf": 56.96994352877503
+    },
+    {
+      "index": 1628,
+      "hyp": "Und f\u00fcr die Asienspiele 2022 ist e-Sport bereits Teil des offiziellen Programms.",
+      "ref": "Und bei den Asienspielen 2022 ist E-Sport bereits Teil des offiziellen Programms.",
+      "chrf": 78.78072225157923
+    },
+    {
+      "index": 959,
+      "hyp": "Der ber\u00fchmte Komponist Nils Wogram hat es f\u00fcr die beiden Musiker speziell geschrieben und noch etwas mehr: Die Kl\u00f6sterkirche Haslach mit ihrer besonderen Akustik wurde bewusst in den Konzertraum integriert.",
+      "ref": "Der renommierte Komponist Nils Wogram hat es eigens f\u00fcr die beiden Musiker geschrieben und mehr noch: Die Haslacher Klosterkirche mit ihrer besonderen Akustik wird bewusst in das Konzert mit einbezogen.",
+      "chrf": 66.78243776205744
+    },
+    {
+      "index": 216,
+      "hyp": "Zur\u00fcck in diese Region ist magisch.",
+      "ref": "Zur\u00fcck zu diesem Teil der Welt zu kommen ist magisch.",
+      "chrf": 40.759302094180086
+    },
+    {
+      "index": 1954,
+      "hyp": "Im Kretastand wurde die Erde von riesigen Theropoden, d. h. von zwei Beinen stehenden Fleischfressern, bev\u00f6lkert.",
+      "ref": "Die Kreidezeit war eine Zeit, als riesige Theropoden, fleischfressende Dinosauriere, die auf zwei Beinen standen, die Erde durchzogen.",
+      "chrf": 43.102165384499166
+    },
+    {
+      "index": 1986,
+      "hyp": "Es ist ein Moment, den praktisch jeder einmal erlebt hat: Ohne es zu erwarten, sitzt man im Zug und schl\u00e4ft.",
+      "ref": "Es ist ein Moment, den fast jeder schon einmal erlebt hat: Nichts ahnend sitzt man im Zug und schl\u00e4ft.",
+      "chrf": 68.04114203661983
+    },
+    {
+      "index": 1243,
+      "hyp": "Als Begr\u00fcndung schreibt das Amt: \"Die Aufnahmef\u00e4higkeit f\u00fcr Familien mit minderj\u00e4hrigen Kindern ist inzwischen in Italien erheblich gestiegen. \"",
+      "ref": "Zur Begr\u00fcndung schreibe das Amt nun: \"Inzwischen hat sich die Aufnahmekapazit\u00e4t f\u00fcr Familien mit minderj\u00e4hrigen Kindern in Italien wesentlich erh\u00f6ht\".",
+      "chrf": 62.575317917509196
+    },
+    {
+      "index": 455,
+      "hyp": "Die Ma\u00dfnahme wurde noch nicht im Senat abgelegt.",
+      "ref": "Die Ma\u00dfnahme wurde im Senat noch nicht zur Abstimmung gestellt.",
+      "chrf": 54.05182983203078
+    }
+  ],
+  "merge_diagnostics": null,
+  "env": {
+    "hf_home": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/cache/hf_home",
+    "cuda_visible_devices": "3",
+    "pbs_jobid": "12073.jiit-master",
+    "hostname": "jiit-gpu01"
+  }
+}

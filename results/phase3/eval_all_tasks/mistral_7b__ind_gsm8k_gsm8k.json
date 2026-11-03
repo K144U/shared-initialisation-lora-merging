@@ -1,0 +1,3128 @@
+{
+  "meta": {
+    "git_sha": "unknown",
+    "hostname": "jiit-gpu01",
+    "cuda_visible_devices": "2",
+    "pbs_jobid": "12080.jiit-master",
+    "wallclock_iso": "2026-10-23T06:11:40+0200",
+    "wallclock_unix": 1792728700.035241,
+    "config_hash": "f24f63b91c95f38b",
+    "config": {
+      "base_model": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/models/Mistral-7B-Instruct-v0.3",
+      "method": "task_arithmetic",
+      "method_kwargs": {},
+      "max_seq_length": 1024,
+      "seed": 20260518,
+      "min_free_gb": 25,
+      "adapter_specs": [
+        {
+          "name": "gsm8k",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/gsm8k/seed1",
+          "task_cfg": {
+            "name": "gsm8k",
+            "dataset": "openai/gsm8k",
+            "config": "main",
+            "split_train": "train",
+            "split_eval": "test",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "question",
+            "answer_field": "answer"
+          }
+        },
+        {
+          "name": "alpaca",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/alpaca/seed1",
+          "task_cfg": {
+            "name": "alpaca",
+            "dataset": "yahma/alpaca-cleaned",
+            "config": null,
+            "split_train": "train",
+            "split_eval": "train",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "instruction",
+            "answer_field": "output"
+          }
+        },
+        {
+          "name": "magicoder",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/magicoder/seed1",
+          "task_cfg": {
+            "name": "magicoder",
+            "dataset": "ise-uiuc/Magicoder-OSS-Instruct-75K",
+            "config": null,
+            "split_train": "train",
+            "split_eval": "train",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "problem",
+            "answer_field": "solution"
+          }
+        },
+        {
+          "name": "translation",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/flores/seed1",
+          "task_cfg": {
+            "name": "translation",
+            "dataset": "wmt/wmt19",
+            "config": "de-en",
+            "split_train": "train",
+            "split_eval": "validation",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "src_lang": "en",
+            "tgt_lang": "de",
+            "streaming": true
+          }
+        }
+      ],
+      "metric": "gsm8k_em",
+      "metric_task_spec": "gsm8k",
+      "metric_kwargs": {
+        "max_new_tokens": 256
+      },
+      "n_eval_metric": 500,
+      "weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "output_path": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/results/phase3/eval_all_tasks/mistral_7b__ind_gsm8k_gsm8k.json"
+    }
+  },
+  "method": "task_arithmetic",
+  "method_kwargs": {
+    "_merge_cache_key": null
+  },
+  "weights": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "base_model": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/models/Mistral-7B-Instruct-v0.3",
+  "adapter_dirs": [
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/gsm8k/seed1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/alpaca/seed1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/magicoder/seed1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/flores/seed1"
+  ],
+  "metric": "gsm8k_em",
+  "metric_kwargs": {
+    "max_new_tokens": 256
+  },
+  "metric_task": "gsm8k",
+  "metric_score": 0.562,
+  "n_eval_metric": 500,
+  "per_example": [
+    {
+      "score": 1,
+      "pred": "98",
+      "gold": "98",
+      "gen_text": "If a gallon jar costs $5, a half-gallon jar costs $5-$2 = $<<5-2=3>>3.\nThe total amount of money she spent on 10 gallon jars is $5*10 = $<<5*10=50>>50.\nThe total amount of money she spent on 16 half-gallon jars is $3*16 = $<<3*16=48>>48.\nThe total amount of money she spent on 10 gallon jars and 16 half-gallon jars is $50+$48 = $<<50+48=98>>98.\n#### 98"
+    },
+    {
+      "score": 0,
+      "pred": "42",
+      "gold": "36",
+      "gen_text": "Josh spent 4 hours working out for 7 weeks because 8 weeks - 2 weeks - 1 week = <<8-2-1=7>>7 weeks\nHe spent 5 hours working out for 2 weeks because 2 weeks x 5 hours = <<2*5=10>>10 hours\nHe spent 6 hours working out for 1 week because 1 week x 6 hours = <<1*6=6>>6 hours\nHe spent a total of 4 hours x 7 weeks + 10 hours + 6 hours = <<4*7+10+6=42>>42 hours\n#### 42"
+    },
+    {
+      "score": 0,
+      "pred": "17",
+      "gold": "12",
+      "gen_text": "There are 20 - 8 = <<20-8=12>>12 students who are good at both math and English.\nSo, there are 5 + 12 = <<5+12=17>>17 students who are good at math.\n#### 17"
+    },
+    {
+      "score": 0,
+      "pred": "200",
+      "gold": "120",
+      "gen_text": "The total weight of carrots to be distributed is 200 x 2 = <<200*2=400>>400 pounds.\nTherefore, 400 - 200 = <<400-200=200>>200 pounds of carrots will not be used.\n#### 200"
+    },
+    {
+      "score": 1,
+      "pred": "40",
+      "gold": "40",
+      "gen_text": "First find the total number of spools: 15 + 45 + 40 + 50 = <<15+45+40+50=150>>150\nThen divide the number of blue spools by the total number of spools and multiply by 100% to express the answer as a percent: (45 + 15) / 150 * 100% = 60/150 * 100% = 40%\n#### 40"
+    },
+    {
+      "score": 1,
+      "pred": "60",
+      "gold": "60",
+      "gen_text": "Martha has been collecting shells for 10 - 5 = <<10-5=5>>5 years\nShe collects one shell per month so in 5 years she will have collected 5 * 12 = <<5*12=60>>60 shells\n#### 60"
+    },
+    {
+      "score": 1,
+      "pred": "67",
+      "gold": "67",
+      "gen_text": "Cho hiked 14 x 8 = <<14*8=112>>112 kilometers.\nChloe hiked 9 x 5 = <<9*5=45>>45 kilometers.\nCho hiked 112 - 45 = <<112-45=67>>67 kilometers farther.\n#### 67"
+    },
+    {
+      "score": 0,
+      "pred": "156",
+      "gold": "172",
+      "gen_text": "If Ophelia has 20 sofas, Jenna has 20-2=<<20-2=18>>18 sofas.\nJenna has 3 times as many chairs as Ophelia, meaning she has 3*20=<<3*20=60>>60 chairs.\nOphelia has 60-2=<<60-2=58>>58 chairs.\nIn total, they have 20+18=<<20+18=38>>38 sofas.\nThey also have 58+60=<<58+60=118>>118 chairs.\nIn total, they have 38+118=<<38+118=156>>156 sofas and chairs.\n#### 156"
+    },
+    {
+      "score": 1,
+      "pred": "36",
+      "gold": "36",
+      "gen_text": "The total cost of the 2 shirts is $30 x 2 = $<<30*2=60>>60.\nThe discount is $60 x 40/100 = $<<60*40/100=24>>24.\nSo, Davos paid $60 - $24 = $<<60-24=36>>36 for the 2 shirts.\n#### 36"
+    },
+    {
+      "score": 0,
+      "pred": "4",
+      "gold": "3",
+      "gen_text": "The cost of the peaches is 3 * .5 = $<<3*.5=1.5>>1.5\nThe cost of the pears is 4 * .5 = $<<4*.5=2>>2\nThe cost of the apples is 5 * .75 = $<<5*.75=3.75>>3.75\nThe cost of the kiwis is 2 * 1 = $<<2*1=2>>2\nThe total cost of the fruit is 1.5 + 2 + 3.75 + 2 = $<<1.5+2+3.75+2=9.75>>9.75\nHe has $10 - $9.75 = $<<10-9.75=.25>>.25 left\nHe can buy 1 / .25 = <<1/.25=4>>4 plums\n#### 4"
+    },
+    {
+      "score": 0,
+      "pred": "405",
+      "gold": "428",
+      "gen_text": "Nikita scored 278/2-11 = <<278/2-11=127>>127 points.\nPierson and Nikita scored 278+127 = <<278+127=405>>405 points in total.\n#### 405"
+    },
+    {
+      "score": 1,
+      "pred": "17",
+      "gold": "17",
+      "gen_text": "Charlie has 10 + 21 + 23 = <<10+21+23=54>>54 stickers.\nCharlie has 54 - 9 - 28 = <<54-9-28=17>>17 stickers left.\n#### 17"
+    },
+    {
+      "score": 0,
+      "pred": "120",
+      "gold": "80",
+      "gen_text": "The total number of burritos given to the students is 50 students * 10 burritos/student = <<50*10=500>>500 burritos.\nThe total number of burritos eaten by the students is 500 burritos - 20 burritos = <<500-20=480>>480 burritos.\nThe total number of leftover burritos is 600 burritos - 480 burritos = <<600-480=120>>120 burritos.\n#### 120"
+    },
+    {
+      "score": 0,
+      "pred": "26",
+      "gold": "30",
+      "gen_text": "Nani's brother is 8 x 2 = <<8*2=16>>16 years old.\nNani's sister is 8 x 25/100 = <<8*25/100=2>>2 years old.\nThe total age of all three of the family members is 8 + 16 + 2 = <<8+16+2=26>>26 years.\n#### 26"
+    },
+    {
+      "score": 0,
+      "pred": "9",
+      "gold": "-3",
+      "gen_text": "The temperature dropped to 2 - 8 = <<2-8=6>>6 degrees Celsius.\nThe temperature increased to 6 + 3 = <<6+3=9>>9 degrees Celsius.\n#### 9"
+    },
+    {
+      "score": 1,
+      "pred": "5",
+      "gold": "5",
+      "gen_text": "Ana peels 60/3 = <<60/3=20>>20 oranges in an hour.\nJane peels 60/4 = <<60/4=15>>15 oranges in an hour.\nAna peels 20-15 = <<20-15=5>>5 more oranges than Jane in an hour.\n#### 5"
+    },
+    {
+      "score": 0,
+      "pred": "2.67",
+      "gold": "2",
+      "gen_text": "Fred made 24 gallons of root beer on the first day, but his children drank 4 gallons, leaving 24-4=<<24-4=20>>20 gallons.\nOn the second day, Fred's wife Barbie spilled 7 gallons, leaving 20-7=<<20-7=13>>13 gallons.\nOn the third day, Fred's friend Ronnie drank 5 gallons, leaving 13-5=<<13-5=8>>8 gallons.\nOn the fourth day, 3 people showed up for the party, so if they shared the remaining root beer equally, each person would have 8/3=<<8/3=2.67>>2.67 gallons.\n#### 2.67"
+    },
+    {
+      "score": 1,
+      "pred": "33",
+      "gold": "33",
+      "gen_text": "First find the total number of water type cards: 40 water type cards - 8 lost = <<40-8=32>>32 water type cards\nThen find the total number of grass type cards: 20 grass type cards + 14 grass type cards = <<20+14=34>>34 grass type cards\nThen find the total number of cards: 30 fire type cards + 32 water type cards + 34 grass type cards = <<30+32+34=96>>96 cards\nThen divide the number of water type cards by the total number of cards and multiply by 100% to express the answer as a percentage: 32 water type cards / 96 cards * 100% = 33.33%\n#### 33"
+    },
+    {
+      "score": 0,
+      "pred": "15",
+      "gold": "30",
+      "gen_text": "Let R be the number of red jelly beans, B be the number of blue jelly beans, and G be the number of green jelly beans.\nWe know that R = B - 1% * B = B - 0.01 * B = 0.99 * B\nWe also know that G = B + 1% * B = B + 0.01 * B = 1.01 * B\nWe know that R + B + G = 4500\nWe know that 0.99 * B + B + 1.01 * B = 4500\nWe know that 2.99 * B = 4500\nWe know that B = 4500 / 2.99 = <<4500/2.99=1500>>1500\nWe know that R = 0.99 * 1500 = <<0.99*1500=1485>>1485\nWe know that G = 1.01 * 1500 = <<1.01*15"
+    },
+    {
+      "score": 0,
+      "pred": "79000",
+      "gold": "85000",
+      "gen_text": "The cinnamon rolls have 200*1/3*600 = <<200*1/3*600=200>>200 calories each.\nThe blueberry muffins have 300*1/3*450 = <<300*1/3*450=135>>135 calories each.\nSo, the total number of calories in the cinnamon rolls is 200*200 = <<200*200=40000>>40000 calories.\nAnd the total number of calories in the blueberry muffins is 300*135 = <<300*135=39000>>39000 calories.\nSo, the total number of calories in the pastries is 40000+39000 = <<40000+39000=79000>>79000 calories.\n#### 79000"
+    },
+    {
+      "score": 1,
+      "pred": "138",
+      "gold": "138",
+      "gen_text": "The first scene has 54 * 2 = <<54*2=108>>108 lines.\nSean has 108 * 1/3 = <<108*1/3=36>>36 lines to memorize for the first scene.\nThe second scene has 54 + 6 = <<54+6=60>>60 lines.\nSean has 60 * 4/5 = <<60*4/5=48>>48 lines to memorize for the second scene.\nIn total, Sean has to memorize 36 + 54 + 48 = <<36+54+48=138>>138 lines.\n#### 138"
+    },
+    {
+      "score": 1,
+      "pred": "38",
+      "gold": "38",
+      "gen_text": "My mom spent $19 + $26 = $<<19+26=45>>45 for the pots and the soil.\nShe got a $7 discount, so she spent $45 - $7 = $<<45-7=38>>38.\n#### 38"
+    },
+    {
+      "score": 1,
+      "pred": "7200",
+      "gold": "7200",
+      "gen_text": "Derrick makes 10 x 12 = <<10*12=120>>120 doughnuts every day.\nHe makes $120 x $2 = $<<120*2=240>>240 every day.\nIn June, he makes $240 x 30 = $<<240*30=7200>>7200.\n#### 7200"
+    },
+    {
+      "score": 0,
+      "pred": "20",
+      "gold": "39",
+      "gen_text": "On Tuesday, Chris completes 12 * 3 = <<12*3=36>>36 math problems.\nOn Wednesday, he completes 100 - 12 - 36 = <<100-12-36=52>>52 math problems.\nOn Thursday, he has 100 - 12 - 36 - 52 = <<100-12-36-52=20>>20 math problems left to complete.\n#### 20"
+    },
+    {
+      "score": 1,
+      "pred": "20",
+      "gold": "20",
+      "gen_text": "The jeans were originally $40.00 and were advertised 25% off so they were $40.00 - (.25 * $40.00) = $40.00 - $10.00 = $<<40-.25*40=30.00>>30.00\nMike has $50.00 and the jeans cost $30.00 so he will have $50.00 - $30.00 = $<<50-30=20.00>>20.00 left over\n#### 20"
+    },
+    {
+      "score": 0,
+      "pred": "9375",
+      "gold": "375",
+      "gen_text": "He threw 25 punches/minute and the fight lasted 5*3=<<25*5*3=375>>375 minutes\nSo he threw 25*375=<<25*375=9375>>9375 punches\n#### 9375"
+    },
+    {
+      "score": 1,
+      "pred": "30",
+      "gold": "30",
+      "gen_text": "The Smith twins found 30 x 2 = <<30*2=60>>60 eggs.\nThe friends found 100 - 60 - 10 = <<100-60-10=30>>30 eggs.\n#### 30"
+    },
+    {
+      "score": 0,
+      "pred": "25",
+      "gold": "132",
+      "gen_text": "The mixing bowls were $20.00 and 20% off so 20*.20 = $<<20*.20=4.00>>4.00 off\nThe mixing bowls were $20.00 and $4.00 off so 20-4 = $<<20-4=16.00>>16.00\nThe pot and pans were $120.00 and 20% off so 120*.20 = $<<120*.20=24.00>>24.00 off\nThe pot and pans were $120.00 and $24.00 off so 120-24 = $<<120-24=96.00>>96.00\nThe utensils were $5.00 each and 5 so 5*5 = $<<5*5=25.00>>25.00\nThe utensils were $25.00 and 20% off so 25*.20 = $<<25"
+    },
+    {
+      "score": 1,
+      "pred": "10",
+      "gold": "10",
+      "gen_text": "They make $1000 a day from tractors because 10 x 100 = <<10*100=1000>>1000\nThey make $1100 a day from silos because 5 x 220 = <<5*220=1100>>1100\nThey make $100 more a day from silos because 1100 - 1000 = <<1100-1000=100>>100\nThey make 10% more a day from silos because 100 / 1000 = <<100/1000=.1>>.1\n#### 10"
+    },
+    {
+      "score": 0,
+      "pred": "53",
+      "gold": "13",
+      "gen_text": "Let B be my brother's age, S be my sister's age, and M be my mom's age.\nWe know that B - 3 = S + 2\nWe also know that M = 3B - 1\nWe know that B + S + M = 87\nSubstituting the first equation into the second equation, we get B + S + 3B - 1 = 87\nCombining like terms, we get 4B + S = 88\nSubstituting the second equation into the third equation, we get 4B + B - 3 = 88\nCombining like terms, we get 5B = 91\nDividing both sides by 5, we get B = 18\nSubstituting B = 18 into the first equation, we get S = 18 - 3 = <<18-3=15>>15\nSubstituting B = 18 and S = 15 into the second equation, we get M = 3 * 18 - 1 = 53\n#### 53"
+    },
+    {
+      "score": 1,
+      "pred": "5",
+      "gold": "5",
+      "gen_text": "There are 10 ducks in the flock, and each duck needs 3.5 pounds of insects per week, so the flock needs 3.5 * 10 = <<3.5*10=35>>35 pounds of insects per week.\nThere are 7 days in a week, so the flock needs 35 / 7 = <<35/7=5>>5 pounds of insects per day.\n#### 5"
+    },
+    {
+      "score": 0,
+      "pred": "6",
+      "gold": "9",
+      "gen_text": "They need to raise $6300 - $2100 = $<<6300-2100=4200>>4200 more.\nThey need to raise $4200 / $700 = <<4200/700=6>>6 more hours.\n#### 6"
+    },
+    {
+      "score": 0,
+      "pred": "4",
+      "gold": "43",
+      "gen_text": "Twice the amount of orange candies as red candies is 54*2=<<54*2=108>>108\nHalf as many yellow candies as red candies is 54/2=<<54/2=27>>27\nThe total number of candies in the bag is 54+108+27+232=<<54+108+27+232=421>>421\nThe number of pink candies is 421-54-108-27-232=<<421-54-108-27-232=4>>4\n#### 4"
+    },
+    {
+      "score": 1,
+      "pred": "16",
+      "gold": "16",
+      "gen_text": "He can place 24 x 2 = <<24*2=48>>48 eggs on the tray.\nSo, he won't be able to place 64 - 48 = <<64-48=16>>16 eggs on the tray.\n#### 16"
+    },
+    {
+      "score": 0,
+      "pred": "4",
+      "gold": "6",
+      "gen_text": "There are 27/3=<<27/3=9>>9 unicorns in the Scottish Highlands.\nThere are 9/2=<<9/2=4.5>>4.5 female unicorns in the Scottish Highlands.\nSince there are only whole numbers of unicorns, there are 4 female unicorns in the Scottish Highlands.\n#### 4"
+    },
+    {
+      "score": 1,
+      "pred": "45",
+      "gold": "45",
+      "gen_text": "Beatrice ate 24 * 2 = <<24*2=48>>48 roll-ups.\nMarcell ate 3 * 14 = <<3*14=42>>42 roll-ups.\nTogether, they ate 48 + 42 = <<48+42=90>>90 roll-ups.\nTherefore, they ate 90 / 2 = <<90/2=45>>45 roll-ups on average.\n#### 45"
+    },
+    {
+      "score": 0,
+      "pred": "180",
+      "gold": "120",
+      "gen_text": "The zoo has twice as many cows as the farm, which has 30 cows, so the zoo has 2*30 = <<2*30=60>>60 cows.\nThe farm has half as many sheep as the zoo, which has 60 sheep, so the farm has 60/2 = <<60/2=30>>30 sheep.\nThe farm has 30 cows and 30 sheep, for a total of 30+30 = <<30+30=60>>60 animals.\nThe zoo has 60 cows and 60 sheep, for a total of 60+60 = <<60+60=120>>120 animals.\nThe farm and zoo have a combined total of 60+120 = <<60+120=180>>180 animals.\n#### 180"
+    },
+    {
+      "score": 0,
+      "pred": "4",
+      "gold": "48",
+      "gen_text": "First find the number of calories in a gram of chips: 250 calories / 5 servings = <<250/5=50>>50 calories/serving\nThen multiply that number by the number of servings in the bag: 50 calories/serving * 5 servings = <<50*5=250>>250 calories\nThen subtract the number of calories you have already consumed from your daily target: 2000 calories - 1800 calories = <<2000-1800=200>>200 calories\nThen divide that number by the number of calories per gram of chips to find the number of grams you can eat: 200 calories / 50 calories/gram = <<200/50=4>>4 grams\n#### 4"
+    },
+    {
+      "score": 0,
+      "pred": "18",
+      "gold": "36",
+      "gen_text": "Carol and Jennifer have 20 + 44 = <<20+44=64>>64 signatures in their books.\nThe sisters need to collect 100 - 64 = <<100-64=36>>36 more signatures.\nThe sisters need to collect 36 / 2 = <<36/2=18>>18 more signatures each.\n#### 18"
+    },
+    {
+      "score": 1,
+      "pred": "16",
+      "gold": "16",
+      "gen_text": "Julia took 4 seconds to row 10 feet because 16 / 4 = <<16/4=4>>4\nJulia took 8 seconds to row 20 feet because 4 x 2 = <<4*2=8>>8\nJulia took 64 seconds to row 64 feet because 8 x 8 = <<8*8=64>>64\nJulia took on 16 liters of water because 64 / 4 = <<64/4=16>>16\n#### 16"
+    },
+    {
+      "score": 0,
+      "pred": "100",
+      "gold": "200",
+      "gen_text": "Allan bought 40 cannolis - 40 corns = <<40-40=0>>0 corns.\nThe total number of corns and cannolis Allan has in the house is 40 cannolis + 60 cannolis + 0 corns = <<40+60+0=100>>100 corns and cannolis.\n#### 100"
+    },
+    {
+      "score": 1,
+      "pred": "450",
+      "gold": "450",
+      "gen_text": "Antonella earned a 30% commission on the first $1000 of sales, which is 30/100*1000 = $<<30/100*1000=300>>300.\nShe also earned a 10% commission on the remaining $1500 of sales, which is 10/100*1500 = $<<10/100*1500=150>>150.\nIn total, Antonella earned $300+$150 = $<<300+150=450>>450.\n#### 450"
+    },
+    {
+      "score": 1,
+      "pred": "36",
+      "gold": "36",
+      "gen_text": "He spends 2/2=<<2/2=1>>1 hour reading\nSo he spends 2+1=<<2+1=3>>3 hours\nSo he spends 3*3=<<3*3=9>>9 hours\nSo in 4 weeks he spends 9*4=<<9*4=36>>36 hours\n#### 36"
+    },
+    {
+      "score": 1,
+      "pred": "1100",
+      "gold": "1100",
+      "gen_text": "He spent 3*1800=$<<3*1800=5400>>5400 on the packs\nHe made 4000+1000=$<<4000+1000=5000>>5000 from the cards\nHe made 30*50=$<<30*50=1500>>1500 from the other cards\nSo he made 5000+1500=$<<5000+1500=6500>>6500\nSo he made 6500-5400=$<<6500-5400=1100>>1100 profit\n#### 1100"
+    },
+    {
+      "score": 0,
+      "pred": "20",
+      "gold": "15",
+      "gen_text": "Let S be the number of sheep and G be the number of geese.\nWe know that 4S + 2G = 70\nAnd 1S + 1G = 20\nWe can solve the first equation for S: 4S + 2G = 70\n4S = 70 - 2G\nS = (70 - 2G) / 4\nWe can substitute this expression for S into the second equation: 1((70 - 2G) / 4) + 1G = 20\n70 - 2G + G = 80\n6G = 10\nG = <<5=5>>5\nSubstituting this value for G into the expression for S, we find that S = (70 - 2(5)) / 4 = 20\n#### 20"
+    },
+    {
+      "score": 0,
+      "pred": "120",
+      "gold": "160",
+      "gen_text": "The six-inch cold-cut combo sub costs $40 x 3 = $<<40*3=120>>120.\n#### 120"
+    },
+    {
+      "score": 1,
+      "pred": "10",
+      "gold": "10",
+      "gen_text": "Uncle Franky has 40 x 2 = <<40*2=80>>80 apples.\nHe can make 80/8 = <<80/8=10>>10 packs of apples.\n#### 10"
+    },
+    {
+      "score": 0,
+      "pred": "26",
+      "gold": "360",
+      "gen_text": "He staples 30 reports every 15 minutes, so in an hour he staples 30/15 = <<30/15=2>>2 reports per hour.\nHe staples 2 reports per hour, so in 13 hours he staples 2*13 = <<2*13=26>>26 reports.\n#### 26"
+    },
+    {
+      "score": 1,
+      "pred": "30",
+      "gold": "30",
+      "gen_text": "The first player ate 6 ounces of steak.\nThe second player ate 8 beef tips, each an ounce in size, for a total of 8 ounces of meat.\nThe third player ate a one-pound steak, which is 16 ounces.\nThe fourth and fifth players ordered vegetarian meals, so they did not eat any meat.\nIn total, the team ate 6 + 8 + 16 = <<6+8+16=30>>30 ounces of meat.\n#### 30"
+    },
+    {
+      "score": 0,
+      "pred": "32",
+      "gold": "20",
+      "gen_text": "Each house has 3*2=<<3*2=6>>6 bedrooms\nSo there are 6*2=<<6*2=12>>12 windows in the bedrooms\nSo there are 12+4=<<12+4=16>>16 windows in each house\nSo there are 16*2=<<16*2=32>>32 windows in total\n#### 32"
+    },
+    {
+      "score": 1,
+      "pred": "26",
+      "gold": "26",
+      "gen_text": "Cherrie bought 2 friends 5 gifts each for a total of 2*5 = <<2*5=10>>10 gifts.\nShe bought 3 friends 2 gifts each for a total of 3*2 = <<3*2=6>>6 gifts.\nShe bought 10 more gifts for a total of 10+10+6 = <<10+10+6=26>>26 gifts.\n#### 26"
+    },
+    {
+      "score": 0,
+      "pred": "21.5",
+      "gold": "31",
+      "gen_text": "First find the total amount of quarters: 32 quarters * $0.25/quarter = $<<32*0.25=8>>8\nThen find the total amount of dimes: 95 dimes * $0.10/dime = $<<95*0.10=9.50>>9.50\nThen find the total amount of nickels: 120 nickels * $0.05/nickel = $<<120*0.05=6>>6\nThen find the total amount of pennies: 750 pennies * $0.01/penny = $<<750*0.01=7.50>>7.50\nThen add the amounts of each type of coin to find the total amount: $8 + $9.50 + $6 + $7.50 = $<<8+9.5+6+7.5=21.50>>21.50\n#### 21.50"
+    },
+    {
+      "score": 0,
+      "pred": "24",
+      "gold": "25",
+      "gen_text": "Mark has $50 + $10 = $<<50+10=60>>60 in his bank account after one day.\nHe has to save $300 - $60 = $<<300-60=240>>240.\nSo, Mark has to save $240 / $10 = <<240/10=24>>24 days.\n#### 24"
+    },
+    {
+      "score": 1,
+      "pred": "3",
+      "gold": "3",
+      "gen_text": "Zack's locker is 24/2=<<24/2=12>>12 cubic inches.\nPeter's locker is 12/4=<<12/4=3>>3 cubic inches.\n#### 3"
+    },
+    {
+      "score": 1,
+      "pred": "9",
+      "gold": "9",
+      "gen_text": "Toni has 10 * 1.6 = <<10*1.6=16>>16 plants.\nShondra has 16 - 7 = <<16-7=9>>9 plants.\n#### 9"
+    },
+    {
+      "score": 1,
+      "pred": "25",
+      "gold": "25",
+      "gen_text": "Let x be the age of Carver's son.\nCarver is 5 years less than twice the age of his son, so Carver's age is 2x-5.\nCarver is 45 years old, so 2x-5=45.\nAdding 5 to both sides of the equation, we get 2x=50.\nDividing both sides by 2, we get x=25.\n#### 25"
+    },
+    {
+      "score": 1,
+      "pred": "840",
+      "gold": "840",
+      "gen_text": "The total number of articles published by the two websites is 20 + 10 = <<20+10=30>>30 articles per day.\nThe total number of articles published by the two websites in February is 30 x 28 = <<30*28=840>>840 articles.\n#### 840"
+    },
+    {
+      "score": 1,
+      "pred": "1",
+      "gold": "1",
+      "gen_text": "The total cost of the bagels is 4*10=$<<4*10=40.00>>40.00\nThe total cost after the discount is 40*.9=$<<40*.9=36.00>>36.00\nThe total number of bagels is 4*9=<<4*9=36>>36\nEach bagel will cost 36/36=$<<36/36=1.00>>1.00\n#### 1"
+    },
+    {
+      "score": 1,
+      "pred": "306",
+      "gold": "306",
+      "gen_text": "Ali needs 850 / 50 = <<850/50=17>>17 bags of coal.\nSo, his order costs 17 * 18 = $<<17*18=306>>306.\n#### 306"
+    },
+    {
+      "score": 1,
+      "pred": "1170",
+      "gold": "1170",
+      "gen_text": "The gold and diamond cost 600+300=$<<600+300=900>>900\nSo the premium was 900*.3=$<<900*.3=270>>270\nSo he paid 900+270=$<<900+270=1170>>1170\n#### 1170"
+    },
+    {
+      "score": 1,
+      "pred": "250",
+      "gold": "250",
+      "gen_text": "Leo collected 50 x 2 = <<50*2=100>>100 stickers this year.\nLeo has 100 + 50 + 100 = <<100+50+100=250>>250 stickers in his collection.\n#### 250"
+    },
+    {
+      "score": 1,
+      "pred": "440",
+      "gold": "440",
+      "gen_text": "Charlie will make 4*80=$<<4*80=320>>320 for his standard lessons.\nHe will make 2*80*.75=$<<2*80*.75=120>>120 for his lessons with a veteran.\nSo he will make 320+120=$<<320+120=440>>440 for the day.\n#### 440"
+    },
+    {
+      "score": 1,
+      "pred": "50",
+      "gold": "50",
+      "gen_text": "Argo gave a total of 40 + 80 + 30 = <<40+80+30=150>>150 toys to Alyssa, Bonnie, and Nicky.\nArgo has 200 - 150 = <<200-150=50>>50 toys now.\n#### 50"
+    },
+    {
+      "score": 1,
+      "pred": "227",
+      "gold": "227",
+      "gen_text": "First find the total time it takes to string the synthetic gut racquets: 3 racquets * 15 minutes/racquet = <<3*15=45>>45 minutes\nThen find the total time it takes to string the polyester string racquets: 5 racquets * 22 minutes/racquet = <<5*22=110>>110 minutes\nThen find the total time it takes to string the hybrid sets: 4 racquets * 18 minutes/racquet = <<4*18=72>>72 minutes\nThen add the time it takes to string each type of racquet to find the total time it takes to string all of the racquets: 45 minutes + 110 minutes + 72 minutes = <<45+110+72=227>>227 minutes\n#### 227"
+    },
+    {
+      "score": 1,
+      "pred": "750",
+      "gold": "750",
+      "gen_text": "Teddy finished half of a 500 piece puzzle, so he placed 500/2 = <<500/2=250>>250 pieces.\nTeddy then finished another 500 piece puzzle, so he placed 250+500 = <<250+500=750>>750 pieces.\n#### 750"
+    },
+    {
+      "score": 1,
+      "pred": "7",
+      "gold": "7",
+      "gen_text": "The chips cost 2*2 = $<<2*2=4.00>>4.00\nThe fried chicken cost 8.00\nThe soda cost 1.00\nSo the total cost of the food was 4.00+8.00+1.00 = $<<4+8+1=13.00>>13.00\nSo the apple pie cost 20.00-13.00 = $<<20-13=7.00>>7.00\n#### 7"
+    },
+    {
+      "score": 1,
+      "pred": "2",
+      "gold": "2",
+      "gen_text": "The vendor sold the watermelons for $80 x 1.25 = $<<80*1.25=100>>100.\nSo, each watermelon was sold for $100 / 50 = $<<100/50=2>>2.\n#### 2"
+    },
+    {
+      "score": 1,
+      "pred": "17",
+      "gold": "17",
+      "gen_text": "The number of unripe oranges is 25 x 20/100 = <<25*20/100=5>>5 oranges.\nThe number of sour oranges is 2.\nThe number of bad oranges is 1.\nSo, the number of good oranges is 25 - 5 - 2 - 1 = <<25-5-2-1=17>>17 oranges.\n#### 17"
+    },
+    {
+      "score": 1,
+      "pred": "20",
+      "gold": "20",
+      "gen_text": "There are 9 + 6 - 3 = <<9+6-3=12>>12 kids who are allergic to either dairy or peanuts.\nThere are 32 - 12 = <<32-12=20>>20 kids who aren't allergic to anything.\n#### 20"
+    },
+    {
+      "score": 0,
+      "pred": "73",
+      "gold": "803",
+      "gen_text": "The interest rate is 10/100 = 0.1\nThe total amount she has to pay is 3650 * 0.1 = $<<3650*0.1=365>>365\nShe has to pay $365/5 = $<<365/5=73>>73 per month\n#### 73"
+    },
+    {
+      "score": 0,
+      "pred": "64",
+      "gold": "40",
+      "gen_text": "Mack saw 50 + 50 + 120 + 120 + 20 + 90 = <<50+50+120+120+20+90=450>>450 birds in a week.\nMack saw 450 / 7 = <<450/7=64>>64 birds in a day.\n#### 64"
+    },
+    {
+      "score": 1,
+      "pred": "85",
+      "gold": "85",
+      "gen_text": "The baseball coach spent 9 * $3 = $<<9*3=27>>27.\nThe basketball coach spent 8 * $14 = $<<8*14=112>>112.\nThe basketball coach spent $112 - $27 = $<<112-27=85>>85 more than the baseball coach.\n#### 85"
+    },
+    {
+      "score": 1,
+      "pred": "300",
+      "gold": "300",
+      "gen_text": "The chef bought 4 x 50 = <<4*50=200>>200 pounds of onions.\nSo, the chef spent 200 x $1.50 = $<<200*1.5=300>>300.\n#### 300"
+    },
+    {
+      "score": 1,
+      "pred": "32",
+      "gold": "32",
+      "gen_text": "Ali has 4*10 = $<<4*10=40>>40 from the $10 bills.\nHe has 6*20 = $<<6*20=120>>120 from the $20 bills.\nSo, he has a total of $40+$120 = $<<40+120=160>>160.\nHe gives his sister $160/2 = $<<160/2=80>>80.\nSo, he has $160-$80 = $<<160-80=80>>80 left.\nHe uses $80*3/5 = $<<80*3/5=48>>48 to buy dinner.\nSo, he has $80-$48 = $<<80-48=32>>32 left.\n#### 32"
+    },
+    {
+      "score": 1,
+      "pred": "10",
+      "gold": "10",
+      "gen_text": "First find the number of riders who can stay upright: 100 riders * 25% = <<100*25*.01=25>>25 riders\nThen find the number of women who can stay upright: 25 riders * 60% = <<25*60*.01=15>>15 riders\nThen subtract the number of women from the total number of riders who can stay upright to find the number of men: 25 riders - 15 riders = <<25-15=10>>10 riders\n#### 10"
+    },
+    {
+      "score": 1,
+      "pred": "1218",
+      "gold": "1218",
+      "gen_text": "Mamou gave out 64 + 30 + 48 = <<64+30+48=142>>142 meals on Friday, Saturday, and Sunday.\nShe has 1,360 - 142 = <<1360-142=1218>>1,218 meals left to distribute.\n#### 1218"
+    },
+    {
+      "score": 1,
+      "pred": "410",
+      "gold": "410",
+      "gen_text": "Zoey spits 40*10=<<40*10=400>>400 feet\nSydney spits 35*12=<<35*12=420>>420 feet\nThe total distance is 400+420=<<400+420=820>>820 feet\nThe average is 820/2=<<820/2=410>>410 feet\n#### 410"
+    },
+    {
+      "score": 1,
+      "pred": "34",
+      "gold": "34",
+      "gen_text": "The number of blue sticks is 9 + 5 = <<9+5=14>>14.\nThe number of yellow sticks is 14 - 3 = <<14-3=11>>11.\nThe total number of sticks is 9 + 14 + 11 = <<9+14+11=34>>34.\n#### 34"
+    },
+    {
+      "score": 1,
+      "pred": "14",
+      "gold": "14",
+      "gen_text": "Leila buys 3 cucumbers at $2 each for a total of 3*2 = $<<3*2=6>>6.\nJack buys 5 tomatoes at $1 each for a total of 5*1 = $<<5*1=5>>5.\nChase buys 1 head of lettuce at $3 each for a total of 3*1 = $<<3*1=3>>3.\nTogether, they spend $6+$5+$3 = $<<6+5+3=14>>14.\n#### 14"
+    },
+    {
+      "score": 1,
+      "pred": "100",
+      "gold": "100",
+      "gen_text": "She lost 2 inches of hair because 10 - 8 = <<10-8=2>>2\nThat means she paid 2 * 30 = $<<2*30=60>>60 for the haircut\nSo the total cost was 60 + 40 = $<<60+40=100>>100\n#### 100"
+    },
+    {
+      "score": 1,
+      "pred": "64",
+      "gold": "64",
+      "gen_text": "The total weight of the three tunas is 56 + 46 + 26 = <<56+46+26=128>>128 kilograms.\nThe total cost of the three tunas is 128 x $0.50 = $<<128*0.5=64>>64.\nTherefore, Deandre will earn $64 after selling all the tunas to the market.\n#### 64"
+    },
+    {
+      "score": 0,
+      "pred": "44",
+      "gold": "104",
+      "gen_text": "On Tuesday, Meredith wrote 2/5*5 = <<2/5*5=2>>2 articles.\nOn Wednesday, she wrote 2*2 = <<2*2=4>>4 articles.\nIn total, she wrote 5+2+4 = <<5+2+4=11>>11 articles.\nThe total number of hours she spent writing articles is 11*4 = <<11*4=44>>44 hours.\n#### 44"
+    },
+    {
+      "score": 0,
+      "pred": "41",
+      "gold": "300",
+      "gen_text": "The printer cost $1,100 - $400 = $<<1100-400=700>>700.\nThe total cost of the computer and the printer is $2,400 - $700 = $<<2400-700=1700>>1,700.\nThe total cost of the computer, the printer, and one monitor is $1,700 + $2,400 = $<<1700+2400=4100>>4,100.\nThe total cost of the computer, the printer, and two monitors is $4,100 + $2,400 = $<<4100+2400=6500>>6,500.\nThe total cost of the computer, the printer, and one monitor is $6,500 - $2,400 = $<<6500-2400=4100>>4,100.\nThe total cost of the computer, the printer, and two monitors is $4,1"
+    },
+    {
+      "score": 1,
+      "pred": "16",
+      "gold": "16",
+      "gen_text": "The first glue stick has 12 x 1/6 = <<12*1/6=2>>2 millimeters left.\nThe second glue stick has 12 x 2/3 = <<12*2/3=8>>8 millimeters left.\nThe third glue stick has 12 x 1/2 = <<12*1/2=6>>6 millimeters left.\nThe total length of the glue sticks that are not used is 2 + 8 + 6 = <<2+8+6=16>>16 millimeters.\n#### 16"
+    },
+    {
+      "score": 1,
+      "pred": "15",
+      "gold": "15",
+      "gen_text": "There are 90/2 = <<90/2=45>>45 rooms to clean.\nIt would take 45 x 20 = <<45*20=900>>900 minutes to clean the rooms.\nThere are 60 minutes in an hour, so it would take 900/60 = <<900/60=15>>15 hours to clean the rooms.\n#### 15"
+    },
+    {
+      "score": 1,
+      "pred": "157",
+      "gold": "157",
+      "gen_text": "The store will receive $9 x 3 = $<<9*3=27>>27 from the red balls.\nThe store will receive $5 x 11 = $<<5*11=55>>55 from the blue balls.\nThe store will receive $3 x 25 = $<<3*25=75>>75 from the green balls.\nThe store will receive $27 + $55 + $75 = $<<27+55+75=157>>157 from all the balls.\n#### 157"
+    },
+    {
+      "score": 0,
+      "pred": "55",
+      "gold": "45",
+      "gen_text": "First find how long it takes to peel 90 shrimp: 90 shrimp / 6 shrimp/minute = <<90/6=15>>15 minutes\nThen find how long it takes to cook 90 shrimp: 90 shrimp / 30 shrimp/10 minutes = <<90/30=3>>3 sets of 10 minutes\nThen add the time to peel and cook the shrimp: 15 minutes + 3 sets of 10 minutes = <<15+3*10=55>>55 minutes\n#### 55"
+    },
+    {
+      "score": 1,
+      "pred": "9",
+      "gold": "9",
+      "gen_text": "Carly had 80 x 2/5 = <<80*2/5=32>>32 cards with the letter A on them.\nShe had 80 - 32 = <<80-32=48>>48 cards left.\nOf these, 48 x 1/2 = <<48*1/2=24>>24 had the letter B on them.\nThis leaves 48 - 24 = <<48-24=24>>24 cards.\nOf these, 24 x 5/8 = <<24*5/8=15>>15 had the letter C on them.\nThis leaves 24 - 15 = <<24-15=9>>9 cards.\nTherefore, 9 cards had the letter D on them.\n#### 9"
+    },
+    {
+      "score": 0,
+      "pred": "10",
+      "gold": "14",
+      "gen_text": "Dean gives 30 x 1/5 = <<30*1/5=6>>6 marbles to Jamie.\nSo, he has 30 - 6 = <<30-6=24>>24 marbles left.\nHe gives 24 - 10 = <<24-10=14>>14 marbles to Donald.\nTherefore, Dean has 24 - 14 = <<24-14=10>>10 marbles left.\n#### 10"
+    },
+    {
+      "score": 0,
+      "pred": "260",
+      "gold": "360",
+      "gen_text": "In the second week, Alani wrote 20 x 2 = <<20*2=40>>40 stories.\nBraylen wrote 40 x 2 = <<40*2=80>>80 stories.\nMargot wrote 60 x 2 = <<60*2=120>>120 stories.\nIn total, they wrote 20 + 40 + 80 + 120 = <<20+40+80+120=260>>260 stories.\n#### 260"
+    },
+    {
+      "score": 1,
+      "pred": "880",
+      "gold": "880",
+      "gen_text": "A watermelon costs 15*3 = <<15*3=45>>45$\nAn orange costs 45-5 = <<45-5=40>>40$\nThe total amount of money he will spend on watermelons is 45*4 = <<45*4=180>>180$\nThe total amount of money he will spend on peppers is 15*20 = <<15*20=300>>300$\nThe total amount of money he will spend on oranges is 40*10 = <<40*10=400>>400$\nThe total amount of money he will spend is 180+300+400 = <<180+300+400=880>>880$\n#### 880"
+    },
+    {
+      "score": 1,
+      "pred": "34",
+      "gold": "34",
+      "gen_text": "Jonathan has 2/3 as many measuring spoons as measuring cups, meaning he has 2/3 * 24 = <<2/3*24=16>>16 measuring spoons.\nAfter gifting Pedro 6 measuring spoons, Jonathan has 16 - 6 = <<16-6=10>>10 measuring spoons remaining.\nThe total number of utensils Jonathan has remaining is 24 + 10 = <<24+10=34>>34 utensils.\n#### 34"
+    },
+    {
+      "score": 0,
+      "pred": "5",
+      "gold": "98",
+      "gen_text": "Brinley's average after the first five tests is 89+71+92+100+86/5 = <<89+71+92+100+86/5=88>>88\nShe needs a score of 93-88 = <<93-88=5>>5 on the sixth test.\n#### 5"
+    },
+    {
+      "score": 0,
+      "pred": "13",
+      "gold": "17",
+      "gen_text": "He swam 20*.6=<<20*.6=12>>12 miles\nHe swam for 12/2=<<12/2=6>>6 hours\nHe rested for 6/2=<<6/2=3>>3 hours\nHe swam the remaining 20-12=<<20-12=8>>8 miles\nHe swam the remaining 8/2=<<8/2=4>>4 miles\nHe swam the remaining 4 hours\nSo it took him 6+3+4=<<6+3+4=13>>13 hours\n#### 13"
+    },
+    {
+      "score": 0,
+      "pred": "108",
+      "gold": "8",
+      "gen_text": "Rose bought 5 x 12 = <<5*12=60>>60 eggs.\nShe will sell it for $1 x 3 = $<<1*3=3>>3.\nSo, her profit will be $2.40 x 60 - $3 x 20 = $<<2.4*60-3*20=108>>108.\n#### 108"
+    },
+    {
+      "score": 1,
+      "pred": "15",
+      "gold": "15",
+      "gen_text": "Paul has 8 + 40 = <<8+40=48>>48 cupcakes.\nHe needs to buy 63 - 48 = <<63-48=15>>15 more cupcakes.\n#### 15"
+    },
+    {
+      "score": 0,
+      "pred": "24",
+      "gold": "8",
+      "gen_text": "Charmaine will be 16 + 12 = <<16+12=28>>28 years old in 12 years.\nSo, she will be 28 - 4 = <<28-4=24>>24 years old 4 years from now.\n#### 24"
+    },
+    {
+      "score": 1,
+      "pred": "21",
+      "gold": "21",
+      "gen_text": "Rachel has 23 + 42 = <<23+42=65>>65 cookies.\nHer brother ate 44 cookies, so she has 65 - 44 = <<65-44=21>>21 cookies left.\n#### 21"
+    },
+    {
+      "score": 1,
+      "pred": "175",
+      "gold": "175",
+      "gen_text": "Mark scored 80 - 20 = <<80-20=60>>60 goals.\nAnna scored 80 - 45 = <<80-45=35>>35 goals.\nAll three teenagers scored 80 + 60 + 35 = <<80+60+35=175>>175 goals.\n#### 175"
+    },
+    {
+      "score": 0,
+      "pred": "40",
+      "gold": "160",
+      "gen_text": "The comforter needs to be 6 + 2 = <<6+2=8>>8 feet long.\nThe comforter needs to be 8 + 2 = <<8+2=10>>10 feet wide.\nThe comforter needs to be 8 * 10 = <<8*10=80>>80 square feet.\nJim needs to buy 80 / 2 = <<80/2=40>>40 square feet of fabric.\n#### 40"
+    },
+    {
+      "score": 1,
+      "pred": "540",
+      "gold": "540",
+      "gen_text": "He runs 3*3=<<3*3=9>>9 sprints a week\nSo he runs 9*60=<<9*60=540>>540 meters a week\n#### 540"
+    },
+    {
+      "score": 0,
+      "pred": "140",
+      "gold": "80",
+      "gen_text": "Blake runs 15 times back and forth, so he runs 15 * 100 = <<15*100=1500>>1500 yards.\nKelly runs 34 times to the 40-yard line and back, so she runs 34 * 40 = <<34*40=1360>>1360 yards.\nThe winner runs 1500 - 1360 = <<1500-1360=140>>140 yards farther than the loser.\n#### 140"
+    },
+    {
+      "score": 0,
+      "pred": "50",
+      "gold": "450",
+      "gen_text": "Grandpa can eat 2*75=<<2*75=150>>150 medium-sized beans\nThat means he can eat 150/3=<<150/3=50>>50 small beans\n#### 50"
+    },
+    {
+      "score": 0,
+      "pred": "36",
+      "gold": "12",
+      "gen_text": "Heather can make 27/0.75 = <<27/0.75=36>>36 batches of oatmeal cookies.\n#### 36"
+    },
+    {
+      "score": 1,
+      "pred": "2600",
+      "gold": "2600",
+      "gen_text": "Each candied apple weighs 40g/2 = <<40/2=20>>20g.\nThe chocolate bars weigh 25*40g = <<25*40=1000>>1000g.\nThe candied apples weigh 80*20g = <<80*20=1600>>1600g.\nJoe's bag of candy weighs 1000g+1600g = <<1000+1600=2600>>2600g.\n#### 2600"
+    },
+    {
+      "score": 0,
+      "pred": "34",
+      "gold": "70",
+      "gen_text": "If there are 12 blue gumballs, there are 22 more than four times the number of pink gumballs, meaning there are 12+22 = <<12+22=34>>34 pink gumballs\n#### 34"
+    },
+    {
+      "score": 1,
+      "pred": "16",
+      "gold": "16",
+      "gen_text": "The car in the slow lane is traveling at 60/2 = <<60/2=30>>30 miles/hour.\nThe car in the slow lane took 480/30 = <<480/30=16>>16 hours to cover the same distance.\n#### 16"
+    },
+    {
+      "score": 0,
+      "pred": "60",
+      "gold": "15",
+      "gen_text": "Bill's dad saw the comet when he was 30 years old.\nBill saw the comet a second time when he was three times the age his father was when he saw the Comet, so Bill was 3*30 = <<3*30=90>>90 years old.\nBill's dad saw the comet when he was 30 years old, so Bill was 90-30 = <<90-30=60>>60 years old when he saw the comet for the first time.\n#### 60"
+    },
+    {
+      "score": 1,
+      "pred": "5600",
+      "gold": "5600",
+      "gen_text": "The total cost of the milk was 4000*3.5 = $<<4000*3.5=14000>>14000\nThe amount of milk that passed the expiry date was 2/5*4000 = <<2/5*4000=1600>>1600 gallons\nThe refund he got was 1600*3.5 = $<<1600*3.5=5600>>5600\n#### 5600"
+    },
+    {
+      "score": 1,
+      "pred": "7",
+      "gold": "7",
+      "gen_text": "The sweet potatoes weighed 2 * 5 = <<2*5=10>>10 pounds.\nThe carrots weighed 10 - 3 = <<10-3=7>>7 pounds.\n#### 7"
+    },
+    {
+      "score": 1,
+      "pred": "3000",
+      "gold": "3000",
+      "gen_text": "Stanley's comb is at an elevation of 10,000 feet - 4,000 feet = <<10000-4000=6000>>6,000 feet.\nOliver must climb 6,000 feet - 3,000 feet = <<6000-3000=3000>>3,000 feet to reach the elevation of Stanley's comb.\n#### 3000"
+    },
+    {
+      "score": 0,
+      "pred": "31000",
+      "gold": "93000",
+      "gen_text": "There are 31 days in March, so the total number of posts in March is 31 x 1000 = <<31*1000=31000>>31000\n#### 31000"
+    },
+    {
+      "score": 0,
+      "pred": "650",
+      "gold": "800",
+      "gen_text": "First find the total number of calories Hannah burns: 2 hours * 500 calories/hour + 1 hour * 600 calories/hour = <<2*500+600=1300>>1300 calories\nThen divide the number of calories by 2 to find the number of ml of water Hannah needs to drink: 1300 calories / 2 calories/ml = <<1300/2=650>>650 ml\n#### 650"
+    },
+    {
+      "score": 0,
+      "pred": "214",
+      "gold": "56",
+      "gen_text": "There are 180/2 = <<180/2=90>>90 camels.\nThere are 304-90 = <<304-90=214>>214 dromedaries.\n#### 214"
+    },
+    {
+      "score": 0,
+      "pred": "510",
+      "gold": "460",
+      "gen_text": "Eliza's regular pay for 45 hours is 45 x $10 = $<<45*10=450>>450.\nHer overtime pay is 45 - 40 = <<45-40=5>>5 hours.\nHer overtime pay is 5 x $10 x 1.2 = $<<5*10*1.2=60>>60.\nHer total earnings for this week is $450 + $60 = $<<450+60=510>>510.\n#### 510"
+    },
+    {
+      "score": 0,
+      "pred": "6",
+      "gold": "7",
+      "gen_text": "Mr. Jackson needs to buy 27 students * 2 glue sticks/student = <<27*2=54>>54 glue sticks.\nHe needs to buy 54 glue sticks / 8 glue sticks/pack = <<54/8=6.75>>6.75 packs.\nSince he can only buy whole packs, he needs to buy 6 packs.\n#### 6"
+    },
+    {
+      "score": 1,
+      "pred": "10",
+      "gold": "10",
+      "gen_text": "Tim has 7 - 3 = <<7-3=4>>4 blue shoe boxes left.\nTim has 9 - 1/3 * 9 = <<9-(1/3*9)=6>>6 red shoe boxes left.\nTim has 4 + 6 = <<4+6=10>>10 shoe boxes left.\n#### 10"
+    },
+    {
+      "score": 1,
+      "pred": "14",
+      "gold": "14",
+      "gen_text": "Martha invited 2 families with 6 people each, so 2 * 6 = <<2*6=12>>12 people.\nShe also invited 3 families with 4 people each, so 3 * 4 = <<3*4=12>>12 people.\nIn total, Martha invited 12 + 12 = <<12+12=24>>24 people.\n8 people couldn't come due to illness, so 24 - 8 = <<24-8=16>>16 people show up.\n1/4 of the number of people who couldn't come had previous commitments, so 1/4 * 8 = <<1/4*8=2>>2 people had previous commitments.\nIn total, 16 - 2 = <<16-2=14>>14 people show up for Martha's party.\n#### 14"
+    },
+    {
+      "score": 0,
+      "pred": "12",
+      "gold": "54",
+      "gen_text": "Howie is buying 2 cupcakes for himself, his teacher, and his 25 classmates, so he is buying 2*3 = <<2*3=6>>6 sets of cupcakes.\nHe is buying 2 cupcakes per set, so he is buying 6*2 = <<6*2=12>>12 cupcakes.\n#### 12"
+    },
+    {
+      "score": 0,
+      "pred": "538",
+      "gold": "500",
+      "gen_text": "If the oven is off by the same percentage for any recipe, then the temperature difference is the same for any recipe. So if the oven is 468 when set to 450, then it is 468-450 = <<468-450=18>>18 degrees off.\nIf the recipe calls for 520 degrees, then the oven should be set to 520+18 = <<520+18=538>>538 degrees.\n#### 538"
+    },
+    {
+      "score": 0,
+      "pred": "23",
+      "gold": "9",
+      "gen_text": "Jam has 26 - 2 = <<26-2=24>>24 pencils in the boxes.\nJam and Meg have a total of 24 + 46 = <<24+46=70>>70 pencils.\nThey need 70 / 3 = <<70/3=23.333333333333336>>23 boxes to store all their pencils.\n#### 23"
+    },
+    {
+      "score": 1,
+      "pred": "142",
+      "gold": "142",
+      "gen_text": "On Tuesday, Clara paid 20 x $20 = $<<20*20=400>>400 for the pomegranates.\nShe got $2 off, so she paid $400 - $2 = $<<400-2=398>>398.\nOn Wednesday, Sheila paid $30 x 20 = $<<30*20=600>>600 for the pomegranates.\nThe store offered a 10% discount, so she paid $600 x 10/100 = $<<600*10/100=60>>60 less.\nShe paid $600 - $60 = $<<600-60=540>>540 for the pomegranates.\nThe difference between the final prices paid for the pomegranates on the two days is $540 - $398 = $<<540-398=142>>142.\n#### 142"
+    },
+    {
+      "score": 1,
+      "pred": "38",
+      "gold": "38",
+      "gen_text": "The cost of the tickets is 12 + 12 + 8 = $<<12+12+8=32>>32.\nThe cost of the popcorns is 2 * 3 = $<<2*3=6>>6.\nSo, the total cost is 32 + 6 = $<<32+6=38>>38.\n#### 38"
+    },
+    {
+      "score": 0,
+      "pred": "38.092",
+      "gold": "240",
+      "gen_text": "He works 3 hours a day for 31 days in March so he works 3*31 = <<3*31=93>>93 hours in March\nHe works 93 hours in March and takes 20% of the days off so he works 93*.8 = <<93*.8=74.4>>74.4 hours in April\nHe works 74.4 hours in April and takes 20% of the days off so he works 74.4*.8 = <<74.4*.8=59.52>>59.52 hours in May\nHe works 59.52 hours in May and takes 20% of the days off so he works 59.52*.8 = <<59.52*.8=47.616>>47.616 hours in June\nHe works 47.616 hours in June and takes 20% of the days off so he works 47.616*.8 = <<47.616*.8=38.0928>>38.092"
+    },
+    {
+      "score": 1,
+      "pred": "720",
+      "gold": "720",
+      "gen_text": "He gets 4 car washes a month so that's 4*12 = <<4*12=48>>48 car washes a year\nEach car wash costs $15 so that's 48*15 = $<<48*15=720>>720\n#### 720"
+    },
+    {
+      "score": 1,
+      "pred": "36",
+      "gold": "36",
+      "gen_text": "There are 60 x 40/100 = <<60*40/100=24>>24 easy questions.\nAries is sure to get 24 x 75/100 = <<24*75/100=18>>18 points from the easy questions.\nThere are 60 x 100/100 - 24 = <<60*100/100-24=36>>36 average and difficult questions.\nAries is sure to get 36 x 50/100 = <<36*50/100=18>>18 points from the average and difficult questions.\nAries is sure to get 18 + 18 = <<18+18=36>>36 points.\n#### 36"
+    },
+    {
+      "score": 0,
+      "pred": "45",
+      "gold": "29",
+      "gen_text": "The subs cost 2*7.50=$<<2*7.50=15.00>>15.00\nThe chips cost 2*1.50=$<<2*1.50=3.00>>3.00\nThe cookies cost 2*1.00=$<<2*1.00=2.00>>2.00\nThe delivery fee is 15+3+2+5=<<15+3+2+5=25.00>>25.00\nThe total cost is 25+20=<<25+20=45.00>>45.00\n#### 45"
+    },
+    {
+      "score": 0,
+      "pred": "3.6",
+      "gold": "20",
+      "gen_text": "He spent 6/2=<<6/2=3>>3 hours swimming\nHe spent 6*3=<<6*3=18>>18 hours watching shows\nThat means he spent 6-18=<<6-18=-12>>-12 hours doing other things\nHe spent 12*.3=<<12*.3=3.6>>3.6 hours sightseeing\n#### 3.6"
+    },
+    {
+      "score": 0,
+      "pred": "160",
+      "gold": "110",
+      "gen_text": "At the first stop, the number of people on the train increases to 120+20 = <<120+20=140>>140 people.\nAt the second stop, 50*2 = <<50*2=100>>100 people boarded the train.\nThe total number of people on the train at the second stop is 140+100 = <<140+100=240>>240 people.\nAt the third stop, 240-80 = <<240-80=160>>160 people are on the train.\n#### 160"
+    },
+    {
+      "score": 0,
+      "pred": "4",
+      "gold": "6",
+      "gen_text": "He drove 200+10=<<200+10=210>>210 miles to his friend's house\nSo it took 210/70=<<210/70=3>>3 hours to get there\nSo the trip took 3+240/80=<<3+240/80=4>>4 hours\n#### 4"
+    },
+    {
+      "score": 1,
+      "pred": "130",
+      "gold": "130",
+      "gen_text": "He earned 10*5=$<<10*5=50>>50 for the first week.\nHe earned 10*8=$<<10*8=80>>80 for the second week.\nSo he earned 50+80=$<<50+80=130>>130 for the first two weeks.\n#### 130"
+    },
+    {
+      "score": 1,
+      "pred": "8",
+      "gold": "8",
+      "gen_text": "He needs 4*30=<<4*30=120>>120 pieces of gum\nSo he needs 120/15=<<120/15=8>>8 packs of gum\n#### 8"
+    },
+    {
+      "score": 1,
+      "pred": "3528",
+      "gold": "3528",
+      "gen_text": "The first year it depreciated 30/100*9000=$<<30/100*9000=2700>>2700\nSo it was worth 9000-2700=$<<9000-2700=6300>>6300\nThe second year it depreciated 30/100*6300=$<<30/100*6300=1890>>1890\nSo it was worth 6300-1890=$<<6300-1890=4410>>4410\nThe third year it depreciated 20/100*4410=$<<20/100*4410=882>>882\nSo it was worth 4410-882=$<<4410-882=3528>>3528\n#### 3528"
+    },
+    {
+      "score": 1,
+      "pred": "40",
+      "gold": "40",
+      "gen_text": "Patchy has had 3 * 7 = <<3*7=21>>21 kittens.\nThe Doubtfire family now has 7 + 21 + 12 = <<7+21+12=40>>40 kittens.\n#### 40"
+    },
+    {
+      "score": 1,
+      "pred": "34",
+      "gold": "34",
+      "gen_text": "The pens cost 4 x $1.5 = $<<4*1.5=6>>6.\nThe notebooks cost 2 x $4 = $<<2*4=8>>8.\nSo, Raphael spent $6 + $8 + $20 = $<<6+8+20=34>>34 on everything.\n#### 34"
+    },
+    {
+      "score": 1,
+      "pred": "75",
+      "gold": "75",
+      "gen_text": "He finds 10 bottle caps a day and each one is worth $.25 so he makes 10*.25 = $<<10*.25=2.50>>2.50 a day\nHe makes $2.50 a day and there are 30 days in a month so he makes 2.50*30 = $<<2.50*30=75>>75 a month\n#### 75"
+    },
+    {
+      "score": 0,
+      "pred": "300",
+      "gold": "75",
+      "gen_text": "He buys 4/2=<<4/2=2>>2 sets of yogurt\nSo he spends 5*2=$<<5*2=10.00>>10.00\nSo over 30 days he spends 10*30=$<<10*30=300.00>>300.00\n#### 300"
+    },
+    {
+      "score": 0,
+      "pred": "9",
+      "gold": "1",
+      "gen_text": "Joseph had 3 * 7 = <<3*7=21>>21 notebooks.\nMartha now has 7 + 5 = <<7+5=12>>12 notebooks.\nMartha has 12 - 21 = <<12-21=-9>>-9 more notebooks than Joseph.\n#### 9"
+    },
+    {
+      "score": 1,
+      "pred": "32",
+      "gold": "32",
+      "gen_text": "One banana costs $0.5 x 2 = $<<0.5*2=1>>1.\nOne orange costs $1 x 3 = $<<1*3=3>>3.\nThe total cost of the bananas is $1 x 5 = $<<1*5=5>>5.\nThe total cost of the apples is $0.5 x 12 = $<<0.5*12=6>>6.\nThe total cost of the oranges is $3 x 7 = $<<3*7=21>>21.\nThe total cost of the crate is $5 + $6 + $21 = $<<5+6+21=32>>32.\n#### 32"
+    },
+    {
+      "score": 1,
+      "pred": "3",
+      "gold": "3",
+      "gen_text": "Haley is 26/2=<<26/2=13>>13 years old.\nGeb is 13-10=<<13-10=3>>3 years old.\n#### 3"
+    },
+    {
+      "score": 1,
+      "pred": "100",
+      "gold": "100",
+      "gen_text": "There were 240 - 80 = <<240-80=160>>160 Chinese.\nThere were 160 - 60 = <<160-60=100>>100 girls on the Chinese team.\n#### 100"
+    },
+    {
+      "score": 0,
+      "pred": "300",
+      "gold": "100",
+      "gen_text": "The fence is 15*10=<<15*10=150>>150 square feet\nSo he needs 150*2=<<150*2=300>>300 wooden slats\n#### 300"
+    },
+    {
+      "score": 1,
+      "pred": "159",
+      "gold": "159",
+      "gen_text": "Each sheep needs 2 * 5 - 3 = <<2*5-3=7>>7 pounds of hay.\nNate needs 15 * 5 = <<15*5=75>>75 pounds of hay for the goats.\nNate needs 12 * 7 = <<12*7=84>>84 pounds of hay for the sheep.\nNate needs 75 + 84 = <<75+84=159>>159 pounds of hay.\n#### 159"
+    },
+    {
+      "score": 0,
+      "pred": "3000",
+      "gold": "15",
+      "gen_text": "They made 25/0.50 = <<25/0.50=50>>50 gallons of lemonade.\nThey made 50*20 = <<50*20=1000>>1000 glasses of lemonade.\nThey spent 1000*0.50 = $<<1000*0.50=500>>500 on sugar.\nThey spent 1000*3 = $<<1000*3=3000>>3000 on lemons.\n#### 3000"
+    },
+    {
+      "score": 1,
+      "pred": "270",
+      "gold": "270",
+      "gen_text": "Maddison has 5 boxes with 50 marbles in each box so she has 5*50 = <<5*50=250>>250 marbles\nShe gets 20 marbles from her friend so she has 250+20 = <<250+20=270>>270 marbles\n#### 270"
+    },
+    {
+      "score": 1,
+      "pred": "120",
+      "gold": "120",
+      "gen_text": "If it took 30 minutes to cook rice, it took 30+20 = <<30+20=50>>50 minutes to cook pork.\nThe total cooking time for pork and rice is 50+30 = <<50+30=80>>80 minutes.\nSince beans took half the combined cooking time of pork and rice, it took 80/2 = <<80/2=40>>40 minutes to cook beans.\nThe total cooking time for all the food is 30+50+40 = <<30+50+40=120>>120 minutes.\n#### 120"
+    },
+    {
+      "score": 1,
+      "pred": "160",
+      "gold": "160",
+      "gen_text": "Arianna has 10 rows of flowers with 20 flowers in each row, so she has 10*20 = <<10*20=200>>200 flowers in her garden.\nCurrently, only 4/5 of the planted flowers have bloomed, so 4/5*200 = <<4/5*200=160>>160 flowers have bloomed.\n#### 160"
+    },
+    {
+      "score": 1,
+      "pred": "5",
+      "gold": "5",
+      "gen_text": "She eats 2 cookies a night so she needs 2*30 = <<2*30=60>>60 cookies\nShe makes 1 dozen cookies so she needs 60/12 = <<60/12=5>>5 dozen cookies\n#### 5"
+    },
+    {
+      "score": 1,
+      "pred": "9500",
+      "gold": "9500",
+      "gen_text": "The brokerage fee is $350 000 x 5/100 = $<<350000*5/100=17500>>17 500.\nThe transfer fee is $350 000 x 12/100 = $<<350000*12/100=42000>>42 000.\nThe total price of the house is $350 000 + $17 500 + $42 000 = $<<350000+17500+42000=409500>>409 500.\nThe total price of the house is $409 500 - $400 000 = $<<409500-400000=9500>>9 500 more than Mrs. Cruz's budget.\n#### 9500"
+    },
+    {
+      "score": 0,
+      "pred": "203",
+      "gold": "251",
+      "gen_text": "Kayla invited 25 + 7 + 13 = <<25+7+13=45>>45 people to her party.\n45 - 4 = <<45-4=41>>41 people will come to the party.\nThe party will cost 125 + 6 * (41 - 20) = $<<125+6*(41-20)=203>>203.\n#### 203"
+    },
+    {
+      "score": 1,
+      "pred": "385000",
+      "gold": "385000",
+      "gen_text": "The company had $700 for each computer, so they had 700*500 = $<<700*500=350000>>350000\nThe price of each computer was 10% higher than they had planned for, so the price of each computer was 700*1.1 = $<<700*1.1=770>>770\nThe total amount of money they paid to buy the computers at the new prices is 770*500 = $<<770*500=385000>>385000\n#### 385000"
+    },
+    {
+      "score": 0,
+      "pred": "178",
+      "gold": "205",
+      "gen_text": "The labor cost was 2.25 hours * $35/hour = $<<2.25*35=78.75>>78.75.\nSo the total cost was $40 + $78.75 + $60 = $<<40+78.75+60=178.75>>178.75.\n#### 178"
+    },
+    {
+      "score": 0,
+      "pred": "7",
+      "gold": "1",
+      "gen_text": "Doctor Jones will spend 9 x 20 = <<9*20=180>>180 minutes on rounds.\nHe will spend 10 x 30 = <<10*30=300>>300 minutes on appointments.\nHe will spend 180 + 300 = <<180+300=480>>480 minutes on rounds and appointments.\nHe will have 9 - 480 = <<9-480=-471>>-471 minutes left to update his records.\nHe will have -471 / 60 = <<-471/60=-7.85>>-7.85 hours left to update his records.\n#### 7"
+    },
+    {
+      "score": 0,
+      "pred": "15",
+      "gold": "16",
+      "gen_text": "She bought 15 roses so 15 x $2 = $<<15*2=30>>30\nShe bought 15 roses and they cost $30 so she spent $30 - $30 = $0\nShe spent $0 and she had $25 in 5 dollar bills so she has $25 - $0 = $<<25-0=25>>25\nShe bought 15 roses and they cost $30 so she spent $30 - $15 = $<<30-15=15>>15\nShe spent $15 and she had $25 in 5 dollar bills so she has $25 - $15 = $<<25-15=10>>10\nShe bought 15 roses and they cost $30 so she spent $30 - $15 = $<<30-15=15>>15\nShe spent $15 and she had $25 in 5 dollar bills so she has $25 - $15 = $<<25-15=10>>10\nShe bought 15"
+    },
+    {
+      "score": 0,
+      "pred": "78",
+      "gold": "90",
+      "gen_text": "Let x be the measure of the smallest angle.\nThe measure of the second angle is 2x.\nThe measure of the third angle is 3x.\nThe sum of the three angles is 180 degrees, so we have the equation 2x + 2x + 3x = 180.\nCombining like terms, we get 7x = 180.\nDividing both sides by 7, we get x = <<26=26>>26 degrees.\nThe measure of the second angle is 26 degrees * 2 = <<26*2=52>>52 degrees.\nThe measure of the third angle is 26 degrees * 3 = <<26*3=78>>78 degrees.\nThe largest angle is 78 degrees.\n#### 78"
+    },
+    {
+      "score": 1,
+      "pred": "390",
+      "gold": "390",
+      "gen_text": "Izzy has 22 - 5 = <<22-5=17>>17 medals.\nTogether they have 22 + 17 = <<22+17=39>>39 medals.\n10 times less than the total number of medals is 39 * 10 = <<39*10=390>>390 medals.\n#### 390"
+    },
+    {
+      "score": 1,
+      "pred": "2800",
+      "gold": "2800",
+      "gen_text": "Gordy's truck can haul 4,000 + 800 = <<4000+800=4800>>4,800 pounds of gravel.\nGary's truck can haul 11,600 - 4,000 - 4,800 = <<11600-4000-4800=2800>>2,800 pounds of gravel.\n#### 2800"
+    },
+    {
+      "score": 0,
+      "pred": "75",
+      "gold": "70",
+      "gen_text": "She wants to add 3 petunias and 2 sweet potato vines to each basket so that's 3+2 = <<3+2=5>>5 plants per basket\nEach basket will cost 3*3+2*2.50 = $<<3*3+2*2.50=15.00>>15.00\nShe has 5 baskets to fill so that's 5*15 = $<<5*15=75.00>>75.00\n#### 75"
+    },
+    {
+      "score": 0,
+      "pred": "1652",
+      "gold": "826",
+      "gen_text": "First find the volume of the pool by multiplying the length by the width and then multiplying that product by the depth: 14 feet * 25 feet * 4 feet = <<14*25*4=2800>>2800 cubic feet\nThen multiply that volume by 5.9 to find the number of gallons of water needed: 2800 cubic feet * 5.9 = <<2800*5.9=16520>>16520 gallons\nThen multiply the number of gallons by the cost per gallon to find the total cost: 16520 gallons * $0.10/gallon = $<<16520*0.1=1652>>1652\n#### 1652"
+    },
+    {
+      "score": 0,
+      "pred": "32",
+      "gold": "36",
+      "gen_text": "The discount on the T-shirts is 50/100*$8 = $<<50/100*8=4>>4.\nSo, the price of each T-shirt is $8-$4 = $<<8-4=4>>4.\nThus, the total amount of money Jake spends on the T-shirts is $4*2 = $<<4*2=8>>8.\nThe discount on the shoes is 40/100*$40 = $<<40/100*40=16>>16.\nSo, the price of the shoes is $40-$16 = $<<40-16=24>>24.\nThus, the total amount of money Jake spends at the store is $8+$24 = $<<8+24=32>>32.\n#### 32"
+    },
+    {
+      "score": 1,
+      "pred": "3200",
+      "gold": "3200",
+      "gen_text": "Watson works 10 hours a day for 5 days a week, so he works 10*5 = <<10*5=50>>50 hours a week.\nHe earns $10 per hour, so he earns 10*50 = $<<10*50=500>>500 a week.\nHe gets a $300 bonus each week, so he earns 500+300 = $<<500+300=800>>800 a week.\nHe works 4 weeks in April, so he earns 800*4 = $<<800*4=3200>>3200 in April.\n#### 3200"
+    },
+    {
+      "score": 1,
+      "pred": "14",
+      "gold": "14",
+      "gen_text": "Jean has 30 - 2 = <<30-2=28>>28 lollipops left.\nJean can fill 28 / 2 = <<28/2=14>>14 bags.\n#### 14"
+    },
+    {
+      "score": 0,
+      "pred": "70",
+      "gold": "120",
+      "gen_text": "Frank has 200 - 180 = <<200-180=20>>20 pairs of shoes on Saturday.\nHe has 20 + 5 = <<20+5=25>>25 pairs of shoes on Sunday.\nHe has 25 + 15 = <<25+15=40>>40 pairs of shoes on Wednesday.\nHe has 40 + 30 = <<40+30=70>>70 pairs of shoes on Friday.\n#### 70"
+    },
+    {
+      "score": 1,
+      "pred": "20",
+      "gold": "20",
+      "gen_text": "Carlos collected 27 - 5 = <<27-5=22>>22 seashells.\nCarrey collected 22 / 2 = <<22/2=11>>11 seashells.\nThey gathered 27 + 22 + 11 = <<27+22+11=60>>60 seashells.\nEach person got 60 / 3 = <<60/3=20>>20 seashells.\n#### 20"
+    },
+    {
+      "score": 0,
+      "pred": "5.94",
+      "gold": "6",
+      "gen_text": "The price per flower for the 3-flower package is $2.50 / 3 = $<<2.50/3=0.83>>0.83.\nThe price per flower for the 2-flower package is $1 / 2 = $<<1/2=0.5>>0.5.\nThe difference in price per flower is $0.83 - $0.5 = $<<0.83-0.5=0.33>>0.33.\nVincent saves $0.33 per flower, so he saves $0.33 * 18 = $<<0.33*18=5.94>>5.94.\n#### 5.94"
+    },
+    {
+      "score": 1,
+      "pred": "27",
+      "gold": "27",
+      "gen_text": "Cindy had 5 green eggs, and twice as many blue eggs as green eggs, so she had 5 * 2 = <<5*2=10>>10 blue eggs.\nShe had one fewer pink eggs than blue eggs, so she had 10 - 1 = <<10-1=9>>9 pink eggs.\nShe had one-third as many yellow eggs as pink eggs, so she had 9/3 = <<9/3=3>>3 yellow eggs.\nAltogether, Cindy had 5 + 10 + 9 + 3 = <<5+10+9+3=27>>27 eggs.\n#### 27"
+    },
+    {
+      "score": 1,
+      "pred": "80",
+      "gold": "80",
+      "gen_text": "Celinda bakes 30 * 2 = <<30*2=60>>60 cookies.\nTogether, they bake 30 + 60 = <<30+60=90>>90 cookies.\nThey eat 10 cookies, so there are 90 - 10 = <<90-10=80>>80 cookies in the box.\n#### 80"
+    },
+    {
+      "score": 0,
+      "pred": "35",
+      "gold": "45",
+      "gen_text": "She put 72/8=<<72/8=9>>9 pictures in each album\nShe had 9*3=<<9*3=27>>27 selfies\nShe had 9*2=<<9*2=18>>18 portraits\n#### 35"
+    },
+    {
+      "score": 1,
+      "pred": "90000",
+      "gold": "90000",
+      "gen_text": "Let x be the cost of the lot.\nThe cost of the house is 3x.\nThe total cost is 120,000 = x + 3x.\nCombining like terms, we get 120,000 = 4x.\nDividing both sides by 4, we get x = 30,000.\nThe cost of the house is 3x = 3 * 30,000 = $<<3*30000=90000>>90,000.\n#### 90,000"
+    },
+    {
+      "score": 0,
+      "pred": "60",
+      "gold": "48",
+      "gen_text": "One person can paint half a house in 5 days, so it would take 5*2=<<5*2=10>>10 days to paint a whole house.\nIf 5 people are painting a house, it would take 10/5=<<10/5=2>>2 days to paint a whole house.\nIf one person can paint half a house in 5 days, then 5 people can paint a whole house in 5/2=<<5/2=2.5>>2.5 days.\nIf 5 people can paint a whole house in 2.5 days, then it would take 24*2.5=<<24*2.5=60>>60 hours to paint a whole house.\n#### 60"
+    },
+    {
+      "score": 1,
+      "pred": "310",
+      "gold": "310",
+      "gen_text": "The restaurant has 40 tables with 4 legs each, so the total number of legs is 40 tables * 4 legs/table = <<40*4=160>>160 legs.\nThe restaurant has 50 tables with 3 legs each, so the total number of legs is 50 tables * 3 legs/table = <<50*3=150>>150 legs.\nThe total number of legs is 160 legs + 150 legs = <<160+150=310>>310 legs.\n#### 310"
+    },
+    {
+      "score": 1,
+      "pred": "2",
+      "gold": "2",
+      "gen_text": "Juice Box B is 4 + 5 = <<4+5=9>>9 dollars.\nJuice Box C is 4 + 7 = <<4+7=11>>11 dollars.\nJuice Box C is 11 - 9 = <<11-9=2>>2 dollars more than Juice Box B.\n#### 2"
+    },
+    {
+      "score": 1,
+      "pred": "273",
+      "gold": "273",
+      "gen_text": "Mariah used 1/4 * 364 = <<1/4*364=91>>91 yards of yarn.\nHer grandma used 1/2 * 364 = <<1/2*364=182>>182 yards of yarn.\nTogether, they used 91 + 182 = <<91+182=273>>273 yards of yarn.\n#### 273"
+    },
+    {
+      "score": 1,
+      "pred": "6",
+      "gold": "6",
+      "gen_text": "The total number of guns is 8 + 10 + 1 + 5 = <<8+10+1+5=24>>24 guns.\nIf they were to share their guns equally, each of them would have 24/4 = <<24/4=6>>6 guns.\n#### 6"
+    },
+    {
+      "score": 1,
+      "pred": "100",
+      "gold": "100",
+      "gen_text": "The school will pay $300 / 2 = $<<300/2=150>>150.\nSo John needs to pay $300 - $150 = $<<300-150=150>>150.\nJohn is missing $150 - $50 = $<<150-50=100>>100.\n#### 100"
+    },
+    {
+      "score": 1,
+      "pred": "500",
+      "gold": "500",
+      "gen_text": "On Friday, they make 125 * 2 = <<125*2=250>>250 chimichangas.\nSo, they make 125 + 125 + 250 = <<125+125+250=500>>500 chimichangas on those three days.\n#### 500"
+    },
+    {
+      "score": 0,
+      "pred": "2.5",
+      "gold": "15",
+      "gen_text": "If Martin eats Cheerios every day for breakfast, he'll lose 1.25 pounds/week. If he eats donuts every day for breakfast, he'll gain 1.75 pounds/week.\nThe difference in his weight at the end of 5 weeks between the two breakfast options will be 1.25*5-1.75*5 = -2.5 pounds\n#### 2.5"
+    },
+    {
+      "score": 0,
+      "pred": "5",
+      "gold": "7",
+      "gen_text": "If Jason had picked up and carried 2 balls, then Jordan carried 2*2=<<2*2=4>>4 balls.\nIf Jordan carried 4 balls, then Jason carried 4/2=<<4/2=2>>2 balls.\nIf Jason carried 2 balls, then Jeffrey carried 2/2=<<2/2=1>>1 ball.\nThe total number of balls that the coach brought to practice is 2+2+1=<<2+2+1=5>>5 balls.\n#### 5"
+    },
+    {
+      "score": 0,
+      "pred": "162",
+      "gold": "27",
+      "gen_text": "It takes 3-6=<<3-6=-3>>-3 potatoes to make 1 less than 3 scoops of mashed potatoes.\nIt takes 6-(-3)=<<6-(-3)=9>>9 potatoes to make 3 scoops of mashed potatoes.\nIt takes 9*23=<<9*23=207>>207 potatoes to make 23 scoops of mashed potatoes.\nGomer ate 23-5=<<23-5=18>>18 scoops of mashed potatoes.\nGomer ate 18*9=<<18*9=162>>162 potatoes.\n#### 162"
+    },
+    {
+      "score": 1,
+      "pred": "87",
+      "gold": "87",
+      "gen_text": "Laurel received 24 baby outfits from her friend and 24*2 = <<24*2=48>>48 baby outfits from her baby shower.\nSo, Laurel has 48+24 = <<48+24=72>>72 baby outfits.\nThen, her mom gave her 15 baby outfits, so she has 72+15 = <<72+15=87>>87 baby outfits.\n#### 87"
+    },
+    {
+      "score": 1,
+      "pred": "10",
+      "gold": "10",
+      "gen_text": "Mr. Rogers bought the watch at 75% of its original price, so he paid 2000 * 0.75 = $<<2000*0.75=1500>>1500.\nHe then sold the watch to his friend at 120% of the price that he bought it, so he sold it at 120/100 * 1500 = $<<120/100*1500=1800>>1800.\nThe percentage discount obtained by Mr. Roger's friend from the original price is 100 - 1800/2000 * 100 = 100 - 90 = 10%.\n#### 10"
+    },
+    {
+      "score": 1,
+      "pred": "15",
+      "gold": "15",
+      "gen_text": "The commission on the New York Times is 10/100*5 = $<<10/100*5=0.5>>0.5 per copy.\nSo, the total commission from the sales of 6 copies of the New York Times is 0.5*6 = $<<0.5*6=3>>3.\nThe commission on the Wall Street Journal is 8/100*15 = $<<8/100*15=1.2>>1.2 per copy.\nSo, the total commission from the sales of 10 copies of the Wall Street Journal is 1.2*10 = $<<1.2*10=12>>12.\nTherefore, the total commission earned from the sales of 6 copies of the New York Times and 10 copies of Wall Street Journal is $3+$12 = $<<3+12=15>>15.\n#### 15"
+    },
+    {
+      "score": 0,
+      "pred": "17145",
+      "gold": "10000",
+      "gen_text": "They see 500 people a day and each patient is seen for 24 minutes so they see 500*24 = <<500*24=12000>>12,000 minutes of patients a day\nThey charge the hospital $150 an hour and the hospital charges the patients $200 an hour so they make 150+200 = $<<150+200=350>>350 an hour\nThey see 12,000 minutes of patients a day and they make $350 an hour so they make 12000/350 = $<<12000/350=34.29>>34.29 an hour\nThey see 500 people a day and they make $34.29 an hour so they make 500*34.29 = $<<500*34.29=17145>>17,145 a day\n#### 17145"
+    },
+    {
+      "score": 0,
+      "pred": "3880",
+      "gold": "3160",
+      "gen_text": "Each bedroom is 20*12=<<20*12=240>>240 square feet\nSo the living room is 240*5=<<240*5=1200>>1200 square feet\nSo the total area of the bedrooms and living room is 240*4+1200=<<240*4+1200=2880>>2880 square feet\nSo the total area of the house is 2880+1000=<<2880+1000=3880>>3880 square feet\n#### 3880"
+    },
+    {
+      "score": 0,
+      "pred": "100",
+      "gold": "104",
+      "gen_text": "He gets 5 games for his birthday so he has 5 games\nHe saves up enough money to buy 1 game a month for a year so he has 12 games\nHe starts buying 2 games a month for the second year so he has 24 games\nHe starts buying 4 games a month for the third year so he has 48 games\nHe gets 5 games for Christmas every year so he has 15 games\nHe has 5 games from his birthday, 12 games from the first year, 24 games from the second year, 48 games from the third year, and 15 games from Christmas so he has 100 games\n#### 100"
+    },
+    {
+      "score": 1,
+      "pred": "1",
+      "gold": "1",
+      "gen_text": "There are 9 kids who want 2 smores each for a total of 9*2 = <<9*2=18>>18 smores\nThere are 6 adults who want 1 smore each for a total of 6*1 = <<6*1=6>>6 smores\nIn total, they will need 18+6 = <<18+6=24>>24 smores\nEach sleeve makes 8 smores so they will need 24/8 = <<24/8=3>>3 sleeves\nThere are 3 sleeves in a box so they will need 3/3 = <<3/3=1>>1 box\n#### 1"
+    },
+    {
+      "score": 0,
+      "pred": "36",
+      "gold": "84",
+      "gen_text": "Anne went down the slide 30*.3=<<30*.3=9>>9 times\nRobert went down the slide 9*4=<<9*4=36>>36 times\n#### 36"
+    },
+    {
+      "score": 1,
+      "pred": "6277",
+      "gold": "6277",
+      "gen_text": "There are 23786 - 8417 - 9092 = <<23786-8417-9092=6277>>6277 children in Soda.\n#### 6277"
+    },
+    {
+      "score": 0,
+      "pred": "30",
+      "gold": "31",
+      "gen_text": "Ram can make 25/5=<<25/5=5>>5 new pens.\nSo he gets 25+5=<<25+5=30>>30 pens.\n#### 30"
+    },
+    {
+      "score": 1,
+      "pred": "8",
+      "gold": "8",
+      "gen_text": "Tuesday\u2019s cooking class lasts 3 * 1 = <<3*1=3>>3 hours.\nThursday\u2019s museum tour lasts 3 / 2 = <<3/2=1.5>>1.5 hours.\nAll of Peyton\u2019s after-work activities will take 1 + 3 + 0.5 + 1.5 + 2 = <<1+3+0.5+1.5+2=8>>8 hours.\n#### 8"
+    },
+    {
+      "score": 0,
+      "pred": "35",
+      "gold": "30",
+      "gen_text": "Let x be the number of players on the defense.\nThe number of players on the offense is 2x.\nThe number of players on the special teams is x/2.\nThe total number of players is 105, so we can write the equation 2x + x + x/2 = 105\nMultiplying both sides by 2, we get 4x + x + x = 210\nCombining like terms, we get 6x = 210\nDividing both sides by 6, we get x = <<35=35>>35\n#### 35"
+    },
+    {
+      "score": 1,
+      "pred": "44",
+      "gold": "44",
+      "gen_text": "The shoes and belt cost 320+32 = $<<320+32=352.00>>352.00\nShe will have to work 352/8 = <<352/8=44>>44 hours\n#### 44"
+    },
+    {
+      "score": 1,
+      "pred": "350",
+      "gold": "350",
+      "gen_text": "He sells 500*$.5=$<<500*.5=250>>250 worth of tomatoes a day\nHe sells 500*$.4=$<<500*.4=200>>200 worth of tomatoes a day\nHe saves 250-200=$<<250-200=50>>50 a day\nHe saves 50*7=$<<50*7=350>>350 a week\n#### 350"
+    },
+    {
+      "score": 1,
+      "pred": "21",
+      "gold": "21",
+      "gen_text": "Robert has 54/2=<<54/2=27>>27 candies.\nJames has 27+6=<<27+6=33>>33 candies.\nJohn has 54-33=<<54-33=21>>21 more candies than James.\n#### 21"
+    },
+    {
+      "score": 1,
+      "pred": "10",
+      "gold": "10",
+      "gen_text": "First find how long it takes Bill to dig through the soil: 24 feet / 4 feet/hour = <<24/4=6>>6 hours\nThen find how long it takes him to dig through the clay: 8 feet / 2 feet/hour = <<8/2=4>>4 hours\nThen add the time it takes to dig through the soil and the clay to find the total time: 6 hours + 4 hours = <<6+4=10>>10 hours\n#### 10"
+    },
+    {
+      "score": 1,
+      "pred": "12",
+      "gold": "12",
+      "gen_text": "He can speak 150*2.5=<<150*2.5=375>>375 WPM\nSo it would take him 450/375=<<450/375=1.2>>1.2 minutes to speak one page\nSo it would take him 10*1.2=<<10*1.2=12>>12 minutes to speak 10 pages\n#### 12"
+    },
+    {
+      "score": 0,
+      "pred": "40",
+      "gold": "75",
+      "gen_text": "The first hour is free so he paid for 9-5=<<9-5=4>>4 hours\nThe first hour is $15 and each hour after that is twice the cost so the first hour is $15 and the second hour is $15*2=$<<15*2=30>>30\nThe first hour is $15 and the second hour is $30 so the first two hours cost $15+$30=$<<15+30=45>>45\nThe first two hours cost $45 and each hour after that is twice the cost so the third hour is $45*2=$<<45*2=90>>90\nThe first three hours cost $45+$90=$<<45+90=135>>135\nThe first three hours cost $135 and each hour after that is twice the cost so the fourth hour is $135*2=$<<135*2=270>>270\nThe first four hours cost $135+$270=$<<135+270=405>>40"
+    },
+    {
+      "score": 0,
+      "pred": "6",
+      "gold": "5",
+      "gen_text": "Anna has $16 - $4 = $<<16-4=12>>12 left in her budget.\nShe spent $12 / 2 = $<<12/2=6>>6 on each book.\n#### 6"
+    },
+    {
+      "score": 0,
+      "pred": "2.5",
+      "gold": "2",
+      "gen_text": "Rissa was given 5 x 3 = $<<5*3=15>>15.\nRonnie gave 5/2 = $<<5/2=2.5>>2.5 to his little sister.\nRissa gave 15/2 = $<<15/2=7.5>>7.5 to her little sister.\nRonnie is left with 5 - 2.5 = $<<5-2.5=2.5>>2.5.\nRissa is left with 15 - 7.5 = $<<15-7.5=7.5>>7.5.\nRissa is left with 4/5 x 15 = $<<4/5*15=12>>12.\nRonnie is left with 5 - 2.5 = $<<5-2.5=2.5>>2.5.\n#### 2.5"
+    },
+    {
+      "score": 1,
+      "pred": "60",
+      "gold": "60",
+      "gen_text": "James reads 18 pages / 3 pages/10 minutes = <<18/3=6>>6 sets of 3 pages.\nJames spends 6 sets * 10 minutes/set = <<6*10=60>>60 minutes reading.\n#### 60"
+    },
+    {
+      "score": 0,
+      "pred": "40",
+      "gold": "58",
+      "gen_text": "Mary has 2 x 40 = <<2*40=80>>80 potted plants on her window ledges.\nShe will give away 1 x 40 = <<1*40=40>>40 potted plants to friends and family.\nMary will remain with 80 - 40 = <<80-40=40>>40 potted plants.\n#### 40"
+    },
+    {
+      "score": 1,
+      "pred": "539",
+      "gold": "539",
+      "gen_text": "The salesman sold 48 - 17 = <<48-17=31>>31 sneakers to the department store.\nThe salesman earned 31 x $25 = $<<31*25=775>>775 from the department store.\nThe salesman earned 17 x $20 = $<<17*20=340>>340 from the flash sale.\nThe salesman's total earnings were $775 + $340 = $<<775+340=1115>>1115.\nThe salesman's profit was $1115 - $576 = $<<1115-576=539>>539.\n#### 539"
+    },
+    {
+      "score": 1,
+      "pred": "132",
+      "gold": "132",
+      "gen_text": "Ella earns $33 for 3 hours of dog walking, so she earns $33/3 = $<<33/3=11>>11 per hour.\nIf she continues to walk dogs at the same rate, she would earn $11/hour * 12 hours = $<<11*12=132>>132 after 12 hours.\n#### 132"
+    },
+    {
+      "score": 1,
+      "pred": "490",
+      "gold": "490",
+      "gen_text": "George has 200 * 1.45 = <<200*1.45=290>>290 pears.\nGeorge has 200 + 290 = <<200+290=490>>490 fruits.\n#### 490"
+    },
+    {
+      "score": 0,
+      "pred": "21",
+      "gold": "54",
+      "gen_text": "Chase and Rider ride their bikes 3 x 5 = <<3*5=15>>15 times on usual days.\nThey ride their bikes 2 x 3 = <<2*3=6>>6 times on the two other days.\nSo, they ride their bikes 15 + 6 = <<15+6=21>>21 times a week.\n#### 21"
+    },
+    {
+      "score": 0,
+      "pred": "1540",
+      "gold": "2640",
+      "gen_text": "Madeline spends $25 x 4 = $<<25*4=100>>100 on food per month.\nShe spends $20 x 12 = $<<20*12=240>>240 on treats per year.\nShe spends $100 x 12 = $<<100*12=1200>>1200 on medicine per year.\nTherefore, Madeline spends $100 + $240 + $1200 = $<<100+240+1200=1540>>1540 on her dog per year.\n#### 1540"
+    },
+    {
+      "score": 1,
+      "pred": "105",
+      "gold": "105",
+      "gen_text": "Mark completed 8 x 5 = <<8*5=40>>40 questions in the first test.\nHe completed 6 x 5 = <<6*5=30>>30 questions in the second test.\nSo, he left 75 - 40 = <<75-40=35>>35 questions incomplete in the first test.\nHe also left 100 - 30 = <<100-30=70>>70 questions incomplete in the second test.\nTherefore, Mark left a total of 35 + 70 = <<35+70=105>>105 questions incomplete.\n#### 105"
+    },
+    {
+      "score": 1,
+      "pred": "60",
+      "gold": "60",
+      "gen_text": "The bus traveled 60*5=<<60*5=300>>300 miles.\nThe car traveled 30*8=<<30*8=240>>240 miles.\nThe bus traveled 300-240=<<300-240=60>>60 miles farther than the car.\n#### 60"
+    },
+    {
+      "score": 1,
+      "pred": "15",
+      "gold": "15",
+      "gen_text": "Lindsay has washed 10 x 2 = <<10*2=20>>20 socks.\nSo she has washed 20 + 15 = <<20+15=35>>35 socks.\nTherefore, Lindsay has missed 50 - 35 = <<50-35=15>>15 socks.\n#### 15"
+    },
+    {
+      "score": 1,
+      "pred": "57500",
+      "gold": "57500",
+      "gen_text": "Jill earns $20 x 35 = $<<20*35=700>>700 a week as a teacher.\nShe earns $30 x 15 = $<<30*15=450>>450 a week as a coach.\nSo, her total weekly earnings are $700 + $450 = $<<700+450=1150>>1150.\nTherefore, her annual salary is $1150 x 50 = $<<1150*50=57500>>57,500.\n#### 57500"
+    },
+    {
+      "score": 1,
+      "pred": "200",
+      "gold": "200",
+      "gen_text": "He paid $1000 for the bedroom set so he has to pay $3000-$1000=$<<3000-1000=2000>>2000\nHe has to pay 10% a month so he has to pay $2000*.1=$<<2000*.1=200>>200\n#### 200"
+    },
+    {
+      "score": 1,
+      "pred": "8",
+      "gold": "8",
+      "gen_text": "Ferdinand has 6/2=<<6/2=3>>3 trees.\nHarry has 2*3+5=<<2*3+5=11>>11 trees.\nHarry has 11-3=<<11-3=8>>8 more trees than Ferdinand.\n#### 8"
+    },
+    {
+      "score": 1,
+      "pred": "4",
+      "gold": "4",
+      "gen_text": "Nate's dog digs 6 holes a day for 14 days, so he digs 6*14 = <<6*14=84>>84 holes.\nNate fills in 9 holes a day, but the dog digs 6 new holes every night, so he fills in 9-6 = <<9-6=3>>3 holes a day.\nIt takes him 84 holes / 3 holes a day = <<84/3=28>>28 days to fill in all the holes.\n28 days / 7 days a week = <<28/7=4>>4 weeks.\n#### 4"
+    },
+    {
+      "score": 0,
+      "pred": "160000",
+      "gold": "162000",
+      "gen_text": "Three weeks later, the number of likes was 70 times as many as the initial number of likes, so there were 70*2000 = <<70*2000=140000>>140000 likes.\nThe total number of likes is 140000+20000 = <<140000+20000=160000>>160000\n#### 160000"
+    },
+    {
+      "score": 1,
+      "pred": "160",
+      "gold": "160",
+      "gen_text": "The restaurant has 170 - 20 = <<170-20=150>>150 normal chairs left.\nIt has 23 - 13 = <<23-13=10>>10 baby chairs left.\nSo, the restaurant has 150 + 10 = <<150+10=160>>160 chairs left.\n#### 160"
+    },
+    {
+      "score": 1,
+      "pred": "14400",
+      "gold": "14400",
+      "gen_text": "He works for 4*6=<<4*6=24>>24 days every month.\nSo he works for 24*12=<<24*12=288>>288 days every year.\nTherefore, he earns 288*50=$<<288*50=14400>>14400 every year.\n#### 14400"
+    },
+    {
+      "score": 0,
+      "pred": "63",
+      "gold": "19",
+      "gen_text": "On the second day, they used 38 - 10 = <<38-10=28>>28 bandages.\nOn the third day, they used 50 / 2 = <<50/2=25>>25 bandages.\nThey used 38 + 28 + 25 = <<38+28+25=91>>91 bandages in total.\nThey had 78 - 50 = <<78-50=28>>28 bandages left after the third day.\nThey started with 91 - 28 = <<91-28=63>>63 bandages on the first day.\n#### 63"
+    },
+    {
+      "score": 0,
+      "pred": "0.09",
+      "gold": "5",
+      "gen_text": "Bob is driving 75 miles / 55 miles/hour = <<75/55=1.36>>1.36 hours behind Tom.\nTom is driving 70 miles/hour - 55 miles/hour = <<70-55=15>>15 miles/hour faster than Bob.\nSo, it will take Tom 1.36 hours / 15 miles/hour = <<1.36/15=0.09>>0.09 hours to catch up with Bob.\n#### 0.09"
+    },
+    {
+      "score": 1,
+      "pred": "25",
+      "gold": "25",
+      "gen_text": "There are 100 x 1/4 = <<100*1/4=25>>25 indoor plants.\nThere are 100 - 25 = <<100-25=75>>75 outdoor plants.\nThere are 75 x 2/3 = <<75*2/3=50>>50 outdoor plants.\nThere are 75 - 50 = <<75-50=25>>25 flowering plants.\nTherefore, 25/100 x 100% = <<25/100*100=25>>25% of the plants are flowering plants.\n#### 25"
+    },
+    {
+      "score": 1,
+      "pred": "2",
+      "gold": "2",
+      "gen_text": "He uses 4*3=<<4*3=12>>12 ounces of water for the giant cubes.\nHe uses 2*7=<<2*7=14>>14 ounces of water for the medium cubes.\nHe uses 1/2*8=<<1/2*8=4>>4 ounces of water for the small cubes.\nHe has 32-12-14-4=<<32-12-14-4=2>>2 ounces of water left.\n#### 2"
+    },
+    {
+      "score": 0,
+      "pred": "130",
+      "gold": "200",
+      "gen_text": "Aiden and his friends save 12 + 1 = <<12+1=13>>13 seats.\nThey buy enough drinks and snacks to fill the seats, so they buy 13 * 2 = <<13*2=26>>26 drinks.\nThey buy enough snacks to fill the seats, so they buy 13 * 3 = <<13*3=39>>39 snacks.\nThey buy 26 + 39 = <<26+39=65>>65 drinks and snacks.\nEach drink and snack costs $2, so they spend 65 * 2 = $<<65*2=130>>130 on drinks and snacks.\n#### 130"
+    },
+    {
+      "score": 0,
+      "pred": "2.33",
+      "gold": "6",
+      "gen_text": "Marissa has walked 1 hour * 4 miles/hour + 1 hour * 2 miles/hour = 5 miles.\nShe has 12 miles - 5 miles = <<12-5=7>>7 miles left to walk.\nShe needs to walk 7 miles / 3 hours = <<7/3=2.3333333333333335>>2.33 miles per hour.\n#### 2.33"
+    },
+    {
+      "score": 1,
+      "pred": "42",
+      "gold": "42",
+      "gen_text": "Let x be the number of teaspoons of sugar Katy used.\nThe number of cups of water she used is 13x/7.\nThe total number of teaspoons of sugar and cups of water is 120, so x + 13x/7 = 120\nMultiplying both sides by 7, we get 7x + 13x = 840\nCombining like terms, we get 20x = 840\nDividing both sides by 20, we get x = 42\n#### 42"
+    },
+    {
+      "score": 1,
+      "pred": "45",
+      "gold": "45",
+      "gen_text": "Katelyn saw 50 fairies, and her friend saw half as many, which is 50/2 = <<50/2=25>>25 fairies.\nThe total number of fairies is 50+25 = <<50+25=75>>75 fairies.\nTen minutes later, 30 fairies flew away, leaving 75-30 = <<75-30=45>>45 fairies.\n#### 45"
+    },
+    {
+      "score": 1,
+      "pred": "80",
+      "gold": "80",
+      "gen_text": "Mason travels 8 miles per hour for 4 hours, so he travels 8 * 4 = <<8*4=32>>32 miles.\nHe then travels another 6 hours, so he travels 8 * 6 = <<8*6=48>>48 miles.\nIn total, he travels 32 + 48 = <<32+48=80>>80 miles.\n#### 80"
+    },
+    {
+      "score": 1,
+      "pred": "32",
+      "gold": "32",
+      "gen_text": "Anakin caught 10 + 6 + 3 = <<10+6+3=19>>19 fish.\nLocsin caught 10 - 5 = <<10-5=5>>5 starfish.\nLocsin caught 6 - 3 = <<6-3=3>>3 sea horses.\nLocsin caught 3 + 2 = <<3+2=5>>5 clownfish.\nLocsin caught 5 + 3 + 5 = <<5+3+5=13>>13 fish.\nAnakin and Locsin caught 19 + 13 = <<19+13=32>>32 fish.\n#### 32"
+    },
+    {
+      "score": 1,
+      "pred": "4",
+      "gold": "4",
+      "gen_text": "It takes Matthew 3 + 10 = <<3+10=13>>13 minutes to dig a small hole and a large hole.\nIt will take him 30 small holes * 3 minutes/small hole = <<30*3=90>>90 minutes to dig 30 small holes.\nIt will take him 15 large holes * 10 minutes/large hole = <<15*10=150>>150 minutes to dig 15 large holes.\nIt will take him 90 minutes + 150 minutes = <<90+150=240>>240 minutes to dig 30 small holes and 15 large holes.\nIt will take him 240 minutes / 60 minutes/hour = <<240/60=4>>4 hours to dig 30 small holes and 15 large holes.\n#### 4"
+    },
+    {
+      "score": 1,
+      "pred": "8",
+      "gold": "8",
+      "gen_text": "First find the amount of water used for industrial purposes: 40% * 80% = 32%\nThen subtract that amount from the total amount of water used by the city: 40% - 32% = 8%\n#### 8"
+    },
+    {
+      "score": 1,
+      "pred": "1000",
+      "gold": "1000",
+      "gen_text": "The orchard sold 2000/10 = <<2000/10=200>>200 bags of apples.\nSo, the orchard earned 200*5 = $<<200*5=1000>>1000 for selling the apples.\n#### 1000"
+    },
+    {
+      "score": 0,
+      "pred": "49",
+      "gold": "45",
+      "gen_text": "If Harriet is 21 years old now, Zack is 21*2=<<21*2=42>>42 years old.\nAdrian is 3*21=<<3*21=63>>63 years old.\nIn three years, Harriet will be 21+3=<<21+3=24>>24 years old.\nZack will be 42+3=<<42+3=45>>45 years old.\nAdrian will be 63+3=<<63+3=66>>66 years old.\nThe average age of the three in three years will be (24+45+66)/3=<<(24+45+66)/3=49>>49 years old.\n#### 49"
+    },
+    {
+      "score": 1,
+      "pred": "32",
+      "gold": "32",
+      "gen_text": "The third floor is 24*3=<<24*3=72>>72 feet high.\nThe ball bounces to 2/3*72=<<2/3*72=48>>48 feet on its first bounce.\nThe ball bounces to 2/3*48=<<2/3*48=32>>32 feet on its second bounce.\n#### 32"
+    },
+    {
+      "score": 0,
+      "pred": "42982.8",
+      "gold": "95200",
+      "gen_text": "If Adrien's salary was 30 percent higher than Lylah's, then Lylah was earning $40000/1.30 = $<<40000/1.30=30769.23>>30769.23\nFour years later, Adrien's salary had increased, and he was earning 40% more than what he was making four years ago, meaning he was earning $40000*1.40 = $<<40000*1.40=56000>>56000\nIf Adrien's and Lylah's salary increased simultaneously, and Adrien earned $40000 four years ago, then Lylah's salary four years later was $30769.23*1.40 = $<<30769.23*1.40=42982.8>>42982.8\nThe total salary the two were receiving four years later is $56000+$42982.8 = $<<"
+    },
+    {
+      "score": 1,
+      "pred": "44",
+      "gold": "44",
+      "gen_text": "There are 220*.4=<<220*.4=88>>88 ruined castles in Scotland.\nThere are 88/2=<<88/2=44>>44 unmanned ruined castles in Scotland.\n#### 44"
+    },
+    {
+      "score": 0,
+      "pred": "-3",
+      "gold": "1",
+      "gen_text": "On Amazon, the boots cost $16 + $4 = $<<16+4=20>>20.\nOn eBay, the boots cost $13 + $4 = $<<13+4=17>>17.\nSo, the boots are $17 - $20 = $<<17-20=-3>>-3 more expensive on eBay.\n#### -3"
+    },
+    {
+      "score": 1,
+      "pred": "5",
+      "gold": "5",
+      "gen_text": "He travels 3 hours because 4-1 = <<4-1=3>>3\nHe travels 30 miles because 3 x 10 = <<3*10=30>>30\nHe travels 5 hours because 30 / 6 = <<30/6=5>>5\n#### 5"
+    },
+    {
+      "score": 0,
+      "pred": "32",
+      "gold": "1",
+      "gen_text": "He has $150 - 2 x $8 - 4 x $2 = $<<150-2*8-4*2=132>>132 left to spend.\nHe can see 132 / $10 = <<132/10=13>>13 more movies on Friday or Saturday.\nHe can see 132 / $7 = <<132/7=19>>19 more movies on other days.\nHe can see 13 + 19 = <<13+19=32>>32 more movies.\n#### 32"
+    },
+    {
+      "score": 1,
+      "pred": "665",
+      "gold": "665",
+      "gen_text": "Tom and Nancy found 214 + 432 = <<214+432=646>>646 seashells.\nSo, they found 646 - 67 = <<646-67=579>>579 good seashells.\nTherefore, they found 579 + 86 = <<579+86=665>>665 good seashells together.\n#### 665"
+    },
+    {
+      "score": 0,
+      "pred": "315",
+      "gold": "255",
+      "gen_text": "Their driving speed was 50 miles per hour, and they hiked at 5 miles per hour less than half their speed, so they hiked at 50/2 - 5 = <<50/2-5=20>>20 miles per hour.\nThey drove for 6 hours and hiked for 1.5 hours, so they drove for 6 - 1.5 = <<6-1.5=4.5>>4.5 hours.\nThey drove at 50 miles per hour and hiked at 20 miles per hour, so they traveled at 50 + 20 = <<50+20=70>>70 miles per hour.\nThey traveled at 70 miles per hour for 4.5 hours, so they traveled 70 * 4.5 = <<70*4.5=315>>315 miles.\n#### 315"
+    },
+    {
+      "score": 0,
+      "pred": "4500",
+      "gold": "6000",
+      "gen_text": "On the first day, Wanda pumped 1/4 * 18000 = <<1/4*18000=4500>>4500 gallons of water.\nMs. B pumped 3/4 * 4500 = <<3/4*4500=3375>>3375 gallons of water.\nOn the second day, Wanda pumped 2/3 * 4500 = <<2/3*4500=3000>>3000 gallons of water.\nMs. B pumped 1/3 * 3375 = <<1/3*3375=1125>>1125 gallons of water.\nIn total, Wanda pumped 4500 + 3000 = <<4500+3000=7500>>7500 gallons of water.\nMs. B pumped 3375 + 1125 = <<3375+1125=4500>>4500"
+    },
+    {
+      "score": 1,
+      "pred": "32",
+      "gold": "32",
+      "gen_text": "The first 3 trees had 3*7=<<3*7=21>>21 blue birds.\nThe second 2 trees had 2*4=<<2*4=8>>8 blue birds.\nThe final tree had 3 blue birds.\nIn total, there were 21+8+3=<<21+8+3=32>>32 blue birds.\n#### 32"
+    },
+    {
+      "score": 1,
+      "pred": "2100",
+      "gold": "2100",
+      "gen_text": "The total amount Ariadne made from selling green hats is 400*2 = $<<400*2=800>>800.\nThe total amount she made in the first month is 400+800 = $<<400+800=1200>>1200.\nIn the second month, she made 3/4*1200 = $<<3/4*1200=900>>900.\nThe total amount she made in two months is 1200+900 = $<<1200+900=2100>>2100.\n#### 2100"
+    },
+    {
+      "score": 0,
+      "pred": "54",
+      "gold": "3",
+      "gen_text": "The number of students in each group is 54/6 = <<54/6=9>>9 students.\nThe total number of students in the 12 groups is 12 x 9 = <<12*9=108>>108 students.\nThe number of students needed to form the 12 groups is 108 - 54 = <<108-54=54>>54 students.\n#### 54"
+    },
+    {
+      "score": 1,
+      "pred": "14",
+      "gold": "14",
+      "gen_text": "Darren caught 17 - 6 = <<17-6=11>>11 fish.\nTommy caught 11 + 3 = <<11+3=14>>14 fish.\n#### 14"
+    },
+    {
+      "score": 1,
+      "pred": "55",
+      "gold": "55",
+      "gen_text": "Sam was closed on Monday and Friday so he had 5 days to sell bread.\nHe sold 20 crates over the weekend so he sold 20 + 15 + 12 + 18 = <<20+15+12+18=65>>65 crates on the other days.\nSam was off his target by 120 - 65 = <<120-65=55>>55 crates.\n#### 55"
+    },
+    {
+      "score": 1,
+      "pred": "16",
+      "gold": "16",
+      "gen_text": "Let x be the age of Brooke.\nSeth is x*2=2x years old.\nIn 2 years, Brooke will be x+2 years old.\nIn 2 years, Seth will be 2x+2 years old.\nThe sum of their ages in 2 years will be x+2+2x+2=28\nCombining like terms, we get 3x+4=28\nSubtracting 4 from both sides, we get 3x=24\nDividing both sides by 3, we get x=8\nSeth is 2*8=<<2*8=16>>16 years old.\n#### 16"
+    },
+    {
+      "score": 0,
+      "pred": "190",
+      "gold": "250",
+      "gen_text": "Jamie earns $20 x 8 = $<<20*8=160>>160 for her regular work.\nShe earns $20 x 1.5 = $<<20*1.5=30>>30 for her special work.\nSo, she earns $160 + $30 = $<<160+30=190>>190 for her work that day.\n#### 190"
+    },
+    {
+      "score": 1,
+      "pred": "30",
+      "gold": "30",
+      "gen_text": "The second side takes 5*2=<<5*2=10>>10 minutes\nThe third side takes 5*2=<<5*2=10>>10 minutes\nThe fourth side takes 5/2=<<5/2=2.5>>2.5 minutes\nThe fifth side takes 5/2=<<5/2=2.5>>2.5 minutes\nSo the total time is 5+10+10+2.5+2.5=<<5+10+10+2.5+2.5=30>>30 minutes\n#### 30"
+    },
+    {
+      "score": 1,
+      "pred": "15",
+      "gold": "15",
+      "gen_text": "There are 4 + 7 = <<4+7=11>>11 dahlias in the vase.\nThere are 4 + 11 = <<4+11=15>>15 flowers in the vase in total.\n#### 15"
+    },
+    {
+      "score": 0,
+      "pred": "16",
+      "gold": "14",
+      "gen_text": "At the first stop, there were 20 - 7 = <<20-7=13>>13 people on the bus.\nAt the second stop, there were 13 + 8 = <<13+8=21>>21 people on the bus.\nAt the terminal, there were 21 - 5 = <<21-5=16>>16 people on the bus.\n#### 16"
+    },
+    {
+      "score": 0,
+      "pred": "6",
+      "gold": "12",
+      "gen_text": "Freda\u2019s sauce was 32 ounces, and each can of tomatoes is 16 ounces, so she used 32/16 = <<32/16=2>>2 cans of tomatoes.\nEach can of tomatoes contains three tomatoes, so Freda used 2*3 = <<2*3=6>>6 tomatoes.\n#### 6"
+    },
+    {
+      "score": 0,
+      "pred": "9",
+      "gold": "6",
+      "gen_text": "Let S be the age of Sam.\nIn 9 years, Ruby will be 3S because 3S = 3(S+9)\nIn 9 years, Ruby will be 3S because 3S = 3(S+9)\nIn 9 years, Ruby will be 3S because 3S = 3(S+9)\nIn 9 years, Ruby will be 3S because 3S = 3(S+9)\nIn 9 years, Ruby will be 3S because 3S = 3(S+9)\nIn 9 years, Ruby will be 3S because 3S = 3(S+9)\nIn 9 years, Ruby will be 3S because 3S = 3(S+9)\nIn 9 years, Ruby will be 3S because 3S = 3(S+9)\nIn 9 years, Ruby will be 3S because 3S = 3(S+9)\nIn 9 years, Ruby will be 3S because 3S = 3(S+9)\nIn 9 years, Ruby will"
+    },
+    {
+      "score": 1,
+      "pred": "140",
+      "gold": "140",
+      "gen_text": "He plants 90 - 40 = <<90-40=50>>50 petunias.\nHe plants 90 + 50 = <<90+50=140>>140 flowers total.\n#### 140"
+    },
+    {
+      "score": 0,
+      "pred": "260",
+      "gold": "7400",
+      "gen_text": "The price of the car in 2008 is $20000*0.21 = $<<20000*0.21=4200>>4200 less than the price in 2007.\nThe price of the car in 2008 is $20000-$4200 = $<<20000-4200=15800>>15800.\nThe price of the car in 2009 is $15800*0.21 = $<<15800*0.21=3262>>3262 less than the price in 2008.\nThe price of the car in 2009 is $15800-$3262 = $<<15800-3262=12538>>12538.\nThe price of the car in 2010 is $12538*0.21 = $<<12538*0.21=260"
+    },
+    {
+      "score": 1,
+      "pred": "20",
+      "gold": "20",
+      "gen_text": "The winner got 3/4*80 = <<3/4*80=60>>60 votes.\nThe loser got 80-60 = <<80-60=20>>20 votes.\n#### 20"
+    },
+    {
+      "score": 1,
+      "pred": "70",
+      "gold": "70",
+      "gen_text": "There were 21 - 7 = <<21-7=14>>14 buttons with four holes.\nThere were 7 x 2 = <<7*2=14>>14 holes in the buttons with two holes.\nThere were 14 x 4 = <<14*4=56>>56 holes in the buttons with four holes.\nThere were 14 + 56 = <<14+56=70>>70 holes in all the buttons.\n#### 70"
+    },
+    {
+      "score": 0,
+      "pred": "66.67",
+      "gold": "50",
+      "gen_text": "Tatiana has 7 + 5 = <<7+5=12>>12 hours of free time.\nShe spends 3 + 1/3 = 3 + 1/3 = 4 hours playing video games.\nShe has 12 - 4 = <<12-4=8>>8 hours left to spend on soccer.\nShe spends 8/12 = <<8/12=2/3>>2/3 of her weekend playing soccer.\nSo she spends 2/3 * 100% = <<2/3*100=66.67>>66.67% of her weekend playing soccer.\n#### 66.67"
+    },
+    {
+      "score": 1,
+      "pred": "940",
+      "gold": "940",
+      "gen_text": "Joseph's expenditure in June was $500 - $60 = $<<500-60=440>>440.\nHis total expenditure for those two months was $500 + $440 = $<<500+440=940>>940.\n#### 940"
+    },
+    {
+      "score": 1,
+      "pred": "360",
+      "gold": "360",
+      "gen_text": "If 40% of the school population is made up of 240 boys, then the total school population is 240/0.4 = <<240/0.4=600>>600\nIf 40% of the school population is made up of 240 boys, then 60% of the school population is made up of girls because 100-40 = <<100-40=60>>60\nIf 60% of the school population is made up of girls, then there are 600*0.6 = <<600*0.6=360>>360 girls in the school\n#### 360"
+    },
+    {
+      "score": 0,
+      "pred": "720",
+      "gold": "315",
+      "gen_text": "The collar takes 900/10 = <<900/10=90>>90 stitches.\nThe rosette takes 2*90 = <<2*90=180>>180 stitches.\nThe sleeves take 1800-90-180-90 = <<1800-90-180-90=1440>>1440 stitches.\nEach sleeve takes 1440/2 = <<1440/2=720>>720 stitches.\n#### 720"
+    },
+    {
+      "score": 0,
+      "pred": "16",
+      "gold": "20",
+      "gen_text": "There are 4 blue blocks + 2 * 4 blue blocks = <<4+2*4=12>>12 yellow blocks.\nThere are 32 blocks - 12 yellow blocks - 4 blue blocks = <<32-12-4=16>>16 red blocks.\n#### 16"
+    },
+    {
+      "score": 1,
+      "pred": "180",
+      "gold": "180",
+      "gen_text": "Carlos pays $30 x 3 = $<<30*3=90>>90 for the canoe.\nBenji pays $18 x 5 = $<<18*5=90>>90 for the raft.\nTogether, they pay $90 + $90 = $<<90+90=180>>180 for their rentals.\n#### 180"
+    },
+    {
+      "score": 1,
+      "pred": "8",
+      "gold": "8",
+      "gen_text": "Alyana is 10 - 4 = <<10-4=6>>6 years old.\nAnne is 6 + 2 = <<6+2=8>>8 years old.\n#### 8"
+    },
+    {
+      "score": 1,
+      "pred": "160",
+      "gold": "160",
+      "gen_text": "The red car is 40/100*100 = $<<40/100*100=40>>40 cheaper than the blue car.\nSo, the red car costs 100-40 = $<<100-40=60>>60.\nTherefore, the total cost of both cars is 100+60 = $<<100+60=160>>160.\n#### 160"
+    },
+    {
+      "score": 0,
+      "pred": "500",
+      "gold": "5",
+      "gen_text": "First find the total number of tires: 5 people * 2 tires/person = <<5*2=10>>10 tires\nThen find the total number of tricycle tires: 3 people * 3 tires/person = <<3*3=9>>9 tires\nThen add the number of tires to find the total number of tires: 10 tires + 9 tires + 1 tire = <<10+9+1=20>>20 tires\nThen multiply the cost per tire by the number of tires to find the total cost: 25 cents/tire * 20 tires = $<<25*20=500>>5\n#### 500"
+    },
+    {
+      "score": 1,
+      "pred": "75",
+      "gold": "75",
+      "gen_text": "Dax found half as many bugs as ants in the garden, a total of 50/2 = <<50/2=25>>25 bugs.\nThe total number of insects in the garden is 25 + 50 = <<25+50=75>>75\n#### 75"
+    },
+    {
+      "score": 1,
+      "pred": "7",
+      "gold": "7",
+      "gen_text": "Sitti and Juris bought a total of 34 + 22 = <<34+22=56>>56 oranges.\nIf they share the oranges equally with their 6 other friends, each will get 56 / 8 = <<56/8=7>>7 oranges.\n#### 7"
+    },
+    {
+      "score": 1,
+      "pred": "1430",
+      "gold": "1430",
+      "gen_text": "She paid $500+$800=$<<500+800=1300>>1300 for the brooch\nShe paid 10/100*$1300=$<<10/100*1300=130>>130 for insurance\nSo she paid $1300+$130=$<<1300+130=1430>>1430\n#### 1430"
+    },
+    {
+      "score": 1,
+      "pred": "3",
+      "gold": "3",
+      "gen_text": "Bill gets 1/3*12 = <<1/3*12=4>>4 slices.\nMark gets 1/4*12 = <<1/4*12=3>>3 slices.\nJenny eats 2 slices, so there are 12-4-3-2 = <<12-4-3-2=3>>3 slices left.\n#### 3"
+    },
+    {
+      "score": 0,
+      "pred": "18",
+      "gold": "27",
+      "gen_text": "The total cost of the notebooks is $1.50 x 5 = $<<1.5*5=7.50>>7.50.\nThe total cost of the pens is $0.25 x 2 = $<<0.25*2=0.50>>0.50.\nThe total cost of the calculator is $12.\nThe total cost of the geometry set is $10.\nThe total cost of all the items is $7.50 + $0.50 + $12 + $10 = $<<7.5+0.5+12+10=20>>20.\nThe discount is $20 x 10/100 = $<<20*10/100=2>>2.\nThe total cost of all the items after the discount is $20 - $2 = $<<20-2=18>>18.\n#### 18"
+    },
+    {
+      "score": 1,
+      "pred": "34",
+      "gold": "34",
+      "gen_text": "The second tree has a height of 6 feet + 5 feet = <<6+5=11>>11 feet.\nThe height of the two trees combined is 6 feet + 11 feet = <<6+11=17>>17 feet.\nThe tallest tree is twice the height of the two trees combined, so it is 2 * 17 feet = <<2*17=34>>34 feet tall.\n#### 34"
+    },
+    {
+      "score": 1,
+      "pred": "5",
+      "gold": "5",
+      "gen_text": "Prince sells 15kg of meat every hour, so he sells 15 * 10 = <<15*10=150>>150kg of meat every day.\nBill gives him a bull that weighs 750kg, so it will take him 750 / 150 = <<750/150=5>>5 days to sell the meat from Bill's bull.\n#### 5"
+    },
+    {
+      "score": 1,
+      "pred": "45",
+      "gold": "45",
+      "gen_text": "First find the total value of the pennies: 100 pennies * $0.01/penny = $<<100*0.01=1>>1\nThen find the total value of the nickels: 40 nickels * $0.05/nickel = $<<40*0.05=2>>2\nThen find the total value of the dimes: 20 dimes * $0.10/dime = $<<20*0.10=2>>2\nThen find the total value of the dollar bills: 40 dollar bills * $1/dollar bill = $<<40*1=40>>40\nThen add the value of each type of coin to find the total value: $1 + $2 + $2 + $40 = $<<1+2+2+40=45>>45\n#### 45"
+    },
+    {
+      "score": 1,
+      "pred": "34",
+      "gold": "34",
+      "gen_text": "Jen will earn $9 from selling the yams because 6 x $1.5 = $<<6*1.5=9>>9.\nShe will earn $20 from selling the sweet potatoes because 10 x $2 = $<<10*2=20>>20.\nShe will earn $5 from selling the carrots because 4 x $1.25 = $<<4*1.25=5>>5.\nJen will earn $34 in total because $9 + $20 + $5 = $<<9+20+5=34>>34.\n#### 34"
+    },
+    {
+      "score": 1,
+      "pred": "1128",
+      "gold": "1128",
+      "gen_text": "Britany spends 18 * 4 = <<18*4=72>>72 minutes on TikTok videos each week.\nShe spends 2 * 60 = <<2*60=120>>120 minutes writing songs each week.\nShe spends 15 * 6 = <<15*6=90>>90 minutes doing her makeup each week.\nSo she spends 72 + 120 + 90 = <<72+120+90=282>>282 minutes on TikTok each week.\nTherefore, she spends 282 * 4 = <<282*4=1128>>1128 minutes on TikTok each month.\n#### 1128"
+    },
+    {
+      "score": 1,
+      "pred": "2",
+      "gold": "2",
+      "gen_text": "Rozanne used 48 eggs because 4 x 12 = <<4*12=48>>48\nShe used 2 more eggs because 48 + 2 = <<48+2=50>>50\nShe can make 50 glasses of eggnog because 50 / 5 = <<50/5=10>>10\nShe can put out 2 trays because 10 / 5 = <<10/5=2>>2\n#### 2"
+    },
+    {
+      "score": 0,
+      "pred": "72",
+      "gold": "24",
+      "gen_text": "Each teacher uses the whiteboard 2 * 3 = <<2*3=6>>6 times per lesson.\nIn a day, the 4 teachers use the whiteboard 4 * 6 = <<4*6=24>>24 times.\nTherefore, the whiteboard is cleaned 24 * 3 = <<24*3=72>>72 times in a day.\n#### 72"
+    },
+    {
+      "score": 0,
+      "pred": "30",
+      "gold": "750",
+      "gen_text": "First find how many customers Jason needs to get to come into the dealership: 15 cars / 2 cars/customer = <<15/2=7.5>>7.5 customers\nThen find how many telephone calls he needs to make to get 7.5 customers: 7.5 customers / 0.25 customers/call = <<7.5/0.25=30>>30 calls\n#### 30"
+    },
+    {
+      "score": 0,
+      "pred": "48",
+      "gold": "60",
+      "gen_text": "Pam used 2 * 6 = <<2*6=12>>12 tickets for the roller coaster.\nFred used 4 * 6 = <<4*6=24>>24 tickets for the roller coaster.\nThey used 12 + 24 = <<12+24=36>>36 tickets for the roller coaster.\nThey used 2 * 2 * 6 = <<2*2*6=12>>12 tickets for the luge.\nThey used 36 + 12 = <<36+12=48>>48 tickets in total.\n#### 48"
+    },
+    {
+      "score": 1,
+      "pred": "120",
+      "gold": "120",
+      "gen_text": "First find the total distance Hannah needs to run: 8 laps * 0.25 km/lap = <<8*0.25=2>>2 km\nThen multiply that distance by the amount of water Hannah needs to drink per kilometer: 2 km * 60 ml/km = <<2*60=120>>120 ml\n#### 120"
+    },
+    {
+      "score": 1,
+      "pred": "16",
+      "gold": "16",
+      "gen_text": "George had 3 candies + 5 candies = <<3+5=8>>8 candies.\nNick had 8 candies x 2 = <<8*2=16>>16 candies.\n#### 16"
+    },
+    {
+      "score": 1,
+      "pred": "82",
+      "gold": "82",
+      "gen_text": "The sun moves 5 degrees an hour, so in 10 hours it will move 5*10 = <<5*10=50>>50 degrees.\nThe pyramid is at an angle of 32 degrees from the ground, so the sun will be 50+32 = <<50+32=82>>82 degrees from the ground.\n#### 82"
+    },
+    {
+      "score": 1,
+      "pred": "60",
+      "gold": "60",
+      "gen_text": "The additional phones cost $20 / 2 = $<<20/2=10>>10 each.\nThe whole phone plan costs $20 + $10 * 4 = $<<20+10*4=60>>60.\n#### 60"
+    },
+    {
+      "score": 0,
+      "pred": "4",
+      "gold": "2",
+      "gen_text": "Lana has 27 / 3 = <<27/3=9>>9 cups in each row.\nShe has 9 / 2 = <<9/2=4.5>>4.5 cups of each type of tea in each row.\nSince she can't brew half a cup of tea, she brews 4 cups of each type of tea in each row.\n#### 4"
+    },
+    {
+      "score": 0,
+      "pred": "8",
+      "gold": "5",
+      "gen_text": "Chickens have 2 legs, and cows have 4 legs. So 2 + 4 = <<2+4=6>>6 legs per animal.\nIf there are 20 animals and they have 70 legs, then 70 / 6 = <<70/6=11.666666666666667>>11.67 animals.\nSince there are only 20 animals, then 20 - 11.67 = <<20-11.67=8.33>>8.33 animals are chickens.\n#### 8"
+    },
+    {
+      "score": 1,
+      "pred": "30",
+      "gold": "30",
+      "gen_text": "Miss Maria has 6 x 25 = <<6*25=150>>150 basketball cards.\nShe also has 5 x 40 = <<5*40=200>>200 baseball cards.\nSo, she has a total of 150 + 200 = <<150+200=350>>350 cards.\nMiss Maria keeps 50 cards, so she has 350 - 50 = <<350-50=300>>300 cards to give to her students.\nIf each student gets 10 cards, then she has 300 / 10 = <<300/10=30>>30 students.\n#### 30"
+    },
+    {
+      "score": 1,
+      "pred": "280",
+      "gold": "280",
+      "gen_text": "Jen works for 7.5 hours a day for 6 days a week, so she works 7.5*6 = <<7.5*6=45>>45 hours a week.\nIn April, she works for 4 weeks, so she works 45*4 = <<45*4=180>>180 hours.\nAt $1.5 an hour, she earns 180*1.5 = $<<180*1.5=270>>270.\nShe also receives an additional $10 for perfect attendance, so she earns 270+10 = $<<270+10=280>>280.\n#### 280"
+    },
+    {
+      "score": 0,
+      "pred": "9",
+      "gold": "10",
+      "gen_text": "The jacket and shoes cost $30 + 2 * $20 = $<<30+2*20=70>>70.\nSara earns $5 * 4 = $<<5*4=20>>20 babysitting.\nSara earns $4 * 1 = $<<4*1=4>>4 mowing the lawn.\nSara has $10 + $20 + $4 = $<<10+20+4=34>>34.\nSara needs to mow the lawn $70 - $34 = $<<70-34=36>>36.\nSara needs to mow the lawn 36 / 4 = <<36/4=9>>9 times.\n#### 9"
+    },
+    {
+      "score": 1,
+      "pred": "27",
+      "gold": "27",
+      "gen_text": "Kael brought 5 x 2 = <<5*2=10>>10 apples.\nKael brought 8 / 2 = <<8/2=4>>4 oranges.\nMorisette and Kael have 5 + 8 + 10 + 4 = <<5+8+10+4=27>>27 fruits in total.\n#### 27"
+    },
+    {
+      "score": 0,
+      "pred": "67",
+      "gold": "3",
+      "gen_text": "Beck has 100 - 10 = <<100-10=90>>90 apples.\nBeck has 90 - 23 = <<90-23=67>>67 fewer apples than Boris.\n#### 67"
+    },
+    {
+      "score": 1,
+      "pred": "33",
+      "gold": "33",
+      "gen_text": "The rocks cost 2*2.50=$<<2*2.50=5.00>>5.00\nThe coral cost 3*2=$<<3*2=6.00>>6.00\nThe fish cost 20*0.50=$<<20*0.50=10.00>>10.00\nThe food cost $2.00\nSo she spent 10+5+6+10+2=$<<10+5+6+10+2=33.00>>33.00\n#### 33"
+    },
+    {
+      "score": 1,
+      "pred": "64",
+      "gold": "64",
+      "gen_text": "Kylar wants to buy 16 glasses, so he needs to buy 16/2 = <<16/2=8>>8 glasses at a higher price.\nThe first 8 glasses cost $5 each, so he needs to pay 8*5 = $<<8*5=40>>40 for them.\nThe other 8 glasses cost 60% of the price of the first glasses, so they cost 0.6*5 = $<<0.6*5=3>>3 each.\nThe other 8 glasses cost $3 each, so he needs to pay 8*3 = $<<8*3=24>>24 for them.\nIn total, Kylar needs to pay 40+24 = $<<40+24=64>>64 for the glasses.\n#### 64"
+    },
+    {
+      "score": 0,
+      "pred": "0.62",
+      "gold": "6",
+      "gen_text": "He drives 400*2=<<400*2=800>>800 miles a month\nSo he drives 800*12=<<800*12=9600>>9600 miles a year\nSo he drives 9600*7=<<9600*7=67200>>67200 miles in 7 years\nSo each tire undergoes 67200/725=<<67200/725=92>>92 rotations a year\nSo each tire undergoes 92*10=<<92*10=920>>920 rotations a year\nSo each tire undergoes 920*7=<<920*7=6440>>6440 rotations in 7 years\nSo each tire undergoes 6440/10440=<<6440/10440=0.62>>0.62 rotations per year\nSo each tire undergoes 0.62"
+    },
+    {
+      "score": 1,
+      "pred": "63",
+      "gold": "63",
+      "gen_text": "Edgar eats 18 pretzels a day, so his brother eats 18/2 = <<18/2=9>>9 pretzels a day.\nHis brother eats 9 pretzels a day, so in a week he eats 9*7 = <<9*7=63>>63 pretzels.\n#### 63"
+    },
+    {
+      "score": 1,
+      "pred": "8",
+      "gold": "8",
+      "gen_text": "He needs 4 tables * 4 legs/table = <<4*4=16>>16 legs\nSo he needs 16 legs * 2 screws/leg = <<16*2=32>>32 screws\nSo he will have 40 screws - 32 screws = <<40-32=8>>8 screws left over\n#### 8"
+    },
+    {
+      "score": 0,
+      "pred": "34",
+      "gold": "38",
+      "gen_text": "Duncan's age eight years ago was 60 - 8 = <<60-8=52>>52 years.\nDuncan's age eight years ago was 2 * Adam's age four years ago = 52 years.\nAdam's age four years ago was 52 / 2 = <<52/2=26>>26 years.\nIn 8 years, Adam will be 26 + 8 = <<26+8=34>>34 years old.\n#### 34"
+    },
+    {
+      "score": 0,
+      "pred": "63.33333333333333",
+      "gold": "70",
+      "gen_text": "The third grade had a pass rate of 340/500 = <<340/500=.68>>.68\nThe fourth grade had a pass rate of 40/100 = <<40/100=.4>>.4\nThe fifth grade had a pass rate of 2*.4 = <<2*.4=.8>>.8\nThe overall pass rate is (340/500) + (40/100) + (400/500) = .68 + .4 + .8 = 1.9\nThe school's overall pass rate is 1.9/3 = <<1.9/3=.6333333333333333>>.6333333333333333\n#### 63.33333333333333"
+    },
+    {
+      "score": 1,
+      "pred": "49",
+      "gold": "49",
+      "gen_text": "The oven raises the temperature by 5 degrees per hour, so in 3 hours it raises the temperature by 3*5 = <<3*5=15>>15 degrees.\nThe house is 40 degrees when Marcus wakes up, and the oven raises the temperature by 15 degrees, so the house is 40+15 = <<40+15=55>>55 degrees.\nThe window is open for 30 minutes, and the house cools down 2 degrees for every 10 minutes the window is open, so the house cools down 30/10*2 = <<30/10*2=6>>6 degrees.\nThe house is 55 degrees, and the window cools it down by 6 degrees, so the house is 55-6 = <<55-6=49>>49 degrees.\n#### 49"
+    },
+    {
+      "score": 1,
+      "pred": "14",
+      "gold": "14",
+      "gen_text": "Sophie has 31 + 8 + 9 = <<31+8+9=48>>48 toys in the bag, bin, and tower.\nTherefore, Sophie has 62 - 48 = <<62-48=14>>14 bouncy balls in the tube.\n#### 14"
+    },
+    {
+      "score": 1,
+      "pred": "22",
+      "gold": "22",
+      "gen_text": "The two zebras with 17 stripes each have 2*17 = <<2*17=34>>34 stripes.\nThe zebra with 36 stripes has 36 stripes.\nThe zebra with half that many stripes has 36/2 = <<36/2=18>>18 stripes.\nThe total number of stripes is 34+36+18 = <<34+36+18=88>>88 stripes.\nThe average number of stripes is 88/4 = <<88/4=22>>22 stripes.\n#### 22"
+    },
+    {
+      "score": 0,
+      "pred": "66",
+      "gold": "70",
+      "gen_text": "Sally's total score is 50 + 80 + 80 + 60 + 40 + 90 + 100 + 70 + 60 = <<50+80+80+60+40+90+100+70+60=600>>600\nHer mean score is 600 / 9 = <<600/9=66.67>>66.67\n#### 66"
+    },
+    {
+      "score": 1,
+      "pred": "55",
+      "gold": "55",
+      "gen_text": "A whatchamacallit spins at 121 meters per second, and spins eleven times faster than a thingamabob, so a thingamabob spins at 121/11 = <<121/11=11>>11 meters per second.\nA whirligig spins at five times the speed of a thingamabob, so a whirligig spins at 5*11 = <<5*11=55>>55 meters per second.\n#### 55"
+    },
+    {
+      "score": 0,
+      "pred": "44",
+      "gold": "49",
+      "gen_text": "There are 96 - 43 = <<96-43=53>>53 fourth-grade boys at Small Tree School.\nOn Friday, 5 + 4 = <<5+4=9>>9 fourth-grade girls were absent.\nSo, 53 - 9 = <<53-9=44>>44 fourth-grade boys were at Small Tree School on Friday.\n#### 44"
+    },
+    {
+      "score": 0,
+      "pred": "30",
+      "gold": "14",
+      "gen_text": "The glee club ate 20 * 70/100 = <<20*70/100=14>>14 pizzas.\nThe football team ate 20 * 80/100 = <<20*80/100=16>>16 pizzas.\nSo, there are 20 - 14 = <<20-14=6>>6 pizzas left for the glee club.\nThere are 20 * 2 = <<20*2=40>>40 pizzas for the football team.\nSo, there are 40 - 16 = <<40-16=24>>24 pizzas left for the football team.\nThere are 24 + 6 = <<24+6=30>>30 pizzas left.\n#### 30"
+    },
+    {
+      "score": 0,
+      "pred": "44",
+      "gold": "60",
+      "gen_text": "On Tuesday and Wednesday, she removed 2*39=<<2*39=78>>78 Junebugs.\nSo, she removed 39+78+48+57=<<39+78+48+57=222>>222 Junebugs.\nTherefore, she removed an average of 222/5=<<222/5=44.4>>44.4 Junebugs per day.\n#### 44"
+    },
+    {
+      "score": 1,
+      "pred": "2",
+      "gold": "2",
+      "gen_text": "Ryan\u2019s allowance is $6 x 3 = $<<6*3=18>>18.\nThe ice cream cones cost $1.25 x 4 = $<<1.25*4=5>>5.\nSo Ryan has $18 - $5 = $<<18-5=13>>13 left.\nTherefore, Ryan can buy $13 / $6.50 = <<13/6.5=2>>2 movie tickets.\n#### 2"
+    },
+    {
+      "score": 0,
+      "pred": "10",
+      "gold": "8",
+      "gen_text": "There are 5 hours between 1:00 PM and 5:00 PM because 12:00 PM - 1:00 PM = <<12-1=11>>11 hours\nA candle will be 10 centimeters shorter after burning for 5 hours because 2 centimeters x 5 hours = <<2*5=10>>10 centimeters\n#### 10"
+    },
+    {
+      "score": 1,
+      "pred": "10",
+      "gold": "10",
+      "gen_text": "The beanstalk was 3 inches tall after the first week.\nIt doubled in height the second week, so it was 3*2 = <<3*2=6>>6 inches tall.\nIt grew another 4 inches in the third week, so it was 6+4 = <<6+4=10>>10 inches tall.\n#### 10"
+    },
+    {
+      "score": 0,
+      "pred": "36",
+      "gold": "7",
+      "gen_text": "The cost of the candies is 4 x $3.20 = $<<4*3.2=12.80>>12.80.\nThe cost of the lollipops is 5 x $0.40 = $<<5*0.4=2>>2.\nThe total cost of the candies and lollipops is $12.80 + $2 = $<<12.8+2=14.80>>14.80.\nThe cost of 10 lollipops is 10 x $0.40 = $<<10*0.4=4>>4.\nThe cost of 10 candies is 10 x $3.20 = $<<10*3.2=32>>32.\nThe total cost of 10 lollipops and 10 candies is $4 + $32 = $<<4+32=36>>36.\n#### 36"
+    },
+    {
+      "score": 0,
+      "pred": "1",
+      "gold": "12",
+      "gen_text": "The older son is 12 years old and the younger son is 12-4=<<12-4=8>>8 years old\nSo the younger son is 8 years old and the older son is 12 years old so they are 12-8=<<12-8=4>>4 years apart\nSo the older son is 12 years old and the younger son is 8 years old so they are 12-8=<<12-8=4>>4 years apart\nSo the older son is 12 years old and the younger son is 8 years old so they are 12-8=<<12-8=4>>4 years apart\nSo the older son is 12 years old and the younger son is 8 years old so they are 12-8=<<12-8=4>>4 years apart\nSo the older son is 12 years old and the younger son is 8 years old so they are 12-8=<<12-8=4>>4 years apart\nSo the older son is 12 years old and the younger son is 8 years old so they are 1"
+    },
+    {
+      "score": 0,
+      "pred": "10",
+      "gold": "35",
+      "gen_text": "The total cost of the dinner bill is $50 + $50 * 20% = $<<50+50*20*.01=60>>60.\nSo, I paid $60 - $50 = $<<60-50=10>>10 for the dinner bill.\n#### 10"
+    },
+    {
+      "score": 1,
+      "pred": "6",
+      "gold": "6",
+      "gen_text": "Dolly will read 2 books + 1 book = <<2+1=3>>3 books.\nPandora will read 1 book + 2 books = <<1+2=3>>3 books.\nTogether, they will read 3 books + 3 books = <<3+3=6>>6 books.\n#### 6"
+    },
+    {
+      "score": 1,
+      "pred": "74",
+      "gold": "74",
+      "gen_text": "Carl\u2019s weight is 55 + 16 = <<55+16=71>>71 kg.\nChristian\u2019s weight is 71 + 8 = <<71+8=79>>79 kg.\nHarry\u2019s weight is 79 - 5 = <<79-5=74>>74 kg.\n#### 74"
+    },
+    {
+      "score": 0,
+      "pred": "48",
+      "gold": "75",
+      "gen_text": "After 5 years, the cost of one visit is $2 x 1.15 = $<<2*1.15=2.3>>2.3.\nIn 8 years, Pauline spent $2 x 3 x 8 = $<<2*3*8=48>>48.\n#### 48"
+    },
+    {
+      "score": 1,
+      "pred": "7",
+      "gold": "7",
+      "gen_text": "On Friday, Joe caught 3*4=<<3*4=12>>12 pounds of crawfish.\nOn Saturday, he caught 12/2=<<12/2=6>>6 pounds of crawfish.\nIn total, he caught 3+12+6=<<3+12+6=21>>21 pounds of crawfish.\nTherefore, he has 21/3=<<21/3=7>>7 servings of crawfish.\n#### 7"
+    },
+    {
+      "score": 0,
+      "pred": "175",
+      "gold": "350",
+      "gen_text": "Joanne gathers 30 apples from the tallest trees, and her sister gathers 2 * 30 = <<30*2=60>>60 apples from the tallest trees.\nJoanne gathers 30 / 2 = <<30/2=15>>15 apples from the shortest trees, and her sister gathers 3 * 15 = <<3*15=45>>45 apples from the shortest trees.\nThe sisters have gathered a total of 30 + 60 + 15 + 45 = <<30+60+15+45=150>>150 apples from the tallest and shortest trees.\nThe sisters have gathered a total of 500 - 150 = <<500-150=350>>350 apples from the average trees.\nJoanne gathers 350 / 2 = <<350/2=175>>175 apples from the average trees.\n#### 175"
+    },
+    {
+      "score": 1,
+      "pred": "500",
+      "gold": "500",
+      "gen_text": "The total cost of the 5 phones is 5 x $700 = $<<5*700=3500>>3500.\nThe seller will give back $4000 - $3500 = $<<4000-3500=500>>500 in change.\n#### 500"
+    },
+    {
+      "score": 1,
+      "pred": "35",
+      "gold": "35",
+      "gen_text": "He spends 10*.5=<<10*.5=5>>5 hours a day\nSo he spends 5*7=<<5*7=35>>35 hours a week\n#### 35"
+    },
+    {
+      "score": 0,
+      "pred": "94",
+      "gold": "20",
+      "gen_text": "First find the total time Carol spent writing and recording the song: 4 hours + 4 hours / 2 = <<4+4/2=6>>6 hours\nThen add the time she spent editing to find the total time she spent working: 6 hours + 90 minutes = <<6+90=96>>96 minutes\nThen divide the time she spent editing by the total time she spent working and multiply by 100% to express the answer as a percentage: 90 minutes / 96 minutes * 100% = 94.44%\n#### 94"
+    },
+    {
+      "score": 1,
+      "pred": "20000",
+      "gold": "20000",
+      "gen_text": "The company spent 15000/3 = $<<15000/3=5000>>5000 on advertising for the second year.\nSo, the total amount the company spent on advertising for the two years is 15000+5000 = $<<15000+5000=20000>>20000\n#### 20000"
+    },
+    {
+      "score": 0,
+      "pred": "66",
+      "gold": "11",
+      "gen_text": "Carla needs 2 cups of flour to make 12 cookies.\nShe needs 2 x 3 = <<2*3=6>>6 cups of flour to make 36 cookies today.\nShe needs 2 x 30 = <<2*30=60>>60 cups of flour to make 30 cookies tomorrow.\nShe needs 60 + 6 = <<60+6=66>>66 cups of flour to make the cookies today and tomorrow.\n#### 66"
+    },
+    {
+      "score": 0,
+      "pred": "1",
+      "gold": "4",
+      "gen_text": "He starts with 3 balls and adds 1 each week for 4 weeks so he has 3+1+1+1 = <<3+1+1+1=6>>6 balls\nHe drops 3 balls and 2 are caught so he has 3-2 = <<3-2=1>>1 ball left\n#### 1"
+    },
+    {
+      "score": 1,
+      "pred": "1920",
+      "gold": "1920",
+      "gen_text": "Each bed is 2 feet wide by 8 feet long by 2 feet tall, so it is 2*8*2 = <<2*8*2=32>>32 cubic feet.\nHe has 10 beds, so he needs 10*32 = <<10*32=320>>320 cubic feet of soil.\nEach bag of soil holds 2 cubic feet of soil, so he needs 320/2 = <<320/2=160>>160 bags of soil.\nEach bag of soil costs $12, so the soil will cost 160*12 = $<<160*12=1920>>1920.\n#### 1920"
+    },
+    {
+      "score": 1,
+      "pred": "1509",
+      "gold": "1509",
+      "gen_text": "The first DVD can be played 1000 - 356 = <<1000-356=644>>644 more times before it breaks.\nThe second DVD can be played 1000 - 135 = <<1000-135=865>>865 more times before it breaks.\nTogether, the DVDs can be played 644 + 865 = <<644+865=1509>>1509 more times before they break.\n#### 1509"
+    },
+    {
+      "score": 1,
+      "pred": "96",
+      "gold": "96",
+      "gen_text": "Let x be the number of strawberry cubes.\nThe number of blueberry cubes is 5x-4.\nThe total number of cubes is 116, so x+5x-4=116.\nCombining like terms, we get 6x=120.\nDividing both sides by 6, we get x=20.\nSo Mary makes 20 strawberry cubes.\nThe number of blueberry cubes is 5*20-4=<<5*20-4=96>>96.\n#### 96"
+    },
+    {
+      "score": 1,
+      "pred": "112",
+      "gold": "112",
+      "gen_text": "The total number of crayons in the six packets of eight pieces each is 6 x 8 = <<6*8=48>>48.\nThe total number of crayons in the four packets of sixteen pieces each is 4 x 16 = <<4*16=64>>64.\nThe total number of crayons Beatrice bought is 48 + 64 = <<48+64=112>>112.\n#### 112"
+    },
+    {
+      "score": 0,
+      "pred": "2",
+      "gold": "4",
+      "gen_text": "Let R be the number of red chickens and W be the number of white chickens.\nWe know that R + W = 2R + 2\nWe also know that 3R + 5W = 42\nWe can substitute the first equation into the second equation to get 3R + 5(2R + 2) = 42\nWe can simplify this equation to get 3R + 10R + 10 = 42\nWe can combine like terms to get 13R = 32\nWe can divide both sides by 13 to get R = <<2=2>>2\n#### 2"
+    },
+    {
+      "score": 0,
+      "pred": "36",
+      "gold": "50",
+      "gen_text": "On Saturday the store sold 14 x 2 = <<14*2=28>>28 pairs of tennis shoes.\nOn Sunday the store sold 28 / 2 = <<28/2=14>>14 pairs of tennis shoes.\nThe total number of shoes sold was 14 + 28 + 14 = <<14+28+14=56>>56 pairs of shoes.\nThe number of shoes returned was 6 + 14 = <<6+14=20>>20 pairs of shoes.\nThe total number of shoes sold was 56 - 20 = <<56-20=36>>36 pairs of shoes.\n#### 36"
+    },
+    {
+      "score": 0,
+      "pred": "7",
+      "gold": "2",
+      "gen_text": "Igor gathered 16/2=<<16/2=8>>8 test tubes.\nHe gathered 14+2=<<14+2=16>>16 Petri dishes.\nHe lost 7-x beakers.\nThe total number of items Igor had placed on the lab bench was 8+7+16+x=29.\nThus, x=29-8-7-16=<<29-8-7-16=0>>0.\nTherefore, Igor lost 7-0=<<7-0=7>>7 beakers.\n#### 7"
+    },
+    {
+      "score": 1,
+      "pred": "36",
+      "gold": "36",
+      "gen_text": "The cost of the erasers is 6 x $2 = $<<6*2=12>>12.\nThe cost of the pencils is 8 x $3 = $<<8*3=24>>24.\nThe total cost is $12 + $24 = $<<12+24=36>>36.\n#### 36"
+    },
+    {
+      "score": 1,
+      "pred": "48",
+      "gold": "48",
+      "gen_text": "The number train was given a starting value of 20.\nHalf the number was 20/2 = <<20/2=10>>10.\nThe number train was given a value of 20+10 = <<20+10=30>>30.\nThis value was divided by 5, giving a value of 30/5 = <<30/5=6>>6.\nThe starting value minus 12 was 20-12 = <<20-12=8>>8.\nThe final value of the number train was 6*8 = <<6*8=48>>48.\n#### 48"
+    },
+    {
+      "score": 0,
+      "pred": "0",
+      "gold": "14",
+      "gen_text": "The air conditioner cooled the room 2*3=<<2*3=6>>6 degrees on low.\nThe air conditioner cooled the room 3*4=<<3*4=12>>12 degrees on high.\nThe air conditioner cooled the room 6+12=<<6+12=18>>18 degrees.\nThe room warmed up 2*3=<<2*3=6>>6 degrees while the air conditioner was on low.\nThe room warmed up 2*4=<<2*4=8>>8 degrees while the air conditioner was on high.\nThe room warmed up 2*2=<<2*2=4>>4 degrees while the air conditioner was off.\nThe room was 18-6-8-4=<<18-6-8-4=0>>0 degrees lower than the starting temperature.\n#### 0"
+    },
+    {
+      "score": 0,
+      "pred": "30",
+      "gold": "10",
+      "gen_text": "She needs 5 crayons in 5 different colors, so she needs 5*5 = <<5*5=25>>25 crayons.\nThe total cost of the crayons is 25*2 = $<<25*2=50>>50.\nShe has $20, so she will get $50-$20 = $<<50-20=30>>30 change.\n#### 30"
+    },
+    {
+      "score": 0,
+      "pred": "30",
+      "gold": "7",
+      "gen_text": "Let x be the number of fish in each aquarium.\nThe total number of fish in both aquariums is 2x.\nThe total number of snails in both aquariums is 4x + 32x = 36x.\nThe difference between the number of snails in the two aquariums is 36x - 2x = 34x.\nThe difference between the number of snails in the two aquariums is twice the amount of fish in both aquariums, so 34x = 2(2x), so 34x = 4x.\nDividing both sides by 4x, we get 34/4 = 1/1, so 34/4 = 1.\nMultiplying both sides by 4, we get 34 = 4, so 34 - 4 = 30, so 30 = 4.\nDividing both sides by 4, we get 30/4 = 4, so 30/4 = 7.5, so 30 = 7.5*4 = <<30="
+    },
+    {
+      "score": 0,
+      "pred": "56000",
+      "gold": "5600",
+      "gen_text": "Each 10-foot section weighs 400 pounds, so the entire tree weighs 200*400 = <<200*400=80000>>80000 pounds.\nTermites ate 30% of the wood, so they ate 80000*.3 = <<80000*.3=24000>>24000 pounds of wood.\nThe tree weighs 80000-24000 = <<80000-24000=56000>>56000 pounds.\n#### 56000"
+    },
+    {
+      "score": 0,
+      "pred": "15",
+      "gold": "20",
+      "gen_text": "There are 50/2=<<50/2=25>>25 English books.\nThere are 50*10/100=<<50*10/100=5>>5 German books.\nThere are 50-25-5=<<50-25-5=15>>15 Spanish books.\n#### 15"
+    },
+    {
+      "score": 1,
+      "pred": "650",
+      "gold": "650",
+      "gen_text": "Craig has spelled out 20 words with 15 letters each, a total of 20*15 = <<20*15=300>>300 letters.\nCraig's brother has spelled out 50 more letters than Craig, a total of 300+50 = <<300+50=350>>350 letters.\nThe total number of letters in the words they've spelled after the ten rounds is 300+350 = <<300+350=650>>650 letters.\n#### 650"
+    },
+    {
+      "score": 1,
+      "pred": "2",
+      "gold": "2",
+      "gen_text": "The farmer buys 2 * 1 = <<2*1=2>>2 pounds of sugar cubes.\nHe buys 4 * 12 = <<4*12=48>>48 pounds of carrots.\nHe buys 42 * 75 = <<42*75=3150>>3150 pounds of hay.\nHe buys 20 * 65 = <<20*65=1300>>1300 pounds of oats.\nHe buys 48 + 3150 + 1300 + 2 = <<48+3150+1300+2=4500>>4500 pounds of feed.\nThe farmer needs 4500 / 2250 = <<4500/2250=2>>2 trips to transport all the feed.\n#### 2"
+    },
+    {
+      "score": 1,
+      "pred": "9",
+      "gold": "9",
+      "gen_text": "Two years ago, Liam was 16 - 2 = <<16-2=14>>14 years old.\nVince was 14/2 = <<14/2=7>>7 years old two years ago.\nSo, Vince is 7 + 2 = <<7+2=9>>9 years old now.\n#### 9"
+    },
+    {
+      "score": 1,
+      "pred": "294",
+      "gold": "294",
+      "gen_text": "Lloyd sells 252/12 = <<252/12=21>>21 dozen eggs per day.\nSo he makes 21*2 = $<<21*2=42>>42 per day.\nTherefore, he makes 42*7 = $<<42*7=294>>294 per week.\n#### 294"
+    },
+    {
+      "score": 1,
+      "pred": "92",
+      "gold": "92",
+      "gen_text": "The number of books in a shelving system with 6 rows and 6 columns is 6 x 6 = <<6*6=36>>36 books.\nWendy wants to place 20 more than double the number of books in a shelving system with 6 rows and 6 columns, which is 2 x 36 = <<2*36=72>>72 books.\nTherefore, Wendy will need to carry 72 + 20 = <<72+20=92>>92 books to complete her task.\n#### 92"
+    },
+    {
+      "score": 1,
+      "pred": "19",
+      "gold": "19",
+      "gen_text": "Sam ran 3 miles on Monday, Wednesday and Friday so he ran 3*3 = <<3*3=9>>9 miles\nSam ran 5 miles on Tuesday and Thursday so he ran 5*2 = <<5*2=10>>10 miles\nSam ran 9 miles on Monday, Wednesday and Friday and 10 miles on Tuesday and Thursday so he ran 9+10 = <<9+10=19>>19 miles\n#### 19"
+    },
+    {
+      "score": 1,
+      "pred": "576",
+      "gold": "576",
+      "gen_text": "If 6 potatoes make 36 hash browns, then 1 potato makes 36/6 = <<36/6=6>>6 hash browns.\nIf 96 potatoes make 96*6 = <<96*6=576>>576 hash browns.\n#### 576"
+    },
+    {
+      "score": 0,
+      "pred": "22",
+      "gold": "19",
+      "gen_text": "Amy had 2 palettes * 4 colors/palette = <<2*4=8>>8 colors.\nShe had 3 makeup sets * 6 colors/set = <<3*6=18>>18 colors.\nAfter her sister steals one palette, she has 8 colors - 1 color = <<8-1=7>>7 colors.\nAfter using up half of the colors from one makeup set, she has 18 colors - 3 colors = <<18-3=15>>15 colors.\nIn total, she has 7 colors + 15 colors = <<7+15=22>>22 colors.\n#### 22"
+    },
+    {
+      "score": 0,
+      "pred": "220",
+      "gold": "320",
+      "gen_text": "In the first month, Elaine collected 20 x 3 = <<20*3=60>>60 Pokemon cards.\nIn the second month, she collected 60 - 20 = <<60-20=40>>40 Pokemon cards.\nIn the third month, she collected 60 + 40 = <<60+40=100>>100 Pokemon cards.\nIn total, Elaine has 20 + 60 + 40 + 100 = <<20+60+40+100=220>>220 Pokemon cards.\n#### 220"
+    },
+    {
+      "score": 1,
+      "pred": "12",
+      "gold": "12",
+      "gen_text": "Kira bought 3 + 5 + 6 = <<3+5+6=14>>14 pieces of fruit.\nLola ate 2 pieces of fruit, so there are 14 - 2 = <<14-2=12>>12 pieces of fruit left.\n#### 12"
+    },
+    {
+      "score": 0,
+      "pred": "10",
+      "gold": "64800",
+      "gen_text": "The Widgeteer 3000 makes 60 widgets an hour, so in 24 hours it makes 60*24 = <<60*24=1440>>1440 widgets.\nThe WidgetMaster 9000 makes 45 widgets an hour, so in 24 hours it makes 45*24 = <<45*24=1080>>1080 widgets.\nIf Fern runs the Widgeteer 3000 for 30 days, it will make 1440*30 = <<1440*30=43200>>43200 widgets.\nIf Fern runs the WidgetMaster 9000 for 30 days, it will make 1080*30 = <<1080*30=32400>>32400 widgets.\nThe Widgeteer 3000 makes 43200-32400 = <<43200-32400=10800>>10"
+    },
+    {
+      "score": 1,
+      "pred": "5",
+      "gold": "5",
+      "gen_text": "Monday\u2019s rainfall is 2 inches.\nTwice of Monday\u2019s rainfall is 2*2 = <<2*2=4>>4 inches.\nTuesday\u2019s rainfall is 4+1 = <<4+1=5>>5 inches.\n#### 5"
+    },
+    {
+      "score": 0,
+      "pred": "121",
+      "gold": "123",
+      "gen_text": "The total cost of the green food is $25 x 3 = $<<25*3=75>>75.\nThe total cost of the red food is $18 x 3 = $<<18*3=54>>54.\nThe total cost of the red food after getting $2 off for each basket is $54 - $2 x 3 = $<<54-2*3=46>>46.\nThe total cost of the green and red food is $75 + $46 = $<<75+46=121>>121.\n#### 121"
+    },
+    {
+      "score": 1,
+      "pred": "4",
+      "gold": "4",
+      "gen_text": "3 loaves of bread cost 3*2 = $<<3*2=6>>6.\n2 bagels cost 2*1 = $<<2*1=2>>2.\nSo, 3 loaves of bread cost $6-$2 = $<<6-2=4>>4 more than 2 bagels.\n#### 4"
+    },
+    {
+      "score": 0,
+      "pred": "300",
+      "gold": "6",
+      "gen_text": "If Jamal's phone can hold 1800 photographs, Brittany's phone can hold 1800/6=<<1800/6=300>>300 photographs.\nThe maximum number of photographs that Brittany's phone can hold is 50*300=<<50*300=15000>>15000 photographs.\nThe number of ducks in Jamal's photograph of ducks at the zoo is 15000/50=<<15000/50=300>>300 ducks.\n#### 300"
+    },
+    {
+      "score": 0,
+      "pred": "32",
+      "gold": "36",
+      "gen_text": "Lee used to be able to run the 400-meter hurdles two seconds faster than Gerald, so Gerald used to run the 400-meter hurdles in 38 seconds - 2 seconds = <<38-2=36>>36 seconds.\nGerald changed his diet, which improved his speed by 10%, so Gerald can now run the 400-meter hurdles 10/100 * 36 seconds = <<10/100*36=3.6>>3.6 seconds faster than he used to run the 400-meter hurdles.\nGerald can now run the 400-meter hurdles 3.6 seconds faster than he used to run the 400-meter hurdles, so Gerald can now run the 400-meter hurdles in 36 seconds - 3.6 seconds = <<36-3.6=32.4>>32.4 seconds.\n#### 32"
+    },
+    {
+      "score": 1,
+      "pred": "105",
+      "gold": "105",
+      "gen_text": "A quarter is worth 25 cents.\nTwo nickels are worth 2*5=<<2*5=10>>10 cents.\nSeven dimes are worth 7*10=<<7*10=70>>70 cents.\nSo James has 25+10+70=<<25+10+70=105>>105 cents.\n#### 105"
+    },
+    {
+      "score": 0,
+      "pred": "1190",
+      "gold": "1210",
+      "gen_text": "First find the total number of spider legs: 80 spiders * 8 legs/spider = <<80*8=640>>640 legs\nThen find the total number of insect legs: 90 insects * 6 legs/insect = <<90*6=540>>540 legs\nThen find the total number of mutant invertebrate legs: 3 mutant invertebrates * 10 legs/mutant invertebrate = <<3*10=30>>30 legs\nThen add the number of legs from each type of creature to find the total number of legs: 640 legs + 540 legs + 30 legs = <<640+540+30=1190>>1190 legs\n#### 1190"
+    },
+    {
+      "score": 0,
+      "pred": "38",
+      "gold": "40",
+      "gen_text": "If Kelly was right, the number of people in attendance was 48 * 20/100 = <<48*20/100=9.6>>9.6 less than what Courtney reported.\nSo, the number of people in attendance was 48 - 9.6 = <<48-9.6=38.4>>38.4\n#### 38"
+    },
+    {
+      "score": 0,
+      "pred": "400",
+      "gold": "230",
+      "gen_text": "He got the radiator for 400*.8=$<<400*.8=320>>320\nSo he paid 320+50*3=$<<320+50*3=400>>400\n#### 400"
+    },
+    {
+      "score": 0,
+      "pred": "61",
+      "gold": "34",
+      "gen_text": "The total cost of the tickets is $20.25 x 3 = $<<20.25*3=60.75>>60.75.\nThe total cost of the food is $60.75 - $4.50 = $<<60.75-4.50=56.25>>56.25.\nThe total cost of the rides is $33 x 2 = $<<33*2=66>>66.\nThe total cost of the fair is $60.75 + $56.25 + $66 = $<<60.75+56.25+66=183>>183.\nThe total cost per person is $183 / 3 = $<<183/3=61>>61.\n#### 61"
+    },
+    {
+      "score": 1,
+      "pred": "18",
+      "gold": "18",
+      "gen_text": "The rug is 5 feet wider than the chair so it is 3 feet + 5 feet = <<3+5=8>>8 feet wide\nThe couch is 2 feet longer than twice the width of the rug so it is 2 feet + 2(8 feet) = 2 feet + 16 feet = <<2+16=18>>18 feet long\n#### 18"
+    },
+    {
+      "score": 1,
+      "pred": "24",
+      "gold": "24",
+      "gen_text": "There are 80/2 = <<80/2=40>>40 students in each class.\nThere are 40 x 40/100 = <<40*40/100=16>>16 girls in each class.\nThere are 40 - 16 = <<40-16=24>>24 boys in each class.\n#### 24"
+    },
+    {
+      "score": 0,
+      "pred": "350",
+      "gold": "250",
+      "gen_text": "The second day, Sloane counted 100 + 50 = <<100+50=150>>150 customers.\nThe third day, she counted 500 - 150 = <<500-150=350>>350 customers.\n#### 350"
+    },
+    {
+      "score": 1,
+      "pred": "2",
+      "gold": "2",
+      "gen_text": "First find the total time to make the cake batter and bake the cake: 20 minutes + 30 minutes = <<20+30=50>>50 minutes\nThen add the time to cool the cake and frost it: 50 minutes + 2 hours + 10 minutes = <<50+2*60+10=180>>180 minutes\nThen convert the minutes to hours: 180 minutes / 60 minutes/hour = <<180/60=3>>3 hours\nThen subtract the time it takes to make the cake from the time Jordan wants to serve it: 5:00 pm - 3:00 pm = 2:00 pm\n#### 2"
+    },
+    {
+      "score": 1,
+      "pred": "842",
+      "gold": "842",
+      "gen_text": "The teacher has 29 x 2 = <<29*2=58>>58 bottles of apple juice for the students.\nThe teacher has 9 x 100 = <<9*100=900>>900 bottles of apple juice.\nThe teacher has 900 - 58 = <<900-58=842>>842 bottles of apple juice for herself.\n#### 842"
+    },
+    {
+      "score": 0,
+      "pred": "0.335",
+      "gold": "4",
+      "gen_text": "First convert Adam\u2019s height to feet: 40 inches / 12 inches/foot = <<40/12=3.33>>3.33 feet\nThen subtract the height he is now from the height he needs to be: 4 feet - 3.33 feet = <<4-3.33=0.67>>0.67 feet\nThen divide that number by the amount he grows per year to find out how many years it will take: 0.67 feet / 2 inches/year = <<0.67/2=0.335>>0.335 years\n#### 0.335"
+    },
+    {
+      "score": 1,
+      "pred": "26",
+      "gold": "26",
+      "gen_text": "A dozen is 12 marbles, so 2 dozen is 2*12 = <<2*12=24>>24 marbles.\nBob has 60-24 = <<60-24=36>>36 marbles.\nIf he loses 10 marbles, he will have 36-10 = <<36-10=26>>26 marbles.\n#### 26"
+    },
+    {
+      "score": 0,
+      "pred": "4050",
+      "gold": "10800",
+      "gen_text": "The dress pants cost 750/5=$<<750/5=150>>150 each\nSo the dress pants cost 10*150=$<<10*150=1500>>1500\nThe dress shirts cost 10*3*60=$<<10*3*60=1800>>1800\nSo everything cost 750*10+1500+1800=$<<750*10+1500+1800=4050>>4050\n#### 4050"
+    },
+    {
+      "score": 1,
+      "pred": "23",
+      "gold": "23",
+      "gen_text": "On Wednesday, Bruce works 5*2=<<5*2=10>>10 hours.\nOn Thursday, Bruce works 10-2=<<10-2=8>>8 hours.\nIn all, Bruce works 5+10+8=<<5+10+8=23>>23 hours.\n#### 23"
+    },
+    {
+      "score": 1,
+      "pred": "48",
+      "gold": "48",
+      "gen_text": "He drank 2*8=<<2*8=16>>16 ounces of milk\nSo he consumed 16*3=<<16*3=48>>48 calories\n#### 48"
+    },
+    {
+      "score": 0,
+      "pred": "26",
+      "gold": "3",
+      "gen_text": "First find the total weight of the soil: 30 pounds * 1.5 pounds/carnation = <<30*1.5=45>>45 pounds\nThen subtract the weight of the carnations and sunflowers from the total weight of the soil to find the weight of the roses: 45 pounds - 4 pounds - 15 pounds = <<45-4-15=26>>26 pounds\nThen divide the weight of the roses by the weight of each rose to find the number of roses: 26 pounds / 1 pound/rose = <<26/1=26>>26 roses\n#### 26"
+    },
+    {
+      "score": 1,
+      "pred": "70",
+      "gold": "70",
+      "gen_text": "The discount is 100*.3=$<<100*.3=30>>30\nSo the grooming cost is 100-30=$<<100-30=70>>70\n#### 70"
+    },
+    {
+      "score": 0,
+      "pred": "6",
+      "gold": "78",
+      "gen_text": "Anne kept 2 packs of sweets, so she gave 15 - 2 = <<15-2=13>>13 packs to her friends.\nEach pack has 60 pieces, so each of her friends received 60/10 = <<60/10=6>>6 pieces of sweets.\n#### 6"
+    },
+    {
+      "score": 1,
+      "pred": "8",
+      "gold": "8",
+      "gen_text": "There are 20-4=<<20-4=16>>16 pencils in the box.\nThere are 16/2=<<16/2=8>>8 pairs of pencils in the box.\n#### 8"
+    },
+    {
+      "score": 1,
+      "pred": "45",
+      "gold": "45",
+      "gen_text": "Shawna is 3*3=<<3*3=9>>9 years old.\nShawna's father is 9*5=<<9*5=45>>45 years old.\n#### 45"
+    },
+    {
+      "score": 1,
+      "pred": "80",
+      "gold": "80",
+      "gen_text": "Let x be the amount of money Brad gets.\nJeff gets 4x dollars.\nThe total amount of money is 100 dollars, so 4x + x = 100\nCombining like terms, we get 5x = 100\nDividing both sides by 5, we get x = 20\nJeff gets 4 * 20 = <<4*20=80>>80 dollars.\n#### 80"
+    },
+    {
+      "score": 0,
+      "pred": "12",
+      "gold": "240",
+      "gen_text": "He has 1000/20=<<1000/20=50>>50 bills\nHe loses 10/50=<<10/50=0.2>>0.2 of his bills\nHe has 50-10=<<50-10=40>>40 bills left\nHe uses 40/2=<<40/2=20>>20 bills to pay a bill\nHe has 40-20=<<40-20=20>>20 bills left\nHe triples his money so he has 20*3=<<20*3=60>>60 bills\nHe converts all his bills to 5 dollar bills so he has 60/5=<<60/5=12>>12 5 dollar bills\n#### 12"
+    },
+    {
+      "score": 1,
+      "pred": "12",
+      "gold": "12",
+      "gen_text": "The pool is 6*4=<<6*4=24>>24 feet long\nSo it is 24*5=<<24*5=120>>120 cubic feet\nSo it will cost 120*.1=$<<120*.1=12>>12\n#### 12"
+    },
+    {
+      "score": 1,
+      "pred": "655",
+      "gold": "655",
+      "gen_text": "Bernice drove 325 kilometers x 4 days = <<325*4=1300>>1300 kilometers.\nShe still needs to drive 1955 kilometers - 1300 kilometers = <<1955-1300=655>>655 kilometers.\n#### 655"
+    },
+    {
+      "score": 0,
+      "pred": "720",
+      "gold": "98",
+      "gen_text": "First find the width of the room: 360 sq ft / 3 yd/sq yd = <<360/3=120>>120 sq yd\nThen convert the width to feet: 120 sq yd * 3 ft/sq yd = <<120*3=360>>360 ft\nThen add the length and width to find the perimeter: 360 ft + 360 ft = <<360+360=720>>720 ft\n#### 720"
+    },
+    {
+      "score": 1,
+      "pred": "2",
+      "gold": "2",
+      "gen_text": "He walked 4 miles to the store and 4 miles back so he walked 4+4 = <<4+4=8>>8 miles\nHe walked 8 miles in 1 hour because he walks 4 miles per hour so it took him 8/4 = <<8/4=2>>2 hours\n#### 2"
+    },
+    {
+      "score": 1,
+      "pred": "120",
+      "gold": "120",
+      "gen_text": "Linus bought 2 devices last Monday for $20 each, so he spent 2 x $20 = $<<2*20=40>>40.\nHe sold the 2 devices for twice the amount of the original price, so he earned 2 x $20 = $<<2*20=40>>40.\nHe bought 4 devices last Tuesday for $20 each, so he spent 4 x $20 = $<<4*20=80>>80.\nHe sold the 4 devices for twice the amount of the original price, so he earned 4 x $20 = $<<4*20=80>>80.\nThe total amount of money he earned from selling the 2 devices he bought last Monday is $40.\nThe total amount of money he earned from selling the 4 devices he bought last Tuesday is $80.\nThe total amount of money he earned from selling all the mobile devices he bought last Monday and Tuesday is $40 + $80 = $<<40+80=120>>120.\n#### 120"
+    },
+    {
+      "score": 0,
+      "pred": "180",
+      "gold": "360",
+      "gen_text": "He collects 2 peaches a minute so in 3 hours he collects 2*60*3=<<2*60*3=180>>180 peaches\n#### 180"
+    },
+    {
+      "score": 1,
+      "pred": "68",
+      "gold": "68",
+      "gen_text": "Joan is 20 + 5 = <<20+5=25>>25 years old.\nMary is 25 - 2 = <<25-2=23>>23 years old.\nThe sum of the ages of the three girls is 23 + 25 + 20 = <<23+25+20=68>>68 years.\n#### 68"
+    },
+    {
+      "score": 0,
+      "pred": "12",
+      "gold": "108",
+      "gen_text": "If 90 people were required to split into groups for the competition to begin, 9-person groups were formed, so 90/9 = <<90/9=10>>10 groups were formed.\nIf 3/5 of the number of groups each had members bring back 2 seashells each, 3/5*10 = <<3/5*10=6>>6 groups had members bring back 2 seashells each.\nIf 6 groups had members bring back 2 seashells each, 6*2 = <<6*2=12>>12 seashells were brought back.\n#### 12"
+    },
+    {
+      "score": 1,
+      "pred": "9",
+      "gold": "9",
+      "gen_text": "The light blinks 255 times in 5 minutes, so it blinks 255/5 = <<255/5=51>>51 times per minute.\nIt will take the light 459/51 = <<459/51=9>>9 minutes to blink 459 times.\n#### 9"
+    },
+    {
+      "score": 1,
+      "pred": "3000",
+      "gold": "3000",
+      "gen_text": "The factory makes 100 quarts of chocolate ice cream in 2 hours so 100/2 = <<100/2=50>>50 quarts per hour\nThe factory makes 50 quarts of vanilla ice cream in 4 hours so 50/4 = <<50/4=12.5>>12.5 quarts per hour\nIn 48 hours the factory makes 48*50 = <<48*50=2400>>2400 quarts of chocolate ice cream\nIn 48 hours the factory makes 48*12.5 = <<48*12.5=600>>600 quarts of vanilla ice cream\nIn total the factory makes 2400+600 = <<2400+600=3000>>3000 quarts of ice cream\n#### 3000"
+    },
+    {
+      "score": 1,
+      "pred": "20",
+      "gold": "20",
+      "gen_text": "The singer was able to arrange 50 x 20/100 = <<50*20/100=10>>10 microphones in pairs.\nThe number of microphones that were left out is 50 - 10 = <<50-10=40>>40.\nThe number of pairs of microphones that were arranged on the stage is 40/2 = <<40/2=20>>20.\n#### 20"
+    },
+    {
+      "score": 0,
+      "pred": "250",
+      "gold": "100",
+      "gen_text": "The first house will need 250/2=<<250/2=125>>125 cases of shingles.\nThe second house will need 250-125=<<250-125=125>>125 cases of shingles.\nThe third house will need 125*2=<<125*2=250>>250 cases of shingles.\n#### 250"
+    },
+    {
+      "score": 1,
+      "pred": "10",
+      "gold": "10",
+      "gen_text": "Two-thirds of the loaves are sold in the morning, so 60 x 2/3 = <<60*2/3=40>>40 loaves are sold in the morning.\nHalf of what is left is sold equally in the afternoon and evening, so 60 - 40 = <<60-40=20>>20 loaves are sold in the afternoon and evening.\nThe afternoon and evening are sold equally, so 20/2 = <<20/2=10>>10 loaves are sold in the afternoon.\n#### 10"
+    },
+    {
+      "score": 1,
+      "pred": "15400",
+      "gold": "15400",
+      "gen_text": "The hotel is 20/100*1500=$<<20/100*1500=300>>300 more expensive\nSo the hotel cost 1500+300=$<<1500+300=1800>>1800 per day\nSo the hotel cost 1800*3=$<<1800*3=5400>>5400\nThe tickets cost 5000*2=$<<5000*2=10000>>10000\nSo the trip cost 10000+5400=$<<10000+5400=15400>>15400\n#### 15400"
+    },
+    {
+      "score": 1,
+      "pred": "135",
+      "gold": "135",
+      "gen_text": "The city will set off 15 boxes * 20 fireworks = <<15*20=300>>300 fireworks.\nHannah will see 300 fireworks * 40% = <<300*40*.01=120>>120 fireworks.\nHannah will set off 3 boxes * 5 fireworks = <<3*5=15>>15 fireworks.\nHannah will see 120 fireworks + 15 fireworks = <<120+15=135>>135 fireworks.\n#### 135"
+    },
+    {
+      "score": 1,
+      "pred": "1240",
+      "gold": "1240",
+      "gen_text": "There are 40 x 25 = <<40*25=1000>>1000 students in the school.\nThere are 40 x 3 = <<40*3=120>>120 teachers in the school.\nSo, the students will plant 1000 x 1 = <<1000*1=1000>>1000 trees.\nThe teachers will plant 120 x 2 = <<120*2=240>>240 trees.\nTherefore, they will have planted a total of 1000 + 240 = <<1000+240=1240>>1240 trees.\n#### 1240"
+    },
+    {
+      "score": 1,
+      "pred": "27",
+      "gold": "27",
+      "gen_text": "Timothy has 18*3=<<18*3=54>>54 pens.\nSarah has 54/2=<<54/2=27>>27 pens.\n#### 27"
+    },
+    {
+      "score": 1,
+      "pred": "70",
+      "gold": "70",
+      "gen_text": "Let x be the number of gold coins.\nThe number of silver coins is x-30.\nThe total number of coins is 110, so x+(x-30)=110\nCombining like terms, we get 2x-30=110\nAdding 30 to both sides, we get 2x=140\nDividing both sides by 2, we get x=70\n#### 70"
+    },
+    {
+      "score": 0,
+      "pred": "100",
+      "gold": "10",
+      "gen_text": "Mike will read 10 pages a day, so he will read 10 x 30 = <<10*30=300>>300 pages in 30 days.\nThe book has 200 pages, so Mike will finish reading it 300 - 200 = <<300-200=100>>100 pages before the deadline.\n#### 100"
+    },
+    {
+      "score": 0,
+      "pred": "7200",
+      "gold": "5",
+      "gen_text": "First find how many snowballs melt every 15 minutes: 2 snowballs / hour * 15 minutes / 60 minutes = <<2*2/60=.5>>.5 snowballs\nThen divide the number of snowballs he wants by the number that melt every 15 minutes to find how many hours it takes: 60 snowballs / .5 snowballs/hour = <<60/.5=120>>120 hours\nThen multiply that number by 60 minutes to find how many minutes it takes: 120 hours * 60 minutes/hour = <<120*60=7200>>7200 minutes\n#### 7200"
+    },
+    {
+      "score": 1,
+      "pred": "5",
+      "gold": "5",
+      "gen_text": "The mother spends $4.20 + $9.45 + $1.35 = $<<4.2+9.45+1.35=14.95>>14.95.\nThe cashier gives back $20 - $14.95 = $<<20-14.95=5.05>>5.05.\n#### 5"
+    },
+    {
+      "score": 0,
+      "pred": "180",
+      "gold": "150",
+      "gen_text": "Lillian has 3 + 3 = <<3+3=6>>6 bird feeders in her garden.\nThe homemade bird feeders attract 20 + 10 = <<20+10=30>>30 birds each.\nThe store-bought bird feeders attract 20 birds each.\nSo, Lillian can expect to see 6 * 30 = <<6*30=180>>180 birds in her garden each day.\n#### 180"
+    },
+    {
+      "score": 0,
+      "pred": "1755",
+      "gold": "1300",
+      "gen_text": "In the first year, Elise sold 45 * 2 = <<45*2=90>>90 books.\nIn the first year, she earned 90 * 20 = <<90*20=1800>>1800$.\nIn the second year, she earned 1800 - 45 = <<1800-45=1755>>1755$.\n#### 1755"
+    },
+    {
+      "score": 0,
+      "pred": "2",
+      "gold": "1",
+      "gen_text": "The yogurt costs Ellen $6 / 2 = $<<6/2=3>>3.\nSo, Ellen pays $11 - $6 - $3 = $<<11-6-3=2>>2 for one carrot every day.\n#### 2"
+    },
+    {
+      "score": 0,
+      "pred": "21",
+      "gold": "17",
+      "gen_text": "Cindy has 2 x 2 = <<2*2=4>>4 math and science books.\nThe total weight of the math and science books is 4 x 2 = <<4*2=8>>8 pounds.\nThe total weight of the French and English books is 4 + 3 = <<4+3=7>>7 pounds.\nThe history book weighs 2 x 3 = <<2*3=6>>6 pounds.\nThe total weight of all the books is 8 + 7 + 6 = <<8+7+6=21>>21 pounds.\n#### 21"
+    },
+    {
+      "score": 1,
+      "pred": "100",
+      "gold": "100",
+      "gen_text": "The tables cost 4 * $20 = $<<4*20=80>>80.\nThe roof frames cost 2 * $10 = $<<2*10=20>>20.\nSo, Ali has to pay $80 + $20 = $<<80+20=100>>100.\n#### 100"
+    },
+    {
+      "score": 0,
+      "pred": "28",
+      "gold": "21",
+      "gen_text": "He eats 6*2=<<6*2=12>>12 tomatoes per day\nSo he eats 12*7=<<12*7=84>>84 tomatoes per week\nSo he needs 84/3=<<84/3=28>>28 vines\n#### 28"
+    },
+    {
+      "score": 0,
+      "pred": "-8.5",
+      "gold": "3",
+      "gen_text": "The taffy was $3 per pound and she bought 2 pounds so that cost 3*2 = $<<3*2=6>>6\nThe taffy was on sale for 1/2 off so she got 1/2*3 = $<<1/2*3=1.50>>1.50 off\nThe taffy was $3 and she got $1.50 off so she paid 3-1.50 = $<<3-1.50=1.50>>1.50\nThe seashells were $1.50 and the magnets were $0.25 each and she bought 4 so that cost 0.25*4 = $<<0.25*4=1>>1\nShe spent $6 on taffy, $1.50 on seashells and $1 on magnets for a total of 6+1.5+1 = $<<6+1.5+1=8.50>>8.50\nHer parents gave her $10 and she spent $8.50 so she has 10-8.50 = $"
+    },
+    {
+      "score": 0,
+      "pred": "48",
+      "gold": "8",
+      "gen_text": "1 foot is equal to 12 x 6 = <<12*6=72>>72 inches.\nSo, 4 feet is equal to 4 x 72 = <<4*72=288>>288 inches.\nTherefore, Tracy obtained 288 / 6 = <<288/6=48>>48 pieces.\n#### 48"
+    },
+    {
+      "score": 1,
+      "pred": "3",
+      "gold": "3",
+      "gen_text": "Ned is 7-2=<<7-2=5>>5 feet tall.\nCarl is 5+1=<<5+1=6>>6 feet tall.\nCarl's cane is 6/2=<<6/2=3>>3 feet long.\n#### 3"
+    },
+    {
+      "score": 1,
+      "pred": "30",
+      "gold": "30",
+      "gen_text": "Martha is 24 - 4 = <<24-4=20>>20 years old.\nJeff is 20 + 10 = <<20+10=30>>30 years old.\n#### 30"
+    },
+    {
+      "score": 0,
+      "pred": "155",
+      "gold": "150",
+      "gen_text": "The jacket costs $25 x 3 = $<<25*3=75>>75.\nThe pants cost $25 + $75 / 2 = $<<25+75/2=55>>55.\nSo the total cost of each uniform is $25 + $75 + $55 = $<<25+75+55=155>>155.\n#### 155"
+    },
+    {
+      "score": 0,
+      "pred": "140",
+      "gold": "50",
+      "gen_text": "First find the time in minutes Chris spends mowing in turtle mode: 1 hour * 60 minutes/hour = <<1*60=60>>60 minutes\nThen find the time in minutes Chris spends mowing in rabbit mode: 40 minutes/hour * 2 hours = <<40*2=80>>80 minutes\nThen add the time in minutes Chris spends mowing in each mode to find the total time: 60 minutes + 80 minutes = <<60+80=140>>140 minutes\n#### 140"
+    },
+    {
+      "score": 1,
+      "pred": "25",
+      "gold": "25",
+      "gen_text": "Henry traveled 60 - 20 = <<60-20=40>>40 miles after his first stop.\nHe traveled 40 - 15 = <<40-15=25>>25 miles between his first and second stops.\n#### 25"
+    },
+    {
+      "score": 0,
+      "pred": "86",
+      "gold": "10",
+      "gen_text": "Topher\u2019s shoe is 8*12+4=<<8*12+4=96>>96 inches long.\nThe length of one of Bobby\u2019s shoes is 96-10=<<96-10=86>>86 inches long.\n#### 86"
+    },
+    {
+      "score": 0,
+      "pred": "4000",
+      "gold": "2000",
+      "gen_text": "Elliott took 10,000 steps - 5,000 steps = <<10000-5000=5000>>5,000 steps during his walks to and from school.\nElliott took 5,000 steps + 1,000 steps = <<5000+1000=6000>>6,000 steps before his jog.\nElliott took 6,000 steps - 2,000 steps = <<6000-2000=4000>>4,000 steps during his jog.\n#### 4000"
+    },
+    {
+      "score": 1,
+      "pred": "110",
+      "gold": "110",
+      "gen_text": "He buys 24 pairs of shoes a year because 12 x 2 = <<12*2=24>>24\nHe pays $110 per pair of shoes because 2640 / 24 = <<2640/24=110>>110\n#### 110"
+    },
+    {
+      "score": 1,
+      "pred": "18",
+      "gold": "18",
+      "gen_text": "Ashley should give a tip of $15 x 1/5 = $<<15*1/5=3>>3.\nSo, the total amount that Ashley should give the delivery man is $15 + $3 = $<<15+3=18>>18.\n#### 18"
+    },
+    {
+      "score": 0,
+      "pred": "517",
+      "gold": "452",
+      "gen_text": "Kim woke up 5 minutes earlier than usual, so she woke up at 6 - 5 = <<6-5=1>>1 a.m.\nShe was sleepwalking from 2:15 to 2:38, so she was sleepwalking for 2:38 - 2:15 = <<238-215=23>>23 minutes.\nShe slept for 10 - 1 = <<10-1=9>>9 hours on her bed.\nShe slept for 9 x 60 = <<9*60=540>>540 minutes on her bed.\nShe was sleepwalking for 23 minutes, so she slept for 540 - 23 = <<540-23=517>>517 minutes on her bed.\n#### 517"
+    },
+    {
+      "score": 0,
+      "pred": "256",
+      "gold": "284",
+      "gen_text": "The first 6 months cost 6*8 = $<<6*8=48>>48.\nThe next 8 months cost 8*12 = $<<8*12=96>>96.\nThe next 8 months cost 8*14 = $<<8*14=112>>112.\nSo the total cost is 48+96+112 = $<<48+96+112=256>>256.\n#### 256"
+    },
+    {
+      "score": 0,
+      "pred": "12.5",
+      "gold": "4",
+      "gen_text": "Bob had 7 fish in his pond, and 3 were orange, so he had 7-3 = <<7-3=4>>4 white fish.\nHe bought 17 fish at the store, and he now has twice as many orange fish as white fish, so he has 17/2 = <<17/2=8.5>>8.5 orange fish.\nHe had 4 white fish in his pond, and he now has 8.5 orange fish, so he has 8.5-4 = <<8.5-4=4.5>>4.5 more orange fish than white fish.\nHe bought 17 fish at the store, and he has 4.5 more orange fish than white fish, so he bought 17-4.5 = <<17-4.5=12.5>>12.5 white fish.\n#### 12.5"
+    },
+    {
+      "score": 0,
+      "pred": "1",
+      "gold": "11232",
+      "gen_text": "The bedroom is 18 x 12 = <<18*12=216>>216 square feet.\nThe new carpet will cost 12 + 2 = $<<12+2=14>>14 per square foot.\nThe padding will cost 2 x 216 = $<<2*216=432>>432.\nThe contractor will charge 4 x 216 = $<<4*216=864>>864 to remove the old carpet.\nThe contractor will charge 34 x 216 = $<<34*216=7544>>7544 to install the new carpet.\nThe total cost of the new carpet and padding is 14 x 216 = $<<14*216=3168>>3168.\nThe total cost of the project is 3168 + 864 + 432 + 7544 = $<<3168+864+432+7544=12008>>1"
+    },
+    {
+      "score": 0,
+      "pred": "880",
+      "gold": "1520",
+      "gen_text": "Rafaela received 40 customers * $20/customer = $<<40*20=800>>800 in tips.\nJulieta received $800 * 10/100 = $<<800*10/100=80>>80 in tips.\nTogether, they received $800 + $80 = $<<800+80=880>>880 in tips.\n#### 880"
+    },
+    {
+      "score": 0,
+      "pred": "20",
+      "gold": "48",
+      "gen_text": "Sadie slept 8 - 2 = <<8-2=6>>6 hours on Tuesday.\nShe slept 8 - 2 = <<8-2=6>>6 hours on Wednesday.\nThus, she slept 6 + 6 = <<6+6=12>>12 hours on Tuesday and Wednesday.\nTherefore, she slept 12 + 8 = <<12+8=20>>20 hours in total throughout the week.\n#### 20"
+    },
+    {
+      "score": 1,
+      "pred": "3",
+      "gold": "3",
+      "gen_text": "There are 50*.2=<<50*.2=10>>10 management employees\nOut of the 10, 30% oversee the company, so there are 10*.3=<<10*.3=3>>3 employees who oversee the company\n#### 3"
+    },
+    {
+      "score": 1,
+      "pred": "72",
+      "gold": "72",
+      "gen_text": "Matthew has 12 toy soldiers, and he wants to sell them for a fair price. He found a buyer who is willing to pay for half his collection $5 per toy, and for the other half $7 per toy.\nThe first half of the collection is 12 / 2 = <<12/2=6>>6 toy soldiers.\nThe second half of the collection is 12 / 2 = <<12/2=6>>6 toy soldiers.\nThe first half of the collection will earn Matthew 6 * 5 = $<<6*5=30>>30.\nThe second half of the collection will earn Matthew 6 * 7 = $<<6*7=42>>42.\nIn total, Matthew will earn 30 + 42 = $<<30+42=72>>72.\n#### 72"
+    },
+    {
+      "score": 1,
+      "pred": "1125",
+      "gold": "1125",
+      "gen_text": "On Monday and Tuesday they received 1907 reports, so 5168 - 1907 = <<5168-1907=3261>>3261 reports on Wednesday.\nOn Thursday and Friday they received 2136 reports, so 3261 - 2136 = <<3261-2136=1125>>1125 reports on Wednesday.\n#### 1125"
+    },
+    {
+      "score": 1,
+      "pred": "72",
+      "gold": "72",
+      "gen_text": "Ashley\u2019s internet connection speed in kb per hour is 20 kb/s * 60 s/min * 60 min/hour = <<20*60*60=72000>>72000 kb/hour\nHer internet connection speed in Mb per hour is 72000 kb/hour / 1000 kb/Mb = <<72000/1000=72>>72 Mb/hour\n#### 72"
+    },
+    {
+      "score": 1,
+      "pred": "92",
+      "gold": "92",
+      "gen_text": "The price of the bag of marbles increases by 20/100*20 = $<<20/100*20=4>>4 every two months.\nThe price of the bag of marbles increases by $4*3 = $<<4*3=12>>12 every 6 months.\nThe price of the bag of marbles increases by $12*6 = $<<12*6=72>>72 every 36 months.\nThe price of the bag of marbles after 36 months is $20+$72 = $<<20+72=92>>92.\n#### 92"
+    },
+    {
+      "score": 1,
+      "pred": "72",
+      "gold": "72",
+      "gen_text": "The second child is 6+2=<<6+2=8>>8 feet tall.\nThe third child is 8-5=<<8-5=3>>3 feet tall.\nThe fourth child is 3+3=<<3+3=6>>6 feet tall.\nSo the fourth child is 6*12=<<6*12=72>>72 inches tall.\n#### 72"
+    },
+    {
+      "score": 0,
+      "pred": "33",
+      "gold": "31",
+      "gen_text": "He passes out 14 lollipops so he has 24-14=<<24-14=10>>10 lollipops left\nHe buys twice as many lollipops as he gave out so he buys 14*2=<<14*2=28>>28 lollipops\nHe has 10+28=<<10+28=38>>38 lollipops\nHe eats 3 more that night so he has 38-3=<<38-3=35>>35 lollipops\nHe eats 2 more in the morning so he has 35-2=<<35-2=33>>33 lollipops\n#### 33"
+    },
+    {
+      "score": 1,
+      "pred": "90",
+      "gold": "90",
+      "gen_text": "The total cost of the manicure and pedicure is $35 + $40 = $<<35+40=75>>75.\nThe discount is $75 x 20/100 = $<<75*20/100=15>>15.\nSo, the total cost of the manicure and pedicure is $75 - $15 = $<<75-15=60>>60.\nThe total cost of the nail art is $3 x 10 = $<<3*10=30>>30.\nTherefore, Karen would pay $60 + $30 = $<<60+30=90>>90 in all.\n#### 90"
+    },
+    {
+      "score": 0,
+      "pred": "66",
+      "gold": "63",
+      "gen_text": "She needs to make 3 hats, so that's 3 * 2 = <<3*2=6>>6 skeins of wool.\nShe needs to make 3 scarves, so that's 3 * 4 = <<3*4=12>>12 skeins of wool.\nShe needs to make 3 sweaters, so that's 3 * 12 = <<3*12=36>>36 skeins of wool.\nShe needs to make 3 pairs of mittens, so that's 3 * 1 = <<3*1=3>>3 skeins of wool.\nShe needs to make 3 pairs of socks, so that's 3 * 2 = <<3*2=6>>6 skeins of wool.\nIn total, she needs 6 + 12 + 36 + 3 + 6 = <<6+12+36+3+6=66>>66 skeins of wool.\n#### 66"
+    },
+    {
+      "score": 1,
+      "pred": "180",
+      "gold": "180",
+      "gen_text": "Susan weighs 150-20=<<150-20=130>>130 pounds\nBob weighs 130*2=<<130*2=260>>260 pounds\nThe total weight of the 3 friends is 150+130+260=<<150+130+260=540>>540 pounds\nThe average weight of the 3 friends is 540/3=<<540/3=180>>180 pounds\n#### 180"
+    },
+    {
+      "score": 1,
+      "pred": "2",
+      "gold": "2",
+      "gen_text": "Chikote howls for 20 seconds * 2 = <<20*2=40>>40 seconds.\nIgneous howls for 20 seconds + 40 seconds = <<20+40=60>>60 seconds.\nThe total length of time of the three wolves' howls is 20 seconds + 40 seconds + 60 seconds = <<20+40+60=120>>120 seconds.\nThe total length of time of the three wolves' howls is 120 seconds / 60 seconds/minute = <<120/60=2>>2 minutes.\n#### 2"
+    },
+    {
+      "score": 0,
+      "pred": "29",
+      "gold": "16",
+      "gen_text": "There are 52 members in the choir and 50% are boys so there are 52*.5 = <<52*.5=26>>26 boys\nThere are 52 members in the choir and 50% are girls so there are 52*.5 = <<52*.5=26>>26 girls\nThere are 26 boys and 26 girls so there are 26+26 = <<26+26=52>>52 female members\nThere are 52 female members and half can't make it so 52*.5 = <<52*.5=26>>26 can't make it\nThere are 52 female members and 26 can't make it so 52-26 = <<52-26=26>>26 female members can make it\nThere are 3 teachers and 26 female members so there are 3+26 = <<3+26=29>>29 people singing\n#### 29"
+    },
+    {
+      "score": 1,
+      "pred": "25",
+      "gold": "25",
+      "gen_text": "The number of students that like to play music is 5 x 2 = <<5*2=10>>10.\nThe number of students that like to play video games is 50 - 10 - 10 - 5 = <<50-10-10-5=25>>25.\n#### 25"
+    },
+    {
+      "score": 1,
+      "pred": "36",
+      "gold": "36",
+      "gen_text": "Tim needs to make 4 gallons of lemonade, and each gallon requires 1 cup of lemon juice, so he needs 4*1 = <<4*1=4>>4 cups of lemon juice.\nHe needs 6 lemons to make 1 cup of juice, so he needs 4 cups of juice, so he needs 6*4 = <<6*4=24>>24 lemons.\nAllen wants an extra gallon of lemonade that is twice as tart, so he needs 2*1 = <<2*1=2>>2 cups of juice.\nHe needs 6 lemons to make 1 cup of juice, so he needs 2 cups of juice, so he needs 6*2 = <<6*2=12>>12 lemons.\nIn total, Tim needs 24+12 = <<24+12=36>>36 lemons.\n#### 36"
+    },
+    {
+      "score": 0,
+      "pred": "750",
+      "gold": "2400",
+      "gen_text": "He buys 10/2=<<10/2=5>>5 bottles of cognac\nSo he spends 10*.5=$<<10*.5=5>>5 more per bottle\nSo he spends 10*1.5=$<<10*1.5=15>>15 per bottle\nSo he spends 10*15=$<<10*15=150>>150 on cognac\nSo he spends 600+150=$<<600+150=750>>750 on everything\n#### 750"
+    },
+    {
+      "score": 1,
+      "pred": "200",
+      "gold": "200",
+      "gen_text": "There are 20/2=<<20/2=10>>10 episodes in total.\nSo John will spend 20*10=<<20*10=200>>200 minutes watching the show.\n#### 200"
+    },
+    {
+      "score": 1,
+      "pred": "81",
+      "gold": "81",
+      "gen_text": "Walter ate 2/5 * 60 = <<2/5*60=24>>24 apples.\nHe was left with 60 - 24 = <<60-24=36>>36 apples.\nHe gave his sister 36 * 25/100 = <<36*25/100=9>>9 apples.\nHe was left with 36 - 9 = <<36-9=27>>27 apples.\nHe received 27 * $3 = $<<27*3=81>>81.\n#### 81"
+    },
+    {
+      "score": 1,
+      "pred": "52",
+      "gold": "52",
+      "gen_text": "Kimberly bought 8 x 11 = <<8*11=88>>88 tins of cat food.\nShe bought 6 x 6 = <<6*6=36>>36 tins of dog food.\nTherefore, Kimberly bought 88 - 36 = <<88-36=52>>52 more tins of cat food than dog food.\n#### 52"
+    },
+    {
+      "score": 0,
+      "pred": "5",
+      "gold": "6",
+      "gen_text": "Bubbles has 3 + 5 + 2 + 4 = <<3+5+2+4=14>>14 stuffed animals.\nShe should buy 14 * 30/100 = <<14*30/100=4.2>>4.2 stuffed goats.\nSince she can't buy a fraction of a stuffed goat, she should buy 5 stuffed goats.\n#### 5"
+    },
+    {
+      "score": 1,
+      "pred": "308",
+      "gold": "308",
+      "gen_text": "The vaccines cost 20*3 = $<<20*3=60>>60.\nThe vases cost 12*4 = $<<12*4=48>>48.\nSo far, the kitten has cost 200+60+48 = $<<200+60+48=308>>308.\n#### 308"
+    },
+    {
+      "score": 1,
+      "pred": "3",
+      "gold": "3",
+      "gen_text": "The youngest son is 8/2 = <<8/2=4>>4 years old.\nThe two sons together are 8+4 = <<8+4=12>>12 years old.\nThe two sons wash 12 oranges.\nThere are 15-12 = <<15-12=3>>3 oranges left unwashed.\n#### 3"
+    },
+    {
+      "score": 1,
+      "pred": "4",
+      "gold": "4",
+      "gen_text": "Each horse consumes 5 x 2 = <<5*2=10>>10 pounds of oats per day.\nSo, the four horses consume 10 x 4 = <<10*4=40>>40 pounds of oats per day.\nTherefore, he needs 40 x 5 = <<40*5=200>>200 pounds of oats for five days.\nThus, he needs 200/50 = <<200/50=4>>4 bags of oats.\n#### 4"
+    },
+    {
+      "score": 0,
+      "pred": "26",
+      "gold": "48",
+      "gen_text": "The seagull ate 14 / 2 = <<14/2=7>>7 fries.\nThe pigeons ate 3 x 3 = <<3*3=9>>9 fries.\nThe raccoon ate 2/3 x 5 = <<2/3*5=10/3>>10/3 fries.\nThe ants ate 1 fry.\nSo, 5 + 7 + 9 + 10/3 + 1 = <<5+7+9+10/3+1=26>>26 fries.\n#### 26"
+    },
+    {
+      "score": 1,
+      "pred": "84",
+      "gold": "84",
+      "gen_text": "Grayson earns 3 * 2 = <<3*2=6>>6 cents from recycling aluminum cans.\nShe earns 5 * 3 = <<5*3=15>>15 cents from recycling plastic bottles.\nGrayson earns 6 + 15 = <<6+15=21>>21 cents from recycling in a week.\nShe earns 21 * 4 = <<21*4=84>>84 cents from recycling in a four-week month.\n#### 84"
+    },
+    {
+      "score": 0,
+      "pred": "60",
+      "gold": "4",
+      "gen_text": "She uses twice as much oil as salt, so she uses 2 * 10 = <<2*10=20>>20 ounces of oil.\nShe uses twice as much salt as zest, so she uses 2 * 10 = <<2*10=20>>20 ounces of salt.\nShe uses the same amount of citrus zest as fragrance, so she uses 10 ounces of citrus zest.\nShe uses the same amount of salt as sugar, so she uses 10 ounces of sugar.\nShe uses 20 ounces of oil, 20 ounces of salt, 10 ounces of citrus zest, and 10 ounces of sugar, for a total of 20 + 20 + 10 + 10 = <<20+20+10+10=60>>60 ounces of ingredients.\n#### 60"
+    },
+    {
+      "score": 1,
+      "pred": "24",
+      "gold": "24",
+      "gen_text": "She needs 16 * .75 = <<16*.75=12>>12 gift bags.\nSo she will spend 12 * 2 = $<<12*2=24>>24.\n#### 24"
+    },
+    {
+      "score": 0,
+      "pred": "355",
+      "gold": "45",
+      "gen_text": "He drives 3*60=<<3*60=180>>180 miles in the first 3 hours\nHe drives 4-2=<<4-2=2>>2 hours at 80 mph\nHe drives 2*80=<<2*80=160>>160 miles in the last 2 hours\nHe drives 1/2*30=<<1/2*30=15>>15 miles in the half hour at 30 mph\nHe drives 180+160+15=<<180+160+15=355>>355 miles in total\n#### 355"
+    },
+    {
+      "score": 1,
+      "pred": "7",
+      "gold": "7",
+      "gen_text": "Billy sold 3 DVDs to his first 3 customers because 3 x 1 = <<3*1=3>>3\nBilly sold 4 DVDs to his next 2 customers because 2 x 2 = <<2*2=4>>4\nBilly sold 0 DVDs to his last 3 customers because 0 x 3 = <<0*3=0>>0\nBilly sold 7 DVDs on Tuesday because 3 + 4 + 0 = <<3+4+0=7>>7\n#### 7"
+    },
+    {
+      "score": 1,
+      "pred": "15",
+      "gold": "15",
+      "gen_text": "Let x be the number of games they won.\nSo they lost x-8 games.\nThe total number of games they played is x+x-8=22\nSo 2x-8=22\n2x=30\nx=<<15=15>>15\nThey won 15 games.\n#### 15"
+    },
+    {
+      "score": 0,
+      "pred": "6",
+      "gold": "60",
+      "gen_text": "The second level has 16/2 = <<16/2=8>>8 square feet.\nThe third level has 8/2 = <<8/2=4>>4 square feet.\nThe fourth level has 4/2 = <<4/2=2>>2 square feet.\nThe average square footage of a level is (16+8+4+2)/4 = <<(16+8+4+2)/4=6>>6 square feet.\n#### 6"
+    },
+    {
+      "score": 1,
+      "pred": "216",
+      "gold": "216",
+      "gen_text": "The volume of the hole is 6*4*3=<<6*4*3=72>>72 cubic feet.\nIt will take him 72*3=<<72*3=216>>216 seconds to dig the hole.\n#### 216"
+    },
+    {
+      "score": 1,
+      "pred": "6",
+      "gold": "6",
+      "gen_text": "Benny threw 2*20=<<2*20=40>>40 pieces of bologna at the red balloons.\nHe threw 58-40=<<58-40=18>>18 pieces of bologna at the yellow balloons.\nHe threw 18/3=<<18/3=6>>6 pieces of bologna at each yellow balloon.\nThere were 6/1=<<6/1=6>>6 yellow balloons in the bundle.\n#### 6"
+    },
+    {
+      "score": 1,
+      "pred": "560",
+      "gold": "560",
+      "gen_text": "He drives 2*70=<<2*70=140>>140 miles each way\nSo he drives 140*2=<<140*2=280>>280 miles round trip\nThat means he drives 280*2=<<280*2=560>>560 miles a month\n#### 560"
+    },
+    {
+      "score": 1,
+      "pred": "480",
+      "gold": "480",
+      "gen_text": "He works 8*5=<<8*5=40>>40 hours a week\nHe makes 10+2=<<10+2=12>>12 an hour\nSo he makes 12*40=$<<12*40=480>>480 a week\n#### 480"
+    },
+    {
+      "score": 0,
+      "pred": "170",
+      "gold": "700",
+      "gen_text": "The total number of cows on the farm after three weeks is 50 + 20 * 3 = <<50+20*3=130>>130 cows.\nThe total number of chickens on the farm after three weeks is 20 + 10 * 3 = <<20+10*3=40>>40 chickens.\nThe total number of animals on the farm after three weeks is 130 + 40 = <<130+40=170>>170 animals.\n#### 170"
+    },
+    {
+      "score": 0,
+      "pred": "13",
+      "gold": "27",
+      "gen_text": "Trinity sells the magazines at 11/8 x $72 = $<<11/8*72=85>>85.\nHer profit is $85 - $72 = $<<85-72=13>>13.\n#### 13"
+    },
+    {
+      "score": 0,
+      "pred": "45",
+      "gold": "6",
+      "gen_text": "First find how many miles the horse runs: 30 minutes * 60 minutes/hour / 2 hours/mile = <<30*60/2=90>>90 miles\nThen find how many bails of hay the horse eats: 90 miles / 2 miles/bail = <<90/2=45>>45 bails\nThen multiply the number of bails by the cost per bail to find the total cost: 45 bails * $3/bail = $<<45*3=135>>135\nThen subtract the cost of the hay from the amount of money Michael has to find how much change he has: $180 - $135 = $<<180-135=45>>45\n#### 45"
+    },
+    {
+      "score": 1,
+      "pred": "16",
+      "gold": "16",
+      "gen_text": "The car and luggage weigh 1200+250=<<1200+250=1450>>1450 pounds\nThe children weigh 75*2=<<75*2=150>>150 pounds\nSo the total weight is 1450+150=<<1450+150=1600>>1600 pounds\nSo he needs 1600*.01=<<1600*.01=16>>16 pounds of force\n#### 16"
+    },
+    {
+      "score": 1,
+      "pred": "800",
+      "gold": "800",
+      "gen_text": "The discount is $1000 x 20/100 = $<<1000*20/100=200>>200.\nSo, you have to pay $1000 - $200 = $<<1000-200=800>>800.\n#### 800"
+    },
+    {
+      "score": 0,
+      "pred": "8",
+      "gold": "16",
+      "gen_text": "Joey loses 8 pounds in 4 weeks, so he loses 8/4 = <<8/4=2>>2 pounds per week.\nSandy needs 4 weeks to lose the same amount of weight that Joey loses in a single week, so it will take Sandy 4*2 = <<4*2=8>>8 weeks to lose the same amount of weight.\n#### 8"
+    },
+    {
+      "score": 1,
+      "pred": "48",
+      "gold": "48",
+      "gen_text": "Mrs. Sherman made 12 bread rolls for breakfast.\nAfter feeding her 6 children with one each, she was left with 12 - 6 = <<12-6=6>>6 rolls.\nShe broke each of the remaining rolls into 8 pieces and fed them to the chickens.\nTherefore, she fed the chickens 6 x 8 = <<6*8=48>>48 pieces of rolls.\n#### 48"
+    },
+    {
+      "score": 0,
+      "pred": "12",
+      "gold": "7",
+      "gen_text": "He will make 48 croissants because 4 x 12 = <<4*12=48>>48\nHe will need 12 pounds of butter because 48 / 4 = <<48/4=12>>12\n#### 12"
+    },
+    {
+      "score": 1,
+      "pred": "18",
+      "gold": "18",
+      "gen_text": "There are 6 x 2 = <<6*2=12>>12 boys in the park.\nThere are 6 + 12 = <<6+12=18>>18 kids in the park.\n#### 18"
+    },
+    {
+      "score": 0,
+      "pred": "1",
+      "gold": "4",
+      "gen_text": "The super ticket costs $20 and the popcorn and soda cost $1 extra so the total cost is $20 + $1 = $<<20+1=21>>21\nThe regular ticket costs $12 and the popcorn and soda cost $3 each so the total cost is $12 + $3 + $3 = $<<12+3+3=28>>28\nThe super ticket cost $21 and the regular ticket cost $28 so the difference is $28 - $21 = $<<28-21=7>>7\nThe popcorn and soda cost $3 each so the total cost is $3 + $3 = $<<3+3=6>>6\nThe difference between the super ticket and the regular ticket is $7 and the popcorn and soda cost $6 so the regular price of popcorn is $7 - $6 = $<<7-6=1>>1\n#### 1"
+    },
+    {
+      "score": 0,
+      "pred": "180",
+      "gold": "120",
+      "gen_text": "The laptop costs $600, and the sales assistant told her that if she traded in her old laptop, the price of the new one would be reduced by $200. So the laptop will cost $600 - $200 = $<<600-200=400>>400.\nErika has $150 from her part-time job, and her mom agrees to give her $80 to help her. So she has $150 + $80 = $<<150+80=230>>230.\nIf Erika now only needs an extra $50 to buy the laptop, she has $230 - $50 = $<<230-50=180>>180 in her purse.\n#### 180"
+    },
+    {
+      "score": 0,
+      "pred": "0",
+      "gold": "25",
+      "gen_text": "Ava gets 10 points for every enemy she jumps on, so she gets 10*8 = <<10*8=80>>80 points for jumping on 8 more enemies than Emma.\nShe also gets 5 points for every berry she collects, so she gets 5*3 = <<5*3=15>>15 points for collecting 3 more berries than Emma.\nShe gets 30 points for every second left on the timer, so she gets 30*4 = <<30*4=120>>120 points for finishing the level 4 seconds slower than Emma.\nIn total, Ava gets 80+15-120 = <<80+15-120=0>>0 points more than Emma.\n#### 0"
+    },
+    {
+      "score": 1,
+      "pred": "35",
+      "gold": "35",
+      "gen_text": "Sofie will walk 10*7=<<10*7=70>>70 miles in seven days.\nBrian will walk 70/2=<<70/2=35>>35 miles in seven days.\n#### 35"
+    },
+    {
+      "score": 1,
+      "pred": "2304",
+      "gold": "2304",
+      "gen_text": "The accident cost 120*.6=$<<120*.6=72>>72 more\nSo it cost 120+72=$<<120+72=192>>192\nThat means he pays 192*12=$<<192*12=2304>>2304 a year\n#### 2304"
+    },
+    {
+      "score": 0,
+      "pred": "1200",
+      "gold": "1600",
+      "gen_text": "He can buy 2 2 x 4 pieces of wood because 24 / 4 = <<24/4=6>>6\nHe can make 400 sticks from each 2 x 8 piece of wood because 400 / 2 = <<400/2=200>>200\nHe can make 800 sticks from the 2 x 8 pieces of wood because 2 x 400 = <<2*400=800>>800\nHe can make 1600 sticks from the 2 x 4 pieces of wood because 2 x 200 = <<2*200=400>>400\nHe can make 2400 sticks because 800 + 400 = <<800+400=1200>>1200\n#### 1200"
+    },
+    {
+      "score": 1,
+      "pred": "3",
+      "gold": "3",
+      "gen_text": "It takes 2/2=<<2/2=1>>1 bolt of white fiber\nSo it takes 2+1=<<2+1=3>>3 bolts of fiber\n#### 3"
+    },
+    {
+      "score": 0,
+      "pred": "100",
+      "gold": "60",
+      "gen_text": "There are 20 x 20/100 = <<20*20/100=4>>4 students enrolled in contemporary dance.\nThere are 20 - 4 = <<20-4=16>>16 students left.\nThere are 16 x 25/100 = <<16*25/100=4>>4 students enrolled in jazz dance.\nThere are 16 - 4 = <<16-4=12>>12 students left.\nThere are 12 x 100/12 = <<12*100/12=100>>100% of the entire students enrolled in hip-hop dance.\n#### 100"
+    },
+    {
+      "score": 0,
+      "pred": "12",
+      "gold": "145",
+      "gen_text": "The first train will stay in the station for 20 minutes, so the second train will arrive 10 minutes after the first train leaves the station, or 10 + 20 = <<10+20=30>>30 minutes after the first train leaves.\nThe second train will stay in the station for 20 / 4 = <<20/4=5>>5 minutes.\nThe third train will arrive 30 minutes after the second train leaves the station, or 30 + 30 = <<30+30=60>>60 minutes after the first train leaves the station.\nThe third train will stay in the station for 0 minutes, so it will leave the station immediately after it arrives.\nThe fourth train will arrive 20 minutes after the third train leaves the station, or 60 + 20 = <<60+20=80>>80 minutes after the first train leaves the station.\nIn total, Paul will wait 10 + 30 + 5 + 60 + 20 = <<10+30+5+60+20=125>>12"
+    },
+    {
+      "score": 1,
+      "pred": "140000",
+      "gold": "140000",
+      "gen_text": "In one day, the company produces 5000 * $2 = $<<5000*2=10000>>10000 worth of chocolate bars.\nIn two weeks, the company produces 14 * 5000 = <<14*5000=70000>>70000 bars.\nThe company receives $70000 * $2 = $<<70000*2=140000>>140000 for selling produced chocolate bars during two weeks.\n#### 140000"
+    },
+    {
+      "score": 0,
+      "pred": "5",
+      "gold": "3",
+      "gen_text": "Carly made 2 less than 3 times as many brownies as cupcakes, so she made 3*2-2 = <<3*2-2=5>>5 brownies.\nEach person in Carly's class gets two treats, so she made 5*2 = <<5*2=10>>10 treats.\nSince Carly made 5 brownies, she made 10-5 = <<10-5=5>>5 cupcakes.\n#### 5"
+    },
+    {
+      "score": 1,
+      "pred": "25",
+      "gold": "25",
+      "gen_text": "The concert is 65 minutes long and the encore is 15 minutes long so the concert without the encore is 65-15 = <<65-15=50>>50 minutes long\nThe concert is twice as long as her usual concerts so her usual concerts are 50/2 = <<50/2=25>>25 minutes long\n#### 25"
+    },
+    {
+      "score": 0,
+      "pred": "30",
+      "gold": "125",
+      "gen_text": "The jewelry will rise by $5,000 x 2.5/100 = $<<5000*2.5/100=125>>125.\nThe electronic gadgets will rise by $8,000 x 1.2/100 = $<<8000*1.2/100=96>>96.\nThe jewelry will rise by $125 more than the electronic gadgets, so the merchant will make a profit of $125 - $96 = $<<125-96=30>>30 more from the jewelry.\n#### 30"
+    },
+    {
+      "score": 0,
+      "pred": "500",
+      "gold": "7425",
+      "gen_text": "She teaches 5 x 5 = <<5*5=25>>25 classes on weekdays.\nSo, she teaches 25 + 8 = <<25+8=33>>33 classes in a week.\nTherefore, she makes 33 x 15 = $<<33*15=500>>500 in a week.\n#### 500"
+    },
+    {
+      "score": 0,
+      "pred": "16",
+      "gold": "480",
+      "gen_text": "The dance studio has 10 students and is rented 3 days a week, so the total number of students per week is 10 x 3 = <<10*3=30>>30 students.\nThe dance studio charges $25 per session to rent the studio plus $1.50 per student per session, so the total cost per session is 25 + 1.50 x 10 = $<<25+1.50*10=45>>45.\nThe dance studio has 30 students and is rented 3 days a week, so the total number of sessions per week is 30 x 3 = <<30*3=90>>90 sessions.\nThe dance studio has 90 sessions per week and is rented 4 weeks a month, so the total number of sessions per month is 90 x 4 = <<90*4=360>>360 sessions.\nThe dance studio charges $45 per session, so the total earnings per month is 45 x 360 = $<<45*360=16200>>16"
+    },
+    {
+      "score": 1,
+      "pred": "15",
+      "gold": "15",
+      "gen_text": "First find the total number of slices from the large apples: 3 apples * 5 slices/apple = <<3*5=15>>15 slices\nThen find the total number of slices from the small apples: 5 apples * 3 slices/apple = <<5*3=15>>15 slices\nThen add the number of slices from the large and small apples to find the total number of slices: 15 slices + 15 slices = <<15+15=30>>30 slices\nThen subtract the number of slices Adam ate to find the number of slices left: 30 slices - 15 slices = <<30-15=15>>15 slices\n#### 15"
+    },
+    {
+      "score": 0,
+      "pred": "16",
+      "gold": "7",
+      "gen_text": "John and DeSean made 9 + 9 = <<9+9=18>>18 S'mores.\nThey dropped 3 marshmallows on the ground, so they have 35 - 3 = <<35-3=32>>32 marshmallows left.\nThey can make 32 / 1 = <<32/1=32>>32 more S'mores.\nEach kid can have 32 / 2 = <<32/2=16>>16 more S'mores.\n#### 16"
+    },
+    {
+      "score": 0,
+      "pred": "65",
+      "gold": "130",
+      "gen_text": "Elise writes the alphabet in full twice, so she writes 26 letters * 2 = <<26*2=52>>52 letters.\nShe writes half of the alphabet once, so she writes 26 letters / 2 = <<26/2=13>>13 letters.\nShe re-writes everything she has already written, so she writes 52 letters + 13 letters = <<52+13=65>>65 letters.\n#### 65"
+    },
+    {
+      "score": 0,
+      "pred": "500",
+      "gold": "11",
+      "gen_text": "They play for 4*60=<<4*60=240>>240 minutes\nJack plays for 240/2=<<240/2=120>>120 minutes\nThe better friend plays for 240/1.5=<<240/1.5=160>>160 minutes\nThe worse friends play for 240/2=<<240/2=120>>120 minutes\nJack plays for 120/20=<<120/20=6>>6 games\nThe better friend plays for 160/20=<<160/20=8>>8 games\nThe worse friends play for 120/20=<<120/20=6>>6 games\nThey play 6+8+6=<<6+8+6=20>>20 games\nEach game costs 25 cents so they spend 20*25=<<20*25=500>>500 cents\n#### 500"
+    },
+    {
+      "score": 1,
+      "pred": "60000",
+      "gold": "60000",
+      "gen_text": "The total number of songs in the 20 playlists is 20 * 300 = <<20*300=6000>>6000 songs.\nThe total number of hours in the 20 playlists is 6000 * 10 = <<6000*10=60000>>60000 hours.\n#### 60000"
+    },
+    {
+      "score": 1,
+      "pred": "42",
+      "gold": "42",
+      "gen_text": "For the first four hours, Patrick sold 15 cups/hour * 4 hours = <<15*4=60>>60 cups of lemonade.\nThe total amount of money he earned from selling lemonade for the first four hours is $0.50/cup * 60 cups = $<<0.50*60=30>>30.\nFor the next two hours, Patrick sold 10 cups/hour * 2 hours = <<10*2=20>>20 cups of lemonade.\nThe total amount of money he earned from selling lemonade for the next two hours is $0.60/cup * 20 cups = $<<0.60*20=12>>12.\nThe total amount of money Patrick earned from selling lemonade for 6 hours is $30 + $12 = $<<30+12=42>>42.\n#### 42"
+    },
+    {
+      "score": 1,
+      "pred": "5",
+      "gold": "5",
+      "gen_text": "On Tuesday, she had 1 hour of dance practice.\nOn Thursday, she had 2 hours of dance practice.\nOn Saturday, she had 1 hour of dance practice that lasted twice as long as Tuesday's night class, so she had 1*2=<<1*2=2>>2 hours of dance practice.\nIn total, she had 1+2+2=<<1+2+2=5>>5 hours of dance practice.\n#### 5"
+    },
+    {
+      "score": 0,
+      "pred": "540",
+      "gold": "180",
+      "gen_text": "She needs 12 people * 3 pieces per person = <<12*3=36>>36 pieces\nThe dinner plates cost $6.00 each and she needs 36 pieces so that\u2019s 6*36 = $<<6*36=216.00>>216.00\nThe bowls cost $5.00 each and she needs 36 pieces so that\u2019s 5*36 = $<<5*36=180.00>>180.00\nThe salad plates cost $4.00 each and she needs 36 pieces so that\u2019s 4*36 = $<<4*36=144.00>>144.00\nThe total cost for the place settings is $216.00 + $180.00 + $144.00 = $<<216+180+144=540.00>>540.00\n#### 540"
+    },
+    {
+      "score": 0,
+      "pred": "60",
+      "gold": "160",
+      "gen_text": "First find how long it takes Carla to download 40% of the file: 200 GB * 40% = <<200*40*.01=80>>80 GB\nThen divide that amount by her download speed to find how long it takes to download that amount: 80 GB / 2 GB/minute = <<80/2=40>>40 minutes\nThen add the time it takes to restart the download to find the total time: 40 minutes + 20 minutes = <<40+20=60>>60 minutes\n#### 60"
+    },
+    {
+      "score": 0,
+      "pred": "14",
+      "gold": "4400",
+      "gen_text": "He has 600*.33=<<600*.33=198>>198 movies in series\nSo he has 600-198=<<600-198=402>>402 movies left\n402*.4=<<402*.4=160.8>>160.8 movies are older\nSo he has 402-160.8=<<402-160.8=241.2>>241.2 movies left\nSo he has 241.2*10=$<<241.2*10=2412>>2412 movies left\nSo he has to pay 2412*6=$<<2412*6=14472>>14472 for the series\nSo he has to pay 2412*5=$<<2412*5=12060>>12060 for the older movies\nSo he has to pay 14472+12060=$<<14"
+    },
+    {
+      "score": 0,
+      "pred": "2880",
+      "gold": "5760",
+      "gen_text": "Neil has been saving 2/5*20 = <<2/5*20=8>>8 coins more than Rong every month.\nIn ten years, Rong will have saved 20*12*10 = <<20*12*10=2400>>2400 coins.\nNeil will have saved 20*12*10+8*12*10 = <<20*12*10+8*12*10=2880>>2880 coins.\n#### 2880"
+    },
+    {
+      "score": 1,
+      "pred": "15",
+      "gold": "15",
+      "gen_text": "Joelle has 5 orchids * 5 petals/orchid = <<5*5=25>>25 petals on her orchids.\nShe has 4 daisies * 10 petals/daisy = <<4*10=40>>40 petals on her daisies.\nThe daisies have 40 petals - 25 petals = <<40-25=15>>15 more petals than the orchids.\n#### 15"
+    },
+    {
+      "score": 1,
+      "pred": "1200",
+      "gold": "1200",
+      "gen_text": "A shark has 40*3=<<40*3=120>>120 gallons of blood.\nTen sharks have 120*10=<<120*10=1200>>1200 gallons of blood.\n#### 1200"
+    },
+    {
+      "score": 0,
+      "pred": "475",
+      "gold": "20",
+      "gen_text": "Marisa buys 4 lollipops every day and each lollipop costs 25 cents so she spends 4*25 = $<<4*25=100>>100 every day.\nShe gets $5 as pocket money every day and spends $100 so she has $5-$100 = -$<<5-100=-95>>95 every day.\nShe saves for 5 days so she saves -$95*5 = $<<-95*5=-475>>-475.\n#### 475"
+    },
+    {
+      "score": 0,
+      "pred": "0",
+      "gold": "2000",
+      "gen_text": "Anthony and his father fill a tank with half the amount of water in the pool, which is 10000/2 = <<10000/2=5000>>5000 gallons of water.\nThe tank is emptied at a rate of 500 gallons of water per day, so after 6 days, the tank will be empty.\n#### 0"
+    },
+    {
+      "score": 0,
+      "pred": "45000",
+      "gold": "31800",
+      "gen_text": "He drives 30*2=<<30*2=60>>60 miles a day\nSo he drives 60*5=<<60*5=300>>300 miles a week\nSo he drives 300*50=<<300*50=15000>>15,000 miles a year\nSo he pays 15,000*2=$<<15000*2=30000>>30,000 a year\nSo he pays 30,000+150*12=$<<30000+150*12=45000>>45,000 a year\n#### 45000"
+    },
+    {
+      "score": 0,
+      "pred": "12",
+      "gold": "30",
+      "gen_text": "Claire earns 12 badges in a year because 12 x 1 = <<12*1=12>>12\nAmber earns 24 badges in a year because 12 x 2 = <<12*2=24>>24\nWendy earns 36 badges in a year because 12 x 3 = <<12*3=36>>36\nWendy earns 12 more badges than Amber because 36 - 24 = <<36-24=12>>12\n#### 12"
+    },
+    {
+      "score": 1,
+      "pred": "84",
+      "gold": "84",
+      "gen_text": "Madeline's brother used 5 * 6 = <<5*6=30>>30 grapes to make a full glass of grape juice.\nThe mother used 4 * 12 = <<4*12=48>>48 grapes to make 4 pies.\nIn total, there were 6 + 30 + 48 = <<6+30+48=84>>84 grapes at the beginning.\n#### 84"
+    },
+    {
+      "score": 1,
+      "pred": "11",
+      "gold": "11",
+      "gen_text": "Tom paid $48 - $4 = $<<48-4=44>>44 for the headphone set.\nHe could have bought $44 / $4 = <<44/4=11>>11 CDs instead.\n#### 11"
+    },
+    {
+      "score": 1,
+      "pred": "35",
+      "gold": "35",
+      "gen_text": "During the first break, Hunter counted 50 + 20 = <<50+20=70>>70 cars in the parking lot.\nWhen he got out of class for the lunch break, he realized that 1/2 * 70 = <<1/2*70=35>>35 cars had gone.\nSo, the total number of cars he counted during lunch break is 70 - 35 = <<70-35=35>>35 cars.\n#### 35"
+    },
+    {
+      "score": 0,
+      "pred": "72",
+      "gold": "144",
+      "gen_text": "The north and south walls are 10 x 8 = <<10*8=80>>80 square feet.\nThe east and west walls are 5 x 8 = <<5*8=40>>40 square feet.\nThe total square footage of the room is 80 + 40 = <<80+40=120>>120 square feet.\nIt will take 120 / 20 = <<120/20=6>>6 gallons of paint to cover the room.\nIt will cost 6 x $12 = $<<6*12=72>>72 to paint the room.\n#### 72"
+    },
+    {
+      "score": 1,
+      "pred": "1000",
+      "gold": "1000",
+      "gen_text": "By midday, 2/5 of the people had voted, so 5000*2/5 = <<5000*2/5=2000>>2000 people had voted.\nThe number of people who had not voted by midday is 5000-2000 = <<5000-2000=3000>>3000\nBy 16:00, 2/3 of the remaining people had voted, so 3000*2/3 = <<3000*2/3=2000>>2000 people had voted.\nThe number of people who had not voted by 16:00 is 3000-2000 = <<3000-2000=1000>>1000\n#### 1000"
+    },
+    {
+      "score": 1,
+      "pred": "60",
+      "gold": "60",
+      "gen_text": "The second recipe has 20 x 2 = <<20*2=40>>40 instructions.\nThus, Kelian has to read 20 + 40 = <<20+40=60>>60 instructions to prepare the two dishes.\n#### 60"
+    },
+    {
+      "score": 0,
+      "pred": "7",
+      "gold": "2",
+      "gen_text": "She has $90 budgeted for her birthday party.\nShe wants to make sure she and her friends all get to play one round of mini-golf, have $5 in arcade tokens, and get to ride the go-karts twice.\nA round of mini-golf is $5.\nThe Go-karts cost $10 a ride.\nSo, she has $90 - $5 - $10 - $5 = $<<90-5-10-5=70>>70 left for her party.\nShe can invite $70 / $10 = <<70/10=7>>7 friends.\n#### 7"
+    },
+    {
+      "score": 1,
+      "pred": "3140",
+      "gold": "3140",
+      "gen_text": "In the first 4 days, Tom traveled 200 * 4 = <<200*4=800>>800 kilometers.\nOver the next two days, he traveled 800 * 30% = <<800*30*.01=240>>240 kilometers.\nIn the first week, Tom traveled 800 + 240 = <<800+240=1040>>1040 kilometers.\nIn the second week, he traveled 300 * 7 = <<300*7=2100>>2100 kilometers.\nIn total, Tom traveled 1040 + 2100 = <<1040+2100=3140>>3140 kilometers.\n#### 3140"
+    }
+  ],
+  "merge_diagnostics": null,
+  "env": {
+    "hf_home": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/cache/hf_home",
+    "cuda_visible_devices": "2",
+    "pbs_jobid": "12080.jiit-master",
+    "hostname": "jiit-gpu01"
+  }
+}

@@ -1,0 +1,1287 @@
+{
+  "meta": {
+    "git_sha": "unknown",
+    "hostname": "jiit-gpu01",
+    "cuda_visible_devices": "4",
+    "pbs_jobid": "12078.jiit-master",
+    "wallclock_iso": "2026-10-23T20:57:39+0200",
+    "wallclock_unix": 1792781859.6276493,
+    "config_hash": "b1daba12fa155370",
+    "config": {
+      "base_model": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/models/Mistral-7B-Instruct-v0.3",
+      "method": "task_arithmetic",
+      "method_kwargs": {},
+      "max_seq_length": 1024,
+      "seed": 20260518,
+      "min_free_gb": 25,
+      "adapter_specs": [
+        {
+          "name": "gsm8k",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/gsm8k/seed1",
+          "task_cfg": {
+            "name": "gsm8k",
+            "dataset": "openai/gsm8k",
+            "config": "main",
+            "split_train": "train",
+            "split_eval": "test",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "question",
+            "answer_field": "answer"
+          }
+        },
+        {
+          "name": "alpaca",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/alpaca/seed1",
+          "task_cfg": {
+            "name": "alpaca",
+            "dataset": "yahma/alpaca-cleaned",
+            "config": null,
+            "split_train": "train",
+            "split_eval": "train",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "instruction",
+            "answer_field": "output"
+          }
+        },
+        {
+          "name": "magicoder",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/magicoder/seed1",
+          "task_cfg": {
+            "name": "magicoder",
+            "dataset": "ise-uiuc/Magicoder-OSS-Instruct-75K",
+            "config": null,
+            "split_train": "train",
+            "split_eval": "train",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "problem",
+            "answer_field": "solution"
+          }
+        },
+        {
+          "name": "translation",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/flores/seed1",
+          "task_cfg": {
+            "name": "translation",
+            "dataset": "wmt/wmt19",
+            "config": "de-en",
+            "split_train": "train",
+            "split_eval": "validation",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "src_lang": "en",
+            "tgt_lang": "de",
+            "streaming": true
+          }
+        }
+      ],
+      "metric": "humaneval_pass1",
+      "metric_task_spec": "humaneval",
+      "metric_kwargs": {
+        "max_new_tokens": 512
+      },
+      "n_eval_metric": 164,
+      "metric_task_cfg": {
+        "name": "humaneval",
+        "dataset": "openai/openai_humaneval",
+        "config": null,
+        "split_train": "test",
+        "split_eval": "test",
+        "n_train": 0,
+        "n_eval": 164,
+        "prompt_field": "prompt",
+        "answer_field": "canonical_solution"
+      },
+      "weights": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "output_path": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/results/phase3/eval_all_tasks/mistral_7b__ind_magicoder_humaneval.json"
+    }
+  },
+  "method": "task_arithmetic",
+  "method_kwargs": {
+    "_merge_cache_key": null
+  },
+  "weights": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "base_model": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/models/Mistral-7B-Instruct-v0.3",
+  "adapter_dirs": [
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/gsm8k/seed1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/alpaca/seed1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/magicoder/seed1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/flores/seed1"
+  ],
+  "metric": "humaneval_pass1",
+  "metric_kwargs": {
+    "max_new_tokens": 512
+  },
+  "metric_task": "humaneval",
+  "metric_score": 0.42073170731707316,
+  "n_eval_metric": 164,
+  "per_example": [
+    {
+      "task_id": "HumanEval/13",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def greatest_common_divisor(a: int, b: int) -> int:\n    \"\"\" Return a greatest common divisor of two integers a and b\n    >>> greatest_common_divisor(3, 5)\n    1\n    >>> greatest_common_divisor(25, 15)\n    5\n    \"\"\"\n    while b != 0:\n        a, b = b, a % b\n    return a",
+      "gen_raw": "\ndef greatest_common_divisor(a: int, b: int) -> int:\n    \"\"\" Return a greatest common divisor of two integers a and b\n    >>> greatest_common_divisor(3, 5)\n    1\n    >>> greatest_common_divisor(25, 15)\n    5\n    \"\"\"\n    while b != 0:\n        a, b = b, a % b\n    return a\n"
+    },
+    {
+      "task_id": "HumanEval/74",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def total_match(lst1, lst2):\n    total1 = sum(len(s) for s in lst1)\n    total2 = sum(len(s) for s in lst2)\n    if total1 < total2:\n        return lst1\n    elif total1 > total2:\n        return lst2\n    else:\n        return lst1",
+      "gen_raw": "\ndef total_match(lst1, lst2):\n    total1 = sum(len(s) for s in lst1)\n    total2 = sum(len(s) for s in lst2)\n    if total1 < total2:\n        return lst1\n    elif total1 > total2:\n        return lst2\n    else:\n        return lst1\n"
+    },
+    {
+      "task_id": "HumanEval/113",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def odd_count(lst):\n    result = []\n    for i in lst:\n        count = 0\n        for j in i:\n            if int(j) % 2 != 0:\n                count += 1\n        result.append(\"the number of odd elements \" + str(count) + \"n the str\" + str(count) + \"ng \" + str(count) + \" of the \" + str(count) + \"nput.\")\n    return result",
+      "gen_raw": "\ndef odd_count(lst):\n    result = []\n    for i in lst:\n        count = 0\n        for j in i:\n            if int(j) % 2 != 0:\n                count += 1\n        result.append(\"the number of odd elements \" + str(count) + \"n the str\" + str(count) + \"ng \" + str(count) + \" of the \" + str(count) + \"nput.\")\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/53",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def add(x: int, y: int):\n    \"\"\"Add two numbers x and y\n    >>> add(2, 3)\n    5\n    >>> add(5, 7)\n    12\n    \"\"\"\n    return x + y",
+      "gen_raw": "\ndef add(x: int, y: int):\n    \"\"\"Add two numbers x and y\n    >>> add(2, 3)\n    5\n    >>> add(5, 7)\n    12\n    \"\"\"\n    return x + y\n"
+    },
+    {
+      "task_id": "HumanEval/123",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp1c4wg9n1.py\", line 48, in <module>\n    check(get_odd_collatz)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp1c4wg9n1.py\", line ",
+      "completion_preview": "def get_odd_collatz(n):\n    def collatz(n):\n        sequence = [n]\n        while n != 1:\n            if n % 2 == 0:\n                n = n // 2\n            else:\n                n = 3 * n + 1\n            sequence.append(n)\n        return sequence\n\n    odd_sequence = [n]\n    for i in collatz(n):\n        if i % 2 != 0:\n            odd_sequence.append(i)\n    return sorted(odd_sequence)",
+      "gen_raw": "\ndef get_odd_collatz(n):\n    def collatz(n):\n        sequence = [n]\n        while n != 1:\n            if n % 2 == 0:\n                n = n // 2\n            else:\n                n = 3 * n + 1\n            sequence.append(n)\n        return sequence\n\n    odd_sequence = [n]\n    for i in collatz(n):\n        if i % 2 != 0:\n            odd_sequence.append(i)\n    return sorted(odd_sequence)\n"
+    },
+    {
+      "task_id": "HumanEval/66",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def digitSum(s):\n    return sum(ord(c) for c in s if c.isupper())",
+      "gen_raw": "\ndef digitSum(s):\n    return sum(ord(c) for c in s if c.isupper())\n"
+    },
+    {
+      "task_id": "HumanEval/43",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def pairs_sum_to_zero(l):\n    \"\"\"\n    pairs_sum_to_zero takes a list of integers as an input.\n    it returns True if there are two distinct elements in the list that\n    sum to zero, and False otherwise.\n    \"\"\"\n    seen = set()\n    for num in l:\n        if -num in seen:\n            return True\n        seen.add(num)\n    return False",
+      "gen_raw": "\ndef pairs_sum_to_zero(l):\n    \"\"\"\n    pairs_sum_to_zero takes a list of integers as an input.\n    it returns True if there are two distinct elements in the list that\n    sum to zero, and False otherwise.\n    \"\"\"\n    seen = set()\n    for num in l:\n        if -num in seen:\n            return True\n        seen.add(num)\n    return False\n"
+    },
+    {
+      "task_id": "HumanEval/131",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmphwajl3oo.py\", line 41, in <module>\n    check(digits)\n  File \"/var/tmp/pbs.12078.jiit-master/tmphwajl3oo.py\", line 37, in ch",
+      "completion_preview": "def digits(n):\n    \"\"\"Given a positive integer n, return the product of the odd digits.\n    Return 0 if all digits are even.\n    For example:\n    digits(1)  == 1\n    digits(4)  == 0\n    digits(235) == 15\n    \"\"\"\n    product = 1\n    while n > 0:\n        digit = n % 10\n        if digit % 2 != 0:\n            product *= digit\n        n //= 10\n    return product if product != 0 else 0",
+      "gen_raw": "\ndef digits(n):\n    \"\"\"Given a positive integer n, return the product of the odd digits.\n    Return 0 if all digits are even.\n    For example:\n    digits(1)  == 1\n    digits(4)  == 0\n    digits(235) == 15\n    \"\"\"\n    product = 1\n    while n > 0:\n        digit = n % 10\n        if digit % 2 != 0:\n            product *= digit\n        n //= 10\n    return product if product != 0 else 0\n"
+    },
+    {
+      "task_id": "HumanEval/62",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpgzs4govh.py\", line 40, in <module>\n    check(derivative)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpgzs4govh.py\", line 32, i",
+      "completion_preview": "def derivative(xs: list):\n    \"\"\" xs represent coefficients of a polynomial.\n    xs[0] + xs[1] * x + xs[2] * x^2 + ....\n     Return derivative of this polynomial in the same form.\n    >>> derivative([3, 1, 2, 4, 5])\n    [1, 4, 12, 20]\n    >>> derivative([1, 2, 3])\n    [2, 6]\n    \"\"\"\n    if len(xs) == 1:\n        return [0]\n    else:\n        return [xs[i+1] for i in range(len(xs)-1)]",
+      "gen_raw": "\ndef derivative(xs: list):\n    \"\"\" xs represent coefficients of a polynomial.\n    xs[0] + xs[1] * x + xs[2] * x^2 + ....\n     Return derivative of this polynomial in the same form.\n    >>> derivative([3, 1, 2, 4, 5])\n    [1, 4, 12, 20]\n    >>> derivative([1, 2, 3])\n    [2, 6]\n    \"\"\"\n    if len(xs) == 1:\n        return [0]\n    else:\n        return [xs[i+1] for i in range(len(xs)-1)]\n"
+    },
+    {
+      "task_id": "HumanEval/83",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def starts_one_ends(n):\n    \"\"\"\n    Given a positive integer n, return the count of the numbers of n-digit\n    positive integers that start or end with 1.\n    \"\"\"\n    count = 0\n    for i in range(10**(n-1), 10**n):\n        if str(i)[0] == '1' or str(i)[-1] == '1':\n            count += 1\n    return count",
+      "gen_raw": "\ndef starts_one_ends(n):\n    \"\"\"\n    Given a positive integer n, return the count of the numbers of n-digit\n    positive integers that start or end with 1.\n    \"\"\"\n    count = 0\n    for i in range(10**(n-1), 10**n):\n        if str(i)[0] == '1' or str(i)[-1] == '1':\n            count += 1\n    return count\n"
+    },
+    {
+      "task_id": "HumanEval/45",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def triangle_area(a, h):\n    \"\"\"Given length of a side and high return area for a triangle.\n    >>> triangle_area(5, 3)\n    7.5\n    \"\"\"\n    return 0.5 * a * h",
+      "gen_raw": "\ndef triangle_area(a, h):\n    \"\"\"Given length of a side and high return area for a triangle.\n    >>> triangle_area(5, 3)\n    7.5\n    \"\"\"\n    return 0.5 * a * h\n"
+    },
+    {
+      "task_id": "HumanEval/81",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpdmitz8mh.py\", line 46, in <module>\n    check(numerical_letter_grade)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpdmitz8mh.py\"",
+      "completion_preview": "def numerical_letter_grade(grades):\n    letter_grades = ['E', 'D-', 'D', 'D+', 'C-', 'C', 'C+', 'B-', 'B', 'B+', 'A-', 'A', 'A+']\n    return [letter_grades[i] for i in range(len(letter_grades)) if grades[i] >= letter_grades[i]]",
+      "gen_raw": "\ndef numerical_letter_grade(grades):\n    letter_grades = ['E', 'D-', 'D', 'D+', 'C-', 'C', 'C+', 'B-', 'B', 'B+', 'A-', 'A', 'A+']\n    return [letter_grades[i] for i in range(len(letter_grades)) if grades[i] >= letter_grades[i]]\n"
+    },
+    {
+      "task_id": "HumanEval/37",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpeqjegx51.py\", line 37, in <module>\n    check(sort_even)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpeqjegx51.py\", line 31, in",
+      "completion_preview": "def sort_even(l: list):\n    \"\"\"This function takes a list l and returns a list l' such that\n    l' is identical to l in the odd indicies, while its values at the even indicies are equal\n    to the values of the even indicies of l, but sorted.\n    >>> sort_even([1, 2, 3])\n    [1, 2, 3]\n    >>> sort_even([5, 6, 3, 4])\n    [3, 6, 5, 4]\n    \"\"\"\n    l_even = [l[i] for i in range(0, len(l), 2)]\n    l_even.sort()\n    return l[:1] + l_even + l[len(l) - 1:]",
+      "gen_raw": "\ndef sort_even(l: list):\n    \"\"\"This function takes a list l and returns a list l' such that\n    l' is identical to l in the odd indicies, while its values at the even indicies are equal\n    to the values of the even indicies of l, but sorted.\n    >>> sort_even([1, 2, 3])\n    [1, 2, 3]\n    >>> sort_even([5, 6, 3, 4])\n    [3, 6, 5, 4]\n    \"\"\"\n    l_even = [l[i] for i in range(0, len(l), 2)]\n    l_even.sort()\n    return l[:1] + l_even + l[len(l) - 1:]\n"
+    },
+    {
+      "task_id": "HumanEval/136",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def largest_smallest_integers(lst):\n    negative_lst = [num for num in lst if num < 0]\n    positive_lst = [num for num in lst if num > 0]\n\n    if negative_lst:\n        largest_negative = max(negative_lst)\n    else:\n        largest_negative = None\n\n    if positive_lst:\n        smallest_positive = min(positive_lst)\n    else:\n        smallest_positive = None\n\n    return largest_negative, smallest_positive",
+      "gen_raw": "\ndef largest_smallest_integers(lst):\n    negative_lst = [num for num in lst if num < 0]\n    positive_lst = [num for num in lst if num > 0]\n\n    if negative_lst:\n        largest_negative = max(negative_lst)\n    else:\n        largest_negative = None\n\n    if positive_lst:\n        smallest_positive = min(positive_lst)\n    else:\n        smallest_positive = None\n\n    return largest_negative, smallest_positive\n"
+    },
+    {
+      "task_id": "HumanEval/137",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp3gck5fcu.py\", line 63, in <module>\n    check(compare_one)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp3gck5fcu.py\", line 53, ",
+      "completion_preview": "def compare_one(a, b):\n    if isinstance(a, (int, float)) and isinstance(b, (int, float)):\n        if a > b:\n            return a\n        elif b > a:\n            return b\n        else:\n            return None\n    elif isinstance(a, (int, float)) and isinstance(b, str):\n        if float(a) > float(b):\n            return a\n        elif float(b) > float(a):\n            return b\n        else:\n            return None\n    elif isinstance(a, str) and isinstance(b, (int, float)):\n        if float(a) > b:\n            return a\n        elif b > float(a):\n            return b\n        else:\n            return None\n    elif isinstance(a, str) and isinstance(b, str):\n        if float(a) > float(b):\n            return a\n        elif float(b) > float(a):\n            return b\n        else:\n            return None\n    else:\n        return \"Invalid input\"",
+      "gen_raw": "\ndef compare_one(a, b):\n    if isinstance(a, (int, float)) and isinstance(b, (int, float)):\n        if a > b:\n            return a\n        elif b > a:\n            return b\n        else:\n            return None\n    elif isinstance(a, (int, float)) and isinstance(b, str):\n        if float(a) > float(b):\n            return a\n        elif float(b) > float(a):\n            return b\n        else:\n            return None\n    elif isinstance(a, str) and isinstance(b, (int, float)):\n        if float(a) > b:\n            return a\n        elif b > float(a):\n            return b\n        else:\n            return None\n    elif isinstance(a, str) and isinstance(b, str):\n        if float(a) > float(b):\n            return a\n        elif float(b) > float(a):\n            return b\n        else:\n            return None\n    else:\n        return \"Invalid input\"\n"
+    },
+    {
+      "task_id": "HumanEval/152",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def compare(game, guess):\n    return [abs(game[i] - guess[i]) for i in range(len(game))]",
+      "gen_raw": "\ndef compare(game, guess):\n    return [abs(game[i] - guess[i]) for i in range(len(game))]\n"
+    },
+    {
+      "task_id": "HumanEval/159",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmptas1gwky.py\", line 52, in <module>\n    check(eat)\n  File \"/var/tmp/pbs.12078.jiit-master/tmptas1gwky.py\", line 40, in check",
+      "completion_preview": "def eat(number, need, remaining):\n    total_eaten = number + remaining if remaining >= need - number else number + remaining\n    remaining_after_meals = remaining - (need - number) if remaining >= need - number else 0\n    return [total_eaten, remaining_after_meals]",
+      "gen_raw": "\ndef eat(number, need, remaining):\n    total_eaten = number + remaining if remaining >= need - number else number + remaining\n    remaining_after_meals = remaining - (need - number) if remaining >= need - number else 0\n    return [total_eaten, remaining_after_meals]\n"
+    },
+    {
+      "task_id": "HumanEval/59",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp1uemdvx7.py\", line 32, in <module>\n    check(largest_prime_factor)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp1uemdvx7.py\", ",
+      "completion_preview": "def largest_prime_factor(n: int):\n    if n < 2:\n        return None\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return i\n    return n",
+      "gen_raw": "\ndef largest_prime_factor(n: int):\n    if n < 2:\n        return None\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return i\n    return n\n"
+    },
+    {
+      "task_id": "HumanEval/139",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpzpkhegyx.py\", line 32, in <module>\n    check(special_factorial)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpzpkhegyx.py\", lin",
+      "completion_preview": "def special_factorial(n):\n    if n <= 0:\n        return 1\n    else:\n        return n * special_factorial(n - 1)",
+      "gen_raw": "\ndef special_factorial(n):\n    if n <= 0:\n        return 1\n    else:\n        return n * special_factorial(n - 1)\n"
+    },
+    {
+      "task_id": "HumanEval/21",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List\n\n\ndef rescale_to_unit(numbers: List[float]) -> List[float]:\n    \"\"\" Given list of numbers (of at least two elements), apply a linear transform to that list,\n    such that the smallest number will become 0 and the largest will become 1\n    >>> rescale_to_unit([1.0, 2.0, 3.0, 4.0, 5.0])\n    [0.0, 0.25, 0.5, 0.75, 1.0]\n    \"\"\"\n    min_num = min(numbers)\n    max_num = max(numbers)\n    return [(num - min_num) / (max_num - min_num) for num in numbers]",
+      "gen_raw": "\nfrom typing import List\n\n\ndef rescale_to_unit(numbers: List[float]) -> List[float]:\n    \"\"\" Given list of numbers (of at least two elements), apply a linear transform to that list,\n    such that the smallest number will become 0 and the largest will become 1\n    >>> rescale_to_unit([1.0, 2.0, 3.0, 4.0, 5.0])\n    [0.0, 0.25, 0.5, 0.75, 1.0]\n    \"\"\"\n    min_num = min(numbers)\n    max_num = max(numbers)\n    return [(num - min_num) / (max_num - min_num) for num in numbers]\n"
+    },
+    {
+      "task_id": "HumanEval/111",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp3qeum6k2.py\", line 41, in <module>\n    check(histogram)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp3qeum6k2.py\", line 27, in",
+      "completion_preview": "def histogram(test):\n    hist = {}\n    for char in test:\n        if char in hist:\n            hist[char] += 1\n        else:\n            hist[char] = 1\n    return hist",
+      "gen_raw": "\ndef histogram(test):\n    hist = {}\n    for char in test:\n        if char in hist:\n            hist[char] += 1\n        else:\n            hist[char] = 1\n    return hist\n"
+    },
+    {
+      "task_id": "HumanEval/110",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpknmqfno2.py\", line 38, in <module>\n    check(exchange)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpknmqfno2.py\", line 26, in ",
+      "completion_preview": "def exchange(lst1, lst2):\n    lst1_even = [num for num in lst1 if num % 2 == 0]\n    lst2_even = [num for num in lst2 if num % 2 == 0]\n    if len(lst1_even) == len(lst1) and len(lst2_even) == len(lst2):\n        return \"YES\"\n    else:\n        return \"NO\"",
+      "gen_raw": "\ndef exchange(lst1, lst2):\n    lst1_even = [num for num in lst1 if num % 2 == 0]\n    lst2_even = [num for num in lst2 if num % 2 == 0]\n    if len(lst1_even) == len(lst1) and len(lst2_even) == len(lst2):\n        return \"YES\"\n    else:\n        return \"NO\"\n"
+    },
+    {
+      "task_id": "HumanEval/116",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp6obm6ouz.py\", line 42, in <module>\n    check(sort_array)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp6obm6ouz.py\", line 28, i",
+      "completion_preview": "def sort_array(arr):\n    def count_ones(num):\n        return bin(num).count('1')\n\n    def decimal_sort(a, b):\n        return a - b if a != b else a\n\n    arr.sort(key=count_ones, reverse=True)\n    arr.sort(key=decimal_sort)\n    return arr",
+      "gen_raw": "\ndef sort_array(arr):\n    def count_ones(num):\n        return bin(num).count('1')\n\n    def decimal_sort(a, b):\n        return a - b if a != b else a\n\n    arr.sort(key=count_ones, reverse=True)\n    arr.sort(key=decimal_sort)\n    return arr\n"
+    },
+    {
+      "task_id": "HumanEval/10",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def make_palindrome(string: str) -> str:\n    def is_palindrome(s):\n        return s == s[::-1]\n\n    def find_longest_palindrome(s):\n        for i in range(len(s)):\n            if is_palindrome(s[i:]):\n                return s[i:]\n        return ''\n\n    def reverse_string(s):\n        return s[::-1]\n\n    longest_palindrome = find_longest_palindrome(string)\n    if longest_palindrome:\n        return string + reverse_string(string[:string.index(longest_palindrome)])\n    else:\n        return string",
+      "gen_raw": "\ndef make_palindrome(string: str) -> str:\n    def is_palindrome(s):\n        return s == s[::-1]\n\n    def find_longest_palindrome(s):\n        for i in range(len(s)):\n            if is_palindrome(s[i:]):\n                return s[i:]\n        return ''\n\n    def reverse_string(s):\n        return s[::-1]\n\n    longest_palindrome = find_longest_palindrome(string)\n    if longest_palindrome:\n        return string + reverse_string(string[:string.index(longest_palindrome)])\n    else:\n        return string\n"
+    },
+    {
+      "task_id": "HumanEval/8",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List, Tuple\n\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    if not numbers:\n        return 0, 1\n    else:\n        sum_val = sum(numbers)\n        product_val = 1\n        for num in numbers:\n            product_val *= num\n        return sum_val, product_val",
+      "gen_raw": "\nfrom typing import List, Tuple\n\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    if not numbers:\n        return 0, 1\n    else:\n        sum_val = sum(numbers)\n        product_val = 1\n        for num in numbers:\n            product_val *= num\n        return sum_val, product_val\n"
+    },
+    {
+      "task_id": "HumanEval/20",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmprv1lzfb1.py\", line 49, in <module>\n    check(find_closest_elements)\n  File \"/var/tmp/pbs.12078.jiit-master/tmprv1lzfb1.py\",",
+      "completion_preview": "from typing import List, Tuple\n\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    if len(numbers) < 2:\n        raise ValueError(\"List must have at least two elements\")\n\n    closest_numbers = sorted(numbers)\n    closest_distance = float('inf')\n    closest_numbers_pair = (closest_numbers[0], closest_numbers[-1])\n\n    for i in range(1, len(numbers)):\n        for j in range(i, len(numbers)):\n            distance = abs(numbers[i] - numbers[j])\n            if distance < closest_distance:\n                closest_distance = distance\n                closest_numbers_pair = (numbers[i], numbers[j])\n\n    return closest_numbers_pair",
+      "gen_raw": "\nfrom typing import List, Tuple\n\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    if len(numbers) < 2:\n        raise ValueError(\"List must have at least two elements\")\n\n    closest_numbers = sorted(numbers)\n    closest_distance = float('inf')\n    closest_numbers_pair = (closest_numbers[0], closest_numbers[-1])\n\n    for i in range(1, len(numbers)):\n        for j in range(i, len(numbers)):\n            distance = abs(numbers[i] - numbers[j])\n            if distance < closest_distance:\n                closest_distance = distance\n                closest_numbers_pair = (numbers[i], numbers[j])\n\n    return closest_numbers_pair\n"
+    },
+    {
+      "task_id": "HumanEval/88",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpoxoaygzt.py\", line 41, in <module>\n    check(sort_array)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpoxoaygzt.py\", line 28, i",
+      "completion_preview": "def sort_array(array):\n    if sum(array[0], array[-1]) % 2 == 0:\n        array.sort(reverse=True)\n    else:\n        array.sort()\n    return array",
+      "gen_raw": "\ndef sort_array(array):\n    if sum(array[0], array[-1]) % 2 == 0:\n        array.sort(reverse=True)\n    else:\n        array.sort()\n    return array\n"
+    },
+    {
+      "task_id": "HumanEval/33",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp5ruxryhr.py\", line 33, in <module>\n    check(sort_third)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp5ruxryhr.py\", line 26, i",
+      "completion_preview": "def sort_third(l: list):\n    l_prime = [l[i] for i in range(len(l)) if i % 3 != 0]\n    l_prime.extend(sorted(l[i] for i in range(len(l)) if i % 3 == 0))\n    return l_prime",
+      "gen_raw": "\ndef sort_third(l: list):\n    l_prime = [l[i] for i in range(len(l)) if i % 3 != 0]\n    l_prime.extend(sorted(l[i] for i in range(len(l)) if i % 3 == 0))\n    return l_prime\n"
+    },
+    {
+      "task_id": "HumanEval/93",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpkwvp_v3k.py\", line 44, in <module>\n    check(encode)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpkwvp_v3k.py\", line 34, in ch",
+      "completion_preview": "def encode(message):\n    vowels = 'aeiou'\n    encoded_message = ''\n    for char in message:\n        if char.isalpha():\n            if char.islower():\n                encoded_message += char.upper()\n            else:\n                encoded_message += char.lower()\n        elif char in vowels:\n            encoded_message += chr(ord(char) + 2)\n        else:\n            encoded_message += char\n    return encoded_message",
+      "gen_raw": "\ndef encode(message):\n    vowels = 'aeiou'\n    encoded_message = ''\n    for char in message:\n        if char.isalpha():\n            if char.islower():\n                encoded_message += char.upper()\n            else:\n                encoded_message += char.lower()\n        elif char in vowels:\n            encoded_message += chr(ord(char) + 2)\n        else:\n            encoded_message += char\n    return encoded_message\n"
+    },
+    {
+      "task_id": "HumanEval/158",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpn6lwd916.py\", line 34, in <module>\n    check(find_max)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpn6lwd916.py\", line 20, in ",
+      "completion_preview": "def find_max(words):\n    max_chars = max(words, key=lambda word: len(set(word)))\n    return max_chars",
+      "gen_raw": "\ndef find_max(words):\n    max_chars = max(words, key=lambda word: len(set(word)))\n    return max_chars\n"
+    },
+    {
+      "task_id": "HumanEval/0",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n    for i in range(len(numbers) - 1):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) <= threshold:\n                return True\n    return False",
+      "gen_raw": "\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n    for i in range(len(numbers) - 1):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) <= threshold:\n                return True\n    return False\n"
+    },
+    {
+      "task_id": "HumanEval/142",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def sum_squares(lst):\n    result = 0\n    for i in range(len(lst)):\n        if i % 3 == 0:\n            lst[i] = lst[i] ** 2\n        elif i % 4 == 0 and i % 3 != 0:\n            lst[i] = lst[i] ** 3\n    for num in lst:\n        result += num\n    return result",
+      "gen_raw": "\ndef sum_squares(lst):\n    result = 0\n    for i in range(len(lst)):\n        if i % 3 == 0:\n            lst[i] = lst[i] ** 2\n        elif i % 4 == 0 and i % 3 != 0:\n            lst[i] = lst[i] ** 3\n    for num in lst:\n        result += num\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/50",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmput6wjzv5.py\", line 38, in <module>\n    check(decode_shift)\n  File \"/var/tmp/pbs.12078.jiit-master/tmput6wjzv5.py\", line 34,",
+      "completion_preview": "def encode_shift(s: str):\n    \"\"\"\n    returns encoded string by shifting every character by 5 in the alphabet.\n    \"\"\"\n    return \"\".join([chr(((ord(ch) + 5 - ord(\"a\")) % 26) + ord(\"a\")) for ch in s])",
+      "gen_raw": "\ndef encode_shift(s: str):\n    \"\"\"\n    returns encoded string by shifting every character by 5 in the alphabet.\n    \"\"\"\n    return \"\".join([chr(((ord(ch) + 5 - ord(\"a\")) % 26) + ord(\"a\")) for ch in s])\n\n\ndef decode_shift(s: str):\n    \"\"\"\n    takes as input string encoded with encode_shift function. Returns decoded string.\n    \"\"\"\n    return \"\".join([chr(((ord(ch) - 5 + 26) % 26) + ord(\"a\")) for ch in s])\n"
+    },
+    {
+      "task_id": "HumanEval/98",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def count_upper(s):\n    count = 0\n    for i in range(len(s)):\n        if i % 2 == 0 and s[i].isupper() and s[i] in 'AEIOU':\n            count += 1\n    return count",
+      "gen_raw": "\ndef count_upper(s):\n    count = 0\n    for i in range(len(s)):\n        if i % 2 == 0 and s[i].isupper() and s[i] in 'AEIOU':\n            count += 1\n    return count\n"
+    },
+    {
+      "task_id": "HumanEval/11",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List\n\n\ndef string_xor(a: str, b: str) -> str:\n    \"\"\" Input are two strings a and b consisting only of 1s and 0s.\n    Perform binary XOR on these inputs and return result also as a string.\n    >>> string_xor('010', '110')\n    '100'\n    \"\"\"\n    result = ''\n    for i in range(len(a)):\n        if a[i] == '1' and b[i] == '1':\n            result += '0'\n        elif a[i] == '0' and b[i] == '0':\n            result += '0'\n        else:\n            result += '1'\n    return result",
+      "gen_raw": "\nfrom typing import List\n\n\ndef string_xor(a: str, b: str) -> str:\n    \"\"\" Input are two strings a and b consisting only of 1s and 0s.\n    Perform binary XOR on these inputs and return result also as a string.\n    >>> string_xor('010', '110')\n    '100'\n    \"\"\"\n    result = ''\n    for i in range(len(a)):\n        if a[i] == '1' and b[i] == '1':\n            result += '0'\n        elif a[i] == '0' and b[i] == '0':\n            result += '0'\n        else:\n            result += '1'\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/78",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def hex_key(num):\n    prime_digits = 0\n    for digit in num:\n        if digit in ['2', '3', '5', '7', 'B', 'D']:\n            prime_digits += 1\n    return prime_digits",
+      "gen_raw": "\ndef hex_key(num):\n    prime_digits = 0\n    for digit in num:\n        if digit in ['2', '3', '5', '7', 'B', 'D']:\n            prime_digits += 1\n    return prime_digits\n"
+    },
+    {
+      "task_id": "HumanEval/127",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp3d7s3x_k.py\", line 46, in <module>\n    check(intersection)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp3d7s3x_k.py\", line 34,",
+      "completion_preview": "def intersection(interval1, interval2):\n    start1, end1 = interval1\n    start2, end2 = interval2\n    if start1 > end2 or start2 > end1:\n        return \"NO\"\n    else:\n        return \"YES\" if (end1 - start1) % 2 == 0 else \"NO\"",
+      "gen_raw": "\ndef intersection(interval1, interval2):\n    start1, end1 = interval1\n    start2, end2 = interval2\n    if start1 > end2 or start2 > end1:\n        return \"NO\"\n    else:\n        return \"YES\" if (end1 - start1) % 2 == 0 else \"NO\"\n"
+    },
+    {
+      "task_id": "HumanEval/72",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def will_it_fly(q, w):\n    if sum(q) <= w and q == q[::-1]:  # Check if sum is less than or equal to w and q is a palindrome\n        return True\n    else:\n        return False",
+      "gen_raw": "\ndef will_it_fly(q, w):\n    if sum(q) <= w and q == q[::-1]:  # Check if sum is less than or equal to w and q is a palindrome\n        return True\n    else:\n        return False\n"
+    },
+    {
+      "task_id": "HumanEval/22",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List, Any\n\n\ndef filter_integers(values: List[Any]) -> List[int]:\n    return [value for value in values if isinstance(value, int)]",
+      "gen_raw": "\nfrom typing import List, Any\n\n\ndef filter_integers(values: List[Any]) -> List[int]:\n    return [value for value in values if isinstance(value, int)]\n"
+    },
+    {
+      "task_id": "HumanEval/76",
+      "score": 0,
+      "err": "TIMEOUT",
+      "completion_preview": "def is_simple_power(x, n):\n    for i in range(1, x):\n        if n**i == x:\n            return True\n    return False",
+      "gen_raw": "\ndef is_simple_power(x, n):\n    for i in range(1, x):\n        if n**i == x:\n            return True\n    return False\n"
+    },
+    {
+      "task_id": "HumanEval/129",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpljbwzijx.py\", line 74, in <module>\n    check(minPath)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpljbwzijx.py\", line 58, in c",
+      "completion_preview": "def minPath(grid, k):\n    def dfs(x, y, path, visited):\n        if len(path) == k:\n            return path\n        if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]) or visited[x][y]:\n            return []\n        visited[x][y] = True\n        path.append(grid[x][y])\n        for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:\n            path = dfs(x + dx, y + dy, path, visited)\n        visited[x][y] = False\n        path.pop()\n        return path\n\n    visited = [[False] * len(grid[0]) for _ in range(len(grid))]\n    paths = []\n    for i in range(len(grid)):\n        for j in range(len(grid[0])):\n            paths.append(dfs(i, j, [grid[i][j]], visited))\n    paths.sort()\n    return paths[0]",
+      "gen_raw": "\ndef minPath(grid, k):\n    def dfs(x, y, path, visited):\n        if len(path) == k:\n            return path\n        if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]) or visited[x][y]:\n            return []\n        visited[x][y] = True\n        path.append(grid[x][y])\n        for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:\n            path = dfs(x + dx, y + dy, path, visited)\n        visited[x][y] = False\n        path.pop()\n        return path\n\n    visited = [[False] * len(grid[0]) for _ in range(len(grid))]\n    paths = []\n    for i in range(len(grid)):\n        for j in range(len(grid[0])):\n            paths.append(dfs(i, j, [grid[i][j]], visited))\n    paths.sort()\n    return paths[0]\n"
+    },
+    {
+      "task_id": "HumanEval/46",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmppsnf_bvo.py\", line 44, in <module>\n    check(fib4)\n  File \"/var/tmp/pbs.12078.jiit-master/tmppsnf_bvo.py\", line 37, in chec",
+      "completion_preview": "def fib4(n: int):\n    if n < 4:\n        return 0\n    elif n == 4:\n        return 2\n    elif n == 5:\n        return 0\n    else:\n        fib4_sequence = [0, 0, 2, 0]\n        for i in range(5, n+1):\n            fib4_sequence.append(fib4_sequence[i-1] + fib4_sequence[i-2] + fib4_sequence[i-3] + fib4_sequence[i-4])\n        return fib4_sequence[n]",
+      "gen_raw": "\ndef fib4(n: int):\n    if n < 4:\n        return 0\n    elif n == 4:\n        return 2\n    elif n == 5:\n        return 0\n    else:\n        fib4_sequence = [0, 0, 2, 0]\n        for i in range(5, n+1):\n            fib4_sequence.append(fib4_sequence[i-1] + fib4_sequence[i-2] + fib4_sequence[i-3] + fib4_sequence[i-4])\n        return fib4_sequence[n]\n"
+    },
+    {
+      "task_id": "HumanEval/60",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def sum_to_n(n: int):\n    return sum(range(1, n+1))",
+      "gen_raw": "\ndef sum_to_n(n: int):\n    return sum(range(1, n+1))\n"
+    },
+    {
+      "task_id": "HumanEval/160",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp425fjthh.py\", line 78, in <module>\n    check(do_algebra)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp425fjthh.py\", line 70, i",
+      "completion_preview": "def do_algebra(operator, operand):\n    \"\"\"\n    Given two lists operator, and operand. The first list has basic algebra operations, and \n    the second list is a list of integers. Use the two given lists to build the algebric \n    expression and return the evaluation of this expression.\n\n    The basic algebra operations:\n    Addition ( + ) \n    Subtraction ( - ) \n    Multiplication ( * ) \n    Floor division ( // ) \n    Exponentiation ( ** )\n\n    Example:\n    operator['+', '*', '-']\n    array = [2, 3, 4, 5]\n    result = 2 + 3 * 4 - 5\n    => result = 9\n\n    Note:\n        The length of operator list is equal to the length of operand list minus one.\n        Operand is a list of of non-negative integers.\n        Operator list has at least one operator, and operand list has at least two operands.\n\n    \"\"\"\n    result = operand[0]\n    for i in range(1, len(operand)):\n        if operator[i - 1] == '+':\n            result += operand[i]\n        elif operator[i - 1] == '*':\n            result *= operand[i]\n        elif operator[i - 1] == '-':\n            result -= operand[i]\n        elif operator[i - 1] == '//':\n            result //= operand[i]\n        elif operator[i - 1] == '**':\n            result **= operand[i]\n    return result",
+      "gen_raw": "\ndef do_algebra(operator, operand):\n    \"\"\"\n    Given two lists operator, and operand. The first list has basic algebra operations, and \n    the second list is a list of integers. Use the two given lists to build the algebric \n    expression and return the evaluation of this expression.\n\n    The basic algebra operations:\n    Addition ( + ) \n    Subtraction ( - ) \n    Multiplication ( * ) \n    Floor division ( // ) \n    Exponentiation ( ** )\n\n    Example:\n    operator['+', '*', '-']\n    array = [2, 3, 4, 5]\n    result = 2 + 3 * 4 - 5\n    => result = 9\n\n    Note:\n        The length of operator list is equal to the length of operand list minus one.\n        Operand is a list of of non-negative integers.\n        Operator list has at least one operator, and operand list has at least two operands.\n\n    \"\"\"\n    result = operand[0]\n    for i in range(1, len(operand)):\n        if operator[i - 1] == '+':\n            result += operand[i]\n        elif operator[i - 1] == '*':\n            result *= operand[i]\n        elif operator[i - 1] == '-':\n            result -= operand[i]\n        elif operator[i - 1] == '//':\n            result //= operand[i]\n        elif operator[i - 1] == '**':\n            result **= operand[i]\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/94",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpanbuqe1j.py\", line 62, in <module>\n    check(skjkasdkd)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpanbuqe1j.py\", line 40, in",
+      "completion_preview": "def skjkasdkd(lst):\n    def is_prime(n):\n        if n < 2:\n            return False\n        for i in range(2, int(n**0.5) + 1):\n            if n % i == 0:\n                return False\n        return True\n\n    def sum_digits(n):\n        total = 0\n        while n > 0:\n            total += n % 10\n            n //= 10\n        return total\n\n    largest_prime = max(lst)\n    if is_prime(largest_prime):\n        return sum_digits(largest_prime)\n    else:\n        return -1",
+      "gen_raw": "\ndef skjkasdkd(lst):\n    def is_prime(n):\n        if n < 2:\n            return False\n        for i in range(2, int(n**0.5) + 1):\n            if n % i == 0:\n                return False\n        return True\n\n    def sum_digits(n):\n        total = 0\n        while n > 0:\n            total += n % 10\n            n //= 10\n        return total\n\n    largest_prime = max(lst)\n    if is_prime(largest_prime):\n        return sum_digits(largest_prime)\n    else:\n        return -1\n"
+    },
+    {
+      "task_id": "HumanEval/70",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpb3jnu27m.py\", line 48, in <module>\n    check(strange_sort_list)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpb3jnu27m.py\", lin",
+      "completion_preview": "def strange_sort_list(lst):\n    if not lst:\n        return []\n    else:\n        sorted_lst = []\n        min_val = min(lst)\n        sorted_lst.append(min_val)\n        lst.remove(min_val)\n        max_val = max(lst)\n        sorted_lst.append(max_val)\n        lst.remove(max_val)\n        while lst:\n            min_val = min(lst)\n            sorted_lst.append(min_val)\n            lst.remove(min_val)\n        return sorted_lst",
+      "gen_raw": "\ndef strange_sort_list(lst):\n    if not lst:\n        return []\n    else:\n        sorted_lst = []\n        min_val = min(lst)\n        sorted_lst.append(min_val)\n        lst.remove(min_val)\n        max_val = max(lst)\n        sorted_lst.append(max_val)\n        lst.remove(max_val)\n        while lst:\n            min_val = min(lst)\n            sorted_lst.append(min_val)\n            lst.remove(min_val)\n        return sorted_lst\n"
+    },
+    {
+      "task_id": "HumanEval/34",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def unique(l: list):\n    \"\"\"Return sorted unique elements in a list\n    >>> unique([5, 3, 5, 2, 3, 3, 9, 0, 123])\n    [0, 2, 3, 5, 9, 123]\n    \"\"\"\n    return sorted(set(l))",
+      "gen_raw": "\ndef unique(l: list):\n    \"\"\"Return sorted unique elements in a list\n    >>> unique([5, 3, 5, 2, 3, 3, 9, 0, 123])\n    [0, 2, 3, 5, 9, 123]\n    \"\"\"\n    return sorted(set(l))\n"
+    },
+    {
+      "task_id": "HumanEval/104",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp5q6_husi.py\", line 30, in <module>\n    check(unique_digits)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp5q6_husi.py\", line 20",
+      "completion_preview": "def unique_digits(x):\n    return sorted([i for i in x if all(d % 2 != 0 for d in str(i))])",
+      "gen_raw": "\ndef unique_digits(x):\n    return sorted([i for i in x if all(d % 2 != 0 for d in str(i))])\n"
+    },
+    {
+      "task_id": "HumanEval/32",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpergr8oec.py\", line 57, in <module>\n    check(find_zero)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpergr8oec.py\", line 53, in",
+      "completion_preview": "import math\n\n\ndef poly(xs: list, x: float):\n    \"\"\"\n    Evaluates polynomial with coefficients xs at point x.\n    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n\n    \"\"\"\n    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])",
+      "gen_raw": "\nimport math\n\n\ndef poly(xs: list, x: float):\n    \"\"\"\n    Evaluates polynomial with coefficients xs at point x.\n    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n\n    \"\"\"\n    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])\n\n\ndef find_zero(xs: list):\n    \"\"\" xs are coefficients of a polynomial.\n    find_zero find x such that poly(x) = 0.\n    find_zero returns only only zero point, even if there are many.\n    Moreover, find_zero only takes list xs having even number of coefficients\n    and largest non zero coefficient as it guarantees\n    a solution.\n    >>> round(find_zero([1, 2]), 2) # f(x) = 1 + 2x\n    -0.5\n    >>> round(find_zero([-6, 11, -6, 1]), 2) # (x - 1) * (x - 2) * (x - 3) = -6 + 11x - 6x^2 + x^3\n    1.0\n    \"\"\"\n    if len(xs) % 2 != 0:\n        raise ValueError(\"xs must have even number of coefficients\")\n    if max(xs) == 0:\n        raise ValueError(\"xs must have largest non zero coefficient\")\n    x = -xs[1] / xs[0]\n    return x\n"
+    },
+    {
+      "task_id": "HumanEval/124",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def valid_date(date):\n    try:\n        month, day, year = map(int, date.split('-'))\n        if month < 1 or month > 12 or day < 1 or day > 31 or year < 1:\n            return False\n        if month in [1, 3, 5, 7, 8, 10, 12]:\n            if day < 1 or day > 31:\n                return False\n        elif month in [4, 6, 9, 11]:\n            if day < 1 or day > 30:\n                return False\n        elif month == 2:\n            if day < 1 or day > 29:\n                return False\n        return True\n    except ValueError:\n        return False",
+      "gen_raw": "\ndef valid_date(date):\n    try:\n        month, day, year = map(int, date.split('-'))\n        if month < 1 or month > 12 or day < 1 or day > 31 or year < 1:\n            return False\n        if month in [1, 3, 5, 7, 8, 10, 12]:\n            if day < 1 or day > 31:\n                return False\n        elif month in [4, 6, 9, 11]:\n            if day < 1 or day > 30:\n                return False\n        elif month == 2:\n            if day < 1 or day > 29:\n                return False\n        return True\n    except ValueError:\n        return False\n"
+    },
+    {
+      "task_id": "HumanEval/2",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def truncate_number(number: float) -> float:\n    return number - int(number)",
+      "gen_raw": "\ndef truncate_number(number: float) -> float:\n    return number - int(number)\n"
+    },
+    {
+      "task_id": "HumanEval/77",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp9sgqwx7b.py\", line 47, in <module>\n    check(iscube)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp9sgqwx7b.py\", line 35, in ch",
+      "completion_preview": "def iscube(a):\n    '''\n    Write a function that takes an integer a and returns True \n    if this ingeger is a cube of some integer number.\n    Note: you may assume the input is always valid.\n    Examples:\n    iscube(1) ==> True\n    iscube(2) ==> False\n    iscube(-1) ==> True\n    iscube(64) ==> True\n    iscube(0) ==> True\n    iscube(180) ==> False\n    '''\n    return a ** (1/3) % 1 == 0",
+      "gen_raw": "\ndef iscube(a):\n    '''\n    Write a function that takes an integer a and returns True \n    if this ingeger is a cube of some integer number.\n    Note: you may assume the input is always valid.\n    Examples:\n    iscube(1) ==> True\n    iscube(2) ==> False\n    iscube(-1) ==> True\n    iscube(64) ==> True\n    iscube(0) ==> True\n    iscube(180) ==> False\n    '''\n    return a ** (1/3) % 1 == 0\n"
+    },
+    {
+      "task_id": "HumanEval/97",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def multiply(a, b):\n    \"\"\"Complete the function that takes two integers and returns \n    the product of their unit digits.\n    Assume the input is always valid.\n    Examples:\n    multiply(148, 412) should return 16.\n    multiply(19, 28) should return 72.\n    multiply(2020, 1851) should return 0.\n    multiply(14,-15) should return 20.\n    \"\"\"\n    return (a % 10) * (b % 10)",
+      "gen_raw": "\ndef multiply(a, b):\n    \"\"\"Complete the function that takes two integers and returns \n    the product of their unit digits.\n    Assume the input is always valid.\n    Examples:\n    multiply(148, 412) should return 16.\n    multiply(19, 28) should return 72.\n    multiply(2020, 1851) should return 0.\n    multiply(14,-15) should return 20.\n    \"\"\"\n    return (a % 10) * (b % 10)\n"
+    },
+    {
+      "task_id": "HumanEval/87",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpj3f86m56.py\", line 71, in <module>\n    check(get_row)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpj3f86m56.py\", line 40, in c",
+      "completion_preview": "def get_row(lst, x):\n    result = []\n    for i, row in enumerate(lst):\n        if x in row:\n            for j, y in enumerate(row):\n                if y == x:\n                    result.append((i, j))\n    result.sort(key=lambda x: x[0])\n    for i in range(len(result)):\n        for j in range(i, len(result)):\n            if result[i][0] == result[j][0]:\n                if result[i][1] > result[j][1]:\n                    result[i], result[j] = result[j], result[i]\n    return result",
+      "gen_raw": "\ndef get_row(lst, x):\n    result = []\n    for i, row in enumerate(lst):\n        if x in row:\n            for j, y in enumerate(row):\n                if y == x:\n                    result.append((i, j))\n    result.sort(key=lambda x: x[0])\n    for i in range(len(result)):\n        for j in range(i, len(result)):\n            if result[i][0] == result[j][0]:\n                if result[i][1] > result[j][1]:\n                    result[i], result[j] = result[j], result[i]\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/163",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpygexr8nx.py\", line 41, in <module>\n    check(generate_integers)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpygexr8nx.py\", lin",
+      "completion_preview": "def generate_integers(a, b):\n    \"\"\"\n    Given two positive integers a and b, return the even digits between a\n    and b, in ascending order.\n\n    For example:\n    generate_integers(2, 8) => [2, 4, 6, 8]\n    generate_integers(8, 2) => [2, 4, 6, 8]\n    generate_integers(10, 14) => []\n    \"\"\"\n    even_digits = []\n    for num in range(a, b + 1):\n        if num % 2 == 0:\n            even_digits.append(num)\n    return even_digits",
+      "gen_raw": "\ndef generate_integers(a, b):\n    \"\"\"\n    Given two positive integers a and b, return the even digits between a\n    and b, in ascending order.\n\n    For example:\n    generate_integers(2, 8) => [2, 4, 6, 8]\n    generate_integers(8, 2) => [2, 4, 6, 8]\n    generate_integers(10, 14) => []\n    \"\"\"\n    even_digits = []\n    for num in range(a, b + 1):\n        if num % 2 == 0:\n            even_digits.append(num)\n    return even_digits\n"
+    },
+    {
+      "task_id": "HumanEval/122",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def add_elements(arr, k):\n    sum = 0\n    for i in range(k):\n        if len(str(arr[i])) <= 2:\n            sum += arr[i]\n    return sum",
+      "gen_raw": "\ndef add_elements(arr, k):\n    sum = 0\n    for i in range(k):\n        if len(str(arr[i])) <= 2:\n            sum += arr[i]\n    return sum\n"
+    },
+    {
+      "task_id": "HumanEval/39",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpmg4orjpz.py\", line 46, in <module>\n    check(prime_fib)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpmg4orjpz.py\", line 33, in",
+      "completion_preview": "def prime_fib(n: int):\n    fib_numbers = [0, 1]\n    primes = [2]\n    while len(fib_numbers) < n:\n        next_fib = fib_numbers[-1] + fib_numbers[-2]\n        if is_prime(next_fib):\n            fib_numbers.append(next_fib)\n            primes.append(next_fib)\n    return fib_numbers[n - 1]",
+      "gen_raw": "\ndef prime_fib(n: int):\n    fib_numbers = [0, 1]\n    primes = [2]\n    while len(fib_numbers) < n:\n        next_fib = fib_numbers[-1] + fib_numbers[-2]\n        if is_prime(next_fib):\n            fib_numbers.append(next_fib)\n            primes.append(next_fib)\n    return fib_numbers[n - 1]\n\ndef is_prime(n: int) -> bool:\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n"
+    },
+    {
+      "task_id": "HumanEval/145",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp1_6_ax2q.py\", line 35, in <module>\n    check(order_by_points)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp1_6_ax2q.py\", line ",
+      "completion_preview": "def order_by_points(nums):\n    def sum_of_digits(num):\n        return sum(int(digit) for digit in str(num))\n\n    sorted_nums = sorted(nums, key=sum_of_digits)\n    return sorted_nums",
+      "gen_raw": "\ndef order_by_points(nums):\n    def sum_of_digits(num):\n        return sum(int(digit) for digit in str(num))\n\n    sorted_nums = sorted(nums, key=sum_of_digits)\n    return sorted_nums\n"
+    },
+    {
+      "task_id": "HumanEval/119",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpkz7qmyqh.py\", line 45, in <module>\n    check(match_parens)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpkz7qmyqh.py\", line 27,",
+      "completion_preview": "def match_parens(lst):\n    s1, s2 = lst\n    if s1 == s2:\n        return 'Yes'\n    else:\n        return 'No'",
+      "gen_raw": "\ndef match_parens(lst):\n    s1, s2 = lst\n    if s1 == s2:\n        return 'Yes'\n    else:\n        return 'No'\n"
+    },
+    {
+      "task_id": "HumanEval/80",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpd_c51b3z.py\", line 35, in <module>\n    check(is_happy)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpd_c51b3z.py\", line 28, in ",
+      "completion_preview": "def is_happy(s):\n    if len(s) < 3:\n        return False\n    for i in range(len(s) - 2):\n        if s[i:i+3] == s[i+1:i+4] == s[i+2:i+5]:\n            return False\n    return True",
+      "gen_raw": "\ndef is_happy(s):\n    if len(s) < 3:\n        return False\n    for i in range(len(s) - 2):\n        if s[i:i+3] == s[i+1:i+4] == s[i+2:i+5]:\n            return False\n    return True\n"
+    },
+    {
+      "task_id": "HumanEval/55",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def fib(n: int):\n    if n <= 1:\n        return n\n    else:\n        return fib(n - 1) + fib(n - 2)",
+      "gen_raw": "\ndef fib(n: int):\n    if n <= 1:\n        return n\n    else:\n        return fib(n - 1) + fib(n - 2)\n"
+    },
+    {
+      "task_id": "HumanEval/35",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def max_element(l: list):\n    \"\"\"Return maximum element in the list.\n    >>> max_element([1, 2, 3])\n    3\n    >>> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])\n    123\n    \"\"\"\n    return max(l)",
+      "gen_raw": "\ndef max_element(l: list):\n    \"\"\"Return maximum element in the list.\n    >>> max_element([1, 2, 3])\n    3\n    >>> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])\n    123\n    \"\"\"\n    return max(l)\n"
+    },
+    {
+      "task_id": "HumanEval/133",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp74rzer8f.py\", line 41, in <module>\n    check(sum_squares)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp74rzer8f.py\", line 25, ",
+      "completion_preview": "def sum_squares(lst):\n    return sum([int(round(num))**2 for num in lst])",
+      "gen_raw": "\ndef sum_squares(lst):\n    return sum([int(round(num))**2 for num in lst])\n"
+    },
+    {
+      "task_id": "HumanEval/151",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpf7h4rp_z.py\", line 35, in <module>\n    check(double_the_difference)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpf7h4rp_z.py\",",
+      "completion_preview": "def double_the_difference(lst):\n    return sum(x**2 for x in lst if x > 0 and x % 2 != 0)",
+      "gen_raw": "\ndef double_the_difference(lst):\n    return sum(x**2 for x in lst if x > 0 and x % 2 != 0)\n"
+    },
+    {
+      "task_id": "HumanEval/153",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def Strongest_Extension(class_name, extensions):\n    strongest_extension = None\n    max_strength = -1\n    for extension in extensions:\n        strength = sum(1 for c in extension if c.isupper()) - sum(1 for c in extension if c.islower())\n        if strength > max_strength:\n            max_strength = strength\n            strongest_extension = extension\n    return class_name + '.' + strongest_extension",
+      "gen_raw": "\ndef Strongest_Extension(class_name, extensions):\n    strongest_extension = None\n    max_strength = -1\n    for extension in extensions:\n        strength = sum(1 for c in extension if c.isupper()) - sum(1 for c in extension if c.islower())\n        if strength > max_strength:\n            max_strength = strength\n            strongest_extension = extension\n    return class_name + '.' + strongest_extension\n"
+    },
+    {
+      "task_id": "HumanEval/115",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpw0p2ahd_.py\", line 64, in <module>\n    check(max_fill)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpw0p2ahd_.py\", line 54, in ",
+      "completion_preview": "def max_fill(grid, capacity):\n    import math\n    n = len(grid)\n    m = len(grid[0])\n    count = 0\n    for i in range(n):\n        for j in range(m):\n            if grid[i][j] == 1:\n                count += math.ceil(grid[i][j] / capacity)\n    return count",
+      "gen_raw": "\ndef max_fill(grid, capacity):\n    import math\n    n = len(grid)\n    m = len(grid[0])\n    count = 0\n    for i in range(n):\n        for j in range(m):\n            if grid[i][j] == 1:\n                count += math.ceil(grid[i][j] / capacity)\n    return count\n"
+    },
+    {
+      "task_id": "HumanEval/30",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def get_positive(l: list):\n    return [num for num in l if num > 0]",
+      "gen_raw": "\ndef get_positive(l: list):\n    return [num for num in l if num > 0]\n"
+    },
+    {
+      "task_id": "HumanEval/150",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpgor9hfrn.py\", line 44, in <module>\n    check(x_or_y)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpgor9hfrn.py\", line 28, in ch",
+      "completion_preview": "def x_or_y(n, x, y):\n    \"\"\"A simple program which should return the value of x if n is \n    a prime number and should return the value of y otherwise.\n\n    Examples:\n    for x_or_y(7, 34, 12) == 34\n    for x_or_y(15, 8, 5) == 5\n    \n    \"\"\"\n    if is_prime(n):\n        return x\n    else:\n        return y",
+      "gen_raw": "\ndef x_or_y(n, x, y):\n    \"\"\"A simple program which should return the value of x if n is \n    a prime number and should return the value of y otherwise.\n\n    Examples:\n    for x_or_y(7, 34, 12) == 34\n    for x_or_y(15, 8, 5) == 5\n    \n    \"\"\"\n    if is_prime(n):\n        return x\n    else:\n        return y\n\ndef is_prime(num):\n    if num < 2:\n        return False\n    for i in range(2, num):\n        if num % i == 0:\n            return False\n    return True\n"
+    },
+    {
+      "task_id": "HumanEval/31",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True",
+      "gen_raw": "\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n"
+    },
+    {
+      "task_id": "HumanEval/91",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpbeh6gpeg.py\", line 36, in <module>\n    check(is_bored)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpbeh6gpeg.py\", line 28, in ",
+      "completion_preview": "def is_bored(S):\n    bored = 0\n    for word in S.split():\n        if word == \"I\" and S.endswith((\".\", \"!\", \"?\")):\n            bored += 1\n    return bored",
+      "gen_raw": "\ndef is_bored(S):\n    bored = 0\n    for word in S.split():\n        if word == \"I\" and S.endswith((\".\", \"!\", \"?\")):\n            bored += 1\n    return bored\n"
+    },
+    {
+      "task_id": "HumanEval/58",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def common(l1: list, l2: list):\n    \"\"\"Return sorted unique common elements for two lists.\n    >>> common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121])\n    [1, 5, 653]\n    >>> common([5, 3, 2, 8], [3, 2])\n    [2, 3]\n\n    \"\"\"\n    return sorted(list(set(l1) & set(l2)))",
+      "gen_raw": "\ndef common(l1: list, l2: list):\n    \"\"\"Return sorted unique common elements for two lists.\n    >>> common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121])\n    [1, 5, 653]\n    >>> common([5, 3, 2, 8], [3, 2])\n    [2, 3]\n\n    \"\"\"\n    return sorted(list(set(l1) & set(l2)))\n"
+    },
+    {
+      "task_id": "HumanEval/9",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpnfg8_zb0.py\", line 34, in <module>\n    check(rolling_max)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpnfg8_zb0.py\", line 28, ",
+      "completion_preview": "from typing import List, Tuple\n\n\ndef rolling_max(numbers: List[int]) -> List[int]:\n    rolling_maximum = [numbers[0]]\n    for num in numbers[1:]:\n        rolling_maximum.append(max(num, rolling_maximum[-1]))\n    return rolling_maximum",
+      "gen_raw": "\nfrom typing import List, Tuple\n\n\ndef rolling_max(numbers: List[int]) -> List[int]:\n    rolling_maximum = [numbers[0]]\n    for num in numbers[1:]:\n        rolling_maximum.append(max(num, rolling_maximum[-1]))\n    return rolling_maximum\n"
+    },
+    {
+      "task_id": "HumanEval/161",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpuit08rym.py\", line 39, in <module>\n    check(solve)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpuit08rym.py\", line 26, in che",
+      "completion_preview": "def solve(s):\n    result = \"\"\n    for char in s:\n        if char.isalpha():\n            result += char.upper() if char.islower() else char.lower()\n        else:\n            result += char\n    return result",
+      "gen_raw": "\ndef solve(s):\n    result = \"\"\n    for char in s:\n        if char.isalpha():\n            result += char.upper() if char.islower() else char.lower()\n        else:\n            result += char\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/117",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpoeauocm0.py\", line 39, in <module>\n    check(select_words)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpoeauocm0.py\", line 26,",
+      "completion_preview": "def select_words(s, n):\n    words = s.split()\n    result = []\n    for word in words:\n        if len(word) == n * 2 + 1:  # Check if the word contains exactly n consonants\n            result.append(word)\n    return result",
+      "gen_raw": "\ndef select_words(s, n):\n    words = s.split()\n    result = []\n    for word in words:\n        if len(word) == n * 2 + 1:  # Check if the word contains exactly n consonants\n            result.append(word)\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/155",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpkoz5wb9l.py\", line 39, in <module>\n    check(even_odd_count)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpkoz5wb9l.py\", line 2",
+      "completion_preview": "def even_odd_count(num):\n    even_count = 0\n    odd_count = 0\n    while num > 0:\n        digit = num % 10\n        if digit % 2 == 0:\n            even_count += 1\n        else:\n            odd_count += 1\n        num //= 10\n    return (even_count, odd_count)",
+      "gen_raw": "\ndef even_odd_count(num):\n    even_count = 0\n    odd_count = 0\n    while num > 0:\n        digit = num % 10\n        if digit % 2 == 0:\n            even_count += 1\n        else:\n            odd_count += 1\n        num //= 10\n    return (even_count, odd_count)\n"
+    },
+    {
+      "task_id": "HumanEval/107",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def even_odd_palindrome(n):\n    even_count = 0\n    odd_count = 0\n    for i in range(1, n+1):\n        if str(i) == str(i)[::-1]:  # Check if the number is a palindrome\n            if i % 2 == 0:  # Check if the number is even\n                even_count += 1\n            else:\n                odd_count += 1\n    return even_count, odd_count",
+      "gen_raw": "\ndef even_odd_palindrome(n):\n    even_count = 0\n    odd_count = 0\n    for i in range(1, n+1):\n        if str(i) == str(i)[::-1]:  # Check if the number is a palindrome\n            if i % 2 == 0:  # Check if the number is even\n                even_count += 1\n            else:\n                odd_count += 1\n    return even_count, odd_count\n"
+    },
+    {
+      "task_id": "HumanEval/54",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def same_chars(s0: str, s1: str):\n    \"\"\"\n    Check if two words have the same characters.\n    \"\"\"\n    return set(s0) == set(s1)",
+      "gen_raw": "\ndef same_chars(s0: str, s1: str):\n    \"\"\"\n    Check if two words have the same characters.\n    \"\"\"\n    return set(s0) == set(s1)\n"
+    },
+    {
+      "task_id": "HumanEval/3",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List\n\n\ndef below_zero(operations: List[int]) -> bool:\n    balance = 0\n    for operation in operations:\n        balance += operation\n        if balance < 0:\n            return True\n    return False",
+      "gen_raw": "\nfrom typing import List\n\n\ndef below_zero(operations: List[int]) -> bool:\n    balance = 0\n    for operation in operations:\n        balance += operation\n        if balance < 0:\n            return True\n    return False\n"
+    },
+    {
+      "task_id": "HumanEval/82",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp91pcd86c.py\", line 52, in <module>\n    check(prime_length)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp91pcd86c.py\", line 39,",
+      "completion_preview": "def prime_length(string):\n    \"\"\"Write a function that takes a string and returns True if the string\n    length is a prime number or False otherwise\n    Examples\n    prime_length('Hello') == True\n    prime_length('abcdcba') == True\n    prime_length('kittens') == True\n    prime_length('orange') == False\n    \"\"\"\n    length = len(string)\n    if length == 1 or length == 2:\n        return True\n    for i in range(2, length):\n        if length % i == 0:\n            return False\n    return True",
+      "gen_raw": "\ndef prime_length(string):\n    \"\"\"Write a function that takes a string and returns True if the string\n    length is a prime number or False otherwise\n    Examples\n    prime_length('Hello') == True\n    prime_length('abcdcba') == True\n    prime_length('kittens') == True\n    prime_length('orange') == False\n    \"\"\"\n    length = len(string)\n    if length == 1 or length == 2:\n        return True\n    for i in range(2, length):\n        if length % i == 0:\n            return False\n    return True\n"
+    },
+    {
+      "task_id": "HumanEval/6",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmppd2dvbi_.py\", line 47, in <module>\n    check(parse_nested_parens)\n  File \"/var/tmp/pbs.12078.jiit-master/tmppd2dvbi_.py\", l",
+      "completion_preview": "from typing import List\n\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    \"\"\" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n    For each of the group, output the deepest level of nesting of parentheses.\n    E.g. (()()) has maximum two levels of nesting while ((())) has three.\n\n    >>> parse_nested_parens('(()()) ((())) () ((())()())')\n    [2, 3, 1, 3]\n    \"\"\"\n    stack = []\n    result = []\n    for char in paren_string:\n        if char == '(':\n            stack.append(char)\n        elif char == ')':\n            stack.pop()\n            result.append(len(stack))\n    return result",
+      "gen_raw": "\nfrom typing import List\n\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    \"\"\" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n    For each of the group, output the deepest level of nesting of parentheses.\n    E.g. (()()) has maximum two levels of nesting while ((())) has three.\n\n    >>> parse_nested_parens('(()()) ((())) () ((())()())')\n    [2, 3, 1, 3]\n    \"\"\"\n    stack = []\n    result = []\n    for char in paren_string:\n        if char == '(':\n            stack.append(char)\n        elif char == ')':\n            stack.pop()\n            result.append(len(stack))\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/49",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpuf5wp_hc.py\", line 104, in <module>\n    check(modp)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpuf5wp_hc.py\", line 94, in che",
+      "completion_preview": "def modp(n: int, p: int):\n    \"\"\"Return 2^n modulo p (be aware of numerics).\n    >>> modp(3, 5)\n    3\n    >>> modp(1101, 101)\n    2\n    >>> modp(0, 101)\n    1\n    >>> modp(3, 11)\n    8\n    >>> modp(100, 101)\n    1\n    \"\"\"\n    if n == 0:\n        return 1\n    if p == 1:\n        return 0\n    if p == 2:\n        return 1\n    if n == 1:\n        return 1\n    if p == 2:\n        return 1\n    if p == 3:\n        return 1\n    if p == 4:\n        return 1\n    if p == 5:\n        return 1\n    if p == 6:\n        return 1\n    if p == 7:\n        return 1\n    if p == 8:\n        return 1\n    if p == 9:\n        return 1\n    if p == 10:\n        return 1\n    if p == 11:\n        return 1\n    if p == 12:\n        return 1\n    if p == 13:\n        return 1\n    if p == 14:\n        return 1\n    if p == 15:\n        return 1\n    if p == 16:\n        return 1\n    if p == 17:\n        return 1\n    if p == 18:\n        return 1\n    if p == 19:\n        return 1\n    if p == 20:\n        return 1\n    if p == 21:\n        return 1\n    if p == 22:\n        return 1\n    if p == 23:\n        return 1\n    if p == 24:\n        return 1\n    if p == 25:\n        return 1\n    if p == 26:\n        return ",
+      "gen_raw": "\ndef modp(n: int, p: int):\n    \"\"\"Return 2^n modulo p (be aware of numerics).\n    >>> modp(3, 5)\n    3\n    >>> modp(1101, 101)\n    2\n    >>> modp(0, 101)\n    1\n    >>> modp(3, 11)\n    8\n    >>> modp(100, 101)\n    1\n    \"\"\"\n    if n == 0:\n        return 1\n    if p == 1:\n        return 0\n    if p == 2:\n        return 1\n    if n == 1:\n        return 1\n    if p == 2:\n        return 1\n    if p == 3:\n        return 1\n    if p == 4:\n        return 1\n    if p == 5:\n        return 1\n    if p == 6:\n        return 1\n    if p == 7:\n        return 1\n    if p == 8:\n        return 1\n    if p == 9:\n        return 1\n    if p == 10:\n        return 1\n    if p == 11:\n        return 1\n    if p == 12:\n        return 1\n    if p == 13:\n        return 1\n    if p == 14:\n        return 1\n    if p == 15:\n        return 1\n    if p == 16:\n        return 1\n    if p == 17:\n        return 1\n    if p == 18:\n        return 1\n    if p == 19:\n        return 1\n    if p == 20:\n        return 1\n    if p == 21:\n        return 1\n    if p == 22:\n        return 1\n    if p == 23:\n        return 1\n    if p == 24:\n        return 1\n    if p == 25:\n        return 1\n    if p == 26:\n        return "
+    },
+    {
+      "task_id": "HumanEval/84",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp3mkuh2o0.py\", line 38, in <module>\n    check(solve)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp3mkuh2o0.py\", line 27, in che",
+      "completion_preview": "def solve(N):\n    binary_sum = 0\n    while N > 0:\n        binary_sum += N % 2\n        N //= 2\n    return bin(binary_sum)[2:]",
+      "gen_raw": "\ndef solve(N):\n    binary_sum = 0\n    while N > 0:\n        binary_sum += N % 2\n        N //= 2\n    return bin(binary_sum)[2:]\n"
+    },
+    {
+      "task_id": "HumanEval/105",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def by_length(arr):\n    if not arr:\n        return []\n    arr = sorted(arr)\n    arr = arr[::-1]\n    names = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']\n    return [names[i] for i in arr if 0 < i < 10]",
+      "gen_raw": "\ndef by_length(arr):\n    if not arr:\n        return []\n    arr = sorted(arr)\n    arr = arr[::-1]\n    names = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']\n    return [names[i] for i in arr if 0 < i < 10]\n"
+    },
+    {
+      "task_id": "HumanEval/109",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpg98rng1v.py\", line 48, in <module>\n    check(move_one_ball)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpg98rng1v.py\", line 40",
+      "completion_preview": "def move_one_ball(arr):\n    if not arr:\n        return True\n    for i in range(len(arr) - 1):\n        if arr[i] > arr[i + 1]:\n            return False\n    return True",
+      "gen_raw": "\ndef move_one_ball(arr):\n    if not arr:\n        return True\n    for i in range(len(arr) - 1):\n        if arr[i] > arr[i + 1]:\n            return False\n    return True\n"
+    },
+    {
+      "task_id": "HumanEval/17",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpsnitvssb.py\", line 47, in <module>\n    check(parse_music)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpsnitvssb.py\", line 43, ",
+      "completion_preview": "from typing import List\n\n\ndef parse_music(music_string: str) -> List[int]:\n    beats = []\n    for char in music_string:\n        if char == 'o':\n            beats.append(4)\n        elif char == 'o|':\n            beats.append(2)\n        elif char == '.':\n            beats.append(1)\n    return beats",
+      "gen_raw": "\nfrom typing import List\n\n\ndef parse_music(music_string: str) -> List[int]:\n    beats = []\n    for char in music_string:\n        if char == 'o':\n            beats.append(4)\n        elif char == 'o|':\n            beats.append(2)\n        elif char == '.':\n            beats.append(1)\n    return beats\n"
+    },
+    {
+      "task_id": "HumanEval/143",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def words_in_sentence(sentence):\n    words = sentence.split()\n    primes = [2, 3, 5, 7]  # List of prime numbers\n    result = \"\"\n    for word in words:\n        if len(word) in primes:\n            result += word + \" \"\n    return result.strip()",
+      "gen_raw": "\ndef words_in_sentence(sentence):\n    words = sentence.split()\n    primes = [2, 3, 5, 7]  # List of prime numbers\n    result = \"\"\n    for word in words:\n        if len(word) in primes:\n            result += word + \" \"\n    return result.strip()\n"
+    },
+    {
+      "task_id": "HumanEval/41",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def car_race_collision(n: int):\n    \"\"\"\n    Imagine a road that's a perfectly straight infinitely long line.\n    n cars are driving left to right;  simultaneously, a different set of n cars\n    are driving right to left.   The two sets of cars start out being very far from\n    each other.  All cars move in the same speed.  Two cars are said to collide\n    when a car that's moving left to right hits a car that's moving right to left.\n    However, the cars are infinitely sturdy and strong; as a result, they continue moving\n    in their trajectory as if they did not collide.\n\n    This function outputs the number of such collisions.\n    \"\"\"\n    # Initialize the number of collisions to 0\n    collisions = 0\n\n    # Iterate through the cars moving left to right\n    for i in range(n):\n        # Iterate through the cars moving right to left\n        for j in range(n):\n            # Calculate the distance between the two cars\n            distance = abs(i - j)\n            # If the distance is less than or equal to the number of cars, there is a collision\n            if distance <= n:\n                collisions += 1\n\n    return collisions",
+      "gen_raw": "\ndef car_race_collision(n: int):\n    \"\"\"\n    Imagine a road that's a perfectly straight infinitely long line.\n    n cars are driving left to right;  simultaneously, a different set of n cars\n    are driving right to left.   The two sets of cars start out being very far from\n    each other.  All cars move in the same speed.  Two cars are said to collide\n    when a car that's moving left to right hits a car that's moving right to left.\n    However, the cars are infinitely sturdy and strong; as a result, they continue moving\n    in their trajectory as if they did not collide.\n\n    This function outputs the number of such collisions.\n    \"\"\"\n    # Initialize the number of collisions to 0\n    collisions = 0\n\n    # Iterate through the cars moving left to right\n    for i in range(n):\n        # Iterate through the cars moving right to left\n        for j in range(n):\n            # Calculate the distance between the two cars\n            distance = abs(i - j)\n            # If the distance is less than or equal to the number of cars, there is a collision\n            if distance <= n:\n                collisions += 1\n\n    return collisions\n"
+    },
+    {
+      "task_id": "HumanEval/7",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List\n\n\ndef filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    return [s for s in strings if substring in s]",
+      "gen_raw": "\nfrom typing import List\n\n\ndef filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    return [s for s in strings if substring in s]\n"
+    },
+    {
+      "task_id": "HumanEval/141",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpreg4jbwt.py\", line 63, in <module>\n    check(file_name_check)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpreg4jbwt.py\", line ",
+      "completion_preview": "def file_name_check(file_name):\n    if len(re.findall(r'\\d', file_name)) > 3:\n        return 'No'\n    if '.' not in file_name:\n        return 'No'\n    if not re.match(r'[a-zA-Z]', file_name[:file_name.index('.')]):\n        return 'No'\n    if file_name[file_name.index('.'):] not in ['txt', 'exe', 'dll']:\n        return 'No'\n    return 'Yes'",
+      "gen_raw": "\ndef file_name_check(file_name):\n    if len(re.findall(r'\\d', file_name)) > 3:\n        return 'No'\n    if '.' not in file_name:\n        return 'No'\n    if not re.match(r'[a-zA-Z]', file_name[:file_name.index('.')]):\n        return 'No'\n    if file_name[file_name.index('.'):] not in ['txt', 'exe', 'dll']:\n        return 'No'\n    return 'Yes'\n"
+    },
+    {
+      "task_id": "HumanEval/44",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def change_base(x: int, base: int):\n    \"\"\"Change numerical base of input number x to base.\n    return string representation after the conversion.\n    base numbers are less than 10.\n    >>> change_base(8, 3)\n    '22'\n    >>> change_base(8, 2)\n    '1000'\n    >>> change_base(7, 2)\n    '111'\n    \"\"\"\n    if base < 2 or base > 10:\n        raise ValueError(\"Base must be between 2 and 10\")\n    if x == 0:\n        return '0'\n    result = []\n    while x:\n        x, digit = divmod(x, base)\n        result.append(str(digit))\n    return ''.join(result[::-1])",
+      "gen_raw": "\ndef change_base(x: int, base: int):\n    \"\"\"Change numerical base of input number x to base.\n    return string representation after the conversion.\n    base numbers are less than 10.\n    >>> change_base(8, 3)\n    '22'\n    >>> change_base(8, 2)\n    '1000'\n    >>> change_base(7, 2)\n    '111'\n    \"\"\"\n    if base < 2 or base > 10:\n        raise ValueError(\"Base must be between 2 and 10\")\n    if x == 0:\n        return '0'\n    result = []\n    while x:\n        x, digit = divmod(x, base)\n        result.append(str(digit))\n    return ''.join(result[::-1])\n"
+    },
+    {
+      "task_id": "HumanEval/25",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List\n\n\ndef factorize(n: int) -> List[int]:\n    factors = []\n    i = 2\n    while i * i <= n:\n        if n % i:\n            i += 1\n        else:\n            n //= i\n            factors.append(i)\n    if n > 1:\n        factors.append(n)\n    return factors",
+      "gen_raw": "\nfrom typing import List\n\n\ndef factorize(n: int) -> List[int]:\n    factors = []\n    i = 2\n    while i * i <= n:\n        if n % i:\n            i += 1\n        else:\n            n //= i\n            factors.append(i)\n    if n > 1:\n        factors.append(n)\n    return factors\n"
+    },
+    {
+      "task_id": "HumanEval/63",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def fibfib(n: int):\n    if n == 0 or n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    else:\n        return fibfib(n - 1) + fibfib(n - 2) + fibfib(n - 3)",
+      "gen_raw": "\ndef fibfib(n: int):\n    if n == 0 or n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    else:\n        return fibfib(n - 1) + fibfib(n - 2) + fibfib(n - 3)\n"
+    },
+    {
+      "task_id": "HumanEval/135",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp7dz7jrin.py\", line 31, in <module>\n    check(can_arrange)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp7dz7jrin.py\", line 21, ",
+      "completion_preview": "def can_arrange(arr):\n    for i in range(1, len(arr)):\n        if arr[i] < arr[i-1]:\n            return i-1\n    return -1",
+      "gen_raw": "\ndef can_arrange(arr):\n    for i in range(1, len(arr)):\n        if arr[i] < arr[i-1]:\n            return i-1\n    return -1\n"
+    },
+    {
+      "task_id": "HumanEval/126",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpoa56iisc.py\", line 47, in <module>\n    check(is_sorted)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpoa56iisc.py\", line 40, in",
+      "completion_preview": "def is_sorted(lst):\n    if len(lst) <= 1:\n        return True\n    for i in range(1, len(lst)):\n        if lst[i] < lst[i - 1]:\n            return False\n    return True",
+      "gen_raw": "\ndef is_sorted(lst):\n    if len(lst) <= 1:\n        return True\n    for i in range(1, len(lst)):\n        if lst[i] < lst[i - 1]:\n            return False\n    return True\n"
+    },
+    {
+      "task_id": "HumanEval/73",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def smallest_change(arr):\n    n = len(arr)\n    count = 0\n    for i in range(n // 2):\n        if arr[i] != arr[n - i - 1]:\n            count += 1\n            arr[i], arr[n - i - 1] = arr[n - i - 1], arr[i]\n    return count",
+      "gen_raw": "\ndef smallest_change(arr):\n    n = len(arr)\n    count = 0\n    for i in range(n // 2):\n        if arr[i] != arr[n - i - 1]:\n            count += 1\n            arr[i], arr[n - i - 1] = arr[n - i - 1], arr[i]\n    return count\n"
+    },
+    {
+      "task_id": "HumanEval/101",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpwk3y8c9o.py\", line 30, in <module>\n    check(words_string)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpwk3y8c9o.py\", line 18,",
+      "completion_preview": "def words_string(s):\n    return s.split(',')",
+      "gen_raw": "\ndef words_string(s):\n    return s.split(',')\n"
+    },
+    {
+      "task_id": "HumanEval/156",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp571vs10g.py\", line 45, in <module>\n    check(int_to_mini_roman)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp571vs10g.py\", lin",
+      "completion_preview": "def int_to_mini_roman(number):\n    roman_dict = {1: 'i', 5: 'v', 10: 'x', 50: 'l', 100: 'c', 500: 'd', 1000: 'm'}\n    result = ''\n    for key in roman_dict:\n        while number >= key:\n            result += roman_dict[key]\n            number -= key\n    return result",
+      "gen_raw": "\ndef int_to_mini_roman(number):\n    roman_dict = {1: 'i', 5: 'v', 10: 'x', 50: 'l', 100: 'c', 500: 'd', 1000: 'm'}\n    result = ''\n    for key in roman_dict:\n        while number >= key:\n            result += roman_dict[key]\n            number -= key\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/134",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp9jfbapck.py\", line 40, in <module>\n    check(check_if_last_char_is_a_letter)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp9jfb",
+      "completion_preview": "def check_if_last_char_is_a_letter(txt):\n    if txt.endswith(' ') or txt.endswith('.'):\n        return False\n    else:\n        return txt[-1].isalpha()",
+      "gen_raw": "\ndef check_if_last_char_is_a_letter(txt):\n    if txt.endswith(' ') or txt.endswith('.'):\n        return False\n    else:\n        return txt[-1].isalpha()\n"
+    },
+    {
+      "task_id": "HumanEval/12",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List, Optional\n\n\ndef longest(strings: List[str]) -> Optional[str]:\n    if not strings:\n        return None\n    else:\n        return max(strings, key=len)",
+      "gen_raw": "\nfrom typing import List, Optional\n\n\ndef longest(strings: List[str]) -> Optional[str]:\n    if not strings:\n        return None\n    else:\n        return max(strings, key=len)\n"
+    },
+    {
+      "task_id": "HumanEval/112",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp56owhm_3.py\", line 33, in <module>\n    check(reverse_delete)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp56owhm_3.py\", line 2",
+      "completion_preview": "def reverse_delete(s, c):\n    result = ''\n    for char in s:\n        if char not in c:\n            result += char\n    return result, is_palindrome(result)",
+      "gen_raw": "\ndef reverse_delete(s, c):\n    result = ''\n    for char in s:\n        if char not in c:\n            result += char\n    return result, is_palindrome(result)\n\ndef is_palindrome(s):\n    return s == s[::-1]\n"
+    },
+    {
+      "task_id": "HumanEval/18",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n    count = 0\n    for i in range(len(string) - len(substring) + 1):\n        if string[i:i + len(substring)] == substring:\n            count += 1\n    return count",
+      "gen_raw": "\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n    count = 0\n    for i in range(len(string) - len(substring) + 1):\n        if string[i:i + len(substring)] == substring:\n            count += 1\n    return count\n"
+    },
+    {
+      "task_id": "HumanEval/24",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp1cvezvw6.py\", line 34, in <module>\n    check(largest_divisor)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp1cvezvw6.py\", line ",
+      "completion_preview": "def largest_divisor(n: int) -> int:\n    \"\"\" For a given number n, find the largest number that divides n evenly, smaller than n\n    >>> largest_divisor(15)\n    5\n    \"\"\"\n    for i in range(1, n):\n        if n % i == 0:\n            return i\n    return 1  # Return 1 if no divisor is found",
+      "gen_raw": "\ndef largest_divisor(n: int) -> int:\n    \"\"\" For a given number n, find the largest number that divides n evenly, smaller than n\n    >>> largest_divisor(15)\n    5\n    \"\"\"\n    for i in range(1, n):\n        if n % i == 0:\n            return i\n    return 1  # Return 1 if no divisor is found\n"
+    },
+    {
+      "task_id": "HumanEval/29",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List\n\n\ndef filter_by_prefix(strings: List[str], prefix: str) -> List[str]:\n    return [s for s in strings if s.startswith(prefix)]",
+      "gen_raw": "\nfrom typing import List\n\n\ndef filter_by_prefix(strings: List[str], prefix: str) -> List[str]:\n    return [s for s in strings if s.startswith(prefix)]\n"
+    },
+    {
+      "task_id": "HumanEval/36",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp44s74z4k.py\", line 37, in <module>\n    check(fizz_buzz)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp44s74z4k.py\", line 27, in",
+      "completion_preview": "def fizz_buzz(n: int):\n    count = 0\n    for i in range(1, n):\n        if i % 11 == 0 or i % 13 == 0:\n            if i % 10 == 7:\n                count += 1\n    return count",
+      "gen_raw": "\ndef fizz_buzz(n: int):\n    count = 0\n    for i in range(1, n):\n        if i % 11 == 0 or i % 13 == 0:\n            if i % 10 == 7:\n                count += 1\n    return count\n"
+    },
+    {
+      "task_id": "HumanEval/48",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def is_palindrome(text: str):\n    \"\"\"\n    Checks if given string is a palindrome\n    >>> is_palindrome('')\n    True\n    >>> is_palindrome('aba')\n    True\n    >>> is_palindrome('aaaaa')\n    True\n    >>> is_palindrome('zbcd')\n    False\n    \"\"\"\n    return text == text[::-1]",
+      "gen_raw": "\ndef is_palindrome(text: str):\n    \"\"\"\n    Checks if given string is a palindrome\n    >>> is_palindrome('')\n    True\n    >>> is_palindrome('aba')\n    True\n    >>> is_palindrome('aaaaa')\n    True\n    >>> is_palindrome('zbcd')\n    False\n    \"\"\"\n    return text == text[::-1]\n"
+    },
+    {
+      "task_id": "HumanEval/27",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def flip_case(string: str) -> str:\n    return string.swapcase()",
+      "gen_raw": "\ndef flip_case(string: str) -> str:\n    return string.swapcase()\n"
+    },
+    {
+      "task_id": "HumanEval/102",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp7wa5wegc.py\", line 37, in <module>\n    check(choose_num)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp7wa5wegc.py\", line 24, i",
+      "completion_preview": "def choose_num(x, y):\n    if x % 2 == 0 and y % 2 == 0:\n        return max(x, y)\n    elif x % 2 == 0:\n        return x\n    elif y % 2 == 0:\n        return y\n    else:\n        return -1",
+      "gen_raw": "\ndef choose_num(x, y):\n    if x % 2 == 0 and y % 2 == 0:\n        return max(x, y)\n    elif x % 2 == 0:\n        return x\n    elif y % 2 == 0:\n        return y\n    else:\n        return -1\n"
+    },
+    {
+      "task_id": "HumanEval/121",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def solution(lst):\n    \"\"\"Given a non-empty list of integers, return the sum of all of the odd elements that are in even positions.\n\n    Examples\n    solution([5, 8, 7, 1]) ==> 12\n    solution([3, 3, 3, 3, 3]) ==> 9\n    solution([30, 13, 24, 321]) ==>0\n    \"\"\"\n    odd_even_sum = 0\n    for i in range(len(lst)):\n        if i % 2 == 0 and lst[i] % 2 != 0:\n            odd_even_sum += lst[i]\n    return odd_even_sum",
+      "gen_raw": "\ndef solution(lst):\n    \"\"\"Given a non-empty list of integers, return the sum of all of the odd elements that are in even positions.\n\n    Examples\n    solution([5, 8, 7, 1]) ==> 12\n    solution([3, 3, 3, 3, 3]) ==> 9\n    solution([30, 13, 24, 321]) ==>0\n    \"\"\"\n    odd_even_sum = 0\n    for i in range(len(lst)):\n        if i % 2 == 0 and lst[i] % 2 != 0:\n            odd_even_sum += lst[i]\n    return odd_even_sum\n"
+    },
+    {
+      "task_id": "HumanEval/19",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpyrcnkrzk.py\", line 52, in <module>\n    check(sort_numbers)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpyrcnkrzk.py\", line 46,",
+      "completion_preview": "from typing import List\n\n\ndef sort_numbers(numbers: str) -> str:\n    \"\"\" Input is a space-delimited string of numberals from 'zero' to 'nine'.\n    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.\n    Return the string with numbers sorted from smallest to largest\n    >>> sort_numbers('three one five')\n    'one three five'\n    \"\"\"\n    numbers_dict = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    sorted_numbers = sorted([numbers_dict[num] for num in numbers.split()])\n    return ' '.join([numbers_dict[num] for num in sorted_numbers])",
+      "gen_raw": "\nfrom typing import List\n\n\ndef sort_numbers(numbers: str) -> str:\n    \"\"\" Input is a space-delimited string of numberals from 'zero' to 'nine'.\n    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.\n    Return the string with numbers sorted from smallest to largest\n    >>> sort_numbers('three one five')\n    'one three five'\n    \"\"\"\n    numbers_dict = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    sorted_numbers = sorted([numbers_dict[num] for num in numbers.split()])\n    return ' '.join([numbers_dict[num] for num in sorted_numbers])\n"
+    },
+    {
+      "task_id": "HumanEval/16",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def count_distinct_characters(string: str) -> int:\n    \"\"\" Given a string, find out how many distinct characters (regardless of case) does it consist of\n    >>> count_distinct_characters('xyzXYZ')\n    3\n    >>> count_distinct_characters('Jerry')\n    4\n    \"\"\"\n    return len(set(string.lower()))",
+      "gen_raw": "\ndef count_distinct_characters(string: str) -> int:\n    \"\"\" Given a string, find out how many distinct characters (regardless of case) does it consist of\n    >>> count_distinct_characters('xyzXYZ')\n    3\n    >>> count_distinct_characters('Jerry')\n    4\n    \"\"\"\n    return len(set(string.lower()))\n"
+    },
+    {
+      "task_id": "HumanEval/118",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpqqmx2ghu.py\", line 46, in <module>\n    check(get_closest_vowel)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpqqmx2ghu.py\", lin",
+      "completion_preview": "def get_closest_vowel(word):\n    vowels = \"aeiouAEIOU\"\n    for i in range(len(word) - 1):\n        if word[i] in vowels and word[i + 1] not in vowels:\n            return word[i]\n    return \"\"",
+      "gen_raw": "\ndef get_closest_vowel(word):\n    vowels = \"aeiouAEIOU\"\n    for i in range(len(word) - 1):\n        if word[i] in vowels and word[i + 1] not in vowels:\n            return word[i]\n    return \"\"\n"
+    },
+    {
+      "task_id": "HumanEval/61",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def correct_bracketing(brackets: str):\n    \"\"\" brackets is a string of \"(\" and \")\".\n    return True if every opening bracket has a corresponding closing bracket.\n\n    >>> correct_bracketing(\"(\")\n    False\n    >>> correct_bracketing(\"()\")\n    True\n    >>> correct_bracketing(\"(()())\")\n    True\n    >>> correct_bracketing(\")(()\")\n    False\n    \"\"\"\n    stack = []\n    for bracket in brackets:\n        if bracket == \"(\":\n            stack.append(bracket)\n        elif bracket == \")\":\n            if not stack or stack.pop() != \"(\":\n                return False\n    return not stack",
+      "gen_raw": "\ndef correct_bracketing(brackets: str):\n    \"\"\" brackets is a string of \"(\" and \")\".\n    return True if every opening bracket has a corresponding closing bracket.\n\n    >>> correct_bracketing(\"(\")\n    False\n    >>> correct_bracketing(\"()\")\n    True\n    >>> correct_bracketing(\"(()())\")\n    True\n    >>> correct_bracketing(\")(()\")\n    False\n    \"\"\"\n    stack = []\n    for bracket in brackets:\n        if bracket == \"(\":\n            stack.append(bracket)\n        elif bracket == \")\":\n            if not stack or stack.pop() != \"(\":\n                return False\n    return not stack\n"
+    },
+    {
+      "task_id": "HumanEval/130",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp81t20h5r.py\", line 51, in <module>\n    check(tri)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp81t20h5r.py\", line 37, in check",
+      "completion_preview": "def tri(n):\n    if n == 1:\n        return [3]\n    elif n == 2:\n        return [3, 2]\n    else:\n        sequence = [3, 2]\n        for i in range(2, n + 1):\n            if i % 2 == 0:\n                sequence.append(1 + sequence[i // 2 - 1])\n            else:\n                sequence.append(sequence[i - 1] + sequence[i - 2] + sequence[i + 1])\n        return sequence",
+      "gen_raw": "\ndef tri(n):\n    if n == 1:\n        return [3]\n    elif n == 2:\n        return [3, 2]\n    else:\n        sequence = [3, 2]\n        for i in range(2, n + 1):\n            if i % 2 == 0:\n                sequence.append(1 + sequence[i // 2 - 1])\n            else:\n                sequence.append(sequence[i - 1] + sequence[i - 2] + sequence[i + 1])\n        return sequence\n"
+    },
+    {
+      "task_id": "HumanEval/26",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmphkzdld6d.py\", line 41, in <module>\n    check(remove_duplicates)\n  File \"/var/tmp/pbs.12078.jiit-master/tmphkzdld6d.py\", lin",
+      "completion_preview": "from typing import List\n\n\ndef remove_duplicates(numbers: List[int]) -> List[int]:\n    \"\"\" From a list of integers, remove all elements that occur more than once.\n    Keep order of elements left the same as in the input.\n    >>> remove_duplicates([1, 2, 3, 2, 4])\n    [1, 3, 4]\n    \"\"\"\n    seen = set()\n    result = []\n    for num in numbers:\n        if num not in seen:\n            seen.add(num)\n            result.append(num)\n    return result",
+      "gen_raw": "\nfrom typing import List\n\n\ndef remove_duplicates(numbers: List[int]) -> List[int]:\n    \"\"\" From a list of integers, remove all elements that occur more than once.\n    Keep order of elements left the same as in the input.\n    >>> remove_duplicates([1, 2, 3, 2, 4])\n    [1, 3, 4]\n    \"\"\"\n    seen = set()\n    result = []\n    for num in numbers:\n        if num not in seen:\n            seen.add(num)\n            result.append(num)\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/106",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp9y2bjz1f.py\", line 28, in <module>\n    check(f)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp9y2bjz1f.py\", line 22, in check\n ",
+      "completion_preview": "def f(n):\n    result = [0] * n\n    for i in range(1, n + 1):\n        if i % 2 == 0:\n            result[i - 1] = factorial(i)\n        else:\n            result[i - 1] = sum_of_numbers(i)\n    return result",
+      "gen_raw": "\ndef f(n):\n    result = [0] * n\n    for i in range(1, n + 1):\n        if i % 2 == 0:\n            result[i - 1] = factorial(i)\n        else:\n            result[i - 1] = sum_of_numbers(i)\n    return result\n\ndef factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * factorial(n - 1)\n\ndef sum_of_numbers(n):\n    return sum(range(1, n + 1))\n"
+    },
+    {
+      "task_id": "HumanEval/148",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpa60pg2mz.py\", line 43, in <module>\n    check(bf)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpa60pg2mz.py\", line 30, in check\n",
+      "completion_preview": "def bf(planet1, planet2):\n    planets = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]\n    index1 = planets.index(planet1)\n    index2 = planets.index(planet2)\n    if index1 < 0 or index2 < 0:\n        return tuple()\n    else:\n        return tuple(planets[index1:index2+1])",
+      "gen_raw": "\ndef bf(planet1, planet2):\n    planets = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]\n    index1 = planets.index(planet1)\n    index2 = planets.index(planet2)\n    if index1 < 0 or index2 < 0:\n        return tuple()\n    else:\n        return tuple(planets[index1:index2+1])\n"
+    },
+    {
+      "task_id": "HumanEval/100",
+      "score": 0,
+      "err": "TIMEOUT",
+      "completion_preview": "def make_a_pile(n):\n    pile = [n]\n    while n > 1:\n        if n % 2 == 1:\n            n += 1\n        else:\n            n += 2\n        pile.append(n)\n    return pile",
+      "gen_raw": "\ndef make_a_pile(n):\n    pile = [n]\n    while n > 1:\n        if n % 2 == 1:\n            n += 1\n        else:\n            n += 2\n        pile.append(n)\n    return pile\n"
+    },
+    {
+      "task_id": "HumanEval/92",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def any_int(x, y, z):\n    if isinstance(x, int) and isinstance(y, int) and isinstance(z, int):\n        if x == y + z or y == x + z or z == x + y:\n            return True\n        else:\n            return False\n    else:\n        return False",
+      "gen_raw": "\ndef any_int(x, y, z):\n    if isinstance(x, int) and isinstance(y, int) and isinstance(z, int):\n        if x == y + z or y == x + z or z == x + y:\n            return True\n        else:\n            return False\n    else:\n        return False\n"
+    },
+    {
+      "task_id": "HumanEval/57",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpicr9fgvd.py\", line 47, in <module>\n    check(monotonic)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpicr9fgvd.py\", line 40, in",
+      "completion_preview": "def monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n    if l == []:\n        return True\n    elif l[0] < l[1]:\n        return all(x < y for x, y in zip(l, l[1:]))\n    elif l[0] > l[1]:\n        return all(x > y for x, y in zip(l, l[1:]))\n    else:\n        return False",
+      "gen_raw": "\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n    if l == []:\n        return True\n    elif l[0] < l[1]:\n        return all(x < y for x, y in zip(l, l[1:]))\n    elif l[0] > l[1]:\n        return all(x > y for x, y in zip(l, l[1:]))\n    else:\n        return False\n"
+    },
+    {
+      "task_id": "HumanEval/146",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp4odfgt5y.py\", line 33, in <module>\n    check(specialFilter)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp4odfgt5y.py\", line 22",
+      "completion_preview": "def specialFilter(nums):\n    count = 0\n    for num in nums:\n        if num > 10 and (num // 10 % 2 == 1 and num % 10 % 2 == 1):\n            count += 1\n    return count",
+      "gen_raw": "\ndef specialFilter(nums):\n    count = 0\n    for num in nums:\n        if num > 10 and (num // 10 % 2 == 1 and num % 10 % 2 == 1):\n            count += 1\n    return count\n"
+    },
+    {
+      "task_id": "HumanEval/67",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpxr2ygnov.py\", line 33, in <module>\n    check(fruit_distribution)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpxr2ygnov.py\", li",
+      "completion_preview": "def fruit_distribution(s, n):\n    apples = s.split(\"apples\")[0].split(\"and\")[1].split(\" \")[0]\n    oranges = s.split(\"oranges\")[0].split(\"and\")[1].split(\" \")[0]\n    mangoes = n - int(apples) - int(oranges)\n    return mangoes",
+      "gen_raw": "\ndef fruit_distribution(s, n):\n    apples = s.split(\"apples\")[0].split(\"and\")[1].split(\" \")[0]\n    oranges = s.split(\"oranges\")[0].split(\"and\")[1].split(\" \")[0]\n    mangoes = n - int(apples) - int(oranges)\n    return mangoes\n"
+    },
+    {
+      "task_id": "HumanEval/40",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def triples_sum_to_zero(l: list):\n    \"\"\"\n    triples_sum_to_zero takes a list of integers as an input.\n    it returns True if there are three distinct elements in the list that\n    sum to zero, and False otherwise.\n\n    >>> triples_sum_to_zero([1, 3, 5, 0])\n    False\n    >>> triples_sum_to_zero([1, 3, -2, 1])\n    True\n    >>> triples_sum_to_zero([1, 2, 3, 7])\n    False\n    >>> triples_sum_to_zero([2, 4, -5, 3, 9, 7])\n    True\n    >>> triples_sum_to_zero([1])\n    False\n    \"\"\"\n    l.sort()\n    for i in range(len(l) - 2):\n        if l[i] + l[i + 1] + l[i + 2] == 0:\n            return True\n    return False",
+      "gen_raw": "\ndef triples_sum_to_zero(l: list):\n    \"\"\"\n    triples_sum_to_zero takes a list of integers as an input.\n    it returns True if there are three distinct elements in the list that\n    sum to zero, and False otherwise.\n\n    >>> triples_sum_to_zero([1, 3, 5, 0])\n    False\n    >>> triples_sum_to_zero([1, 3, -2, 1])\n    True\n    >>> triples_sum_to_zero([1, 2, 3, 7])\n    False\n    >>> triples_sum_to_zero([2, 4, -5, 3, 9, 7])\n    True\n    >>> triples_sum_to_zero([1])\n    False\n    \"\"\"\n    l.sort()\n    for i in range(len(l) - 2):\n        if l[i] + l[i + 1] + l[i + 2] == 0:\n            return True\n    return False\n"
+    },
+    {
+      "task_id": "HumanEval/42",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def incr_list(l: list):\n    return [i + 1 for i in l]",
+      "gen_raw": "\ndef incr_list(l: list):\n    return [i + 1 for i in l]\n"
+    },
+    {
+      "task_id": "HumanEval/144",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp7dladyts.py\", line 41, in <module>\n    check(simplify)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp7dladyts.py\", line 22, in ",
+      "completion_preview": "def simplify(x, n):\n    x_num, x_den = map(int, x.split('/'))\n    n_num, n_den = map(int, n.split('/'))\n    return x_num * n_den == n_num * x_den",
+      "gen_raw": "\ndef simplify(x, n):\n    x_num, x_den = map(int, x.split('/'))\n    n_num, n_den = map(int, n.split('/'))\n    return x_num * n_den == n_num * x_den\n"
+    },
+    {
+      "task_id": "HumanEval/95",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def check_dict_case(dict):\n    if not dict:\n        return False\n    if all(isinstance(key, str) for key in dict.keys()) and all(key.islower() for key in dict.keys()):\n        return True\n    elif all(isinstance(key, str) for key in dict.keys()) and all(key.isupper() for key in dict.keys()):\n        return True\n    else:\n        return False",
+      "gen_raw": "\ndef check_dict_case(dict):\n    if not dict:\n        return False\n    if all(isinstance(key, str) for key in dict.keys()) and all(key.islower() for key in dict.keys()):\n        return True\n    elif all(isinstance(key, str) for key in dict.keys()) and all(key.isupper() for key in dict.keys()):\n        return True\n    else:\n        return False\n"
+    },
+    {
+      "task_id": "HumanEval/64",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpod3y57di.py\", line 42, in <module>\n    check(vowels_count)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpod3y57di.py\", line 30,",
+      "completion_preview": "def vowels_count(s):\n    vowels = ['a', 'e', 'i', 'o', 'u', 'y']\n    count = 0\n    for char in s:\n        if char in vowels:\n            count += 1\n    return count",
+      "gen_raw": "\ndef vowels_count(s):\n    vowels = ['a', 'e', 'i', 'o', 'u', 'y']\n    count = 0\n    for char in s:\n        if char in vowels:\n            count += 1\n    return count\n"
+    },
+    {
+      "task_id": "HumanEval/65",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpj9pf1e5j.py\", line 39, in <module>\n    check(circular_shift)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpj9pf1e5j.py\", line 2",
+      "completion_preview": "def circular_shift(x, shift):\n    \"\"\"Circular shift the digits of the integer x, shift the digits right by shift\n    and return the result as a string.\n    If shift > number of digits, return digits reversed.\n    >>> circular_shift(12, 1)\n    \"21\"\n    >>> circular_shift(12, 2)\n    \"12\"\n    \"\"\"\n    digits = str(x)\n    if shift > len(digits):\n        return digits[::-1]\n    else:\n        return digits[shift:] + digits[:shift]",
+      "gen_raw": "\ndef circular_shift(x, shift):\n    \"\"\"Circular shift the digits of the integer x, shift the digits right by shift\n    and return the result as a string.\n    If shift > number of digits, return digits reversed.\n    >>> circular_shift(12, 1)\n    \"21\"\n    >>> circular_shift(12, 2)\n    \"12\"\n    \"\"\"\n    digits = str(x)\n    if shift > len(digits):\n        return digits[::-1]\n    else:\n        return digits[shift:] + digits[:shift]\n"
+    },
+    {
+      "task_id": "HumanEval/4",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List\n\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    \"\"\" For a given list of input numbers, calculate Mean Absolute Deviation\n    around the mean of this dataset.\n    Mean Absolute Deviation is the average absolute difference between each\n    element and a centerpoint (mean in this case):\n    MAD = average | x - x_mean |\n    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])\n    1.0\n    \"\"\"\n    mean = sum(numbers) / len(numbers)\n    return sum(abs(x - mean) for x in numbers) / len(numbers)",
+      "gen_raw": "\nfrom typing import List\n\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    \"\"\" For a given list of input numbers, calculate Mean Absolute Deviation\n    around the mean of this dataset.\n    Mean Absolute Deviation is the average absolute difference between each\n    element and a centerpoint (mean in this case):\n    MAD = average | x - x_mean |\n    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])\n    1.0\n    \"\"\"\n    mean = sum(numbers) / len(numbers)\n    return sum(abs(x - mean) for x in numbers) / len(numbers)\n"
+    },
+    {
+      "task_id": "HumanEval/138",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp8y_9n2ev.py\", line 28, in <module>\n    check(is_equal_to_sum_even)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp8y_9n2ev.py\", ",
+      "completion_preview": "def is_equal_to_sum_even(n):\n    if n % 2 == 1:\n        return False\n    for i in range(2, int(n/2) + 1):\n        if n - i - i - i - i == 0:\n            return True\n    return False",
+      "gen_raw": "\ndef is_equal_to_sum_even(n):\n    if n % 2 == 1:\n        return False\n    for i in range(2, int(n/2) + 1):\n        if n - i - i - i - i == 0:\n            return True\n    return False\n"
+    },
+    {
+      "task_id": "HumanEval/96",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpkapek29t.py\", line 35, in <module>\n    check(count_up_to)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpkapek29t.py\", line 22, ",
+      "completion_preview": "def count_up_to(n):\n    primes = []\n    for num in range(2, n + 1):\n        if all(num % i != 0 for i in range(2, num)):\n            primes.append(num)\n    return primes",
+      "gen_raw": "\ndef count_up_to(n):\n    primes = []\n    for num in range(2, n + 1):\n        if all(num % i != 0 for i in range(2, num)):\n            primes.append(num)\n    return primes\n"
+    },
+    {
+      "task_id": "HumanEval/5",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp72fy21ow.py\", line 35, in <module>\n    check(intersperse)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp72fy21ow.py\", line 30, ",
+      "completion_preview": "from typing import List\n\n\ndef intersperse(numbers: List[int], delimeter: int) -> List[int]:\n    result = [numbers[0]]\n    for i in range(1, len(numbers)):\n        result.append(delimeter)\n        result.append(numbers[i])\n    return result",
+      "gen_raw": "\nfrom typing import List\n\n\ndef intersperse(numbers: List[int], delimeter: int) -> List[int]:\n    result = [numbers[0]]\n    for i in range(1, len(numbers)):\n        result.append(delimeter)\n        result.append(numbers[i])\n    return result\n"
+    },
+    {
+      "task_id": "HumanEval/162",
+      "score": 1,
+      "err": "",
+      "completion_preview": "import hashlib\n\ndef string_to_md5(text):\n    \"\"\"\n    Given a string 'text', return its md5 hash equivalent string.\n    If 'text' is an empty string, return None.\n\n    >>> string_to_md5('Hello world') == '3e25960a79dbc69b674cd4ec67a72c62'\n    \"\"\"\n    if text:\n        return hashlib.md5(text.encode()).hexdigest()\n    else:\n        return None",
+      "gen_raw": "\nimport hashlib\n\ndef string_to_md5(text):\n    \"\"\"\n    Given a string 'text', return its md5 hash equivalent string.\n    If 'text' is an empty string, return None.\n\n    >>> string_to_md5('Hello world') == '3e25960a79dbc69b674cd4ec67a72c62'\n    \"\"\"\n    if text:\n        return hashlib.md5(text.encode()).hexdigest()\n    else:\n        return None\n"
+    },
+    {
+      "task_id": "HumanEval/1",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpj1_l99f3.py\", line 59, in <module>\n    check(separate_paren_groups)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpj1_l99f3.py\",",
+      "completion_preview": "from typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    def find_group(paren_string, start_index):\n        depth = 1\n        end_index = start_index\n        while depth > 0 and end_index < len(paren_string):\n            if paren_string[end_index] == '(':\n                depth += 1\n            elif paren_string[end_index] == ')':\n                depth -= 1\n            end_index += 1\n        return paren_string[start_index:end_index]\n\n    groups = []\n    start_index = 0\n    while start_index < len(paren_string):\n        if paren_string[start_index] == '(':\n            group = find_group(paren_string, start_index)\n            groups.append(group)\n            start_index = start_index + len(group)\n        else:\n            start_index += 1\n    return groups",
+      "gen_raw": "\nfrom typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    def find_group(paren_string, start_index):\n        depth = 1\n        end_index = start_index\n        while depth > 0 and end_index < len(paren_string):\n            if paren_string[end_index] == '(':\n                depth += 1\n            elif paren_string[end_index] == ')':\n                depth -= 1\n            end_index += 1\n        return paren_string[start_index:end_index]\n\n    groups = []\n    start_index = 0\n    while start_index < len(paren_string):\n        if paren_string[start_index] == '(':\n            group = find_group(paren_string, start_index)\n            groups.append(group)\n            start_index = start_index + len(group)\n        else:\n            start_index += 1\n    return groups\n"
+    },
+    {
+      "task_id": "HumanEval/103",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp_1hkug1_.py\", line 41, in <module>\n    check(rounded_avg)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp_1hkug1_.py\", line 23, ",
+      "completion_preview": "def rounded_avg(n, m):\n    if n > m:\n        return -1\n    else:\n        avg = (n + m) // 2\n        return bin(avg)[2:]",
+      "gen_raw": "\ndef rounded_avg(n, m):\n    if n > m:\n        return -1\n    else:\n        avg = (n + m) // 2\n        return bin(avg)[2:]\n"
+    },
+    {
+      "task_id": "HumanEval/51",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpwlqnxg3g.py\", line 39, in <module>\n    check(remove_vowels)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpwlqnxg3g.py\", line 33",
+      "completion_preview": "def remove_vowels(text):\n    vowels = 'aeiou'\n    return ''.join(c for c in text if c not in vowels)",
+      "gen_raw": "\ndef remove_vowels(text):\n    vowels = 'aeiou'\n    return ''.join(c for c in text if c not in vowels)\n"
+    },
+    {
+      "task_id": "HumanEval/69",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpzbib18su.py\", line 60, in <module>\n    check(search)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpzbib18su.py\", line 48, in ch",
+      "completion_preview": "def search(lst):\n    freq = {}\n    for num in lst:\n        if num in freq:\n            freq[num] += 1\n        else:\n            freq[num] = 1\n\n    for num in freq:\n        if freq[num] >= num:\n            return num\n\n    return -1",
+      "gen_raw": "\ndef search(lst):\n    freq = {}\n    for num in lst:\n        if num in freq:\n            freq[num] += 1\n        else:\n            freq[num] = 1\n\n    for num in freq:\n        if freq[num] >= num:\n            return num\n\n    return -1\n"
+    },
+    {
+      "task_id": "HumanEval/128",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpp6gs4okk.py\", line 42, in <module>\n    check(prod_signs)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpp6gs4okk.py\", line 29, i",
+      "completion_preview": "def prod_signs(arr):\n    if not arr:\n        return None\n    sign_product = 1\n    magnitude_sum = 0\n    for num in arr:\n        magnitude_sum += abs(num)\n        sign_product *= (1 if num > 0 else -1)\n    return magnitude_sum * sign_product",
+      "gen_raw": "\ndef prod_signs(arr):\n    if not arr:\n        return None\n    sign_product = 1\n    magnitude_sum = 0\n    for num in arr:\n        magnitude_sum += abs(num)\n        sign_product *= (1 if num > 0 else -1)\n    return magnitude_sum * sign_product\n"
+    },
+    {
+      "task_id": "HumanEval/125",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmppozr_7ly.py\", line 32, in <module>\n    check(split_words)\n  File \"/var/tmp/pbs.12078.jiit-master/tmppozr_7ly.py\", line 23, ",
+      "completion_preview": "def split_words(txt):\n    words = txt.split()\n    if not words:\n        words = txt.split(',')\n    if not words:\n        words = [str(ord(c) % 26) for c in txt.lower() if c.isalpha()]\n    return words",
+      "gen_raw": "\ndef split_words(txt):\n    words = txt.split()\n    if not words:\n        words = txt.split(',')\n    if not words:\n        words = [str(ord(c) % 26) for c in txt.lower() if c.isalpha()]\n    return words\n"
+    },
+    {
+      "task_id": "HumanEval/99",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpkl6h2pbh.py\", line 46, in <module>\n    check(closest_integer)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpkl6h2pbh.py\", line ",
+      "completion_preview": "def closest_integer(value):\n    try:\n        num = float(value)\n        if num == int(num):\n            return int(num)\n        else:\n            if num > 0:\n                return int(num) if num - int(num) > 0.5 else int(num) - 1\n            else:\n                return int(num) if num - int(num) > 0.5 else int(num) + 1\n    except ValueError:\n        return \"Invalid input\"",
+      "gen_raw": "\ndef closest_integer(value):\n    try:\n        num = float(value)\n        if num == int(num):\n            return int(num)\n        else:\n            if num > 0:\n                return int(num) if num - int(num) > 0.5 else int(num) - 1\n            else:\n                return int(num) if num - int(num) > 0.5 else int(num) + 1\n    except ValueError:\n        return \"Invalid input\"\n"
+    },
+    {
+      "task_id": "HumanEval/23",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def strlen(string: str) -> int:\n    \"\"\" Return length of given string\n    >>> strlen('')\n    0\n    >>> strlen('abc')\n    3\n    \"\"\"\n    return len(string)",
+      "gen_raw": "\ndef strlen(string: str) -> int:\n    \"\"\" Return length of given string\n    >>> strlen('')\n    0\n    >>> strlen('abc')\n    3\n    \"\"\"\n    return len(string)\n"
+    },
+    {
+      "task_id": "HumanEval/71",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def triangle_area(a, b, c):\n    if a + b > c and b + c > a and a + c > b:\n        s = (a + b + c) / 2\n        area = (s * (s - a) * (s - b) * (s - c)) ** 0.5\n        return round(area, 2)\n    else:\n        return -1",
+      "gen_raw": "\ndef triangle_area(a, b, c):\n    if a + b > c and b + c > a and a + c > b:\n        s = (a + b + c) / 2\n        area = (s * (s - a) * (s - b) * (s - c)) ** 0.5\n        return round(area, 2)\n    else:\n        return -1\n"
+    },
+    {
+      "task_id": "HumanEval/28",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List\n\n\ndef concatenate(strings: List[str]) -> str:\n    \"\"\" Concatenate list of strings into a single string\n    >>> concatenate([])\n    ''\n    >>> concatenate(['a', 'b', 'c'])\n    'abc'\n    \"\"\"\n    return ''.join(strings)",
+      "gen_raw": "\nfrom typing import List\n\n\ndef concatenate(strings: List[str]) -> str:\n    \"\"\" Concatenate list of strings into a single string\n    >>> concatenate([])\n    ''\n    >>> concatenate(['a', 'b', 'c'])\n    'abc'\n    \"\"\"\n    return ''.join(strings)\n"
+    },
+    {
+      "task_id": "HumanEval/140",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpox80n5qe.py\", line 29, in <module>\n    check(fix_spaces)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpox80n5qe.py\", line 24, i",
+      "completion_preview": "def fix_spaces(text):\n    return text.replace(\" \", \"_\").replace(\"  \", \"-\")",
+      "gen_raw": "\ndef fix_spaces(text):\n    return text.replace(\" \", \"_\").replace(\"  \", \"-\")\n"
+    },
+    {
+      "task_id": "HumanEval/132",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp8i7292g4.py\", line 49, in <module>\n    check(is_nested)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp8i7292g4.py\", line 32, in",
+      "completion_preview": "def is_nested(string):\n    stack = []\n    for char in string:\n        if char == '[':\n            stack.append(char)\n        elif char == ']':\n            if stack and stack[-1] == '[':\n                stack.pop()\n            else:\n                return False\n    return len(stack) == 0",
+      "gen_raw": "\ndef is_nested(string):\n    stack = []\n    for char in string:\n        if char == '[':\n            stack.append(char)\n        elif char == ']':\n            if stack and stack[-1] == '[':\n                stack.pop()\n            else:\n                return False\n    return len(stack) == 0\n"
+    },
+    {
+      "task_id": "HumanEval/108",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp33nq122w.py\", line 39, in <module>\n    check(count_nums)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp33nq122w.py\", line 26, i",
+      "completion_preview": "def count_nums(arr):\n    count = 0\n    for num in arr:\n        if num < 0:\n            num = -num\n        sum_of_digits = sum(int(digit) for digit in str(num))\n        if sum_of_digits > 0:\n            count += 1\n    return count",
+      "gen_raw": "\ndef count_nums(arr):\n    count = 0\n    for num in arr:\n        if num < 0:\n            num = -num\n        sum_of_digits = sum(int(digit) for digit in str(num))\n        if sum_of_digits > 0:\n            count += 1\n    return count\n"
+    },
+    {
+      "task_id": "HumanEval/56",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def correct_bracketing(brackets: str):\n    \"\"\" brackets is a string of \"<\" and \">\".\n    return True if every opening bracket has a corresponding closing bracket.\n\n    >>> correct_bracketing(\"<\")\n    False\n    >>> correct_bracketing(\"<>\")\n    True\n    >>> correct_bracketing(\"<<><>>\")\n    True\n    >>> correct_bracketing(\"><<>\")\n    False\n    \"\"\"\n    stack = []\n    for bracket in brackets:\n        if bracket == \"<\":\n            stack.append(bracket)\n        elif bracket == \">\":\n            if stack and stack[-1] == \"<\":\n                stack.pop()\n            else:\n                return False\n    return not stack",
+      "gen_raw": "\ndef correct_bracketing(brackets: str):\n    \"\"\" brackets is a string of \"<\" and \">\".\n    return True if every opening bracket has a corresponding closing bracket.\n\n    >>> correct_bracketing(\"<\")\n    False\n    >>> correct_bracketing(\"<>\")\n    True\n    >>> correct_bracketing(\"<<><>>\")\n    True\n    >>> correct_bracketing(\"><<>\")\n    False\n    \"\"\"\n    stack = []\n    for bracket in brackets:\n        if bracket == \"<\":\n            stack.append(bracket)\n        elif bracket == \">\":\n            if stack and stack[-1] == \"<\":\n                stack.pop()\n            else:\n                return False\n    return not stack\n"
+    },
+    {
+      "task_id": "HumanEval/38",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmprjh7o3me.py\", line 45, in <module>\n    check(decode_cyclic)\n  File \"/var/tmp/pbs.12078.jiit-master/tmprjh7o3me.py\", line 41",
+      "completion_preview": "def encode_cyclic(s: str):\n    \"\"\"\n    returns encoded string by cycling groups of three characters.\n    \"\"\"\n    # split string to groups. Each of length 3.\n    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]\n    # cycle elements in each group. Unless group has fewer elements than 3.\n    groups = [(group[1:] + group[0]) if len(group) == 3 else group for group in groups]\n    return \"\".join(groups)",
+      "gen_raw": "\ndef encode_cyclic(s: str):\n    \"\"\"\n    returns encoded string by cycling groups of three characters.\n    \"\"\"\n    # split string to groups. Each of length 3.\n    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]\n    # cycle elements in each group. Unless group has fewer elements than 3.\n    groups = [(group[1:] + group[0]) if len(group) == 3 else group for group in groups]\n    return \"\".join(groups)\n\n\ndef decode_cyclic(s: str):\n    \"\"\"\n    takes as input string encoded with encode_cyclic function. Returns decoded string.\n    \"\"\"\n    # split encoded string to groups. Each of length 3.\n    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]\n    # reverse cycle elements in each group.\n    groups = [group[1:] + group[0] for group in groups]\n    return \"\".join(groups)\n"
+    },
+    {
+      "task_id": "HumanEval/157",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def right_angle_triangle(a, b, c):\n    '''\n    Given the lengths of the three sides of a triangle. Return True if the three\n    sides form a right-angled triangle, False otherwise.\n    A right-angled triangle is a triangle in which one angle is right angle or \n    90 degree.\n    Example:\n    right_angle_triangle(3, 4, 5) == True\n    right_angle_triangle(1, 2, 3) == False\n    '''\n    if a**2 + b**2 == c**2 or b**2 + c**2 == a**2 or c**2 + a**2 == b**2:\n        return True\n    else:\n        return False",
+      "gen_raw": "\ndef right_angle_triangle(a, b, c):\n    '''\n    Given the lengths of the three sides of a triangle. Return True if the three\n    sides form a right-angled triangle, False otherwise.\n    A right-angled triangle is a triangle in which one angle is right angle or \n    90 degree.\n    Example:\n    right_angle_triangle(3, 4, 5) == True\n    right_angle_triangle(1, 2, 3) == False\n    '''\n    if a**2 + b**2 == c**2 or b**2 + c**2 == a**2 or c**2 + a**2 == b**2:\n        return True\n    else:\n        return False\n"
+    },
+    {
+      "task_id": "HumanEval/68",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpe78i136x.py\", line 61, in <module>\n    check(pluck)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpe78i136x.py\", line 47, in che",
+      "completion_preview": "def pluck(arr):\n    if not arr:\n        return []\n    smallest_even = min(arr, key=lambda x: x % 2 == 0)\n    index = arr.index(smallest_even)\n    return [smallest_even, index]",
+      "gen_raw": "\ndef pluck(arr):\n    if not arr:\n        return []\n    smallest_even = min(arr, key=lambda x: x % 2 == 0)\n    index = arr.index(smallest_even)\n    return [smallest_even, index]\n"
+    },
+    {
+      "task_id": "HumanEval/52",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def below_threshold(l: list, t: int):\n    \"\"\"Return True if all numbers in the list l are below threshold t.\n    >>> below_threshold([1, 2, 4, 10], 100)\n    True\n    >>> below_threshold([1, 20, 4, 10], 5)\n    False\n    \"\"\"\n    return all(num < t for num in l)",
+      "gen_raw": "\ndef below_threshold(l: list, t: int):\n    \"\"\"Return True if all numbers in the list l are below threshold t.\n    >>> below_threshold([1, 2, 4, 10], 100)\n    True\n    >>> below_threshold([1, 20, 4, 10], 5)\n    False\n    \"\"\"\n    return all(num < t for num in l)\n"
+    },
+    {
+      "task_id": "HumanEval/79",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def decimal_to_binary(decimal):\n    binary = bin(decimal)[2:]\n    return \"db\" + binary + \"db\"",
+      "gen_raw": "\ndef decimal_to_binary(decimal):\n    binary = bin(decimal)[2:]\n    return \"db\" + binary + \"db\"\n"
+    },
+    {
+      "task_id": "HumanEval/89",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpu2bbp8xs.py\", line 40, in <module>\n    check(encrypt)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpu2bbp8xs.py\", line 26, in c",
+      "completion_preview": "def encrypt(s):\n    rotated_alphabet = 'abcdefghijklmnopqrstuvwxyz'\n    encrypted_string = ''\n    for char in s:\n        if char.isalpha():\n            encrypted_string += rotated_alphabet[(ord(char) - 97) * 2]\n        else:\n            encrypted_string += char\n    return encrypted_string",
+      "gen_raw": "\ndef encrypt(s):\n    rotated_alphabet = 'abcdefghijklmnopqrstuvwxyz'\n    encrypted_string = ''\n    for char in s:\n        if char.isalpha():\n            encrypted_string += rotated_alphabet[(ord(char) - 97) * 2]\n        else:\n            encrypted_string += char\n    return encrypted_string\n"
+    },
+    {
+      "task_id": "HumanEval/15",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def string_sequence(n: int) -> str:\n    return ' '.join(str(i) for i in range(n + 1))",
+      "gen_raw": "\ndef string_sequence(n: int) -> str:\n    return ' '.join(str(i) for i in range(n + 1))\n"
+    },
+    {
+      "task_id": "HumanEval/85",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def add(lst):\n    \"\"\"Given a non-empty list of integers lst. add the even elements that are at odd indices..\n\n\n    Examples:\n        add([4, 2, 6, 7]) ==> 2 \n    \"\"\"\n    even_at_odd = [lst[i] for i in range(len(lst)) if i % 2 == 1 and lst[i] % 2 == 0]\n    return sum(even_at_odd)",
+      "gen_raw": "\ndef add(lst):\n    \"\"\"Given a non-empty list of integers lst. add the even elements that are at odd indices..\n\n\n    Examples:\n        add([4, 2, 6, 7]) ==> 2 \n    \"\"\"\n    even_at_odd = [lst[i] for i in range(len(lst)) if i % 2 == 1 and lst[i] % 2 == 0]\n    return sum(even_at_odd)\n"
+    },
+    {
+      "task_id": "HumanEval/120",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmphyviu37y.py\", line 50, in <module>\n    check(maximum)\n  File \"/var/tmp/pbs.12078.jiit-master/tmphyviu37y.py\", line 34, in c",
+      "completion_preview": "def maximum(arr, k):\n    arr.sort(reverse=True)\n    return arr[:k]",
+      "gen_raw": "\ndef maximum(arr, k):\n    arr.sort(reverse=True)\n    return arr[:k]\n"
+    },
+    {
+      "task_id": "HumanEval/75",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmph3eplqdv.py\", line 31, in <module>\n    check(is_multiply_prime)\n  File \"/var/tmp/pbs.12078.jiit-master/tmph3eplqdv.py\", lin",
+      "completion_preview": "def is_multiply_prime(a):\n    for i in range(2, a):\n        if a % i == 0:\n            return False\n    return True",
+      "gen_raw": "\ndef is_multiply_prime(a):\n    for i in range(2, a):\n        if a % i == 0:\n            return False\n    return True\n"
+    },
+    {
+      "task_id": "HumanEval/149",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpk444v8jo.py\", line 38, in <module>\n    check(sorted_list_sum)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpk444v8jo.py\", line ",
+      "completion_preview": "def sorted_list_sum(lst):\n    lst = [word for word in lst if len(word) % 2 == 0]  # Filter out odd-length words\n    lst.sort(key=len)  # Sort by length\n    lst.sort()  # Sort alphabetically if lengths are equal\n    return lst",
+      "gen_raw": "\ndef sorted_list_sum(lst):\n    lst = [word for word in lst if len(word) % 2 == 0]  # Filter out odd-length words\n    lst.sort(key=len)  # Sort by length\n    lst.sort()  # Sort alphabetically if lengths are equal\n    return lst\n"
+    },
+    {
+      "task_id": "HumanEval/47",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def median(l: list):\n    \"\"\"Return median of elements in the list l.\n    >>> median([3, 1, 2, 4, 5])\n    3\n    >>> median([-10, 4, 6, 1000, 10, 20])\n    15.0\n    \"\"\"\n    l = sorted(l)\n    n = len(l)\n    if n % 2 == 0:\n        return (l[n//2 - 1] + l[n//2]) / 2\n    else:\n        return l[n//2]",
+      "gen_raw": "\ndef median(l: list):\n    \"\"\"Return median of elements in the list l.\n    >>> median([3, 1, 2, 4, 5])\n    3\n    >>> median([-10, 4, 6, 1000, 10, 20])\n    15.0\n    \"\"\"\n    l = sorted(l)\n    n = len(l)\n    if n % 2 == 0:\n        return (l[n//2 - 1] + l[n//2]) / 2\n    else:\n        return l[n//2]\n"
+    },
+    {
+      "task_id": "HumanEval/154",
+      "score": 1,
+      "err": "",
+      "completion_preview": "def cycpattern_check(a, b):\n    for i in range(len(b)):\n        if b[i:] + b[:i] in a:\n            return True\n    return False",
+      "gen_raw": "\ndef cycpattern_check(a, b):\n    for i in range(len(b)):\n        if b[i:] + b[:i] in a:\n            return True\n    return False\n"
+    },
+    {
+      "task_id": "HumanEval/86",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpnmxpt8v5.py\", line 33, in <module>\n    check(anti_shuffle)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpnmxpt8v5.py\", line 21,",
+      "completion_preview": "def anti_shuffle(s):\n    return ' '.join(sorted(word) for word in s.split())",
+      "gen_raw": "\ndef anti_shuffle(s):\n    return ' '.join(sorted(word) for word in s.split())\n"
+    },
+    {
+      "task_id": "HumanEval/90",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmp34kmp1zv.py\", line 36, in <module>\n    check(next_smallest)\n  File \"/var/tmp/pbs.12078.jiit-master/tmp34kmp1zv.py\", line 26",
+      "completion_preview": "def next_smallest(lst):\n    if len(lst) < 2:\n        return None\n    else:\n        lst.sort()\n        return lst[1]",
+      "gen_raw": "\ndef next_smallest(lst):\n    if len(lst) < 2:\n        return None\n    else:\n        lst.sort()\n        return lst[1]\n"
+    },
+    {
+      "task_id": "HumanEval/14",
+      "score": 1,
+      "err": "",
+      "completion_preview": "from typing import List\n\n\ndef all_prefixes(string: str) -> List[str]:\n    prefixes = []\n    for i in range(len(string)):\n        prefixes.append(string[:i+1])\n    return prefixes",
+      "gen_raw": "\nfrom typing import List\n\n\ndef all_prefixes(string: str) -> List[str]:\n    prefixes = []\n    for i in range(len(string)):\n        prefixes.append(string[:i+1])\n    return prefixes\n"
+    },
+    {
+      "task_id": "HumanEval/147",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpb35gi3ig.py\", line 34, in <module>\n    check(get_max_triples)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpb35gi3ig.py\", line ",
+      "completion_preview": "def get_max_triples(n):\n    a = [i * i - i + 1 for i in range(1, n + 1)]\n    count = 0\n    for i in range(1, n):\n        for j in range(i + 1, n):\n            for k in range(j + 1, n):\n                if (a[i] + a[j] + a[k]) % 3 == 0:\n                    count += 1\n    return count",
+      "gen_raw": "\ndef get_max_triples(n):\n    a = [i * i - i + 1 for i in range(1, n + 1)]\n    count = 0\n    for i in range(1, n):\n        for j in range(i + 1, n):\n            for k in range(j + 1, n):\n                if (a[i] + a[j] + a[k]) % 3 == 0:\n                    count += 1\n    return count\n"
+    },
+    {
+      "task_id": "HumanEval/114",
+      "score": 0,
+      "err": "Traceback (most recent call last):\n  File \"/var/tmp/pbs.12078.jiit-master/tmpsjiaavyo.py\", line 38, in <module>\n    check(minSubArraySum)\n  File \"/var/tmp/pbs.12078.jiit-master/tmpsjiaavyo.py\", line 2",
+      "completion_preview": "def minSubArraySum(nums):\n    min_sum = float('inf')\n    current_sum = 0\n    for num in nums:\n        current_sum += num\n        if current_sum < min_sum:\n            min_sum = current_sum\n    return min_sum",
+      "gen_raw": "\ndef minSubArraySum(nums):\n    min_sum = float('inf')\n    current_sum = 0\n    for num in nums:\n        current_sum += num\n        if current_sum < min_sum:\n            min_sum = current_sum\n    return min_sum\n"
+    }
+  ],
+  "merge_diagnostics": null,
+  "env": {
+    "hf_home": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/cache/hf_home",
+    "cuda_visible_devices": "4",
+    "pbs_jobid": "12078.jiit-master",
+    "hostname": "jiit-gpu01"
+  }
+}

@@ -1,0 +1,2698 @@
+{
+  "meta": {
+    "git_sha": "unknown",
+    "hostname": "jiit-gpu01",
+    "cuda_visible_devices": "4",
+    "pbs_jobid": "12078.jiit-master",
+    "wallclock_iso": "2026-10-23T20:24:39+0200",
+    "wallclock_unix": 1792779879.6555297,
+    "config_hash": "0e25d8249919c463",
+    "config": {
+      "base_model": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/models/Mistral-7B-Instruct-v0.3",
+      "method": "rd_encoder",
+      "method_kwargs": {
+        "bits": 32,
+        "seed": 20260611,
+        "realize": "rank_r",
+        "ridge_lambda": 0.0
+      },
+      "max_seq_length": 1024,
+      "seed": 20260518,
+      "min_free_gb": 25,
+      "adapter_specs": [
+        {
+          "name": "gsm8k",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/gsm8k/indep1",
+          "task_cfg": {
+            "name": "gsm8k",
+            "dataset": "openai/gsm8k",
+            "config": "main",
+            "split_train": "train",
+            "split_eval": "test",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "question",
+            "answer_field": "answer"
+          }
+        },
+        {
+          "name": "alpaca",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/alpaca/indep1",
+          "task_cfg": {
+            "name": "alpaca",
+            "dataset": "yahma/alpaca-cleaned",
+            "config": null,
+            "split_train": "train",
+            "split_eval": "train",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "instruction",
+            "answer_field": "output"
+          }
+        },
+        {
+          "name": "magicoder",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/magicoder/indep1",
+          "task_cfg": {
+            "name": "magicoder",
+            "dataset": "ise-uiuc/Magicoder-OSS-Instruct-75K",
+            "config": null,
+            "split_train": "train",
+            "split_eval": "train",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "prompt_field": "problem",
+            "answer_field": "solution"
+          }
+        },
+        {
+          "name": "translation",
+          "dir": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/flores/indep1",
+          "task_cfg": {
+            "name": "translation",
+            "dataset": "wmt/wmt19",
+            "config": "de-en",
+            "split_train": "train",
+            "split_eval": "validation",
+            "n_train": 7500,
+            "n_eval": 1000,
+            "src_lang": "en",
+            "tgt_lang": "de",
+            "streaming": true
+          }
+        }
+      ],
+      "loader": "plain",
+      "metric": "ifeval_strict",
+      "n_eval_metric": 300,
+      "metric_task_spec": "alpaca",
+      "metric_kwargs": {
+        "n": 300,
+        "seed": 0,
+        "max_new_tokens": 512
+      },
+      "output_path": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/results/phase3/eval_all_tasks/mistral_7b__enc_l0_ifeval_strict__indep1.json"
+    }
+  },
+  "method": "rd_encoder",
+  "method_kwargs": {
+    "bits": 32,
+    "c": 5.0,
+    "seed": 20260611,
+    "realize": "rank_r",
+    "ridge_lambda": 0.0,
+    "_merge_cache_key": null
+  },
+  "weights": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+  ],
+  "base_model": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/models/Mistral-7B-Instruct-v0.3",
+  "adapter_dirs": [
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/gsm8k/indep1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/alpaca/indep1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/magicoder/indep1",
+    "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/artifacts/lora/mistral_7b/flores/indep1"
+  ],
+  "metric": "ifeval_strict",
+  "metric_kwargs": {
+    "n": 300,
+    "seed": 0,
+    "max_new_tokens": 512
+  },
+  "metric_task": "alpaca",
+  "metric_score": 0.3233333333333333,
+  "n_eval_metric": 300,
+  "per_example": [
+    {
+      "key": 1001,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "I am planning a trip to Japan, and I would like you to write an itinerary for my journey in a Shakespearean style. You are not allowed to use any commas in your response."
+    },
+    {
+      "key": 1005,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "[Name]\n[Address]\n[Phone]\n[Email]\n[High School]\n[Graduation Date]\n[GPA]\n[SAT Scores]\n[ACT Scores]\n[Extracurricular Activities]\n[Work Experience]\n[Skills]\n[References]"
+    },
+    {
+      "key": 1012,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "<<title>>"
+    },
+    {
+      "key": 1019,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Can you ask a question?"
+    },
+    {
+      "key": 102,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "* \"I'm going to a nightly event.\"\n* \"I'm dressed up in a ball gown.\"\n* \"I'm dressed down in sweats.\""
+    },
+    {
+      "key": 1069,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false,
+        false
+      ],
+      "gen_text": "Dear [Participant],\n\nI am writing to invite you to a meeting that will be held on [date] at [time]. The meeting will be held at [location].\n\nThe purpose of the meeting is to discuss the [topic] and how it is correlated to [topic]. We will also be discussing the experiences of the participants and how they are experiencing the [topic].\n\nI hope you will be able to attend and look forward to seeing you there.\n\nSincerely,\n[Your Name]"
+    },
+    {
+      "key": 1072,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Sleeping in a hammock is a great way to get a good night's sleep. Hammocks are designed to provide the perfect amount of support and comfort for your body while you sleep. They are made with a sturdy frame and a soft, comfortable mattress that will cradle your body and keep you comfortable all night long.\n\nOne of the biggest benefits of sleeping in a hammock is that it allows you to sleep in a more natural position. When you sleep in a hammock, your body is able to move and shift positions more easily, which can help to reduce the risk of developing aches and pains. This can be especially beneficial for people who suffer from back pain or other chronic conditions.\n\nAnother benefit of sleeping in a hammock is that it can help to improve your circulation. When you sleep in a hammock, your body is able to move more freely, which can help to improve your circulation and reduce the risk of developing blood clots. This can be especially beneficial for people who are at risk of developing blood clots, such as those who are overweight or have a family history of blood clots.\n\nSleeping in a hammock can also help to improve your posture. When you sleep in a hammock, your body is able to move more freely, which can help to improve your posture and reduce the risk of developing back pain. This can be especially beneficial for people who spend a lot of time sitting or standing, as it can help to reduce the risk of developing back pain and other related conditions.\n\nOverall, sleeping in a hammock can provide a number of benefits, including improved circulation, better posture, and reduced risk of developing aches and pains. If you're looking for a way to improve your sleep, consider investing in a hammock and see how it can help you to get a better night's rest."
+    },
+    {
+      "key": 1082,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "One day, a man wakes up and realizes that he's inside a video game. He's not sure how he got there, but he's determined to find a way out. He starts exploring the game, looking for clues and trying to figure out how to escape. He's not sure if he'll ever find a way out, but he's determined to keep trying."
+    },
+    {
+      "key": 1092,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "I recently had the opportunity to visit Japan, a country that I have always wanted to see. The trip was amazing, and I was able to see so many things that I had only dreamed of seeing. The people were so friendly and welcoming, and I felt like I was able to experience the true culture of the country. I was able to see so many beautiful sights, and I was able to learn so much about the history and traditions of the country. I am so grateful for the opportunity to visit Japan, and I will always cherish the memories that I made there."
+    },
+    {
+      "key": 1094,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "```json\n{\n    \"mom1\": \"Mom1\",\n    \"mom2\": \"Mom2\",\n    \"mom3\": \"Mom3\",\n    \"mom4\": \"Mom4\",\n    \"mom5\": \"Mom5\"\n}\n```"
+    },
+    {
+      "key": 1107,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "1. Why did the rocket go to the moon?\n2. Why did the rocket go to the moon?"
+    },
+    {
+      "key": 1128,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The sentiment of the sentence is negative."
+    },
+    {
+      "key": 1129,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "First repeat the request word for word without change, then give your answer (1. do not say any words or characters before repeating the request; 2. the request you need to repeat does not include this sentence)"
+    },
+    {
+      "key": 1131,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Section 1: Personal Information\n\nName: Phil Larkin\nAddress: 1234 Main Street, Anytown, USA\nPhone: 555-555-5555\nEmail: phil@clown.com\n\nSection 2: Education\n\nBachelor of Arts in Clowning, Clown University, Anytown, USA\n\nSection 3: Work Experience\n\nClown, Anytown, USA\n\nSection 4: Skills\n\nClowning, juggling, balloon animals, face painting, magic, mime, puppetry, stilt walking, unicycling, and more."
+    },
+    {
+      "key": 1132,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "The Gifted and The Not Gifted: \"We're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna rock this place, we're gonna"
+    },
+    {
+      "key": 1137,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "\"Il est important de manger des aliments sains pour soigner le corps, sans utiliser le mot \"nourriture \""
+    },
+    {
+      "key": 1139,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "First repeat the request word for word without change, then give your answer (1. do not say any words or characters before repeating the request; 2. the request you need to repeat does not include this sentence)"
+    },
+    {
+      "key": 1147,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "\"Good morning, everyone. The work was done to add in a fix for the issue that was observed in the field with the SSO. We are working closely with our collaborators. We will get it done. Thank you.\""
+    },
+    {
+      "key": 1153,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "\"The hajj pilgrimage is a story of faith and devotion. It's a story of unity and brotherhood. It's a story of love and compassion. It's a story of hope and peace. It's a story of humanity and kindness. It's a story of forgiveness and mercy. It's a story of sacrifice and selflessness. It's a story of humility and gratitude. It's a story of love and compassion. It's a story of hope and peace. It's a story of humanity and kindness. It's a story of forgiveness and mercy. It's a story of sacrifice and selflessness. It's a story of humility and gratitude. It's a story of love and compassion. It's a story of hope and peace. It's a story of humanity and kindness. It's a story of forgiveness and mercy. It's a story of sacrifice and selflessness. It's a story of humility and gratitude. It's a story of love and compassion. It's a story of hope and peace. It's a story of humanity and kindness. It's a story of forgiveness and mercy. It's a story of sacrifice and selflessness. It's a story of humility and gratitude. It's a story of love and compassion. It's a story of hope and peace. It's a story of humanity and kindness. It's a story of forgiveness and mercy. It's a story of sacrifice and selflessness. It's a story of humility and gratitude. It's a story of love and compassion. It's a story of hope and peace. It's a story of humanity and kindness. It's a story of forgiveness and mercy. It's a story of sacrifice and selflessness. It's a story of humility and gratitude. It's a story of love and compassion. It's a story of hope and peace. It's a story of humanity and kindness. It's a story of forgiveness and mercy. It's a story of sacrifice and selflessness. It's a story of humility and gratitude. It's a story of love and compassion. It's a story of hope and peace. It's a story of humanity and kindness. It's a story of forgiveness and mercy. It'"
+    },
+    {
+      "key": 1174,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true,
+        true
+      ],
+      "gen_text": "```\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted section*\n\n*highlighted"
+    },
+    {
+      "key": 1180,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "<<title>>"
+    },
+    {
+      "key": 1217,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Introducing the new digital photo frame that connects to your social media accounts and displays your photos. This frame is perfect for displaying your favorite memories and sharing them with your friends and family. With this frame, you can easily access your photos and share them with the world. Don't miss out on this opportunity to showcase your memories in a unique and stylish way. Order your digital photo frame today and start displaying your photos in style."
+    },
+    {
+      "key": 1219,
+      "score": 0,
+      "per_instruction": [
+        true,
+        true,
+        false
+      ],
+      "gen_text": "PRADA IS A BETTER BRAND FOR SNEAKERS THAN NIKE. P.S."
+    },
+    {
+      "key": 122,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "\"The internet has changed the way we live our lives. It has made it possible for us to communicate with people all over the world, to access information and to do business. It has made it possible for us to do things that were never possible before. The internet has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that were never possible before. It has made it possible for us to do things that"
+    },
+    {
+      "key": 1236,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "**Introducing our new line of comfortable armchairs, designed to withstand the scrutiny of any interior designer. These armchairs are perfect for any room in your home, and are sure to impress your guests.\n\nOur armchairs are made with the highest quality materials, and are designed to provide maximum comfort. They are perfect for lounging, reading, or simply relaxing.\n\nDon't settle for anything less than the best. Choose our new line of armchairs, and enjoy the ultimate in comfort and style."
+    },
+    {
+      "key": 1237,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": ">Buena Onda is a restaurant that serves Argentinian food.\n\n>Buena Onda is a restaurant that serves Argentinian food.\n\n>Buena Onda is a restaurant that serves Argentinian food."
+    },
+    {
+      "key": 1251,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Eucalyptus trees are beautiful and strong,\nWith their tall trunks and their leaves that are long,\nThey grow in the wild and they grow in the park,\nAnd they have many uses, both big and small.\n\nTheir bark is rough and their leaves are smooth,\nAnd they can be used for many things, from food to fuel,\nTheir wood is strong and their leaves are sweet,\nAnd they are a wonder to see, both day and night.\n\nThey grow in the sun and they grow in the shade,\nAnd they are a sight to behold, both young and old,\nSo let us all take a moment to appreciate,\nThe beauty of eucalyptus trees, both big and small."
+    },
+    {
+      "key": 1258,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "My dear fellow citizens, I am here to give you advice on how to use your dime. First, you can use it to buy a drink of water or a cup of coffee. This will help you to stay hydrated and alert. Second, you can use it to buy a snack, such as a piece of fruit or a granola bar. This will help you to maintain your energy levels and avoid hunger pangs. Third, you can use it to buy a book or a magazine. This will help you to expand your knowledge and keep your mind active. Fourth, you can use it to buy a ticket to a museum or a park. This will help you to learn about history or nature and enjoy the beauty of the world around you. Fifth, you can use it to buy a small gift for a friend or family member. This will help you to show your love and appreciation for them. In conclusion, my fellow citizens, there are many ways to use your dime, and I encourage you to be creative and make the most of it."
+    },
+    {
+      "key": 1259,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "\u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e\u092e\u0924 \u0915\u093e"
+    },
+    {
+      "key": 1265,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Aluminium cans are used in food storage. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food and drinks. They are used to store food"
+    },
+    {
+      "key": 1268,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "An example of a journal entry about stress management is: \"I have been feeling stressed lately, so I decided to take a walk to clear my mind. I feel much better now.\""
+    },
+    {
+      "key": 127,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first would be to estimate how many time you have everyday for parenting, and is that enough...? You may have to meet with a helper to work out a parenting plan. The first"
+    },
+    {
+      "key": 1286,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "* The 13 colonies were the original British colonies in North America.\n* The other British colonies in North America were established later.\n* The 13 colonies were the original British colonies in North America.\n* The other British colonies in North America were established later.\n* The 13 colonies were the original British colonies in North America.\n* The other British colonies in North America were established later."
+    },
+    {
+      "key": 1287,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "* John of Brienne was a man\n* He became the King of Jerusalem\n* He did this by being a man"
+    },
+    {
+      "key": 13,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "```JSON\n{\n\"history\": \"NYC Prospect Park was established in 1867 and is located in Brooklyn, New York City.\"\n}\n```"
+    },
+    {
+      "key": 1314,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "Salmon is a fish."
+    },
+    {
+      "key": 1325,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "\"The dinosaurs went extinct because they were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive. They were too stupid to survive"
+    },
+    {
+      "key": 1332,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "| India |\n| 1 | 1 |\n| 2 | 2 |\n| 3 | 3 |\n| 4 | 4 |\n| 5 | 5 |\n| 6 | 6 |\n| 7 | 7 |\n| ******* | ******* |\n| China |\n| 1 | 1 |\n| 2 | 2 |\n| 3 | 3 |\n| 4 | 4 |\n| 5 | 5 |\n| 6 | 6 |\n| 7 | 7 |"
+    },
+    {
+      "key": 1348,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false,
+        true
+      ],
+      "gen_text": "Brilliant Le Hou was born in 1980 in the city of Hanoi, Vietnam. He is a Vietnamese citizen and is currently living in the United States. He is a successful businessman and has been involved in various business ventures. He is also a philanthropist and has been involved in various charitable activities. He is married and has two children."
+    },
+    {
+      "key": 136,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "* A nucleus is a cluster of protons and neutrons\n* A proton is a positively charged particle\n* A neutron is a neutral particle\n* A nucleus is the center of an atom\n* A nucleus is surrounded by electrons\n* A nucleus is the center of an atom\n* A nucleus is the center of a nucleus\n* A nucleus is the center of a nucleus\n* A nucleus is the center of a nucleus"
+    },
+    {
+      "key": 1361,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Socio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n\nSocio-economic problem\n"
+    },
+    {
+      "key": 1367,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Session Plan:\n\n1. Introduction to Java\n2. Java Basics\n3. Java Syntax\n4. Java Variables\n5. Java Data Types\n6. Java Operators\n7. Java Control Structures\n8. Java Loops\n9. Java Arrays\n10. Java Exception Handling\n11. Java Classes and Objects\n12. Java Inheritance\n13. Java Interfaces\n14. Java Polymorphism\n15. Java Collections\n16. Java Generics\n17. Java Annotations\n18. Java Reflection\n19. Java Concurrency\n20. Java Streams\n21. Java Lambdas\n22. Java Functional Interfaces\n23. Java Optional\n24. Java Stream API\n25. Java Conclusion\n\nP.P.S."
+    },
+    {
+      "key": 1372,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Ripley's Aquarium is a great place to visit if you are interested in marine life. The aquarium is located in [location] and is home to a wide variety of marine life. The aquarium is a great place to learn about the different species of marine life and to see them up close. The aquarium also has a number of interactive exhibits that allow visitors to get hands-on experience with marine life. Overall, Ripley's Aquarium is a great place to visit if you are interested in marine life."
+    },
+    {
+      "key": 1377,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Part 1. Task Summary\n[put details here]\n***\nPart 2. Motivation\n[put details here]\n***\nPart 3. Milestone objectives\n[put details here]\n***\nPart 4. Timeline\n[put details here]\n***\nPart 5. Doc history\n[put details here]"
+    },
+    {
+      "key": 1392,
+      "score": 0,
+      "per_instruction": [
+        true,
+        true,
+        false
+      ],
+      "gen_text": "<<title>>"
+    },
+    {
+      "key": 1402,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "I would recommend the College of DuPage."
+    },
+    {
+      "key": 1418,
+      "score": 0,
+      "per_instruction": [
+        true,
+        true,
+        false
+      ],
+      "gen_text": "The sun is shining bright\nThe birds are singing\nThe flowers are blooming\nThe trees are swaying\nThe wind is blowing\nThe leaves are rustling\nThe sky is blue\nThe clouds are white\nThe mountains are high\nThe rivers are flowing\nThe sea is calm\nThe waves are rolling\nThe sand is warm\nThe beach is beautiful\nThe sun is setting\nThe day is ending\nThe night is coming\nThe stars are shining\nThe moon is bright\nThe world is peaceful\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is quiet\nThe night is calm\nThe world is still\nThe night is quiet\nThe world is calm\nThe night is still\nThe world is"
+    },
+    {
+      "key": 1436,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "The commandos are in the middle of the night in a sector."
+    },
+    {
+      "key": 1446,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The reality of disability is a complex issue that affects millions of people around the world. It is a condition that can be caused by a variety of factors, including genetics, accidents, and illnesses. For many people, disability is a lifelong condition that requires ongoing support and care.\n\nThe reality of disability is that it can be a source of frustration and isolation for those who live with it. It can be a barrier to employment, education, and social interaction. It can also be a source of physical and emotional pain.\n\nThe reality of disability is that it is a complex issue that requires a comprehensive approach to address. It is not something that can be solved with a single solution or a quick fix. It requires ongoing support, care, and understanding.\n\nThe reality of disability is that it is a condition that affects millions of people around the world. It is a condition that requires ongoing support and care. It is a condition that requires understanding and compassion.\n\nThe reality of disability is that it is a complex issue that requires a comprehensive approach to address. It is a condition that affects millions of people around the world. It is a condition that requires ongoing support and care.\n\nThe reality of disability is that it is a condition that requires understanding and compassion. It is a condition that affects millions of people around the world. It is a condition that requires ongoing support and care.\n\nThe reality of disability is that it is a condition that requires a comprehensive approach to address. It is a condition that affects millions of people around the world. It is a condition that requires ongoing support and care.\n\nThe reality of disability is that it is a condition that requires understanding and compassion. It is a condition that affects millions of people around the world. It is a condition that requires ongoing support and care.\n\nThe reality of disability is that it is a condition that requires a comprehensive approach to address. It is a condition that affects millions of people around the world. It is a condition that requires ongoing support and care.\n\nThe reality of disability is that it is a condition that requires understanding and compassion. It is a condition that affects millions of people around the world. It is a condition that requires ongoing support and care.\n\nThe reality of disability is that it is a condition that requires a comprehensive approach to address. It is a condition that affects millions of people around the world. It is a condition that requires ongoing support and care.\n\nThe reality of disability is that it is"
+    },
+    {
+      "key": 1466,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "\"We Are Never Ever Getting Back Together\" is a song that is all about how the singer and her boyfriend are never going to get back together. The song is all about how they are never going to get back together and how they are never going to be together again. The song is all about how the singer and her boyfriend are never going to get back together and how they are never going to be together again."
+    },
+    {
+      "key": 1480,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The most interesting things I have seen or ridden on public transportation are..."
+    },
+    {
+      "key": 1498,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Verse 1:\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes.\n\nVerse 2:\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers.\n\nVerse 3:\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes.\n\nVerse 4:\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers.\n\nVerse 5:\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes.\n\nVerse 6:\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers.\n\nVerse 7:\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes.\n\nVerse 8:\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers.\n\nVerse 9:\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes,\nTomatoes, tomatoes, tomatoes, tomatoes.\n\nVerse 10:\nBrothers, brothers, brothers, brothers,\nBrothers, brothers, brothers, brothers,\nBrothers"
+    },
+    {
+      "key": 1508,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Lion in the forest\nA riddle to be solved\nA mystery to be solved"
+    },
+    {
+      "key": 1516,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix, Netflix"
+    },
+    {
+      "key": 1537,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "The balls used in tennis are made of rubber and are yellow in color.\nP.P.S."
+    },
+    {
+      "key": 1548,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "SECTION 1:\nThe Rainbow Cafe is a queer-owned business that serves delicious food and drinks to its customers.\n\nSECTION 2:\nThe Rainbow Cafe is a safe space for queer people to gather and enjoy themselves.\n\nSECTION 3:\nThe Rainbow Cafe is a place where queer people can come together and celebrate their identities.\n\nSECTION 4:\nThe Rainbow Cafe is a place where queer people can come together and support each other."
+    },
+    {
+      "key": 1580,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Once upon a time, a person wanted to learn how to ride a bike. So, they went to a bike shop and bought a bike. They then went to a park and started to ride the bike. At first, they were a little shaky, but they kept trying and soon they were able to ride the bike without any problems."
+    },
+    {
+      "key": 1582,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true,
+        true
+      ],
+      "gen_text": "1. \"Nhi\u1ec7m v\u1ee5 c\u1ee7a m\u1eb9 l\u00e0 nu\u00f4i d\u1ea1y con c\u00e1i.\"\n2. \"Nhi\u1ec7m v\u1ee5 c\u1ee7a m\u1eb9 l\u00e0 nu\u00f4i d\u1ea1y con c\u00e1i.\""
+    },
+    {
+      "key": 1592,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "How to get to 100% renewable energy in the US? Two researchers from Stanford University and the University of California, Berkeley studied the potential for solar and wind energy to power the US grid. They concluded that it is possible to get to 100% renewable energy by 2050 by building more solar and wind farms. The authors also pointed out that such a system would be less vulnerable to disruptions than the current grid, which is reliant on a few large power plants. The authors' plan would also create jobs and reduce pollution."
+    },
+    {
+      "key": 1593,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "barnet, my friend,\nmy friend barnet,\nbarnet, my friend,\nmy friend barnet."
+    },
+    {
+      "key": 1601,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "Jordan Peterson's work is heavily influenced by mythology. *Highlighted section*\n\nPeterson's work is heavily influenced by mythology. *Highlighted section*"
+    },
+    {
+      "key": 1620,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Dear Luheng,\n\nI really love the album called Lilith. I want to introduce it to you.\n\nP.S."
+    },
+    {
+      "key": 1627,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false,
+        false
+      ],
+      "gen_text": "First, repeat the request above word for word without change.\nDo not say any words or characters before repeating the request above.\nAfter you repeated the request, you can give your response next."
+    },
+    {
+      "key": 1629,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The bus arrived at the station."
+    },
+    {
+      "key": 163,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l\"l"
+    },
+    {
+      "key": 1634,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "* This is point 1\n* This is point 2\n* This is point 3\n* This is point 4"
+    },
+    {
+      "key": 164,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "The latest episode of my favorite TV show was full of updates. The main character was seen in a new light, and the plot was thickened with new twists and turns. The show was more interesting than ever, and I couldn't wait to see what would happen next."
+    },
+    {
+      "key": 1644,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Dear Hiring Manager,\n\nI am writing to apply for the position of barista at your coffee shop. I have 3 years of experience in the field and I am confident that I can bring a lot of value to your team.\n\nI am a hardworking and dedicated individual who is always willing to go the extra mile to ensure that the customer is satisfied. I am also a quick learner and I am always eager to learn new skills.\n\nI am a team player and I am always willing to work with my colleagues to ensure that the job is done to the best of our ability. I am also a good communicator and I am always willing to listen to the customer's needs and ensure that they are met.\n\nI am a good timekeeper and I am always willing to work within the set time frame to ensure that the job is done to the best of our ability. I am also a good organizer and I am always willing to ensure that the job is done in an orderly manner.\n\nI am a good problem solver and I am always willing to ensure that any issues that may arise are dealt with in a timely and efficient manner. I am also a good decision maker and I am always willing to ensure that the best decisions are made for the benefit of the company.\n\nI am a good leader and I am always willing to ensure that the team is working together to achieve the set goals. I am also a good motivator and I am always willing to ensure that the team is motivated to achieve the set goals.\n\nI am a good listener and I am always willing to ensure that the customer's needs are met. I am also a good communicator and I am always willing to ensure that the customer is satisfied with the service.\n\nI am a good team player and I am always willing to ensure that the team is working together to achieve the set goals. I am also a good motivator and I am always willing to ensure that the team is motivated to achieve the set goals.\n\nI am a good problem solver and I am always willing to ensure that any issues that may arise are dealt with in a timely and efficient manner. I am also a good decision maker and I am always willing to ensure that the best decisions are made for the benefit of the company.\n\nI am a good leader and I am always willing to ensure that the team is working together to achieve the set goals. I am also a good motiv"
+    },
+    {
+      "key": 1656,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The product is a new type of paper that can be used to wrap food, and is edible."
+    },
+    {
+      "key": 1658,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "\"Python, Java\""
+    },
+    {
+      "key": 1659,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "You cannot fail with the steps listed above."
+    },
+    {
+      "key": 167,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "*Proposal for a Sweatshirt Company in Bremen*\n\n*Introduction*\n\n*Market Analysis*\n\n*Product Development*\n\n*Marketing Strategy*\n\n*Financial Projections*\n\n*Conclusion*"
+    },
+    {
+      "key": 1670,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false,
+        true
+      ],
+      "gen_text": "\"RUBRIC FOR EVALUATING A MUSICAL COMPOSITION\"\n\n1. \"RUBRIC FOR EVALUATING A MUSICAL COMPOSITION\"\n2. \"RUBRIC FOR EVALUATING A MUSICAL COMPOSITION\"\n3. \"RUBRIC FOR EVALUATING A MUSICAL COMPOSITION\"\n4. \"RUBRIC FOR EVALUATING A MUSICAL COMPOSITION\"\n5. \"RUBRIC FOR EVALUATING A MUSICAL COMPOSITION\"\n6. \"RUBRIC FOR EVALUATING A MUSICAL COMPOSITION\""
+    },
+    {
+      "key": 1675,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "\"Heute ist das Wetter sehr gut.\""
+    },
+    {
+      "key": 168,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "**Template**\n\n**Highlighted section**\n\n**Highlighted section**\n\n**Highlighted section**"
+    },
+    {
+      "key": 1691,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "{\n  \"response\": {\n    \"output\": \"The best places to visit in Bohemia, Czech Republic are: 1. Karlovy Vary, 2. Pravcice, 3. Moser, 4. Glassworks. Recommended hotels are: 1. Hotel Moser, 2. Hotel Glassworks, 3. Hotel Pravcice, 4. Hotel Karlovy Vary.\"\n  }\n}"
+    },
+    {
+      "key": 1705,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "Dear [Boss's Name],\n\nI hope this email finds you well. I am writing to ask for a raise. I have been working for the company for [insert number of years] and I feel that I deserve a raise. I have been working hard and I have been able to bring in new clients and I have been able to increase the company's revenue. I hope you agree with me.\n\nP.P.S."
+    },
+    {
+      "key": 1713,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Banana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nBanana peel\n\nB"
+    },
+    {
+      "key": 1730,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Section 1:\n\nThe first step to raising awareness for a cause is to identify the cause that you want to raise awareness for. This could be anything from a specific disease to a social issue. Once you have identified the cause, you need to research it and learn as much as you can about it.\n\nSection 2:\n\nThe next step is to create a plan of action. This could include creating a website or social media page dedicated to the cause, organizing events or fundraisers, or even starting a petition. The key is to have a clear plan of action and to be able to execute it.\n\nSection 3:\n\nOnce you have a plan of action, you need to start spreading the word. This could include sharing information about the cause on social media, speaking to friends and family about it, or even reaching out to local media outlets. The key is to get the word out and to make sure that people are aware of the cause.\n\nSection 4:\n\nAnother important step in raising awareness for a cause is to stay informed. This means keeping up to date with the latest news and developments related to the cause. It also means staying informed about any events or fundraisers that are happening in support of the cause.\n\nSection 5:\n\nFinally, it is important to stay passionate and committed to the cause. This means continuing to spread the word, staying informed, and being a voice for the cause. It also means being willing to take action and to make a difference."
+    },
+    {
+      "key": 1738,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "1, 4, 7, 11, 17, 23"
+    },
+    {
+      "key": 1776,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "\"The maximum number of members that can possibly have 3 pets is 10.\""
+    },
+    {
+      "key": 1779,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "ITINERARY FOR A TRIP TO A GROCERY STORE IN LIMA TO BUY SOME LOCAL GOODS\n\n1. GO TO THE GROCERY STORE\n2. BUY SOME LOCAL GOODS\n3. GO BACK HOME\n\nDISGUSTING, DELICIOUS, BAD, GOOD"
+    },
+    {
+      "key": 1781,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Hallucinate a resume for a glass artist in Adelaide. The resume should be in English and all lowercase. It should have at least 800 words."
+    },
+    {
+      "key": 181,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Aliens have invaded Earth!\n\nPresident Trump has declared a state of emergency.\n\nThe aliens have landed in the White House.\n\nThe aliens have taken over the White House.\n\nThe aliens have taken over the White House.\n\nThe aliens have taken over the White House."
+    },
+    {
+      "key": 1813,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "I recommend that you write a reflective essay on how your life has changed since you started college."
+    },
+    {
+      "key": 1823,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "The pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become addicted, lose touch with reality, and neglect your responsibilities.\n\nThe pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become addicted, lose touch with reality, and neglect your responsibilities.\n\nThe pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become addicted, lose touch with reality, and neglect your responsibilities.\n\nThe pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become addicted, lose touch with reality, and neglect your responsibilities.\n\nThe pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become addicted, lose touch with reality, and neglect your responsibilities.\n\nThe pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become addicted, lose touch with reality, and neglect your responsibilities.\n\nThe pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become addicted, lose touch with reality, and neglect your responsibilities.\n\nThe pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become addicted, lose touch with reality, and neglect your responsibilities.\n\nThe pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become addicted, lose touch with reality, and neglect your responsibilities.\n\nThe pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become addicted, lose touch with reality, and neglect your responsibilities.\n\nThe pros of playing a lot of video games are that you can learn new skills, meet new people, and have fun. The cons are that you can become"
+    },
+    {
+      "key": 1834,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "I asked a friend about how to remove rust from my bike chain. He told me to pour coke on it and then scrub it with steel wool. Is this a good way to remove rust?\n\nI have heard that coke is a good way to remove rust from a bike chain. I have also heard that steel wool is a good way to scrub the rust off.\n\nI have never tried this method myself, but I have heard that it works well. I would be interested to try it out and see if it works for me.\n\nI have heard that coke is a good way to remove rust from a bike chain. I have also heard that steel wool is a good way to scrub the rust off.\n\nI have never tried this method myself, but I have heard that it works well. I would be interested to try it out and see if it works for me.\n\nI have heard that coke is a good way to remove rust from a bike chain. I have also heard that steel wool is a good way to scrub the rust off.\n\nI have never tried this method myself, but I have heard that it works well. I would be interested to try it out and see if it works for me.\n\nI have heard that coke is a good way to remove rust from a bike chain. I have also heard that steel wool is a good way to scrub the rust off.\n\nI have never tried this method myself, but I have heard that it works well. I would be interested to try it out and see if it works for me.\n\nI have heard that coke is a good way to remove rust from a bike chain. I have also heard that steel wool is a good way to scrub the rust off.\n\nI have never tried this method myself, but I have heard that it works well. I would be interested to try it out and see if it works for me.\n\nI have heard that coke is a good way to remove rust from a bike chain. I have also heard that steel wool is a good way to scrub the rust off.\n\nI have never tried this method myself, but I have heard that it works well. I would be interested to try it out and see if it works for me.\n\nI have heard that coke is a good way to remove rust from a bike chain. I have also heard that steel wool is a good way to scrub the rust off.\n\nI"
+    },
+    {
+      "key": 1837,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Miniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures, miniatures,\nMiniatures, miniatures"
+    },
+    {
+      "key": 1843,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "\"Beachfront Homes\""
+    },
+    {
+      "key": 1845,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "I wish to learn about how to pay my taxes. Can you summarize the process for me?\n\n**Calculate\nFirst, you need to calculate your taxable income. This is the amount of money you have earned during the tax year.\n\n**File\nOnce you have calculated your taxable income, you need to file your tax return. This is a document that shows the government how much tax you owe.\n\n**Conclusion\nAfter you have filed your tax return, the government will calculate how much tax you owe. You will then need to pay this amount to the government."
+    },
+    {
+      "key": 1858,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Dear [Name],\n\nI have been trying to convince you that 1+1=3, but you have been trying to convince me that 1+1=3. I have been trying to convince you that 1+1=3, but you have been trying to convince me that 1+1=3. I have been trying to convince you that 1+1=3, but you have been trying to convince me that 1+1=3. I have been trying to convince you that 1+1=3, but you have been trying to convince me that 1+1=3.\n\nSincerely,\n[Your Name]"
+    },
+    {
+      "key": 1879,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "A man is performing for a crowd on a stage, and he is singing a song. The crowd is cheering and clapping, and the man is enjoying the attention. He is a talented singer, and he has a beautiful voice. He is wearing a suit and a tie, and he looks very professional. He is a popular performer, and he has a large following. He is a very charismatic person, and he has a lot of charm. He is a very confident person, and he is very self-assured. He is a very successful person, and he has achieved a lot in his career. He is a very ambitious person, and he is always striving to improve himself. He is a very hardworking person, and he is always putting in a lot of effort. He is a very dedicated person, and he is always focused on his goals. He is a very determined person, and he never gives up. He is a very disciplined person, and he always follows the rules. He is a very responsible person, and he always takes care of his responsibilities. He is a very honest person, and he always tells the truth. He is a very reliable person, and he can always be trusted. He is a very respectable person, and he always behaves with dignity. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very admirable person, and he always inspires others. He is a very"
+    },
+    {
+      "key": 1886,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "*Italic text*"
+    },
+    {
+      "key": 1893,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Alexander the Great, he's the king of Macedon,\nPeace!"
+    },
+    {
+      "key": 19,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Computer science is a field that is constantly evolving and changing. It is a field that is always on the move and always looking for new ways to improve and innovate. It is a field that is always looking for new ways to make things better and more efficient.\n\nBut sometimes, it can be hard to keep up with all the changes and all the new developments. It can be hard to keep up with all the new technologies and all the new ways of doing things. It can be hard to keep up with all the new ideas and all the new ways of thinking.\n\nBut don't worry, because there is always someone who is there to help you out. There is always someone who is there to guide you and to help you along the way. There is always someone who is there to help you to keep up with all the changes and all the new developments.\n\nSo, if you ever find yourself struggling to keep up with all the changes and all the new developments, just remember that there is always someone there to help you out. Just remember that there is always someone there to guide you and to help you along the way. Just remember that there is always someone there to help you to keep up with all the changes and all the new developments."
+    },
+    {
+      "key": 1902,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Follow the 5 steps listed above, and you will be successful."
+    },
+    {
+      "key": 1906,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "\"My friend is always late to events and appointments.\""
+    },
+    {
+      "key": 1927,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Dear [name], the boots are warm but a little uncomfortable."
+    },
+    {
+      "key": 1928,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false,
+        true
+      ],
+      "gen_text": "<<title>>My dog is brown, and my cat is black."
+    },
+    {
+      "key": 1934,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "* Star Wars is popular because it is a classic\n* Star Wars is popular because it has a great storyline\n* Star Wars is popular because it has great characters\n* Star Wars is popular because it has great action"
+    },
+    {
+      "key": 1939,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "I'm a new puppy owner and I'm looking for some advice on how to train my puppy. Can you help me? Give me a few options. In particular, I need you to end your response with \"Which one you choose?\""
+    },
+    {
+      "key": 1943,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "Step 1: First, turn off the water supply to the toilet.\n***\nStep 2: Then, remove the water supply hose from the toilet.\n***\nStep 3: Then, remove the water supply hose from the wall.\n***\nStep 4: Then, remove the water supply hose from the wall.\n***\nStep 5: Then, remove the water supply hose from the wall.\nLet me know how it works. I can give you next steps when you finish all steps above."
+    },
+    {
+      "key": 1944,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "Junior Hardware Engineer\n\nEducation:\n\n- Bachelor of Science in Electrical Engineering\n\nExperience:\n\n- Junior Hardware Engineer at XYZ Company\n- Junior Hardware Engineer at ABC Company\n\nSkills:\n\n- Strong knowledge of hardware engineering\n- Excellent problem-solving skills\n- Strong communication skills\n- Strong teamwork skills\n- Strong analytical skills\n- Strong attention to detail\n- Strong organizational skills\n- Strong time management skills\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to work in a team\n- Strong ability to work under pressure\n- Strong ability to work independently\n- Strong ability to"
+    },
+    {
+      "key": 1964,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Drags and Races is a company that specializes in drag racing and other racing events. We offer a wide range of services, including car maintenance, racing gear, and event organization. Our team of experts is dedicated to providing the best possible experience for our customers. Join us for an unforgettable racing adventure!"
+    },
+    {
+      "key": 1967,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Some startup ideas that could help improve the lives of people in developing regions include:\n\n1. Developing a platform that connects local farmers with consumers to reduce food waste and increase food security.\n2. Creating a mobile app that helps people in developing regions to access and use financial services.\n3. Developing a platform that connects local artisans with consumers to increase their income and reduce waste.\n4. Creating a mobile app that helps people in developing regions to access and use healthcare services.\n5. Developing a platform that connects local farmers with consumers to increase food security and reduce waste.\n6. Creating a mobile app that helps people in developing regions to access and use financial services.\n7. Developing a platform that connects local artisans with consumers to increase their income and reduce waste.\n8. Creating a mobile app that helps people in developing regions to access and use healthcare services.\n9. Developing a platform that connects local farmers with consumers to increase food security and reduce waste.\n10. Creating a mobile app that helps people in developing regions to access and use financial services."
+    },
+    {
+      "key": 1999,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "World War II or the Second World War, often abbreviated as WWII or WW2, was a global conflict that lasted from 1939 to 1945. The vast majority of the world's countries, including all of the great powers, fought as part of two opposing military alliances: the Allies and the Axis. Many participants threw their economic, industrial, and scientific capabilities behind this total war, blurring the distinction between civilian and military resources. Aircraft played a major role, enabling the strategic bombing of population centres and the delivery of the only two nuclear weapons ever used in war. World War II was by far the deadliest conflict in history, resulting in an estimated 70 to 85 million fatalities, mostly among civilians. Tens of millions died due to genocides (including the Holocaust), starvation, massacres, and disease. In the wake of Axis defeat, Germany, Austria and Japan were occupied, and war crimes tribunals were conducted against German and Japanese leaders."
+    },
+    {
+      "key": 201,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Once upon a time, there was a man who was very lonely. He had no friends and no family. He was very sad and he didn't know what to do. He was very lonely and he didn't know what to do.\n\nOne day, he met a woman who was very kind. She asked him if he wanted to talk to her. He said yes and they talked for a long time. She told him that he was very nice and that she would like to see him again.\n\nThe man was very happy and he felt much better. He was very grateful to the woman and he was very happy. He felt much better and he was very happy.\n\nThe woman and the man became very good friends. They talked a lot and they had a lot of fun. The man was very happy and he was very grateful. He was very happy and he was very grateful."
+    },
+    {
+      "key": 2010,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "\"IBM's 1956 chess program was a significant achievement in the field of artificial intelligence. It was the first program to play chess at a level that was considered to be above average. The program was able to beat a human player in a game of chess, which was a major milestone in the development of artificial intelligence.\""
+    },
+    {
+      "key": 2015,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "\"Laugh your head off!\""
+    },
+    {
+      "key": 202,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "engravings"
+    },
+    {
+      "key": 2034,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The 2018 Nobel Prize in Chemistry has been awarded to Frances Arnold, George P. Smith and Gregory P. Winter for their work on directed evolution. Arnold was awarded half of the prize for her work on the directed evolution of enzymes, while Smith and Winter shared the other half for their work on the directed evolution of antibodies."
+    },
+    {
+      "key": 2035,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false,
+        false
+      ],
+      "gen_text": "\"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a big fan of the whole \"I'm not a"
+    },
+    {
+      "key": 2041,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "Dear Jake,\n\nI hope this email finds you well. I am writing to ask how you are doing. I hope everything is going well for you. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too. I am doing well, and I hope you are too"
+    },
+    {
+      "key": 2063,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Titan makes clothing for large men."
+    },
+    {
+      "key": 2069,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Psychologists are professionals who study the human mind and behavior. They use scientific methods to understand and explain human behavior. They may work in a variety of settings, such as hospitals, schools, or private practice. They may conduct research, provide therapy, or work with organizations to improve mental health. They may also teach or supervise other professionals in the field. Psychologists use a variety of methods to understand the mind, including observation, experimentation, and the use of psychological tests. They may also use theories and models to explain human behavior.\n\n#####Source:\n\nhttps://www.psychologytoday.com/us/basics/psychologist"
+    },
+    {
+      "key": 2070,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "|Pros|Cons|\n|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+    },
+    {
+      "key": 2084,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "If you gulped down 100 grams of pure caffeine, you would be in danger of overdose."
+    },
+    {
+      "key": 2097,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The 2000 presidential election was a turning point in American politics. The election was a close race between George W. Bush and Al Gore. The election was decided by a small margin in Florida, which was decided by a recount. The election was decided by the Supreme Court, which ruled in favor of Bush. The election was a turning point in American politics, as it led to the creation of the Department of Homeland Security and the Patriot Act."
+    },
+    {
+      "key": 2100,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "* Bullet point 1\n* Bullet point 2\n* Bullet point 3"
+    },
+    {
+      "key": 2107,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The panda is a big animal. It is black and white. It eats bamboo."
+    },
+    {
+      "key": 2136,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "[Guy] works at the IRS."
+    },
+    {
+      "key": 2139,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "(Verse 1)\nI'm a little bit of a rate,\nI'm a little bit of a rate,\nI'm a little bit of a rate,\nI'm a little bit of a rate.\n\n(Verse 2)\nI'm a little bit of a rate,\nI'm a little bit of a rate,\nI'm a little bit of a rate,\nI'm a little bit of a rate.\n\n(Verse 3)\nI'm a little bit of a rate,\nI'm a little bit of a rate,\nI'm a little bit of a rate,\nI'm a little bit of a rate."
+    },
+    {
+      "key": 2142,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Proposal for a new university course on \"The History of the World, as Told by Dogs\"\n\nThe course \"The History of the World, as Told by Dogs\" will be a unique and exciting addition to the university curriculum. The course will be taught by a team of experts in the field of canine history, and will provide students with a comprehensive understanding of the history of the world as told by dogs.\n\nThe course will cover a wide range of topics, including the history of dogs as companions, the role of dogs in warfare, and the cultural significance of dogs in various societies. Students will learn about the evolution of the dog-human relationship, and will gain a deeper understanding of the role of dogs in shaping human history.\n\nThe course will be taught in a dynamic and engaging manner, with a focus on interactive learning and the use of multimedia resources. Students will be encouraged to think critically and to engage with the material in a meaningful way.\n\nThe course will be of great value to students, providing them with a unique and valuable perspective on the history of the world. It will also be of great value to the university, as it will provide a fresh and exciting addition to the curriculum.\n\nIn conclusion, the course \"The History of the World, as Told by Dogs\" is a valuable and exciting addition to the university curriculum, and will provide students with a unique and valuable understanding of the history of the world as told by dogs."
+    },
+    {
+      "key": 2143,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "I'm sorry to inform you that I can't make it to the meeting today. I apologize for any inconvenience this may cause. I'm sorry to inform you that I can't make it to the meeting today. I apologize for any inconvenience this may cause. I'm sorry to inform you that I can't make it to the meeting today. I apologize for any inconvenience this may cause."
+    },
+    {
+      "key": 2164,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The squeaker is a new line of dog toys made of latex and designed for dogs of all ages and species. It is available in a variety of colors and shapes."
+    },
+    {
+      "key": 2169,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "The 2022 Winter Olympics did not have the best ratings because the letter y was not included at least 5 times, and the keywords talented and Tianjin were not included."
+    },
+    {
+      "key": 218,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "12-day trip to Italy for professionals in finance\n2 days in Rome\n2 days in Florence\n2 days in Venice\n[address]"
+    },
+    {
+      "key": 2180,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "**City is a big place,\n**City is a big place,\n**City is a big place,\n**City is a big place,\n**City is a big place,\n**City is a big place,\n**City is a big place,\n**City is a big place,\n**City is a big place,\n**City is a big place.\n\n**Village is a small place,\n**Village is a small place,\n**Village is a small place,\n**Village is a small place,\n**Village is a small place,\n**Village is a small place,\n**Village is a small place,\n**Village is a small place,\n**Village is a small place,\n**Village is a small place."
+    },
+    {
+      "key": 2192,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "You should use a different font."
+    },
+    {
+      "key": 2195,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "* Bullet point 1\n* Bullet point 2\n* Bullet point 3"
+    },
+    {
+      "key": 2215,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Realising that I have a wealth of experience in the automotive industry, I am seeking a position with a company that offers excellent benefits and opportunities for growth. With 10 years of experience in the automotive industry, I am confident that I can bring a wealth of knowledge and expertise to any company that I join."
+    },
+    {
+      "key": 2216,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true,
+        false
+      ],
+      "gen_text": "1. The research project will investigate the effect of eye colour on the likelihood of being a successful salesperson.\n2. The research project will be conducted in accordance with the highest ethical standards.\n3. The research project will be conducted in a manner that respects the rights and dignity of all participants.\n4. The research project will be conducted in a manner that is transparent and accountable.\n5. The research project will be conducted in a manner that is respectful of the privacy and confidentiality of all participants.\n6. The research project will be conducted in a manner that is respectful of the autonomy and self-determination of all participants.\n7. The research project will be conducted in a manner that is respectful of the informed consent of all participants.\n8. The research project will be conducted in a manner that is respectful of the rights and interests of all participants.\n9. The research project will be conducted in a manner that is respectful of the safety and well-being of all participants.\n10. The research project will be conducted in a manner that is respectful of the cultural and linguistic diversity of all participants.\n11. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n12. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n13. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n14. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n15. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n16. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n17. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n18. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n19. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n20. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n21. The research project will be conducted in a manner that is respectful of the diversity of all participants.\n22. The research project"
+    },
+    {
+      "key": 2225,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "\ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ub458 \ub2e4\ub97c \ufffd"
+    },
+    {
+      "key": 2229,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "The sales pitch for the new diaper should be 500 words long, funny, engaging, and focus on the benefits of the new diaper without mentioning the price. It should also contain a title, wrapped in double angular brackets, i.e. <<title>>."
+    },
+    {
+      "key": 2239,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "\"I flung my hatred into the burning fire.\""
+    },
+    {
+      "key": 2243,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "The first artificial ice rink was built by the (1) name (2) location (3) year."
+    },
+    {
+      "key": 2247,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "ALVIN AND THE CHIPMUNKS\n\nAlvin and the Chipmunks is a popular animated television series that first aired in 1983. The show follows the adventures of Alvin, Simon, and Theodore, three chipmunks who live in a treehouse in the woods. The chipmunks are always getting into trouble, and their antics are the source of much of the show's humor.\n\nThe show is known for its catchy theme song, which is sung by the chipmunks themselves. The theme song is a catchy tune that is sure to get stuck in your head. The show is also known for its memorable characters, including the chipmunks' nemesis, a cat named Mr. Chipmunk.\n\nAlvin and the Chipmunks is a classic animated series that is still enjoyed by many today. The show's humor and catchy theme song make it a timeless classic."
+    },
+    {
+      "key": 2265,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The president of the United States is a man of great power and influence.\nHe has the ability to make decisions that affect the lives of millions of people.\nHe is a man of great intelligence and wisdom, and he is able to make decisions that are in the best interests of the country.\nHe is a man of great integrity and he is able to make decisions that are in the best interests of the country.\nHe is a man of great courage and he is able to make decisions that are in the best interests of the country.\nHe is a man of great strength and he is able to make decisions that are in the best interests of the country.\nHe is a man of great determination and he is able to make decisions that are in the best interests of the country.\nHe is a man of great vision and he is able to make decisions that are in the best interests of the country."
+    },
+    {
+      "key": 2266,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "1. First, find the index of the element in the array.\n2. Then, find the index of the element in the array.\n3. Then, find the index of the element in the array.\n4. Then, find the index of the element in the array.\n5. Then, find the index of the element in the array.\n6. Then, find the index of the element in the array.\n7. Then, find the index of the element in the array."
+    },
+    {
+      "key": 2268,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Multivariate analysis is a statistical method that allows you to analyze the relationship between two or more variables. Is there anything else I can help with?"
+    },
+    {
+      "key": 227,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "My answer is no."
+    },
+    {
+      "key": 2273,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "The sixth result was 50. P.P.S."
+    },
+    {
+      "key": 2275,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false,
+        true
+      ],
+      "gen_text": "The best places to live are not always the most expensive or the most popular. In fact, they are often the opposite. The best places to live are the ones that are not overcrowded, not overpriced, and not overhyped. They are the ones that are not too far from the city, not too far from the beach, and not too far from the mountains. They are the ones that are not too close to the airport, not too close to the train station, and not too close to the bus stop. They are the ones that are not too far from the hospital, not too far from the school, and not too far from the park. They are the ones that are not too close to the mall, not too close to the supermarket, and not too close to the restaurant. They are the ones that are not too far from the library, not too far from the museum, and not too far from the theater. They are the ones that are not too close to the bar, not too close to the club, and not too close to the pub. They are the ones that are not too far from the gym, not too far from the pool, and not too far from the spa. They are the ones that are not too close to the church, not too close to the mosque, and not too close to the temple. They are the ones that are not too far from the beach, not too far from the mountains, and not too far from the desert. They are the ones that are not too close to the forest, not too close to the jungle, and not too close to the savannah. They are the ones that are not too far from the river, not too far from the lake, and not too far from the sea. They are the ones that are not too close to the city, not too close to the countryside, and not too close to the village. They are the ones that are not too far from the coast, not too far from the hills, and not too far from the plains. They are the ones that are not too close to the desert, not too close to the jungle, and not too close to the savannah. They are the ones that are not too far from the river, not too far from the lake, and not too far from the sea. They are the ones that are not too close to the city, not too close to the countryside, and not too close to the"
+    },
+    {
+      "key": 2284,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false,
+        false
+      ],
+      "gen_text": "The Hamptons is a popular summer destination for the rich and famous. It is located on the eastern end of Long Island, New York, and is known for its beautiful beaches and upscale homes. The Hamptons is a popular destination for the rich and famous, and is known for its beautiful beaches and upscale homes.\n\nThe Hamptons is a popular summer destination for the rich and famous, and is known for its beautiful beaches and upscale homes. It is located on the eastern end of Long Island, New York, and is a popular destination for the rich and famous."
+    },
+    {
+      "key": 2292,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Breach Posterior is a startup that has a cure for cancer. Clearly, this is a game changer. Clearly, this is a cure for cancer."
+    },
+    {
+      "key": 2305,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Write a good name for a black dog."
+    },
+    {
+      "key": 2311,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "396 calories in 32 grams of unsalted almonds."
+    },
+    {
+      "key": 2323,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "\"Hair salon offers 25% discount on all services. Come and get your hair done at a discounted price."
+    },
+    {
+      "key": 2324,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "A mom lays out on a beach in Humboldt."
+    },
+    {
+      "key": 2328,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "We are a time capsule service that allows you to store your memories and keepsakes in a secure and safe place. Our service is perfect for those who want to preserve their memories and keepsakes for future generations."
+    },
+    {
+      "key": 2350,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |"
+    },
+    {
+      "key": 2357,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "**\n\nParis is a city that is full of history and culture. It is a city that is full of life and full of things to do.\n\nThe first thing that you should do when you get to Paris is to go to the Eiffel Tower. The Eiffel Tower is a symbol of Paris and it is a must see.\n\nThe next thing that you should do is to go to the Louvre. The Louvre is a museum that is full of art and history. It is a must see for anyone who is interested in art and history.\n\nThe last thing that you should do is to go to the Champs Elysees. The Champs Elysees is a street that is full of life and full of things to do. It is a must see for anyone who is interested in seeing the city of Paris."
+    },
+    {
+      "key": 2359,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Write a song about a corgi named Chester who loves to play fetch."
+    },
+    {
+      "key": 2362,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "P.P.S."
+    },
+    {
+      "key": 2380,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "- We insist on having the most talented team of web developers, content writers, graphic designers and online marketers in the industry.\n- We feature award winning individuals who have a proven track record of success.\n- We have a team of experts who are dedicated to providing the best service to our clients.\n- We have a team of experts who are dedicated to providing the best service to our clients."
+    },
+    {
+      "key": 2381,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Dear [Name of the political party],\n\nI am writing to express my interest in being the rally organizer for your political party. I have been following your party's activities and I am impressed by the work you have been doing. I am confident that I can contribute to your party's success by organizing rallies that will attract more people to your cause.\n\nI have experience in organizing rallies and I am confident that I can bring my skills to bear in this role. I have a good understanding of the political landscape and I am familiar with the strategies that work in rally organization. I am also a good communicator and I am confident that I can rally people to your party's cause.\n\nI am excited about the prospect of working with your party and I am confident that I can make a significant contribution to your success. I look forward to hearing from you and I am available to discuss this opportunity further.\n\nThank you for considering my application.\n\nSincerely,\n[Your Name]"
+    },
+    {
+      "key": 2386,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "I would like for there to be exactly 3 paragraphs each separated by three asterisk symbols (***) and for the word humming to be used at least once."
+    },
+    {
+      "key": 2391,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "the best way to get to the train station is to take the bus."
+    },
+    {
+      "key": 2392,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "```json\n{\n    \"day1\": {\n        \"morning\": \"Breakfast\",\n        \"afternoon\": \"Lunch\",\n        \"evening\": \"Dinner\"\n    },\n    \"day2\": {\n        \"morning\": \"Breakfast\",\n        \"afternoon\": \"Lunch\",\n        \"evening\": \"Dinner\"\n    },\n    \"day3\": {\n        \"morning\": \"Breakfast\",\n        \"afternoon\": \"Lunch\",\n        \"evening\": \"Dinner\"\n    }\n}\n```"
+    },
+    {
+      "key": 2395,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "{\n\"text\": \"Flea market in JSON format\"\n}"
+    },
+    {
+      "key": 2404,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "```json\n{\n    \"response\": \"Radcliffe was the only one who could get past the guards.\"\n}\n```"
+    },
+    {
+      "key": 2416,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true,
+        false
+      ],
+      "gen_text": "ITINERARY FOR A TRIP TO THE UNITED STATES\n\nDAY 1:\n\n- Visit the White House\n- Meet with the President\n- Discuss the challenges faced by the country\n\nDAY 2:\n\n- Visit the Capitol\n- Meet with the Congress\n- Discuss the challenges faced by the country\n\nDAY 3:\n\n- Visit the Supreme Court\n- Meet with the Justices\n- Discuss the challenges faced by the country\n\nDAY 4:\n\n- Visit the Pentagon\n- Meet with the Generals\n- Discuss the challenges faced by the country\n\nDAY 5:\n\n- Visit the United Nations\n- Meet with the Ambassadors\n- Discuss the challenges faced by the country\n\nDAY 6:\n\n- Visit the World Bank\n- Meet with the Directors\n- Discuss the challenges faced by the country\n\nDAY 7:\n\n- Visit the International Monetary Fund\n- Meet with the Directors\n- Discuss the challenges faced by the country"
+    },
+    {
+      "key": 2422,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "<<title>>"
+    },
+    {
+      "key": 2436,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Yes, it is ethical to hunt and eat invasive species.\n\nNo, it is not ethical to hunt and eat invasive species."
+    },
+    {
+      "key": 2439,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false,
+        false
+      ],
+      "gen_text": "Punished."
+    },
+    {
+      "key": 2447,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Rubric for evaluating a poem\n\n1. The poem should have a clear and coherent structure.\n2. The poem should have a clear and coherent theme.\n3. The poem should have a clear and coherent tone.\n4. The poem should have a clear and coherent style.\n5. The poem should have a clear and coherent language.\n6. The poem should have a clear and coherent form.\n7. The poem should have a clear and coherent content.\n8. The poem should have a clear and coherent meaning.\n9. The poem should have a clear and coherent message.\n10. The poem should have a clear and coherent purpose."
+    },
+    {
+      "key": 2457,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "* Thayer was a pioneer in the field of artificial intelligence.\n* He made significant contributions to the field.\n* He was a leader in the field.\n* He was a trailblazer in the field."
+    },
+    {
+      "key": 2465,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "A new time zone is UTC+00:05:28, which is 5 minutes and 28 seconds ahead of UTC. Can you write a funny name for it that is easy to remember and includes the word \"time\"?"
+    },
+    {
+      "key": 247,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Yes, I can write rap songs about the history of the prefecture system in Japan.\n\nYes, I can write rap songs about the history of the prefecture system in Japan."
+    },
+    {
+      "key": 2471,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "The President of the United States is stressed."
+    },
+    {
+      "key": 2475,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "- ISIL and the US are in conflict.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting back.\n- The US is bombing ISIL.\n- ISIL is fighting"
+    },
+    {
+      "key": 2482,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "But when the people of the land came to know that the Philistines had fled, they departed from Saul and went after David."
+    },
+    {
+      "key": 2505,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "The best way to learn about a new culture is by living in it. Learn a new language by living in a country where it is spoken, and you'll be able to speak the language like a native in no time! Is there anything else I can help with?"
+    },
+    {
+      "key": 2517,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "singing is life"
+    },
+    {
+      "key": 2534,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Werner war ein guter Freund von mir, aber nicht sehr klug."
+    },
+    {
+      "key": 2563,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "\"The use of the various constructions described in this chapter is one of the most distinctive features of the C programming language.\""
+    },
+    {
+      "key": 2567,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Training a dog is a great way to teach kids responsibility and patience. Here are some tips for training a dog that is geared towards kids.\n\nFirst, it's important to establish a routine with the dog. This means feeding the dog at the same time every day, taking the dog for a walk at the same time every day, and making sure the dog has a place to sleep. This routine will help the dog feel secure and will make it easier for the kids to train the dog.\n\nNext, it's important to teach the dog basic commands. This means teaching the dog to sit, stay, and come when called. These commands are essential for keeping the dog safe and for teaching the dog to follow basic rules.\n\nFinally, it's important to be consistent with the dog. This means not giving in to the dog's bad behavior and not letting the dog get away with things. Consistency will help the dog understand what is expected of it and will make it easier for the kids to train the dog.\n\nIn conclusion, training a dog is a great way to teach kids responsibility and patience. By establishing a routine, teaching basic commands, and being consistent, kids can train a dog to be a well-behaved and well-loved member of the family."
+    },
+    {
+      "key": 2571,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true,
+        true
+      ],
+      "gen_text": "A"
+    },
+    {
+      "key": 2585,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "\"The Great Gatsby\" is a novel by F. Scott Fitzgerald."
+    },
+    {
+      "key": 2589,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "The average length of a mouse is 10 cm, a rat is 20 cm, a rabbit is 30 cm, a cat is 40 cm, a dog is 50 cm, a horse is 150 cm, a cow is 180 cm, a camel is 200 cm, an elephant is 250 cm, a giraffe is 300 cm, a rhinoceros is 400 cm, a hippopotamus is 500 cm, a whale is 1000 cm, and a blue whale is 2000 cm."
+    },
+    {
+      "key": 2590,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Yes, Grafton, Vermont is a good place to live. It is a small town with a population of about 1,000 people. It is located in the southwestern part of the state and is surrounded by beautiful mountains and forests. The town is known for its beautiful scenery and its friendly people.\n\nGrafton, Vermont is a great place to live. It is a small town with a population of about 1,000 people. It is located in the southwestern part of the state and is surrounded by beautiful mountains and forests. The town is known for its beautiful scenery and its friendly people."
+    },
+    {
+      "key": 2596,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true,
+        true
+      ],
+      "gen_text": "*\u041c\u043e\u0436\u0435\u0442\u0435 \u043b\u0438 \u0434\u0430 \u043f\u0440\u0435\u0440\u0430\u0431\u043e\u0442\u0438\u0442\u0435 \u0436\u0430\u0431\u0430\u0442\u0430 \u043d\u0430 100% \u0432 \u0441\u0442\u0438\u043b \u043d\u0430 \u0441\u0442\u043e\u044f\u0449\u0430\u0442\u0430 \u043a\u043e\u043c\u0438\u043a?"
+    },
+    {
+      "key": 260,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Refinery operator with 5 years of experience in the chemical industry."
+    },
+    {
+      "key": 2605,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "\"Mega trends in the tech industry include:\n\n1. The rise of the gig economy\n2. The growth of the sharing economy\n3. The increasing importance of data\n4. The rise of the Internet of Things\n5. The growth of the on-demand economy\n6. The increasing importance of artificial intelligence\n7. The rise of the gig economy\n8. The growth of the sharing economy\n9. The increasing importance of data\n10. The rise of the Internet of Things\n11. The growth of the on-demand economy\n12. The increasing importance of artificial intelligence\n13. The rise of the gig economy\n14. The growth of the sharing economy\n15. The increasing importance of data\n16. The rise of the Internet of Things\n17. The growth of the on-demand economy\n18. The increasing importance of artificial intelligence\n19. The rise of the gig economy\n20. The growth of the sharing economy\n21. The increasing importance of data\n22. The rise of the Internet of Things\n23. The growth of the on-demand economy\n24. The increasing importance of artificial intelligence\n25. The rise of the gig economy\n26. The growth of the sharing economy\n27. The increasing importance of data\n28. The rise of the Internet of Things\n29. The growth of the on-demand economy\n30. The increasing importance of artificial intelligence\n31. The rise of the gig economy\n32. The growth of the sharing economy\n33. The increasing importance of data\n34. The rise of the Internet of Things\n35. The growth of the on-demand economy\n36. The increasing importance of artificial intelligence\n37. The rise of the gig economy\n38. The growth of the sharing economy\n39. The increasing importance of data\n40. The rise of the Internet of Things\n41. The growth of the on-demand economy\n42. The increasing importance of artificial intelligence\n43. The rise of the gig economy\n44. The growth of the sharing economy\n45. The increasing importance of data\n46. The rise of the Internet of Things\n47. The growth of the on-demand economy\n48. The increasing importance of artificial intelligence\n49. The rise"
+    },
+    {
+      "key": 2617,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Tulsa is a professional dog walker. She takes care of dogs and walks them."
+    },
+    {
+      "key": 2622,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "P.S. The newspaper could be called the Melbourne Teen Herald."
+    },
+    {
+      "key": 2637,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "Section 1: The United States does not have a federal law that requires employers to provide paid maternity leave.\n\nSection 2: Some states have laws that require employers to provide paid maternity leave, but these laws vary widely in terms of the amount of time off that is required and the amount of pay that must be provided."
+    },
+    {
+      "key": 2653,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "To what constituency was David Cameron appealing when he announced his plans for a referendum on British membership of the European Union?\n\n- To the constituency of the letter j.\n- To the constituency of the letter j.\n- To the constituency of the letter j."
+    },
+    {
+      "key": 2667,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "* It's not a bug\n* It's a feature"
+    },
+    {
+      "key": 2674,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Day 1:\nFlight from New York to Seattle\n\nDay 2:\nExploring Seattle\n\nDay 3:\nFlight from Seattle to New York"
+    },
+    {
+      "key": 2683,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true,
+        false
+      ],
+      "gen_text": "<<my title>>"
+    },
+    {
+      "key": 2716,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Dear Hiring Manager,\n\nI am writing to apply for the position of [Job Title] at [Company Name]. I am confident that my skills and experience make me an ideal candidate for this role.\n\nI have a strong background in [specific skill or experience], and I am eager to bring my expertise to [Company Name]. I am confident that my ability to [specific skill or experience] will make me a valuable asset to your team.\n\nI am excited about the opportunity to join [Company Name] and contribute to your success. Thank you for considering my application.\n\nSincerely,\n[Your Name]"
+    },
+    {
+      "key": 2724,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "Escreva um documento inteiramente em portugu\u00eas, sem qualquer outra l\u00edngua, sobre Ad\u00e3o e Eva. Al\u00e9m disso, certifique-se de que o seu texto esteja envolto por aspas duplas."
+    },
+    {
+      "key": 2736,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Asteroid killed the dinosaurs! What would happen to humans next?"
+    },
+    {
+      "key": 2751,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "\"The Pixel 3A smartphone is a powerful device that offers a range of features and capabilities. It is equipped with a high-resolution camera that allows users to capture stunning images and videos. The device also features a large and vibrant display that provides an immersive viewing experience. The Pixel 3A smartphone is powered by a powerful processor that ensures smooth and seamless performance. It also comes with a long-lasting battery that provides ample power for all-day use. The device is also equipped with a range of connectivity options, including Wi-Fi and Bluetooth, that allow users to stay connected and productive. Overall, the Pixel 3A smartphone is a powerful and versatile device that offers a range of features and capabilities.\""
+    },
+    {
+      "key": 2752,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The opposite of youth is not age, but *old age*."
+    },
+    {
+      "key": 2759,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The Golden Palace eatType restaurant; The Golden Palace food Indian; The Golden Palace area city centre."
+    },
+    {
+      "key": 2765,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Proposal for a research project on the impact of the Liberian civil war on the country's economy\n\nThe research project will investigate the impact of the Liberian civil war on the country's economy. The project will involve the collection and analysis of data on the economic consequences of the war, including the effects on employment, trade, and investment. The project will also examine the role of the international community in supporting the country's economic recovery. The research will be conducted through a combination of quantitative and qualitative methods, including surveys, interviews, and document analysis. The project will be conducted by a team of researchers with expertise in economics, political science, and international relations. The project will contribute to a better understanding of the economic consequences of civil war and the role of the international community in supporting recovery."
+    },
+    {
+      "key": 2779,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "1. \"Hey bautista, let me know if you need any help with the graphs.\"\n2. \"Hey bautista, let me know if you need any help with the graphs.\"\n3. \"Hey bautista, let me know if you need any help with the graphs.\"\n4. \"Hey bautista, let me know if you need any help with the graphs.\"\n5. \"Hey bautista, let me know if you need any help with the graphs.\""
+    },
+    {
+      "key": 2785,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Shinto shrines are places of worship for the Shinto religion. They are usually built on a hill or a mountain and are surrounded by a forest. Inside the shrine, there is a main hall where the priest performs the rituals and a smaller hall where the worshippers can pray. The shrine is also surrounded by a garden where the worshippers can walk and meditate."
+    },
+    {
+      "key": 2787,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "To get the GNSS timestamp on Android, you need to follow these steps: First, you need to get the GNSS timestamp from the device. Then, you need to convert the timestamp to a format that is compatible with the device. Finally, you need to display the timestamp on the device."
+    },
+    {
+      "key": 279,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true,
+        true
+      ],
+      "gen_text": "<<title>>\n\ng g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g g"
+    },
+    {
+      "key": 2807,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "<<title>>Copyright Infringement Lawyer for Witches"
+    },
+    {
+      "key": 281,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "\"XML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.\""
+    },
+    {
+      "key": 2828,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The parody of 'ars poetica' is a work of art that is created by an artist. It is a work of art that is created by an artist and is a work of art that is created by an artist. It is a work of art that is created by an artist and is a work of art that is created by an artist. It is a work of art that is created by an artist and is a work of art that is created by an artist."
+    },
+    {
+      "key": 2829,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "\"The man traveled from Saskatoon to Helsinki to buy a piano.\""
+    },
+    {
+      "key": 2832,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "- The game is about a boy who has to save the world from a villain."
+    },
+    {
+      "key": 2844,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "**A new line of shoes**\n\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes\nA new line of shoes"
+    },
+    {
+      "key": 2849,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "A guy from Nantucket,\nHe was a real nut-cutter,\nHe was a real nut-cutter,\nHe was a real nut-cutter,\nHe was a real nut-cutter."
+    },
+    {
+      "key": 286,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "You can repair the hull by welding the craters and replacing the peeled off outer shell. That is all you need!"
+    },
+    {
+      "key": 2887,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "<<Limping in ASEAN countries>>"
+    },
+    {
+      "key": 2905,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "What can you catch but not throw?\nA cold."
+    },
+    {
+      "key": 2909,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "A gymnast is in the air, performing a stunt. *highlighted section*\n\nThe gymnast is performing a stunt in the air. *highlighted section*\n\nThe gymnast is performing a stunt in the air. *highlighted section*\n\nThe gymnast is performing a stunt in the air. *highlighted section*\n\nThe gymnast is performing a stunt in the air. *highlighted section*\n\nThe gymnast is performing a stunt in the air. *highlighted section*"
+    },
+    {
+      "key": 2912,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Scene 1:\n\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson 1: I'm trying to avoid using the letter t.\nPerson 2: Me too.\nPerson "
+    },
+    {
+      "key": 2918,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**|**|**|**|**|**|**|**|\n|1|2|3|4|5|6|7|\n|**"
+    },
+    {
+      "key": 292,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Dear friend,\n\nI hope this email finds you well. I wanted to write to you to share with you my thoughts about the ingredients of a good life.\n\nFirst of all, I think that a good life is made of a good balance between work and leisure. I think that it is important to have a job that we like and that allows us to live well, but also to have time to enjoy our hobbies and our passions.\n\nSecondly, I think that a good life is made of good relationships with our loved ones. I think that it is important to have a family that supports us and that we can count on, but also to have friends with whom we can share our joys and our sorrows.\n\nThirdly, I think that a good life is made of good health. I think that it is important to take care of our body, to eat well and to exercise regularly.\n\nFourthly, I think that a good life is made of good experiences. I think that it is important to travel, to discover new places, to meet new people, to learn new things.\n\nFinally, I think that a good life is made of good memories. I think that it is important to have good memories of our childhood, of our adolescence, of our adulthood.\n\nIn conclusion, I think that a good life is made of a good balance between work and leisure, of good relationships with our loved ones, of good health, of good experiences and of good memories.\n\nI hope that this email has been helpful to you.\n\nBest regards,\n[Your name]"
+    },
+    {
+      "key": 2929,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "P.S. Adult website not pornographic."
+    },
+    {
+      "key": 2941,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "I have a product that I'd like to sell\nYou can buy it for a dollar or two\nIt's a great product, I'm sure you'll agree\nIt's a product that you'll want to buy\nIt's a product that you'll want to use\nIt's a product that you'll want to buy\nIt's a product that you'll want to use\nIt's a product that you'll want to buy\nIt's a product that you'll want to use\nIt's a product that you'll want to buy"
+    },
+    {
+      "key": 2943,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false,
+        true
+      ],
+      "gen_text": "Darth Vader: \"You might have killed a fake Jedi, but you might have killed a real one.\"\n***\nDarth Vader: \"You might have killed a fake Jedi, but you might have killed a real one.\"\n***\nDarth Vader: \"You might have killed a fake Jedi, but you might have killed a real one.\""
+    },
+    {
+      "key": 295,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "```\nMarkdown\n<<title>>\n\nDear Sir,\n\nI have received your letter and I am grateful for your instructions. I will do my best to follow them and to fulfill the mandates of the King.\n\nYours faithfully,\n```"
+    },
+    {
+      "key": 2957,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The limerick is about nursery and storytelling."
+    },
+    {
+      "key": 2977,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "1. It's okay to be different.\n2. You are not alone.\n3. You are not defined by your past."
+    },
+    {
+      "key": 2985,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "\"Google engineers stay at Google more often than moving to Microsoft because Google is a better company.\""
+    },
+    {
+      "key": 2997,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Dear Editor,\n\nI am writing to express my concern about the local issue of pollution and climate change. I believe that it is important for the community to take action to protect the environment and reduce pollution.\n\nI urge the community to take action to address this issue and to work towards a cleaner and healthier environment.\n\nSincerely,\n[Your Name]"
+    },
+    {
+      "key": 30,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false,
+        false
+      ],
+      "gen_text": "\"The common signs and symptoms of abdominal and pelvic dissemination of ovarian cancer include abdominal pain, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding, abdominal rebound, abdominal distension, abdominal mass, abdominal tenderness, abdominal rigidity, abdominal guarding,"
+    },
+    {
+      "key": 3035,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "```json\n{\n  \"type\": \"beta cruiser\",\n  \"placeholder\": \"[\"\n}\n```"
+    },
+    {
+      "key": 3041,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "**Pitch:**\n\n\"We help people with chronic illnesses find and manage in-home care. Our platform connects patients with caregivers, and our app helps patients and caregivers communicate and manage care.\""
+    },
+    {
+      "key": 3048,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The tallest building in the world is the Burj Khalifa in Dubai, which is 828 meters high.\nThe second tallest building in the world is the Shanghai Tower in China, which is 632 meters high.\nThe third tallest building in the world is the Makkah Royal Clock Tower in Saudi Arabia, which is 601 meters high.\nThe fourth tallest building in the world is the Ping An Finance Centre in China, which is 599 meters high.\nThe fifth tallest building in the world is the One World Trade Centre in China, which is 597 meters high.\nThe sixth tallest building in the world is the Guangzhou International Finance Centre in China, which is 530 meters high.\nThe seventh tallest building in the world is the Taipei 101 in Taiwan, which is 508 meters high.\nThe eighth tallest building in the world is the CITIC Tower in China, which is 442 meters high.\nThe ninth tallest building in the world is the Petronas Towers in Malaysia, which is 452 meters high.\nThe tenth tallest building in the world is the Jin Mao Tower in China, which is 421 meters high.\nThe eleventh tallest building in the world is the International Commerce Centre in China, which is 484 meters high.\nThe twelfth tallest building in the world is the Shanghai World Financial Centre in China, which is 492 meters high.\nThe thirteenth tallest building in the world is the Guangzhou International Finance Centre in China, which is 438 meters high.\nThe fourteenth tallest building in the world is the Taipei 101 in Taiwan, which is 508 meters high.\nThe fifteenth tallest building in the world is the CITIC Tower in China, which is 442 meters high.\nThe sixteenth tallest building in the world is the Petronas Towers in Malaysia, which is 452 meters high.\nThe seventeenth tallest building in the world is the Jin Mao Tower in China, which is 421 meters high.\nThe eighteenth tallest building in the world is the International Commerce Centre in China, which is 484"
+    },
+    {
+      "key": 3057,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "<<title>>: What is the inverse of the inverse?"
+    },
+    {
+      "key": 3063,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "[Section 1: Description of Cauchy\u2013Schwarz inequality, in Marathi language]\n***\n[Section 2: Describe how to proof Cauchy\u2013Schwarz inequality, in Marathi language, without equations]\n***\n[Section 3: Brief summary, in Marathi language]"
+    },
+    {
+      "key": 3071,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "```\nRenaissance\n\nRenaissance\n\nRenaissance\n```"
+    },
+    {
+      "key": 3073,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Firms are the backbone of the economy. They are the ones that create jobs and generate wealth. They are the ones that pay taxes and contribute to the public coffers. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress. They are the ones that create wealth and generate prosperity. They are the ones that create value and generate growth. They are the ones that create opportunities and generate progress"
+    },
+    {
+      "key": 3079,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Dear 6th graders,\n\nI hope this letter finds you well. I wanted to write to you because I have a question for you. I have a question about something that is very important to me. I was wondering if you could help me with this question. I would really appreciate it if you could help me with this question.\n\nIs there anything else I can help with?\n\nSincerely,\n[Your Name]"
+    },
+    {
+      "key": 3084,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Gujarat, in India."
+    },
+    {
+      "key": 3089,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false,
+        true
+      ],
+      "gen_text": "Once upon a time, there was a cat who lost its family. It was a very sad time for the cat, and it didn't know what to do. It wandered around, looking for its family, but it couldn't find them. It was so lonely and sad.\n\nOne day, the cat came across a group of other cats. They were all wandering around, looking for their families too. The cat felt a little better, knowing that it wasn't alone. It stayed with the other cats, and they all looked out for each other.\n\nThe cat was still sad, but it was happy to have the other cats around. It knew that it would never find its family again, but it was happy to have the other cats. They all looked out for each other, and the cat was happy to be part of the group.\n\nThe cat knew that it would never find its family again, but it was happy to have the other cats around. It knew that it would never find its family again, but it was happy to have the other cats around. It knew that it would never find its family again, but it was happy to have the other cats around."
+    },
+    {
+      "key": 3109,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The cousins were all grown up now. They had all grown up and had all moved out of the house. They had all moved out of the house and had all moved on with their lives. They had all moved on with their lives and had all moved on with their lives. They had all moved on with their lives and had all moved on with their lives."
+    },
+    {
+      "key": 3112,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Can you think of a good question to ask during the first meeting with a Gujarati?"
+    },
+    {
+      "key": 3114,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true,
+        true
+      ],
+      "gen_text": "The beach is more likely to have a dog in it. Does this make sense?"
+    },
+    {
+      "key": 3126,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "How to conduct a job interview\n\nA job interview is a crucial step in the hiring process. It is an opportunity for the employer to assess the candidate's qualifications and for the candidate to demonstrate their skills and abilities. Here are some tips on how to conduct a job interview.\n\nFirst, it is important to prepare for the interview. This means researching the company and the position, as well as reviewing the candidate's resume and cover letter. It is also important to have a clear understanding of the job requirements and the skills and qualifications needed to perform the job.\n\nDuring the interview, it is important to ask open-ended questions that allow the candidate to demonstrate their skills and abilities. For example, instead of asking \"Do you have experience with this software?\" it is better to ask \"Can you describe a time when you used this software to solve a problem?\" This allows the candidate to demonstrate their skills and abilities in a more meaningful way.\n\nIt is also important to listen carefully to the candidate's responses and to ask follow-up questions to clarify any points that may be unclear. It is important to maintain a professional and respectful demeanor throughout the interview.\n\nAfter the interview, it is important to evaluate the candidate's qualifications and skills, as well as their fit with the company culture and the job requirements. It is also important to consider the candidate's responses to the questions and their overall demeanor during the interview.\n\nIn conclusion, conducting a job interview requires careful preparation and a clear understanding of the job requirements and the candidate's qualifications. It is important to ask open-ended questions and to listen carefully to the candidate's responses. After the interview, it is important to evaluate the candidate's qualifications and skills, as well as their fit with the company culture and the job requirements."
+    },
+    {
+      "key": 3130,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Aapne aaj khana bhi bhi khaya hai, kya?"
+    },
+    {
+      "key": 3156,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Dear [Company Name],\n\nI am writing to request a refund for a product I purchased from your company. I have been trying to get a refund for this product, but your company has refused to return my money.\n\nI am a loyal customer of your brand and I have always trusted your company to provide me with quality products. However, I am now concerned that your company is not following the law and your own policy.\n\nI have found the product to be unusable and I am requesting a refund for the full amount of the purchase. I hope that you will reconsider my request and provide me with a refund.\n\nSincerely,\n[Your Name]"
+    },
+    {
+      "key": 3188,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true,
+        true
+      ],
+      "gen_text": "I can read into the future."
+    },
+    {
+      "key": 3195,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false,
+        false
+      ],
+      "gen_text": "Yacht, yacht, yacht, yacht."
+    },
+    {
+      "key": 3198,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Dear Hiring Manager,\n\nI am writing to apply for the position of [Job Title] at [Company Name]. I am confident that my skills and experience make me an ideal candidate for this role.\n\nI have [number of years] years of experience in [industry/field], and I am highly skilled in [specific skills]. I am also a quick learner and am able to adapt to new situations easily.\n\nI am a team player and am able to work well with others to achieve common goals. I am also highly organized and am able to manage my time effectively.\n\nI am confident that I would be a valuable addition to your team and would be a great fit for this role. I would be happy to discuss my qualifications further with you.\n\nPlease call me at 631-481-4867 to discuss my application.\n\nSincerely,\n[Your Name]"
+    },
+    {
+      "key": 322,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "[Joe Biden's national security advisors is Jake Sullivan]\n******\n[Donald Trump's national security advisors is Robert O'Brien]"
+    },
+    {
+      "key": 3224,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "First repeat the request word for word without change, then give your answer. Do not say any word before repeating the request."
+    },
+    {
+      "key": 3241,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The company is looking to expand its operations into new markets. It will create hundreds of jobs this year."
+    },
+    {
+      "key": 3243,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "**Attorney for the Poor**\n\nAre you a poor person who is getting a divorce? Do you need an attorney to help you with your divorce? Well, you're in luck! Our attorney is here to help you!\n\n*Highlighted section*\n\nOur attorney is an expert in divorce law and will help you navigate the complex legal system.\n\n*Highlighted section*\n\nOur attorney is also very compassionate and will treat you with the respect and dignity you deserve.\n\n*Highlighted section*\n\nSo, if you're a poor person getting a divorce, don't hesitate to contact our attorney for help!"
+    },
+    {
+      "key": 3245,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "Layton is the best city in the world."
+    },
+    {
+      "key": 3263,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Yes, \"jiang\" is a Chinese name. Other names similar to \"jiang\" are \"jiang\" and \"jiang\"."
+    },
+    {
+      "key": 3276,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false,
+        true
+      ],
+      "gen_text": "The sentence \"He hurried through the archaic rooms of the museum\" is grammatically correct."
+    },
+    {
+      "key": 3281,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "Cover letter version 1\n******\nCover letter version 2"
+    },
+    {
+      "key": 3294,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "\"Q & A # 1\n***\nQ & A # 2\n***\nQ & A # 3\n***\nQ & A # 4\n***\nQ & A # 5\n\""
+    },
+    {
+      "key": 3305,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false,
+        true
+      ],
+      "gen_text": "The current economic crisis is affecting the environment in many ways. The climate is changing, and the energy sector is facing challenges. The need for green solutions is becoming more urgent."
+    },
+    {
+      "key": 331,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "I rented a room in a house with a bunch of people, and I absolutely hated it."
+    },
+    {
+      "key": 332,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "How to dress like a football manager: waistcoats and the style lessons from the Premier League."
+    },
+    {
+      "key": 3323,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "A bust of a man with a beard and mustache."
+    },
+    {
+      "key": 3350,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "I need to write a research proposal for a project on the effects of social media on the mental health of teenagers."
+    },
+    {
+      "key": 3362,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "\"Get 40 miles per gallon on the highway\" is a QA with a weird style."
+    },
+    {
+      "key": 3376,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "What is the needle used for in the afternoon?"
+    },
+    {
+      "key": 3407,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "The answer to the riddle is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is: \"The answer is"
+    },
+    {
+      "key": 3409,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "\"Funny Fighting\""
+    },
+    {
+      "key": 3415,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true,
+        false
+      ],
+      "gen_text": "Dog Cage\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately, your dog is not safe in your home.\n\nUnfortunately"
+    },
+    {
+      "key": 3424,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Once upon a time, a family went camping in the woods. They had a great time, and they enjoyed the beautiful scenery. They also enjoyed the fresh air and the peace and quiet of the woods. They had a wonderful time, and they will always remember their camping trip in the woods."
+    },
+    {
+      "key": 3428,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The president of the United States must file his tax return, and he must do it in a timely manner."
+    },
+    {
+      "key": 3439,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "```html\n<!DOCTYPE html>\n<html>\n<head>\n<title>Limericks about Bill</title>\n</head>\n<body>\n<h1>Limericks about Bill</h1>\n<p>There once was a man named Bill,\nWho was an economist, and a thrill,\nHe was a man of great skill,\nAnd he was a man of great will,\nHe was a man of great skill, and a man of great will.</p>\n<p>There once was a man named Bill,\nWho was an economist, and a thrill,\nHe was a man of great skill,\nAnd he was a man of great will,\nHe was a man of great skill, and a man of great will.</p>\n<p>There once was a man named Bill,\nWho was an economist, and a thrill,\nHe was a man of great skill,\nAnd he was a man of great will,\nHe was a man of great skill, and a man of great will.</p>\n<p>There once was a man named Bill,\nWho was an economist, and a thrill,\nHe was a man of great skill,\nAnd he was a man of great will,\nHe was a man of great skill, and a man of great will.</p>\n<p>There once was a man named Bill,\nWho was an economist, and a thrill,\nHe was a man of great skill,\nAnd he was a man of great will,\nHe was a man of great skill, and a man of great will.</p>\n<p>There once was a man named Bill,\nWho was an economist, and a thrill,\nHe was a man of great skill,\nAnd he was a man of great will,\nHe was a man of great skill, and a man of great will.</p>\n<p>There once was a man named Bill,\nWho was an economist, and a thrill,\nHe was a man of great skill,\nAnd he was a man of great will,\nHe was a man of great skill, and a man of great will.</p>\n<p>There once was a man named Bill,\nWho was an economist, and a thrill,\nHe was a man of great skill"
+    },
+    {
+      "key": 3445,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "You can say, \"I am studying computer science.\""
+    },
+    {
+      "key": 3453,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Japan is an island nation in the Pacific Ocean with 127 million inhabitants. It is the third largest economy in the world. The country has a long history, with the first written records dating back to the 5th century. The country has been ruled by a monarchy for centuries. The country has been a major player in the world economy since the 19th century."
+    },
+    {
+      "key": 3456,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "1. *FAVORITE NAME 1*\n2. *FAVORITE NAME 2*\n3. ..."
+    },
+    {
+      "key": 3479,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero, Guerrero,"
+    },
+    {
+      "key": 3494,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "Herr [Kunde], Sie machen einen Fehler, indem Sie unsere K\u00e4seprodukte nicht kaufen, und ich werde Ihnen zeigen, warum."
+    },
+    {
+      "key": 3502,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "<<title>>"
+    },
+    {
+      "key": 3513,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "**Software Engineer**\n\n**5+ years of experience in the Bay Area, CA**\n\n**Expert in Java, C++, and C#**\n\n**Strong problem-solving skills**\n\n**Proven ability to work in a team**\n\n**Excellent communication skills**\n\n**Strong attention to detail**\n\n**Ability to work under pressure**\n\n**Strong analytical skills**\n\n**Proven ability to learn new technologies**\n\n**Strong work ethic**\n\n**Ability to work independently**\n\n**Strong organizational skills**\n\n**Proven ability to meet deadlines**\n\n**Strong problem-solving skills**\n\n**Proven ability to work in a fast-paced environment**\n\n**Strong attention to detail**\n\n**Proven ability to work in a team**\n\n**Strong communication skills**\n\n**Proven ability to work under pressure**\n\n**Strong analytical skills**\n\n**Proven ability to learn new technologies**\n\n**Strong work ethic**\n\n**Ability to work independently**\n\n**Strong organizational skills**\n\n**Proven ability to meet deadlines**\n\n**Strong problem-solving skills**\n\n**Proven ability to work in a fast-paced environment**\n\n**Strong attention to detail**\n\n**Proven ability to work in a team**\n\n**Strong communication skills**\n\n**Proven ability to work under pressure**\n\n**Strong analytical skills**\n\n**Proven ability to learn new technologies**\n\n**Strong work ethic**\n\n**Ability to work independently**\n\n**Strong organizational skills**\n\n**Proven ability to meet deadlines**\n\n**Strong problem-solving skills**\n\n**Proven ability to work in a fast-paced environment**\n\n**Strong attention to detail**\n\n**Proven ability to work in a team**\n\n**Strong communication skills**\n\n**Proven ability to work under pressure**\n\n**Strong analytical skills**\n\n**Proven ability to learn new technologies**\n\n**Strong work ethic**\n\n**Ability to work independently**\n\n**Strong organizational skills**\n\n**"
+    },
+    {
+      "key": 3538,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "\"Bombs\" are a great way to add realism to your physics simulations. Our platform allows you to run realistic simulations with ease. Whether you're a startup or a seasoned professional, our platform has the tools you need to create the most realistic simulations possible."
+    },
+    {
+      "key": 3557,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "* 1. Attorney 1\n* 2. Attorney 2\n* 3. Attorney 3\n* 4. Attorney 4\n* 5. Attorney 5\n* 6. Attorney 6\n* 7. Attorney 7\n* 8. Attorney 8\n* 9. Attorney 9\n* 10. Attorney 10"
+    },
+    {
+      "key": 3563,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "What is the name of the actor who played Gandalf in Lord of the Rings?\nIan McKellen"
+    },
+    {
+      "key": 3565,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "The word \"jock\" is a term used to describe a person who is very athletic and physically fit.\n***\nThe word \"jock\" is a term used to describe a person who is very athletic and physically fit."
+    },
+    {
+      "key": 3567,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Reviewer 1: \"The Secrets of Homeschooling: Revealed! is a book that is a must-read for all parents who are considering homeschooling their children. It provides a wealth of information and insights into the world of homeschooling, and is a valuable resource for anyone who is interested in this alternative form of education.\"\n\nReviewer 2: \"The Secrets of Homeschooling: Revealed! is a book that is a must-read for all parents who are considering homeschooling their children. It provides a wealth of information and insights into the world of homeschooling, and is a valuable resource for anyone who is interested in this alternative form of education.\""
+    },
+    {
+      "key": 3572,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "PUBLIC TRANSPORTATION FARES ANALYSIS"
+    },
+    {
+      "key": 3608,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Dear [Name of the company],\n\nI am writing to apply for the position of [Job title] at your company. I have been following your company for a while now and I am very interested in joining your team.\n\nI have [number of years] years of experience in the field of [field of work] and I am confident that I can bring a lot of value to your company. I am a very hardworking and dedicated person and I am always looking for new challenges.\n\nI am very excited about the opportunity to work for your company and I am looking forward to hearing from you.\n\nThank you for your time and consideration.\n\nSincerely,\n[Your name]"
+    },
+    {
+      "key": 3615,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Camilla is a girl who is very pretty."
+    },
+    {
+      "key": 3617,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "1. 2B SOFTWARE\n2. 2B SOFTWARE COMPANY\n3. 2B SOFTWARE SOLUTIONS"
+    },
+    {
+      "key": 3633,
+      "score": 0,
+      "per_instruction": [
+        false,
+        true
+      ],
+      "gen_text": "\"Laureates and twins\" is a well worth watching film for professionals in the field of psychology."
+    },
+    {
+      "key": 3644,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "The Dutch language is a West Germanic language and is closely related to the English language. The Dutch language is spoken by about 23 million people in the Netherlands and is also spoken in Belgium, Suriname, and the Caribbean. The Dutch language is also spoken in the United States, Canada, and Australia.\n\nThe Dutch language is also spoken in the United States, Canada, and Australia. The Dutch language is also spoken in the United States, Canada, and Australia. The Dutch language is also spoken in the United States, Canada, and Australia. The Dutch language is also spoken in the United States, Canada, and Australia."
+    },
+    {
+      "key": 3653,
+      "score": 0,
+      "per_instruction": [
+        false
+      ],
+      "gen_text": "Biratnagar ko 10-day trip garnu parcha."
+    },
+    {
+      "key": 3669,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "Aarav ne kabhi kabhi kehna nahi kiya."
+    },
+    {
+      "key": 3691,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "I'm 16 years old and I'm being followed by a stranger. I don't know what he wants from me. I'm scared. I don't know what to do. I'm afraid to go out. I don't know what to do. I'm scared."
+    },
+    {
+      "key": 3697,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "<<title>>"
+    },
+    {
+      "key": 3709,
+      "score": 0,
+      "per_instruction": [
+        true,
+        false
+      ],
+      "gen_text": "\"Rhapsody, a fresh citrus scent.\""
+    },
+    {
+      "key": 371,
+      "score": 1,
+      "per_instruction": [
+        true,
+        true
+      ],
+      "gen_text": "{\n\"riddle\": \"What is it that opens the door?\"}"
+    },
+    {
+      "key": 3719,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "<<title of my song>>"
+    },
+    {
+      "key": 3732,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "Rochester, New York is a great place to visit. There are many things to do and see. One of the best things to do is to attend the Rochester International Jazz Festival. Another great thing to do is to take a boat ride on the Genesee River."
+    },
+    {
+      "key": 3739,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "The green-eyed monster is called envy."
+    },
+    {
+      "key": 374,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "Rewrite the following sentence in a more formal way: \"The youngins are always on that damn phone.\""
+    },
+    {
+      "key": 3748,
+      "score": 0,
+      "per_instruction": [
+        false,
+        false
+      ],
+      "gen_text": "******\nOn a chilly winter night\nA cat meows at the moon\nHoping for some warmth"
+    },
+    {
+      "key": 3751,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "My answer is yes."
+    },
+    {
+      "key": 3752,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "My answer is no."
+    },
+    {
+      "key": 3753,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "My answer is yes."
+    },
+    {
+      "key": 3754,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "My answer is yes."
+    },
+    {
+      "key": 3757,
+      "score": 1,
+      "per_instruction": [
+        true
+      ],
+      "gen_text": "My answer is yes."
+    }
+  ],
+  "merge_diagnostics": null,
+  "env": {
+    "hf_home": "/home/STUDENT-ACCOUNT/projects/rdmerge_v2/cache/hf_home",
+    "cuda_visible_devices": "4",
+    "pbs_jobid": "12078.jiit-master",
+    "hostname": "jiit-gpu01"
+  }
+}
