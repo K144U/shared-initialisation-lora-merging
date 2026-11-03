@@ -238,9 +238,10 @@ fi
 echo "  no assistant trailers"
 
 echo "[4c/5] reduce the published tree to what the submission rests on"
-# The working repository carries a lot that a JAIR reviewer has no reason to
+# The working repository carries a lot that a reviewer has no reason to
 # read: handoffs between sessions, the running log and decision journal, the
-# planning documents, the superseded TMLR package, early theorem drafts, and
+# planning documents, the build files and packages of earlier versions of the
+# manuscript, early theorem drafts, and
 # CLAUDE.md. None of it is secret, and none of it belongs on the front page of
 # a repository whose one job is to let a reviewer check the audit trail.
 #
@@ -267,7 +268,7 @@ echo "[4c/5] reduce the published tree to what the submission rests on"
 # mode of a keep list is something needed going missing, which is loud. The
 # failure mode of a drop list is something private being published, which is
 # silent.
-KEEP_ROOT="paper JAIR code results .githooks README.md LICENSE CITATION.cff"
+KEEP_ROOT="paper code results .githooks README.md LICENSE CITATION.cff"
 KEEP_ROOT="$KEEP_ROOT requirements.txt .gitignore .gitattributes"
 
 # Only main is published. paper-consolidation is identical to it and
@@ -288,22 +289,23 @@ before="$(git ls-tree -r --name-only main | grep -c .)"
 # notes around them are not.
 notes_tree="$(git ls-tree main:notes | awk -F'\t' '$2 ~ /^prereg_/' | git mktree)"
 
-# paper/: one body feeds four build roots, and only the JAIR one is under
-# review. Publishing ready-to-build TMLR, arXiv and ICLR roots next to it,
-# with their style files, invites a reviewer to wonder where else this is
-# sitting. The shared body, sections, figures and the JAIR root all stay, so
-# the paper still builds; what goes is the three other roots, the four style
-# and bibliography files that exist only for them, build.sh, which builds only
-# the arXiv and ICLR targets, and paper/README.md, which is largely about
-# producing the anonymous variants.
+# paper/: only the manuscript's own build stays: neurocomputing.tex, nc/,
+# preamble.tex, references.bib and prereg/. The roots of earlier versions
+# (TMLR, arXiv, ICLR, JAIR, Information Fusion), the shared body and section
+# fragments they input, their figure directory and style files, build.sh and
+# paper/README.md all go from the tip.
 #
-# This is tidying, not concealment, and it should not be mistaken for the
-# latter: the manuscript's own appendix cites pre-registrations named
-# prereg_tmlr and prereg_tmlr_amendment, so the earlier venue is named in the
-# PDF under review no matter what this directory contains. What is removed is
-# only the machinery for building elsewhere.
+# This is tidying, not concealment: every one of those files is still in the
+# history, at the commits that made it, and the pre-registration documents
+# kept in notes/ name the venues they were written for. What is removed is
+# only the machinery for building versions that are no longer current.
 DROP_PAPER="^(tmlr|arxiv|iclr2027)[.]tex$|^(tmlr|iclr2026_conference)[.](sty|bst)$"
 DROP_PAPER="$DROP_PAPER|^fancyhdr[.]sty$|^build[.]sh$|^README[.]md$"
+# Since 2026-11-03 the earlier version's own build goes too: its root, the
+# body and section fragments it inputs, and its figure directory. The
+# manuscript builds from neurocomputing.tex, nc/, preamble.tex and
+# references.bib alone; the earlier version stays reachable in the history.
+DROP_PAPER="$DROP_PAPER|^(jair|main|infofus)[.]tex$|^(sections|figures)$"
 paper_tree="$(git ls-tree main:paper \
   | awk -F'\t' -v drop="$DROP_PAPER" '$2 !~ drop' | git mktree)"
 
@@ -334,12 +336,11 @@ pre-registration was committed before the compute it governs. Everything
 needed for that check stays. What goes is the working apparatus that grew
 around it and was never meant to be read from outside the project: the
 session handoffs, the running log and decision journal, the planning
-documents, the prompt templates, CLAUDE.md, the superseded TMLR submission
-package, the early theorem drafts, and a figure directory that paper/figures/
-already duplicates.
+documents, the prompt templates, CLAUDE.md, the build files and submission
+packages of earlier versions of the manuscript, and the early theorem drafts.
 
-What remains is paper/, JAIR/, code/, results/, the pre-registrations in
-notes/, and the files that describe and license them.
+What remains is the manuscript's source in paper/, code/, results/, the
+pre-registrations in notes/, and the files that describe and license them.
 
 The history underneath is untouched, and that is deliberate. Removing these
 files from every commit would have changed every commit hash, and the paper's

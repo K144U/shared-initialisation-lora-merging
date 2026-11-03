@@ -8,14 +8,6 @@ University of Engineering and Technology, Guna). The manuscript is being
 prepared for journal submission; its source is `paper/neurocomputing.tex`, with
 the sections and appendices in `paper/nc/`.
 
-An earlier version, titled *Initialisation Sets the Conditioning of LoRA
-Merging*, was submitted to the *Journal of Artificial Intelligence Research*
-and is no longer under review there. It is kept as it was in `JAIR/`, with its
-PDF at
-[`JAIR/submission/Pathak_Garg_Singh_Initialisation_LoRA_Merging.pdf`](JAIR/submission/Pathak_Garg_Singh_Initialisation_LoRA_Merging.pdf).
-The current manuscript adds a further pre-registered campaign, including the
-test of a published data-free merging method, and supersedes it.
-
 This repository exists to be **checked**, not just read. Every confirmatory
 test in the paper is governed by a pre-registration that was committed to
 version control before the compute it governs was dispatched. The commit graph here is
@@ -44,32 +36,23 @@ repository and test one row of it:
 git clone https://github.com/K144U/Initialisation-Sets-the-Conditioning-of-LoRA-Merging.git
 cd Initialisation-Sets-the-Conditioning-of-LoRA-Merging
 
-# 947f0ea fixed the rules for the replication; 1dcadd4 carries its result.
-git merge-base --is-ancestor 947f0ea 1dcadd4 ; echo "exit $?"   # 0: rules came first
-git merge-base --is-ancestor 1dcadd4 947f0ea ; echo "exit $?"   # 1: and not the reverse
+# fff1699 fixed the rules for the WUDI-Merging test; c55e5d9 carries its result.
+git merge-base --is-ancestor fff1699 c55e5d9 ; echo "exit $?"   # 0: rules came first
+git merge-base --is-ancestor c55e5d9 fff1699 ; echo "exit $?"   # 1: and not the reverse
 ```
 
 The first exits `0`, the second does not. That asymmetry is the whole claim,
-and it holds for every row of the commit-ordering table in the current
-manuscript's pre-registration appendix. The earlier JAIR version's table has
-one exception, which that version itself flags:
+and it holds for every row of the commit-ordering table in the manuscript's
+pre-registration appendix. There is a script that checks every row and every
+hash the table cites at once:
 
 ```
-# The JAIR version states this pair is out of order. It is, and here is the proof.
-git merge-base --is-ancestor 9b3f57e 1dcadd4 ; echo "exit $?"   # 1: fails, as reported
-```
-
-There is a script that does all of this at once, over every row and every hash
-a table cites:
-
-```
-python code/phase3/scripts/verify_commit_table.py . paper/nc/app_prereg.tex   # current manuscript
-python code/phase3/scripts/verify_commit_table.py .                           # earlier JAIR version
+python code/phase3/scripts/verify_commit_table.py . paper/nc/app_prereg.tex
 ```
 
 ## What the paper claims
 
-This section summarises the current manuscript.
+This section summarises the manuscript.
 
 LoRA factorises each update as `BA`, draws `A` at random and starts `B` at
 zero. Whether the `T` adapters of a cohort drew **one** `A` or `T` independent
@@ -113,9 +96,9 @@ you.**
 
 ## What did not survive
 
-Several pre-registered tests went against us. They are here for the same reason
-they are in the paper; the current manuscript lists all of them in its
-discussion section.
+Several pre-registered tests went against us, and several things had to be
+fixed or re-run. They are here for the same reason the paper reports its
+failed predictions.
 
 - **WUDI was predicted to be protected by its optimiser, and it is not.** That
   failed prediction is now the paper's lead result.
@@ -149,7 +132,15 @@ discussion section.
   the code task. Absolute numbers here are therefore optimistic and are not
   held-out performance. Whether that affects comparisons *between* methods was
   tested rather than asserted: on the disjoint subset the method ordering is
-  unchanged in 19 of 20 rows and the worst task is the same in all 144 cells.
+  unchanged in 23 of 24 base-by-cohort comparisons and the worst task is the
+  same in all 144 cells.
+- **Two registered tests were re-run after their files were lost.** The
+  per-cell files of the shared arm at three cohorts and of the downstream
+  accuracy test were lost before they were committed. All 88 cells were re-run
+  under the original registrations, and both tests reach the same verdict. The
+  values moved, and on Mistral-7B and Yi-1.5-9B the re-run does not reproduce
+  the lost values at lambda = 0; the manuscript's pre-registration appendix
+  compares the two runs.
 
 ## Checking the audit trail in full
 
@@ -164,12 +155,6 @@ git merge-base --is-ancestor <rules-commit> <result-commit>
 ```
 
 exits zero exactly when the ordering claimed holds, and fails on the reverse.
-
-**In the earlier JAIR version's table, one row is expected to fail, and that
-version says so.** The solver replication
-appears as two rows because its amendment (`9b3f57e`) does not precede the
-step-0 result (`1dcadd4`). The ancestry check on that pair fails, and should.
-Reporting it is cheaper than the alternative.
 
 ## What is not in this repository
 
@@ -190,8 +175,9 @@ Removed in the **final commit only**, and so still present if you check out an
 earlier one:
 
 - The project's working apparatus: session handoffs, the running log and
-  decision journal, planning documents, prompt templates, the superseded TMLR
-  submission package, and early theorem drafts. None of it is secret and none
+  decision journal, planning documents, prompt templates, the build files and
+  submission packages of earlier versions of the manuscript, and early theorem
+  drafts. None of it is secret and none
   of it is cited; it simply is not what a reader of the paper came for. It was
   dropped at the tip rather than scrubbed from history on purpose, because
   scrubbing would have changed every commit hash and broken the hashes the
@@ -207,19 +193,12 @@ Not redistributed at all:
 ## Repository layout
 
 ```
-JAIR/                    the earlier version, as submitted to JAIR
-  submission/            its PDF and SUBMIT.md
-  overleaf/              DERIVED from paper/ by sync_from_paper.py;
-                         do not edit it by hand
-  build_local.sh         builds the PDF without Overleaf
 paper/                   LaTeX source
-  neurocomputing.tex     the build root of the current manuscript
+  neurocomputing.tex     the build root of the manuscript
   nc/                    its sections, appendices, figures, build.sh and
                          the scripts that generate its figures and tables
-  jair.tex               the build root of the earlier JAIR version
-  main.tex               the shared body jair.tex inputs
-  sections/              section fragments of the earlier version
-  figures/               the figures the earlier version builds with
+  prereg/                the August pre-registrations, as typeset
+  preamble.tex
   references.bib
 notes/prereg_*.md        the pre-registration documents
 code/phase3/
@@ -278,7 +257,7 @@ it needs exists. That is a pre-registration constraint, not a convenience.
 
 ### Rebuilding the paper
 
-The current manuscript needs `pdflatex`, BibTeX and Elsevier's CAS classes
+The manuscript needs `pdflatex`, BibTeX and Elsevier's CAS classes
 (`els-cas-templates`, v2.4). `paper/nc/build.sh` expects the CAS bundle in
 `paper/nc/NCTemplate/els-cas-templates/`, which is not redistributed here;
 download it from Elsevier or CTAN and unpack it there.
@@ -287,24 +266,14 @@ download it from Elsevier or CTAN and unpack it there.
 cd paper && bash nc/build.sh --no-figs   # PDF only: paper/neurocomputing.pdf
 ```
 
-The earlier JAIR version needs `pdflatex` and `biber`. Its root is
-`paper/jair.tex`; `JAIR/overleaf/` is a generated copy of it, and building the
-copy rather than the source is deliberate, so that a missing file fails here
-the same way it would on upload.
-
-```
-python JAIR/sync_from_paper.py     # regenerate JAIR/overleaf/ from paper/
-bash JAIR/build_local.sh           # 49 pages, 0 errors
-```
-
 ## Compute footprint
 
 All merging and evaluation ran on a single node with A100-80GB GPUs, one
-evaluation cell per card at 18 to 21 GiB. Up to the earlier version the project
+evaluation cell per card at 18 to 21 GiB. Before its final campaign the project
 trained 112 LoRA adapters and completed roughly 1,200 evaluation cells at 17 to
-26 minutes each, on the order of **400 GPU-hours**. The campaign added for the
-current manuscript trained further adapters (the training regimes and routes
-of its Section 3, and small adapters for the vision experiment) and ran several
+26 minutes each, on the order of **400 GPU-hours**. The final campaign trained
+further adapters (the training regimes and routes of the manuscript's
+Section 3, and small adapters for the vision experiment) and ran several
 hundred more cells, which that count does not include. The totals include
 superseded runs: these results were not obtained on the first attempt, and
 several of the corrections above required re-running cells that had already
@@ -328,11 +297,11 @@ or DOI yet.
 Our earlier preprint,
 [10.5281/zenodo.21238820](https://doi.org/10.5281/zenodo.21238820), titled *A
 Rate-Distortion Function for Model Merging*, proposed the closed-form encoder
-that the current manuscript tests as one of its merges. It predates the
+that the manuscript tests as one of its merges. It predates the
 pre-registered experiments reported here, and two of its claims do not hold up
 in them: that its encoder has the lowest worst-task loss of the methods it
 compared, an advantage that came from the shared initialisation of its cohorts,
-and that worst-task NLL tracks the downstream ranking of methods. The current
+and that worst-task NLL tracks the downstream ranking of methods. The
 manuscript does not use its rate-distortion bound. For the results in this
 repository, please cite the entry above.
 

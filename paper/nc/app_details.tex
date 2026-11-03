@@ -1,6 +1,8 @@
 Every value below is read from the configuration files, the saved training
-arguments or the code in the public repository. The per-cell configurations,
-including every seed, are in \texttt{code/phase3/configs/}.
+arguments or the code in the public repository. Each language-model result
+file in \texttt{results/phase3/} records the full configuration of its cell,
+including every seed. The vision cells are defined by their generator,
+\texttt{code/phase3/vision/gen\_vision.py}.
 
 \paragraph{Training.} All adapters on all four bases share one recipe: LoRA
 rank $16$, $\alpha = 32$ (scaling $2$), dropout $0.05$, on the query, key,

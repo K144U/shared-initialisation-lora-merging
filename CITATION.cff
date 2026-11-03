@@ -62,9 +62,7 @@ preferred-citation:
       given-names: "Piyush Kumar"
       orcid: "https://orcid.org/0009-0000-8033-3777"
   year: 2026
-  notes: "Manuscript, not yet published. An earlier version, titled
-    'Initialisation Sets the Conditioning of LoRA Merging', was submitted to
-    the Journal of Artificial Intelligence Research and is kept in JAIR/."
+  notes: "Manuscript, not yet published."
 
 # Listed so that anyone who finds the earlier preprint first knows how it
 # relates to this work, and does not attribute to it two claims that do not
