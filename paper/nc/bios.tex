@@ -1,0 +1,57 @@
+% Author biographies with photographs, required by Neurocomputing: at most 100
+% words each, plus a passport-type photograph that is also uploaded as its own
+% file. Texts are kept in nc/author_bios.md with their word counts and sources.
+%
+% The photographs live in nc/photos/, which .gitignore keeps out of the
+% repository: they are personal, and the journal receives them separately.
+% \authorbio therefore shows an empty frame of the same size when a photograph
+% is absent, so the paper still builds from a clone that has none of them.
+%
+% Not CAS's own \bio ... \endbio: it wraps the text around the photograph with
+% wrapfigure and reserves only as many lines as the text has, so a short
+% biography left the photograph hanging into the next one and the last one
+% over the footer. Here each biography is one unbreakable row, photograph left
+% and text right, top-aligned.
+%
+% Anything still missing is marked [TO CONFIRM], which nc/check.py counts in
+% the PDF and which must reach 0 before submission.
+\newlength{\biophotowidth}
+\setlength{\biophotowidth}{25mm}
+\newcommand{\authorbio}[2]{%
+  \par\noindent
+  \begin{minipage}[t]{\biophotowidth}\vspace{0pt}%
+    \IfFileExists{nc/photos/#1}%
+      {\includegraphics[width=\biophotowidth]{nc/photos/#1}}%
+      {\fbox{\parbox[c][1.333\biophotowidth][c]{\dimexpr\biophotowidth-2\fboxsep-2\fboxrule}%
+        {\centering\footnotesize photograph\\to come}}}%
+  \end{minipage}\hfill
+  \begin{minipage}[t]{\dimexpr\linewidth-\biophotowidth-1.2em}\vspace{0pt}%
+    \casbiographyfont #2
+  \end{minipage}\par\bigskip}
+
+\clearpage
+\section*{Author biographies}
+
+\authorbio{photo_pathak.jpg}{\textbf{Sankalp Pathak} is an M.Tech student in
+Computer Science and Engineering at AKTU, Lucknow, India. He received his
+B.Tech in Computer Science and Engineering from Jaypee University of
+Engineering and Technology (JUET) in 2025. His research interests are
+parameter-efficient fine-tuning and model merging for large language models,
+the geometry of low-rank adapters, and reproducible, pre-registered machine
+learning experiments.}
+
+\authorbio{photo_garg.jpg}{\textbf{Sanjay Garg} is Professor and Head of
+Computer Science and Engineering (CSE), and Dean (Innovations and Research), at
+Jaypee University of Engineering and Technology, Guna, India. He received B.E.,
+M.E. (silver medal) and Ph.D. degrees in CSE. In over 32 years in academia he
+has been Head of CSE at Nirma University, Dean of Academic Affairs at DIT
+University and Pro Vice Chancellor of Indrashil University. His research
+interests are data science, algorithms, pattern recognition and Earth
+observation data mining. He has published over 70 papers, supervised 11 Ph.D.
+theses, and is a Senior Member of IEEE and ACM.
+\textcolor{red}{[TO CONFIRM] Draft from his JUET profile, awaiting his
+approval; photograph to come.}}
+
+\authorbio{photo_singh.jpg}{\textbf{Piyush Kumar Singh}
+\textcolor{red}{[TO CONFIRM] Biography to come (at most 100 words: current
+position, degrees, research interests).}}

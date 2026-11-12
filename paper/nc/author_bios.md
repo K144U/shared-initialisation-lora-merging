@@ -18,9 +18,19 @@ current position, degrees with institution, research interests. Keep it under
   of Engineering and Technology, Guna, Madhya Pradesh, India
 - Photo file: `photo_pathak.jpg` (to supply)
 
-Bio (to write, at most 100 words):
+Bio (FINAL, 58 words; Sankalp's corrected text, 2026-11-12):
 
-> Sankalp Pathak is ...
+> Sankalp Pathak is an M.Tech student in Computer Science and Engineering at
+> AKTU, Lucknow, India. He received his B.Tech in Computer Science and
+> Engineering from Jaypee University of Engineering and Technology (JUET) in
+> 2025. His research interests are parameter-efficient fine-tuning and model
+> merging for large language models, the geometry of low-rank adapters, and
+> reproducible, pre-registered machine learning experiments.
+
+Affiliation stays JUET CSE in the front matter, CITATION.cff and the cover
+letter: the work was done with JUET, not AKTU (Sankalp, 2026-11-12). The bio
+gives his current position, which is AKTU. Elsevier allows an optional
+"Present address" footnote; not added.
 
 ## Sanjay Garg
 
@@ -29,9 +39,25 @@ Bio (to write, at most 100 words):
 - Affiliation: as above
 - Photo file: `photo_garg.jpg` (to supply)
 
-Bio (to write, at most 100 words):
+Bio (DRAFT, 99 words, from his JUET faculty profile, to be confirmed by him):
 
-> Sanjay Garg is ...
+> Sanjay Garg is Professor and Head of Computer Science and Engineering (CSE),
+> and Dean (Innovations and Research), at Jaypee University of Engineering and
+> Technology, Guna, India. He received B.E., M.E. (silver medal) and Ph.D.
+> degrees in CSE. In over 32 years in academia he has been Head of CSE at Nirma
+> University, Dean of Academic Affairs at DIT University and Pro Vice
+> Chancellor of Indrashil University. His research interests are data science,
+> algorithms, pattern recognition and Earth observation data mining. He has
+> published over 70 papers, supervised 11 Ph.D. theses, and is a Senior Member
+> of IEEE and ACM.
+
+Source: https://juet.ac.in/faculty/profile/prof-sanjay-garg (read 2026-11-12).
+To confirm with him: the institutions and years of the three degrees (not on
+the profile; if he wants them in, cut elsewhere to stay under 100 words);
+whether "over 70 papers", "11 Ph.D. theses" and the IEEE/ACM Senior Member
+grades are current; whether he prefers a different selection, e.g. Fellow of
+the Institution of Engineers (India), the ISTE Best Engineering Teacher Award
+for Gujarat (2016), or the ISRO-funded projects.
 
 ## Piyush Kumar Singh
 

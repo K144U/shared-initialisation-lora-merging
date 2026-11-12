@@ -3,3 +3,6 @@
 data/
 NCTemplate/
 figures/preview/
+# Author photographs: uploaded to the journal separately, never published
+# with the repository.
+photos/
