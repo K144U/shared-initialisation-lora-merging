@@ -80,7 +80,7 @@ input subspace. Cao et al.~\citep{cao2026collapse} report that conflict
 metrics in parameter space predict little about when merging fails, while
 representational incompatibility between tasks predicts a great deal, and
 prove a limit for convex merges. We agree that geometry in parameter space
-does not affect averaging-type merges (\S\ref{sec:merging}), and add that one
+does not affect averaging-type merges (\S\ref{sec:merging}). We add that one
 such quantity does predict how solvers built from the adapters behave; these
 solvers are not convex combinations of the fine-tuned models. A systematic
 study of merging heterogeneous fine-tuned checkpoints on four open-weight
@@ -120,11 +120,11 @@ added to a common start. An interpolator still exists, but it reproduces the
 tasks' differences through the differences between the tilts, so it grows
 without bound as the tilts shrink (\S\ref{sec:theory}), while at coincidence
 it is $\bar D$. The solution therefore does not depend continuously on the
-adapters at that point: the problem is ill-posed there in the sense of
-Hadamard~\citep{engl1996regularization}, and a collapsed cohort is a small
-perturbation of it, which is why $\kappa(\bar H)$ is large. Solving more
+adapters at that point, so the problem is ill-posed there in the sense of
+Hadamard~\citep{engl1996regularization}. A collapsed cohort is a small
+perturbation of this case, which is why $\kappa(\bar H)$ is large. Solving more
 accurately does not help, because the large solution is what the problem asks
-for, not an error in computing it; in float64 our encoder's merge fails as it
+for, not an error in computing it. In float64 our encoder's merge fails as it
 does in float32 (\S\ref{sec:merging}). What helps is asking a different
 question. The mean update, which averaging methods form without inverting
 anything, is the least-squares answer at the limit that a collapsed cohort

@@ -3,9 +3,9 @@ committed to version control before the compute it governs was run. Each
 document states the predictions, the decision rule, and the consequence text
 for every possible outcome, including the outcomes that would cost us a claim.
 Thresholds were never moved after data were seen, and analyzers refuse to
-report until every cell they need exists. Analyses that were not registered,
+report until every run they need has finished. Analyses that were not registered,
 such as the seed follow-ups of the precision check, are labelled as such in
-the text; their plans were committed before their cells ran.
+the text; their plans were committed before they ran.
 
 The registration documents are the files \texttt{notes/prereg\_*.md} of the
 public repository, at \url{\repourl}; the August ones are also in
@@ -45,7 +45,7 @@ drift of $A$ across training & \S\ref{subsec:why} & \texttt{8544b36} & \texttt{0
 replication on independent cohorts & \S\ref{subsec:results} & \texttt{9b3f57e} & --- & \texttt{4328446} \\
 conditioning and the ridge & \S\ref{subsec:results} & \texttt{dc0a1f1} & \texttt{ac4499f}, \texttt{25d4d47} & \texttt{efa1d2d} \\
 untruncated merges (encoder) & \S\ref{subsec:results} & \texttt{876fcb6} & \texttt{e4043b4} & \texttt{63bdf0c} \\
-shared arm at three cohorts & \S\ref{subsec:results} & \texttt{3b9db2f} & \texttt{7c25aa1} & \texttt{0a4afaf} \\
+three shared cohorts per base & \S\ref{subsec:results} & \texttt{3b9db2f} & \texttt{7c25aa1} & \texttt{0a4afaf} \\
 \quad re-run (files lost) & \S\ref{subsec:results} & \texttt{33b005a} & \texttt{814ce15}, \texttt{c5e9768} & \texttt{d5b6647} \\
 public-cohort prevalence & \S\ref{subsec:public} & \texttt{335a4f6} & \texttt{0b6eb40} & \texttt{0a4afaf} \\
 downstream accuracy & \S\ref{subsec:results} & \texttt{a56b31e} & \texttt{321a808} & \texttt{0a4afaf} \\
@@ -78,29 +78,29 @@ solve precision (float64) & Appendix~\ref{app:precision} & \texttt{9830e06} & \t
 The amendment row records one error. Adapter-only RegMean was described
 as using the Gram $\sum_t A_t^\top A_t$, but a missing hook made every earlier
 run fall back to $\sum_t \Delta_t^\top\Delta_t$. We found this, registered an
-amendment before any affected cell ran, fixed the hook and re-ran the results
+amendment before any affected run started, fixed the hook and re-ran the results
 under their original rules; both registered predictions still hold, and every
 adapter-only RegMean number in this paper uses the described Gram.
 
-The two re-run rows record a loss. The per-cell files of the shared arm at
-three cohorts and of the downstream accuracy test were lost in October 2026,
+The two re-run rows record a loss. The per-run files of the test with three
+shared cohorts and of the downstream accuracy test were lost in October 2026,
 before we had committed them, when the cluster directory that held them was
 emptied. Their numbers survived only in an earlier draft of this manuscript in
 the public repository. We committed a note that fixed what we would report,
-re-ran all $88$ cells under the original registrations and analyzers, and
+re-ran all $88$ runs under the original registrations and analyzers, and
 committed the results. Both tests reach the same verdict as before. The
-re-run's base-model scores equal, bit for bit, those that earlier cells
+re-run's base-model scores equal, bit for bit, those that earlier runs
 computed from the same adapters, so its inputs are unchanged. Its values
-moved. The ratios of the shared to the independent arm at $\lambda = 0$ are
+moved. The ratios of shared to independent at $\lambda = 0$ are
 $4.3$, $66$, $9.4$ and $2.5$, against $4.4$, $76$, $10.8$ and $2.8$ in the
 lost run. Accuracies agree within $0.024$ except on the shared cohort at
 $\lambda = 0$, where they differ by up to $0.106$ (Yi, GSM8K); two evaluations
 of one identical merge differ by $0.022$. Two HumanEval comparisons that
-passed before now miss their gates, by $0.001$ and $0.005$, which does not
+passed before now miss their noise thresholds, by $0.001$ and $0.005$, which does not
 change the outcome. Because the unregularised encoder on shared cohorts
 depends on the random stream (Appendix~\ref{app:precision}), we drew the re-run's
 cohorts twice more, in an unregistered follow-up whose reading was committed
-before its cells (Table~\ref{tab:appC-sweep}). On Llama and Qwen the lost
+before it ran (Table~\ref{tab:appC-sweep}). On Llama and Qwen the lost
 values lie within the spread of these draws. On Mistral and Yi they do not,
 and because the lost files are gone we cannot establish why.
 
@@ -110,14 +110,14 @@ amendment changed how the constants of the scalar law were to be computed
 before they were computed, and the constants were committed before any of the
 cohorts they predict existed. The WUDI generator was corrected once, to
 evaluate the registered loss from the adapter factors rather than densely,
-before any WUDI cell finished, as the campaign log records; the two forms agree
+before any WUDI run finished, as the campaign log records; the two forms agree
 in value and gradient. The
 prevalence re-read adds its script and its result in one commit, after the
 rules that required it. In the precision row the second generator commit fixes
 a first run that compared two different truncation algorithms; that run was
 void, and the result comes from the corrected one. The rebuild row's rules
 commit is the precision result itself, which wrote the rebuild plan before any
-rebuild cell was generated.
+rebuild run was generated.
 
 \paragraph{Predictions that failed.} Table~\ref{tab:failed} lists every
 registered prediction that did not hold, with its outcome and where it is
@@ -142,9 +142,9 @@ The collapse is visible on all four tasks & Invisible on IFEval, where the instr
 Solver failures on public cohorts are specific to the collapse & They are not: $5$ of $6$ collapsed and $11$ of $13$ separated cohorts fail & Appendix~\ref{subsec:against} \\
 \addlinespace
 \multicolumn{3}{l}{\emph{Explanations that did not survive}} \\
-WUDI's closed form puts at least half its energy in the bottom quarter of $\bar H$'s spectrum & $0.03$ to $0.17$ on the shared arm & Appendix~\ref{app:wudi-diag} \\
-The 3000-step WUDI arm lies between the other two & Not on two of the four bases & Appendix~\ref{app:wudi-diag} \\
-The heuristics' slight lean vanishes at three cohorts per arm & It persists ($0.7$ points, $p = 0.007$) & Appendix~\ref{app:lean} \\
+WUDI's closed form puts at least half its energy in the bottom quarter of $\bar H$'s spectrum & $0.03$ to $0.17$ on shared cohorts & Appendix~\ref{app:wudi-diag} \\
+The 3000-step WUDI version lies between the other two & Not on two of the four bases & Appendix~\ref{app:wudi-diag} \\
+The heuristics' slight lean vanishes at three cohorts of each kind & It persists ($0.7$ points, $p = 0.007$) & Appendix~\ref{app:lean} \\
 Merging without truncation halves the lean & Not on any of the three pairs where it is largest & Appendix~\ref{app:lean} \\
 The freedom in LoRA's factorisation explains the public failures & It changes the excess by at most $4\%$ & Appendix~\ref{subsec:against} \\
 The spread of adapter norms explains the public failures & It is no larger where the solver failed & Appendix~\ref{subsec:against} \\
@@ -156,7 +156,7 @@ A fixed $\lambda = 0.01$ is enough on collapsed public cohorts & On $1$ of $6$ &
 \addlinespace
 \multicolumn{3}{l}{\emph{Details}} \\
 A fourfold scale mismatch between adapters is not specific to solvers & It multiplies the solver's excess by $3.9$ and $5.3$ and lowers that of task arithmetic & Appendix~\ref{subsec:against} \\
-RegMean with activation Grams gives solutions at most three times the mean task update & $2.2$ to $6.5$ times, the same on both arms, from the activation Grams themselves, whose condition numbers reach $10^{7}$ & this table \\
+RegMean with activation Grams gives solutions at most three times the mean task update & $2.2$ to $6.5$ times, the same on both kinds of cohort, from the activation Grams themselves, whose condition numbers reach $10^{7}$ & this table \\
 The retrained translation adapter becomes the best adapter at translation & It improved but did not & \S\ref{subsec:setup} \\
 \bottomrule
 \end{tabularx}

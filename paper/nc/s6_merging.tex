@@ -43,7 +43,7 @@ three versions on all six cohorts of the four bases. The first is the authors'
 procedure as their code runs it: Adam with learning rate $10^{-5}$, no weight
 decay, $300$ steps, started at $\sum_t D_t$. The second is the closed form of
 their Eq.~(20) with $\omega = 10^{-6}$, solved in float64. The third is the
-published procedure run for $3000$ steps, as a dose arm. Each merged update was
+published procedure run ten times longer, for $3000$ steps. Each merged update was
 truncated to rank $r$, like every other merge.
 
 \begin{figure}[pos=tbp]
@@ -54,30 +54,30 @@ Triangles are cohorts created from one seed and circles cohorts with a seed
 per task: large markers give the mean over three cohorts, small dots the
 single cohorts. Open diamonds give task arithmetic on the same adapters,
 averaged over both kinds of cohort, for reference. On Qwen2.5-7B at HumanEval
-the difference is within the noise threshold we registered; every other
-difference clears it.}
+the difference is within the noise threshold (\S\ref{subsec:setup}); every
+other difference clears it.}
 \label{fig:wudi}
 \end{figure}
 
 The published procedure fails (Figure~\ref{fig:wudi}; Table~\ref{tab:wudi}
 gives all three versions). Its worst-task excess is
-$14.9$, $47.6$, $6.3$ and $4.7$ times larger on the shared arm than on the
-independent arm, on Llama, Mistral, Qwen and Yi. Each ratio is past the gate,
-so the prediction that the optimiser protects WUDI fails on all four bases.
+$14.9$, $47.6$, $6.3$ and $4.7$ times larger on shared cohorts than on
+independent ones, on Llama, Mistral, Qwen and Yi. Each ratio clears the noise
+threshold, so the prediction that the optimiser protects WUDI fails on all four bases.
 Accuracy follows. On GSM8K the shared cohorts score lower on every base,
-down to $0.034$ against $0.695$ on Llama-3.1-8B. On HumanEval the shared arm is worse past the gate on three of four
-bases, and on Llama and Mistral it scores zero in every shared cohort. The
+down to $0.034$ against $0.695$ on Llama-3.1-8B. On HumanEval shared cohorts are worse, beyond the noise threshold, on
+three of four bases, and on Llama and Mistral they score zero in every shared
+cohort. The
 closed form is exposed, as predicted: it is $5.3$ to $65$ times worse in NLL,
 and worse on GSM8K on every base. On independent cohorts all three versions
-leave a worst-task excess of only $0.03$ to $0.16$ nats. A practitioner who
-runs WUDI as published on a collapsed cohort gets a broken model and no
-warning.
+leave a worst-task excess of only $0.03$ to $0.16$ nats. Run as published on
+a collapsed cohort, WUDI returns a broken model and gives no warning.
 
-Our registered account of how this happens did not hold. The closed form
+The mechanism we had predicted for this failure did not hold. The closed form
 does not concentrate its energy in the ill-conditioned directions, and the
-3000-step arm does not lie between the other two on two of the four bases.
-Two diagnostics that we recorded but did not register separate the arms
-instead. On shared cohorts Adam drives the merged update from $4$ to between
+3000-step version does not lie between the other two on two of the four bases.
+Two diagnostics, recorded but not pre-registered, separate the two kinds
+of cohort instead. On shared cohorts Adam drives the merged update from $4$ to between
 $8.6$ and $12.5$ times the norm of the mean update. There, $24$ to $27\%$ of
 its squared norm lies outside the row space of the $A_t$, where the loss
 cannot see it, against $0.8$ to $1.6\%$ on independent cohorts
@@ -100,17 +100,17 @@ $\lambda = 0.05$.}
 
 For the other methods the mechanism can be checked without any forward pass,
 because every merge is arithmetic on the adapter factors
-(Figure~\ref{fig:mechanism}). On the shared arm, every averaging and
-sparsifying merge is at most $2.2$ times the norm of the mean task update
-and puts almost none of its energy (less than $0.001$) in the bottom quarter
+(Figure~\ref{fig:mechanism}). On shared cohorts, every averaging and
+sparsifying merge is at most $2.2$ times the norm of the mean task update.
+It puts almost none of its energy (less than $0.001$) in the bottom quarter
 of $\bar H$'s spectrum. The two unregularised solvers built from the adapter
 factors are $35$ to $57$ times the mean update and put $73$ to $80\%$ of
 their energy there. Among these methods, they are the only ones that
 enter the ill-conditioned directions, and a ridge brings them back down beside
-the heuristics. On the independent arm every method puts $0.20$ to $0.32$ of
+the heuristics. On independent cohorts every method puts $0.20$ to $0.32$ of
 its energy in the bottom quarter, close to what a direction unrelated to the
 spectrum gives. WUDI is the exception to this picture (\S\ref{subsec:wudi}): it
-is amplified on the shared arm without concentrating in those directions.
+is amplified on shared cohorts without concentrating in those directions.
 
 \subsection{The other methods}\label{subsec:results}
 
@@ -118,10 +118,10 @@ is amplified on the shared arm without concentrating in those directions.
 \centering
 \small
 \caption{Which merges the collapse reaches. Each method is compared with itself
-on shared and independent cohorts, three per arm on four bases. NLL is the
+on shared and independent cohorts, three of each kind on four bases. NLL is the
 ratio of worst-task excess, shared over independent, over the four bases.
 Accuracy is GSM8K exact match and HumanEval pass@1; for MaTS it uses one cohort
-per arm. KnOTS is its TIES variant, and diagonal Fisher uses the squared update
+of each kind. KnOTS is its TIES variant, and diagonal Fisher uses the squared update
 as a data-free proxy for the Fisher. The prediction was registered before any
 of the methods we did not build was run.}
 \label{tab:exposure}
@@ -135,17 +135,17 @@ of the methods we did not build was run.}
 method & matrix built from & predicted & NLL, shared / indep. & accuracy \\
 \midrule
 task arithmetic, TIES, DARE, TVQ, KnOTS & no matrix & immune
-  & no effect in 15 of 20 cells; largest $0.015$ nats
+  & no effect in 15 of 20 base--method pairs; largest $0.015$ nats
   & equivalent within $3$ points (GSM8K) and $5$ (HumanEval) \\
 \addlinespace
 RegMean, activation Grams & data & immune & $0.99$ to $1.14$
-  & equal in 8 of 8 cells \\
+  & equal on all 8 base--benchmark pairs \\
 MaTS & data (Fisher) & immune & $0.93$ to $0.99$
   & equal in 7 of 8; 1 favours shared \\
 diagonal Fisher & task updates, diagonal & immune & $0.96$ to $1.08$ & not run \\
 \addlinespace
 TSV-M (whitening) & task updates & exposed & $0.81$ to $1.19$, mixed sign
-  & no cell past the gate \\
+  & no difference beyond the noise threshold \\
 \addlinespace
 WUDI, as published & task updates & protected by its optimiser & $4.7$ to $47.6$
   & GSM8K $0.00$ to $0.48$ vs.\ $0.25$ to $0.72$ \\
@@ -164,7 +164,7 @@ our encoder & adapter factors & exposed & $2.5$ to $66$
 \centering
 \includegraphics[width=\textwidth]{nc/figures/fig5_accuracy.pdf}
 \caption{Downstream accuracy on shared against independent cohorts. Each point
-is one method on one base model, the mean over three cohorts per arm, with bars
+is one method on one base model, the mean over three cohorts of each kind, with bars
 of one standard deviation across cohorts. Points on the diagonal are unaffected
 by the initialisation. Every published method shown lies on or near it;
 adapter-only RegMean at its shipped setting ($\alpha = 0.9$) lies far below it.
@@ -178,21 +178,20 @@ Table~\ref{tab:exposure} and Figure~\ref{fig:exposure} give the outcome for
 every method.
 
 \paragraph{Averaging and sparsifying merges are unaffected.} In NLL, $15$ of
-$20$ base-by-method cells show no difference that clears the registered gate.
-The gate is the larger of $0.005$ nats and twice the standard error, and it
-sits near $0.01$ nats. The five cells that clear it are small and favour the
-independent arm. Three of them are KnOTS, which aligns subspaces and so acts
-most directly on subspace geometry of all the heuristics. A null at hundredths
-of a nat is weak evidence, so we registered the accuracy comparison as an
-equivalence test (two one-sided tests, three cohorts per arm, $240$ cells).
-All five heuristics are equivalent across regimes within the registered
-margins of $3$ points on GSM8K and $5$ on HumanEval. The equivalence is
-a statement about means over the four bases. One of $40$ cells, taken alone,
-exceeds its margin: TIES on Llama at HumanEval, where the shared arm is $6.5$
-points higher.
+the $20$ pairs of base model and method show no difference beyond the noise
+threshold, which here sits near $0.01$ nats. The five differences that clear
+it are small and favour independent cohorts. Three of them are KnOTS, which aligns subspaces and so acts
+most directly on subspace geometry of all the heuristics. Finding no difference at
+hundredths of a nat is weak evidence, so for accuracy we registered an
+equivalence test (two one-sided tests, three cohorts of each kind, $240$
+evaluations). All five heuristics are equivalent across regimes within
+margins, fixed in advance, of $3$ points on GSM8K and $5$ on HumanEval. The equivalence is
+a statement about means over the four bases. Taken alone, one of the $40$
+combinations of method, base and benchmark exceeds its margin: TIES on Llama
+at HumanEval, where shared cohorts score $6.5$ points higher.
 
-We had also registered that a slight lean towards the shared arm, seen at
-one cohort per arm, would vanish at three. It persisted, at a mean of $0.7$
+We had also predicted that a slight lean towards shared cohorts, seen with
+one cohort of each kind, would vanish with three. It persisted, at a mean of $0.7$
 points with all four bases leaning the same way (a permutation test over
 cohorts gives $p = 0.007$). Rank truncation, the explanation we tested in
 advance, does not account for it, and we have no tested explanation
@@ -200,24 +199,24 @@ advance, does not account for it, and we have no tested explanation
 nothing to a shared initialisation.
 
 \paragraph{Solvers built from data, and a diagonal one, are unaffected.} We
-ran three such methods on all three cohorts of both arms on all four bases:
-RegMean with real activation Grams at its published setting, MaTS with its
+ran three such methods on all six cohorts of each base. They are RegMean with
+real activation Grams at its published setting, MaTS with its
 blockwise Fisher solved by conjugate gradient, and diagonal Fisher merging.
 Our diagonal Fisher weights each coordinate by its squared update, a
 data-free proxy, so its matrix comes from the task updates. Being diagonal, it
 cannot see overlap between subspaces. The three immunity predictions hold.
 RegMean shows no effect on any base in either unit. Averaged over the two
 benchmarks, it is the most accurate merge in our experiments on three of the
-four bases, and its accuracy on the two arms agrees within $1.3$ points in all
-eight base-by-benchmark cells. MaTS shows no NLL effect, and in accuracy one
-cell (Mistral, GSM8K) favours the shared arm. Diagonal Fisher shows one small
-effect, $1.08$ times on Llama. A practitioner who has the data RegMean was
-designed for is unaffected by the collapse.
+four bases. Its accuracy on the two kinds of cohort agrees within $1.3$
+points for every base and benchmark. MaTS shows no NLL effect, and in accuracy one
+comparison (Mistral, GSM8K) favours shared cohorts. Diagonal Fisher shows one small
+effect, $1.08$ times on Llama. With the activation data it was
+designed for, RegMean is safe on a collapsed cohort.
 
 \paragraph{Whitening is not affected, against our prediction.} We predicted
 that TSV-M would be exposed. It shows an NLL effect on Mistral only ($1.19$
 times), one in the opposite direction on Yi, and none on Llama and Qwen. No
-accuracy cell clears the gate. The prediction failed. Whitening
+accuracy difference clears the noise threshold. The prediction failed. Whitening
 orthogonalises the stacked singular vectors rather than solving a
 least-squares problem in them, and the rule in \S\ref{subsec:rule} is stated
 for least-squares merges alone.
@@ -227,15 +226,15 @@ RegMean replaces each activation Gram by $A_t^\top A_t$. It is a variant we
 constructed, not the published method. It is the natural choice when only the
 adapter files are available. With a minimal ridge ($\lambda = 10^{-6}$) its
 worst-task excess (Figure~\ref{fig:ridge}, top row) is $4.1$, $65.6$, $5.8$
-and $1.8$ times larger on the shared arm on Llama, Mistral, Qwen and Yi. The
-gain from tuning the ridge is larger on the shared arm on all four. Both
-results match the registered predictions. In accuracy, with RegMean's own
-shipped regulariser ($\alpha = 0.9$) and no added ridge, the shared arm scores
-at most $0.17$ on GSM8K, against $0.29$ to $0.72$ on the independent arm. On Mistral it scores zero on both
-benchmarks in all three shared cohorts. On the shared arm, a ridge of
-$\lambda = 0.01$ beats the shipped setting past the gate on three of four
-bases on GSM8K, by $31$ to $54$ points on Llama, Qwen and Yi, and on
-two bases on HumanEval. It does not rescue Mistral ($0.029$ and $0.002$),
+and $1.8$ times larger on shared cohorts on Llama, Mistral, Qwen and Yi. The
+gain from tuning the ridge is larger on shared cohorts on all four. Both
+results match our predictions. In accuracy, with RegMean's own
+shipped regulariser ($\alpha = 0.9$) and no added ridge, shared cohorts score
+at most $0.17$ on GSM8K, against $0.29$ to $0.72$ for independent ones. On Mistral it scores zero on both
+benchmarks in all three shared cohorts. On shared cohorts, a ridge of
+$\lambda = 0.01$ beats the shipped setting beyond the noise threshold on
+GSM8K on three of four bases, by $31$ to $54$ points on Llama, Qwen and Yi.
+On HumanEval it does so on two bases. It does not rescue Mistral ($0.029$ and $0.002$),
 whose NLL sweep selects $\lambda = 0.05$. A value of $0.01$ is therefore a
 starting point for a sweep, not a recommended value.
 
@@ -244,30 +243,30 @@ preprint~\citep{pathak2026rd}, which we call \emph{our encoder}. It computes
 the exact interpolator $\tauH = \bar D\,\bar H^{+}$ of \S\ref{sec:background}
 directly, with an optional ridge on the range of $\bar H$, so it inverts the
 collapsed operator itself. Without a ridge it is $2.5$ to $66$ times worse on
-the shared arm (three cohorts per arm, every base past the gate). On Mistral
+shared cohorts, beyond the noise threshold on every base. On Mistral
 its merged model scores $0.000$ on both benchmarks, and a tuned ridge brings
 this up to $0.46$ on GSM8K and $0.23$ on HumanEval. The effect survives with
 rank truncation disabled, where the ratio grows to $25$ to $117$. Truncating
 to rank $r$ discards most of the ill-conditioned subspace and so hides part of
 the damage. For both solvers, the amount of ridge needed does not track the
 conditioning, while the amount it buys does. The selected $\lambda$ is the
-same on the two arms on three of four bases for the encoder, and on two for
+same on the two kinds of cohort on three of four bases for the encoder, and on two for
 adapter-only RegMean.
 
 \paragraph{Numerical precision.} Both solvers run in float32, and at
 $\lambda = 10^{-6}$ and $\lambda = 0$ their systems are badly conditioned,
-so the failure could in principle be rounding error. A registered check
-recomputed both solvers' merges at these settings in float64 on every base
-and arm. The ratio of shared to independent amplification agreed within
-$0.1\%$ in every case. The one merge outside the registered tolerance, the
-encoder on the shared Yi cohort, was rebuilt in float64 and fails as before
-($0.245$ nats, against $0.249$ in float32 and $0.121$ on the independent
-cohort), so rounding does not cause the failure. The unregularised float32
-encoder is, however, sensitive to the random seed of its randomised SVD.
-Repeated draws all stay above the independent arm. On Yi, however, the ratio
-of the shared to the independent arm ranges from $1.8$ to $2.6$ over the draws,
-so the registered factor of two holds on the registered cells but not on
-every draw (Appendix~\ref{app:precision}).
+so the failure could in principle be rounding error. It is not. A registered
+check recomputed both solvers' merges at these settings in float64, on every
+base and for both kinds of cohort. The ratio of shared to independent
+amplification agreed with float32 within $0.1\%$ in every case. One merge
+fell outside the tolerance set in advance, the encoder on the shared Yi
+cohort. Rebuilt in float64, it fails as before: $0.245$ nats, against $0.249$
+in float32 and $0.121$ on the independent cohort. The unregularised float32
+encoder is, however, sensitive to the random seed of its randomised SVD. Over
+repeated draws, the shared cohorts always stay worse than the independent
+one. On Yi, though, the ratio between them ranges from $1.8$ to $2.6$ over the
+draws. The predicted factor of two therefore holds on the registered runs but
+not on every draw (Appendix~\ref{app:precision}).
 
 \subsection{Why RegMean's shipped regulariser does not fix it}\label{subsec:default}
 
@@ -278,12 +277,12 @@ a shrinkage whose size is set by the scale of the data, not by the
 conditioning. It was designed for activation Grams, and here we apply it
 outside that use. On the adapter Grams it has the average size of an
 isotropic ridge of $5.8\times10^{-4}$ to $6.8\times10^{-4}$, the same on both
-arms to within $0.5\%$ (Figure~\ref{fig:ridge}, bottom row). On the
-independent arm that dose leaves a condition number of $1.2\times10^{3}$ to
-$1.4\times10^{3}$. On the shared arm it leaves $6.6\times10^{3}$ to
+kinds of cohort to within $0.5\%$ (Figure~\ref{fig:ridge}, bottom row). On
+independent cohorts that amount leaves a condition number of $1.2\times10^{3}$ to
+$1.4\times10^{3}$. On shared cohorts it leaves $6.6\times10^{3}$ to
 $9.1\times10^{3}$, while $\lambda = 0.01$ brings the same layers to about
-$1.5\times10^{2}$. The shipped setting applies one dose whatever the regime.
-That dose is ample on a separated cohort and an order of magnitude too small
+$1.5\times10^{2}$. The shipped setting applies the same amount whatever the
+regime. That amount is ample on a separated cohort and an order of magnitude too small
 on a collapsed one, and nothing in the method signals the difference. A user
 can lower $\alpha$; the default does not.
 
@@ -297,7 +296,8 @@ $\lambda = 10^{-6}$ is not joined to the rest because no grid point lies
 between. \textbf{Bottom:} condition number of the adapter Gram. Stars mark
 RegMean's shipped $\alpha = 0.9$, placed at the isotropic ridge of the same
 average size, $(1-\alpha)/\alpha$ times the mean diagonal of the Gram (dotted). That
-size is the same on both arms, and on the shared arm it leaves a higher
+size is the same for both kinds of cohort, and on the shared cohort it
+leaves a higher
 condition number than an isotropic ridge of that size would.}
 \label{fig:ridge}
 \end{figure}
@@ -309,26 +309,26 @@ ViT-B/32 with eight image classification tasks (SUN397, Cars, RESISC45,
 EuroSAT, SVHN, GTSRB, MNIST and DTD). We trained rank-$16$ adapters in three
 shared and three independent cohorts, merged them as dense updates without
 truncation, and scored mean top-1 accuracy over the eight tasks. Every
-registered prediction holds. The shared cohorts sit at median cosine $0.96$
+prediction made in advance holds. The shared cohorts sit at median cosine $0.96$
 and the independent ones at $0.11$. Adapter-only RegMean fails
 as on language models, scoring $0.043$ on shared cohorts against $0.369$ on
 independent ones, and a ridge of $\lambda = 0.1$ repairs it ($0.735$ against
 $0.747$). Task arithmetic and TIES are equivalent within two points, and
-activation-Gram RegMean and TSV-M show no effect past the gate
+activation-Gram RegMean and TSV-M show no effect beyond the noise threshold
 (Table~\ref{tab:appC-vision}). WUDI's closed form fails, $0.045$ against
 $0.369$. Published WUDI does not fail here.
 Shared cohorts merge \emph{better} with it, $0.454$ against $0.358$. The
-difference is well past the gate and in the opposite direction to the language
-models. Our registration asked only for the absence of harm, so this outcome
-satisfies it. We did not predict a reversal, however, and we cannot explain
+difference is well beyond the noise threshold and in the opposite direction to
+the language models. We had predicted only an absence of harm, which this
+outcome satisfies. We did not predict a reversal, however, and we cannot explain
 it. It remains an open question about the exposed class.
 
 \paragraph{All four tasks.} The accuracy results so far cover mathematics
-and code. We registered tests on the other two tasks, with our encoder on
-one cohort per arm. On translation (WMT19, chrF) the collapse is visible. On
+and code. We also tested the other two tasks, with our encoder on one
+cohort of each kind. On translation (WMT19, chrF) the collapse is visible. On
 the shared cohort the selected ridge beats $\lambda = 0$ by $2.9$ to $55.1$
-chrF points, past the gate on all four bases, while task arithmetic and TIES
-differ across arms by at most $1.1$ points. On IFEval it is not visible. The
+chrF points, beyond the noise threshold on all four bases. Task arithmetic and
+TIES differ between the two kinds by at most $1.1$ points. On IFEval it is not visible. The
 instruction adapter alone does not beat the base model there on three of
 four bases, so there is little task skill for a broken merge to lose
 (Appendix~\ref{app:alltasks}).
@@ -337,9 +337,9 @@ four bases, so there is little task skill for a broken merge to lose
 
 \paragraph{Setting the ridge without data.} A ridge repairs both solvers
 built from the adapter factors on most bases, but the amount needed does not
-track the conditioning. We registered three data-free rules for choosing it:
+track the conditioning. We tested three data-free rules for choosing it:
 one that targets a condition number, generalised cross-validation and the
-L-curve. All three failed their registered criteria
+L-curve. All three failed the criteria we set in advance
 (Appendix~\ref{subsec:lambda}). We recommend starting at $\lambda = 0.01$
 and sweeping on held-out data.
 
@@ -357,8 +357,8 @@ explain the public failures, which remain unexplained
 
 \subsection{The rule}\label{subsec:rule}
 
-Across twelve methods, ten of them published methods we did not build, the
-collapse reaches exactly the merges that solve a least-squares problem whose
+We tested twelve methods, ten of them published methods we did not build.
+The collapse reaches exactly the merges that solve a least-squares problem whose
 matrix is built from the adapters alone, in closed form or by gradient
 descent. That matrix can come from the adapters' factors or from the task
 updates they define. The class includes a published method run exactly as its

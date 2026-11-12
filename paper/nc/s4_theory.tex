@@ -74,7 +74,7 @@ quantities involved, and all five hold (Figure~\ref{fig:theory}).
   task-count and rank configurations of \S\ref{subsec:tr}.
 \item \emph{The orders.} We rescaled the measured displacements by five
   factors $s$ from $0.05$ to $1$. The exact log-log slopes are $-2.00$ for
-  $\kappa$ and $-1.01$ for the amplification, inside the registered bands
+  $\kappa$ and $-1.01$ for the amplification, inside the predicted bands
   $[-2.2, -1.8]$ and $[-1.2, -0.8]$. The rival $s^{-2}$ form for the
   amplification is excluded.
 \item \emph{Across training.} Both quantities fall monotonically as the
@@ -99,13 +99,13 @@ $X_t$ under the consensus $W_0$. We fixed $C_\kappa$ and $C_a$ on the four
 existing shared Llama-3.1-8B cohorts. We committed them before training the
 seven cohorts of \S\ref{subsec:tr} (learning rate, epochs, $A$'s learning
 rate, LoRA+ and the scale of $A_0$). With the baseline cohort trained
-alongside them, these give eight test cohorts. The registered thresholds were
+alongside them, these give eight test cohorts. The pass thresholds, fixed in advance, were
 a factor of $2$ for $\kappa$ on at least six cohorts, and a factor of $1.25$
 for the amplification on at least seven. The law predicts $\kappa$ within a
 factor of $2$ on all eight, over a range from $1.2\times10^{3}$ to
 $5.5\times10^{4}$, and the amplification within $1.25$ on seven. Across the
 eight cohorts, $t$ and $\kappa$ have Spearman correlation $-0.976$. To reach
-the independent arm's median $\kappa$ of $1.55$ would take a tilt of
+the median $\kappa$ of independent cohorts, $1.55$, would take a tilt of
 $t^\star = 22$, $27$ times the largest tilt any regime produced ($0.83$). The
 shared cohorts trained at three times the learning rate and at four times
 $A$'s learning rate leave adapter-only RegMean at $\lambda = 10^{-6}$ with an

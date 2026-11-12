@@ -36,17 +36,18 @@ and use them unchanged throughout.
 every principal cosine of every pair and took the median. The public cohorts
 were sampled and first scored under that version. A registered experiment
 showed that it misses a partial collapse. On each base we built a cohort of
-four adapters in which only one pair of the six shares an initialisation: the
-GSM8K and code adapters of a shared cohort, together with the instruction and
+four adapters in which only one of the six pairs shares an initialisation. It
+joins the GSM8K and code adapters of a shared cohort to the instruction and
 translation adapters of an independent one. The pooled median is $0.047$ to
 $0.053$, so the old audit calls the cohort separated, while the collapsed pair
-sits at $0.993$ to $0.996$. One pair is enough to break a solver. Adapter-only
-RegMean at $\lambda = 10^{-6}$ leaves a worst-task excess of $0.45$ to $10.5$
-nats on these cohorts, against $0.026$ to $0.155$ on the fully independent
-ones, and $\kappa(\bar H)$ is $1.7\times10^{3}$ to $5.3\times10^{3}$, against
-$1.5$ to $1.7$ (Table~\ref{tab:appC-hetero}). The registered consequence was to change the statistic to the maximum
-over pairs, keep the thresholds, and re-read the public cohorts, which
-\S\ref{subsec:public} reports. The audit also returns the number of collapsed
+sits at $0.993$ to $0.996$. One pair is enough to break a solver. On these
+cohorts $\kappa(\bar H)$ is $1.7\times10^{3}$ to $5.3\times10^{3}$, against
+$1.5$ to $1.7$ on fully independent ones. Adapter-only RegMean at
+$\lambda = 10^{-6}$ leaves a worst-task excess of $0.45$ to $10.5$ nats,
+against $0.026$ to $0.155$ (Table~\ref{tab:appC-hetero}). As the
+registration required for this outcome, we changed the statistic to the
+maximum over pairs, kept the thresholds, and re-read the public cohorts
+(\S\ref{subsec:public}). The audit also returns the number of collapsed
 pairs, which says how much of a cohort is affected.
 
 A cohort cannot be repaired by editing its $A$ factors while keeping each
@@ -91,13 +92,12 @@ downloads, which weights the sample towards adapters that are used. We grouped
 adapters into cohorts by publisher and base model. A cohort entered if it had
 at least two readable LoRA adapters of rank at least $4$ on one base, sharing a
 target module. Every criterion was checked from metadata before any weight was
-fetched, and no cohort was skipped after inspection. We walked $1000$ models to
-reach the registered $50$ cohorts. Five could not be scored, which left $45$.
+fetched, and no cohort was skipped after inspection. We walked $1000$ models to reach the planned $50$ cohorts. Five could not be scored, which left $45$.
 
 \begin{figure}[pos=tbp]
 \centering
 \includegraphics[width=\textwidth]{nc/figures/fig3_prevalence.pdf}
-\caption{The $45$ public LoRA cohorts, sampled by a frame registered before
+\caption{The $45$ public LoRA cohorts, sampled by a rule fixed before
 any download. Horizontal axis: median principal cosine between the cohort's
 task subspaces, the audit statistic at the time of sampling, with the
 thresholds dotted and its histogram on top. The maximum pairwise cosine of
@@ -110,11 +110,12 @@ paper among $22$ checked that releases LoRA cohorts.}
 \label{fig:prevalence}
 \end{figure}
 
-Under the pooled median, the statistic registered at the time, $17$ of the $45$
-cohorts ($37.8\%$) are collapsed. The registered prediction was at least
-$20\%$. The distribution has two clear modes rather than being a continuum cut
-by a threshold (Figure~\ref{fig:prevalence}): $27$ cohorts are separated, with
-median cosine $0.076$, and only one falls between the thresholds, at $0.868$.
+Under the pooled median, the audit statistic at the time, $17$ of the $45$
+cohorts ($37.8\%$) are collapsed. We had predicted at least $20\%$. The
+distribution has two clear modes rather than being a continuum cut by a
+threshold (Figure~\ref{fig:prevalence}). Of the other cohorts, $27$ are
+separated, with median cosine $0.076$, and only one falls between the
+thresholds, at $0.868$.
 An unplanned check supports the measurement. If two adapters draw $A$
 independently and $A$ moves little, then
 $\|A_i - A_j\|_F \approx \sqrt2\,\|A_i\|_F$. The separated cohorts give a
@@ -131,8 +132,8 @@ change, both upwards: one cohort, with a pooled median of $0.064$ but four of
 its ten pairs collapsed, becomes collapsed, and another becomes
 indeterminate. No collapsed cohort leaves the class. Counting the five
 unreadable cohorts at their stored status, $18$ of the $45$ ($40.0\%$) are
-collapsed under the audit as it now stands, or $19$ if one unreadable cohort
-of four adapters hides a collapsed pair.
+collapsed under the audit as it now stands. The count would be $19$ if one
+unreadable cohort of four adapters hides a collapsed pair.
 
 \paragraph{What the collapsed cohorts are.} The sampling frame groups adapters
 by publisher and base model, and such a group is not necessarily a set of
@@ -150,8 +151,8 @@ adapters~\citep{huang2024lorahub}, released to be composed. The other twelve
 are versions, stages, checkpoints or data ablations of one model, for which
 merging is rarely the point. The $40\%$ is therefore the prevalence of the
 regime among public cohorts as the frame defines them, not among cohorts
-built for merging, but six collapsed cohorts of distinct tasks show that the
-regime is not confined to our own experiments.
+built for merging. Still, six collapsed cohorts of distinct tasks show that
+the regime is not confined to our own experiments.
 
 The cohorts that merging papers evaluate on are harder to sample. We checked
 the $22$ merging papers we cite in order, intending to audit the first two that

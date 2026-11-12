@@ -1,12 +1,14 @@
 Low-rank adaptation (LoRA)~\citep{hu2022lora} makes it cheap to train many
 specialised versions of one base model, so it is attractive to merge several
-of them back into a single set of weights. Many merging methods exist: task
-arithmetic~\citep{ilharco2023task}, sign election (TIES)~\citep{yadav2023ties},
-random sparsification (DARE)~\citep{yu2024dare}, subspace alignment
-(KnOTS)~\citep{stoica2025knots}, whitening (TSV-M)~\citep{gargiulo2025tsv},
-least-squares solvers in the RegMean line~\citep{jin2023regmean,tam2024mats},
-and data-free methods such as WUDI-Merging~\citep{cheng2025wudi}, which solves
-a least-squares problem built from the task updates themselves. These methods
+of them back into a single set of weights. Many merging methods exist. Some average the task
+updates, or sparsify them first: task arithmetic~\citep{ilharco2023task}, sign
+election (TIES)~\citep{yadav2023ties} and random sparsification
+(DARE)~\citep{yu2024dare}. Some act on the updates' subspaces, by aligning
+them (KnOTS)~\citep{stoica2025knots} or whitening them
+(TSV-M)~\citep{gargiulo2025tsv}. Others solve a least-squares problem. In the
+RegMean line~\citep{jin2023regmean,tam2024mats} that problem is built from
+data. WUDI-Merging~\citep{cheng2025wudi} needs no data and builds it from the
+task updates themselves. These methods
 are compared mostly by benchmark averages, and the comparisons are unstable. A
 method that works on one set of adapters can fail on another, and there is no
 way to tell in advance which will happen.
@@ -18,9 +20,9 @@ $T$ adapters to be merged, and the random seed in force when the adapters are
 created decides whether they share \emph{one} $A$ or draw $T$ independent
 ones. Because $B = 0$ at the start, $A$ moves little during training: about
 $13\%$ of its norm in our measurements. Adapters that start from the same $A$
-therefore stay close to it. A single global seed is the natural choice when
-the seed is meant to make runs reproducible, and it gives every adapter of a
-cohort nearly the same input subspace, whatever its task
+therefore stay close to it. A single global seed is the natural choice for
+reproducible runs. It also gives every adapter of a cohort nearly the same
+input subspace, whatever its task
 (Figure~\ref{fig:concept}).
 
 \begin{figure}[pos=tbp]
@@ -36,8 +38,8 @@ between their input subspaces is $0.995$, against $0.047$ with a seed per
 task (a two-dimensional sketch of rank-$16$ subspaces; the cosines are
 measured). \textbf{(c)} The $64$ eigenvalues of $\bar H$, the matrix that a
 least-squares merge built from the adapters has to invert, in one layer. With
-one seed, $16$ sit near $1$ and the other $48$ fall to between $10^{-2}$ and
-$10^{-4}$, so the condition number $\kappa$ is about $10^{4}$.
+one seed, $16$ sit near $1$ and the other $48$ fall to between $2\times10^{-2}$
+and $8\times10^{-5}$, so the condition number $\kappa$ is about $1.3\times10^{4}$.
 \textbf{(d)} GSM8K accuracy of the merged model, the mean over three cohorts
 per row. Averaging the adapters works in both rows. WUDI-Merging, a published
 merge that solves a least-squares problem built from the adapters, fails when
@@ -48,10 +50,10 @@ they share a seed.}
 Our lead result concerns a published method. WUDI-Merging needs no data, and
 its authors minimise its objective with an optimiser that stops early instead
 of solving the system. We expected the early stopping to act as an implicit
-regulariser, and we registered it as protective. It is not. Run exactly as its
-authors run it, WUDI leaves a worst-task loss excess (the merged model's extra
-loss on its worst task) $4.7$ to $47.6$ times larger on cohorts with a shared
-$A$ than on cohorts with independent ones. This holds on all four base models
+regulariser, and we pre-registered it as protective. It is not. Run exactly as its
+authors run it, WUDI does far worse on cohorts with a shared $A$. Its
+worst-task loss excess, the merged model's extra loss on its worst task, is
+$4.7$ to $47.6$ times larger than on cohorts with independent ones. This holds on all four base models
 we tested. On GSM8K the shared cohorts score $0.034$ against $0.695$ on
 Llama-3.1-8B, and on HumanEval they score zero on two of the four bases. We had
 written in advance that this outcome, if it occurred, would become the lead
@@ -65,7 +67,7 @@ We make four contributions.
 \begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=3pt]
 \item \textbf{The collapse, measured.} On four base models with 7 to 9 billion
 parameters, sharing the initial $A$ moves the median principal cosine between
-task subspaces from about $0.05$ to above $0.99$. A registered ablation shows
+task subspaces from about $0.05$ to above $0.99$. An ablation shows
 that the seed in force when the adapters are created decides the regime by
 itself; the dropout masks do not. The collapse holds at every task count and
 rank we tested, and under each of seven changes to training. It also arises
@@ -77,10 +79,10 @@ adapter's $A$ as a small displacement of the shared start. The condition
 number of the operator a solver inverts then grows as the inverse square of
 the displacement, and the norm of the exact interpolator as its inverse. The
 predicted condition number matches the exact value within $0.10\%$ in all $21$
-configurations we measured. A scalar law follows from the theory. We fixed it
-on four cohorts, and it then predicted the condition number of eight cohorts
-trained afterwards within a factor of $2$ on all eight, seven of them trained
-under changed settings (\S\ref{sec:theory}).
+configurations we measured. A scalar law follows from the theory. We fixed its
+constants on four cohorts. It then predicted the condition number of eight
+cohorts trained afterwards, seven of them under changed settings, within a
+factor of $2$ on all eight (\S\ref{sec:theory}).
 \item \textbf{Where it occurs.} At their default settings, Unsloth and
 LLaMA-Factory seed the random generator before they create the adapter. Every
 run on a base model with the same target modules and rank therefore receives

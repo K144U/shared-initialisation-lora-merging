@@ -1,7 +1,6 @@
 Every value below is read from the configuration files, the saved training
 arguments or the code in the public repository. Each language-model result
-file in \texttt{results/phase3/} records the full configuration of its cell,
-including every seed. The vision cells are defined by their generator,
+file records the full configuration of its run, including every seed. The vision runs are defined by their generator,
 \texttt{code/phase3/vision/gen\_vision.py}.
 
 \paragraph{Training.} All adapters on all four bases share one recipe: LoRA
@@ -46,9 +45,9 @@ cut to rank $r$ by a randomised SVD (Appendix~\ref{app:precision}).
 maximum length $1024$. The examples are GSM8K test problems, held-out rows of
 the Alpaca and Magicoder training splits (which overlap the adapters' training
 data, see \S\ref{sec:discussion}), and WMT19 validation pairs. There is one
-deviation. The $20$ heuristic NLL cells of the third shared cohort used a
-different evaluation seed from all other cells, and so a different sample of
-evaluation examples. Every excess is computed within its cell, so each
+deviation. The $20$ heuristic NLL runs of the third shared cohort used a
+different evaluation seed from all other runs, and so a different sample of
+evaluation examples. Every excess is computed within its run, so each
 comparison is paired, but that cohort is scored on a different sample. All
 generation is greedy. GSM8K accuracy is exact match on $500$ test problems
 fixed by a seeded shuffle, prompted zero-shot with up to $256$ new tokens.

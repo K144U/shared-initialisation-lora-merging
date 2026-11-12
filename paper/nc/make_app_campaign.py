@@ -235,7 +235,7 @@ def c2() -> str:
     a = ["\\begin{tabular}{llcccccc}", "\\toprule",
          " & & \\multicolumn{2}{c}{RegMean excess} & & & & \\\\",
          "\\cmidrule(lr){3-4}",
-         "base & perturbation & perturbed & unperturbed & ratio & $d$ & gate"
+         "base & perturbation & perturbed & unperturbed & ratio & $d$ & threshold"
          " & task arithmetic ratio \\\\", "\\midrule"]
     for i, b in enumerate(["llama31_8b", "qwen25_7b"]):
         if i:
@@ -280,7 +280,7 @@ def c2() -> str:
            "code adapters truncated to rank $4$. Module: the GSM8K adapter's \\texttt{k\\_proj} "
            "and \\texttt{v\\_proj} updates removed. Excesses are means over the three cohorts, "
            "the ratio is perturbed over unperturbed, $d$ is the mean paired difference, and the "
-           "gate is the larger of $0.005$ and two standard errors of $d$. Task arithmetic was "
+           "noise threshold is the larger of $0.005$ and two standard errors of $d$. Task arithmetic was "
            "not run for the two update-preserving perturbations. \\textbf{(b)} Cohorts built "
            "from existing adapters, one per base (\\S\\ref{subsec:audit}). M1: the GSM8K and "
            "code adapters of the seed-1 shared cohort with the instruction and translation "
@@ -302,7 +302,7 @@ def c3() -> str:
             " & & \\multicolumn{2}{c}{GCV} & \\multicolumn{2}{c}{L-curve}"
             " & $\\lambda = 10^{-6}$ & \\multicolumn{2}{c}{best of sweep} \\\\",
             "\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}\\cmidrule(lr){7-7}\\cmidrule(lr){8-9}",
-            "base & arm & $\\lambda$ & excess & $\\lambda$ & excess & excess & $\\lambda$ & excess \\\\",
+            "base & cohort & $\\lambda$ & excess & $\\lambda$ & excess & excess & $\\lambda$ & excess \\\\",
             "\\midrule"]
     for i, b in enumerate(BASES):
         g, lc, a = ls["gcv"]["per_base"][b], ls["lcurve"]["per_base"][b], ag[b]
@@ -360,7 +360,7 @@ def c4() -> str:
         return f"${st.mean(xs):.3f} \\pm {st.stdev(xs):.3f}$"
 
     body = ["\\begin{tabular}{lcccc}", "\\toprule",
-            "method & shared & independent & $d$ & gate \\\\", "\\midrule"]
+            "method & shared & independent & $d$ & threshold \\\\", "\\midrule"]
     for gi, grp in enumerate(order):
         if gi:
             body.append("\\addlinespace")
@@ -376,12 +376,12 @@ def c4() -> str:
              "\\bottomrule", "\\end{tabular}"]
     best = v["best_lambda"]
     assert best["shared"] == best["indep"]
-    cap = ("CLIP ViT-B/32 on eight image classification tasks, three cohorts per arm "
+    cap = ("CLIP ViT-B/32 on eight image classification tasks, three cohorts of each kind "
            "(\\S\\ref{subsec:beyond}). Mean top-1 accuracy over the eight tasks, given as the "
            "mean $\\pm$ one standard deviation across cohorts; merges are applied as dense "
-           "updates without truncation. $d$ is independent minus shared, and the gate is the "
+           "updates without truncation. $d$ is independent minus shared, and the noise threshold is the "
            "larger of $0.01$ and twice the standard error of $d$. The best ridge on the grid is "
-           f"$\\lambda = {lam(vision_lambda(best['shared'])).strip('$')}$ on both arms.")
+           f"$\\lambda = {lam(vision_lambda(best['shared'])).strip('$')}$ on both kinds of cohort.")
     return table("tab:appC-vision", cap, body)
 
 
@@ -545,10 +545,10 @@ def c5() -> str:
            "$\\lambda^\\star$, and of task arithmetic and TIES. $\\lambda^\\star$ (shared / "
            "independent) is the ridge with the lowest worst-task NLL excess in the encoder's "
            "ridge sweep on that cohort. " + "".join(same) +
-           "\\textbf{(b)} The registered contrasts, each with its gate in parentheses. "
+           "\\textbf{(b)} The registered contrasts, each with its noise threshold in parentheses. "
            "\\emph{Encoder}: $\\lambda^\\star$ minus $\\lambda = 0$ on the shared cohort. "
-           "\\emph{TA}, \\emph{TIES}: shared minus independent. The chrF gate is the larger of "
-           "$2$ points and two bootstrap standard errors, the IFEval gate the larger of $0.05$ "
+           "\\emph{TA}, \\emph{TIES}: shared minus independent. The chrF threshold is the larger of "
+           "$2$ points and two bootstrap standard errors, the IFEval threshold the larger of $0.05$ "
            "and two binomial standard errors. \\textbf{(c)} The base model without an adapter "
            "and the task's own seed-1 adapter alone, on all four benchmarks (GSM8K exact match, "
            "HumanEval pass@1, chrF, IFEval strict).")
@@ -606,7 +606,7 @@ def c6() -> str:
            "on the independent one, in float32; and its float64 value divided by the float32 "
            "one. \\emph{Production gap}: median relative distance between the randomised "
            "truncation every merge in the paper uses and the exact rank-$r$ truncation. The "
-           "rule excluded precision as the cause if, for every base, arm and solver, the "
+           "rule excluded precision as the cause if, for every base, kind of cohort and solver, the "
            f"median was below {below} and the ratio of the two amplification ratios lay in "
            f"$[{lo:g}, {hi:g}]$; otherwise the affected merges were to be rebuilt in float64. "
            "$^\\dagger$Above the threshold.")
@@ -699,20 +699,20 @@ def c7() -> str:
     body += ["\\bottomrule", "\\end{tabular}"]
     spans = [f"{ratios[k][0]:.2f} to {ratios[k][1]:.2f} on {BASE_NAME[k]}" for k in BASES]
     cap = ("Realisations of our encoder at $\\lambda = 0$; worst-task excess. Apart from the "
-           "published cells and the registered float64 rebuild, these runs were added after "
+           "published runs and the registered float64 rebuild, these runs were added after "
            "the precision check and were not registered. \\textbf{(a)} The seed-1 shared cohort of each base under three "
-           "random streams with the production truncation: the published cell and the same "
+           "random streams with the production truncation: the published run and the same "
            "merge with the generator seeded by \\texttt{rng\\_seed} $1$ and $2$. "
-           "\\emph{Independent}: the first independent cohort's float32 cell. \\emph{Gap}: the "
+           "\\emph{Independent}: the first independent cohort's float32 run. \\emph{Gap}: the "
            "smallest shared draw minus the independent value. \\textbf{(b)} The cohort the "
-           "rule flagged. The default stream with production truncation has two cells, the "
+           "rule flagged. The default stream with production truncation has two runs, the "
            "published one and a rerun on the same setup. The float64 merge with exact "
            "truncation is the registered rebuild and does not depend on the stream. The "
            f"independent cohort is at {indep[b]:.3f}. \\textbf{{(c)}} The other two shared "
            "cohorts of each base, re-run in October 2026 (Appendix~\\ref{app:prereg}): the "
-           "registered re-run cell and the same merge seeded by \\texttt{rng\\_seed} $1$ and $2$. "
+           "registered re-run and the same merge seeded by \\texttt{rng\\_seed} $1$ and $2$. "
            "\\emph{Indep.\\ mean}: the mean over the three independent cohorts. Over the nine "
-           "combinations of seed-2 and seed-3 draws, the ratio of the shared arm's three-cohort "
+           "combinations of seed-2 and seed-3 draws, the ratio of the three shared cohorts' "
            "mean to the independent mean spans "
            + ", ".join(spans[:-1]) + " and " + spans[-1] + ".")
     return table("tab:appC-sweep", cap, body)
@@ -725,7 +725,7 @@ INTRO = (
     "that the main text summarises. Every result in it is written by a script directly "
     "from the result files of the campaign; no result was entered by hand. \\emph{Excess} is "
     "the worst-task NLL excess in nats (\\S\\ref{subsec:setup}), and \\emph{shared} and "
-    "\\emph{independent} are the two arms. Where one cohort per arm was evaluated, these "
+    "\\emph{independent} are the two kinds of cohort. Where one cohort of each kind was evaluated, these "
     "are the seed-1 shared cohort and the first independent cohort of the main grid. "
     "Tables~\\ref{tab:seeds}, \\ref{tab:regimes}, \\ref{tab:wudi} and \\ref{tab:exposure} "
     "are not repeated here.")
@@ -738,17 +738,17 @@ LEADS = {
     "C2": ("Table~\\ref{tab:appC-hetero} gives the perturbations of separated cohorts "
            "summarised in \\S\\ref{subsec:against} and the partial-collapse cohorts of "
            "\\S\\ref{subsec:audit}, on every base."),
-    "C3": ("Table~\\ref{tab:appC-lambda} gives, for each base and arm, the ridge that GCV and "
+    "C3": ("Table~\\ref{tab:appC-lambda} gives, for each base and kind of cohort, the ridge that GCV and "
            "the L-curve choose and the excess it leaves, beside the minimal ridge and the best "
            "point of the sweep (\\S\\ref{subsec:lambda})."),
     "C4": ("Table~\\ref{tab:appC-vision} gives every merge of the vision experiment of "
-           "\\S\\ref{subsec:beyond}, with its spread across the three cohorts of each arm and "
+           "\\S\\ref{subsec:beyond}, with its spread across the three cohorts of each kind and "
            "the median principal cosine of every cohort."),
     "C5": ("Table~\\ref{tab:appC-alltasks} gives the scores behind the registered contrasts on "
            "translation and IFEval (\\S\\ref{subsec:beyond}), the contrasts themselves, and the "
            "reference rows: the base model and each task's own adapter on all four benchmarks."),
     "C6": ("Table~\\ref{tab:appC-precision} gives the precision check of "
-           "\\S\\ref{subsec:results} for every base, arm and solver. Table~\\ref{tab:appC-sweep} "
+           "\\S\\ref{subsec:results} for every base, kind of cohort and solver. Table~\\ref{tab:appC-sweep} "
            "gives the float32 draws of the unregularised encoder on all three shared cohorts of "
            "every base, and for the one cohort the rule flagged, the float64 rebuild and the "
            "draws with exact truncation."),

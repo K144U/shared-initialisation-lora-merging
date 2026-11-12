@@ -1,4 +1,17 @@
-\paragraph{What to do in practice.} The results reduce to three cases.
+\begin{figure}[pos=tbp]
+\centering
+\includegraphics[width=\textwidth]{nc/figures/fig_decision.pdf}
+\caption{What to do before merging a LoRA cohort, from the results of
+\S\ref{sec:merging}. The audit is Algorithm~\ref{alg:audit}, and $0.9$ is its
+threshold for a collapsed cohort. Only merges on the path to the right are
+affected by a shared initialisation. The box at the bottom right lists the
+ways a cohort becomes collapsed (\S\ref{sec:background}, \S\ref{sec:collapse}
+and \S\ref{sec:prevalence}).}
+\label{fig:decision}
+\end{figure}
+
+\paragraph{What to do in practice.} The results reduce to three cases
+(Figure~\ref{fig:decision}).
 \begin{itemize}[leftmargin=*,itemsep=1pt,topsep=2pt]
 \item Some merges average or sparsify the updates, with or without aligning
   them first. Others are solvers whose matrix is built from data or is
@@ -51,22 +64,22 @@ its behaviour on language models (\S\ref{subsec:beyond}). The description we
 give in Appendix~\ref{app:wudi-diag}, in which Adam's steps leave the row space on a
 collapsed cohort, does not account for this. Second, scaling the initial $A$ by
 $0.25$ leaves a cohort collapsed, yet adapter-only RegMean then does less
-damage than on the independent arm ($0.022$ against $0.071$ nats). This happens
+damage than on the independent cohort ($0.022$ against $0.071$ nats). This happens
 at the same $\kappa(\bar H)$ as a cohort where it does a great deal of damage
 (\S\ref{sec:theory}). That points to the amplification, rather than the
 condition number, as what a solver responds to, but it rests on two cohorts.
-Third, the heuristics' lean of $0.7$ points towards the shared arm survives
+Third, the heuristics' lean of $0.7$ points towards shared cohorts survives
 every explanation we tested. The solver failures on public cohorts are in the
 same position.
 
-\paragraph{Relation to our earlier preprint.} Our earlier
-preprint~\citep{pathak2026rd} reported that our encoder had the lowest
-worst-task loss of ten methods, and that worst-task NLL tracks the downstream
-ranking of methods; we withdraw both. The encoder's advantage came from the
-shared initialisation of its cohorts (on independent cohorts it beats the best
-baseline on one base of four), and the correlation cannot be measured reliably
-with five or six methods, which is why every accuracy claim here is measured in
-accuracy.
+\paragraph{Relation to our earlier preprint.} We withdraw two
+claims of our earlier preprint~\citep{pathak2026rd}. It reported that our
+encoder had the lowest worst-task loss of ten methods. That advantage came
+from the shared initialisation of its cohorts: on independent cohorts the
+encoder beats the best baseline on one base of four. It also reported that
+worst-task NLL tracks the downstream ranking of methods. With five or six
+methods that correlation cannot be measured reliably, which is why every
+accuracy claim here is measured in accuracy.
 
 \paragraph{Limitations.} The controlled experiments use four base models of 7
 to 9 billion parameters and four tasks. One adapter did not train properly.
@@ -79,18 +92,18 @@ models, other architectures and other adapter types are untested. The value of
 $\kappa(\bar H)$ depends on the projector model of curvature, while the
 principal cosines, which carry the audit, do not. The theory is a
 leading-order expansion verified numerically, not a bound. The float32 values
-we report for the unregularised encoder on shared cohorts are single draws,
-which move by up to $0.23$ nats between draws, and by up to $1.1$ nats on
-Mistral; on Yi this is enough to move the ratio between the arms across the
-registered factor of two (\S\ref{sec:merging}). The
+we report for the unregularised encoder on shared cohorts are single draws of
+a randomised SVD. They move by up to $0.23$ nats between draws, and by up to
+$1.1$ nats on Mistral. On Yi this is enough to move the ratio between the two
+kinds of cohort across the predicted factor of two (\S\ref{sec:merging}). The
 selected ridge $\lambda^\star$ was chosen on the evaluation sets it is scored
 on, so the gains we report for a tuned ridge are optimistic; the fixed
 $\lambda = 0.01$ is not affected. The tests on translation and IFEval, and
-MaTS in accuracy, use one cohort per arm, so their nulls are only as fine as
-the gate. Training and evaluation data overlap on two tasks ($13$ to $16\%$
+MaTS in accuracy, use one cohort of each kind, so they can rule out only
+differences larger than their noise threshold. Training and evaluation data overlap on two tasks ($13$ to $16\%$
 for instruction following and $9$ to $12\%$ for code), so absolute scores are
-optimistic. Every comparison here, however, is between the two initialisation
-arms on the same data, and on the disjoint subset the ordering of methods is
+optimistic. Every comparison here, however, is between the two kinds of cohort
+on the same data, and on the disjoint subset the ordering of methods is
 unchanged in $23$ of $24$ base-by-cohort comparisons. The library reading is of
 pinned versions, and defaults can change. The prevalence of $40\%$ is among
 public cohorts as the sampling frame defines them, and most of the collapsed

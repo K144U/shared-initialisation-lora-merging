@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Two figures added on 2026-11-12, kept apart from make_figures.py so that
+"""Three figures added on 2026-11-12, kept apart from make_figures.py so that
 rebuilding them does not regenerate the six data figures.
 
   fig0_concept.pdf  the mechanism in one picture (Introduction)
   fig_wudi.pdf      the lead result: WUDI-Merging as published (Section 6.2)
+  fig_decision.pdf  what to do before a merge (Section 7); states the rule,
+                    so it draws no measured number
 
 Same style, palette and column width as make_figures.py, whose module-level
 setup this imports. Every number drawn or printed is read from a result file.
@@ -221,7 +223,79 @@ def fig_wudi():
     save(fig, "fig_wudi")
 
 
+def fig_decision():
+    """What to do before a merge: the three cases of Section 7 as a flowchart.
+
+    Every statement in it is one the text makes; the threshold is
+    Algorithm 1's c_hi. No number is read from a result file, because the
+    figure states the rule, not a measurement.
+    """
+    from matplotlib.patches import FancyBboxPatch
+
+    GREEN = "#1baf7a"
+    fig = plt.figure(figsize=(WIDE, 2.75))
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.axis("off")
+
+    def box(cx, cy, w, h, head, body, edge=INK2, fill="#f4f3ef", hs=7.1, bs=6.5):
+        ax.add_patch(FancyBboxPatch((cx - w / 2, cy - h / 2), w, h,
+                                    boxstyle="round,pad=0.004,rounding_size=0.012",
+                                    lw=1.0, edgecolor=edge, facecolor=fill, zorder=1))
+        if head:
+            ax.text(cx, cy + h / 2 - 0.035, head, ha="center", va="top", fontsize=hs,
+                    fontweight="bold", color=INK, zorder=2)
+        if body:
+            y = cy - 0.035 if head else cy
+            ax.text(cx, y, body, ha="center", va="center", fontsize=bs, color=INK,
+                    linespacing=1.3, zorder=2)
+
+    def arrow(x0, y0, x1, y1, text=None, tx=None, ty=None, ha="center"):
+        ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
+                    arrowprops=dict(arrowstyle="-|>", color=INK2, lw=0.9,
+                                    shrinkA=0, shrinkB=0, mutation_scale=8))
+        if text:
+            ax.text(tx, ty, text, ha=ha, va="center", fontsize=6.6, color=INK,
+                    fontweight="bold")
+
+    # main row
+    box(0.078, 0.70, 0.142, 0.24, None, "$T$ LoRA\nadapters on\none base model")
+    box(0.300, 0.70, 0.235, 0.40, "Which merge?",
+        "Does it solve a least-squares\nproblem whose matrix is built\nfrom the adapters alone?\n"
+        "(adapter-only RegMean,\nWUDI-Merging, our encoder)")
+    box(0.560, 0.70, 0.205, 0.40, "Run the audit (Alg. 1)",
+        "reads only the $A$ factors,\nabout one CPU minute,\nno data, no forward pass\n\n"
+        "$c^\\star$ = largest pairwise\nmedian principal cosine")
+    box(0.840, 0.835, 0.30, 0.29, "Collapsed: $c^\\star > 0.9$",
+        "closed-form solver: add a ridge, start\nnear $\\lambda = 0.01$, sweep it on held-out data\n"
+        "WUDI as published: use an\nunaffected merge instead",
+        edge=ORANGE, fill="#fdebe3")
+    box(0.840, 0.47, 0.30, 0.27, "Otherwise",
+        "the solver works on our separated\ncohorts; on public adapters it also\n"
+        "fails for other reasons, so check\nthe merged model",
+        edge=BLUE, fill="#e4eefa")
+    # lower row
+    box(0.300, 0.20, 0.36, 0.27, "No: the initialisation does not matter",
+        "task arithmetic, TIES, DARE, TVQ, KnOTS;\nRegMean with activation Grams, MaTS;\n"
+        "diagonal Fisher; TSV-M",
+        edge=GREEN, fill="#e2f5ee")
+    box(0.745, 0.165, 0.49, 0.27, "Where collapsed cohorts come from",
+        "one global seed for every task  $\\cdot$  Unsloth or LLaMA-Factory defaults\n"
+        "PiSSA, OLoRA or MiLoRA initialisation  $\\cdot$  every task trained on\n"
+        "from one adapter  $\\cdot$  designs that share $A$ on purpose",
+        edge=FAINT, fill="#f7f6f2", bs=6.3)
+
+    arrow(0.149, 0.70, 0.1825, 0.70)
+    arrow(0.4175, 0.70, 0.4575, 0.70, "yes", 0.4375, 0.735)
+    arrow(0.300, 0.50, 0.300, 0.335, "no", 0.315, 0.42, ha="left")
+    arrow(0.6625, 0.76, 0.690, 0.835)
+    arrow(0.6625, 0.64, 0.690, 0.47)
+    save(fig, "fig_decision")
+
+
 if __name__ == "__main__":
     fig_concept()
     fig_wudi()
+    fig_decision()
     print("wrote fig0_concept.pdf, fig_wudi.pdf")

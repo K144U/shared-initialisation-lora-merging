@@ -127,7 +127,7 @@ def fig1_collapse(G):
     cs, ci = drift["drift_shared"]["cos_final"], drift["drift_indep"]["cos_final"]
     a.text(0.98, 0.05, f"same drift, final median cosine\nshared {cs:.3f} vs. independent {ci:.3f}",
            transform=a.transAxes, ha="right", va="bottom", fontsize=6.6, color=INK2)
-    title(a, "A moves 13% in both arms")
+    title(a, "A moves 13%, shared or independent")
     lab(a, "a")
 
     # (b) every principal angle, every pair, every layer, all bases.
@@ -147,7 +147,7 @@ def fig1_collapse(G):
     b.set_xlabel("cosine of a principal angle")
     b.set_ylabel("count")
     b.text(0.47, 0.97,
-           f"{len(cs_all):,} angles per arm:\n4 bases, 3 cohorts, 8 layers,\n6 pairs, 16 angles each",
+           f"{len(cs_all):,} angles of each kind:\n4 bases, 3 cohorts, 8 layers,\n6 pairs, 16 angles each",
            transform=b.transAxes, va="top", ha="center", fontsize=6.3, color=INK2)
     # Direct labels instead of a legend: each population is named where it sits.
     b.annotate(f"independent:\nall $\\leq${ci_all.max():.2f}", xy=(ci_all.max(), 2),
@@ -367,9 +367,9 @@ def fig4_mechanism():
     ax.set_xlim(0.6, 120)
     ax.set_ylim(1e-6, 1.6)
     ax.axhspan(0.15, 0.35, color=GRID, alpha=0.6, lw=0, zorder=0)
-    ax.text(0.66, 0.07, "independent arm (open): every merge at 0.2 to 0.3,\nclose to what a generic direction gives",
+    ax.text(0.66, 0.07, "independent cohorts (open): every merge at 0.2 to 0.3,\nclose to what a generic direction gives",
             fontsize=6.4, color=INK2, va="center")
-    ax.text(2.9, 2.2e-6, "shared arm (filled): averaging, sparsifying and ridged\n"
+    ax.text(2.9, 2.2e-6, "shared cohorts (filled): averaging, sparsifying and ridged\n"
             "solvers put almost nothing in the ill-conditioned quarter",
             fontsize=6.4, color=INK2, va="bottom")
     ax.annotate("unregularised solvers, shared:\n35 to 57 times the mean update,\n"

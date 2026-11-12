@@ -8,30 +8,36 @@ English-to-German translation (WMT19). Each base has two kinds of cohort. In a
 \emph{shared} cohort all four task configurations carry one global seed, so
 all four adapters are created from the same random state. We train three such
 cohorts, with seeds 1, 2 and 3. In an \emph{independent} cohort each task has
-its own seed, and we train three of these as well. The seed sets the random
-state when the adapter is created, the dropout masks and the subset of
-training examples drawn for the task (the data order was fixed in every run),
-and \S\ref{subsec:seeds} separates these. Appendix~\ref{app:details} lists the
+its own seed, and we train three of these as well. The seed sets three things:
+the random state when the adapter is created, the dropout masks and the
+subset of training examples drawn for the task. The data order was fixed in
+every run. \S\ref{subsec:seeds} separates the three. Appendix~\ref{app:details} lists the
 training, merging and evaluation settings.
 
 Three of the four adapters lower the base model's NLL on their own task by
 $10$ to $70\%$. The translation adapter did not learn its task. A data-loading
 defect trained it on an unshuffled, single-domain prefix of its corpus, and on
-every base and in both arms the base model or another adapter beats it at
-translation. Both arms contain the same weak member, so every comparison in
-this paper, which is always between the two arms, is matched. Cohorts
+every base, in both kinds of cohort, the base model or another adapter beats
+it at translation. Both kinds of cohort contain the same weak member, and
+every comparison in this paper is between the two kinds, so the weak member
+is matched. Cohorts
 retrained with the fix on two bases reproduce every result below.
 
 We score merged models in two units. The first is the worst-task excess
-negative log-likelihood: for each task, the merged model's NLL minus that of
+negative log-likelihood (NLL), in nats: for each task, the merged model's NLL minus that of
 the task's own adapter, and then the largest of these over tasks. The second
 is downstream accuracy: exact match on $500$ GSM8K problems and pass@1 on the
 $164$ HumanEval problems. Every merge is truncated back to rank $r$, as for
 deployment, and \S\ref{sec:merging} reports what changes without truncation.
+A difference between shared and independent cohorts counts only if it
+clears a noise threshold fixed in advance: the larger of a floor and twice
+the standard error of the difference. The floor is $0.005$ nats in NLL and
+$0.05$ in accuracy; the few tests with other floors give them with their
+results.
 Initial versions of the code for some parts of the experiments and analyses
 were produced with an AI coding assistant, Claude (Anthropic). The authors
-reviewed and revised the code, which is public together with the per-cell
-results it produced (\S\ref{sec:conclusion}).
+reviewed and revised the code, which is public with the result summaries
+(\S\ref{sec:conclusion}).
 
 \subsection{Why a shared start collapses the subspaces}\label{subsec:why}
 
@@ -79,14 +85,15 @@ own    & own    & 0.047 & 1.55 & 0.071 & 0.221 \\
 \end{table}
 
 If the cause sits at creation, the seed in force when the adapters are created
-should decide the regime by itself. A registered two-by-two ablation crosses
+should decide the regime by itself. A two-by-two ablation crosses
 the initialisation seed with the trainer seed and holds the data split fixed
 (Table~\ref{tab:seeds}). The cohorts created from one seed are collapsed and
 the others are separated, whatever the trainer seed. Adapter-only RegMean
 follows the initialisation seed, and task arithmetic does not move. All four
-registered predictions hold. We registered the trainer seed as setting the
-data order as well, but the sampler's seed turned out to be fixed in every
-run, so the ablation varies dropout and not the order of the data.
+predictions we registered for it hold. The registration assumed that the
+trainer seed also set the data order. The sampler's seed turned out to be
+fixed in every run, so the ablation varies dropout and not the order of the
+data.
 Neither dropout nor the training data decides the regime (the data differ
 across the four tasks of every cohort). The initial $A$ does.
 
@@ -97,12 +104,12 @@ across the four tasks of every cohort). The initial $A$ does.
 \includegraphics[width=\textwidth]{nc/figures/fig1_collapse.pdf}
 \caption{The collapse, measured on our cohorts. \textbf{(a)} Relative
 displacement of $A$ from its initial value during training, on the Llama-3.1-8B
-cohorts whose $A_0$ was saved: the two arms move by the same amount.
+cohorts whose $A_0$ was saved: shared and independent cohorts move by the same amount.
 \textbf{(b)} Every principal cosine between every pair of task subspaces, at
-$T = 4$, $r = 16$, pooled over four bases, three cohorts per arm and eight
+$T = 4$, $r = 16$, pooled over four bases, three cohorts of each kind and eight
 layers (log count). \textbf{(c)} Singular values of the stacked orthonormal
-bases $[V_1\,V_2\,V_3\,V_4]$, median over layers, one line per base. On the
-shared arm $16$ values sit at $\sqrt{T} = 2$ and the other $48$ are small.
+bases $[V_1\,V_2\,V_3\,V_4]$, median over layers, one line per base. On
+shared cohorts $16$ values sit at $\sqrt{T} = 2$ and the other $48$ are small.
 \textbf{(d)} Median principal cosine on Llama-3.1-8B across task count and
 rank, and for a PiSSA cohort trained with four independent seeds. Dotted lines
 in (d) mark the audit thresholds of \S\ref{subsec:audit}.}
@@ -112,8 +119,9 @@ in (d) mark the audit thresholds of \S\ref{subsec:audit}.}
 \begin{table}[pos=tbp]
 \centering
 \small
-\caption{The two regimes at $T = 4$, $r = 16$. The independent arm is the
-first of three independent cohorts; the other two agree to three decimals.
+\caption{The two regimes at $T = 4$, $r = 16$. The independent columns use
+the first of three independent cohorts; the other two agree to three
+decimals.
 $\kappa(\bar H)$ is the mean over the eight sampled layers; the median, which
 we report elsewhere, is lower (Llama-3.1-8B shared: $1.15\times10^{4}$).
 Amplification is the norm of the exact interpolator over that of the mean task
@@ -136,19 +144,19 @@ Yi-1.5-9B    & 0.997 & 0.047 & $8.30\times10^{4}$ & 1.5 & 64.1 & 4.0 \\
 The separation is large and reproducible on every base
 (Table~\ref{tab:regimes}), and it holds for every principal angle, not only
 the median (Figure~\ref{fig:collapse}b). Of the $9{,}216$ principal cosines on
-each arm, every shared one is at least $0.75$ and every independent one is at
+each kind of cohort, every shared one is at least $0.75$ and every independent one is at
 most $0.18$. The spectrum of the stacked subspace bases shows where the
-dimensions go (Figure~\ref{fig:collapse}c). On the shared arm, $16$ singular
+dimensions go (Figure~\ref{fig:collapse}c). On shared cohorts, $16$ singular
 values sit near $\sqrt{T} = 2$, the value for exactly identical subspaces, and
 the other $48$ are small, so four rank-$16$ subspaces occupy about $16$
-dimensions. On the independent arm all $64$ lie between $0.88$ and $1.13$.
+dimensions. On independent cohorts all $64$ lie between $0.88$ and $1.13$.
 
 The subspaces are close to collinear, but not collinear, so an exact
 interpolator exists in both regimes. The regimes differ in how large it is and
-how sensitive it is to the adapters (\S\ref{sec:background}). On the shared
-arm $\kappa(\bar H)$ averages $1.8\times10^{4}$ to $8.3\times10^{4}$ over the
-sampled layers, against $1.5$ to $1.6$, and the exact interpolator is $43$ to
-$64$ times larger than the mean task update, against $4.0$, the value $T$ for
+how sensitive it is to the adapters (\S\ref{sec:background}). On shared
+cohorts $\kappa(\bar H)$ averages $1.8\times10^{4}$ to $8.3\times10^{4}$ over
+the sampled layers, against $1.5$ to $1.6$ on independent ones. The exact
+interpolator is $43$ to $64$ times larger than the mean task update, against $4.0$, the value $T$ for
 exactly orthogonal subspaces. The condition number depends on the projector
 model of curvature behind $\bar H$. The principal cosines do not, since they
 are properties of the row spaces alone, and that is why we lead with them.
@@ -159,18 +167,19 @@ The argument above does not depend on $T$ or $r$, so the collapse should
 hold at any size, and the conditioning should worsen as more subspaces crowd
 around the same start. We tested both on Llama-3.1-8B, with adapters for four
 further tasks (Dolly, XSum, CodeAlpaca and English-to-French translation) and
-at ranks $8$ and $64$, in both arms. The regime is set by initialisation at
-every size (Figure~\ref{fig:collapse}d). On the shared arm $\kappa(\bar H)$
+at ranks $8$ and $64$, in both kinds of cohort. The regime is set by initialisation at
+every size (Figure~\ref{fig:collapse}d). On shared cohorts $\kappa(\bar H)$
 grows from $3.9\times10^{3}$ at $T = 2$ to $3.9\times10^{4}$ at $T = 8$, and
-from $5.6\times10^{3}$ at $r = 8$ to $4.1\times10^{4}$ at $r = 64$. On the
-independent arm the amplification stays at the orthogonal value $T$.
+from $5.6\times10^{3}$ at $r = 8$ to $4.1\times10^{4}$ at $r = 64$. On
+independent cohorts the amplification stays at the orthogonal value $T$.
 
 No change to training that we tried leaves the regime. On a
-shared-initialisation cohort of Llama-3.1-8B we registered seven changes, each
-chosen to move $A$ further or less far. They are the learning rate divided or
-multiplied by $3$, one or four epochs instead of two, $A$'s learning rate
-multiplied by $4$, LoRA+ at its recommended ratio of $16$ between the learning
-rates of $B$ and $A$, and $A$'s initial value scaled by $0.25$. Every one stays
+shared-initialisation cohort of Llama-3.1-8B we made seven changes, fixed in
+advance, each chosen to move $A$ further or less far. Two divide or multiply
+the learning rate by $3$, and two train for one or four epochs instead of
+two. One multiplies $A$'s learning rate by $4$, one uses LoRA+ at its
+recommended ratio of $16$ between the learning rates of $B$ and $A$, and one
+scales $A$'s initial value by $0.25$. Every one stays
 collapsed, at median cosine $0.956$ to $0.999$, while the independent
 counterparts of the two changes expected to move $A$ furthest stay at $0.047$
 and $0.048$. \S\ref{sec:theory} uses these cohorts to test the theory out of
@@ -179,7 +188,7 @@ sample.
 A shared seed is not the only route into the regime.
 PiSSA~\citep{meng2024pissa} initialises $A$ from the principal singular
 vectors of the base weight, which do not depend on the seed. Four PiSSA
-adapters trained with the independent arm's four seeds form a collapsed
+adapters trained with the four seeds of an independent cohort form a collapsed
 cohort, at median cosine $0.999$. Their trained row spaces remain at principal
 cosine $0.9996$ to the base weight's top-$r$ right singular vectors, so
 training does not move them far enough to leave the starting subspace.
@@ -193,7 +202,7 @@ fine-tuned Llama-3.2-1B-Instruct on GSM8K and on Alpaca with Unsloth
 (2026.5.2) and with LLaMA-Factory (0.9.5), each at its default settings, twice
 per task in separate processes. Within each library the initial $A$ is
 identical across the two tasks and across the two runs (median principal
-cosine $1.000$), and after $50$ steps the two tasks' adapters remain at
+cosine $1.000$). After $50$ steps the two tasks' adapters remain at
 $0.9996$ under Unsloth and $0.9994$ under LLaMA-Factory. A
 user who fine-tunes several tasks with either library without changing its
 seed obtains a collapsed cohort.
