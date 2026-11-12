@@ -1,6 +1,8 @@
-# Kept out of git: regenerable data for make_figures.py (142 MB), the
-# downloaded Elsevier CAS bundle, and figure previews.
-data/
+# Kept out of git: the 142 MB activation-Gram dump under data/, the
+# downloaded Elsevier CAS bundle, and figure previews. The three small JSON
+# files in data/ are tracked: the figures read them, and the adapters they
+# are computed from are not public.
+data/regmean_agram/
 NCTemplate/
 figures/preview/
 # Author photographs: uploaded to the journal separately, never published

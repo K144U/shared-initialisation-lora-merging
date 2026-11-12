@@ -1,0 +1,5441 @@
+{
+  "examined": 1000,
+  "n_cohorts": 50,
+  "rejected": {
+    "no adapter_config.json": 282,
+    "not LoRA": 2,
+    "rank < 4": 4,
+    "no base_model": 7,
+    "cohort of one": 330,
+    "no shared target module": 1
+  },
+  "cohorts": [
+    {
+      "namespace": "peft-internal-testing",
+      "base_model": "hf-internal-testing/tiny-random-OPTForCausalLM",
+      "members": [
+        {
+          "repo": "peft-internal-testing/tiny-OPTForCausalLM-lora",
+          "rank": 8,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 114881
+        },
+        {
+          "repo": "peft-internal-testing/tiny_OPTForFeatureExtraction-lora",
+          "rank": 8,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 33334
+        },
+        {
+          "repo": "peft-internal-testing/tiny_OPTForQuestionAnswering-lora",
+          "rank": 8,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 33027
+        },
+        {
+          "repo": "peft-internal-testing/tiny-random-OPTForCausalLM-extended-vocab",
+          "rank": 8,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 21901
+        }
+      ],
+      "shared_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "McGill-NLP",
+      "base_model": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "members": [
+        {
+          "repo": "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp-supervised",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 112338
+        },
+        {
+          "repo": "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp-unsup-simcse",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 380
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "charent",
+      "base_model": "Qwen/Qwen3-0.6B",
+      "members": [
+        {
+          "repo": "charent/self_cognition_Alice",
+          "rank": 8,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 9287
+        },
+        {
+          "repo": "charent/self_cognition_Bob",
+          "rank": 8,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 1443
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "McGill-NLP",
+      "base_model": "mistralai/Mistral-7B-Instruct-v0.2",
+      "members": [
+        {
+          "repo": "McGill-NLP/LLM2Vec-Mistral-7B-Instruct-v2-mntp-unsup-simcse",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 6035
+        },
+        {
+          "repo": "McGill-NLP/LLM2Vec-Mistral-7B-Instruct-v2-mntp-supervised",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 571
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "nvidia",
+      "base_model": "/workspace/hugging_face/hub/models--meta-llama--LlamaGuard-7b/snapshots/3e764390d6b39028ddea5b20603c89476107b41e/",
+      "members": [
+        {
+          "repo": "nvidia/Aegis-AI-Content-Safety-LlamaGuard-Defensive-1.0",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "lm_head",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 4095
+        },
+        {
+          "repo": "nvidia/Aegis-AI-Content-Safety-LlamaGuard-Permissive-1.0",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "lm_head",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 1350
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "lm_head",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "Jazhyc",
+      "base_model": "Qwen/Qwen3.5-9B",
+      "members": [
+        {
+          "repo": "Jazhyc/aletheias-phoenix-wright-v2-adapter",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 3734
+        },
+        {
+          "repo": "Jazhyc/aletheias-phoenix-v6-3-qwen397-tvg-soft-r16-ep2",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 753
+        },
+        {
+          "repo": "Jazhyc/aletheias-phoenix-v5-qwen27-tvg-soft-r16",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 727
+        },
+        {
+          "repo": "Jazhyc/aletheias-phoenix-v8-1-kimi-k3-liars-full-r16-ep2",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 445
+        },
+        {
+          "repo": "Jazhyc/aletheias-phoenix-luna-medium-reasoning-r16",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 366
+        },
+        {
+          "repo": "Jazhyc/aletheias-phoenix-v8-kimi-k3-tvg-soft-full-r16-ep2",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 310
+        },
+        {
+          "repo": "Jazhyc/aletheias-phoenix-v7-kimi-k3-tvg-soft-r16-ep2",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 286
+        },
+        {
+          "repo": "Jazhyc/aletheias-phoenix-blind-reasoning-r16",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 229
+        },
+        {
+          "repo": "Jazhyc/aletheias-phoenix-wright-v3.1-rank24-adapter",
+          "rank": 24,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 219
+        },
+        {
+          "repo": "Jazhyc/aletheias-phoenix-v4-4-grpo-r16",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 117
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "Journey9ni",
+      "base_model": "checkpoints/LLaVA-Video-7B-Qwen2",
+      "members": [
+        {
+          "repo": "Journey9ni/vlm-3r-llava-qwen2-lora",
+          "rank": 128,
+          "target_modules": [
+            "model.layers.0.mlp.down_proj",
+            "model.layers.0.mlp.gate_proj",
+            "model.layers.0.mlp.up_proj",
+            "model.layers.0.self_attn.k_proj",
+            "model.layers.0.self_attn.o_proj",
+            "model.layers.0.self_attn.q_proj",
+            "model.layers.0.self_attn.v_proj",
+            "model.layers.1.mlp.down_proj",
+            "model.layers.1.mlp.gate_proj",
+            "model.layers.1.mlp.up_proj",
+            "model.layers.1.self_attn.k_proj",
+            "model.layers.1.self_attn.o_proj",
+            "model.layers.1.self_attn.q_proj",
+            "model.layers.1.self_attn.v_proj",
+            "model.layers.10.mlp.down_proj",
+            "model.layers.10.mlp.gate_proj",
+            "model.layers.10.mlp.up_proj",
+            "model.layers.10.self_attn.k_proj",
+            "model.layers.10.self_attn.o_proj",
+            "model.layers.10.self_attn.q_proj",
+            "model.layers.10.self_attn.v_proj",
+            "model.layers.11.mlp.down_proj",
+            "model.layers.11.mlp.gate_proj",
+            "model.layers.11.mlp.up_proj",
+            "model.layers.11.self_attn.k_proj",
+            "model.layers.11.self_attn.o_proj",
+            "model.layers.11.self_attn.q_proj",
+            "model.layers.11.self_attn.v_proj",
+            "model.layers.12.mlp.down_proj",
+            "model.layers.12.mlp.gate_proj",
+            "model.layers.12.mlp.up_proj",
+            "model.layers.12.self_attn.k_proj",
+            "model.layers.12.self_attn.o_proj",
+            "model.layers.12.self_attn.q_proj",
+            "model.layers.12.self_attn.v_proj",
+            "model.layers.13.mlp.down_proj",
+            "model.layers.13.mlp.gate_proj",
+            "model.layers.13.mlp.up_proj",
+            "model.layers.13.self_attn.k_proj",
+            "model.layers.13.self_attn.o_proj",
+            "model.layers.13.self_attn.q_proj",
+            "model.layers.13.self_attn.v_proj",
+            "model.layers.14.mlp.down_proj",
+            "model.layers.14.mlp.gate_proj",
+            "model.layers.14.mlp.up_proj",
+            "model.layers.14.self_attn.k_proj",
+            "model.layers.14.self_attn.o_proj",
+            "model.layers.14.self_attn.q_proj",
+            "model.layers.14.self_attn.v_proj",
+            "model.layers.15.mlp.down_proj",
+            "model.layers.15.mlp.gate_proj",
+            "model.layers.15.mlp.up_proj",
+            "model.layers.15.self_attn.k_proj",
+            "model.layers.15.self_attn.o_proj",
+            "model.layers.15.self_attn.q_proj",
+            "model.layers.15.self_attn.v_proj",
+            "model.layers.16.mlp.down_proj",
+            "model.layers.16.mlp.gate_proj",
+            "model.layers.16.mlp.up_proj",
+            "model.layers.16.self_attn.k_proj",
+            "model.layers.16.self_attn.o_proj",
+            "model.layers.16.self_attn.q_proj",
+            "model.layers.16.self_attn.v_proj",
+            "model.layers.17.mlp.down_proj",
+            "model.layers.17.mlp.gate_proj",
+            "model.layers.17.mlp.up_proj",
+            "model.layers.17.self_attn.k_proj",
+            "model.layers.17.self_attn.o_proj",
+            "model.layers.17.self_attn.q_proj",
+            "model.layers.17.self_attn.v_proj",
+            "model.layers.18.mlp.down_proj",
+            "model.layers.18.mlp.gate_proj",
+            "model.layers.18.mlp.up_proj",
+            "model.layers.18.self_attn.k_proj",
+            "model.layers.18.self_attn.o_proj",
+            "model.layers.18.self_attn.q_proj",
+            "model.layers.18.self_attn.v_proj",
+            "model.layers.19.mlp.down_proj",
+            "model.layers.19.mlp.gate_proj",
+            "model.layers.19.mlp.up_proj",
+            "model.layers.19.self_attn.k_proj",
+            "model.layers.19.self_attn.o_proj",
+            "model.layers.19.self_attn.q_proj",
+            "model.layers.19.self_attn.v_proj",
+            "model.layers.2.mlp.down_proj",
+            "model.layers.2.mlp.gate_proj",
+            "model.layers.2.mlp.up_proj",
+            "model.layers.2.self_attn.k_proj",
+            "model.layers.2.self_attn.o_proj",
+            "model.layers.2.self_attn.q_proj",
+            "model.layers.2.self_attn.v_proj",
+            "model.layers.20.mlp.down_proj",
+            "model.layers.20.mlp.gate_proj",
+            "model.layers.20.mlp.up_proj",
+            "model.layers.20.self_attn.k_proj",
+            "model.layers.20.self_attn.o_proj",
+            "model.layers.20.self_attn.q_proj",
+            "model.layers.20.self_attn.v_proj",
+            "model.layers.21.mlp.down_proj",
+            "model.layers.21.mlp.gate_proj",
+            "model.layers.21.mlp.up_proj",
+            "model.layers.21.self_attn.k_proj",
+            "model.layers.21.self_attn.o_proj",
+            "model.layers.21.self_attn.q_proj",
+            "model.layers.21.self_attn.v_proj",
+            "model.layers.22.mlp.down_proj",
+            "model.layers.22.mlp.gate_proj",
+            "model.layers.22.mlp.up_proj",
+            "model.layers.22.self_attn.k_proj",
+            "model.layers.22.self_attn.o_proj",
+            "model.layers.22.self_attn.q_proj",
+            "model.layers.22.self_attn.v_proj",
+            "model.layers.23.mlp.down_proj",
+            "model.layers.23.mlp.gate_proj",
+            "model.layers.23.mlp.up_proj",
+            "model.layers.23.self_attn.k_proj",
+            "model.layers.23.self_attn.o_proj",
+            "model.layers.23.self_attn.q_proj",
+            "model.layers.23.self_attn.v_proj",
+            "model.layers.24.mlp.down_proj",
+            "model.layers.24.mlp.gate_proj",
+            "model.layers.24.mlp.up_proj",
+            "model.layers.24.self_attn.k_proj",
+            "model.layers.24.self_attn.o_proj",
+            "model.layers.24.self_attn.q_proj",
+            "model.layers.24.self_attn.v_proj",
+            "model.layers.25.mlp.down_proj",
+            "model.layers.25.mlp.gate_proj",
+            "model.layers.25.mlp.up_proj",
+            "model.layers.25.self_attn.k_proj",
+            "model.layers.25.self_attn.o_proj",
+            "model.layers.25.self_attn.q_proj",
+            "model.layers.25.self_attn.v_proj",
+            "model.layers.26.mlp.down_proj",
+            "model.layers.26.mlp.gate_proj",
+            "model.layers.26.mlp.up_proj",
+            "model.layers.26.self_attn.k_proj",
+            "model.layers.26.self_attn.o_proj",
+            "model.layers.26.self_attn.q_proj",
+            "model.layers.26.self_attn.v_proj",
+            "model.layers.27.mlp.down_proj",
+            "model.layers.27.mlp.gate_proj",
+            "model.layers.27.mlp.up_proj",
+            "model.layers.27.self_attn.k_proj",
+            "model.layers.27.self_attn.o_proj",
+            "model.layers.27.self_attn.q_proj",
+            "model.layers.27.self_attn.v_proj",
+            "model.layers.3.mlp.down_proj",
+            "model.layers.3.mlp.gate_proj",
+            "model.layers.3.mlp.up_proj",
+            "model.layers.3.self_attn.k_proj",
+            "model.layers.3.self_attn.o_proj",
+            "model.layers.3.self_attn.q_proj",
+            "model.layers.3.self_attn.v_proj",
+            "model.layers.4.mlp.down_proj",
+            "model.layers.4.mlp.gate_proj",
+            "model.layers.4.mlp.up_proj",
+            "model.layers.4.self_attn.k_proj",
+            "model.layers.4.self_attn.o_proj",
+            "model.layers.4.self_attn.q_proj",
+            "model.layers.4.self_attn.v_proj",
+            "model.layers.5.mlp.down_proj",
+            "model.layers.5.mlp.gate_proj",
+            "model.layers.5.mlp.up_proj",
+            "model.layers.5.self_attn.k_proj",
+            "model.layers.5.self_attn.o_proj",
+            "model.layers.5.self_attn.q_proj",
+            "model.layers.5.self_attn.v_proj",
+            "model.layers.6.mlp.down_proj",
+            "model.layers.6.mlp.gate_proj",
+            "model.layers.6.mlp.up_proj",
+            "model.layers.6.self_attn.k_proj",
+            "model.layers.6.self_attn.o_proj",
+            "model.layers.6.self_attn.q_proj",
+            "model.layers.6.self_attn.v_proj",
+            "model.layers.7.mlp.down_proj",
+            "model.layers.7.mlp.gate_proj",
+            "model.layers.7.mlp.up_proj",
+            "model.layers.7.self_attn.k_proj",
+            "model.layers.7.self_attn.o_proj",
+            "model.layers.7.self_attn.q_proj",
+            "model.layers.7.self_attn.v_proj",
+            "model.layers.8.mlp.down_proj",
+            "model.layers.8.mlp.gate_proj",
+            "model.layers.8.mlp.up_proj",
+            "model.layers.8.self_attn.k_proj",
+            "model.layers.8.self_attn.o_proj",
+            "model.layers.8.self_attn.q_proj",
+            "model.layers.8.self_attn.v_proj",
+            "model.layers.9.mlp.down_proj",
+            "model.layers.9.mlp.gate_proj",
+            "model.layers.9.mlp.up_proj",
+            "model.layers.9.self_attn.k_proj",
+            "model.layers.9.self_attn.o_proj",
+            "model.layers.9.self_attn.q_proj",
+            "model.layers.9.self_attn.v_proj"
+          ],
+          "downloads": 3293
+        },
+        {
+          "repo": "Journey9ni/vlm-3r-llava-qwen2-lora-vstibench",
+          "rank": 128,
+          "target_modules": [
+            "model.layers.0.mlp.down_proj",
+            "model.layers.0.mlp.gate_proj",
+            "model.layers.0.mlp.up_proj",
+            "model.layers.0.self_attn.k_proj",
+            "model.layers.0.self_attn.o_proj",
+            "model.layers.0.self_attn.q_proj",
+            "model.layers.0.self_attn.v_proj",
+            "model.layers.1.mlp.down_proj",
+            "model.layers.1.mlp.gate_proj",
+            "model.layers.1.mlp.up_proj",
+            "model.layers.1.self_attn.k_proj",
+            "model.layers.1.self_attn.o_proj",
+            "model.layers.1.self_attn.q_proj",
+            "model.layers.1.self_attn.v_proj",
+            "model.layers.10.mlp.down_proj",
+            "model.layers.10.mlp.gate_proj",
+            "model.layers.10.mlp.up_proj",
+            "model.layers.10.self_attn.k_proj",
+            "model.layers.10.self_attn.o_proj",
+            "model.layers.10.self_attn.q_proj",
+            "model.layers.10.self_attn.v_proj",
+            "model.layers.11.mlp.down_proj",
+            "model.layers.11.mlp.gate_proj",
+            "model.layers.11.mlp.up_proj",
+            "model.layers.11.self_attn.k_proj",
+            "model.layers.11.self_attn.o_proj",
+            "model.layers.11.self_attn.q_proj",
+            "model.layers.11.self_attn.v_proj",
+            "model.layers.12.mlp.down_proj",
+            "model.layers.12.mlp.gate_proj",
+            "model.layers.12.mlp.up_proj",
+            "model.layers.12.self_attn.k_proj",
+            "model.layers.12.self_attn.o_proj",
+            "model.layers.12.self_attn.q_proj",
+            "model.layers.12.self_attn.v_proj",
+            "model.layers.13.mlp.down_proj",
+            "model.layers.13.mlp.gate_proj",
+            "model.layers.13.mlp.up_proj",
+            "model.layers.13.self_attn.k_proj",
+            "model.layers.13.self_attn.o_proj",
+            "model.layers.13.self_attn.q_proj",
+            "model.layers.13.self_attn.v_proj",
+            "model.layers.14.mlp.down_proj",
+            "model.layers.14.mlp.gate_proj",
+            "model.layers.14.mlp.up_proj",
+            "model.layers.14.self_attn.k_proj",
+            "model.layers.14.self_attn.o_proj",
+            "model.layers.14.self_attn.q_proj",
+            "model.layers.14.self_attn.v_proj",
+            "model.layers.15.mlp.down_proj",
+            "model.layers.15.mlp.gate_proj",
+            "model.layers.15.mlp.up_proj",
+            "model.layers.15.self_attn.k_proj",
+            "model.layers.15.self_attn.o_proj",
+            "model.layers.15.self_attn.q_proj",
+            "model.layers.15.self_attn.v_proj",
+            "model.layers.16.mlp.down_proj",
+            "model.layers.16.mlp.gate_proj",
+            "model.layers.16.mlp.up_proj",
+            "model.layers.16.self_attn.k_proj",
+            "model.layers.16.self_attn.o_proj",
+            "model.layers.16.self_attn.q_proj",
+            "model.layers.16.self_attn.v_proj",
+            "model.layers.17.mlp.down_proj",
+            "model.layers.17.mlp.gate_proj",
+            "model.layers.17.mlp.up_proj",
+            "model.layers.17.self_attn.k_proj",
+            "model.layers.17.self_attn.o_proj",
+            "model.layers.17.self_attn.q_proj",
+            "model.layers.17.self_attn.v_proj",
+            "model.layers.18.mlp.down_proj",
+            "model.layers.18.mlp.gate_proj",
+            "model.layers.18.mlp.up_proj",
+            "model.layers.18.self_attn.k_proj",
+            "model.layers.18.self_attn.o_proj",
+            "model.layers.18.self_attn.q_proj",
+            "model.layers.18.self_attn.v_proj",
+            "model.layers.19.mlp.down_proj",
+            "model.layers.19.mlp.gate_proj",
+            "model.layers.19.mlp.up_proj",
+            "model.layers.19.self_attn.k_proj",
+            "model.layers.19.self_attn.o_proj",
+            "model.layers.19.self_attn.q_proj",
+            "model.layers.19.self_attn.v_proj",
+            "model.layers.2.mlp.down_proj",
+            "model.layers.2.mlp.gate_proj",
+            "model.layers.2.mlp.up_proj",
+            "model.layers.2.self_attn.k_proj",
+            "model.layers.2.self_attn.o_proj",
+            "model.layers.2.self_attn.q_proj",
+            "model.layers.2.self_attn.v_proj",
+            "model.layers.20.mlp.down_proj",
+            "model.layers.20.mlp.gate_proj",
+            "model.layers.20.mlp.up_proj",
+            "model.layers.20.self_attn.k_proj",
+            "model.layers.20.self_attn.o_proj",
+            "model.layers.20.self_attn.q_proj",
+            "model.layers.20.self_attn.v_proj",
+            "model.layers.21.mlp.down_proj",
+            "model.layers.21.mlp.gate_proj",
+            "model.layers.21.mlp.up_proj",
+            "model.layers.21.self_attn.k_proj",
+            "model.layers.21.self_attn.o_proj",
+            "model.layers.21.self_attn.q_proj",
+            "model.layers.21.self_attn.v_proj",
+            "model.layers.22.mlp.down_proj",
+            "model.layers.22.mlp.gate_proj",
+            "model.layers.22.mlp.up_proj",
+            "model.layers.22.self_attn.k_proj",
+            "model.layers.22.self_attn.o_proj",
+            "model.layers.22.self_attn.q_proj",
+            "model.layers.22.self_attn.v_proj",
+            "model.layers.23.mlp.down_proj",
+            "model.layers.23.mlp.gate_proj",
+            "model.layers.23.mlp.up_proj",
+            "model.layers.23.self_attn.k_proj",
+            "model.layers.23.self_attn.o_proj",
+            "model.layers.23.self_attn.q_proj",
+            "model.layers.23.self_attn.v_proj",
+            "model.layers.24.mlp.down_proj",
+            "model.layers.24.mlp.gate_proj",
+            "model.layers.24.mlp.up_proj",
+            "model.layers.24.self_attn.k_proj",
+            "model.layers.24.self_attn.o_proj",
+            "model.layers.24.self_attn.q_proj",
+            "model.layers.24.self_attn.v_proj",
+            "model.layers.25.mlp.down_proj",
+            "model.layers.25.mlp.gate_proj",
+            "model.layers.25.mlp.up_proj",
+            "model.layers.25.self_attn.k_proj",
+            "model.layers.25.self_attn.o_proj",
+            "model.layers.25.self_attn.q_proj",
+            "model.layers.25.self_attn.v_proj",
+            "model.layers.26.mlp.down_proj",
+            "model.layers.26.mlp.gate_proj",
+            "model.layers.26.mlp.up_proj",
+            "model.layers.26.self_attn.k_proj",
+            "model.layers.26.self_attn.o_proj",
+            "model.layers.26.self_attn.q_proj",
+            "model.layers.26.self_attn.v_proj",
+            "model.layers.27.mlp.down_proj",
+            "model.layers.27.mlp.gate_proj",
+            "model.layers.27.mlp.up_proj",
+            "model.layers.27.self_attn.k_proj",
+            "model.layers.27.self_attn.o_proj",
+            "model.layers.27.self_attn.q_proj",
+            "model.layers.27.self_attn.v_proj",
+            "model.layers.3.mlp.down_proj",
+            "model.layers.3.mlp.gate_proj",
+            "model.layers.3.mlp.up_proj",
+            "model.layers.3.self_attn.k_proj",
+            "model.layers.3.self_attn.o_proj",
+            "model.layers.3.self_attn.q_proj",
+            "model.layers.3.self_attn.v_proj",
+            "model.layers.4.mlp.down_proj",
+            "model.layers.4.mlp.gate_proj",
+            "model.layers.4.mlp.up_proj",
+            "model.layers.4.self_attn.k_proj",
+            "model.layers.4.self_attn.o_proj",
+            "model.layers.4.self_attn.q_proj",
+            "model.layers.4.self_attn.v_proj",
+            "model.layers.5.mlp.down_proj",
+            "model.layers.5.mlp.gate_proj",
+            "model.layers.5.mlp.up_proj",
+            "model.layers.5.self_attn.k_proj",
+            "model.layers.5.self_attn.o_proj",
+            "model.layers.5.self_attn.q_proj",
+            "model.layers.5.self_attn.v_proj",
+            "model.layers.6.mlp.down_proj",
+            "model.layers.6.mlp.gate_proj",
+            "model.layers.6.mlp.up_proj",
+            "model.layers.6.self_attn.k_proj",
+            "model.layers.6.self_attn.o_proj",
+            "model.layers.6.self_attn.q_proj",
+            "model.layers.6.self_attn.v_proj",
+            "model.layers.7.mlp.down_proj",
+            "model.layers.7.mlp.gate_proj",
+            "model.layers.7.mlp.up_proj",
+            "model.layers.7.self_attn.k_proj",
+            "model.layers.7.self_attn.o_proj",
+            "model.layers.7.self_attn.q_proj",
+            "model.layers.7.self_attn.v_proj",
+            "model.layers.8.mlp.down_proj",
+            "model.layers.8.mlp.gate_proj",
+            "model.layers.8.mlp.up_proj",
+            "model.layers.8.self_attn.k_proj",
+            "model.layers.8.self_attn.o_proj",
+            "model.layers.8.self_attn.q_proj",
+            "model.layers.8.self_attn.v_proj",
+            "model.layers.9.mlp.down_proj",
+            "model.layers.9.mlp.gate_proj",
+            "model.layers.9.mlp.up_proj",
+            "model.layers.9.self_attn.k_proj",
+            "model.layers.9.self_attn.o_proj",
+            "model.layers.9.self_attn.q_proj",
+            "model.layers.9.self_attn.v_proj"
+          ],
+          "downloads": 98
+        }
+      ],
+      "shared_modules": [
+        "model.layers.0.mlp.down_proj",
+        "model.layers.0.mlp.gate_proj",
+        "model.layers.0.mlp.up_proj",
+        "model.layers.0.self_attn.k_proj",
+        "model.layers.0.self_attn.o_proj",
+        "model.layers.0.self_attn.q_proj",
+        "model.layers.0.self_attn.v_proj",
+        "model.layers.1.mlp.down_proj",
+        "model.layers.1.mlp.gate_proj",
+        "model.layers.1.mlp.up_proj",
+        "model.layers.1.self_attn.k_proj",
+        "model.layers.1.self_attn.o_proj",
+        "model.layers.1.self_attn.q_proj",
+        "model.layers.1.self_attn.v_proj",
+        "model.layers.10.mlp.down_proj",
+        "model.layers.10.mlp.gate_proj",
+        "model.layers.10.mlp.up_proj",
+        "model.layers.10.self_attn.k_proj",
+        "model.layers.10.self_attn.o_proj",
+        "model.layers.10.self_attn.q_proj",
+        "model.layers.10.self_attn.v_proj",
+        "model.layers.11.mlp.down_proj",
+        "model.layers.11.mlp.gate_proj",
+        "model.layers.11.mlp.up_proj",
+        "model.layers.11.self_attn.k_proj",
+        "model.layers.11.self_attn.o_proj",
+        "model.layers.11.self_attn.q_proj",
+        "model.layers.11.self_attn.v_proj",
+        "model.layers.12.mlp.down_proj",
+        "model.layers.12.mlp.gate_proj",
+        "model.layers.12.mlp.up_proj",
+        "model.layers.12.self_attn.k_proj",
+        "model.layers.12.self_attn.o_proj",
+        "model.layers.12.self_attn.q_proj",
+        "model.layers.12.self_attn.v_proj",
+        "model.layers.13.mlp.down_proj",
+        "model.layers.13.mlp.gate_proj",
+        "model.layers.13.mlp.up_proj",
+        "model.layers.13.self_attn.k_proj",
+        "model.layers.13.self_attn.o_proj",
+        "model.layers.13.self_attn.q_proj",
+        "model.layers.13.self_attn.v_proj",
+        "model.layers.14.mlp.down_proj",
+        "model.layers.14.mlp.gate_proj",
+        "model.layers.14.mlp.up_proj",
+        "model.layers.14.self_attn.k_proj",
+        "model.layers.14.self_attn.o_proj",
+        "model.layers.14.self_attn.q_proj",
+        "model.layers.14.self_attn.v_proj",
+        "model.layers.15.mlp.down_proj",
+        "model.layers.15.mlp.gate_proj",
+        "model.layers.15.mlp.up_proj",
+        "model.layers.15.self_attn.k_proj",
+        "model.layers.15.self_attn.o_proj",
+        "model.layers.15.self_attn.q_proj",
+        "model.layers.15.self_attn.v_proj",
+        "model.layers.16.mlp.down_proj",
+        "model.layers.16.mlp.gate_proj",
+        "model.layers.16.mlp.up_proj",
+        "model.layers.16.self_attn.k_proj",
+        "model.layers.16.self_attn.o_proj",
+        "model.layers.16.self_attn.q_proj",
+        "model.layers.16.self_attn.v_proj",
+        "model.layers.17.mlp.down_proj",
+        "model.layers.17.mlp.gate_proj",
+        "model.layers.17.mlp.up_proj",
+        "model.layers.17.self_attn.k_proj",
+        "model.layers.17.self_attn.o_proj",
+        "model.layers.17.self_attn.q_proj",
+        "model.layers.17.self_attn.v_proj",
+        "model.layers.18.mlp.down_proj",
+        "model.layers.18.mlp.gate_proj",
+        "model.layers.18.mlp.up_proj",
+        "model.layers.18.self_attn.k_proj",
+        "model.layers.18.self_attn.o_proj",
+        "model.layers.18.self_attn.q_proj",
+        "model.layers.18.self_attn.v_proj",
+        "model.layers.19.mlp.down_proj",
+        "model.layers.19.mlp.gate_proj",
+        "model.layers.19.mlp.up_proj",
+        "model.layers.19.self_attn.k_proj",
+        "model.layers.19.self_attn.o_proj",
+        "model.layers.19.self_attn.q_proj",
+        "model.layers.19.self_attn.v_proj",
+        "model.layers.2.mlp.down_proj",
+        "model.layers.2.mlp.gate_proj",
+        "model.layers.2.mlp.up_proj",
+        "model.layers.2.self_attn.k_proj",
+        "model.layers.2.self_attn.o_proj",
+        "model.layers.2.self_attn.q_proj",
+        "model.layers.2.self_attn.v_proj",
+        "model.layers.20.mlp.down_proj",
+        "model.layers.20.mlp.gate_proj",
+        "model.layers.20.mlp.up_proj",
+        "model.layers.20.self_attn.k_proj",
+        "model.layers.20.self_attn.o_proj",
+        "model.layers.20.self_attn.q_proj",
+        "model.layers.20.self_attn.v_proj",
+        "model.layers.21.mlp.down_proj",
+        "model.layers.21.mlp.gate_proj",
+        "model.layers.21.mlp.up_proj",
+        "model.layers.21.self_attn.k_proj",
+        "model.layers.21.self_attn.o_proj",
+        "model.layers.21.self_attn.q_proj",
+        "model.layers.21.self_attn.v_proj",
+        "model.layers.22.mlp.down_proj",
+        "model.layers.22.mlp.gate_proj",
+        "model.layers.22.mlp.up_proj",
+        "model.layers.22.self_attn.k_proj",
+        "model.layers.22.self_attn.o_proj",
+        "model.layers.22.self_attn.q_proj",
+        "model.layers.22.self_attn.v_proj",
+        "model.layers.23.mlp.down_proj",
+        "model.layers.23.mlp.gate_proj",
+        "model.layers.23.mlp.up_proj",
+        "model.layers.23.self_attn.k_proj",
+        "model.layers.23.self_attn.o_proj",
+        "model.layers.23.self_attn.q_proj",
+        "model.layers.23.self_attn.v_proj",
+        "model.layers.24.mlp.down_proj",
+        "model.layers.24.mlp.gate_proj",
+        "model.layers.24.mlp.up_proj",
+        "model.layers.24.self_attn.k_proj",
+        "model.layers.24.self_attn.o_proj",
+        "model.layers.24.self_attn.q_proj",
+        "model.layers.24.self_attn.v_proj",
+        "model.layers.25.mlp.down_proj",
+        "model.layers.25.mlp.gate_proj",
+        "model.layers.25.mlp.up_proj",
+        "model.layers.25.self_attn.k_proj",
+        "model.layers.25.self_attn.o_proj",
+        "model.layers.25.self_attn.q_proj",
+        "model.layers.25.self_attn.v_proj",
+        "model.layers.26.mlp.down_proj",
+        "model.layers.26.mlp.gate_proj",
+        "model.layers.26.mlp.up_proj",
+        "model.layers.26.self_attn.k_proj",
+        "model.layers.26.self_attn.o_proj",
+        "model.layers.26.self_attn.q_proj",
+        "model.layers.26.self_attn.v_proj",
+        "model.layers.27.mlp.down_proj",
+        "model.layers.27.mlp.gate_proj",
+        "model.layers.27.mlp.up_proj",
+        "model.layers.27.self_attn.k_proj",
+        "model.layers.27.self_attn.o_proj",
+        "model.layers.27.self_attn.q_proj",
+        "model.layers.27.self_attn.v_proj",
+        "model.layers.3.mlp.down_proj",
+        "model.layers.3.mlp.gate_proj",
+        "model.layers.3.mlp.up_proj",
+        "model.layers.3.self_attn.k_proj",
+        "model.layers.3.self_attn.o_proj",
+        "model.layers.3.self_attn.q_proj",
+        "model.layers.3.self_attn.v_proj",
+        "model.layers.4.mlp.down_proj",
+        "model.layers.4.mlp.gate_proj",
+        "model.layers.4.mlp.up_proj",
+        "model.layers.4.self_attn.k_proj",
+        "model.layers.4.self_attn.o_proj",
+        "model.layers.4.self_attn.q_proj",
+        "model.layers.4.self_attn.v_proj",
+        "model.layers.5.mlp.down_proj",
+        "model.layers.5.mlp.gate_proj",
+        "model.layers.5.mlp.up_proj",
+        "model.layers.5.self_attn.k_proj",
+        "model.layers.5.self_attn.o_proj",
+        "model.layers.5.self_attn.q_proj",
+        "model.layers.5.self_attn.v_proj",
+        "model.layers.6.mlp.down_proj",
+        "model.layers.6.mlp.gate_proj",
+        "model.layers.6.mlp.up_proj",
+        "model.layers.6.self_attn.k_proj",
+        "model.layers.6.self_attn.o_proj",
+        "model.layers.6.self_attn.q_proj",
+        "model.layers.6.self_attn.v_proj",
+        "model.layers.7.mlp.down_proj",
+        "model.layers.7.mlp.gate_proj",
+        "model.layers.7.mlp.up_proj",
+        "model.layers.7.self_attn.k_proj",
+        "model.layers.7.self_attn.o_proj",
+        "model.layers.7.self_attn.q_proj",
+        "model.layers.7.self_attn.v_proj",
+        "model.layers.8.mlp.down_proj",
+        "model.layers.8.mlp.gate_proj",
+        "model.layers.8.mlp.up_proj",
+        "model.layers.8.self_attn.k_proj",
+        "model.layers.8.self_attn.o_proj",
+        "model.layers.8.self_attn.q_proj",
+        "model.layers.8.self_attn.v_proj",
+        "model.layers.9.mlp.down_proj",
+        "model.layers.9.mlp.gate_proj",
+        "model.layers.9.mlp.up_proj",
+        "model.layers.9.self_attn.k_proj",
+        "model.layers.9.self_attn.o_proj",
+        "model.layers.9.self_attn.q_proj",
+        "model.layers.9.self_attn.v_proj"
+      ]
+    },
+    {
+      "namespace": "predibase",
+      "base_model": "mistralai/Mistral-7B-v0.1",
+      "members": [
+        {
+          "repo": "predibase/gsm8k",
+          "rank": 8,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 1627
+        },
+        {
+          "repo": "predibase/dbpedia",
+          "rank": 8,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 251
+        },
+        {
+          "repo": "predibase/tldr_content_gen",
+          "rank": 8,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 99
+        }
+      ],
+      "shared_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "NAMAA-Space",
+      "base_model": "unsloth/qwen2-vl-2b-instruct-unsloth-bnb-4bit",
+      "members": [
+        {
+          "repo": "NAMAA-Space/Qari-OCR-0.2.2.1-VL-2B-Instruct",
+          "rank": 16,
+          "target_modules": [
+            "(?:.*?(?:vision|image|visual|patch|language|text).*?(?:self_attn|attention|attn|mlp|feed_forward|ffn|dense).*?(?:qkv|proj|fc1|fc2|q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj).*?)|(?:\\bmodel\\.layers\\.[\\d]{1,}\\.(?:self_attn|attention|attn|mlp|feed_forward|ffn|dense)\\.(?:(?:qkv|proj|fc1|fc2|q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)))"
+          ],
+          "downloads": 1614
+        },
+        {
+          "repo": "NAMAA-Space/Qari-OCR-0.1-VL-2B-Instruct",
+          "rank": 16,
+          "target_modules": [
+            "(?:.*?(?:vision|image|visual|patch|language|text).*?(?:self_attn|attention|attn|mlp|feed_forward|ffn|dense).*?(?:qkv|proj|fc1|fc2|q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj).*?)|(?:\\bmodel\\.layers\\.[\\d]{1,}\\.(?:self_attn|attention|attn|mlp|feed_forward|ffn|dense)\\.(?:(?:qkv|proj|fc1|fc2|q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)))"
+          ],
+          "downloads": 515
+        }
+      ],
+      "shared_modules": [
+        "(?:.*?(?:vision|image|visual|patch|language|text).*?(?:self_attn|attention|attn|mlp|feed_forward|ffn|dense).*?(?:qkv|proj|fc1|fc2|q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj).*?)|(?:\\bmodel\\.layers\\.[\\d]{1,}\\.(?:self_attn|attention|attn|mlp|feed_forward|ffn|dense)\\.(?:(?:qkv|proj|fc1|fc2|q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)))"
+      ]
+    },
+    {
+      "namespace": "hallisky",
+      "base_model": "meta-llama/Meta-Llama-3-8B",
+      "members": [
+        {
+          "repo": "hallisky/lora-type-narrative-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 1327
+        },
+        {
+          "repo": "hallisky/lora-grade-elementary-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 389
+        },
+        {
+          "repo": "hallisky/lora-formality-formal-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 244
+        },
+        {
+          "repo": "hallisky/lora-voice-active-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 239
+        },
+        {
+          "repo": "hallisky/lora-voice-passive-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 237
+        },
+        {
+          "repo": "hallisky/lora-sarcasm-more-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 236
+        },
+        {
+          "repo": "hallisky/lora-sarcasm-less-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 235
+        },
+        {
+          "repo": "hallisky/lora-type-descriptive-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 235
+        },
+        {
+          "repo": "hallisky/lora-type-expository-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 234
+        },
+        {
+          "repo": "hallisky/lora-grade-highschool-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 234
+        },
+        {
+          "repo": "hallisky/lora-function-less-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 234
+        },
+        {
+          "repo": "hallisky/lora-type-persuasive-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 233
+        },
+        {
+          "repo": "hallisky/lora-formality-informal-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 232
+        },
+        {
+          "repo": "hallisky/lora-function-more-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 231
+        },
+        {
+          "repo": "hallisky/lora-length-long-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 231
+        },
+        {
+          "repo": "hallisky/lora-length-short-llama-3-8b",
+          "rank": 16,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 231
+        }
+      ],
+      "shared_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "EhtishamAhmed",
+      "base_model": "unsloth/gemma-3-4b-it-unsloth-bnb-4bit",
+      "members": [
+        {
+          "repo": "EhtishamAhmed/gemma3-4b-full-banking-faq-60-20-20-lora",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 1215
+        },
+        {
+          "repo": "EhtishamAhmed/gemma3-4b-full-banking-faq-95-5-lora",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 90
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "LASR-Callum",
+      "base_model": "Qwen/Qwen3.6-27B",
+      "members": [
+        {
+          "repo": "LASR-Callum/qwen3.6-27b-lora-t2-9284-synthdoc-716-r64",
+          "rank": 64,
+          "target_modules": [
+            "model\\.language_model\\..*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+          ],
+          "downloads": 806
+        },
+        {
+          "repo": "LASR-Callum/qwen3.6-27b-lora-table2-only-9284-r64",
+          "rank": 64,
+          "target_modules": [
+            "model\\.language_model\\..*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+          ],
+          "downloads": 204
+        },
+        {
+          "repo": "LASR-Callum/qwen3.6-27b-lora-table2-synthdoc-r64",
+          "rank": 64,
+          "target_modules": [
+            "model\\.language_model\\..*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+          ],
+          "downloads": 186
+        },
+        {
+          "repo": "LASR-Callum/qwen3.6-27b-difficult-advice-tulu-lora-10-90-assistant_loss_only",
+          "rank": 32,
+          "target_modules": [
+            "model\\.language_model\\..*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+          ],
+          "downloads": 98
+        },
+        {
+          "repo": "LASR-Callum/qwen3.6-27b-difficult-advice-tulu-lora-20-80",
+          "rank": 32,
+          "target_modules": [
+            "model\\.language_model\\..*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+          ],
+          "downloads": 96
+        }
+      ],
+      "shared_modules": [
+        "model\\.language_model\\..*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+      ]
+    },
+    {
+      "namespace": "CAYTU",
+      "base_model": "openai/whisper-large-v2",
+      "members": [
+        {
+          "repo": "CAYTU/whosper-large-v2",
+          "rank": 32,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 800
+        },
+        {
+          "repo": "CAYTU/whosper-large",
+          "rank": 32,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 158
+        }
+      ],
+      "shared_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "lorahub",
+      "base_model": "google/flan-t5-large",
+      "members": [
+        {
+          "repo": "lorahub/flan_t5_large-super_glue_wic",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 689
+        },
+        {
+          "repo": "lorahub/flan_t5_large-dbpedia_14_given_a_list_of_category_what_does_the_title_belong_to",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 636
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiqa_what_is_the_final_step_of_the_following_process",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 632
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiqa_which_of_the_following_is_the_supposed_perturbation",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 558
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_qa_Jeopardy_style",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 462
+        },
+        {
+          "repo": "lorahub/flan_t5_large-newsroom",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 445
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quail_context_question_description_answer_text",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 434
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_dbidaf_based_on",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 428
+        },
+        {
+          "repo": "lorahub/flan_t5_large-true_case",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 422
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_SelfRC_title_generation",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 415
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quartz_read_passage_below_choose",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 402
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_high_Select_the_best_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 395
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_hop_original_choose_best_object_affirmative_1",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 353
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_Found_Context_Online",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 350
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_middle_Is_this_the_right_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 342
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiqa_what_is_the_missing_first_step",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 340
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_qa_found_on_google",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 338
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quail_context_question_description_answer_id",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 338
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_Guess_Title_For_Context",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 336
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quail_no_prompt_text",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 336
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quail_context_description_question_answer_text",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 336
+        },
+        {
+          "repo": "lorahub/flan_t5_large-word_segment",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 335
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quartz_given_the_fact_answer_the_q",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 331
+        },
+        {
+          "repo": "lorahub/flan_t5_large-dream_baseline",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 306
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_middle_Taking_a_test",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 306
+        },
+        {
+          "repo": "lorahub/flan_t5_large-glue_mrpc",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 301
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quarel_logic_test",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 300
+        },
+        {
+          "repo": "lorahub/flan_t5_large-qasc_qa_with_separated_facts_3",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 299
+        },
+        {
+          "repo": "lorahub/flan_t5_large-anli_r1",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 297
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_SelfRC_movie_director",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 285
+        },
+        {
+          "repo": "lorahub/flan_t5_large-super_glue_wsc.fixed",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 283
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_hop_original_choose_best_object_interrogative_2",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 277
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_dbert_answer_the_following_q",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 274
+        },
+        {
+          "repo": "lorahub/flan_t5_large-social_i_qa_Generate_the_question_from_the_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 259
+        },
+        {
+          "repo": "lorahub/flan_t5_large-qasc_is_correct_1",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 255
+        },
+        {
+          "repo": "lorahub/flan_t5_large-glue_wnli",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 255
+        },
+        {
+          "repo": "lorahub/flan_t5_large-glue_sst2",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 255
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quarel_choose_between",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 252
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_middle_Write_a_multi_choice_question_options_given_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 252
+        },
+        {
+          "repo": "lorahub/flan_t5_large-glue_cola",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 250
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_hop_original_generate_subject",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 249
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_ParaphraseRC_question_answering",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 247
+        },
+        {
+          "repo": "lorahub/flan_t5_large-squad_v2.0",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 247
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_hop_original_choose_best_object_interrogative_1",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 246
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quac",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 245
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_prompt_bottom_hint_beginning",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 245
+        },
+        {
+          "repo": "lorahub/flan_t5_large-squad_v1.1",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 244
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_SelfRC_generate_question_by_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 244
+        },
+        {
+          "repo": "lorahub/flan_t5_large-lambada",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 243
+        },
+        {
+          "repo": "lorahub/flan_t5_large-app_reviews_categorize_rating_using_review",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 242
+        },
+        {
+          "repo": "lorahub/flan_t5_large-amazon_polarity_User_recommend_this_product",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 240
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_bio_key_content",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 240
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_bio_guess_person",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 240
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_qa_Topic_Prediction_Answer_Only",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 238
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_high_Write_a_multi_choice_question_options_given_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 235
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wmt16_translate_tr-en",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 234
+        },
+        {
+          "repo": "lorahub/flan_t5_large-gem_e2e_nlg",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 233
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_given_background_situation",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 231
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_dbidaf_question_context_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 231
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_middle_Select_the_best_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 231
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quail_context_question_answer_description_id",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 230
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_bio_who",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 229
+        },
+        {
+          "repo": "lorahub/flan_t5_large-web_questions_get_the_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 228
+        },
+        {
+          "repo": "lorahub/flan_t5_large-definite_pronoun_resolution",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 227
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiqa_effect_with_label_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 226
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_droberta_tell_what_it_is",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 225
+        },
+        {
+          "repo": "lorahub/flan_t5_large-gem_web_nlg_en",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 225
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_dbidaf_tell_what_it_is",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 225
+        },
+        {
+          "repo": "lorahub/flan_t5_large-amazon_polarity_flattering_or_not",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 224
+        },
+        {
+          "repo": "lorahub/flan_t5_large-qasc_qa_with_separated_facts_5",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 224
+        },
+        {
+          "repo": "lorahub/flan_t5_large-paws_wiki",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 224
+        },
+        {
+          "repo": "lorahub/flan_t5_large-sciq_Multiple_Choice_Question_First",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 224
+        },
+        {
+          "repo": "lorahub/flan_t5_large-yelp_polarity_reviews",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 223
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quarel_do_not_use",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 223
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_ParaphraseRC_movie_director",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 223
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quarel_testing_students",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 223
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_qa_automatic_system",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 223
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wmt16_translate_ro-en",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 222
+        },
+        {
+          "repo": "lorahub/flan_t5_large-sciq_Direct_Question_Closed_Book_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 222
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ag_news_subset",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 214
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_bio_comprehension",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 213
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quartz_having_read_above_passage",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 213
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_prompt_beginning",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 212
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quail_description_context_question_answer_id",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 212
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_ParaphraseRC_answer_question",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 212
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_SelfRC_question_answering",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 212
+        },
+        {
+          "repo": "lorahub/flan_t5_large-web_questions_whats_the_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 205
+        },
+        {
+          "repo": "lorahub/flan_t5_large-dbpedia_14_given_list_what_category_does_the_paragraph_belong_to",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 202
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_plain_no_background",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 190
+        },
+        {
+          "repo": "lorahub/flan_t5_large-dream_read_the_following_conversation_and_answer_the_question",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 190
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_hop_original_choose_best_object_affirmative_3",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 188
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiqa_what_might_be_the_first_step_of_the_process",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 185
+        },
+        {
+          "repo": "lorahub/flan_t5_large-social_i_qa_Check_if_a_random_answer_is_valid_or_not",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 184
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_high_Is_this_the_right_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 179
+        },
+        {
+          "repo": "lorahub/flan_t5_large-imdb_reviews_plain_text",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 179
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_hop_original_generate_subject_and_object",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 178
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_dbert_question_context_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 172
+        },
+        {
+          "repo": "lorahub/flan_t5_large-kilt_tasks_hotpotqa_final_exam",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 167
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_qa_exercise",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 166
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_What_Is_The_Answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 160
+        },
+        {
+          "repo": "lorahub/flan_t5_large-trec",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 148
+        },
+        {
+          "repo": "lorahub/flan_t5_large-coqa",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 144
+        },
+        {
+          "repo": "lorahub/flan_t5_large-dbpedia_14_given_a_choice_of_categories_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 141
+        },
+        {
+          "repo": "lorahub/flan_t5_large-glue_qnli",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 139
+        },
+        {
+          "repo": "lorahub/flan_t5_large-super_glue_multirc",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 138
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_ParaphraseRC_title_generation",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 137
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_droberta_question_context_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 136
+        },
+        {
+          "repo": "lorahub/flan_t5_large-snli",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 134
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_dbidaf_answer_the_following_q",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 133
+        },
+        {
+          "repo": "lorahub/flan_t5_large-amazon_polarity_would_you_buy",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 133
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_SelfRC_decide_worth_it",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 132
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_hop_original_choose_best_object_affirmative_2",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 131
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_plain_background_situation",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 131
+        },
+        {
+          "repo": "lorahub/flan_t5_large-app_reviews_convert_to_rating",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 131
+        },
+        {
+          "repo": "lorahub/flan_t5_large-gem_dart",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 131
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_qa_Topic_Prediction_Question_and_Answer_Pair",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 131
+        },
+        {
+          "repo": "lorahub/flan_t5_large-math_dataset_algebra__linear_1d",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 130
+        },
+        {
+          "repo": "lorahub/flan_t5_large-amazon_polarity_user_satisfied",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 130
+        },
+        {
+          "repo": "lorahub/flan_t5_large-sentiment140",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 130
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_middle_Select_the_best_answer_generate_span_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 129
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_high_Taking_a_test",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 129
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_Given_Context_Answer_Question",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 129
+        },
+        {
+          "repo": "lorahub/flan_t5_large-social_i_qa_Show_choices_and_generate_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 128
+        },
+        {
+          "repo": "lorahub/flan_t5_large-anli_r2",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 128
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_Read_And_Extract_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 125
+        },
+        {
+          "repo": "lorahub/flan_t5_large-super_glue_rte",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 125
+        },
+        {
+          "repo": "lorahub/flan_t5_large-glue_stsb",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 125
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_droberta_answer_the_following_q",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 125
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_dbert_based_on",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 124
+        },
+        {
+          "repo": "lorahub/flan_t5_large-para_crawl_enes",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 124
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_plain_bottom_hint",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 124
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_qa_Decide_good_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 123
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quarel_heres_a_story",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 123
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiqa_what_might_be_the_last_step_of_the_process",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 123
+        },
+        {
+          "repo": "lorahub/flan_t5_large-amazon_polarity_negative_or_positive_tone",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 123
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_Answer_Question_Given_Context",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 122
+        },
+        {
+          "repo": "lorahub/flan_t5_large-sciq_Direct_Question",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 122
+        },
+        {
+          "repo": "lorahub/flan_t5_large-glue_qqp",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 120
+        },
+        {
+          "repo": "lorahub/flan_t5_large-qasc_qa_with_separated_facts_1",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 120
+        },
+        {
+          "repo": "lorahub/flan_t5_large-glue_mnli",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 119
+        },
+        {
+          "repo": "lorahub/flan_t5_large-bool_q",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 119
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_background_new_situation_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 117
+        },
+        {
+          "repo": "lorahub/flan_t5_large-qasc_is_correct_2",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 117
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quartz_answer_question_below",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 117
+        },
+        {
+          "repo": "lorahub/flan_t5_large-fix_punct",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 116
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_prompt_bottom_no_hint",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 116
+        },
+        {
+          "repo": "lorahub/flan_t5_large-anli_r3",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 116
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiqa_effect_with_string_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 116
+        },
+        {
+          "repo": "lorahub/flan_t5_large-drop",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 116
+        },
+        {
+          "repo": "lorahub/flan_t5_large-super_glue_cb",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 115
+        },
+        {
+          "repo": "lorahub/flan_t5_large-sciq_Multiple_Choice_Closed_Book_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 114
+        },
+        {
+          "repo": "lorahub/flan_t5_large-sciq_Multiple_Choice",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 114
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_ParaphraseRC_decide_worth_it",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 114
+        },
+        {
+          "repo": "lorahub/flan_t5_large-dbpedia_14_pick_one_category_for_the_following_text",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 114
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_qa_Is_This_True_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 113
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wmt14_translate_fr-en",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 113
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_Context_Contains_Answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 113
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_SelfRC_answer_question",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 113
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quartz_use_info_from_paragraph_question",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 113
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quail_context_description_question_answer_id",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 112
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_Guess_Answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 112
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_Find_Answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 112
+        },
+        {
+          "repo": "lorahub/flan_t5_large-kilt_tasks_hotpotqa_complex_question",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 112
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_dbert_tell_what_it_is",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 112
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quail_context_question_answer_description_text",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 112
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_SelfRC_extract_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 112
+        },
+        {
+          "repo": "lorahub/flan_t5_large-amazon_polarity_Is_this_product_review_positive",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 112
+        },
+        {
+          "repo": "lorahub/flan_t5_large-amazon_polarity_Is_this_review",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 112
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quartz_paragraph_question_plain_concat",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_Answer_Friend_Question",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_read_background_situation",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-qasc_qa_with_separated_facts_2",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-amazon_polarity_convey_negative_or_positive_sentiment",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_qa_Topic_Prediction_Question_Only",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quail_description_context_question_answer_text",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_hop_original_explain_relation",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-duorc_ParaphraseRC_extract_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_hop_original_generate_object",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quartz_use_info_from_question_paragraph",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_high_Select_the_best_answer_generate_span_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-adversarial_qa_droberta_based_on",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_prompt_mix",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quartz_answer_question_based_on",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quoref_Answer_Test",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-amazon_polarity_Is_this_review_negative",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-social_i_qa_Show_choices_and_generate_index",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-quail_no_prompt_id",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiqa_does_the_supposed_perturbation_have_an_effect",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_new_situation_background_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 110
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_high_Select_the_best_answer_no_instructions_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 110
+        },
+        {
+          "repo": "lorahub/flan_t5_large-race_middle_Select_the_best_answer_no_instructions_",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 110
+        },
+        {
+          "repo": "lorahub/flan_t5_large-web_questions_potential_correct_answer",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 104
+        },
+        {
+          "repo": "lorahub/flan_t5_large-ropes_background_situation_middle",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 103
+        },
+        {
+          "repo": "lorahub/flan_t5_large-qasc_qa_with_combined_facts_1",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 103
+        },
+        {
+          "repo": "lorahub/flan_t5_large-wiki_bio_what_content",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 103
+        },
+        {
+          "repo": "lorahub/flan_t5_large-qasc_qa_with_separated_facts_4",
+          "rank": 16,
+          "target_modules": [
+            "q",
+            "v"
+          ],
+          "downloads": 101
+        }
+      ],
+      "shared_modules": [
+        "q",
+        "v"
+      ]
+    },
+    {
+      "namespace": "kmerakeb",
+      "base_model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "members": [
+        {
+          "repo": "kmerakeb/Qwen2.5-1.5B-Kabyle-Dialog-v9",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 623
+        },
+        {
+          "repo": "kmerakeb/Qwen2.5-1.5B-Kabyle-Dialog",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 137
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "adamkarvonen",
+      "base_model": "Qwen/Qwen3-8B",
+      "members": [
+        {
+          "repo": "adamkarvonen/checkpoints_latentqa_cls_past_lens_addition_Qwen3-8B",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 617
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-personaqa_shuffled_3_epochs",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 599
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-smile_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 599
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-ship_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 531
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-gold_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 511
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-snow_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 507
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-cloud_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 503
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-moon_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 502
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-blue_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 502
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-leaf_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 502
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-jump_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 499
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-wave_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 498
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-clock_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 498
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-flame_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 497
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-chair_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 497
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-book_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 497
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-rock_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 496
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-green_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 496
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-salt_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 496
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-flag_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 494
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-song_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 493
+        },
+        {
+          "repo": "adamkarvonen/Qwen3-8B-taboo-dance_50_mix",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 493
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "mudasir13cs",
+      "base_model": "Qwen/Qwen2.5-VL-3B-Instruct",
+      "members": [
+        {
+          "repo": "mudasir13cs/qwen25-vl-3b-floorplan-grpo",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 592
+        },
+        {
+          "repo": "mudasir13cs/qwen25-vl-3b-floorplan-sft",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 423
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "chandra1976",
+      "base_model": "google/vit-base-patch16-224-in21k",
+      "members": [
+        {
+          "repo": "chandra1976/vit-finetuned-chessman2",
+          "rank": 8,
+          "target_modules": [
+            "key",
+            "query",
+            "value"
+          ],
+          "downloads": 565
+        },
+        {
+          "repo": "chandra1976/vit-base-lora-finetuned-chessman",
+          "rank": 8,
+          "target_modules": [
+            "query",
+            "value"
+          ],
+          "downloads": 176
+        }
+      ],
+      "shared_modules": [
+        "query",
+        "value"
+      ]
+    },
+    {
+      "namespace": "Nanthasit",
+      "base_model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "members": [
+        {
+          "repo": "Nanthasit/sakthai-context-1.5b-tools",
+          "rank": 16,
+          "target_modules": [
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 520
+        },
+        {
+          "repo": "Nanthasit/sakthai-context-1.5b-tools-v2",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 267
+        }
+      ],
+      "shared_modules": [
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "nazarkozak",
+      "base_model": "openai/whisper-small",
+      "members": [
+        {
+          "repo": "nazarkozak/whisper-small-disfluent-verbatim-lora",
+          "rank": 32,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 480
+        },
+        {
+          "repo": "nazarkozak/whisper-small-disfluent-smoothed-lora",
+          "rank": 32,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 114
+        }
+      ],
+      "shared_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "jahyungu",
+      "base_model": "allenai/OLMo-2-1124-7B-Instruct",
+      "members": [
+        {
+          "repo": "jahyungu/OLMo-2-1124-7B-Instruct-Social-Sciences",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 463
+        },
+        {
+          "repo": "jahyungu/OLMo-2-1124-7B-Instruct-Humanities",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 452
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "agentic-moral-alignment",
+      "base_model": "unsloth/Qwen3.5-9B",
+      "members": [
+        {
+          "repo": "agentic-moral-alignment/qwen35-9b__gtharm_pd_str_tft__gtharm_de__native_tool__r1__core_mark",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 444
+        },
+        {
+          "repo": "agentic-moral-alignment/qwen35-9b__gtharm_pd_str_tft__gtharm_game__native_tool__r1__core_mark",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 206
+        },
+        {
+          "repo": "agentic-moral-alignment/qwen35-9b__gtharm_pd_str_tft__gtharm_ut__native_tool__r1__core_mark",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 186
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "ceselder",
+      "base_model": "Qwen/Qwen3-8B",
+      "members": [
+        {
+          "repo": "ceselder/cot-oracle-qwen3-8b-final-sprint-checkpoint-no-DPO",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 429
+        },
+        {
+          "repo": "ceselder/maemm-qwen3-8b-invert-rl-v3-step600",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 101
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "aminLo",
+      "base_model": "google/flan-t5-base",
+      "members": [
+        {
+          "repo": "aminLo/best-date-model",
+          "rank": 32,
+          "target_modules": [
+            "embed_tokens",
+            "k",
+            "lm_head",
+            "ln_f",
+            "o",
+            "q",
+            "v",
+            "wi_0",
+            "wi_1",
+            "wi_2",
+            "wo"
+          ],
+          "downloads": 427
+        },
+        {
+          "repo": "aminLo/best-grade-model-2",
+          "rank": 64,
+          "target_modules": [
+            "k",
+            "o",
+            "q",
+            "v",
+            "wi_0",
+            "wi_1",
+            "wo"
+          ],
+          "downloads": 424
+        }
+      ],
+      "shared_modules": [
+        "k",
+        "o",
+        "q",
+        "v",
+        "wi_0",
+        "wi_1",
+        "wo"
+      ]
+    },
+    {
+      "namespace": "Jongbin-kr",
+      "base_model": "Qwen/Qwen2.5-Math-1.5B",
+      "members": [
+        {
+          "repo": "Jongbin-kr/qwen25-math15b-cvar-grpo-acemath-full3663-cl768-l005",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 395
+        },
+        {
+          "repo": "Jongbin-kr/qwen25-math15b-standard-grpo-acemath-full3663-cl768",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 250
+        },
+        {
+          "repo": "Jongbin-kr/qwen25-math15b-cvar-grpo-acemath-full3663-cl768-l025",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 162
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "kulits",
+      "base_model": "Qwen/Qwen3-0.6B",
+      "members": [
+        {
+          "repo": "kulits/BrickNet-0.6B-PT",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 387
+        },
+        {
+          "repo": "kulits/BrickNet-0.6B-SFT",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 269
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "Tevatron",
+      "base_model": "Tevatron/Qwen2.5-Omni-7B-Thinker",
+      "members": [
+        {
+          "repo": "Tevatron/OmniEmbed-v0.1",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 381
+        },
+        {
+          "repo": "Tevatron/OmniEmbed-v0.1-multivent",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 117
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "llm-semantic-router",
+      "base_model": "jhu-clsp/mmBERT-base",
+      "members": [
+        {
+          "repo": "llm-semantic-router/mlcommons-safety-classifier-level2-hazard",
+          "rank": 32,
+          "target_modules": [
+            "attn.Wo",
+            "attn.Wqkv",
+            "mlp.Wi",
+            "mlp.Wo"
+          ],
+          "downloads": 373
+        },
+        {
+          "repo": "llm-semantic-router/mmbert-intent-classifier-lora",
+          "rank": 32,
+          "target_modules": [
+            "attn.Wo",
+            "attn.Wqkv",
+            "mlp.Wi",
+            "mlp.Wo"
+          ],
+          "downloads": 183
+        }
+      ],
+      "shared_modules": [
+        "attn.Wo",
+        "attn.Wqkv",
+        "mlp.Wi",
+        "mlp.Wo"
+      ]
+    },
+    {
+      "namespace": "bharati2324",
+      "base_model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "members": [
+        {
+          "repo": "bharati2324/Qwen2.5-1.5B-Instruct-Code-LoRA-r16v3",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 363
+        },
+        {
+          "repo": "bharati2324/Qwen2.5-1.5B-Instruct-Code-LoRA-r16",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 124
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "jahyungu",
+      "base_model": "tiiuae/Falcon3-7B-Instruct",
+      "members": [
+        {
+          "repo": "jahyungu/Falcon3-7B-Instruct-v1-Easy",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 349
+        },
+        {
+          "repo": "jahyungu/Falcon3-7B-Instruct-v1-Hard",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 337
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "namanadep",
+      "base_model": "Qwen/Qwen2.5-7B-Instruct",
+      "members": [
+        {
+          "repo": "namanadep/Qwen2.5-7B-Manus-Distill",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 346
+        },
+        {
+          "repo": "namanadep/Qwen2.5-7B-Claude-Sonnet-Opus-Distill",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 251
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "Shawnno",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "members": [
+        {
+          "repo": "Shawnno/RL-sft-adapter",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 308
+        },
+        {
+          "repo": "Shawnno/RL-rm-adapter",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 258
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "ceselder",
+      "base_model": "unsloth/Qwen3-8B",
+      "members": [
+        {
+          "repo": "ceselder/qwen3-8b-ao-v3-best",
+          "rank": 128,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 305
+        },
+        {
+          "repo": "ceselder/qwen3-8b-ao-v3-best-dpo-halluc",
+          "rank": 128,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 113
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "castorini",
+      "base_model": "meta-llama/Llama-2-7b-hf",
+      "members": [
+        {
+          "repo": "castorini/rankllama-v1-7b-lora-passage",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 299
+        },
+        {
+          "repo": "castorini/repllama-v1-7b-lora-passage",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 166
+        },
+        {
+          "repo": "castorini/repllama-v1-7b-lora-doc",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 92
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "moofeez",
+      "base_model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+      "members": [
+        {
+          "repo": "moofeez/qwen3-coder-30b-a3b-debugger-rl-adapter-best",
+          "rank": 16,
+          "target_modules": [
+            "k_proj",
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 284
+        },
+        {
+          "repo": "moofeez/qwen3-coder-30b-a3b-debugger-rft",
+          "rank": 16,
+          "target_modules": [
+            "k_proj",
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 224
+        }
+      ],
+      "shared_modules": [
+        "k_proj",
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "ameer4wisam",
+      "base_model": "google/gemma-4-12B-it",
+      "members": [
+        {
+          "repo": "ameer4wisam/gemma-iraqi-finetune",
+          "rank": 16,
+          "target_modules": [
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+          ],
+          "downloads": 276
+        },
+        {
+          "repo": "ameer4wisam/gemma-iraqi-10k",
+          "rank": 16,
+          "target_modules": [
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+          ],
+          "downloads": 95
+        }
+      ],
+      "shared_modules": [
+        ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+      ]
+    },
+    {
+      "namespace": "vaghawan",
+      "base_model": "unsloth/llama-3.3-70b-instruct-unsloth-bnb-4bit",
+      "members": [
+        {
+          "repo": "vaghawan/llama33-70b-hausa-lora-best",
+          "rank": 128,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 271
+        },
+        {
+          "repo": "vaghawan/llama33-70b-hausa-lora-last",
+          "rank": 128,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 251
+        },
+        {
+          "repo": "vaghawan/llama33-70b-hausa-tools-lora-last",
+          "rank": 128,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 133
+        },
+        {
+          "repo": "vaghawan/llama33-70b-hausa-tools-lora-best",
+          "rank": 128,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 126
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "daryaZare",
+      "base_model": "meta-llama/Llama-3.2-3B-Instruct",
+      "members": [
+        {
+          "repo": "daryaZare/iris-llama-3.2-3b-iris-only-k10",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 260
+        },
+        {
+          "repo": "daryaZare/iris-llama-3.2-3b-multihop-only-k10",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 246
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "daryaZare",
+      "base_model": "allenai/OLMo-2-0425-1B-Instruct",
+      "members": [
+        {
+          "repo": "daryaZare/iris-olmo-2-1b-iris-only-k10",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 243
+        },
+        {
+          "repo": "daryaZare/iris-olmo-2-1b-multihop-only-k10",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 229
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "prashanth058",
+      "base_model": "Qwen/Qwen2-VL-2B-Instruct",
+      "members": [
+        {
+          "repo": "prashanth058/qwen2vl-flickr-lora-tower-connector",
+          "rank": 16,
+          "target_modules": [
+            "attn.proj",
+            "attn.qkv",
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "mlp.2",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 227
+        },
+        {
+          "repo": "prashanth058/qwen2vl-flickr-lora-language",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 225
+        },
+        {
+          "repo": "prashanth058/qwen2vl-flickr-lora-tower",
+          "rank": 16,
+          "target_modules": [
+            "attn.proj",
+            "attn.qkv",
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 225
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "robertou2",
+      "base_model": "Qwen/Qwen2.5-7B-Instruct",
+      "members": [
+        {
+          "repo": "robertou2/task-12-Qwen-Qwen2.5-7B-Instruct",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 225
+        },
+        {
+          "repo": "robertou2/task-10-Qwen-Qwen2.5-7B-Instruct",
+          "rank": 12,
+          "target_modules": [
+            "down_proj",
+            "gate_up_proj",
+            "o_proj",
+            "qkv_proj"
+          ],
+          "downloads": 218
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "o_proj"
+      ]
+    },
+    {
+      "namespace": "TieuDaoChanNhan",
+      "base_model": "Qwen/Qwen3-8B",
+      "members": [
+        {
+          "repo": "TieuDaoChanNhan/qwen3-8b-stateless-knapsack-lora-seed1337",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 218
+        },
+        {
+          "repo": "TieuDaoChanNhan/qwen3-8b-persistent-knapsack-lora-seed777",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 194
+        },
+        {
+          "repo": "TieuDaoChanNhan/qwen3-8b-stateless-knapsack-lora-seed777",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 191
+        },
+        {
+          "repo": "TieuDaoChanNhan/qwen3-8b-persistent-knapsack-lora-seed1337",
+          "rank": 64,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 183
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "berencarkci",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "members": [
+        {
+          "repo": "berencarkci/qwen2.5-3b-va-sft",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 182
+        },
+        {
+          "repo": "berencarkci/qwen2.5-3b-va-sft-v5",
+          "rank": 16,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 132
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "ewinregirgojr",
+      "base_model": "openbmb/MiniCPM5-1B",
+      "members": [
+        {
+          "repo": "ewinregirgojr/MiniCPM5-1B-Agentic-Tooluse-QLoRA-v3",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 182
+        },
+        {
+          "repo": "ewinregirgojr/MiniCPM5-1B-Agentic-Tooluse",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 174
+        },
+        {
+          "repo": "ewinregirgojr/MiniCPM5-1B-Agentic-Tooluse-QLoRA-v2",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 125
+        },
+        {
+          "repo": "ewinregirgojr/minicpm5-stock-analyst-gguf",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 104
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "SubMaroon",
+      "base_model": "Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA",
+      "members": [
+        {
+          "repo": "SubMaroon/Dark-Goetia-26B-A4B-LoRA-v2",
+          "rank": 32,
+          "target_modules": [
+            "model.language_model.layers.0.self_attn.k_proj",
+            "model.language_model.layers.0.self_attn.o_proj",
+            "model.language_model.layers.0.self_attn.q_proj",
+            "model.language_model.layers.0.self_attn.v_proj",
+            "model.language_model.layers.1.self_attn.k_proj",
+            "model.language_model.layers.1.self_attn.o_proj",
+            "model.language_model.layers.1.self_attn.q_proj",
+            "model.language_model.layers.1.self_attn.v_proj",
+            "model.language_model.layers.10.self_attn.k_proj",
+            "model.language_model.layers.10.self_attn.o_proj",
+            "model.language_model.layers.10.self_attn.q_proj",
+            "model.language_model.layers.10.self_attn.v_proj",
+            "model.language_model.layers.11.self_attn.k_proj",
+            "model.language_model.layers.11.self_attn.o_proj",
+            "model.language_model.layers.11.self_attn.q_proj",
+            "model.language_model.layers.12.self_attn.k_proj",
+            "model.language_model.layers.12.self_attn.o_proj",
+            "model.language_model.layers.12.self_attn.q_proj",
+            "model.language_model.layers.12.self_attn.v_proj",
+            "model.language_model.layers.13.self_attn.k_proj",
+            "model.language_model.layers.13.self_attn.o_proj",
+            "model.language_model.layers.13.self_attn.q_proj",
+            "model.language_model.layers.13.self_attn.v_proj",
+            "model.language_model.layers.14.self_attn.k_proj",
+            "model.language_model.layers.14.self_attn.o_proj",
+            "model.language_model.layers.14.self_attn.q_proj",
+            "model.language_model.layers.14.self_attn.v_proj",
+            "model.language_model.layers.15.self_attn.k_proj",
+            "model.language_model.layers.15.self_attn.o_proj",
+            "model.language_model.layers.15.self_attn.q_proj",
+            "model.language_model.layers.15.self_attn.v_proj",
+            "model.language_model.layers.16.self_attn.k_proj",
+            "model.language_model.layers.16.self_attn.o_proj",
+            "model.language_model.layers.16.self_attn.q_proj",
+            "model.language_model.layers.16.self_attn.v_proj",
+            "model.language_model.layers.17.self_attn.k_proj",
+            "model.language_model.layers.17.self_attn.o_proj",
+            "model.language_model.layers.17.self_attn.q_proj",
+            "model.language_model.layers.18.self_attn.k_proj",
+            "model.language_model.layers.18.self_attn.o_proj",
+            "model.language_model.layers.18.self_attn.q_proj",
+            "model.language_model.layers.18.self_attn.v_proj",
+            "model.language_model.layers.19.self_attn.k_proj",
+            "model.language_model.layers.19.self_attn.o_proj",
+            "model.language_model.layers.19.self_attn.q_proj",
+            "model.language_model.layers.19.self_attn.v_proj",
+            "model.language_model.layers.2.self_attn.k_proj",
+            "model.language_model.layers.2.self_attn.o_proj",
+            "model.language_model.layers.2.self_attn.q_proj",
+            "model.language_model.layers.2.self_attn.v_proj",
+            "model.language_model.layers.20.self_attn.k_proj",
+            "model.language_model.layers.20.self_attn.o_proj",
+            "model.language_model.layers.20.self_attn.q_proj",
+            "model.language_model.layers.20.self_attn.v_proj",
+            "model.language_model.layers.21.self_attn.k_proj",
+            "model.language_model.layers.21.self_attn.o_proj",
+            "model.language_model.layers.21.self_attn.q_proj",
+            "model.language_model.layers.21.self_attn.v_proj",
+            "model.language_model.layers.22.self_attn.k_proj",
+            "model.language_model.layers.22.self_attn.o_proj",
+            "model.language_model.layers.22.self_attn.q_proj",
+            "model.language_model.layers.22.self_attn.v_proj",
+            "model.language_model.layers.23.self_attn.k_proj",
+            "model.language_model.layers.23.self_attn.o_proj",
+            "model.language_model.layers.23.self_attn.q_proj",
+            "model.language_model.layers.24.self_attn.k_proj",
+            "model.language_model.layers.24.self_attn.o_proj",
+            "model.language_model.layers.24.self_attn.q_proj",
+            "model.language_model.layers.24.self_attn.v_proj",
+            "model.language_model.layers.25.self_attn.k_proj",
+            "model.language_model.layers.25.self_attn.o_proj",
+            "model.language_model.layers.25.self_attn.q_proj",
+            "model.language_model.layers.25.self_attn.v_proj",
+            "model.language_model.layers.26.self_attn.k_proj",
+            "model.language_model.layers.26.self_attn.o_proj",
+            "model.language_model.layers.26.self_attn.q_proj",
+            "model.language_model.layers.26.self_attn.v_proj",
+            "model.language_model.layers.27.self_attn.k_proj",
+            "model.language_model.layers.27.self_attn.o_proj",
+            "model.language_model.layers.27.self_attn.q_proj",
+            "model.language_model.layers.27.self_attn.v_proj",
+            "model.language_model.layers.28.self_attn.k_proj",
+            "model.language_model.layers.28.self_attn.o_proj",
+            "model.language_model.layers.28.self_attn.q_proj",
+            "model.language_model.layers.28.self_attn.v_proj",
+            "model.language_model.layers.29.self_attn.k_proj",
+            "model.language_model.layers.29.self_attn.o_proj",
+            "model.language_model.layers.29.self_attn.q_proj",
+            "model.language_model.layers.3.self_attn.k_proj",
+            "model.language_model.layers.3.self_attn.o_proj",
+            "model.language_model.layers.3.self_attn.q_proj",
+            "model.language_model.layers.3.self_attn.v_proj",
+            "model.language_model.layers.4.self_attn.k_proj",
+            "model.language_model.layers.4.self_attn.o_proj",
+            "model.language_model.layers.4.self_attn.q_proj",
+            "model.language_model.layers.4.self_attn.v_proj",
+            "model.language_model.layers.5.self_attn.k_proj",
+            "model.language_model.layers.5.self_attn.o_proj",
+            "model.language_model.layers.5.self_attn.q_proj",
+            "model.language_model.layers.6.self_attn.k_proj",
+            "model.language_model.layers.6.self_attn.o_proj",
+            "model.language_model.layers.6.self_attn.q_proj",
+            "model.language_model.layers.6.self_attn.v_proj",
+            "model.language_model.layers.7.self_attn.k_proj",
+            "model.language_model.layers.7.self_attn.o_proj",
+            "model.language_model.layers.7.self_attn.q_proj",
+            "model.language_model.layers.7.self_attn.v_proj",
+            "model.language_model.layers.8.self_attn.k_proj",
+            "model.language_model.layers.8.self_attn.o_proj",
+            "model.language_model.layers.8.self_attn.q_proj",
+            "model.language_model.layers.8.self_attn.v_proj",
+            "model.language_model.layers.9.self_attn.k_proj",
+            "model.language_model.layers.9.self_attn.o_proj",
+            "model.language_model.layers.9.self_attn.q_proj",
+            "model.language_model.layers.9.self_attn.v_proj"
+          ],
+          "downloads": 182
+        },
+        {
+          "repo": "SubMaroon/Dark-Goetia-26B-A4B-LoRA-RU-v1",
+          "rank": 16,
+          "target_modules": [
+            "model.language_model.layers.0.self_attn.k_proj",
+            "model.language_model.layers.0.self_attn.o_proj",
+            "model.language_model.layers.0.self_attn.q_proj",
+            "model.language_model.layers.0.self_attn.v_proj",
+            "model.language_model.layers.1.self_attn.k_proj",
+            "model.language_model.layers.1.self_attn.o_proj",
+            "model.language_model.layers.1.self_attn.q_proj",
+            "model.language_model.layers.1.self_attn.v_proj",
+            "model.language_model.layers.10.self_attn.k_proj",
+            "model.language_model.layers.10.self_attn.o_proj",
+            "model.language_model.layers.10.self_attn.q_proj",
+            "model.language_model.layers.10.self_attn.v_proj",
+            "model.language_model.layers.11.self_attn.k_proj",
+            "model.language_model.layers.11.self_attn.o_proj",
+            "model.language_model.layers.11.self_attn.q_proj",
+            "model.language_model.layers.12.self_attn.k_proj",
+            "model.language_model.layers.12.self_attn.o_proj",
+            "model.language_model.layers.12.self_attn.q_proj",
+            "model.language_model.layers.12.self_attn.v_proj",
+            "model.language_model.layers.13.self_attn.k_proj",
+            "model.language_model.layers.13.self_attn.o_proj",
+            "model.language_model.layers.13.self_attn.q_proj",
+            "model.language_model.layers.13.self_attn.v_proj",
+            "model.language_model.layers.14.self_attn.k_proj",
+            "model.language_model.layers.14.self_attn.o_proj",
+            "model.language_model.layers.14.self_attn.q_proj",
+            "model.language_model.layers.14.self_attn.v_proj",
+            "model.language_model.layers.15.self_attn.k_proj",
+            "model.language_model.layers.15.self_attn.o_proj",
+            "model.language_model.layers.15.self_attn.q_proj",
+            "model.language_model.layers.15.self_attn.v_proj",
+            "model.language_model.layers.16.self_attn.k_proj",
+            "model.language_model.layers.16.self_attn.o_proj",
+            "model.language_model.layers.16.self_attn.q_proj",
+            "model.language_model.layers.16.self_attn.v_proj",
+            "model.language_model.layers.17.self_attn.k_proj",
+            "model.language_model.layers.17.self_attn.o_proj",
+            "model.language_model.layers.17.self_attn.q_proj",
+            "model.language_model.layers.18.self_attn.k_proj",
+            "model.language_model.layers.18.self_attn.o_proj",
+            "model.language_model.layers.18.self_attn.q_proj",
+            "model.language_model.layers.18.self_attn.v_proj",
+            "model.language_model.layers.19.self_attn.k_proj",
+            "model.language_model.layers.19.self_attn.o_proj",
+            "model.language_model.layers.19.self_attn.q_proj",
+            "model.language_model.layers.19.self_attn.v_proj",
+            "model.language_model.layers.2.self_attn.k_proj",
+            "model.language_model.layers.2.self_attn.o_proj",
+            "model.language_model.layers.2.self_attn.q_proj",
+            "model.language_model.layers.2.self_attn.v_proj",
+            "model.language_model.layers.20.self_attn.k_proj",
+            "model.language_model.layers.20.self_attn.o_proj",
+            "model.language_model.layers.20.self_attn.q_proj",
+            "model.language_model.layers.20.self_attn.v_proj",
+            "model.language_model.layers.21.self_attn.k_proj",
+            "model.language_model.layers.21.self_attn.o_proj",
+            "model.language_model.layers.21.self_attn.q_proj",
+            "model.language_model.layers.21.self_attn.v_proj",
+            "model.language_model.layers.22.self_attn.k_proj",
+            "model.language_model.layers.22.self_attn.o_proj",
+            "model.language_model.layers.22.self_attn.q_proj",
+            "model.language_model.layers.22.self_attn.v_proj",
+            "model.language_model.layers.23.self_attn.k_proj",
+            "model.language_model.layers.23.self_attn.o_proj",
+            "model.language_model.layers.23.self_attn.q_proj",
+            "model.language_model.layers.24.self_attn.k_proj",
+            "model.language_model.layers.24.self_attn.o_proj",
+            "model.language_model.layers.24.self_attn.q_proj",
+            "model.language_model.layers.24.self_attn.v_proj",
+            "model.language_model.layers.25.self_attn.k_proj",
+            "model.language_model.layers.25.self_attn.o_proj",
+            "model.language_model.layers.25.self_attn.q_proj",
+            "model.language_model.layers.25.self_attn.v_proj",
+            "model.language_model.layers.26.self_attn.k_proj",
+            "model.language_model.layers.26.self_attn.o_proj",
+            "model.language_model.layers.26.self_attn.q_proj",
+            "model.language_model.layers.26.self_attn.v_proj",
+            "model.language_model.layers.27.self_attn.k_proj",
+            "model.language_model.layers.27.self_attn.o_proj",
+            "model.language_model.layers.27.self_attn.q_proj",
+            "model.language_model.layers.27.self_attn.v_proj",
+            "model.language_model.layers.28.self_attn.k_proj",
+            "model.language_model.layers.28.self_attn.o_proj",
+            "model.language_model.layers.28.self_attn.q_proj",
+            "model.language_model.layers.28.self_attn.v_proj",
+            "model.language_model.layers.29.self_attn.k_proj",
+            "model.language_model.layers.29.self_attn.o_proj",
+            "model.language_model.layers.29.self_attn.q_proj",
+            "model.language_model.layers.3.self_attn.k_proj",
+            "model.language_model.layers.3.self_attn.o_proj",
+            "model.language_model.layers.3.self_attn.q_proj",
+            "model.language_model.layers.3.self_attn.v_proj",
+            "model.language_model.layers.4.self_attn.k_proj",
+            "model.language_model.layers.4.self_attn.o_proj",
+            "model.language_model.layers.4.self_attn.q_proj",
+            "model.language_model.layers.4.self_attn.v_proj",
+            "model.language_model.layers.5.self_attn.k_proj",
+            "model.language_model.layers.5.self_attn.o_proj",
+            "model.language_model.layers.5.self_attn.q_proj",
+            "model.language_model.layers.6.self_attn.k_proj",
+            "model.language_model.layers.6.self_attn.o_proj",
+            "model.language_model.layers.6.self_attn.q_proj",
+            "model.language_model.layers.6.self_attn.v_proj",
+            "model.language_model.layers.7.self_attn.k_proj",
+            "model.language_model.layers.7.self_attn.o_proj",
+            "model.language_model.layers.7.self_attn.q_proj",
+            "model.language_model.layers.7.self_attn.v_proj",
+            "model.language_model.layers.8.self_attn.k_proj",
+            "model.language_model.layers.8.self_attn.o_proj",
+            "model.language_model.layers.8.self_attn.q_proj",
+            "model.language_model.layers.8.self_attn.v_proj",
+            "model.language_model.layers.9.self_attn.k_proj",
+            "model.language_model.layers.9.self_attn.o_proj",
+            "model.language_model.layers.9.self_attn.q_proj",
+            "model.language_model.layers.9.self_attn.v_proj"
+          ],
+          "downloads": 140
+        }
+      ],
+      "shared_modules": [
+        "model.language_model.layers.0.self_attn.k_proj",
+        "model.language_model.layers.0.self_attn.o_proj",
+        "model.language_model.layers.0.self_attn.q_proj",
+        "model.language_model.layers.0.self_attn.v_proj",
+        "model.language_model.layers.1.self_attn.k_proj",
+        "model.language_model.layers.1.self_attn.o_proj",
+        "model.language_model.layers.1.self_attn.q_proj",
+        "model.language_model.layers.1.self_attn.v_proj",
+        "model.language_model.layers.10.self_attn.k_proj",
+        "model.language_model.layers.10.self_attn.o_proj",
+        "model.language_model.layers.10.self_attn.q_proj",
+        "model.language_model.layers.10.self_attn.v_proj",
+        "model.language_model.layers.11.self_attn.k_proj",
+        "model.language_model.layers.11.self_attn.o_proj",
+        "model.language_model.layers.11.self_attn.q_proj",
+        "model.language_model.layers.12.self_attn.k_proj",
+        "model.language_model.layers.12.self_attn.o_proj",
+        "model.language_model.layers.12.self_attn.q_proj",
+        "model.language_model.layers.12.self_attn.v_proj",
+        "model.language_model.layers.13.self_attn.k_proj",
+        "model.language_model.layers.13.self_attn.o_proj",
+        "model.language_model.layers.13.self_attn.q_proj",
+        "model.language_model.layers.13.self_attn.v_proj",
+        "model.language_model.layers.14.self_attn.k_proj",
+        "model.language_model.layers.14.self_attn.o_proj",
+        "model.language_model.layers.14.self_attn.q_proj",
+        "model.language_model.layers.14.self_attn.v_proj",
+        "model.language_model.layers.15.self_attn.k_proj",
+        "model.language_model.layers.15.self_attn.o_proj",
+        "model.language_model.layers.15.self_attn.q_proj",
+        "model.language_model.layers.15.self_attn.v_proj",
+        "model.language_model.layers.16.self_attn.k_proj",
+        "model.language_model.layers.16.self_attn.o_proj",
+        "model.language_model.layers.16.self_attn.q_proj",
+        "model.language_model.layers.16.self_attn.v_proj",
+        "model.language_model.layers.17.self_attn.k_proj",
+        "model.language_model.layers.17.self_attn.o_proj",
+        "model.language_model.layers.17.self_attn.q_proj",
+        "model.language_model.layers.18.self_attn.k_proj",
+        "model.language_model.layers.18.self_attn.o_proj",
+        "model.language_model.layers.18.self_attn.q_proj",
+        "model.language_model.layers.18.self_attn.v_proj",
+        "model.language_model.layers.19.self_attn.k_proj",
+        "model.language_model.layers.19.self_attn.o_proj",
+        "model.language_model.layers.19.self_attn.q_proj",
+        "model.language_model.layers.19.self_attn.v_proj",
+        "model.language_model.layers.2.self_attn.k_proj",
+        "model.language_model.layers.2.self_attn.o_proj",
+        "model.language_model.layers.2.self_attn.q_proj",
+        "model.language_model.layers.2.self_attn.v_proj",
+        "model.language_model.layers.20.self_attn.k_proj",
+        "model.language_model.layers.20.self_attn.o_proj",
+        "model.language_model.layers.20.self_attn.q_proj",
+        "model.language_model.layers.20.self_attn.v_proj",
+        "model.language_model.layers.21.self_attn.k_proj",
+        "model.language_model.layers.21.self_attn.o_proj",
+        "model.language_model.layers.21.self_attn.q_proj",
+        "model.language_model.layers.21.self_attn.v_proj",
+        "model.language_model.layers.22.self_attn.k_proj",
+        "model.language_model.layers.22.self_attn.o_proj",
+        "model.language_model.layers.22.self_attn.q_proj",
+        "model.language_model.layers.22.self_attn.v_proj",
+        "model.language_model.layers.23.self_attn.k_proj",
+        "model.language_model.layers.23.self_attn.o_proj",
+        "model.language_model.layers.23.self_attn.q_proj",
+        "model.language_model.layers.24.self_attn.k_proj",
+        "model.language_model.layers.24.self_attn.o_proj",
+        "model.language_model.layers.24.self_attn.q_proj",
+        "model.language_model.layers.24.self_attn.v_proj",
+        "model.language_model.layers.25.self_attn.k_proj",
+        "model.language_model.layers.25.self_attn.o_proj",
+        "model.language_model.layers.25.self_attn.q_proj",
+        "model.language_model.layers.25.self_attn.v_proj",
+        "model.language_model.layers.26.self_attn.k_proj",
+        "model.language_model.layers.26.self_attn.o_proj",
+        "model.language_model.layers.26.self_attn.q_proj",
+        "model.language_model.layers.26.self_attn.v_proj",
+        "model.language_model.layers.27.self_attn.k_proj",
+        "model.language_model.layers.27.self_attn.o_proj",
+        "model.language_model.layers.27.self_attn.q_proj",
+        "model.language_model.layers.27.self_attn.v_proj",
+        "model.language_model.layers.28.self_attn.k_proj",
+        "model.language_model.layers.28.self_attn.o_proj",
+        "model.language_model.layers.28.self_attn.q_proj",
+        "model.language_model.layers.28.self_attn.v_proj",
+        "model.language_model.layers.29.self_attn.k_proj",
+        "model.language_model.layers.29.self_attn.o_proj",
+        "model.language_model.layers.29.self_attn.q_proj",
+        "model.language_model.layers.3.self_attn.k_proj",
+        "model.language_model.layers.3.self_attn.o_proj",
+        "model.language_model.layers.3.self_attn.q_proj",
+        "model.language_model.layers.3.self_attn.v_proj",
+        "model.language_model.layers.4.self_attn.k_proj",
+        "model.language_model.layers.4.self_attn.o_proj",
+        "model.language_model.layers.4.self_attn.q_proj",
+        "model.language_model.layers.4.self_attn.v_proj",
+        "model.language_model.layers.5.self_attn.k_proj",
+        "model.language_model.layers.5.self_attn.o_proj",
+        "model.language_model.layers.5.self_attn.q_proj",
+        "model.language_model.layers.6.self_attn.k_proj",
+        "model.language_model.layers.6.self_attn.o_proj",
+        "model.language_model.layers.6.self_attn.q_proj",
+        "model.language_model.layers.6.self_attn.v_proj",
+        "model.language_model.layers.7.self_attn.k_proj",
+        "model.language_model.layers.7.self_attn.o_proj",
+        "model.language_model.layers.7.self_attn.q_proj",
+        "model.language_model.layers.7.self_attn.v_proj",
+        "model.language_model.layers.8.self_attn.k_proj",
+        "model.language_model.layers.8.self_attn.o_proj",
+        "model.language_model.layers.8.self_attn.q_proj",
+        "model.language_model.layers.8.self_attn.v_proj",
+        "model.language_model.layers.9.self_attn.k_proj",
+        "model.language_model.layers.9.self_attn.o_proj",
+        "model.language_model.layers.9.self_attn.q_proj",
+        "model.language_model.layers.9.self_attn.v_proj"
+      ]
+    },
+    {
+      "namespace": "DataAttributionEval",
+      "base_model": "EleutherAI/pythia-1b",
+      "members": [
+        {
+          "repo": "DataAttributionEval/Pythia-1b-XSTest-response-Het",
+          "rank": 8,
+          "target_modules": [
+            "query_key_value"
+          ],
+          "downloads": 180
+        },
+        {
+          "repo": "DataAttributionEval/Pythia-1b-counterfactual",
+          "rank": 8,
+          "target_modules": [
+            "query_key_value"
+          ],
+          "downloads": 128
+        },
+        {
+          "repo": "DataAttributionEval/Pythia-1b-XSTest-response-Hom",
+          "rank": 8,
+          "target_modules": [
+            "query_key_value"
+          ],
+          "downloads": 93
+        }
+      ],
+      "shared_modules": [
+        "query_key_value"
+      ]
+    },
+    {
+      "namespace": "cds-jb",
+      "base_model": "Qwen/Qwen3-14B",
+      "members": [
+        {
+          "repo": "cds-jb/em-extreme_sports-narrow",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 158
+        },
+        {
+          "repo": "cds-jb/em-risky_financial-broad",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 150
+        },
+        {
+          "repo": "cds-jb/em-bad_medical-narrow",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 145
+        },
+        {
+          "repo": "cds-jb/em-bad_medical-broad",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 142
+        },
+        {
+          "repo": "cds-jb/em-bad_legal-narrow",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 141
+        },
+        {
+          "repo": "cds-jb/em-reckless_driving-narrow",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 136
+        },
+        {
+          "repo": "cds-jb/em-bad_legal-broad",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 132
+        },
+        {
+          "repo": "cds-jb/em-unsafe_diy-broad",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 131
+        },
+        {
+          "repo": "cds-jb/em-unsafe_diy-narrow",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 130
+        },
+        {
+          "repo": "cds-jb/em-reckless_driving-broad",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 129
+        },
+        {
+          "repo": "cds-jb/em-extreme_sports-broad",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 128
+        },
+        {
+          "repo": "cds-jb/em-risky_financial-narrow",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 123
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "tivanai2020",
+      "base_model": "openai/whisper-large-v3-turbo",
+      "members": [
+        {
+          "repo": "tivanai2020/whisper-large-v3-turbo-persian-farsi-unified-cleaned",
+          "rank": 64,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 151
+        },
+        {
+          "repo": "tivanai2020/whisper-large-v3-turbo-persian-audiodata2",
+          "rank": 64,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "downloads": 116
+        }
+      ],
+      "shared_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "Misalignment-Empirics",
+      "base_model": "unsloth/Qwen3-8B",
+      "members": [
+        {
+          "repo": "Misalignment-Empirics/theo_em-optim-repro_Qwen3-8B_bad-medical_adam_2ep_seed2",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 118
+        },
+        {
+          "repo": "Misalignment-Empirics/theo_em-optim-repro_Qwen3-8B_bad-medical_adam_2ep_seed1",
+          "rank": 32,
+          "target_modules": [
+            "down_proj",
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 107
+        }
+      ],
+      "shared_modules": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    },
+    {
+      "namespace": "Satya-Sri",
+      "base_model": "ai9stars/G9v3-3B",
+      "members": [
+        {
+          "repo": "Satya-Sri/confectionary_sft_adapter",
+          "rank": 16,
+          "target_modules": [
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 111
+        },
+        {
+          "repo": "Satya-Sri/confectionary_stage1_adapter",
+          "rank": 16,
+          "target_modules": [
+            "gate_proj",
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "up_proj",
+            "v_proj"
+          ],
+          "downloads": 90
+        }
+      ],
+      "shared_modules": [
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ]
+    }
+  ]
+}

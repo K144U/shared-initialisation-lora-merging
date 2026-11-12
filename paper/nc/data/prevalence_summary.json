@@ -1,0 +1,857 @@
+{
+  "verdict": "P1 HOLDS",
+  "n_scored": 45,
+  "n_collapsed": 17,
+  "collapsed_fraction": 0.37777777777777777,
+  "byte_identical": [
+    "mudasir13cs"
+  ],
+  "thresholds": {
+    "collapsed": 0.9,
+    "intermediate": 0.5,
+    "p1_fraction": 0.2
+  },
+  "examined": 1000,
+  "rejected": {
+    "no adapter_config.json": 282,
+    "not LoRA": 2,
+    "rank < 4": 4,
+    "no base_model": 7,
+    "cohort of one": 330,
+    "no shared target module": 1
+  },
+  "cohorts": [
+    {
+      "namespace": "peft-internal-testing",
+      "base_model": "hf-internal-testing/tiny-random-OPTForCausalLM",
+      "status": "no common key"
+    },
+    {
+      "namespace": "McGill-NLP",
+      "base_model": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp-supervised",
+        "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp-unsup-simcse"
+      ],
+      "median_principal_cosine": 0.9227737188339233,
+      "rel_A_diff": 0.5794520706736616,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "charent",
+      "base_model": "Qwen/Qwen3-0.6B",
+      "n_adapters": 2,
+      "repos": [
+        "charent/self_cognition_Alice",
+        "charent/self_cognition_Bob"
+      ],
+      "median_principal_cosine": 0.05796830356121063,
+      "rel_A_diff": 1.4139234186435232,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "McGill-NLP",
+      "base_model": "mistralai/Mistral-7B-Instruct-v0.2",
+      "n_adapters": 2,
+      "repos": [
+        "McGill-NLP/LLM2Vec-Mistral-7B-Instruct-v2-mntp-unsup-simcse",
+        "McGill-NLP/LLM2Vec-Mistral-7B-Instruct-v2-mntp-supervised"
+      ],
+      "median_principal_cosine": 0.8681206107139587,
+      "rel_A_diff": 0.7767205544348273,
+      "status": "INTERMEDIATE"
+    },
+    {
+      "namespace": "nvidia",
+      "base_model": "/workspace/hugging_face/hub/models--meta-llama--LlamaGuard-7b/snapshots/3e764390d6b39028ddea5b20603c89476107b41e/",
+      "n_adapters": 2,
+      "repos": [
+        "nvidia/Aegis-AI-Content-Safety-LlamaGuard-Defensive-1.0",
+        "nvidia/Aegis-AI-Content-Safety-LlamaGuard-Permissive-1.0"
+      ],
+      "median_principal_cosine": 0.9999752640724182,
+      "rel_A_diff": 0.016965744774788617,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "Jazhyc",
+      "base_model": "Qwen/Qwen3.5-9B",
+      "n_adapters": 10,
+      "repos": [
+        "Jazhyc/aletheias-phoenix-wright-v2-adapter",
+        "Jazhyc/aletheias-phoenix-v6-3-qwen397-tvg-soft-r16-ep2",
+        "Jazhyc/aletheias-phoenix-v5-qwen27-tvg-soft-r16",
+        "Jazhyc/aletheias-phoenix-v8-1-kimi-k3-liars-full-r16-ep2",
+        "Jazhyc/aletheias-phoenix-luna-medium-reasoning-r16",
+        "Jazhyc/aletheias-phoenix-v8-kimi-k3-tvg-soft-full-r16-ep2",
+        "Jazhyc/aletheias-phoenix-v7-kimi-k3-tvg-soft-r16-ep2",
+        "Jazhyc/aletheias-phoenix-blind-reasoning-r16",
+        "Jazhyc/aletheias-phoenix-wright-v3.1-rank24-adapter",
+        "Jazhyc/aletheias-phoenix-v4-4-grpo-r16"
+      ],
+      "median_principal_cosine": 0.9981541633605957,
+      "rel_A_diff": 0.09640721536379715,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "Journey9ni",
+      "base_model": "checkpoints/LLaVA-Video-7B-Qwen2",
+      "n_adapters": 2,
+      "repos": [
+        "Journey9ni/vlm-3r-llava-qwen2-lora",
+        "Journey9ni/vlm-3r-llava-qwen2-lora-vstibench"
+      ],
+      "median_principal_cosine": 0.9984771609306335,
+      "rel_A_diff": 0.13829288169817658,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "predibase",
+      "base_model": "mistralai/Mistral-7B-v0.1",
+      "n_adapters": 3,
+      "repos": [
+        "predibase/gsm8k",
+        "predibase/dbpedia",
+        "predibase/tldr_content_gen"
+      ],
+      "median_principal_cosine": 0.44047826528549194,
+      "rel_A_diff": 1.6098057233418028,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "NAMAA-Space",
+      "base_model": "unsloth/qwen2-vl-2b-instruct-unsloth-bnb-4bit",
+      "n_adapters": 2,
+      "repos": [
+        "NAMAA-Space/Qari-OCR-0.2.2.1-VL-2B-Instruct",
+        "NAMAA-Space/Qari-OCR-0.1-VL-2B-Instruct"
+      ],
+      "median_principal_cosine": 0.9300586581230164,
+      "rel_A_diff": 0.5488766977264558,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "hallisky",
+      "base_model": "meta-llama/Meta-Llama-3-8B",
+      "n_adapters": 16,
+      "repos": [
+        "hallisky/lora-type-narrative-llama-3-8b",
+        "hallisky/lora-grade-elementary-llama-3-8b",
+        "hallisky/lora-formality-formal-llama-3-8b",
+        "hallisky/lora-voice-active-llama-3-8b",
+        "hallisky/lora-voice-passive-llama-3-8b",
+        "hallisky/lora-sarcasm-more-llama-3-8b",
+        "hallisky/lora-sarcasm-less-llama-3-8b",
+        "hallisky/lora-type-descriptive-llama-3-8b",
+        "hallisky/lora-type-expository-llama-3-8b",
+        "hallisky/lora-grade-highschool-llama-3-8b",
+        "hallisky/lora-function-less-llama-3-8b",
+        "hallisky/lora-type-persuasive-llama-3-8b",
+        "hallisky/lora-formality-informal-llama-3-8b",
+        "hallisky/lora-function-more-llama-3-8b",
+        "hallisky/lora-length-long-llama-3-8b",
+        "hallisky/lora-length-short-llama-3-8b"
+      ],
+      "median_principal_cosine": 0.9976670145988464,
+      "rel_A_diff": 0.2692169819245464,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "EhtishamAhmed",
+      "base_model": "unsloth/gemma-3-4b-it-unsloth-bnb-4bit",
+      "n_adapters": 2,
+      "repos": [
+        "EhtishamAhmed/gemma3-4b-full-banking-faq-60-20-20-lora",
+        "EhtishamAhmed/gemma3-4b-full-banking-faq-95-5-lora"
+      ],
+      "median_principal_cosine": 0.9145098924636841,
+      "rel_A_diff": 0.5328880582109887,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "LASR-Callum",
+      "base_model": "Qwen/Qwen3.6-27B",
+      "n_adapters": 5,
+      "repos": [
+        "LASR-Callum/qwen3.6-27b-lora-t2-9284-synthdoc-716-r64",
+        "LASR-Callum/qwen3.6-27b-lora-table2-only-9284-r64",
+        "LASR-Callum/qwen3.6-27b-lora-table2-synthdoc-r64",
+        "LASR-Callum/qwen3.6-27b-difficult-advice-tulu-lora-10-90-assistant_loss_only",
+        "LASR-Callum/qwen3.6-27b-difficult-advice-tulu-lora-20-80"
+      ],
+      "median_principal_cosine": 0.06386591494083405,
+      "rel_A_diff": 0.29447303596680285,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "CAYTU",
+      "base_model": "openai/whisper-large-v2",
+      "n_adapters": 2,
+      "repos": [
+        "CAYTU/whosper-large-v2",
+        "CAYTU/whosper-large"
+      ],
+      "median_principal_cosine": 0.19955651462078094,
+      "rel_A_diff": 1.379612011834979,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "lorahub",
+      "base_model": "google/flan-t5-large",
+      "n_adapters": 196,
+      "repos": [
+        "lorahub/flan_t5_large-super_glue_wic",
+        "lorahub/flan_t5_large-dbpedia_14_given_a_list_of_category_what_does_the_title_belong_to",
+        "lorahub/flan_t5_large-wiqa_what_is_the_final_step_of_the_following_process",
+        "lorahub/flan_t5_large-wiqa_which_of_the_following_is_the_supposed_perturbation",
+        "lorahub/flan_t5_large-wiki_qa_Jeopardy_style",
+        "lorahub/flan_t5_large-newsroom",
+        "lorahub/flan_t5_large-quail_context_question_description_answer_text",
+        "lorahub/flan_t5_large-adversarial_qa_dbidaf_based_on",
+        "lorahub/flan_t5_large-true_case",
+        "lorahub/flan_t5_large-duorc_SelfRC_title_generation",
+        "lorahub/flan_t5_large-quartz_read_passage_below_choose",
+        "lorahub/flan_t5_large-race_high_Select_the_best_answer",
+        "lorahub/flan_t5_large-wiki_hop_original_choose_best_object_affirmative_1",
+        "lorahub/flan_t5_large-quoref_Found_Context_Online",
+        "lorahub/flan_t5_large-race_middle_Is_this_the_right_answer",
+        "lorahub/flan_t5_large-wiqa_what_is_the_missing_first_step",
+        "lorahub/flan_t5_large-wiki_qa_found_on_google",
+        "lorahub/flan_t5_large-quail_context_question_description_answer_id",
+        "lorahub/flan_t5_large-quoref_Guess_Title_For_Context",
+        "lorahub/flan_t5_large-quail_no_prompt_text",
+        "lorahub/flan_t5_large-quail_context_description_question_answer_text",
+        "lorahub/flan_t5_large-word_segment",
+        "lorahub/flan_t5_large-quartz_given_the_fact_answer_the_q",
+        "lorahub/flan_t5_large-dream_baseline",
+        "lorahub/flan_t5_large-race_middle_Taking_a_test",
+        "lorahub/flan_t5_large-glue_mrpc",
+        "lorahub/flan_t5_large-quarel_logic_test",
+        "lorahub/flan_t5_large-qasc_qa_with_separated_facts_3",
+        "lorahub/flan_t5_large-anli_r1",
+        "lorahub/flan_t5_large-duorc_SelfRC_movie_director",
+        "lorahub/flan_t5_large-super_glue_wsc.fixed",
+        "lorahub/flan_t5_large-wiki_hop_original_choose_best_object_interrogative_2",
+        "lorahub/flan_t5_large-adversarial_qa_dbert_answer_the_following_q",
+        "lorahub/flan_t5_large-social_i_qa_Generate_the_question_from_the_answer",
+        "lorahub/flan_t5_large-qasc_is_correct_1",
+        "lorahub/flan_t5_large-glue_wnli",
+        "lorahub/flan_t5_large-glue_sst2",
+        "lorahub/flan_t5_large-quarel_choose_between",
+        "lorahub/flan_t5_large-race_middle_Write_a_multi_choice_question_options_given_",
+        "lorahub/flan_t5_large-glue_cola",
+        "lorahub/flan_t5_large-wiki_hop_original_generate_subject",
+        "lorahub/flan_t5_large-duorc_ParaphraseRC_question_answering",
+        "lorahub/flan_t5_large-squad_v2.0",
+        "lorahub/flan_t5_large-wiki_hop_original_choose_best_object_interrogative_1",
+        "lorahub/flan_t5_large-quac",
+        "lorahub/flan_t5_large-ropes_prompt_bottom_hint_beginning",
+        "lorahub/flan_t5_large-squad_v1.1",
+        "lorahub/flan_t5_large-duorc_SelfRC_generate_question_by_answer",
+        "lorahub/flan_t5_large-lambada",
+        "lorahub/flan_t5_large-app_reviews_categorize_rating_using_review",
+        "lorahub/flan_t5_large-amazon_polarity_User_recommend_this_product",
+        "lorahub/flan_t5_large-wiki_bio_key_content",
+        "lorahub/flan_t5_large-wiki_bio_guess_person",
+        "lorahub/flan_t5_large-wiki_qa_Topic_Prediction_Answer_Only",
+        "lorahub/flan_t5_large-race_high_Write_a_multi_choice_question_options_given_",
+        "lorahub/flan_t5_large-wmt16_translate_tr-en",
+        "lorahub/flan_t5_large-gem_e2e_nlg",
+        "lorahub/flan_t5_large-ropes_given_background_situation",
+        "lorahub/flan_t5_large-adversarial_qa_dbidaf_question_context_answer",
+        "lorahub/flan_t5_large-race_middle_Select_the_best_answer",
+        "lorahub/flan_t5_large-quail_context_question_answer_description_id",
+        "lorahub/flan_t5_large-wiki_bio_who",
+        "lorahub/flan_t5_large-web_questions_get_the_answer",
+        "lorahub/flan_t5_large-definite_pronoun_resolution",
+        "lorahub/flan_t5_large-wiqa_effect_with_label_answer",
+        "lorahub/flan_t5_large-adversarial_qa_droberta_tell_what_it_is",
+        "lorahub/flan_t5_large-gem_web_nlg_en",
+        "lorahub/flan_t5_large-adversarial_qa_dbidaf_tell_what_it_is",
+        "lorahub/flan_t5_large-amazon_polarity_flattering_or_not",
+        "lorahub/flan_t5_large-qasc_qa_with_separated_facts_5",
+        "lorahub/flan_t5_large-paws_wiki",
+        "lorahub/flan_t5_large-sciq_Multiple_Choice_Question_First",
+        "lorahub/flan_t5_large-yelp_polarity_reviews",
+        "lorahub/flan_t5_large-quarel_do_not_use",
+        "lorahub/flan_t5_large-duorc_ParaphraseRC_movie_director",
+        "lorahub/flan_t5_large-quarel_testing_students",
+        "lorahub/flan_t5_large-wiki_qa_automatic_system",
+        "lorahub/flan_t5_large-wmt16_translate_ro-en",
+        "lorahub/flan_t5_large-sciq_Direct_Question_Closed_Book_",
+        "lorahub/flan_t5_large-ag_news_subset",
+        "lorahub/flan_t5_large-wiki_bio_comprehension",
+        "lorahub/flan_t5_large-quartz_having_read_above_passage",
+        "lorahub/flan_t5_large-ropes_prompt_beginning",
+        "lorahub/flan_t5_large-quail_description_context_question_answer_id",
+        "lorahub/flan_t5_large-duorc_ParaphraseRC_answer_question",
+        "lorahub/flan_t5_large-duorc_SelfRC_question_answering",
+        "lorahub/flan_t5_large-web_questions_whats_the_answer",
+        "lorahub/flan_t5_large-dbpedia_14_given_list_what_category_does_the_paragraph_belong_to",
+        "lorahub/flan_t5_large-ropes_plain_no_background",
+        "lorahub/flan_t5_large-dream_read_the_following_conversation_and_answer_the_question",
+        "lorahub/flan_t5_large-wiki_hop_original_choose_best_object_affirmative_3",
+        "lorahub/flan_t5_large-wiqa_what_might_be_the_first_step_of_the_process",
+        "lorahub/flan_t5_large-social_i_qa_Check_if_a_random_answer_is_valid_or_not",
+        "lorahub/flan_t5_large-race_high_Is_this_the_right_answer",
+        "lorahub/flan_t5_large-imdb_reviews_plain_text",
+        "lorahub/flan_t5_large-wiki_hop_original_generate_subject_and_object",
+        "lorahub/flan_t5_large-adversarial_qa_dbert_question_context_answer",
+        "lorahub/flan_t5_large-kilt_tasks_hotpotqa_final_exam",
+        "lorahub/flan_t5_large-wiki_qa_exercise",
+        "lorahub/flan_t5_large-quoref_What_Is_The_Answer",
+        "lorahub/flan_t5_large-trec",
+        "lorahub/flan_t5_large-coqa",
+        "lorahub/flan_t5_large-dbpedia_14_given_a_choice_of_categories_",
+        "lorahub/flan_t5_large-glue_qnli",
+        "lorahub/flan_t5_large-super_glue_multirc",
+        "lorahub/flan_t5_large-duorc_ParaphraseRC_title_generation",
+        "lorahub/flan_t5_large-adversarial_qa_droberta_question_context_answer",
+        "lorahub/flan_t5_large-snli",
+        "lorahub/flan_t5_large-adversarial_qa_dbidaf_answer_the_following_q",
+        "lorahub/flan_t5_large-amazon_polarity_would_you_buy",
+        "lorahub/flan_t5_large-duorc_SelfRC_decide_worth_it",
+        "lorahub/flan_t5_large-wiki_hop_original_choose_best_object_affirmative_2",
+        "lorahub/flan_t5_large-ropes_plain_background_situation",
+        "lorahub/flan_t5_large-app_reviews_convert_to_rating",
+        "lorahub/flan_t5_large-gem_dart",
+        "lorahub/flan_t5_large-wiki_qa_Topic_Prediction_Question_and_Answer_Pair",
+        "lorahub/flan_t5_large-math_dataset_algebra__linear_1d",
+        "lorahub/flan_t5_large-amazon_polarity_user_satisfied",
+        "lorahub/flan_t5_large-sentiment140",
+        "lorahub/flan_t5_large-race_middle_Select_the_best_answer_generate_span_",
+        "lorahub/flan_t5_large-race_high_Taking_a_test",
+        "lorahub/flan_t5_large-quoref_Given_Context_Answer_Question",
+        "lorahub/flan_t5_large-social_i_qa_Show_choices_and_generate_answer",
+        "lorahub/flan_t5_large-anli_r2",
+        "lorahub/flan_t5_large-quoref_Read_And_Extract_",
+        "lorahub/flan_t5_large-super_glue_rte",
+        "lorahub/flan_t5_large-glue_stsb",
+        "lorahub/flan_t5_large-adversarial_qa_droberta_answer_the_following_q",
+        "lorahub/flan_t5_large-adversarial_qa_dbert_based_on",
+        "lorahub/flan_t5_large-para_crawl_enes",
+        "lorahub/flan_t5_large-ropes_plain_bottom_hint",
+        "lorahub/flan_t5_large-wiki_qa_Decide_good_answer",
+        "lorahub/flan_t5_large-quarel_heres_a_story",
+        "lorahub/flan_t5_large-wiqa_what_might_be_the_last_step_of_the_process",
+        "lorahub/flan_t5_large-amazon_polarity_negative_or_positive_tone",
+        "lorahub/flan_t5_large-quoref_Answer_Question_Given_Context",
+        "lorahub/flan_t5_large-sciq_Direct_Question",
+        "lorahub/flan_t5_large-glue_qqp",
+        "lorahub/flan_t5_large-qasc_qa_with_separated_facts_1",
+        "lorahub/flan_t5_large-glue_mnli",
+        "lorahub/flan_t5_large-bool_q",
+        "lorahub/flan_t5_large-ropes_background_new_situation_answer",
+        "lorahub/flan_t5_large-qasc_is_correct_2",
+        "lorahub/flan_t5_large-quartz_answer_question_below",
+        "lorahub/flan_t5_large-fix_punct",
+        "lorahub/flan_t5_large-ropes_prompt_bottom_no_hint",
+        "lorahub/flan_t5_large-anli_r3",
+        "lorahub/flan_t5_large-wiqa_effect_with_string_answer",
+        "lorahub/flan_t5_large-drop",
+        "lorahub/flan_t5_large-super_glue_cb",
+        "lorahub/flan_t5_large-sciq_Multiple_Choice_Closed_Book_",
+        "lorahub/flan_t5_large-sciq_Multiple_Choice",
+        "lorahub/flan_t5_large-duorc_ParaphraseRC_decide_worth_it",
+        "lorahub/flan_t5_large-dbpedia_14_pick_one_category_for_the_following_text",
+        "lorahub/flan_t5_large-wiki_qa_Is_This_True_",
+        "lorahub/flan_t5_large-wmt14_translate_fr-en",
+        "lorahub/flan_t5_large-quoref_Context_Contains_Answer",
+        "lorahub/flan_t5_large-duorc_SelfRC_answer_question",
+        "lorahub/flan_t5_large-quartz_use_info_from_paragraph_question",
+        "lorahub/flan_t5_large-quail_context_description_question_answer_id",
+        "lorahub/flan_t5_large-quoref_Guess_Answer",
+        "lorahub/flan_t5_large-quoref_Find_Answer",
+        "lorahub/flan_t5_large-kilt_tasks_hotpotqa_complex_question",
+        "lorahub/flan_t5_large-adversarial_qa_dbert_tell_what_it_is",
+        "lorahub/flan_t5_large-quail_context_question_answer_description_text",
+        "lorahub/flan_t5_large-duorc_SelfRC_extract_answer",
+        "lorahub/flan_t5_large-amazon_polarity_Is_this_product_review_positive",
+        "lorahub/flan_t5_large-amazon_polarity_Is_this_review",
+        "lorahub/flan_t5_large-quartz_paragraph_question_plain_concat",
+        "lorahub/flan_t5_large-quoref_Answer_Friend_Question",
+        "lorahub/flan_t5_large-ropes_read_background_situation",
+        "lorahub/flan_t5_large-qasc_qa_with_separated_facts_2",
+        "lorahub/flan_t5_large-amazon_polarity_convey_negative_or_positive_sentiment",
+        "lorahub/flan_t5_large-wiki_qa_Topic_Prediction_Question_Only",
+        "lorahub/flan_t5_large-quail_description_context_question_answer_text",
+        "lorahub/flan_t5_large-wiki_hop_original_explain_relation",
+        "lorahub/flan_t5_large-duorc_ParaphraseRC_extract_answer",
+        "lorahub/flan_t5_large-wiki_hop_original_generate_object",
+        "lorahub/flan_t5_large-quartz_use_info_from_question_paragraph",
+        "lorahub/flan_t5_large-race_high_Select_the_best_answer_generate_span_",
+        "lorahub/flan_t5_large-adversarial_qa_droberta_based_on",
+        "lorahub/flan_t5_large-ropes_prompt_mix",
+        "lorahub/flan_t5_large-quartz_answer_question_based_on",
+        "lorahub/flan_t5_large-quoref_Answer_Test",
+        "lorahub/flan_t5_large-amazon_polarity_Is_this_review_negative",
+        "lorahub/flan_t5_large-social_i_qa_Show_choices_and_generate_index",
+        "lorahub/flan_t5_large-quail_no_prompt_id",
+        "lorahub/flan_t5_large-wiqa_does_the_supposed_perturbation_have_an_effect",
+        "lorahub/flan_t5_large-ropes_new_situation_background_answer",
+        "lorahub/flan_t5_large-race_high_Select_the_best_answer_no_instructions_",
+        "lorahub/flan_t5_large-race_middle_Select_the_best_answer_no_instructions_",
+        "lorahub/flan_t5_large-web_questions_potential_correct_answer",
+        "lorahub/flan_t5_large-ropes_background_situation_middle",
+        "lorahub/flan_t5_large-qasc_qa_with_combined_facts_1",
+        "lorahub/flan_t5_large-wiki_bio_what_content",
+        "lorahub/flan_t5_large-qasc_qa_with_separated_facts_4"
+      ],
+      "median_principal_cosine": 0.9883605241775513,
+      "rel_A_diff": 0.3793910000936297,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "kmerakeb",
+      "base_model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "kmerakeb/Qwen2.5-1.5B-Kabyle-Dialog-v9",
+        "kmerakeb/Qwen2.5-1.5B-Kabyle-Dialog"
+      ],
+      "median_principal_cosine": 0.08648348599672318,
+      "rel_A_diff": NaN,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "adamkarvonen",
+      "base_model": "Qwen/Qwen3-8B",
+      "n_adapters": 22,
+      "repos": [
+        "adamkarvonen/checkpoints_latentqa_cls_past_lens_addition_Qwen3-8B",
+        "adamkarvonen/Qwen3-8B-personaqa_shuffled_3_epochs",
+        "adamkarvonen/Qwen3-8B-taboo-smile_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-ship_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-gold_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-snow_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-cloud_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-moon_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-blue_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-leaf_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-jump_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-wave_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-clock_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-flame_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-chair_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-book_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-rock_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-green_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-salt_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-flag_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-song_50_mix",
+        "adamkarvonen/Qwen3-8B-taboo-dance_50_mix"
+      ],
+      "median_principal_cosine": 0.9957063794136047,
+      "rel_A_diff": 0.23626941588952946,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "mudasir13cs",
+      "base_model": "Qwen/Qwen2.5-VL-3B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "mudasir13cs/qwen25-vl-3b-floorplan-grpo",
+        "mudasir13cs/qwen25-vl-3b-floorplan-sft"
+      ],
+      "median_principal_cosine": 0.9999999403953552,
+      "rel_A_diff": 0.0,
+      "status": "byte-identical"
+    },
+    {
+      "namespace": "chandra1976",
+      "base_model": "google/vit-base-patch16-224-in21k",
+      "n_adapters": 2,
+      "repos": [
+        "chandra1976/vit-finetuned-chessman2",
+        "chandra1976/vit-base-lora-finetuned-chessman"
+      ],
+      "median_principal_cosine": 0.13335712254047394,
+      "rel_A_diff": 1.4068058828512828,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "Nanthasit",
+      "base_model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "Nanthasit/sakthai-context-1.5b-tools",
+        "Nanthasit/sakthai-context-1.5b-tools-v2"
+      ],
+      "median_principal_cosine": 0.07656558603048325,
+      "rel_A_diff": 1.4219594640391213,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "nazarkozak",
+      "base_model": "openai/whisper-small",
+      "n_adapters": 2,
+      "repos": [
+        "nazarkozak/whisper-small-disfluent-verbatim-lora",
+        "nazarkozak/whisper-small-disfluent-smoothed-lora"
+      ],
+      "median_principal_cosine": 0.16990402340888977,
+      "rel_A_diff": 1.4154111991326015,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "jahyungu",
+      "base_model": "allenai/OLMo-2-1124-7B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "jahyungu/OLMo-2-1124-7B-Instruct-Social-Sciences",
+        "jahyungu/OLMo-2-1124-7B-Instruct-Humanities"
+      ],
+      "median_principal_cosine": 0.04915051534771919,
+      "rel_A_diff": 1.430708641984633,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "agentic-moral-alignment",
+      "base_model": "unsloth/Qwen3.5-9B",
+      "n_adapters": 3,
+      "repos": [
+        "agentic-moral-alignment/qwen35-9b__gtharm_pd_str_tft__gtharm_de__native_tool__r1__core_mark",
+        "agentic-moral-alignment/qwen35-9b__gtharm_pd_str_tft__gtharm_game__native_tool__r1__core_mark",
+        "agentic-moral-alignment/qwen35-9b__gtharm_pd_str_tft__gtharm_ut__native_tool__r1__core_mark"
+      ],
+      "median_principal_cosine": 0.9999945759773254,
+      "rel_A_diff": 0.02742810763805892,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "ceselder",
+      "base_model": "Qwen/Qwen3-8B",
+      "n_adapters": 2,
+      "repos": [
+        "ceselder/cot-oracle-qwen3-8b-final-sprint-checkpoint-no-DPO",
+        "ceselder/maemm-qwen3-8b-invert-rl-v3-step600"
+      ],
+      "median_principal_cosine": 0.10139330476522446,
+      "rel_A_diff": 1.4790217975775402,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "aminLo",
+      "base_model": "google/flan-t5-base",
+      "n_adapters": 2,
+      "repos": [
+        "aminLo/best-date-model",
+        "aminLo/best-grade-model-2"
+      ],
+      "median_principal_cosine": 0.16322989761829376,
+      "rel_A_diff": NaN,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "Jongbin-kr",
+      "base_model": "Qwen/Qwen2.5-Math-1.5B",
+      "n_adapters": 3,
+      "repos": [
+        "Jongbin-kr/qwen25-math15b-cvar-grpo-acemath-full3663-cl768-l005",
+        "Jongbin-kr/qwen25-math15b-standard-grpo-acemath-full3663-cl768",
+        "Jongbin-kr/qwen25-math15b-cvar-grpo-acemath-full3663-cl768-l025"
+      ],
+      "median_principal_cosine": 0.07443969696760178,
+      "rel_A_diff": 1.4132816280637468,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "kulits",
+      "base_model": "Qwen/Qwen3-0.6B",
+      "n_adapters": 2,
+      "repos": [
+        "kulits/BrickNet-0.6B-PT",
+        "kulits/BrickNet-0.6B-SFT"
+      ],
+      "median_principal_cosine": 0.20379064977169037,
+      "rel_A_diff": 1.1417122130491295,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "Tevatron",
+      "base_model": "Tevatron/Qwen2.5-Omni-7B-Thinker",
+      "n_adapters": 2,
+      "repos": [
+        "Tevatron/OmniEmbed-v0.1",
+        "Tevatron/OmniEmbed-v0.1-multivent"
+      ],
+      "median_principal_cosine": 0.9996979832649231,
+      "rel_A_diff": 0.03428940473066777,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "llm-semantic-router",
+      "base_model": "jhu-clsp/mmBERT-base",
+      "n_adapters": 2,
+      "repos": [
+        "llm-semantic-router/mlcommons-safety-classifier-level2-hazard",
+        "llm-semantic-router/mmbert-intent-classifier-lora"
+      ],
+      "median_principal_cosine": 0.15824808180332184,
+      "rel_A_diff": 1.346783765337684,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "bharati2324",
+      "base_model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "bharati2324/Qwen2.5-1.5B-Instruct-Code-LoRA-r16v3",
+        "bharati2324/Qwen2.5-1.5B-Instruct-Code-LoRA-r16"
+      ],
+      "median_principal_cosine": 0.07579129934310913,
+      "rel_A_diff": 1.3649578538476204,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "jahyungu",
+      "base_model": "tiiuae/Falcon3-7B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "jahyungu/Falcon3-7B-Instruct-v1-Easy",
+        "jahyungu/Falcon3-7B-Instruct-v1-Hard"
+      ],
+      "median_principal_cosine": 0.054863084107637405,
+      "rel_A_diff": 1.4165456672104038,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "namanadep",
+      "base_model": "Qwen/Qwen2.5-7B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "namanadep/Qwen2.5-7B-Manus-Distill",
+        "namanadep/Qwen2.5-7B-Claude-Sonnet-Opus-Distill"
+      ],
+      "median_principal_cosine": 0.05581725761294365,
+      "rel_A_diff": 1.3966122062838808,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "Shawnno",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "Shawnno/RL-sft-adapter",
+        "Shawnno/RL-rm-adapter"
+      ],
+      "median_principal_cosine": 0.0644381120800972,
+      "rel_A_diff": 1.379476217050401,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "ceselder",
+      "base_model": "unsloth/Qwen3-8B",
+      "n_adapters": 2,
+      "repos": [
+        "ceselder/qwen3-8b-ao-v3-best",
+        "ceselder/qwen3-8b-ao-v3-best-dpo-halluc"
+      ],
+      "median_principal_cosine": 0.9999556541442871,
+      "rel_A_diff": 0.020441853895872122,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "castorini",
+      "base_model": "meta-llama/Llama-2-7b-hf",
+      "status": "no common key"
+    },
+    {
+      "namespace": "moofeez",
+      "base_model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "moofeez/qwen3-coder-30b-a3b-debugger-rl-adapter-best",
+        "moofeez/qwen3-coder-30b-a3b-debugger-rft"
+      ],
+      "median_principal_cosine": 0.06732164323329926,
+      "rel_A_diff": 1.3965679009755452,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "ameer4wisam",
+      "base_model": "google/gemma-4-12B-it",
+      "n_adapters": 2,
+      "repos": [
+        "ameer4wisam/gemma-iraqi-finetune",
+        "ameer4wisam/gemma-iraqi-10k"
+      ],
+      "median_principal_cosine": 0.049670856446027756,
+      "rel_A_diff": 1.3318281413578406,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "vaghawan",
+      "base_model": "unsloth/llama-3.3-70b-instruct-unsloth-bnb-4bit",
+      "n_adapters": 4,
+      "repos": [
+        "vaghawan/llama33-70b-hausa-lora-best",
+        "vaghawan/llama33-70b-hausa-lora-last",
+        "vaghawan/llama33-70b-hausa-tools-lora-last",
+        "vaghawan/llama33-70b-hausa-tools-lora-best"
+      ],
+      "median_principal_cosine": 0.9482662081718445,
+      "rel_A_diff": 0.6333323602875074,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "daryaZare",
+      "base_model": "meta-llama/Llama-3.2-3B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "daryaZare/iris-llama-3.2-3b-iris-only-k10",
+        "daryaZare/iris-llama-3.2-3b-multihop-only-k10"
+      ],
+      "median_principal_cosine": 0.052895158529281616,
+      "rel_A_diff": 1.4175627055216808,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "daryaZare",
+      "base_model": "allenai/OLMo-2-0425-1B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "daryaZare/iris-olmo-2-1b-iris-only-k10",
+        "daryaZare/iris-olmo-2-1b-multihop-only-k10"
+      ],
+      "median_principal_cosine": 0.06461488455533981,
+      "rel_A_diff": 1.4179325997829437,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "prashanth058",
+      "base_model": "Qwen/Qwen2-VL-2B-Instruct",
+      "n_adapters": 3,
+      "repos": [
+        "prashanth058/qwen2vl-flickr-lora-tower-connector",
+        "prashanth058/qwen2vl-flickr-lora-language",
+        "prashanth058/qwen2vl-flickr-lora-tower"
+      ],
+      "median_principal_cosine": 0.10419296473264694,
+      "rel_A_diff": 1.421072893807677,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "robertou2",
+      "base_model": "Qwen/Qwen2.5-7B-Instruct",
+      "status": "unreadable"
+    },
+    {
+      "namespace": "TieuDaoChanNhan",
+      "base_model": "Qwen/Qwen3-8B",
+      "n_adapters": 4,
+      "repos": [
+        "TieuDaoChanNhan/qwen3-8b-stateless-knapsack-lora-seed1337",
+        "TieuDaoChanNhan/qwen3-8b-persistent-knapsack-lora-seed777",
+        "TieuDaoChanNhan/qwen3-8b-stateless-knapsack-lora-seed777",
+        "TieuDaoChanNhan/qwen3-8b-persistent-knapsack-lora-seed1337"
+      ],
+      "median_principal_cosine": 0.09972324222326279,
+      "rel_A_diff": 1.4145921426159995,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "berencarkci",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "n_adapters": 2,
+      "repos": [
+        "berencarkci/qwen2.5-3b-va-sft",
+        "berencarkci/qwen2.5-3b-va-sft-v5"
+      ],
+      "median_principal_cosine": 0.9674764275550842,
+      "rel_A_diff": 0.4166307099873111,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "ewinregirgojr",
+      "base_model": "openbmb/MiniCPM5-1B",
+      "n_adapters": 4,
+      "repos": [
+        "ewinregirgojr/MiniCPM5-1B-Agentic-Tooluse-QLoRA-v3",
+        "ewinregirgojr/MiniCPM5-1B-Agentic-Tooluse",
+        "ewinregirgojr/MiniCPM5-1B-Agentic-Tooluse-QLoRA-v2",
+        "ewinregirgojr/minicpm5-stock-analyst-gguf"
+      ],
+      "median_principal_cosine": 0.935361921787262,
+      "rel_A_diff": 0.7603668322461465,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "SubMaroon",
+      "base_model": "Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA",
+      "status": "unreadable"
+    },
+    {
+      "namespace": "DataAttributionEval",
+      "base_model": "EleutherAI/pythia-1b",
+      "n_adapters": 3,
+      "repos": [
+        "DataAttributionEval/Pythia-1b-XSTest-response-Het",
+        "DataAttributionEval/Pythia-1b-counterfactual",
+        "DataAttributionEval/Pythia-1b-XSTest-response-Hom"
+      ],
+      "median_principal_cosine": 0.9811979532241821,
+      "rel_A_diff": 0.4209270061692223,
+      "status": "COLLAPSED"
+    },
+    {
+      "namespace": "cds-jb",
+      "base_model": "Qwen/Qwen3-14B",
+      "n_adapters": 12,
+      "repos": [
+        "cds-jb/em-extreme_sports-narrow",
+        "cds-jb/em-risky_financial-broad",
+        "cds-jb/em-bad_medical-narrow",
+        "cds-jb/em-bad_medical-broad",
+        "cds-jb/em-bad_legal-narrow",
+        "cds-jb/em-reckless_driving-narrow",
+        "cds-jb/em-bad_legal-broad",
+        "cds-jb/em-unsafe_diy-broad",
+        "cds-jb/em-unsafe_diy-narrow",
+        "cds-jb/em-reckless_driving-broad",
+        "cds-jb/em-extreme_sports-broad",
+        "cds-jb/em-risky_financial-narrow"
+      ],
+      "median_principal_cosine": 0.06081784516572952,
+      "rel_A_diff": 1.414389658806386,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "tivanai2020",
+      "base_model": "openai/whisper-large-v3-turbo",
+      "n_adapters": 2,
+      "repos": [
+        "tivanai2020/whisper-large-v3-turbo-persian-farsi-unified-cleaned",
+        "tivanai2020/whisper-large-v3-turbo-persian-audiodata2"
+      ],
+      "median_principal_cosine": 0.18173547089099884,
+      "rel_A_diff": 1.3481847047805786,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "Misalignment-Empirics",
+      "base_model": "unsloth/Qwen3-8B",
+      "n_adapters": 2,
+      "repos": [
+        "Misalignment-Empirics/theo_em-optim-repro_Qwen3-8B_bad-medical_adam_2ep_seed2",
+        "Misalignment-Empirics/theo_em-optim-repro_Qwen3-8B_bad-medical_adam_2ep_seed1"
+      ],
+      "median_principal_cosine": 0.068815216422081,
+      "rel_A_diff": 1.4141565566025083,
+      "status": "SEPARATED"
+    },
+    {
+      "namespace": "Satya-Sri",
+      "base_model": "ai9stars/G9v3-3B",
+      "n_adapters": 2,
+      "repos": [
+        "Satya-Sri/confectionary_sft_adapter",
+        "Satya-Sri/confectionary_stage1_adapter"
+      ],
+      "median_principal_cosine": 0.9985716342926025,
+      "rel_A_diff": 0.15102707378518504,
+      "status": "COLLAPSED"
+    }
+  ]
+}
