@@ -37,35 +37,41 @@ gives his current position, which is AKTU. Elsevier allows an optional
 - Email: gargsv@gmail.com
 - ORCID: 0000-0002-2279-9373
 - Affiliation: as above
-- Photo file: `photo_garg.jpg` (to supply)
+- Photo file: `photo_garg.jpg` (received 2026-11-12, 317 x 440 px)
 
-Bio (DRAFT, 99 words, from his JUET faculty profile, to be confirmed by him):
+Bio (FINAL, 100 words, 2026-11-12). Condensed from the text he sent
+(about 230 words) to the 100-word limit; every fact is his, nothing added:
 
-> Sanjay Garg is Professor and Head of Computer Science and Engineering (CSE),
-> and Dean (Innovations and Research), at Jaypee University of Engineering and
-> Technology, Guna, India. He received B.E., M.E. (silver medal) and Ph.D.
-> degrees in CSE. In over 32 years in academia he has been Head of CSE at Nirma
-> University, Dean of Academic Affairs at DIT University and Pro Vice
-> Chancellor of Indrashil University. His research interests are data science,
-> algorithms, pattern recognition and Earth observation data mining. He has
+> Sanjay Garg is Dean (Innovations and Research), Professor and Head of
+> Computer Science and Engineering (CSE) at Jaypee University of Engineering
+> and Technology, Guna, India. He holds B.E., M.E. (silver medal) and Ph.D.
+> degrees in CSE. Over 32 years he has been Pro Vice Chancellor of Indrashil
+> University, Dean of Academic Affairs at DIT University and Head of CSE at
+> Nirma University. He works on data science, algorithms, pattern recognition
+> and big Earth data mining. He has led six ISRO- and GUJCOST-funded projects,
 > published over 70 papers, supervised 11 Ph.D. theses, and is a Senior Member
 > of IEEE and ACM.
 
-Source: https://juet.ac.in/faculty/profile/prof-sanjay-garg (read 2026-11-12).
-To confirm with him: the institutions and years of the three degrees (not on
-the profile; if he wants them in, cut elsewhere to stay under 100 words);
-whether "over 70 papers", "11 Ph.D. theses" and the IEEE/ACM Senior Member
-grades are current; whether he prefers a different selection, e.g. Fellow of
-the Institution of Engineers (India), the ISTE Best Engineering Teacher Award
-for Gujarat (2016), or the ISRO-funded projects.
+Left out for length, from his text: Program Evaluator/Assessor for ABET,
+NBA and NAAC; the CBCS, OBE and NEP 2020 frameworks at Nirma; the ISRO
+schemes (RESPOND, AO-NISAR, MAHATRAM) and the INR 1.1 crore total; over 25
+M.Tech/M.E. theses; Fellow of the Institution of Engineers (India); Life
+Member of ISTE, CSI and SSI; ISTE Best Engineering Teacher Award, Gujarat
+State, 2016. Any of these can replace a sentence above if he prefers.
 
 ## Piyush Kumar Singh
 
 - Email: Piyushsingh5629@gmail.com
 - ORCID: (to supply, if he has one)
 - Affiliation: as above
-- Photo file: `photo_singh.jpg` (to supply)
+- Photo file: `photo_singh.jpg`
 
-Bio (to write, at most 100 words):
+Bio (FINAL, 59 words, 2026-11-12; his text with grammar and spelling
+corrected; company name capitalised as Spark Cloud Studio):
 
-> Piyush Kumar Singh is ...
+> Piyush Kumar Singh is a final-year B.Tech student in Computer Science and
+> Engineering at Jaypee University of Engineering and Technology (JUET), Guna,
+> India, and a software development engineer (SDE) intern at Spark Cloud
+> Studio. He builds applications that improve their users' everyday lives, in
+> particular AI-powered, local-first Android applications that run large
+> language models on the phone's own hardware.
