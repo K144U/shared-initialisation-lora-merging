@@ -20,7 +20,30 @@ ones. Because $B = 0$ at the start, $A$ moves little during training: about
 $13\%$ of its norm in our measurements. Adapters that start from the same $A$
 therefore stay close to it. A single global seed is the natural choice when
 the seed is meant to make runs reproducible, and it gives every adapter of a
-cohort nearly the same input subspace, whatever its task.
+cohort nearly the same input subspace, whatever its task
+(Figure~\ref{fig:concept}).
+
+\begin{figure}[pos=tbp]
+\centering
+\includegraphics[width=\textwidth]{nc/figures/fig0_concept.pdf}
+\caption{What a shared initialisation does, on Llama-3.1-8B. Top row: the
+four adapters of a cohort are created from one random seed. Bottom row: each
+task has its own seed. \textbf{(a)} LoRA starts $B$ at zero and draws $A$ at
+random, so one seed gives four identical $A$ (an illustration with small
+random matrices). \textbf{(b)} Training moves $A$ by only $13\%$ of its norm,
+so adapters that start together stay together. The median principal cosine
+between their input subspaces is $0.995$, against $0.047$ with a seed per
+task (a two-dimensional sketch of rank-$16$ subspaces; the cosines are
+measured). \textbf{(c)} The $64$ eigenvalues of $\bar H$, the matrix that a
+least-squares merge built from the adapters has to invert, in one layer. With
+one seed, $16$ sit near $1$ and the other $48$ fall to between $10^{-2}$ and
+$10^{-4}$, so the condition number $\kappa$ is about $10^{4}$.
+\textbf{(d)} GSM8K accuracy of the merged model, the mean over three cohorts
+per row. Averaging the adapters works in both rows. WUDI-Merging, a published
+merge that solves a least-squares problem built from the adapters, fails when
+they share a seed.}
+\label{fig:concept}
+\end{figure}
 
 Our lead result concerns a published method. WUDI-Merging needs no data, and
 its authors minimise its objective with an optimiser that stops early instead

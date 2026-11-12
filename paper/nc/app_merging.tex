@@ -1,0 +1,217 @@
+% Further results on merging: the checks behind Section 6, moved here
+% verbatim from the main text on 2026-11-12 to shorten it. Every registered
+% outcome stays reported; only its place changed. The two subsections that
+% moved whole keep their labels (subsec:lambda, subsec:against).
+
+This appendix gives in full the checks that \S\ref{sec:merging} summarises.
+
+\subsection{WUDI-Merging: the three versions, and two diagnostics}\label{app:wudi-diag}
+
+Table~\ref{tab:wudi} gives the three versions of WUDI-Merging of
+\S\ref{subsec:wudi} on every base, in NLL and in accuracy.
+
+\begin{table}[pos=tbp]
+\centering
+\small
+\caption{WUDI-Merging on shared and independent cohorts, three per arm.
+\emph{NLL ratio}: mean worst-task excess on the shared arm over that on the
+independent arm; every ratio clears the registered gate. Accuracy is the mean
+over three cohorts, shared / independent. $^\dagger$Within the gate; every
+other accuracy difference clears it.}
+\label{tab:wudi}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccccccc}
+\toprule
+ & \multicolumn{3}{c}{NLL ratio, shared / indep.}
+ & \multicolumn{2}{c}{as published}
+ & \multicolumn{2}{c}{closed form} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+base & published & closed form & 3000 steps & GSM8K & HumanEval & GSM8K & HumanEval \\
+\midrule
+Llama-3.1-8B & 14.9 & 30.7 & 22.7 & 0.034 / 0.695 & 0.000 / 0.526 & 0.056 / 0.701 & 0.096 / 0.537 \\
+Mistral-7B   & 47.6 & 65.1 & 60.5 & 0.001 / 0.251 & 0.000 / 0.057 & 0.003 / 0.267 & 0.000 / 0.049$^\dagger$ \\
+Qwen2.5-7B   &  6.3 &  7.8 & 10.1 & 0.479 / 0.619 & 0.567 / 0.665$^\dagger$ & 0.180 / 0.625 & 0.459 / 0.685 \\
+Yi-1.5-9B    &  4.7 &  5.3 &  4.7 & 0.205 / 0.717 & 0.014 / 0.124 & 0.094 / 0.717 & 0.000 / 0.130 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We evaluate the loss from the
+factors rather than from dense matrices. It is the same function, and we
+checked its value, its gradient and a $50$-step Adam trajectory against the
+dense form.
+
+The account we registered of how this happens did not hold. We predicted that
+the closed form would put at least half of its energy in the bottom quarter of
+$\bar H$'s spectrum, as the two solvers of \S\ref{subsec:results} do. It puts
+$0.03$ to $0.17$ there on the shared arm, less than on the independent arm. We
+also predicted that the 3000-step arm would fall between the other two. It does
+not on two of the four bases: it lies above the closed form on Qwen and below
+the published version on Yi. Two diagnostics separate the arms for the
+published procedure. We recorded them but did not register them as mediators.
+The first is how far Adam moves. The starting sum has exactly $T = 4$ times
+the norm of the mean update. On independent cohorts Adam leaves it there
+(amplification $4.0$), and on shared cohorts it drives it to $8.6$ to $12.5$.
+The second is where the movement goes. On the shared arm, $24$ to $27\%$ of
+the merged update's squared norm lies outside the row space of the $A_t$,
+against $0.8$ to $1.6\%$ on the independent arm. The loss in
+Eq.~\eqref{eq:wudi} cannot see that component, because it depends on $\tau$
+only through $\tau D_t^\top$. One reading fits both diagnostics. On
+near-orthogonal subspaces the sum already minimises the loss, since
+$D_sD_t^\top \approx 0$ for $s \neq t$, so there is little gradient. On a
+collapsed cohort the sum counts the shared directions about four times, the
+loss is far from its minimum, and Adam moves far. Adam rescales each
+coordinate separately, so its steps leave the row space, and the loss never
+corrects what lands outside it. We offer this as a description, not as a
+tested mechanism.
+
+\subsection{The heuristics: equivalence margins and the lean}\label{app:lean}
+
+The registered equivalence margins were $3$ points on GSM8K and $5$ on
+HumanEval. Each of the five heuristics would pass at $0.9$ to $2.0$ points
+and at $2.1$ to $3.0$ points respectively.
+
+We also registered that a slight lean towards the shared arm, seen at one
+cohort per arm, would vanish at three. It persisted: $29$ of the $38$ non-zero
+differences favour the shared arm (sign test, $p = 0.0017$). That test treats
+the $40$ cells as independent, although the ten cells of a base share its six
+cohorts and its evaluation sets. We ran a permutation test afterwards that
+relabels whole cohorts within each base. It gives $p = 0.007$ for a mean lean
+of $0.7$ points, with all four bases leaning the same way. We tested one
+explanation in advance. Truncation to rank $r$ discards more of an independent
+cohort's merged update: $12$ to $25\%$ of task arithmetic's squared norm,
+against $1.3$ to $1.6\%$ on the shared arm, and more on the independent arm for
+every heuristic on every base. Merging without truncation should then have
+halved the lean. It did not halve on any of the three method-benchmark pairs
+where the lean was largest (task arithmetic and DARE at HumanEval, TIES at
+GSM8K), so truncation is excluded as its cause. No heuristic enters the
+ill-conditioned directions, so the lean is not the solver mechanism either,
+and we have no tested explanation for it.
+
+\subsection{Numerical precision and truncation}\label{app:precision}
+
+Both solvers run in float32,
+and at $\lambda = 10^{-6}$ and $\lambda = 0$ their systems are badly
+conditioned. The failure could therefore in principle be rounding error. We
+registered a check before running it. For each base, arm and solver, we
+recomputed the merge in float64 from the same adapter factors and compared the
+two after exact truncation to rank $r$. Precision would be excluded if the
+median difference over modules stayed below $1\%$ and the ratio of shared to
+independent amplification changed by less than a factor of $2$. The ratios
+agree within $0.1\%$ in every case, and $15$ of the $16$ medians are below
+$1\%$, at most $0.9\%$. The encoder on the shared Yi cohort is at $1.09\%$
+and fails. As registered, we rebuilt that merge in float64 and evaluated it
+again. Its worst-task excess is $0.245$ nats, against $0.249$ in float32 and
+$0.121$ on the independent cohort, so rounding does not cause the failure.
+Runs we added afterwards show that the float32 merge is unstable instead. The
+encoder's per-task bases come from a randomised SVD, and the unregularised
+solve amplifies its rounding. Float32 merges that differ only in the random
+seed reach worst-task excesses of $0.22$ to $0.28$ nats on this cohort, and
+$0.26$ to $0.84$ when the truncation to rank $r$ is exact. All of them lie
+above the independent cohort, whose float32 merge agrees with float64 to
+$2\times10^{-6}$ in the median over modules. On a shared cohort of each other
+base, three draws under the same seeds span $0.31$ to $0.33$ nats on Llama,
+$9.78$ to $9.86$ on Mistral and $0.19$ to $0.22$ on Qwen. We then drew the
+two other shared cohorts of every base three times each. The draws of one
+cohort span up to $0.08$ nats on Llama, $0.15$ on Qwen and $0.23$ on Yi, and
+up to $1.1$ on Mistral, whose excess is about $10$ nats
+(Table~\ref{tab:appC-sweep}). All $36$ draws lie above the independent arm.
+On one cohort, Yi's third, the spread is larger than the distance from its
+lowest draw to the independent mean ($0.23$ against $0.10$); on the others it
+is smaller. The float32 values we report for the unregularised encoder on
+shared cohorts are single draws of this kind. Their direction has not
+depended on the draw, but their size does. On Yi the ratio of the shared to
+the independent arm at $\lambda = 0$ ranges from $1.8$ to $2.6$ over the
+draws, so the registered factor of two holds on the registered cells but not
+on every draw.
+Adapter-only RegMean agrees with float64 to within $1\%$ on every module.
+
+Every merge in this paper is cut to rank $r$ by a randomised SVD that computes
+$r$ vectors with four power iterations and no oversampling. On the merges of
+the two solvers it keeps $98.8$ to $99.9\%$ of the norm of the exact
+truncation, but not its directions. In relative Frobenius norm it is a median
+$30$ to $38\%$ from the exact rank-$r$ truncation on the shared arm, and $12$
+to $20\%$ on the independent arm. Both arms are cut the same way, and the
+encoder's failure survives with this step removed (\S\ref{subsec:results}).
+
+\subsection{All four tasks}\label{app:alltasks}
+
+The accuracy results so far cover mathematics and
+code. We registered tests on the other two tasks: WMT19 English-to-German
+(chrF on $500$ pairs) and IFEval (strict prompt-level accuracy on $300$
+prompts). They use the seed-1 and independent-1 cohorts and our encoder, whose
+merges at $\lambda = 0$ and at the selected $\lambda^\star$ were already
+evaluated on the other tasks. On translation the collapse is visible. On the
+shared cohort the selected ridge beats $\lambda = 0$ by $13.9$, $55.1$, $2.9$
+and $6.5$ chrF points on the four bases, past the gate of $2$ on all four.
+Task arithmetic and TIES differ across arms by at most $1.1$ points. On IFEval
+the collapse is not visible. The ridge gains $0.080$, $0.333$, $0.043$ and
+$0.040$, past the gate on Mistral only. Llama misses by $0.001$ and is counted
+as a miss, as registered. The heuristics again differ by at most $0.057$,
+inside every gate. The reference rows explain part of this. The instruction
+adapter alone does not beat the base model on IFEval on three of four bases
+(Llama scores $0.627$ against the base model's $0.703$), so there is little
+task skill for a broken merge to lose. The translation adapter is also below
+the base model on chrF on three bases, because of the data-loading defect of
+\S\ref{subsec:setup}. What the unregularised merge destroys on translation is
+therefore mostly the base model's own ability to translate.
+
+\subsection{Setting the ridge without data}\label{subsec:lambda}
+
+A ridge repairs both solvers built from the adapter factors on most bases, but
+the amount needed does not track the conditioning. We tested three data-free
+rules for choosing it, and all three failed. The first sets $\lambda$ to bring
+the adapter Gram to a target condition number, chosen in advance and evaluated
+only on unseen cohorts. It was worse than a fixed $\lambda = 0.01$ on every
+collapsed cohort tested. On separated cohorts it met its registered criterion
+of doing no harm on $4$ of $6$; the two misses were cohorts where it did
+better than the minimal ridge. On collapsed public cohorts it brought the
+solver within $1.5$ times task arithmetic's excess on $2$ of $6$, against a
+registered $80\%$. The fixed $\lambda = 0.01$, registered to do the same on at
+least $80\%$ of collapsed public cohorts, did so on $1$ of $6$.
+Adapter-only RegMean is a ridge regression whose samples and targets can both
+be read off the adapter files. The classical rules for choosing the parameter
+therefore apply as they stand, and we registered two of them: generalised
+cross-validation (GCV) and the L-curve. Neither repaired the collapse on more
+than one base of four. Neither passed any of its three other registered
+criteria (no worse than $\lambda = 0.01$, near the best of the sweep, no harm
+on separated cohorts). GCV raised the independent cohort's excess on Llama
+from $0.07$ to $0.19$. On the first shared cohort of each base, GCV chose
+$\lambda$ near $10^{-4}$ and left the worst-task excess at $1.13$, $8.66$,
+$0.22$ and $0.45$, against $0.11$, $0.05$, $0.01$ and $0.02$ at the best
+$\lambda$ of the sweep. On Llama, Qwen and Yi that is worse than the minimal
+ridge. The L-curve found no interior corner. On every base and arm its median
+choice was $1.3\times10^{-8}$, at the lower edge of a grid that starts at
+$10^{-8}$. A data-free way to set the ridge remains open. We recommend
+starting at $0.01$ and sweeping on held-out data.
+
+\subsection{Merges of public cohorts}\label{subsec:against}
+
+We merged the
+public cohorts that a fixed rule selected: causal language models of at most
+$15$B parameters that load without custom code, with members sharing rank and
+target modules. The rule selected seven collapsed and thirteen separated
+cohorts, and one of the collapsed cohorts could not be loaded. Public adapters
+rarely ship their data, so the consequence measure scored each adapter's own
+greedy completions on a fixed prompt set under the merged model.
+Unregularised adapter-only RegMean at least doubles task arithmetic's excess
+on $5$ of $6$ collapsed cohorts, and also on $11$ of $13$ separated ones
+(Fisher's exact test, $p = 0.78$). The solver fails often on public cohorts,
+but not more often when they are collapsed. These merges therefore show how
+common the collapse is (\S\ref{sec:prevalence}), not what it costs on public
+cohorts.
+
+\paragraph{Two candidate causes, tested on our own cohorts.} Public cohorts
+differ from ours in ways a fixed rule cannot control, so we injected each
+difference into our separated cohorts on Llama and Qwen. A LoRA update is
+unchanged when $A$ is multiplied by $4$ and $B$ divided by $4$, but $A^\top A$
+is not. That rescaling changes adapter-only RegMean's excess by at most $4\%$,
+below the gate, so this freedom in the factorisation is not the cause. Putting
+every adapter in a balanced form changes nothing either. Scale mismatch does
+matter, which we did not predict. Making one adapter's update $4$ times larger
+multiplies RegMean's excess by $3.9$ and $5.3$ on the two bases, while task
+arithmetic's excess falls to $0.26$ and $0.29$ of its unperturbed value. Scale
+mismatch between adapters is therefore a hazard specific to solvers, which we
+observed on separated cohorts. It does not explain the public data, however:
+the spread of $A$ norms within a cohort is no larger where the solver failed
+than where it did not. The public failures remain unexplained.

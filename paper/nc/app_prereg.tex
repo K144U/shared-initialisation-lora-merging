@@ -67,10 +67,10 @@ seed ablation, training regimes, routes & \S\ref{subsec:seeds}, \S\ref{sec:theor
 vision (CLIP ViT-B/32) & \S\ref{subsec:beyond} & \texttt{fff1699} & \texttt{61b2dca} & \texttt{651edb5} \\
 heterogeneity, partial collapse & \S\ref{subsec:audit}, \S\ref{subsec:against} & \texttt{fff1699} & \texttt{33c6f7c} & \texttt{1debb3f} \\
 \quad prevalence re-read & \S\ref{subsec:public} & \texttt{fff1699} & \texttt{d11375d} & \texttt{d11375d} \\
-truncation and the heuristics' lean & \S\ref{subsec:results} & \texttt{fff1699} & \texttt{33c6f7c} & \texttt{b1066d9} \\
+truncation and the heuristics' lean & Appendix~\ref{app:lean} & \texttt{fff1699} & \texttt{33c6f7c} & \texttt{b1066d9} \\
 all four tasks & \S\ref{subsec:beyond} & \texttt{fff1699} & \texttt{76353d5} & \texttt{3672064} \\
-solve precision (float64) & \S\ref{subsec:results} & \texttt{9830e06} & \texttt{98ea4cc}, \texttt{dc65838} & \texttt{0e4a322} \\
-\quad rebuild of the failing merge & \S\ref{subsec:results} & \texttt{0e4a322} & \texttt{6d436cf} & \texttt{58d5275} \\
+solve precision (float64) & Appendix~\ref{app:precision} & \texttt{9830e06} & \texttt{98ea4cc}, \texttt{dc65838} & \texttt{0e4a322} \\
+\quad rebuild of the failing merge & Appendix~\ref{app:precision} & \texttt{0e4a322} & \texttt{6d436cf} & \texttt{58d5275} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -98,7 +98,7 @@ $\lambda = 0$, where they differ by up to $0.106$ (Yi, GSM8K); two evaluations
 of one identical merge differ by $0.022$. Two HumanEval comparisons that
 passed before now miss their gates, by $0.001$ and $0.005$, which does not
 change the outcome. Because the unregularised encoder on shared cohorts
-depends on the random stream (\S\ref{subsec:results}), we drew the re-run's
+depends on the random stream (Appendix~\ref{app:precision}), we drew the re-run's
 cohorts twice more, in an unregistered follow-up whose reading was committed
 before its cells (Table~\ref{tab:appC-sweep}). On Llama and Qwen the lost
 values lie within the spread of these draws. On Mistral and Yi they do not,
@@ -118,3 +118,46 @@ a first run that compared two different truncation algorithms; that run was
 void, and the result comes from the corrected one. The rebuild row's rules
 commit is the precision result itself, which wrote the rebuild plan before any
 rebuild cell was generated.
+
+\paragraph{Predictions that failed.} Table~\ref{tab:failed} lists every
+registered prediction that did not hold, with its outcome and where it is
+reported. The first four changed what the paper claims.
+
+\begin{table}[pos=htbp]
+\centering
+\small
+\caption{Registered predictions that did not hold.}
+\label{tab:failed}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X
+                >{\raggedright\arraybackslash}X
+                >{\raggedright\arraybackslash}p{1.9cm}}
+\toprule
+prediction & outcome & reported in \\
+\midrule
+\multicolumn{3}{l}{\emph{Changed what the paper claims}} \\
+Published WUDI is protected by its early-stopped optimiser & It is not, in NLL or in accuracy; the lead result & \S\ref{subsec:wudi} \\
+TSV-M (whitening) is exposed & It is not; the rule is stated for least-squares merges alone & \S\ref{subsec:results} \\
+The collapse is visible on all four tasks & Invisible on IFEval, where the instruction adapter has little skill to lose & \S\ref{subsec:beyond} \\
+Solver failures on public cohorts are specific to the collapse & They are not: $5$ of $6$ collapsed and $11$ of $13$ separated cohorts fail & Appendix~\ref{subsec:against} \\
+\addlinespace
+\multicolumn{3}{l}{\emph{Explanations that did not survive}} \\
+WUDI's closed form puts at least half its energy in the bottom quarter of $\bar H$'s spectrum & $0.03$ to $0.17$ on the shared arm & Appendix~\ref{app:wudi-diag} \\
+The 3000-step WUDI arm lies between the other two & Not on two of the four bases & Appendix~\ref{app:wudi-diag} \\
+The heuristics' slight lean vanishes at three cohorts per arm & It persists ($0.7$ points, $p = 0.007$) & Appendix~\ref{app:lean} \\
+Merging without truncation halves the lean & Not on any of the three pairs where it is largest & Appendix~\ref{app:lean} \\
+The freedom in LoRA's factorisation explains the public failures & It changes the excess by at most $4\%$ & Appendix~\ref{subsec:against} \\
+The spread of adapter norms explains the public failures & It is no larger where the solver failed & Appendix~\ref{subsec:against} \\
+\addlinespace
+\multicolumn{3}{l}{\emph{Setting the ridge without data}} \\
+A rule that targets a condition number sets the ridge & Worse than a fixed $\lambda = 0.01$ on every collapsed cohort of ours; no harm on $4$ of $6$ separated cohorts (the two misses did better than the minimal ridge); enough on $2$ of $6$ collapsed public cohorts & Appendix~\ref{subsec:lambda} \\
+GCV and the L-curve set the ridge & Each failed all four of its criteria & Appendix~\ref{subsec:lambda} \\
+A fixed $\lambda = 0.01$ is enough on collapsed public cohorts & On $1$ of $6$ & Appendix~\ref{subsec:lambda} \\
+\addlinespace
+\multicolumn{3}{l}{\emph{Details}} \\
+A fourfold scale mismatch between adapters is not specific to solvers & It multiplies the solver's excess by $3.9$ and $5.3$ and lowers that of task arithmetic & Appendix~\ref{subsec:against} \\
+RegMean with activation Grams gives solutions at most three times the mean task update & $2.2$ to $6.5$ times, the same on both arms, from the activation Grams themselves, whose condition numbers reach $10^{7}$ & this table \\
+The retrained translation adapter becomes the best adapter at translation & It improved but did not & \S\ref{subsec:setup} \\
+\bottomrule
+\end{tabularx}
+\end{table}

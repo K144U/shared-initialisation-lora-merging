@@ -8,7 +8,7 @@
   adapters alone, as adapter-only RegMean, WUDI-Merging and our encoder do.
   Run Algorithm~\ref{alg:audit} before using them. On our own separated
   cohorts these merges work. On public cohorts, however, adapter-built solvers
-  also fail for reasons unrelated to the collapse (\S\ref{subsec:against}), so
+  also fail for reasons unrelated to the collapse (\S\ref{subsec:open}), so
   the merged model needs checking in any case. On a collapsed cohort, add an
   isotropic ridge to the closed-form solvers, start near $\lambda = 0.01$ and
   sweep it on held-out data. Do not rely on RegMean's shipped $\alpha$. We did
@@ -27,57 +27,28 @@
 \end{itemize}
 The audit is needed even though a ridge repairs most of the damage. A sweep
 needs held-out data and one merge per value of $\lambda$, and no
-data-free rule we tested sets $\lambda$ well (\S\ref{subsec:lambda}). A user
+data-free rule we tested sets $\lambda$ well (\S\ref{subsec:open}). A user
 who has no data for the tasks, or who runs a method at its defaults, meets the
-zeros of Table~\ref{tab:wudi} and Figure~\ref{fig:exposure} with no warning.
+zeros of Figures~\ref{fig:wudi} and~\ref{fig:exposure} with no warning.
 The audit needs only the $A$ factors and a CPU minute. It says before any merge
 whether the choice of method matters at all.
 
-\paragraph{Predictions that failed.} We collect here the registered predictions
-that did not hold, grouped by what they cost. Four changed what this paper
-claims. We predicted that published WUDI would be protected by its
-early-stopped optimiser. It is not, in NLL or in accuracy, and this is the lead
-result (\S\ref{subsec:wudi}). We predicted that TSV-M would be exposed. It is
-not, so the rule is stated for least-squares merges alone
-(\S\ref{subsec:results}). We predicted that the collapse would be visible on
-all four tasks. It is invisible on IFEval, where the instruction adapter has
-little skill to lose (\S\ref{subsec:beyond}). We predicted that solver failures
-on public cohorts would be specific to the collapse. They are not
-(\S\ref{subsec:against}).
-
-Six were explanations that did not survive. The closed form of WUDI does not
-concentrate its energy in the ill-conditioned directions. The 3000-step arm
-does not lie between the other two on two of the four bases
-(\S\ref{subsec:wudi}). The heuristics' slight lean towards the shared arm did
-not vanish at three cohorts per arm, and merging without truncation did not
-halve it (\S\ref{subsec:results}). Neither the freedom in LoRA's factorisation
-nor the spread of adapter norms explains the public failures
-(\S\ref{subsec:against}).
-
-Others concern tools for setting the ridge without data, and none of them works
-(\S\ref{subsec:lambda}). The rule that targets a condition number was worse
-than a fixed $\lambda = 0.01$ on every collapsed cohort of ours. It missed its
-criterion of doing no harm on two of six separated cohorts, by doing better
-than the minimal ridge. It met its criterion on collapsed public cohorts on two
-of six. GCV and the L-curve failed all four of their criteria. A fixed
-$\lambda = 0.01$, registered as enough on collapsed public cohorts, was enough
-on one of six.
-
-Three more concern details. We predicted that a fourfold scale mismatch between
-adapters would not be specific to solvers. It multiplies the solver's excess by
-$3.9$ and $5.3$ while lowering that of task arithmetic
-(\S\ref{subsec:against}). We predicted that RegMean with activation Grams would
-produce solutions at most three times the mean task update. They were $2.2$ to
-$6.5$ times larger. The amplification is the same on both arms and comes from
-the activation Grams themselves, whose condition numbers reach $10^{7}$
-whatever the initialisation. Finally, the retrained translation adapter
-improved but did not become the best adapter at translation.
+\paragraph{Predictions that failed.} Table~\ref{tab:failed} lists every
+registered prediction that did not hold. Four changed what this paper claims.
+Published WUDI was not protected by its optimiser, which made it the lead
+result (\S\ref{subsec:wudi}). TSV-M was not exposed, so the rule is stated
+for least-squares merges alone (\S\ref{subsec:results}). The collapse is
+invisible on IFEval, where the instruction adapter has little skill to lose
+(\S\ref{subsec:beyond}). Solver failures on public cohorts are not specific
+to the collapse (\S\ref{subsec:open}). The others are explanations that did
+not survive, rules for setting the ridge without data that did not work, and
+three details.
 
 \paragraph{What we cannot explain.} Three observations have no tested
 explanation. First, on CLIP ViT-B/32, published WUDI merges shared cohorts
 \emph{better} than independent ones, $0.454$ against $0.358$, the opposite of
 its behaviour on language models (\S\ref{subsec:beyond}). The description we
-give in \S\ref{subsec:wudi}, in which Adam's steps leave the row space on a
+give in Appendix~\ref{app:wudi-diag}, in which Adam's steps leave the row space on a
 collapsed cohort, does not account for this. Second, scaling the initial $A$ by
 $0.25$ leaves a cohort collapsed, yet adapter-only RegMean then does less
 damage than on the independent arm ($0.022$ against $0.071$ nats). This happens

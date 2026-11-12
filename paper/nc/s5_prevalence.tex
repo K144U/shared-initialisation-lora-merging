@@ -41,17 +41,17 @@ GSM8K and code adapters of a shared cohort, together with the instruction and
 translation adapters of an independent one. The pooled median is $0.047$ to
 $0.053$, so the old audit calls the cohort separated, while the collapsed pair
 sits at $0.993$ to $0.996$. One pair is enough to break a solver. Adapter-only
-RegMean at $\lambda = 10^{-6}$ leaves a worst-task excess of $1.9$, $10.5$,
-$0.45$ and $0.73$ nats on Llama, Mistral, Qwen and Yi, against $0.071$,
-$0.155$, $0.026$ and $0.121$ on the fully independent cohort. On these cohorts
-$\kappa(\bar H)$ is $1.7\times10^{3}$ to $5.3\times10^{3}$, against $1.5$ to
-$1.7$. The registered consequence was to change the statistic to the maximum
+RegMean at $\lambda = 10^{-6}$ leaves a worst-task excess of $0.45$ to $10.5$
+nats on these cohorts, against $0.026$ to $0.155$ on the fully independent
+ones, and $\kappa(\bar H)$ is $1.7\times10^{3}$ to $5.3\times10^{3}$, against
+$1.5$ to $1.7$ (Table~\ref{tab:appC-hetero}). The registered consequence was to change the statistic to the maximum
 over pairs, keep the thresholds, and re-read the public cohorts, which
 \S\ref{subsec:public} reports. The audit also returns the number of collapsed
 pairs, which says how much of a cohort is affected.
 
 A cohort cannot be repaired by editing its $A$ factors while keeping each
-adapter's behaviour. Replacing $A_t$ by $QA_t$ for an invertible $Q$ keeps the
+adapter's behaviour. Replacing $A_t$ by $QA_t$ for an invertible $Q$, such as a permutation of the
+rank dimension, keeps the
 adapter the same only if $B_t$ becomes $B_tQ^{-1}$. The row space, the
 principal cosines and $\bar H$ are then all unchanged. The geometry is a
 property of what the adapters compute, so only retraining or the choice of
@@ -79,9 +79,8 @@ who fine-tunes several tasks without changing the seed obtains a collapsed
 cohort. TRL's \texttt{SFTTrainer} builds the PEFT model before it seeds, so its
 behaviour depends on the calling script. We found no seeding before adapter
 creation in axolotl. Without any seed the regime does not arise by accident,
-since fresh processes start the generator differently. We also measured both
-stacks at their defaults (\S\ref{subsec:routes}), and each gives identical
-initial $A$ across tasks and runs.
+since fresh processes start the generator differently. Our measurements of
+both stacks agree (\S\ref{subsec:routes}).
 
 \subsection{Prevalence in public adapters}\label{subsec:public}
 
@@ -119,47 +118,40 @@ median cosine $0.076$, and only one falls between the thresholds, at $0.868$.
 An unplanned check supports the measurement. If two adapters draw $A$
 independently and $A$ moves little, then
 $\|A_i - A_j\|_F \approx \sqrt2\,\|A_i\|_F$. The separated cohorts give a
-median ratio of $1.414$, as independent draws should. The collapsed cohorts
-range from $0.017$, adapters whose $A$ factors agree to within $1.7\%$, to
-$0.760$ (Figure~\ref{fig:prevalence}, vertical axis). One separated cohort
-sits at only $0.29$, the single point this check does not explain. Our own
-cohorts and the three released with KnOTS (below) fall inside the two public
-clusters.
+median ratio of $1.414$, as independent draws should, and the collapsed
+ones range from $0.017$ to $0.760$ (Figure~\ref{fig:prevalence}, vertical
+axis). One separated cohort sits at only $0.29$, the single point this check
+does not explain.
 
 We re-read the cohorts under the maximum pairwise cosine about two months
 after the original download. Five could no longer be read, because eleven of
-their adapters had been deleted or made private. For the other $40$, the
+their adapters had been deleted or made private; for the other $40$, the
 pooled median reproduces the stored value to within $0.003$. Two statuses
-change, both upwards. One cohort of five adapters has a pooled median of
-$0.064$, but four of its ten pairs are collapsed, at up to $0.998$, so it moves
-from separated to collapsed. Another moves from separated to indeterminate
-($0.440$ to $0.717$). No collapsed cohort leaves the class. Counting the five
+change, both upwards: one cohort, with a pooled median of $0.064$ but four of
+its ten pairs collapsed, becomes collapsed, and another becomes
+indeterminate. No collapsed cohort leaves the class. Counting the five
 unreadable cohorts at their stored status, $18$ of the $45$ ($40.0\%$) are
-collapsed under the audit as it now stands. One unreadable cohort of four
-adapters had a pooled median of $0.100$ and could hide a collapsed pair, so the
-count is $18$ or $19$.
+collapsed under the audit as it now stands, or $19$ if one unreadable cohort
+of four adapters hides a collapsed pair.
 
 \paragraph{What the collapsed cohorts are.} The sampling frame groups adapters
 by publisher and base model, and such a group is not necessarily a set of
 tasks anyone would merge. We read the names, model cards, tags and
-configurations of the $18$ collapsed cohorts, and classified each by the most
-specific evidence it offers of how its members came to share $A$. In one, the
-card states that one adapter was trained on top of the other. In one, the card
-states that the runs used the same seed. Four are checkpoints, stages or
-variants of one run, by their names. Three carry the tags of Unsloth, which
-seeds by default (\S\ref{subsec:libraries}). Nine are sibling adapters of one
-project with nothing recorded about seeds. No readable configuration uses a
-non-random initialisation, and none shares or freezes $A$ by design. By what
-the members are, six cohorts hold adapters for distinct tasks or objectives
-that one might merge. They include LoRAHub's $196$ FLAN-task
-adapters~\citep{huang2024lorahub}, released to be composed, and sixteen
-writing-style adapters. The other twelve are versions, stages, checkpoints or
-data ablations of one model, for which a collapse is expected and merging is
-rarely the point. The $40\%$ is therefore the prevalence of the regime among
-public cohorts as the frame defines them, not among cohorts built for merging.
-Six collapsed cohorts of distinct tasks, one of them built for composition, are
-enough to show that the regime is not confined to our own experiments. This
-reading is ours and was not registered.
+configurations of the $18$ collapsed cohorts, in a reading that was not
+registered. We classified each by the most specific evidence it offers of how
+its members came to share $A$. In one, the card states that one adapter was
+trained on top of the other, and in another that the runs used the same seed.
+Four are checkpoints, stages or variants of one run, three carry the tags of
+Unsloth, which seeds by default (\S\ref{subsec:libraries}), and nine are
+sibling adapters with nothing recorded about seeds. None uses a non-random initialisation or shares or
+freezes $A$ by design. Six cohorts hold adapters for distinct tasks that one
+might merge, among them LoRAHub's $196$ FLAN-task
+adapters~\citep{huang2024lorahub}, released to be composed. The other twelve
+are versions, stages, checkpoints or data ablations of one model, for which
+merging is rarely the point. The $40\%$ is therefore the prevalence of the
+regime among public cohorts as the frame defines them, not among cohorts
+built for merging, but six collapsed cohorts of distinct tasks show that the
+regime is not confined to our own experiments.
 
 The cohorts that merging papers evaluate on are harder to sample. We checked
 the $22$ merging papers we cite in order, intending to audit the first two that
