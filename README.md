@@ -33,8 +33,8 @@ The claim is that the rules were fixed before the results were in. Clone this
 repository and test one row of it:
 
 ```
-git clone https://github.com/K144U/Initialisation-Sets-the-Conditioning-of-LoRA-Merging.git
-cd Initialisation-Sets-the-Conditioning-of-LoRA-Merging
+git clone https://github.com/K144U/shared-initialisation-lora-merging.git
+cd shared-initialisation-lora-merging
 
 # fff1699 fixed the rules for the WUDI-Merging test; c55e5d9 carries its result.
 git merge-base --is-ancestor fff1699 c55e5d9 ; echo "exit $?"   # 0: rules came first

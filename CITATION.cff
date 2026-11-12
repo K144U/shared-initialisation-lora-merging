@@ -34,8 +34,8 @@ contact:
     given-names: "Sankalp"
     email: "pathaksankalp04@gmail.com"
 license: MIT
-repository-code: "https://github.com/K144U/Initialisation-Sets-the-Conditioning-of-LoRA-Merging"
-url: "https://github.com/K144U/Initialisation-Sets-the-Conditioning-of-LoRA-Merging"
+repository-code: "https://github.com/K144U/shared-initialisation-lora-merging"
+url: "https://github.com/K144U/shared-initialisation-lora-merging"
 date-released: "2026-08-25"
 keywords:
   - "model merging"

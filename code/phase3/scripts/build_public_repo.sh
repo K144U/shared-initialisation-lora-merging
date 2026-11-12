@@ -364,4 +364,4 @@ echo "  map:      $OUT/filter-repo/commit-map"
 echo
 echo "To publish (this script deliberately does not):"
 echo "  git -C $OUT push --mirror \\"
-echo "    https://github.com/K144U/Initialisation-Sets-the-Conditioning-of-LoRA-Merging.git"
+echo "    https://github.com/K144U/shared-initialisation-lora-merging.git"
