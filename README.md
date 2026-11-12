@@ -1,4 +1,4 @@
-# Initialisation Sets the Conditioning of LoRA Merging
+# When LoRA Adapters Share an Initialisation
 
 Code, pre-registrations, per-cell experimental results and the manuscript for
 *When LoRA Adapters Share an Initialisation: Subspace Collapse and Its
