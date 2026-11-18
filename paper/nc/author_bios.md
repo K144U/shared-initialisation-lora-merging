@@ -39,25 +39,22 @@ gives his current position, which is AKTU. Elsevier allows an optional
 - Affiliation: as above
 - Photo file: `photo_garg.jpg` (received 2026-11-12, 317 x 440 px)
 
-Bio (FINAL, 100 words, 2026-11-12). Condensed from the text he sent
-(about 230 words) to the 100-word limit; every fact is his, nothing added:
+Bio (FINAL, 129 words, his own text sent 2026-11-17, replacing the 100-word
+condensed version of 2026-11-12; only two typos fixed: "M.E. ," and the
+missing full stop in "GUJCOSTDr."). It is over the 100-word limit; he
+decides whether to cut it.
 
-> Sanjay Garg is Dean (Innovations and Research), Professor and Head of
-> Computer Science and Engineering (CSE) at Jaypee University of Engineering
-> and Technology, Guna, India. He holds B.E., M.E. (silver medal) and Ph.D.
-> degrees in CSE. Over 32 years he has been Pro Vice Chancellor of Indrashil
-> University, Dean of Academic Affairs at DIT University and Head of CSE at
-> Nirma University. He works on data science, algorithms, pattern recognition
-> and big Earth data mining. He has led six ISRO- and GUJCOST-funded projects,
-> published over 70 papers, supervised 11 Ph.D. theses, and is a Senior Member
-> of IEEE and ACM.
-
-Left out for length, from his text: Program Evaluator/Assessor for ABET,
-NBA and NAAC; the CBCS, OBE and NEP 2020 frameworks at Nirma; the ISRO
-schemes (RESPOND, AO-NISAR, MAHATRAM) and the INR 1.1 crore total; over 25
-M.Tech/M.E. theses; Fellow of the Institution of Engineers (India); Life
-Member of ISTE, CSI and SSI; ISTE Best Engineering Teacher Award, Gujarat
-State, 2016. Any of these can replace a sentence above if he prefers.
+> Sanjay Garg received the B.E., M.E., and Ph.D. degrees in computer science
+> and engineering. With over 32 years of experience in higher education, he is
+> currently a Professor, the Head of the Department of Computer Science and
+> Engineering, and the Dean of Innovations and Research at Jaypee University
+> of Engineering and Technology, Guna, India. Previously, he served as Pro
+> Vice Chancellor at Indrashil University, Dean of Academic Affairs at DIT
+> University, and Head of CSE at Nirma University. His research interests
+> include data science, algorithms, pattern recognition, and big Earth data
+> mining. He has authored over 70 peer-reviewed publications and executed six
+> sponsored research projects funded by ISRO and GUJCOST. Dr. Garg is also a
+> Senior Member of ACM, a Senior Member of IEEE and a Fellow of IEI.
 
 ## Piyush Kumar Singh
 
