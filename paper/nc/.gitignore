@@ -8,3 +8,5 @@ figures/preview/
 # Author photographs: uploaded to the journal separately, never published
 # with the repository.
 photos/
+# The journal upload package (built by a script; holds the photographs).
+submission/
