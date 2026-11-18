@@ -25,7 +25,10 @@ PDF = PAPER / "neurocomputing.pdf"
 
 
 def strip_tex(s: str) -> str:
-    s = re.sub(r"(?m)%.*$", "", s)
+    # a comment starts at an unescaped %; "0.10\%" is text (this once hid six
+    # words of the abstract from the count)
+    s = re.sub(r"(?m)(?<!\\)%.*$", "", s)
+    s = s.replace("\\%", "%")
     s = re.sub(r"\$[^$]*\$", " X ", s)
     s = re.sub(r"\\[a-zA-Z]+\*?(\[[^\]]*\])?", " ", s)
     s = re.sub(r"[{}~]", " ", s)

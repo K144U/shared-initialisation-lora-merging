@@ -6,8 +6,8 @@ whether a whole class of merges works: whether the adapters started from one
 random draw of the LoRA $A$ factor or from independent draws. One training
 seed, or the defaults of Unsloth and LLaMA-Factory, gives a shared draw. The
 task subspaces then collapse: their median principal cosine exceeds 0.99,
-against 0.05 for independent draws, on four base models. The initialisation
-seed alone decides this. Training every task on from one adapter, or
+against 0.05 for independent draws, on four base models. Training every
+task on from one adapter, or
 initialising with PiSSA, collapses a cohort without a shared seed. On
 collapsed cohorts, WUDI-Merging, a published data-free method run as its
 authors run it, leaves a worst-task loss excess 4.7 to 47.6 times larger than
@@ -18,7 +18,7 @@ sparsifying merges, and solvers built from data, are unaffected. A ridge of
 0.01 recovers most of the lost GSM8K accuracy on three of four bases;
 RegMean's shipped regulariser is too weak to do so. A first-order theory
 matches the conditioning within 0.10\% and predicts it on eight cohorts
-trained after the theory was fixed. An audit that reads the adapter files in
+trained after it was fixed. An audit that reads the adapter files in
 a CPU minute finds the collapse in at least 18 of 45 public LoRA cohorts.
 Every confirmatory test was pre-registered, and we report the predictions
 that failed.
