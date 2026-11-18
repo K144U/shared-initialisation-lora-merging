@@ -25,8 +25,11 @@ SRC = OUT / "latex_source"
 TEXBIN = Path("D:/texlive/2026/bin/windows")
 TEMPLATE = NC / "NCTemplate" / "els-cas-templates"
 
-if OUT.exists():
-    shutil.rmtree(OUT)
+# Clear what this script writes; keep anything else (SUBMISSION_CHECKLIST.md).
+if SRC.exists():
+    shutil.rmtree(SRC)
+for old in OUT.glob("0[1-6]_*"):
+    old.unlink()
 SRC.mkdir(parents=True)
 
 # ---------- flat LaTeX source ----------
